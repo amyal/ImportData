@@ -1,0 +1,2 @@
+_srm_core:
+    resource: "@SrmCoreBundle/Resources/config/routing.yml"
