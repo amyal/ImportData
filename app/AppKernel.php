@@ -11,14 +11,17 @@ class AppKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
+
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Sensio\Bundle\DistributionBundle\SensioDistributionBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-            new Srm\Bundle\CoreBundle\SrmCoreBundle(),
+            new Srm\CoreBundle\SrmCoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
         }
 
