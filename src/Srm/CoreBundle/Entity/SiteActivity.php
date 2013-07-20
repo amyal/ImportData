@@ -1,0 +1,184 @@
+<?php
+
+namespace Srm\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SiteActivity
+ */
+class SiteActivity
+{
+    /**
+     * @var string
+     */
+    private $label;
+
+    /**
+     * @var boolean
+     */
+    private $enabled;
+
+    /**
+     * @var boolean
+     */
+    private $deleted;
+
+    /**
+     * @var integer
+     */
+    private $siteActivityId;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\TypeSite
+     */
+    private $typeSite;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $site;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return SiteActivity
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+    
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string 
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return SiteActivity
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return SiteActivity
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+    
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean 
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+
+    /**
+     * Get siteActivityId
+     *
+     * @return integer 
+     */
+    public function getSiteActivityId()
+    {
+        return $this->siteActivityId;
+    }
+
+    /**
+     * Set typeSite
+     *
+     * @param \Srm\CoreBundle\Entity\TypeSite $typeSite
+     * @return SiteActivity
+     */
+    public function setTypeSite(\Srm\CoreBundle\Entity\TypeSite $typeSite = null)
+    {
+        $this->typeSite = $typeSite;
+    
+        return $this;
+    }
+
+    /**
+     * Get typeSite
+     *
+     * @return \Srm\CoreBundle\Entity\TypeSite 
+     */
+    public function getTypeSite()
+    {
+        return $this->typeSite;
+    }
+
+    /**
+     * Add site
+     *
+     * @param \Srm\CoreBundle\Entity\Site $site
+     * @return SiteActivity
+     */
+    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    {
+        $this->site[] = $site;
+    
+        return $this;
+    }
+
+    /**
+     * Remove site
+     *
+     * @param \Srm\CoreBundle\Entity\Site $site
+     */
+    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    {
+        $this->site->removeElement($site);
+    }
+
+    /**
+     * Get site
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
+}
