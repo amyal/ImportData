@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\Contact" table="V_CONTACT">
+    <id name="contactId" type="integer" column="CONTACT_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="firstName" type="string" column="FIRST_NAME" length="25" nullable="false"/>
+    <field name="lastName" type="string" column="LAST_NAME" length="25" nullable="false"/>
+    <field name="acronym" type="string" column="ACRONYM" length="50" nullable="false"/>
+    <field name="function" type="string" column="FUNCTION" length="50" nullable="false"/>
+    <field name="picture" type="string" column="PICTURE" length="255" nullable="false"/>
+    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
+    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <field name="comment" type="string" column="COMMENT" length="255" nullable="false"/>
+    <field name="gender" type="boolean" column="GENDER" nullable="false"/>
+    <field name="organizationInvolved" type="string" column="ORGANIZATION_INVOLVED" length="100" nullable="false"/>
+    <field name="manager" type="string" column="MANAGER" length="50" nullable="false"/>
+    <field name="dateBirth" type="date" column="DATE_BIRTH" nullable="false"/>
+    <field name="connPlatforme" type="boolean" column="CONN_PLATFORME" nullable="false"/>
+    <field name="owner" type="string" column="OWNER" length="50" nullable="false"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="false"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
+    <field name="phone" type="string" column="PHONE" length="25" nullable="false"/>
+    <field name="mail" type="string" column="MAIL" length="25" nullable="true"/>
+    <field name="contact" type="string" column="CONTACT" length="50" nullable="false"/>
+    <many-to-one field="address" target-entity="Address">
+      <join-columns>
+        <join-column name="ADDRESS_ID" referenced-column-name="ADDRESS_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="stakeholderGroup" target-entity="StakeholderGroup">
+      <join-columns>
+        <join-column name="STAKEHOLDER_GROUP_ID" referenced-column-name="STAKEHOLDER_GROUP_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="organisation" target-entity="Organisation">
+      <join-columns>
+        <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="site" target-entity="Site" inversed-by="contact">
+      <join-table name="vj_site_contact">
+        <join-columns>
+          <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="subDepartment" target-entity="SubDepartment" inversed-by="contact">
+      <join-table name="vj_contact_sub_department">
+        <join-columns>
+          <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="SUB_DEPARTMENT_ID" referenced-column-name="SUB_DEPARTMENT_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="department" target-entity="Department" inversed-by="contact">
+      <join-table name="vj_contact_department">
+        <join-columns>
+          <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>
