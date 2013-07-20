@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\Bundle\CoreBundle;
+namespace Srm\CoreBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
