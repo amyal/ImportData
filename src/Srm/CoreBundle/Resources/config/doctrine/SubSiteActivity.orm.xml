@@ -4,9 +4,7 @@
     <id name="subSiteActivityId" type="integer" column="SUB_SITE_ACTIVITY_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="label" type="string" column="LABEL" length="100" nullable="false"/>
-    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
-    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
     <many-to-one field="siteActivity" target-entity="SiteActivity">
       <join-columns>
         <join-column name="SITE_ACTIVITY_ID" referenced-column-name="SITE_ACTIVITY_ID"/>

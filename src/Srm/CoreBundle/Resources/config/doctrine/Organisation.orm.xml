@@ -4,19 +4,20 @@
     <id name="organisationId" type="integer" column="ORGANISATION_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="officialCode" type="string" column="OFFICIAL_CODE" length="100" nullable="false"/>
     <field name="label" type="string" column="LABEL" length="255" nullable="false"/>
+    <field name="logo" type="string" column="LOGO" length="255" nullable="false"/>
+    <field name="phone" type="string" column="PHONE" length="255" nullable="false"/>
+    <field name="fax" type="string" column="FAX" length="255" nullable="false"/>
+    <field name="mail" type="string" column="MAIL" length="255" nullable="false"/>
+    <field name="website" type="string" column="WEBSITE" length="255" nullable="false"/>
+    <field name="identificationCode" type="string" column="IDENTIFICATION_CODE" length="255" nullable="false"/>
+    <field name="slogan1" type="string" column="SLOGAN_1" length="255" nullable="true"/>
+    <field name="slogan2" type="string" column="SLOGAN_2" length="255" nullable="true"/>
+    <field name="slogan3" type="string" column="SLOGAN_3" length="255" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <field name="logo" type="string" column="LOGO" length="255" nullable="true"/>
-    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="false"/>
-    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
-    <field name="phone" type="string" column="PHONE" length="20" nullable="false"/>
-    <field name="mail" type="string" column="MAIL" length="50" nullable="false"/>
-    <field name="fax" type="string" column="FAX" length="20" nullable="false"/>
-    <field name="slogan1" type="string" column="SLOGAN_1" length="100" nullable="true"/>
-    <field name="slogan2" type="string" column="SLOGAN_2" length="100" nullable="true"/>
-    <field name="slogan3" type="string" column="SLOGAN_3" length="100" nullable="true"/>
     <many-to-one field="address" target-entity="Address">
       <join-columns>
         <join-column name="ADDRESS_ID" referenced-column-name="ADDRESS_ID"/>

@@ -15,16 +15,6 @@ class DangerousSubstance
     private $name;
 
     /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
-
-    /**
      * @var string
      */
     private $category;
@@ -68,52 +58,6 @@ class DangerousSubstance
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return DangerousSubstance
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return DangerousSubstance
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
     }
 
     /**

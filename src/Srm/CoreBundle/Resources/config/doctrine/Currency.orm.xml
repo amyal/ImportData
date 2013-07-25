@@ -4,9 +4,7 @@
     <id name="currencyId" type="integer" column="CURRENCY_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="NAME" length="255" nullable="false"/>
-    <field name="convertEuro" type="float" column="CONVERT_EURO" nullable="false"/>
-    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
-    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <field name="name" type="string" column="NAME" length="255" nullable="true"/>
+    <field name="convertEuro" type="float" column="CONVERT_EURO" nullable="true"/>
   </entity>
 </doctrine-mapping>

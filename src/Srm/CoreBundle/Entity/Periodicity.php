@@ -5,14 +5,19 @@ namespace Srm\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Zip
+ * Periodicity
  */
-class Zip
+class Periodicity
 {
     /**
      * @var string
      */
-    private $code;
+    private $label;
+
+    /**
+     * @var string
+     */
+    private $description;
 
     /**
      * @var boolean
@@ -27,42 +32,60 @@ class Zip
     /**
      * @var integer
      */
-    private $zipId;
-
-    /**
-     * @var \Srm\CoreBundle\Entity\City
-     */
-    private $city;
+    private $periodicityId;
 
 
     /**
-     * Set code
+     * Set label
      *
-     * @param string $code
-     * @return Zip
+     * @param string $label
+     * @return Periodicity
      */
-    public function setCode($code)
+    public function setLabel($label)
     {
-        $this->code = $code;
+        $this->label = $label;
     
         return $this;
     }
 
     /**
-     * Get code
+     * Get label
      *
      * @return string 
      */
-    public function getCode()
+    public function getLabel()
     {
-        return $this->code;
+        return $this->label;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Periodicity
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Zip
+     * @return Periodicity
      */
     public function setEnabled($enabled)
     {
@@ -85,7 +108,7 @@ class Zip
      * Set deleted
      *
      * @param boolean $deleted
-     * @return Zip
+     * @return Periodicity
      */
     public function setDeleted($deleted)
     {
@@ -105,35 +128,12 @@ class Zip
     }
 
     /**
-     * Get zipId
+     * Get periodicityId
      *
      * @return integer 
      */
-    public function getZipId()
+    public function getPeriodicityId()
     {
-        return $this->zipId;
-    }
-
-    /**
-     * Set city
-     *
-     * @param \Srm\CoreBundle\Entity\City $city
-     * @return Zip
-     */
-    public function setCity(\Srm\CoreBundle\Entity\City $city = null)
-    {
-        $this->city = $city;
-    
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return \Srm\CoreBundle\Entity\City 
-     */
-    public function getCity()
-    {
-        return $this->city;
+        return $this->periodicityId;
     }
 }

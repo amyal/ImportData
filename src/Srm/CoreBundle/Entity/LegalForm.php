@@ -12,10 +12,10 @@ class LegalForm
     /**
      * @var string
      */
-    private $name;
+    private $label;
 
     /**
-     * @var float
+     * @var string
      */
     private $natureCapital;
 
@@ -25,29 +25,29 @@ class LegalForm
     private $amountCapital;
 
     /**
-     * @var float
+     * @var string
      */
-    private $ca;
+    private $apeCode;
 
     /**
      * @var float
      */
-    private $netIncome;
+    private $category;
 
     /**
      * @var float
      */
-    private $heritageAssets;
+    private $registrationDate;
 
     /**
      * @var float
      */
-    private $heritageCapital;
+    private $siretNumber;
 
     /**
-     * @var float
+     * @var string
      */
-    private $heritageDebt;
+    private $tvaNumber;
 
     /**
      * @var \DateTime
@@ -70,6 +70,11 @@ class LegalForm
     private $deleted;
 
     /**
+     * @var string
+     */
+    private $contact;
+
+    /**
      * @var integer
      */
     private $legalFormId;
@@ -81,32 +86,32 @@ class LegalForm
 
 
     /**
-     * Set name
+     * Set label
      *
-     * @param string $name
+     * @param string $label
      * @return LegalForm
      */
-    public function setName($name)
+    public function setLabel($label)
     {
-        $this->name = $name;
+        $this->label = $label;
     
         return $this;
     }
 
     /**
-     * Get name
+     * Get label
      *
      * @return string 
      */
-    public function getName()
+    public function getLabel()
     {
-        return $this->name;
+        return $this->label;
     }
 
     /**
      * Set natureCapital
      *
-     * @param float $natureCapital
+     * @param string $natureCapital
      * @return LegalForm
      */
     public function setNatureCapital($natureCapital)
@@ -119,7 +124,7 @@ class LegalForm
     /**
      * Get natureCapital
      *
-     * @return float 
+     * @return string 
      */
     public function getNatureCapital()
     {
@@ -150,118 +155,118 @@ class LegalForm
     }
 
     /**
-     * Set ca
+     * Set apeCode
      *
-     * @param float $ca
+     * @param string $apeCode
      * @return LegalForm
      */
-    public function setCa($ca)
+    public function setApeCode($apeCode)
     {
-        $this->ca = $ca;
+        $this->apeCode = $apeCode;
     
         return $this;
     }
 
     /**
-     * Get ca
+     * Get apeCode
      *
-     * @return float 
+     * @return string 
      */
-    public function getCa()
+    public function getApeCode()
     {
-        return $this->ca;
+        return $this->apeCode;
     }
 
     /**
-     * Set netIncome
+     * Set category
      *
-     * @param float $netIncome
+     * @param float $category
      * @return LegalForm
      */
-    public function setNetIncome($netIncome)
+    public function setCategory($category)
     {
-        $this->netIncome = $netIncome;
+        $this->category = $category;
     
         return $this;
     }
 
     /**
-     * Get netIncome
+     * Get category
      *
      * @return float 
      */
-    public function getNetIncome()
+    public function getCategory()
     {
-        return $this->netIncome;
+        return $this->category;
     }
 
     /**
-     * Set heritageAssets
+     * Set registrationDate
      *
-     * @param float $heritageAssets
+     * @param float $registrationDate
      * @return LegalForm
      */
-    public function setHeritageAssets($heritageAssets)
+    public function setRegistrationDate($registrationDate)
     {
-        $this->heritageAssets = $heritageAssets;
+        $this->registrationDate = $registrationDate;
     
         return $this;
     }
 
     /**
-     * Get heritageAssets
+     * Get registrationDate
      *
      * @return float 
      */
-    public function getHeritageAssets()
+    public function getRegistrationDate()
     {
-        return $this->heritageAssets;
+        return $this->registrationDate;
     }
 
     /**
-     * Set heritageCapital
+     * Set siretNumber
      *
-     * @param float $heritageCapital
+     * @param float $siretNumber
      * @return LegalForm
      */
-    public function setHeritageCapital($heritageCapital)
+    public function setSiretNumber($siretNumber)
     {
-        $this->heritageCapital = $heritageCapital;
+        $this->siretNumber = $siretNumber;
     
         return $this;
     }
 
     /**
-     * Get heritageCapital
+     * Get siretNumber
      *
      * @return float 
      */
-    public function getHeritageCapital()
+    public function getSiretNumber()
     {
-        return $this->heritageCapital;
+        return $this->siretNumber;
     }
 
     /**
-     * Set heritageDebt
+     * Set tvaNumber
      *
-     * @param float $heritageDebt
+     * @param string $tvaNumber
      * @return LegalForm
      */
-    public function setHeritageDebt($heritageDebt)
+    public function setTvaNumber($tvaNumber)
     {
-        $this->heritageDebt = $heritageDebt;
+        $this->tvaNumber = $tvaNumber;
     
         return $this;
     }
 
     /**
-     * Get heritageDebt
+     * Get tvaNumber
      *
-     * @return float 
+     * @return string 
      */
-    public function getHeritageDebt()
+    public function getTvaNumber()
     {
-        return $this->heritageDebt;
+        return $this->tvaNumber;
     }
 
     /**
@@ -354,6 +359,29 @@ class LegalForm
     public function getDeleted()
     {
         return $this->deleted;
+    }
+
+    /**
+     * Set contact
+     *
+     * @param string $contact
+     * @return LegalForm
+     */
+    public function setContact($contact)
+    {
+        $this->contact = $contact;
+    
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return string 
+     */
+    public function getContact()
+    {
+        return $this->contact;
     }
 
     /**

@@ -5,9 +5,9 @@ namespace Srm\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Pole
+ * Affiliation
  */
-class Pole
+class Affiliation
 {
     /**
      * @var string
@@ -27,32 +27,26 @@ class Pole
     /**
      * @var integer
      */
-    private $poleId;
+    private $affiliationId;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $site;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $department;
+    private $role;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->role = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
      * Set name
      *
      * @param string $name
-     * @return Pole
+     * @return Affiliation
      */
     public function setName($name)
     {
@@ -75,7 +69,7 @@ class Pole
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Pole
+     * @return Affiliation
      */
     public function setEnabled($enabled)
     {
@@ -98,7 +92,7 @@ class Pole
      * Set deleted
      *
      * @param boolean $deleted
-     * @return Pole
+     * @return Affiliation
      */
     public function setDeleted($deleted)
     {
@@ -118,78 +112,45 @@ class Pole
     }
 
     /**
-     * Get poleId
+     * Get affiliationId
      *
      * @return integer 
      */
-    public function getPoleId()
+    public function getAffiliationId()
     {
-        return $this->poleId;
+        return $this->affiliationId;
     }
 
     /**
-     * Add site
+     * Add role
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
-     * @return Pole
+     * @param \Srm\CoreBundle\Entity\Role $role
+     * @return Affiliation
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addRole(\Srm\CoreBundle\Entity\Role $role)
     {
-        $this->site[] = $site;
+        $this->role[] = $role;
     
         return $this;
     }
 
     /**
-     * Remove site
+     * Remove role
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
+     * @param \Srm\CoreBundle\Entity\Role $role
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeRole(\Srm\CoreBundle\Entity\Role $role)
     {
-        $this->site->removeElement($site);
+        $this->role->removeElement($role);
     }
 
     /**
-     * Get site
+     * Get role
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getSite()
+    public function getRole()
     {
-        return $this->site;
-    }
-
-    /**
-     * Add department
-     *
-     * @param \Srm\CoreBundle\Entity\Department $department
-     * @return Pole
-     */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
-    {
-        $this->department[] = $department;
-    
-        return $this;
-    }
-
-    /**
-     * Remove department
-     *
-     * @param \Srm\CoreBundle\Entity\Department $department
-     */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
-    {
-        $this->department->removeElement($department);
-    }
-
-    /**
-     * Get department
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDepartment()
-    {
-        return $this->department;
+        return $this->role;
     }
 }

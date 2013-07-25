@@ -17,36 +17,6 @@ class Site
     /**
      * @var string
      */
-    private $map;
-
-    /**
-     * @var string
-     */
-    private $importance;
-
-    /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
-
-    /**
-     * @var \DateTime
-     */
-    private $creationDate;
-
-    /**
-     * @var \DateTime
-     */
-    private $modificationDate;
-
-    /**
-     * @var string
-     */
     private $phone;
 
     /**
@@ -60,6 +30,36 @@ class Site
     private $fax;
 
     /**
+     * @var boolean
+     */
+    private $importance;
+
+    /**
+     * @var string
+     */
+    private $map;
+
+    /**
+     * @var \DateTime
+     */
+    private $creationDate;
+
+    /**
+     * @var \DateTime
+     */
+    private $modificationDate;
+
+    /**
+     * @var boolean
+     */
+    private $enabled;
+
+    /**
+     * @var boolean
+     */
+    private $deleted;
+
+    /**
      * @var integer
      */
     private $siteId;
@@ -68,6 +68,11 @@ class Site
      * @var \Srm\CoreBundle\Entity\Language
      */
     private $language;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\TypeSite
+     */
+    private $typeSite;
 
     /**
      * @var \Srm\CoreBundle\Entity\Currency
@@ -80,11 +85,6 @@ class Site
     private $address;
 
     /**
-     * @var \Srm\CoreBundle\Entity\TypeSite
-     */
-    private $typeSite;
-
-    /**
      * @var \Srm\CoreBundle\Entity\Organisation
      */
     private $organisation;
@@ -93,6 +93,11 @@ class Site
      * @var \Doctrine\Common\Collections\Collection
      */
     private $subDepartment;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $subSiteActivity;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -112,7 +117,7 @@ class Site
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $subSiteActivity;
+    private $pole;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -125,10 +130,11 @@ class Site
     public function __construct()
     {
         $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subSiteActivity = new \Doctrine\Common\Collections\ArrayCollection();
         $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dangerousSubstance = new \Doctrine\Common\Collections\ArrayCollection();
         $this->department = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->subSiteActivity = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
         $this->siteActivity = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -153,144 +159,6 @@ class Site
     public function getLabel()
     {
         return $this->label;
-    }
-
-    /**
-     * Set map
-     *
-     * @param string $map
-     * @return Site
-     */
-    public function setMap($map)
-    {
-        $this->map = $map;
-    
-        return $this;
-    }
-
-    /**
-     * Get map
-     *
-     * @return string 
-     */
-    public function getMap()
-    {
-        return $this->map;
-    }
-
-    /**
-     * Set importance
-     *
-     * @param string $importance
-     * @return Site
-     */
-    public function setImportance($importance)
-    {
-        $this->importance = $importance;
-    
-        return $this;
-    }
-
-    /**
-     * Get importance
-     *
-     * @return string 
-     */
-    public function getImportance()
-    {
-        return $this->importance;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return Site
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return Site
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
-
-    /**
-     * Set creationDate
-     *
-     * @param \DateTime $creationDate
-     * @return Site
-     */
-    public function setCreationDate($creationDate)
-    {
-        $this->creationDate = $creationDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get creationDate
-     *
-     * @return \DateTime 
-     */
-    public function getCreationDate()
-    {
-        return $this->creationDate;
-    }
-
-    /**
-     * Set modificationDate
-     *
-     * @param \DateTime $modificationDate
-     * @return Site
-     */
-    public function setModificationDate($modificationDate)
-    {
-        $this->modificationDate = $modificationDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get modificationDate
-     *
-     * @return \DateTime 
-     */
-    public function getModificationDate()
-    {
-        return $this->modificationDate;
     }
 
     /**
@@ -363,6 +231,144 @@ class Site
     }
 
     /**
+     * Set importance
+     *
+     * @param boolean $importance
+     * @return Site
+     */
+    public function setImportance($importance)
+    {
+        $this->importance = $importance;
+    
+        return $this;
+    }
+
+    /**
+     * Get importance
+     *
+     * @return boolean 
+     */
+    public function getImportance()
+    {
+        return $this->importance;
+    }
+
+    /**
+     * Set map
+     *
+     * @param string $map
+     * @return Site
+     */
+    public function setMap($map)
+    {
+        $this->map = $map;
+    
+        return $this;
+    }
+
+    /**
+     * Get map
+     *
+     * @return string 
+     */
+    public function getMap()
+    {
+        return $this->map;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return Site
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * Set modificationDate
+     *
+     * @param \DateTime $modificationDate
+     * @return Site
+     */
+    public function setModificationDate($modificationDate)
+    {
+        $this->modificationDate = $modificationDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get modificationDate
+     *
+     * @return \DateTime 
+     */
+    public function getModificationDate()
+    {
+        return $this->modificationDate;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Site
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return Site
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+    
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean 
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+
+    /**
      * Get siteId
      *
      * @return integer 
@@ -393,6 +399,29 @@ class Site
     public function getLanguage()
     {
         return $this->language;
+    }
+
+    /**
+     * Set typeSite
+     *
+     * @param \Srm\CoreBundle\Entity\TypeSite $typeSite
+     * @return Site
+     */
+    public function setTypeSite(\Srm\CoreBundle\Entity\TypeSite $typeSite = null)
+    {
+        $this->typeSite = $typeSite;
+    
+        return $this;
+    }
+
+    /**
+     * Get typeSite
+     *
+     * @return \Srm\CoreBundle\Entity\TypeSite 
+     */
+    public function getTypeSite()
+    {
+        return $this->typeSite;
     }
 
     /**
@@ -439,29 +468,6 @@ class Site
     public function getAddress()
     {
         return $this->address;
-    }
-
-    /**
-     * Set typeSite
-     *
-     * @param \Srm\CoreBundle\Entity\TypeSite $typeSite
-     * @return Site
-     */
-    public function setTypeSite(\Srm\CoreBundle\Entity\TypeSite $typeSite = null)
-    {
-        $this->typeSite = $typeSite;
-    
-        return $this;
-    }
-
-    /**
-     * Get typeSite
-     *
-     * @return \Srm\CoreBundle\Entity\TypeSite 
-     */
-    public function getTypeSite()
-    {
-        return $this->typeSite;
     }
 
     /**
@@ -518,6 +524,39 @@ class Site
     public function getSubDepartment()
     {
         return $this->subDepartment;
+    }
+
+    /**
+     * Add subSiteActivity
+     *
+     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
+     * @return Site
+     */
+    public function addSubSiteActivity(\Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity)
+    {
+        $this->subSiteActivity[] = $subSiteActivity;
+    
+        return $this;
+    }
+
+    /**
+     * Remove subSiteActivity
+     *
+     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
+     */
+    public function removeSubSiteActivity(\Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity)
+    {
+        $this->subSiteActivity->removeElement($subSiteActivity);
+    }
+
+    /**
+     * Get subSiteActivity
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubSiteActivity()
+    {
+        return $this->subSiteActivity;
     }
 
     /**
@@ -620,36 +659,36 @@ class Site
     }
 
     /**
-     * Add subSiteActivity
+     * Add pole
      *
-     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
+     * @param \Srm\CoreBundle\Entity\Pole $pole
      * @return Site
      */
-    public function addSubSiteActivity(\Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity)
+    public function addPole(\Srm\CoreBundle\Entity\Pole $pole)
     {
-        $this->subSiteActivity[] = $subSiteActivity;
+        $this->pole[] = $pole;
     
         return $this;
     }
 
     /**
-     * Remove subSiteActivity
+     * Remove pole
      *
-     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
+     * @param \Srm\CoreBundle\Entity\Pole $pole
      */
-    public function removeSubSiteActivity(\Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity)
+    public function removePole(\Srm\CoreBundle\Entity\Pole $pole)
     {
-        $this->subSiteActivity->removeElement($subSiteActivity);
+        $this->pole->removeElement($pole);
     }
 
     /**
-     * Get subSiteActivity
+     * Get pole
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getSubSiteActivity()
+    public function getPole()
     {
-        return $this->subSiteActivity;
+        return $this->pole;
     }
 
     /**

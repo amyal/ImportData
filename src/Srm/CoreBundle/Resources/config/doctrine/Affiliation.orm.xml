@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Zip" table="VR_ZIP">
-    <id name="zipId" type="integer" column="ZIP_ID">
+  <entity name="Srm\CoreBundle\Entity\Affiliation" table="V_AFFILIATION">
+    <id name="affiliationId" type="integer" column="AFFILIATION_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="code" type="string" column="CODE" length="50" nullable="true"/>
+    <field name="name" type="string" column="NAME" length="255" nullable="false"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-one field="city" target-entity="City">
-      <join-columns>
-        <join-column name="CITY_ID" referenced-column-name="CITY_ID"/>
-      </join-columns>
-    </many-to-one>
+    <many-to-many field="role" target-entity="Role" mapped-by="affiliation"/>
   </entity>
 </doctrine-mapping>

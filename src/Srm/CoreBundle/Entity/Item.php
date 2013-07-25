@@ -5,9 +5,9 @@ namespace Srm\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Department
+ * Item
  */
-class Department
+class Item
 {
     /**
      * @var string
@@ -22,7 +22,7 @@ class Department
     /**
      * @var string
      */
-    private $category;
+    private $value;
 
     /**
      * @var \DateTime
@@ -47,38 +47,36 @@ class Department
     /**
      * @var integer
      */
-    private $departmentId;
+    private $itemId;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Periodicity
+     */
+    private $periodicity;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\SubDepartment
+     */
+    private $subDepartment;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $site;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $pole;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $contact;
+    private $indicator;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->indicator = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
      * Set name
      *
      * @param string $name
-     * @return Department
+     * @return Item
      */
     public function setName($name)
     {
@@ -101,7 +99,7 @@ class Department
      * Set description
      *
      * @param string $description
-     * @return Department
+     * @return Item
      */
     public function setDescription($description)
     {
@@ -121,33 +119,33 @@ class Department
     }
 
     /**
-     * Set category
+     * Set value
      *
-     * @param string $category
-     * @return Department
+     * @param string $value
+     * @return Item
      */
-    public function setCategory($category)
+    public function setValue($value)
     {
-        $this->category = $category;
+        $this->value = $value;
     
         return $this;
     }
 
     /**
-     * Get category
+     * Get value
      *
      * @return string 
      */
-    public function getCategory()
+    public function getValue()
     {
-        return $this->category;
+        return $this->value;
     }
 
     /**
      * Set creationDate
      *
      * @param \DateTime $creationDate
-     * @return Department
+     * @return Item
      */
     public function setCreationDate($creationDate)
     {
@@ -170,7 +168,7 @@ class Department
      * Set modificationDate
      *
      * @param \DateTime $modificationDate
-     * @return Department
+     * @return Item
      */
     public function setModificationDate($modificationDate)
     {
@@ -193,7 +191,7 @@ class Department
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Department
+     * @return Item
      */
     public function setEnabled($enabled)
     {
@@ -216,7 +214,7 @@ class Department
      * Set deleted
      *
      * @param boolean $deleted
-     * @return Department
+     * @return Item
      */
     public function setDeleted($deleted)
     {
@@ -236,111 +234,91 @@ class Department
     }
 
     /**
-     * Get departmentId
+     * Get itemId
      *
      * @return integer 
      */
-    public function getDepartmentId()
+    public function getItemId()
     {
-        return $this->departmentId;
+        return $this->itemId;
     }
 
     /**
-     * Add site
+     * Set periodicity
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
-     * @return Department
+     * @param \Srm\CoreBundle\Entity\Periodicity $periodicity
+     * @return Item
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function setPeriodicity(\Srm\CoreBundle\Entity\Periodicity $periodicity = null)
     {
-        $this->site[] = $site;
+        $this->periodicity = $periodicity;
     
         return $this;
     }
 
     /**
-     * Remove site
+     * Get periodicity
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
+     * @return \Srm\CoreBundle\Entity\Periodicity 
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function getPeriodicity()
     {
-        $this->site->removeElement($site);
+        return $this->periodicity;
     }
 
     /**
-     * Get site
+     * Set subDepartment
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
+     * @return Item
      */
-    public function getSite()
+    public function setSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment = null)
     {
-        return $this->site;
-    }
-
-    /**
-     * Add pole
-     *
-     * @param \Srm\CoreBundle\Entity\Pole $pole
-     * @return Department
-     */
-    public function addPole(\Srm\CoreBundle\Entity\Pole $pole)
-    {
-        $this->pole[] = $pole;
+        $this->subDepartment = $subDepartment;
     
         return $this;
     }
 
     /**
-     * Remove pole
+     * Get subDepartment
      *
-     * @param \Srm\CoreBundle\Entity\Pole $pole
+     * @return \Srm\CoreBundle\Entity\SubDepartment 
      */
-    public function removePole(\Srm\CoreBundle\Entity\Pole $pole)
+    public function getSubDepartment()
     {
-        $this->pole->removeElement($pole);
+        return $this->subDepartment;
     }
 
     /**
-     * Get pole
+     * Add indicator
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \Srm\CoreBundle\Entity\Indicator $indicator
+     * @return Item
      */
-    public function getPole()
+    public function addIndicator(\Srm\CoreBundle\Entity\Indicator $indicator)
     {
-        return $this->pole;
-    }
-
-    /**
-     * Add contact
-     *
-     * @param \Srm\CoreBundle\Entity\Contact $contact
-     * @return Department
-     */
-    public function addContact(\Srm\CoreBundle\Entity\Contact $contact)
-    {
-        $this->contact[] = $contact;
+        $this->indicator[] = $indicator;
     
         return $this;
     }
 
     /**
-     * Remove contact
+     * Remove indicator
      *
-     * @param \Srm\CoreBundle\Entity\Contact $contact
+     * @param \Srm\CoreBundle\Entity\Indicator $indicator
      */
-    public function removeContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function removeIndicator(\Srm\CoreBundle\Entity\Indicator $indicator)
     {
-        $this->contact->removeElement($contact);
+        $this->indicator->removeElement($indicator);
     }
 
     /**
-     * Get contact
+     * Get indicator
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getContact()
+    public function getIndicator()
     {
-        return $this->contact;
+        return $this->indicator;
     }
 }

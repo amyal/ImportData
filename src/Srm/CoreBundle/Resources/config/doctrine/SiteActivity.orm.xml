@@ -5,8 +5,6 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="label" type="string" column="LABEL" length="255" nullable="false"/>
-    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
-    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
     <many-to-one field="typeSite" target-entity="TypeSite">
       <join-columns>
         <join-column name="TYPE_SITE_ID" referenced-column-name="TYPE_SITE_ID"/>

@@ -27,7 +27,7 @@ class Contact
     /**
      * @var string
      */
-    private $function;
+    private $functionn;
 
     /**
      * @var string
@@ -47,7 +47,7 @@ class Contact
     /**
      * @var string
      */
-    private $comment;
+    private $commenter;
 
     /**
      * @var boolean
@@ -57,7 +57,7 @@ class Contact
     /**
      * @var string
      */
-    private $organizationInvolved;
+    private $organisationInvolved;
 
     /**
      * @var string
@@ -100,24 +100,19 @@ class Contact
     private $mail;
 
     /**
-     * @var string
-     */
-    private $contact;
-
-    /**
      * @var integer
      */
     private $contactId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Address
-     */
-    private $address;
-
-    /**
      * @var \Srm\CoreBundle\Entity\StakeholderGroup
      */
     private $stakeholderGroup;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Role
+     */
+    private $role;
 
     /**
      * @var \Srm\CoreBundle\Entity\Organisation
@@ -219,26 +214,26 @@ class Contact
     }
 
     /**
-     * Set function
+     * Set functionn
      *
-     * @param string $function
+     * @param string $functionn
      * @return Contact
      */
-    public function setFunction($function)
+    public function setFunctionn($functionn)
     {
-        $this->function = $function;
+        $this->functionn = $functionn;
     
         return $this;
     }
 
     /**
-     * Get function
+     * Get functionn
      *
      * @return string 
      */
-    public function getFunction()
+    public function getFunctionn()
     {
-        return $this->function;
+        return $this->functionn;
     }
 
     /**
@@ -311,26 +306,26 @@ class Contact
     }
 
     /**
-     * Set comment
+     * Set commenter
      *
-     * @param string $comment
+     * @param string $commenter
      * @return Contact
      */
-    public function setComment($comment)
+    public function setCommenter($commenter)
     {
-        $this->comment = $comment;
+        $this->commenter = $commenter;
     
         return $this;
     }
 
     /**
-     * Get comment
+     * Get commenter
      *
      * @return string 
      */
-    public function getComment()
+    public function getCommenter()
     {
-        return $this->comment;
+        return $this->commenter;
     }
 
     /**
@@ -357,26 +352,26 @@ class Contact
     }
 
     /**
-     * Set organizationInvolved
+     * Set organisationInvolved
      *
-     * @param string $organizationInvolved
+     * @param string $organisationInvolved
      * @return Contact
      */
-    public function setOrganizationInvolved($organizationInvolved)
+    public function setOrganisationInvolved($organisationInvolved)
     {
-        $this->organizationInvolved = $organizationInvolved;
+        $this->organisationInvolved = $organisationInvolved;
     
         return $this;
     }
 
     /**
-     * Get organizationInvolved
+     * Get organisationInvolved
      *
      * @return string 
      */
-    public function getOrganizationInvolved()
+    public function getOrganisationInvolved()
     {
-        return $this->organizationInvolved;
+        return $this->organisationInvolved;
     }
 
     /**
@@ -564,29 +559,6 @@ class Contact
     }
 
     /**
-     * Set contact
-     *
-     * @param string $contact
-     * @return Contact
-     */
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
-    
-        return $this;
-    }
-
-    /**
-     * Get contact
-     *
-     * @return string 
-     */
-    public function getContact()
-    {
-        return $this->contact;
-    }
-
-    /**
      * Get contactId
      *
      * @return integer 
@@ -594,29 +566,6 @@ class Contact
     public function getContactId()
     {
         return $this->contactId;
-    }
-
-    /**
-     * Set address
-     *
-     * @param \Srm\CoreBundle\Entity\Address $address
-     * @return Contact
-     */
-    public function setAddress(\Srm\CoreBundle\Entity\Address $address = null)
-    {
-        $this->address = $address;
-    
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return \Srm\CoreBundle\Entity\Address 
-     */
-    public function getAddress()
-    {
-        return $this->address;
     }
 
     /**
@@ -640,6 +589,29 @@ class Contact
     public function getStakeholderGroup()
     {
         return $this->stakeholderGroup;
+    }
+
+    /**
+     * Set role
+     *
+     * @param \Srm\CoreBundle\Entity\Role $role
+     * @return Contact
+     */
+    public function setRole(\Srm\CoreBundle\Entity\Role $role = null)
+    {
+        $this->role = $role;
+    
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Srm\CoreBundle\Entity\Role 
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 
     /**

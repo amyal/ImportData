@@ -17,7 +17,7 @@ class StakeholderGroup
     /**
      * @var string
      */
-    private $type;
+    private $typee;
 
     /**
      * @var string
@@ -69,26 +69,26 @@ class StakeholderGroup
     }
 
     /**
-     * Set type
+     * Set typee
      *
-     * @param string $type
+     * @param string $typee
      * @return StakeholderGroup
      */
-    public function setType($type)
+    public function setTypee($typee)
     {
-        $this->type = $type;
+        $this->typee = $typee;
     
         return $this;
     }
 
     /**
-     * Get type
+     * Get typee
      *
      * @return string 
      */
-    public function getType()
+    public function getTypee()
     {
-        return $this->type;
+        return $this->typee;
     }
 
     /**

@@ -5,9 +5,9 @@ namespace Srm\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Pole
+ * Role
  */
-class Pole
+class Role
 {
     /**
      * @var string
@@ -27,32 +27,26 @@ class Pole
     /**
      * @var integer
      */
-    private $poleId;
+    private $roleId;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $site;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $department;
+    private $affiliation;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->affiliation = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
      * Set name
      *
      * @param string $name
-     * @return Pole
+     * @return Role
      */
     public function setName($name)
     {
@@ -75,7 +69,7 @@ class Pole
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Pole
+     * @return Role
      */
     public function setEnabled($enabled)
     {
@@ -98,7 +92,7 @@ class Pole
      * Set deleted
      *
      * @param boolean $deleted
-     * @return Pole
+     * @return Role
      */
     public function setDeleted($deleted)
     {
@@ -118,78 +112,45 @@ class Pole
     }
 
     /**
-     * Get poleId
+     * Get roleId
      *
      * @return integer 
      */
-    public function getPoleId()
+    public function getRoleId()
     {
-        return $this->poleId;
+        return $this->roleId;
     }
 
     /**
-     * Add site
+     * Add affiliation
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
-     * @return Pole
+     * @param \Srm\CoreBundle\Entity\Affiliation $affiliation
+     * @return Role
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addAffiliation(\Srm\CoreBundle\Entity\Affiliation $affiliation)
     {
-        $this->site[] = $site;
+        $this->affiliation[] = $affiliation;
     
         return $this;
     }
 
     /**
-     * Remove site
+     * Remove affiliation
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
+     * @param \Srm\CoreBundle\Entity\Affiliation $affiliation
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeAffiliation(\Srm\CoreBundle\Entity\Affiliation $affiliation)
     {
-        $this->site->removeElement($site);
+        $this->affiliation->removeElement($affiliation);
     }
 
     /**
-     * Get site
+     * Get affiliation
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getSite()
+    public function getAffiliation()
     {
-        return $this->site;
-    }
-
-    /**
-     * Add department
-     *
-     * @param \Srm\CoreBundle\Entity\Department $department
-     * @return Pole
-     */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
-    {
-        $this->department[] = $department;
-    
-        return $this;
-    }
-
-    /**
-     * Remove department
-     *
-     * @param \Srm\CoreBundle\Entity\Department $department
-     */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
-    {
-        $this->department->removeElement($department);
-    }
-
-    /**
-     * Get department
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDepartment()
-    {
-        return $this->department;
+        return $this->affiliation;
     }
 }

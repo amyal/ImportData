@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\ItemHistory" table="V_ITEM_HISTORY">
-    <id name="itemHistoryId" type="integer" column="ITEM_HISTORY_ID">
+  <entity name="Srm\CoreBundle\Entity\Role" table="V_ROLE">
+    <id name="roleId" type="integer" column="ROLE_ID">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="name" type="string" column="NAME" length="255" nullable="false"/>
-    <field name="themeDescription" type="string" column="THEME_DESCRIPTION" length="255" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <field name="contact" type="string" column="CONTACT" length="255" nullable="true"/>
-    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <many-to-many field="affiliation" target-entity="Affiliation" inversed-by="role">
+      <join-table name="vj_affiliation_role">
+        <join-columns>
+          <join-column name="ROLE_ID" referenced-column-name="ROLE_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="AFFILIATION_ID" referenced-column-name="AFFILIATION_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
   </entity>
 </doctrine-mapping>

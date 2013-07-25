@@ -4,18 +4,19 @@
     <id name="legalFormId" type="integer" column="LEGAL_FORM_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="NAME" length="100" nullable="false"/>
-    <field name="natureCapital" type="float" column="NATURE_CAPITAL" nullable="false"/>
-    <field name="amountCapital" type="float" column="AMOUNT_CAPITAL" nullable="false"/>
-    <field name="ca" type="float" column="CA" nullable="false"/>
-    <field name="netIncome" type="float" column="NET_INCOME" nullable="false"/>
-    <field name="heritageAssets" type="float" column="HERITAGE_ASSETS" nullable="false"/>
-    <field name="heritageCapital" type="float" column="HERITAGE_CAPITAL" nullable="false"/>
-    <field name="heritageDebt" type="float" column="HERITAGE_DEBT" nullable="false"/>
+    <field name="label" type="string" column="LABEL" length="255" nullable="false"/>
+    <field name="natureCapital" type="string" column="NATURE_CAPITAL" length="255" nullable="true"/>
+    <field name="amountCapital" type="float" column="AMOUNT_CAPITAL" nullable="true"/>
+    <field name="apeCode" type="string" column="APE_CODE" length="255" nullable="true"/>
+    <field name="category" type="float" column="CATEGORY" nullable="true"/>
+    <field name="registrationDate" type="float" column="REGISTRATION_DATE" nullable="true"/>
+    <field name="siretNumber" type="float" column="SIRET_NUMBER" nullable="true"/>
+    <field name="tvaNumber" type="string" column="TVA_NUMBER" length="255" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <field name="contact" type="string" column="CONTACT" length="255" nullable="true"/>
     <many-to-one field="organisation" target-entity="Organisation">
       <join-columns>
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>

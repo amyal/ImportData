@@ -15,16 +15,6 @@ class Country
     private $name;
 
     /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
-
-    /**
      * @var integer
      */
     private $countryId;
@@ -51,52 +41,6 @@ class Country
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return Country
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return Country
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
     }
 
     /**

@@ -17,7 +17,7 @@ class Product
     /**
      * @var string
      */
-    private $comment;
+    private $commenter;
 
     /**
      * @var boolean
@@ -79,26 +79,26 @@ class Product
     }
 
     /**
-     * Set comment
+     * Set commenter
      *
-     * @param string $comment
+     * @param string $commenter
      * @return Product
      */
-    public function setComment($comment)
+    public function setCommenter($commenter)
     {
-        $this->comment = $comment;
+        $this->commenter = $commenter;
     
         return $this;
     }
 
     /**
-     * Get comment
+     * Get commenter
      *
      * @return string 
      */
-    public function getComment()
+    public function getCommenter()
     {
-        return $this->comment;
+        return $this->commenter;
     }
 
     /**

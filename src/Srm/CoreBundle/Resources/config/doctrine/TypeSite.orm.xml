@@ -4,9 +4,7 @@
     <id name="typeSiteId" type="integer" column="TYPE_SITE_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="label" type="string" column="LABEL" length="255" nullable="false"/>
-    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
-    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <field name="category" type="string" column="CATEGORY" length="50" nullable="false"/>
+    <field name="label" type="string" column="LABEL" length="100" nullable="false"/>
+    <field name="category" type="string" column="CATEGORY" length="50" nullable="true"/>
   </entity>
 </doctrine-mapping>

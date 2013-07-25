@@ -12,37 +12,12 @@ class Organisation
     /**
      * @var string
      */
-    private $officialCode;
-
-    /**
-     * @var string
-     */
     private $label;
-
-    /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
 
     /**
      * @var string
      */
     private $logo;
-
-    /**
-     * @var \DateTime
-     */
-    private $creationDate;
-
-    /**
-     * @var \DateTime
-     */
-    private $modificationDate;
 
     /**
      * @var string
@@ -52,12 +27,22 @@ class Organisation
     /**
      * @var string
      */
+    private $fax;
+
+    /**
+     * @var string
+     */
     private $mail;
 
     /**
      * @var string
      */
-    private $fax;
+    private $website;
+
+    /**
+     * @var string
+     */
+    private $identificationCode;
 
     /**
      * @var string
@@ -73,6 +58,26 @@ class Organisation
      * @var string
      */
     private $slogan3;
+
+    /**
+     * @var \DateTime
+     */
+    private $creationDate;
+
+    /**
+     * @var \DateTime
+     */
+    private $modificationDate;
+
+    /**
+     * @var boolean
+     */
+    private $enabled;
+
+    /**
+     * @var boolean
+     */
+    private $deleted;
 
     /**
      * @var integer
@@ -96,29 +101,6 @@ class Organisation
 
 
     /**
-     * Set officialCode
-     *
-     * @param string $officialCode
-     * @return Organisation
-     */
-    public function setOfficialCode($officialCode)
-    {
-        $this->officialCode = $officialCode;
-    
-        return $this;
-    }
-
-    /**
-     * Get officialCode
-     *
-     * @return string 
-     */
-    public function getOfficialCode()
-    {
-        return $this->officialCode;
-    }
-
-    /**
      * Set label
      *
      * @param string $label
@@ -139,52 +121,6 @@ class Organisation
     public function getLabel()
     {
         return $this->label;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return Organisation
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return Organisation
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
     }
 
     /**
@@ -211,52 +147,6 @@ class Organisation
     }
 
     /**
-     * Set creationDate
-     *
-     * @param \DateTime $creationDate
-     * @return Organisation
-     */
-    public function setCreationDate($creationDate)
-    {
-        $this->creationDate = $creationDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get creationDate
-     *
-     * @return \DateTime 
-     */
-    public function getCreationDate()
-    {
-        return $this->creationDate;
-    }
-
-    /**
-     * Set modificationDate
-     *
-     * @param \DateTime $modificationDate
-     * @return Organisation
-     */
-    public function setModificationDate($modificationDate)
-    {
-        $this->modificationDate = $modificationDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get modificationDate
-     *
-     * @return \DateTime 
-     */
-    public function getModificationDate()
-    {
-        return $this->modificationDate;
-    }
-
-    /**
      * Set phone
      *
      * @param string $phone
@@ -277,6 +167,29 @@ class Organisation
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set fax
+     *
+     * @param string $fax
+     * @return Organisation
+     */
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+    
+        return $this;
+    }
+
+    /**
+     * Get fax
+     *
+     * @return string 
+     */
+    public function getFax()
+    {
+        return $this->fax;
     }
 
     /**
@@ -303,26 +216,49 @@ class Organisation
     }
 
     /**
-     * Set fax
+     * Set website
      *
-     * @param string $fax
+     * @param string $website
      * @return Organisation
      */
-    public function setFax($fax)
+    public function setWebsite($website)
     {
-        $this->fax = $fax;
+        $this->website = $website;
     
         return $this;
     }
 
     /**
-     * Get fax
+     * Get website
      *
      * @return string 
      */
-    public function getFax()
+    public function getWebsite()
     {
-        return $this->fax;
+        return $this->website;
+    }
+
+    /**
+     * Set identificationCode
+     *
+     * @param string $identificationCode
+     * @return Organisation
+     */
+    public function setIdentificationCode($identificationCode)
+    {
+        $this->identificationCode = $identificationCode;
+    
+        return $this;
+    }
+
+    /**
+     * Get identificationCode
+     *
+     * @return string 
+     */
+    public function getIdentificationCode()
+    {
+        return $this->identificationCode;
     }
 
     /**
@@ -392,6 +328,98 @@ class Organisation
     public function getSlogan3()
     {
         return $this->slogan3;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return Organisation
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * Set modificationDate
+     *
+     * @param \DateTime $modificationDate
+     * @return Organisation
+     */
+    public function setModificationDate($modificationDate)
+    {
+        $this->modificationDate = $modificationDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get modificationDate
+     *
+     * @return \DateTime 
+     */
+    public function getModificationDate()
+    {
+        return $this->modificationDate;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Organisation
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return Organisation
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+    
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean 
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 
     /**

@@ -15,16 +15,6 @@ class SubSiteActivity
     private $label;
 
     /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
-
-    /**
      * @var integer
      */
     private $subSiteActivityId;
@@ -68,52 +58,6 @@ class SubSiteActivity
     public function getLabel()
     {
         return $this->label;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return SubSiteActivity
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return SubSiteActivity
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
     }
 
     /**

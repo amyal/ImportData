@@ -5,14 +5,19 @@ namespace Srm\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Zip
+ * IndicatorLevel1
  */
-class Zip
+class IndicatorLevel1
 {
     /**
      * @var string
      */
-    private $code;
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $description;
 
     /**
      * @var boolean
@@ -27,42 +32,60 @@ class Zip
     /**
      * @var integer
      */
-    private $zipId;
-
-    /**
-     * @var \Srm\CoreBundle\Entity\City
-     */
-    private $city;
+    private $indicatorLevel1Id;
 
 
     /**
-     * Set code
+     * Set name
      *
-     * @param string $code
-     * @return Zip
+     * @param string $name
+     * @return IndicatorLevel1
      */
-    public function setCode($code)
+    public function setName($name)
     {
-        $this->code = $code;
+        $this->name = $name;
     
         return $this;
     }
 
     /**
-     * Get code
+     * Get name
      *
      * @return string 
      */
-    public function getCode()
+    public function getName()
     {
-        return $this->code;
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return IndicatorLevel1
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Zip
+     * @return IndicatorLevel1
      */
     public function setEnabled($enabled)
     {
@@ -85,7 +108,7 @@ class Zip
      * Set deleted
      *
      * @param boolean $deleted
-     * @return Zip
+     * @return IndicatorLevel1
      */
     public function setDeleted($deleted)
     {
@@ -105,35 +128,12 @@ class Zip
     }
 
     /**
-     * Get zipId
+     * Get indicatorLevel1Id
      *
      * @return integer 
      */
-    public function getZipId()
+    public function getIndicatorLevel1Id()
     {
-        return $this->zipId;
-    }
-
-    /**
-     * Set city
-     *
-     * @param \Srm\CoreBundle\Entity\City $city
-     * @return Zip
-     */
-    public function setCity(\Srm\CoreBundle\Entity\City $city = null)
-    {
-        $this->city = $city;
-    
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return \Srm\CoreBundle\Entity\City 
-     */
-    public function getCity()
-    {
-        return $this->city;
+        return $this->indicatorLevel1Id;
     }
 }

@@ -15,14 +15,9 @@ class SubDepartment
     private $name;
 
     /**
-     * @var boolean
+     * @var string
      */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
+    private $category;
 
     /**
      * @var \DateTime
@@ -33,11 +28,6 @@ class SubDepartment
      * @var \DateTime
      */
     private $modificationDate;
-
-    /**
-     * @var string
-     */
-    private $category;
 
     /**
      * @var integer
@@ -92,49 +82,26 @@ class SubDepartment
     }
 
     /**
-     * Set enabled
+     * Set category
      *
-     * @param boolean $enabled
+     * @param string $category
      * @return SubDepartment
      */
-    public function setEnabled($enabled)
+    public function setCategory($category)
     {
-        $this->enabled = $enabled;
+        $this->category = $category;
     
         return $this;
     }
 
     /**
-     * Get enabled
+     * Get category
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getEnabled()
+    public function getCategory()
     {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return SubDepartment
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
+        return $this->category;
     }
 
     /**
@@ -181,29 +148,6 @@ class SubDepartment
     public function getModificationDate()
     {
         return $this->modificationDate;
-    }
-
-    /**
-     * Set category
-     *
-     * @param string $category
-     * @return SubDepartment
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-    
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return string 
-     */
-    public function getCategory()
-    {
-        return $this->category;
     }
 
     /**

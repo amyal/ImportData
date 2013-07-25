@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Department" table="VR_DEPARTMENT">
-    <id name="departmentId" type="integer" column="DEPARTMENT_ID">
+  <entity name="Srm\CoreBundle\Entity\Item" table="VR_ITEM">
+    <id name="itemId" type="integer" column="ITEM_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="NAME" length="255" nullable="true"/>
+    <field name="name" type="string" column="NAME" length="255" nullable="false"/>
     <field name="description" type="string" column="DESCRIPTION" length="255" nullable="true"/>
-    <field name="category" type="string" column="CATEGORY" length="255" nullable="true"/>
+    <field name="value" type="string" column="VALUE" length="255" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-many field="site" target-entity="Site" mapped-by="department"/>
-    <many-to-many field="pole" target-entity="Pole" mapped-by="department"/>
-    <many-to-many field="contact" target-entity="Contact" mapped-by="department"/>
+    <many-to-one field="periodicity" target-entity="Periodicity">
+      <join-columns>
+        <join-column name="PERIODICITY_ID" referenced-column-name="PERIODICITY_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="subDepartment" target-entity="SubDepartment">
+      <join-columns>
+        <join-column name="SUB_DEPARTMENT_ID" referenced-column-name="SUB_DEPARTMENT_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="indicator" target-entity="Indicator" mapped-by="item"/>
   </entity>
 </doctrine-mapping>

@@ -4,12 +4,10 @@
     <id name="subDepartmentId" type="integer" column="SUB_DEPARTMENT_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="NAME" length="100" nullable="false"/>
-    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
-    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="false"/>
+    <field name="name" type="string" column="NAME" length="255" nullable="true"/>
+    <field name="category" type="string" column="CATEGORY" length="255" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
-    <field name="category" type="string" column="CATEGORY" length="50" nullable="false"/>
     <many-to-one field="department" target-entity="Department">
       <join-columns>
         <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
