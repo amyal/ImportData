@@ -16,12 +16,12 @@ class OrganisationController extends Controller
         ));
     }
 
-    public function basicAction(Organisation $organisation = null)
+    public function basicAction(Organisation $organisation)
     {
         $request = $this->getRequest();
 
-        if (null === $organisation) {
-            $organisation = new Organisation();
+        if (null === $organisation->getAddress()) {
+            $organisation->setAddress(new Address(new Zip(new City(new Country()))));
         }
 
         $form = $this->createForm('organisation_basic', $organisation);

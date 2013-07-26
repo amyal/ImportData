@@ -6,13 +6,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class AddressZipType extends AbstractType
+class ZipType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('code')
-            ->add('city')
+            ->add('city', 'city')
         ;
     }
 
@@ -25,6 +25,6 @@ class AddressZipType extends AbstractType
 
     public function getName()
     {
-        return 'address_zip';
+        return 'zip';
     }
 }

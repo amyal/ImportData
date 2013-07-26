@@ -6,25 +6,24 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class OrganisationAddressType extends AbstractType
+class CountryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array('label' => 'form.address.name'))
-            ->add('zip', 'zip')
+            ->add('name')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Srm\CoreBundle\Entity\Address',
+            'data_class' => 'Srm\CoreBundle\Entity\Country',
         ));
     }
 
     public function getName()
     {
-        return 'organisation_address';
+        return 'country';
     }
 }

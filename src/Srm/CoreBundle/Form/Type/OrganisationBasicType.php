@@ -11,13 +11,13 @@ class OrganisationBasicType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('label')
-            ->add('address', new OrganisationAddressType())
-            ->add('identificationCode')
-            ->add('slogan1')
-            ->add('slogan2')
-            ->add('slogan3')
-            ->add('logo', 'file')
+            ->add('label', 'text', array('label' => 'form.organisation.basic.label'))
+            ->add('address', 'organisation_address')
+            ->add('identificationCode', 'text', array('label' => 'form.organisation.basic.identification_code'))
+            ->add('slogan1', 'text', array('label' => 'form.organisation.basic.slogan1'))
+            ->add('slogan2', 'text', array('label' => 'form.organisation.basic.slogan2'))
+            ->add('slogan3', 'text', array('label' => 'form.organisation.basic.slogan3'))
+            ->add('logo', 'file', array('label' => 'form.organisation.basic.logo'))
         ;
     }
 

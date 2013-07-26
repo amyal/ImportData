@@ -9,7 +9,6 @@ srm_core_organisation_basic:
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmCoreBundle:Organisation:basic"
-        organisationId: 42
 
 srm_core_organisation_legal:
     path:       /organisations/{organisationId}/legal
