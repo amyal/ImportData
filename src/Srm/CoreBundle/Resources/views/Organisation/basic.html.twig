@@ -6,13 +6,34 @@
             {{ form_errors(form) }}
 
             <ul>
-                <li><label>{{ 'form.organisation.label'|trans }} {{ form_row(form.label) }}</label></li>
-                <li><label>{{ 'form.organisation.label'|trans }} {{ form_row(form.address) }}</label></li>
-                <li><label>{{ 'form.organisation.label'|trans }} {{ form_row(form.identificationCode) }}</label></li>
-                <li><label>{{ 'form.organisation.slogan1'|trans }} {{ form_row(form.slogan1) }}</label></li>
-                <li><label>{{ 'form.organisation.slogan2'|trans }} {{ form_row(form.slogan2) }}</label></li>
-                <li><label>{{ 'form.organisation.slogan3'|trans }} {{ form_row(form.slogan3) }}</label></li>
-                <li><label>{{ 'form.organisation.logo'|trans }} {{ form_row(form.logo) }}</label></li>
+                <li>
+                    <label>{{ 'form.organisation.label'|trans }} {{ form_widget(form.label) }}</label>
+                    {{ form_errors(form) }}
+                </li>
+                <li>
+                    <label>{{ 'form.organisation.label'|trans }} {{ form_widget(form.address) }}</label>
+                    {{ form_errors(form) }}
+                </li>
+                <li>
+                    <label>{{ 'form.organisation.label'|trans }} {{ form_widget(form.identificationCode) }}</label>
+                    {{ form_errors(form) }}
+                </li>
+                <li>
+                    <label>{{ 'form.organisation.slogan1'|trans }} {{ form_widget(form.slogan1) }}</label>
+                    {{ form_errors(form) }}
+                </li>
+                <li>
+                    <label>{{ 'form.organisation.slogan2'|trans }} {{ form_widget(form.slogan2) }}</label>
+                    {{ form_errors(form) }}
+                </li>
+                <li>
+                    <label>{{ 'form.organisation.slogan3'|trans }} {{ form_widget(form.slogan3) }}</label>
+                    {{ form_errors(form) }}
+                </li>
+                <li>
+                    <label>{{ 'form.organisation.logo'|trans }} {{ form_widget(form.logo) }}</label>
+                    {{ form_errors(form) }}
+                </li>
             </ul>
         </form>
     </div>
