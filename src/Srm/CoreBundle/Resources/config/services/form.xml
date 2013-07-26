@@ -7,8 +7,6 @@
         <parameter key="srm_core.form.type.organisation.basic.class">Srm\CoreBundle\Form\Type\OrganisationBasicType</parameter>
         <parameter key="srm_core.form.type.organisation.basic.address.class">Srm\CoreBundle\Form\Type\OrganisationAddressType</parameter>
         <parameter key="srm_core.form.type.address.zip.class">Srm\CoreBundle\Form\Type\AddressZipType</parameter>
-
-        <parameter key="srm_core.form.type.organisation.legal.class">Srm\CoreBundle\Form\Type\OrganisationLegalType</parameter>
     </parameters>
 
     <services>
