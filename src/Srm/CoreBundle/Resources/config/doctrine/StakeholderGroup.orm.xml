@@ -5,7 +5,7 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="name" type="string" column="NAME" length="255" nullable="false"/>
-    <field name="typee" type="string" column="TYPEE" length="255" nullable="true"/>
+    <field name="type" type="string" column="TYPE" length="255" nullable="true"/>
     <field name="archetype" type="string" column="ARCHETYPE" length="255" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>

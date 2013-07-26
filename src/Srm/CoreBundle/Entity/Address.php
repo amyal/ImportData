@@ -12,7 +12,7 @@ class Address
     /**
      * @var string
      */
-    private $typee;
+    private $type;
 
     /**
      * @var string
@@ -59,26 +59,26 @@ class Address
     }
 
     /**
-     * Set typee
+     * Set type
      *
-     * @param string $typee
+     * @param string $type
      * @return Address
      */
-    public function setTypee($typee)
+    public function setType($type)
     {
-        $this->typee = $typee;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get typee
+     * Get type
      *
      * @return string
      */
-    public function getTypee()
+    public function getType()
     {
-        return $this->typee;
+        return $this->type;
     }
 
     /**
