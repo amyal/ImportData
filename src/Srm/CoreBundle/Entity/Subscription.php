@@ -2,56 +2,16 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Subscription
- */
 class Subscription
 {
-    /**
-     * @var string
-     */
     private $name;
-
-    /**
-     * @var integer
-     */
     private $duration;
-
-    /**
-     * @var float
-     */
     private $price;
-
-    /**
-     * @var boolean
-     */
     private $enabled;
-
-    /**
-     * @var boolean
-     */
     private $deleted;
-
-    /**
-     * @var \DateTime
-     */
     private $creationDate;
-
-    /**
-     * @var \DateTime
-     */
     private $modificationDate;
-
-    /**
-     * @var string
-     */
     private $contact;
-
-    /**
-     * @var integer
-     */
     private $subscriptionId;
 
 
@@ -64,14 +24,14 @@ class Subscription
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -87,14 +47,14 @@ class Subscription
     public function setDuration($duration)
     {
         $this->duration = $duration;
-    
+
         return $this;
     }
 
     /**
      * Get duration
      *
-     * @return integer 
+     * @return integer
      */
     public function getDuration()
     {
@@ -110,14 +70,14 @@ class Subscription
     public function setPrice($price)
     {
         $this->price = $price;
-    
+
         return $this;
     }
 
     /**
      * Get price
      *
-     * @return float 
+     * @return float
      */
     public function getPrice()
     {
@@ -133,14 +93,14 @@ class Subscription
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -156,14 +116,14 @@ class Subscription
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -179,14 +139,14 @@ class Subscription
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -202,14 +162,14 @@ class Subscription
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -225,14 +185,14 @@ class Subscription
     public function setContact($contact)
     {
         $this->contact = $contact;
-    
+
         return $this;
     }
 
     /**
      * Get contact
      *
-     * @return string 
+     * @return string
      */
     public function getContact()
     {
@@ -242,7 +202,7 @@ class Subscription
     /**
      * Get subscriptionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSubscriptionId()
     {

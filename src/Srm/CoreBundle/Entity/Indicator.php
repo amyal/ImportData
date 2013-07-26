@@ -2,11 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * Indicator
- */
 class Indicator
 {
     /**
@@ -49,9 +46,9 @@ class Indicator
      */
     public function __construct()
     {
-        $this->item = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->item = new ArrayCollection();
     }
-    
+
     /**
      * Set name
      *
@@ -61,14 +58,14 @@ class Indicator
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -84,14 +81,14 @@ class Indicator
     public function setReferenceCode($referenceCode)
     {
         $this->referenceCode = $referenceCode;
-    
+
         return $this;
     }
 
     /**
      * Get referenceCode
      *
-     * @return string 
+     * @return string
      */
     public function getReferenceCode()
     {
@@ -107,14 +104,14 @@ class Indicator
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -130,14 +127,14 @@ class Indicator
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -153,14 +150,14 @@ class Indicator
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -170,7 +167,7 @@ class Indicator
     /**
      * Get indicatorId
      *
-     * @return integer 
+     * @return integer
      */
     public function getIndicatorId()
     {
@@ -183,10 +180,10 @@ class Indicator
      * @param \Srm\CoreBundle\Entity\Item $item
      * @return Indicator
      */
-    public function addItem(\Srm\CoreBundle\Entity\Item $item)
+    public function addItem(Item $item)
     {
         $this->item[] = $item;
-    
+
         return $this;
     }
 
@@ -195,7 +192,7 @@ class Indicator
      *
      * @param \Srm\CoreBundle\Entity\Item $item
      */
-    public function removeItem(\Srm\CoreBundle\Entity\Item $item)
+    public function removeItem(Item $item)
     {
         $this->item->removeElement($item);
     }
@@ -203,7 +200,7 @@ class Indicator
     /**
      * Get item
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getItem()
     {

@@ -2,11 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * Pole
- */
 class Pole
 {
     /**
@@ -44,10 +41,10 @@ class Pole
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->site = new ArrayCollection();
+        $this->department = new ArrayCollection();
     }
-    
+
     /**
      * Set name
      *
@@ -57,14 +54,14 @@ class Pole
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -80,14 +77,14 @@ class Pole
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -103,14 +100,14 @@ class Pole
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -120,7 +117,7 @@ class Pole
     /**
      * Get poleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPoleId()
     {
@@ -133,10 +130,10 @@ class Pole
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return Pole
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->site[] = $site;
-    
+
         return $this;
     }
 
@@ -145,7 +142,7 @@ class Pole
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->site->removeElement($site);
     }
@@ -153,7 +150,7 @@ class Pole
     /**
      * Get site
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSite()
     {
@@ -166,10 +163,10 @@ class Pole
      * @param \Srm\CoreBundle\Entity\Department $department
      * @return Pole
      */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function addDepartment(Department $department)
     {
         $this->department[] = $department;
-    
+
         return $this;
     }
 
@@ -178,7 +175,7 @@ class Pole
      *
      * @param \Srm\CoreBundle\Entity\Department $department
      */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function removeDepartment(Department $department)
     {
         $this->department->removeElement($department);
     }
@@ -186,7 +183,7 @@ class Pole
     /**
      * Get department
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDepartment()
     {

@@ -1,17 +1,18 @@
-srm_core_organisation_create:
-    path:       /organisations
-    methods:    [GET,POST]
-    defaults:
-        _controller:    "SrmCoreBundle:Organisation:info"
-
-srm_core_organisation_info:
+srm_core_organisation_show:
     path:       /organisations/{organisationId}
     methods:    [GET]
     defaults:
-        _controller:    "SrmCoreBundle:Organisation:info"
+        _controller:    "SrmCoreBundle:Organisation:show"
 
-srm_core_organisation_delete:
-    path:       /organisations/{organisationId}
-    methods:    [DELETE]
+srm_core_organisation_basic:
+    path:       /organisations/{organisationId}/basic
+    methods:    [GET,POST]
     defaults:
-        _controller:    "SrmCoreBundle:Organisation:delete"
+        _controller:    "SrmCoreBundle:Organisation:basic"
+        organisationId: 42
+
+srm_core_organisation_legal:
+    path:       /organisations/{organisationId}/legal
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmCoreBundle:Organisation:legal"

@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * ItemHistory
- */
 class ItemHistory
 {
     /**
@@ -54,14 +49,14 @@ class ItemHistory
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -77,14 +72,14 @@ class ItemHistory
     public function setThemeDescription($themeDescription)
     {
         $this->themeDescription = $themeDescription;
-    
+
         return $this;
     }
 
     /**
      * Get themeDescription
      *
-     * @return string 
+     * @return string
      */
     public function getThemeDescription()
     {
@@ -100,14 +95,14 @@ class ItemHistory
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -123,14 +118,14 @@ class ItemHistory
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -146,14 +141,14 @@ class ItemHistory
     public function setContact($contact)
     {
         $this->contact = $contact;
-    
+
         return $this;
     }
 
     /**
      * Get contact
      *
-     * @return string 
+     * @return string
      */
     public function getContact()
     {
@@ -169,14 +164,14 @@ class ItemHistory
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -186,7 +181,7 @@ class ItemHistory
     /**
      * Get itemHistoryId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemHistoryId()
     {

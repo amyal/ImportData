@@ -2,11 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * SubSiteActivity
- */
 class SubSiteActivity
 {
     /**
@@ -34,9 +31,9 @@ class SubSiteActivity
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->site = new ArrayCollection();
     }
-    
+
     /**
      * Set label
      *
@@ -46,14 +43,14 @@ class SubSiteActivity
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -63,7 +60,7 @@ class SubSiteActivity
     /**
      * Get subSiteActivityId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSubSiteActivityId()
     {
@@ -76,17 +73,17 @@ class SubSiteActivity
      * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
      * @return SubSiteActivity
      */
-    public function setSiteActivity(\Srm\CoreBundle\Entity\SiteActivity $siteActivity = null)
+    public function setSiteActivity(SiteActivity $siteActivity = null)
     {
         $this->siteActivity = $siteActivity;
-    
+
         return $this;
     }
 
     /**
      * Get siteActivity
      *
-     * @return \Srm\CoreBundle\Entity\SiteActivity 
+     * @return \Srm\CoreBundle\Entity\SiteActivity
      */
     public function getSiteActivity()
     {
@@ -99,10 +96,10 @@ class SubSiteActivity
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return SubSiteActivity
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->site[] = $site;
-    
+
         return $this;
     }
 
@@ -111,7 +108,7 @@ class SubSiteActivity
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->site->removeElement($site);
     }
@@ -119,7 +116,7 @@ class SubSiteActivity
     /**
      * Get site
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSite()
     {

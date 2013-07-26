@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Currency
- */
 class Currency
 {
     /**
@@ -34,14 +29,14 @@ class Currency
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -57,14 +52,14 @@ class Currency
     public function setConvertEuro($convertEuro)
     {
         $this->convertEuro = $convertEuro;
-    
+
         return $this;
     }
 
     /**
      * Get convertEuro
      *
-     * @return float 
+     * @return float
      */
     public function getConvertEuro()
     {
@@ -74,7 +69,7 @@ class Currency
     /**
      * Get currencyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCurrencyId()
     {

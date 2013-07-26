@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Country
- */
 class Country
 {
     /**
@@ -29,14 +24,14 @@ class Country
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -46,7 +41,7 @@ class Country
     /**
      * Get countryId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCountryId()
     {

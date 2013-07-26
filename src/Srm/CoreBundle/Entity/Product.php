@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Product
- */
 class Product
 {
     /**
@@ -64,14 +59,14 @@ class Product
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -87,14 +82,14 @@ class Product
     public function setCommenter($commenter)
     {
         $this->commenter = $commenter;
-    
+
         return $this;
     }
 
     /**
      * Get commenter
      *
-     * @return string 
+     * @return string
      */
     public function getCommenter()
     {
@@ -110,14 +105,14 @@ class Product
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -133,14 +128,14 @@ class Product
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -156,14 +151,14 @@ class Product
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -179,14 +174,14 @@ class Product
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -202,14 +197,14 @@ class Product
     public function setContact($contact)
     {
         $this->contact = $contact;
-    
+
         return $this;
     }
 
     /**
      * Get contact
      *
-     * @return string 
+     * @return string
      */
     public function getContact()
     {
@@ -219,7 +214,7 @@ class Product
     /**
      * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -232,17 +227,17 @@ class Product
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return Product
      */
-    public function setSite(\Srm\CoreBundle\Entity\Site $site = null)
+    public function setSite(Site $site = null)
     {
         $this->site = $site;
-    
+
         return $this;
     }
 
     /**
      * Get site
      *
-     * @return \Srm\CoreBundle\Entity\Site 
+     * @return \Srm\CoreBundle\Entity\Site
      */
     public function getSite()
     {

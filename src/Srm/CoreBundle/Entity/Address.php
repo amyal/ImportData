@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Address
- */
 class Address
 {
     /**
@@ -49,14 +44,14 @@ class Address
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -72,14 +67,14 @@ class Address
     public function setTypee($typee)
     {
         $this->typee = $typee;
-    
+
         return $this;
     }
 
     /**
      * Get typee
      *
-     * @return string 
+     * @return string
      */
     public function getTypee()
     {
@@ -95,14 +90,14 @@ class Address
     public function setAdditional1($additional1)
     {
         $this->additional1 = $additional1;
-    
+
         return $this;
     }
 
     /**
      * Get additional1
      *
-     * @return string 
+     * @return string
      */
     public function getAdditional1()
     {
@@ -118,14 +113,14 @@ class Address
     public function setAdditional2($additional2)
     {
         $this->additional2 = $additional2;
-    
+
         return $this;
     }
 
     /**
      * Get additional2
      *
-     * @return string 
+     * @return string
      */
     public function getAdditional2()
     {
@@ -135,7 +130,7 @@ class Address
     /**
      * Get addressId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAddressId()
     {
@@ -148,17 +143,17 @@ class Address
      * @param \Srm\CoreBundle\Entity\Zip $zip
      * @return Address
      */
-    public function setZip(\Srm\CoreBundle\Entity\Zip $zip = null)
+    public function setZip(Zip $zip = null)
     {
         $this->zip = $zip;
-    
+
         return $this;
     }
 
     /**
      * Get zip
      *
-     * @return \Srm\CoreBundle\Entity\Zip 
+     * @return \Srm\CoreBundle\Entity\Zip
      */
     public function getZip()
     {

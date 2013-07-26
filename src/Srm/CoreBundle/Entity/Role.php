@@ -2,11 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * Role
- */
 class Role
 {
     /**
@@ -39,9 +36,9 @@ class Role
      */
     public function __construct()
     {
-        $this->affiliation = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->affiliation = new ArrayCollection();
     }
-    
+
     /**
      * Set name
      *
@@ -51,14 +48,14 @@ class Role
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -74,14 +71,14 @@ class Role
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -97,14 +94,14 @@ class Role
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -114,7 +111,7 @@ class Role
     /**
      * Get roleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getRoleId()
     {
@@ -127,10 +124,10 @@ class Role
      * @param \Srm\CoreBundle\Entity\Affiliation $affiliation
      * @return Role
      */
-    public function addAffiliation(\Srm\CoreBundle\Entity\Affiliation $affiliation)
+    public function addAffiliation(Affiliation $affiliation)
     {
         $this->affiliation[] = $affiliation;
-    
+
         return $this;
     }
 
@@ -139,7 +136,7 @@ class Role
      *
      * @param \Srm\CoreBundle\Entity\Affiliation $affiliation
      */
-    public function removeAffiliation(\Srm\CoreBundle\Entity\Affiliation $affiliation)
+    public function removeAffiliation(Affiliation $affiliation)
     {
         $this->affiliation->removeElement($affiliation);
     }
@@ -147,7 +144,7 @@ class Role
     /**
      * Get affiliation
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAffiliation()
     {

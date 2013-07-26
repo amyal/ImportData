@@ -2,11 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * Site
- */
 class Site
 {
     /**
@@ -129,15 +126,15 @@ class Site
      */
     public function __construct()
     {
-        $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->subSiteActivity = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dangerousSubstance = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->siteActivity = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subDepartment = new ArrayCollection();
+        $this->subSiteActivity = new ArrayCollection();
+        $this->contact = new ArrayCollection();
+        $this->dangerousSubstance = new ArrayCollection();
+        $this->department = new ArrayCollection();
+        $this->pole = new ArrayCollection();
+        $this->siteActivity = new ArrayCollection();
     }
-    
+
     /**
      * Set label
      *
@@ -147,14 +144,14 @@ class Site
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -170,14 +167,14 @@ class Site
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    
+
         return $this;
     }
 
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -193,14 +190,14 @@ class Site
     public function setMail($mail)
     {
         $this->mail = $mail;
-    
+
         return $this;
     }
 
     /**
      * Get mail
      *
-     * @return string 
+     * @return string
      */
     public function getMail()
     {
@@ -216,14 +213,14 @@ class Site
     public function setFax($fax)
     {
         $this->fax = $fax;
-    
+
         return $this;
     }
 
     /**
      * Get fax
      *
-     * @return string 
+     * @return string
      */
     public function getFax()
     {
@@ -239,14 +236,14 @@ class Site
     public function setImportance($importance)
     {
         $this->importance = $importance;
-    
+
         return $this;
     }
 
     /**
      * Get importance
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getImportance()
     {
@@ -262,14 +259,14 @@ class Site
     public function setMap($map)
     {
         $this->map = $map;
-    
+
         return $this;
     }
 
     /**
      * Get map
      *
-     * @return string 
+     * @return string
      */
     public function getMap()
     {
@@ -285,14 +282,14 @@ class Site
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -308,14 +305,14 @@ class Site
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -331,14 +328,14 @@ class Site
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -354,14 +351,14 @@ class Site
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -371,7 +368,7 @@ class Site
     /**
      * Get siteId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSiteId()
     {
@@ -384,17 +381,17 @@ class Site
      * @param \Srm\CoreBundle\Entity\Language $language
      * @return Site
      */
-    public function setLanguage(\Srm\CoreBundle\Entity\Language $language = null)
+    public function setLanguage(Language $language = null)
     {
         $this->language = $language;
-    
+
         return $this;
     }
 
     /**
      * Get language
      *
-     * @return \Srm\CoreBundle\Entity\Language 
+     * @return \Srm\CoreBundle\Entity\Language
      */
     public function getLanguage()
     {
@@ -407,17 +404,17 @@ class Site
      * @param \Srm\CoreBundle\Entity\TypeSite $typeSite
      * @return Site
      */
-    public function setTypeSite(\Srm\CoreBundle\Entity\TypeSite $typeSite = null)
+    public function setTypeSite(TypeSite $typeSite = null)
     {
         $this->typeSite = $typeSite;
-    
+
         return $this;
     }
 
     /**
      * Get typeSite
      *
-     * @return \Srm\CoreBundle\Entity\TypeSite 
+     * @return \Srm\CoreBundle\Entity\TypeSite
      */
     public function getTypeSite()
     {
@@ -430,17 +427,17 @@ class Site
      * @param \Srm\CoreBundle\Entity\Currency $currency
      * @return Site
      */
-    public function setCurrency(\Srm\CoreBundle\Entity\Currency $currency = null)
+    public function setCurrency(Currency $currency = null)
     {
         $this->currency = $currency;
-    
+
         return $this;
     }
 
     /**
      * Get currency
      *
-     * @return \Srm\CoreBundle\Entity\Currency 
+     * @return \Srm\CoreBundle\Entity\Currency
      */
     public function getCurrency()
     {
@@ -453,17 +450,17 @@ class Site
      * @param \Srm\CoreBundle\Entity\Address $address
      * @return Site
      */
-    public function setAddress(\Srm\CoreBundle\Entity\Address $address = null)
+    public function setAddress(Address $address = null)
     {
         $this->address = $address;
-    
+
         return $this;
     }
 
     /**
      * Get address
      *
-     * @return \Srm\CoreBundle\Entity\Address 
+     * @return \Srm\CoreBundle\Entity\Address
      */
     public function getAddress()
     {
@@ -476,17 +473,17 @@ class Site
      * @param \Srm\CoreBundle\Entity\Organisation $organisation
      * @return Site
      */
-    public function setOrganisation(\Srm\CoreBundle\Entity\Organisation $organisation = null)
+    public function setOrganisation(Organisation $organisation = null)
     {
         $this->organisation = $organisation;
-    
+
         return $this;
     }
 
     /**
      * Get organisation
      *
-     * @return \Srm\CoreBundle\Entity\Organisation 
+     * @return \Srm\CoreBundle\Entity\Organisation
      */
     public function getOrganisation()
     {
@@ -499,10 +496,10 @@ class Site
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      * @return Site
      */
-    public function addSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment)
+    public function addSubDepartment(SubDepartment $subDepartment)
     {
         $this->subDepartment[] = $subDepartment;
-    
+
         return $this;
     }
 
@@ -511,7 +508,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      */
-    public function removeSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment)
+    public function removeSubDepartment(SubDepartment $subDepartment)
     {
         $this->subDepartment->removeElement($subDepartment);
     }
@@ -519,7 +516,7 @@ class Site
     /**
      * Get subDepartment
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSubDepartment()
     {
@@ -532,10 +529,10 @@ class Site
      * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
      * @return Site
      */
-    public function addSubSiteActivity(\Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity)
+    public function addSubSiteActivity(SubSiteActivity $subSiteActivity)
     {
         $this->subSiteActivity[] = $subSiteActivity;
-    
+
         return $this;
     }
 
@@ -544,7 +541,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
      */
-    public function removeSubSiteActivity(\Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity)
+    public function removeSubSiteActivity(SubSiteActivity $subSiteActivity)
     {
         $this->subSiteActivity->removeElement($subSiteActivity);
     }
@@ -552,7 +549,7 @@ class Site
     /**
      * Get subSiteActivity
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSubSiteActivity()
     {
@@ -565,10 +562,10 @@ class Site
      * @param \Srm\CoreBundle\Entity\Contact $contact
      * @return Site
      */
-    public function addContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function addContact(Contact $contact)
     {
         $this->contact[] = $contact;
-    
+
         return $this;
     }
 
@@ -577,7 +574,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\Contact $contact
      */
-    public function removeContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function removeContact(Contact $contact)
     {
         $this->contact->removeElement($contact);
     }
@@ -585,7 +582,7 @@ class Site
     /**
      * Get contact
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContact()
     {
@@ -598,10 +595,10 @@ class Site
      * @param \Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance
      * @return Site
      */
-    public function addDangerousSubstance(\Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance)
+    public function addDangerousSubstance(DangerousSubstance $dangerousSubstance)
     {
         $this->dangerousSubstance[] = $dangerousSubstance;
-    
+
         return $this;
     }
 
@@ -610,7 +607,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance
      */
-    public function removeDangerousSubstance(\Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance)
+    public function removeDangerousSubstance(DangerousSubstance $dangerousSubstance)
     {
         $this->dangerousSubstance->removeElement($dangerousSubstance);
     }
@@ -618,7 +615,7 @@ class Site
     /**
      * Get dangerousSubstance
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDangerousSubstance()
     {
@@ -631,10 +628,10 @@ class Site
      * @param \Srm\CoreBundle\Entity\Department $department
      * @return Site
      */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function addDepartment(Department $department)
     {
         $this->department[] = $department;
-    
+
         return $this;
     }
 
@@ -643,7 +640,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\Department $department
      */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function removeDepartment(Department $department)
     {
         $this->department->removeElement($department);
     }
@@ -651,7 +648,7 @@ class Site
     /**
      * Get department
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDepartment()
     {
@@ -664,10 +661,10 @@ class Site
      * @param \Srm\CoreBundle\Entity\Pole $pole
      * @return Site
      */
-    public function addPole(\Srm\CoreBundle\Entity\Pole $pole)
+    public function addPole(Pole $pole)
     {
         $this->pole[] = $pole;
-    
+
         return $this;
     }
 
@@ -676,7 +673,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\Pole $pole
      */
-    public function removePole(\Srm\CoreBundle\Entity\Pole $pole)
+    public function removePole(Pole $pole)
     {
         $this->pole->removeElement($pole);
     }
@@ -684,7 +681,7 @@ class Site
     /**
      * Get pole
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPole()
     {
@@ -697,10 +694,10 @@ class Site
      * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
      * @return Site
      */
-    public function addSiteActivity(\Srm\CoreBundle\Entity\SiteActivity $siteActivity)
+    public function addSiteActivity(SiteActivity $siteActivity)
     {
         $this->siteActivity[] = $siteActivity;
-    
+
         return $this;
     }
 
@@ -709,7 +706,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
      */
-    public function removeSiteActivity(\Srm\CoreBundle\Entity\SiteActivity $siteActivity)
+    public function removeSiteActivity(SiteActivity $siteActivity)
     {
         $this->siteActivity->removeElement($siteActivity);
     }
@@ -717,7 +714,7 @@ class Site
     /**
      * Get siteActivity
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSiteActivity()
     {

@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * StakeholderGroup
- */
 class StakeholderGroup
 {
     /**
@@ -54,14 +49,14 @@ class StakeholderGroup
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -77,14 +72,14 @@ class StakeholderGroup
     public function setTypee($typee)
     {
         $this->typee = $typee;
-    
+
         return $this;
     }
 
     /**
      * Get typee
      *
-     * @return string 
+     * @return string
      */
     public function getTypee()
     {
@@ -100,14 +95,14 @@ class StakeholderGroup
     public function setArchetype($archetype)
     {
         $this->archetype = $archetype;
-    
+
         return $this;
     }
 
     /**
      * Get archetype
      *
-     * @return string 
+     * @return string
      */
     public function getArchetype()
     {
@@ -123,14 +118,14 @@ class StakeholderGroup
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -146,14 +141,14 @@ class StakeholderGroup
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -169,14 +164,14 @@ class StakeholderGroup
     public function setContact($contact)
     {
         $this->contact = $contact;
-    
+
         return $this;
     }
 
     /**
      * Get contact
      *
-     * @return string 
+     * @return string
      */
     public function getContact()
     {
@@ -186,7 +181,7 @@ class StakeholderGroup
     /**
      * Get stakeholderGroupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStakeholderGroupId()
     {

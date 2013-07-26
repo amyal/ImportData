@@ -2,26 +2,10 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * TypeSite
- */
 class TypeSite
 {
-    /**
-     * @var string
-     */
     private $label;
-
-    /**
-     * @var string
-     */
     private $category;
-
-    /**
-     * @var integer
-     */
     private $typeSiteId;
 
 
@@ -34,14 +18,14 @@ class TypeSite
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -57,14 +41,14 @@ class TypeSite
     public function setCategory($category)
     {
         $this->category = $category;
-    
+
         return $this;
     }
 
     /**
      * Get category
      *
-     * @return string 
+     * @return string
      */
     public function getCategory()
     {
@@ -74,7 +58,7 @@ class TypeSite
     /**
      * Get typeSiteId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTypeSiteId()
     {

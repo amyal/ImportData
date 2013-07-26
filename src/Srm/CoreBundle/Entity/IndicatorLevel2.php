@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * IndicatorLevel2
- */
 class IndicatorLevel2
 {
     /**
@@ -44,14 +39,14 @@ class IndicatorLevel2
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -67,14 +62,14 @@ class IndicatorLevel2
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -90,14 +85,14 @@ class IndicatorLevel2
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -113,14 +108,14 @@ class IndicatorLevel2
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -130,7 +125,7 @@ class IndicatorLevel2
     /**
      * Get indicatorLevel2Id
      *
-     * @return integer 
+     * @return integer
      */
     public function getIndicatorLevel2Id()
     {

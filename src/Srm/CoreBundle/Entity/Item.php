@@ -2,11 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * Item
- */
 class Item
 {
     /**
@@ -69,9 +66,9 @@ class Item
      */
     public function __construct()
     {
-        $this->indicator = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->indicator = new ArrayCollection();
     }
-    
+
     /**
      * Set name
      *
@@ -81,14 +78,14 @@ class Item
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -104,14 +101,14 @@ class Item
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -127,14 +124,14 @@ class Item
     public function setValue($value)
     {
         $this->value = $value;
-    
+
         return $this;
     }
 
     /**
      * Get value
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {
@@ -150,14 +147,14 @@ class Item
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -173,14 +170,14 @@ class Item
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -196,14 +193,14 @@ class Item
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -219,14 +216,14 @@ class Item
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -236,7 +233,7 @@ class Item
     /**
      * Get itemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemId()
     {
@@ -249,17 +246,17 @@ class Item
      * @param \Srm\CoreBundle\Entity\Periodicity $periodicity
      * @return Item
      */
-    public function setPeriodicity(\Srm\CoreBundle\Entity\Periodicity $periodicity = null)
+    public function setPeriodicity(Periodicity $periodicity = null)
     {
         $this->periodicity = $periodicity;
-    
+
         return $this;
     }
 
     /**
      * Get periodicity
      *
-     * @return \Srm\CoreBundle\Entity\Periodicity 
+     * @return \Srm\CoreBundle\Entity\Periodicity
      */
     public function getPeriodicity()
     {
@@ -272,17 +269,17 @@ class Item
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      * @return Item
      */
-    public function setSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment = null)
+    public function setSubDepartment(SubDepartment $subDepartment = null)
     {
         $this->subDepartment = $subDepartment;
-    
+
         return $this;
     }
 
     /**
      * Get subDepartment
      *
-     * @return \Srm\CoreBundle\Entity\SubDepartment 
+     * @return \Srm\CoreBundle\Entity\SubDepartment
      */
     public function getSubDepartment()
     {
@@ -295,10 +292,10 @@ class Item
      * @param \Srm\CoreBundle\Entity\Indicator $indicator
      * @return Item
      */
-    public function addIndicator(\Srm\CoreBundle\Entity\Indicator $indicator)
+    public function addIndicator(Indicator $indicator)
     {
         $this->indicator[] = $indicator;
-    
+
         return $this;
     }
 
@@ -307,7 +304,7 @@ class Item
      *
      * @param \Srm\CoreBundle\Entity\Indicator $indicator
      */
-    public function removeIndicator(\Srm\CoreBundle\Entity\Indicator $indicator)
+    public function removeIndicator(Indicator $indicator)
     {
         $this->indicator->removeElement($indicator);
     }
@@ -315,7 +312,7 @@ class Item
     /**
      * Get indicator
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIndicator()
     {

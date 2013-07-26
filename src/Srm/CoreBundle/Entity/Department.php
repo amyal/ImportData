@@ -2,11 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * Department
- */
 class Department
 {
     /**
@@ -69,11 +66,11 @@ class Department
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->site = new ArrayCollection();
+        $this->pole = new ArrayCollection();
+        $this->contact = new ArrayCollection();
     }
-    
+
     /**
      * Set name
      *
@@ -83,14 +80,14 @@ class Department
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -106,14 +103,14 @@ class Department
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -129,14 +126,14 @@ class Department
     public function setCategory($category)
     {
         $this->category = $category;
-    
+
         return $this;
     }
 
     /**
      * Get category
      *
-     * @return string 
+     * @return string
      */
     public function getCategory()
     {
@@ -152,14 +149,14 @@ class Department
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -175,14 +172,14 @@ class Department
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -198,14 +195,14 @@ class Department
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -221,14 +218,14 @@ class Department
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -238,7 +235,7 @@ class Department
     /**
      * Get departmentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getDepartmentId()
     {
@@ -251,10 +248,10 @@ class Department
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return Department
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->site[] = $site;
-    
+
         return $this;
     }
 
@@ -263,7 +260,7 @@ class Department
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->site->removeElement($site);
     }
@@ -271,7 +268,7 @@ class Department
     /**
      * Get site
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSite()
     {
@@ -284,10 +281,10 @@ class Department
      * @param \Srm\CoreBundle\Entity\Pole $pole
      * @return Department
      */
-    public function addPole(\Srm\CoreBundle\Entity\Pole $pole)
+    public function addPole(Pole $pole)
     {
         $this->pole[] = $pole;
-    
+
         return $this;
     }
 
@@ -296,7 +293,7 @@ class Department
      *
      * @param \Srm\CoreBundle\Entity\Pole $pole
      */
-    public function removePole(\Srm\CoreBundle\Entity\Pole $pole)
+    public function removePole(Pole $pole)
     {
         $this->pole->removeElement($pole);
     }
@@ -304,7 +301,7 @@ class Department
     /**
      * Get pole
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPole()
     {
@@ -317,10 +314,10 @@ class Department
      * @param \Srm\CoreBundle\Entity\Contact $contact
      * @return Department
      */
-    public function addContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function addContact(Contact $contact)
     {
         $this->contact[] = $contact;
-    
+
         return $this;
     }
 
@@ -329,7 +326,7 @@ class Department
      *
      * @param \Srm\CoreBundle\Entity\Contact $contact
      */
-    public function removeContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function removeContact(Contact $contact)
     {
         $this->contact->removeElement($contact);
     }
@@ -337,7 +334,7 @@ class Department
     /**
      * Get contact
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContact()
     {

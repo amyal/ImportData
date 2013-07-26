@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Shareholder
- */
 class Shareholder
 {
     /**
@@ -69,14 +64,14 @@ class Shareholder
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -92,14 +87,14 @@ class Shareholder
     public function setParts($parts)
     {
         $this->parts = $parts;
-    
+
         return $this;
     }
 
     /**
      * Get parts
      *
-     * @return integer 
+     * @return integer
      */
     public function getParts()
     {
@@ -115,14 +110,14 @@ class Shareholder
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -138,14 +133,14 @@ class Shareholder
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -161,14 +156,14 @@ class Shareholder
     public function setContact($contact)
     {
         $this->contact = $contact;
-    
+
         return $this;
     }
 
     /**
      * Get contact
      *
-     * @return string 
+     * @return string
      */
     public function getContact()
     {
@@ -184,14 +179,14 @@ class Shareholder
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -207,14 +202,14 @@ class Shareholder
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -224,7 +219,7 @@ class Shareholder
     /**
      * Get shareholderId
      *
-     * @return integer 
+     * @return integer
      */
     public function getShareholderId()
     {
@@ -237,17 +232,17 @@ class Shareholder
      * @param \Srm\CoreBundle\Entity\Contact $contact2
      * @return Shareholder
      */
-    public function setContact2(\Srm\CoreBundle\Entity\Contact $contact2 = null)
+    public function setContact2(Contact $contact2 = null)
     {
         $this->contact2 = $contact2;
-    
+
         return $this;
     }
 
     /**
      * Get contact2
      *
-     * @return \Srm\CoreBundle\Entity\Contact 
+     * @return \Srm\CoreBundle\Entity\Contact
      */
     public function getContact2()
     {
@@ -260,17 +255,17 @@ class Shareholder
      * @param \Srm\CoreBundle\Entity\LegalForm $legalForm
      * @return Shareholder
      */
-    public function setLegalForm(\Srm\CoreBundle\Entity\LegalForm $legalForm = null)
+    public function setLegalForm(LegalForm $legalForm = null)
     {
         $this->legalForm = $legalForm;
-    
+
         return $this;
     }
 
     /**
      * Get legalForm
      *
-     * @return \Srm\CoreBundle\Entity\LegalForm 
+     * @return \Srm\CoreBundle\Entity\LegalForm
      */
     public function getLegalForm()
     {

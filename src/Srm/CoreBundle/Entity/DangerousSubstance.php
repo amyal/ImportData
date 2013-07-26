@@ -2,11 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * DangerousSubstance
- */
 class DangerousSubstance
 {
     /**
@@ -34,9 +31,9 @@ class DangerousSubstance
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->site = new ArrayCollection();
     }
-    
+
     /**
      * Set name
      *
@@ -46,14 +43,14 @@ class DangerousSubstance
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -69,14 +66,14 @@ class DangerousSubstance
     public function setCategory($category)
     {
         $this->category = $category;
-    
+
         return $this;
     }
 
     /**
      * Get category
      *
-     * @return string 
+     * @return string
      */
     public function getCategory()
     {
@@ -86,7 +83,7 @@ class DangerousSubstance
     /**
      * Get dangerousSubstanceId
      *
-     * @return integer 
+     * @return integer
      */
     public function getDangerousSubstanceId()
     {
@@ -99,10 +96,10 @@ class DangerousSubstance
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return DangerousSubstance
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->site[] = $site;
-    
+
         return $this;
     }
 
@@ -111,7 +108,7 @@ class DangerousSubstance
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->site->removeElement($site);
     }
@@ -119,7 +116,7 @@ class DangerousSubstance
     /**
      * Get site
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSite()
     {

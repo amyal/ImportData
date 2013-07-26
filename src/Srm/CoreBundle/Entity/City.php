@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * City
- */
 class City
 {
     /**
@@ -44,14 +39,14 @@ class City
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -67,14 +62,14 @@ class City
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -90,14 +85,14 @@ class City
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -107,7 +102,7 @@ class City
     /**
      * Get cityId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCityId()
     {
@@ -120,17 +115,17 @@ class City
      * @param \Srm\CoreBundle\Entity\Country $country
      * @return City
      */
-    public function setCountry(\Srm\CoreBundle\Entity\Country $country = null)
+    public function setCountry(Country $country = null)
     {
         $this->country = $country;
-    
+
         return $this;
     }
 
     /**
      * Get country
      *
-     * @return \Srm\CoreBundle\Entity\Country 
+     * @return \Srm\CoreBundle\Entity\Country
      */
     public function getCountry()
     {

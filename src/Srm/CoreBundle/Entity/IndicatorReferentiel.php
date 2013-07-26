@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * IndicatorReferentiel
- */
 class IndicatorReferentiel
 {
     /**
@@ -43,7 +38,7 @@ class IndicatorReferentiel
     /**
      * Get indicatorReferentielId
      *
-     * @return integer 
+     * @return integer
      */
     public function getIndicatorReferentielId()
     {
@@ -56,17 +51,17 @@ class IndicatorReferentiel
      * @param \Srm\CoreBundle\Entity\IndicatorLevel1 $indicatorLevel1
      * @return IndicatorReferentiel
      */
-    public function setIndicatorLevel1(\Srm\CoreBundle\Entity\IndicatorLevel1 $indicatorLevel1 = null)
+    public function setIndicatorLevel1(IndicatorLevel1 $indicatorLevel1 = null)
     {
         $this->indicatorLevel1 = $indicatorLevel1;
-    
+
         return $this;
     }
 
     /**
      * Get indicatorLevel1
      *
-     * @return \Srm\CoreBundle\Entity\IndicatorLevel1 
+     * @return \Srm\CoreBundle\Entity\IndicatorLevel1
      */
     public function getIndicatorLevel1()
     {
@@ -79,17 +74,17 @@ class IndicatorReferentiel
      * @param \Srm\CoreBundle\Entity\IndicatorLevel3 $indicatorLevel3
      * @return IndicatorReferentiel
      */
-    public function setIndicatorLevel3(\Srm\CoreBundle\Entity\IndicatorLevel3 $indicatorLevel3 = null)
+    public function setIndicatorLevel3(IndicatorLevel3 $indicatorLevel3 = null)
     {
         $this->indicatorLevel3 = $indicatorLevel3;
-    
+
         return $this;
     }
 
     /**
      * Get indicatorLevel3
      *
-     * @return \Srm\CoreBundle\Entity\IndicatorLevel3 
+     * @return \Srm\CoreBundle\Entity\IndicatorLevel3
      */
     public function getIndicatorLevel3()
     {
@@ -102,17 +97,17 @@ class IndicatorReferentiel
      * @param \Srm\CoreBundle\Entity\IndicatorLevel2 $indicatorLevel2
      * @return IndicatorReferentiel
      */
-    public function setIndicatorLevel2(\Srm\CoreBundle\Entity\IndicatorLevel2 $indicatorLevel2 = null)
+    public function setIndicatorLevel2(IndicatorLevel2 $indicatorLevel2 = null)
     {
         $this->indicatorLevel2 = $indicatorLevel2;
-    
+
         return $this;
     }
 
     /**
      * Get indicatorLevel2
      *
-     * @return \Srm\CoreBundle\Entity\IndicatorLevel2 
+     * @return \Srm\CoreBundle\Entity\IndicatorLevel2
      */
     public function getIndicatorLevel2()
     {
@@ -125,17 +120,17 @@ class IndicatorReferentiel
      * @param \Srm\CoreBundle\Entity\Referentiel $referentiel
      * @return IndicatorReferentiel
      */
-    public function setReferentiel(\Srm\CoreBundle\Entity\Referentiel $referentiel = null)
+    public function setReferentiel(Referentiel $referentiel = null)
     {
         $this->referentiel = $referentiel;
-    
+
         return $this;
     }
 
     /**
      * Get referentiel
      *
-     * @return \Srm\CoreBundle\Entity\Referentiel 
+     * @return \Srm\CoreBundle\Entity\Referentiel
      */
     public function getReferentiel()
     {
@@ -148,17 +143,17 @@ class IndicatorReferentiel
      * @param \Srm\CoreBundle\Entity\Indicator $indicator
      * @return IndicatorReferentiel
      */
-    public function setIndicator(\Srm\CoreBundle\Entity\Indicator $indicator = null)
+    public function setIndicator(Indicator $indicator = null)
     {
         $this->indicator = $indicator;
-    
+
         return $this;
     }
 
     /**
      * Get indicator
      *
-     * @return \Srm\CoreBundle\Entity\Indicator 
+     * @return \Srm\CoreBundle\Entity\Indicator
      */
     public function getIndicator()
     {

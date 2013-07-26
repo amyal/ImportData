@@ -2,11 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * LegalForm
- */
 class LegalForm
 {
     /**
@@ -94,14 +89,14 @@ class LegalForm
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -117,14 +112,14 @@ class LegalForm
     public function setNatureCapital($natureCapital)
     {
         $this->natureCapital = $natureCapital;
-    
+
         return $this;
     }
 
     /**
      * Get natureCapital
      *
-     * @return string 
+     * @return string
      */
     public function getNatureCapital()
     {
@@ -140,14 +135,14 @@ class LegalForm
     public function setAmountCapital($amountCapital)
     {
         $this->amountCapital = $amountCapital;
-    
+
         return $this;
     }
 
     /**
      * Get amountCapital
      *
-     * @return float 
+     * @return float
      */
     public function getAmountCapital()
     {
@@ -163,14 +158,14 @@ class LegalForm
     public function setApeCode($apeCode)
     {
         $this->apeCode = $apeCode;
-    
+
         return $this;
     }
 
     /**
      * Get apeCode
      *
-     * @return string 
+     * @return string
      */
     public function getApeCode()
     {
@@ -186,14 +181,14 @@ class LegalForm
     public function setCategory($category)
     {
         $this->category = $category;
-    
+
         return $this;
     }
 
     /**
      * Get category
      *
-     * @return float 
+     * @return float
      */
     public function getCategory()
     {
@@ -209,14 +204,14 @@ class LegalForm
     public function setRegistrationDate($registrationDate)
     {
         $this->registrationDate = $registrationDate;
-    
+
         return $this;
     }
 
     /**
      * Get registrationDate
      *
-     * @return float 
+     * @return float
      */
     public function getRegistrationDate()
     {
@@ -232,14 +227,14 @@ class LegalForm
     public function setSiretNumber($siretNumber)
     {
         $this->siretNumber = $siretNumber;
-    
+
         return $this;
     }
 
     /**
      * Get siretNumber
      *
-     * @return float 
+     * @return float
      */
     public function getSiretNumber()
     {
@@ -255,14 +250,14 @@ class LegalForm
     public function setTvaNumber($tvaNumber)
     {
         $this->tvaNumber = $tvaNumber;
-    
+
         return $this;
     }
 
     /**
      * Get tvaNumber
      *
-     * @return string 
+     * @return string
      */
     public function getTvaNumber()
     {
@@ -278,14 +273,14 @@ class LegalForm
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -301,14 +296,14 @@ class LegalForm
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -324,14 +319,14 @@ class LegalForm
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -347,14 +342,14 @@ class LegalForm
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -370,14 +365,14 @@ class LegalForm
     public function setContact($contact)
     {
         $this->contact = $contact;
-    
+
         return $this;
     }
 
     /**
      * Get contact
      *
-     * @return string 
+     * @return string
      */
     public function getContact()
     {
@@ -387,7 +382,7 @@ class LegalForm
     /**
      * Get legalFormId
      *
-     * @return integer 
+     * @return integer
      */
     public function getLegalFormId()
     {
@@ -400,17 +395,17 @@ class LegalForm
      * @param \Srm\CoreBundle\Entity\Organisation $organisation
      * @return LegalForm
      */
-    public function setOrganisation(\Srm\CoreBundle\Entity\Organisation $organisation = null)
+    public function setOrganisation(Organisation $organisation = null)
     {
         $this->organisation = $organisation;
-    
+
         return $this;
     }
 
     /**
      * Get organisation
      *
-     * @return \Srm\CoreBundle\Entity\Organisation 
+     * @return \Srm\CoreBundle\Entity\Organisation
      */
     public function getOrganisation()
     {

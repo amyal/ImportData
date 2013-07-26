@@ -2,101 +2,25 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Organisation
- */
 class Organisation
 {
-    /**
-     * @var string
-     */
     private $label;
-
-    /**
-     * @var string
-     */
     private $logo;
-
-    /**
-     * @var string
-     */
     private $phone;
-
-    /**
-     * @var string
-     */
     private $fax;
-
-    /**
-     * @var string
-     */
     private $mail;
-
-    /**
-     * @var string
-     */
     private $website;
-
-    /**
-     * @var string
-     */
     private $identificationCode;
-
-    /**
-     * @var string
-     */
     private $slogan1;
-
-    /**
-     * @var string
-     */
     private $slogan2;
-
-    /**
-     * @var string
-     */
     private $slogan3;
-
-    /**
-     * @var \DateTime
-     */
     private $creationDate;
-
-    /**
-     * @var \DateTime
-     */
     private $modificationDate;
-
-    /**
-     * @var boolean
-     */
     private $enabled;
-
-    /**
-     * @var boolean
-     */
     private $deleted;
-
-    /**
-     * @var integer
-     */
     private $organisationId;
-
-    /**
-     * @var \Srm\CoreBundle\Entity\Address
-     */
     private $address;
-
-    /**
-     * @var \Srm\CoreBundle\Entity\Language
-     */
     private $language;
-
-    /**
-     * @var \Srm\CoreBundle\Entity\Currency
-     */
     private $currency;
 
 
@@ -109,14 +33,14 @@ class Organisation
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -132,14 +56,14 @@ class Organisation
     public function setLogo($logo)
     {
         $this->logo = $logo;
-    
+
         return $this;
     }
 
     /**
      * Get logo
      *
-     * @return string 
+     * @return string
      */
     public function getLogo()
     {
@@ -155,14 +79,14 @@ class Organisation
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    
+
         return $this;
     }
 
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -178,14 +102,14 @@ class Organisation
     public function setFax($fax)
     {
         $this->fax = $fax;
-    
+
         return $this;
     }
 
     /**
      * Get fax
      *
-     * @return string 
+     * @return string
      */
     public function getFax()
     {
@@ -201,14 +125,14 @@ class Organisation
     public function setMail($mail)
     {
         $this->mail = $mail;
-    
+
         return $this;
     }
 
     /**
      * Get mail
      *
-     * @return string 
+     * @return string
      */
     public function getMail()
     {
@@ -224,14 +148,14 @@ class Organisation
     public function setWebsite($website)
     {
         $this->website = $website;
-    
+
         return $this;
     }
 
     /**
      * Get website
      *
-     * @return string 
+     * @return string
      */
     public function getWebsite()
     {
@@ -247,14 +171,14 @@ class Organisation
     public function setIdentificationCode($identificationCode)
     {
         $this->identificationCode = $identificationCode;
-    
+
         return $this;
     }
 
     /**
      * Get identificationCode
      *
-     * @return string 
+     * @return string
      */
     public function getIdentificationCode()
     {
@@ -270,14 +194,14 @@ class Organisation
     public function setSlogan1($slogan1)
     {
         $this->slogan1 = $slogan1;
-    
+
         return $this;
     }
 
     /**
      * Get slogan1
      *
-     * @return string 
+     * @return string
      */
     public function getSlogan1()
     {
@@ -293,14 +217,14 @@ class Organisation
     public function setSlogan2($slogan2)
     {
         $this->slogan2 = $slogan2;
-    
+
         return $this;
     }
 
     /**
      * Get slogan2
      *
-     * @return string 
+     * @return string
      */
     public function getSlogan2()
     {
@@ -316,14 +240,14 @@ class Organisation
     public function setSlogan3($slogan3)
     {
         $this->slogan3 = $slogan3;
-    
+
         return $this;
     }
 
     /**
      * Get slogan3
      *
-     * @return string 
+     * @return string
      */
     public function getSlogan3()
     {
@@ -339,14 +263,14 @@ class Organisation
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -362,14 +286,14 @@ class Organisation
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -385,14 +309,14 @@ class Organisation
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -408,14 +332,14 @@ class Organisation
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -425,7 +349,7 @@ class Organisation
     /**
      * Get organisationId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrganisationId()
     {
@@ -438,17 +362,17 @@ class Organisation
      * @param \Srm\CoreBundle\Entity\Address $address
      * @return Organisation
      */
-    public function setAddress(\Srm\CoreBundle\Entity\Address $address = null)
+    public function setAddress(Address $address = null)
     {
         $this->address = $address;
-    
+
         return $this;
     }
 
     /**
      * Get address
      *
-     * @return \Srm\CoreBundle\Entity\Address 
+     * @return \Srm\CoreBundle\Entity\Address
      */
     public function getAddress()
     {
@@ -461,17 +385,17 @@ class Organisation
      * @param \Srm\CoreBundle\Entity\Language $language
      * @return Organisation
      */
-    public function setLanguage(\Srm\CoreBundle\Entity\Language $language = null)
+    public function setLanguage(Language $language = null)
     {
         $this->language = $language;
-    
+
         return $this;
     }
 
     /**
      * Get language
      *
-     * @return \Srm\CoreBundle\Entity\Language 
+     * @return \Srm\CoreBundle\Entity\Language
      */
     public function getLanguage()
     {
@@ -484,17 +408,17 @@ class Organisation
      * @param \Srm\CoreBundle\Entity\Currency $currency
      * @return Organisation
      */
-    public function setCurrency(\Srm\CoreBundle\Entity\Currency $currency = null)
+    public function setCurrency(Currency $currency = null)
     {
         $this->currency = $currency;
-    
+
         return $this;
     }
 
     /**
      * Get currency
      *
-     * @return \Srm\CoreBundle\Entity\Currency 
+     * @return \Srm\CoreBundle\Entity\Currency
      */
     public function getCurrency()
     {

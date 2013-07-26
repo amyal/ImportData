@@ -2,11 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * SubDepartment
- */
 class SubDepartment
 {
     /**
@@ -54,10 +51,10 @@ class SubDepartment
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->site = new ArrayCollection();
+        $this->contact = new ArrayCollection();
     }
-    
+
     /**
      * Set name
      *
@@ -67,14 +64,14 @@ class SubDepartment
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -90,14 +87,14 @@ class SubDepartment
     public function setCategory($category)
     {
         $this->category = $category;
-    
+
         return $this;
     }
 
     /**
      * Get category
      *
-     * @return string 
+     * @return string
      */
     public function getCategory()
     {
@@ -113,14 +110,14 @@ class SubDepartment
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -136,14 +133,14 @@ class SubDepartment
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -153,7 +150,7 @@ class SubDepartment
     /**
      * Get subDepartmentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSubDepartmentId()
     {
@@ -166,17 +163,17 @@ class SubDepartment
      * @param \Srm\CoreBundle\Entity\Department $department
      * @return SubDepartment
      */
-    public function setDepartment(\Srm\CoreBundle\Entity\Department $department = null)
+    public function setDepartment(Department $department = null)
     {
         $this->department = $department;
-    
+
         return $this;
     }
 
     /**
      * Get department
      *
-     * @return \Srm\CoreBundle\Entity\Department 
+     * @return \Srm\CoreBundle\Entity\Department
      */
     public function getDepartment()
     {
@@ -189,10 +186,10 @@ class SubDepartment
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return SubDepartment
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->site[] = $site;
-    
+
         return $this;
     }
 
@@ -201,7 +198,7 @@ class SubDepartment
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->site->removeElement($site);
     }
@@ -209,7 +206,7 @@ class SubDepartment
     /**
      * Get site
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSite()
     {
@@ -222,10 +219,10 @@ class SubDepartment
      * @param \Srm\CoreBundle\Entity\Contact $contact
      * @return SubDepartment
      */
-    public function addContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function addContact(Contact $contact)
     {
         $this->contact[] = $contact;
-    
+
         return $this;
     }
 
@@ -234,7 +231,7 @@ class SubDepartment
      *
      * @param \Srm\CoreBundle\Entity\Contact $contact
      */
-    public function removeContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function removeContact(Contact $contact)
     {
         $this->contact->removeElement($contact);
     }
@@ -242,7 +239,7 @@ class SubDepartment
     /**
      * Get contact
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContact()
     {
