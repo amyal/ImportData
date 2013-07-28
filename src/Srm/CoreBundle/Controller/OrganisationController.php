@@ -16,15 +16,15 @@ class OrganisationController extends Controller
         ));
     }
 
-    public function basicAction(Organisation $organisation)
+    public function basicAction(Organisation $organisation = null)
     {
-        $request = $this->getRequest();
-
-        if (null === $organisation->getAddress()) {
-            $organisation->setAddress(new Address(new Zip(new City(new Country()))));
+        if (null === $organisation) {
+            $organisation = new Organisation();
         }
 
-        $form = $this->createForm('organisation_basic', $organisation);
+        $form = $this->createForm('srm_organisation_basic', $organisation);
+
+        $request = $this->getRequest();
 
         if ('GET' === $request->getMethod()) {
             return $this->render('SrmCoreBundle:Organisation:basic.html.twig', array(

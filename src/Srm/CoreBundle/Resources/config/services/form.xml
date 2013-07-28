@@ -13,19 +13,19 @@
 
     <services>
         <service id="srm_core.form.type.organisation_basic" class="%srm_core.form.type.organisation.basic.class%">
-            <tag name="form.type" alias="organisation_basic" />
+            <tag name="form.type" alias="srm_organisation_basic" />
         </service>
         <service id="srm_core.form.type.organisation_address" class="%srm_core.form.type.organisation.address.class%">
-            <tag name="form.type" alias="organisation_address" />
+            <tag name="form.type" alias="srm_organisation_address" />
         </service>
         <service id="srm_core.form.type.zip" class="%srm_core.form.type.zip.class%">
-            <tag name="form.type" alias="zip" />
+            <tag name="form.type" alias="srm_zip" />
         </service>
         <service id="srm_core.form.type.city" class="%srm_core.form.type.city.class%">
-            <tag name="form.type" alias="city" />
+            <tag name="form.type" alias="srm_city" />
         </service>
         <service id="srm_core.form.type.country" class="%srm_core.form.type.country.class%">
-            <tag name="form.type" alias="country" />
+            <tag name="form.type" alias="srm_country" />
         </service>
     </services>
 </container>

@@ -24,6 +24,13 @@ class Organisation
     private $currency;
 
 
+    public function __construct($label = null)
+    {
+        if (null !== $label) {
+            $this->label = $label;
+        }
+    }
+
     /**
      * Set label
      *

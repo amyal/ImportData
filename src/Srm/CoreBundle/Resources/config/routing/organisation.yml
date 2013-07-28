@@ -3,6 +3,7 @@ srm_core_organisation_show:
     methods:    [GET]
     defaults:
         _controller:    "SrmCoreBundle:Organisation:show"
+        organisationId: \d+
 
 srm_core_organisation_basic:
     path:       /organisations/{organisationId}/basic

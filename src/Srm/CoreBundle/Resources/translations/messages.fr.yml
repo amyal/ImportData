@@ -7,3 +7,6 @@ form.organisation.basic.slogan3: "Slogan 3"
 form.organisation.basic.logo: "Logo"
 
 form.address.name: "Adresse du siège social"
+form.address.zip: "Code postal"
+form.address.city: "Ville"
+form.address.country: "Pays"

@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\CoreBundle\Form\Type;
+namespace Srm\CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -8,13 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CountryType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('name')
-        ;
-    }
-
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -22,8 +15,13 @@ class CountryType extends AbstractType
         ));
     }
 
+    public function getParent()
+    {
+        return 'entity';
+    }
+
     public function getName()
     {
-        return 'country';
+        return 'srm_country';
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\CoreBundle\Form\Type;
+namespace Srm\CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -11,8 +11,13 @@ class CityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('country', 'country')
+            ->add('name', 'text', array('label' => 'form.address.city'))
+            ->add('country', 'srm_country', array(
+                'class'    => 'Srm\CoreBundle\Entity\Country',
+                'property' => 'name',
+                'expanded' => false,
+                'multiple' => false
+            ))
         ;
     }
 
@@ -23,8 +28,13 @@ class CityType extends AbstractType
         ));
     }
 
+    public function getParent()
+    {
+        return 'entity';
+    }
+
     public function getName()
     {
-        return 'city';
+        return 'srm_city';
     }
 }

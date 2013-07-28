@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\CoreBundle\Form\Type;
+namespace Srm\CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -11,8 +11,8 @@ class OrganisationBasicType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('label', 'text', array('label' => 'form.organisation.basic.label'))
-            ->add('address', 'organisation_address')
+            ->add('label', 'text', array('label' => 'form.organisation.basic.label', 'read_only' => true))
+            ->add('address', 'srm_organisation_address')
             ->add('identificationCode', 'text', array('label' => 'form.organisation.basic.identification_code'))
             ->add('slogan1', 'text', array('label' => 'form.organisation.basic.slogan1'))
             ->add('slogan2', 'text', array('label' => 'form.organisation.basic.slogan2'))
@@ -30,6 +30,6 @@ class OrganisationBasicType extends AbstractType
 
     public function getName()
     {
-        return 'organisation_basic';
+        return 'srm_organisation_basic';
     }
 }

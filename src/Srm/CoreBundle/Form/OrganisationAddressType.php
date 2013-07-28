@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\CoreBundle\Form\Type;
+namespace Srm\CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,7 +12,12 @@ class OrganisationAddressType extends AbstractType
     {
         $builder
             ->add('name', 'text', array('label' => 'form.address.name'))
-            ->add('zip', 'zip')
+            ->add('zip', 'srm_zip', array(
+                'class'    => 'Srm\CoreBundle\Entity\Zip',
+                'property' => 'code',
+                'expanded' => false,
+                'multiple' => false
+            ))
         ;
     }
 
@@ -25,6 +30,6 @@ class OrganisationAddressType extends AbstractType
 
     public function getName()
     {
-        return 'organisation_address';
+        return 'srm_organisation_address';
     }
 }

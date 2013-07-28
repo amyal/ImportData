@@ -1,2 +1,7 @@
-<label>{{ 'form.organisation.label'|trans }} {{ form_widget(address) }}</label>
-{{ form_errors(address) }}
+<li>
+    {{ form_widget(address.name) }}
+    {{ form_errors(address.name) }}
+</li>
+<li>
+    {% include 'SrmCoreBundle:Address:zip.html.twig' with { 'zip': address.zip } %}
+</li>

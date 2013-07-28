@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\CoreBundle\Form\Type;
+namespace Srm\CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -11,8 +11,13 @@ class ZipType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('code')
-            ->add('city', 'city')
+            ->add('code', 'text', array('label' => 'form.address.zip'))
+            ->add('city', 'srm_city', array(
+                'class'    => 'Srm\CoreBundle\Entity\City',
+                'property' => 'name',
+                'expanded' => false,
+                'multiple' => false
+            ))
         ;
     }
 
@@ -23,8 +28,13 @@ class ZipType extends AbstractType
         ));
     }
 
+    public function getParent()
+    {
+        return 'entity';
+    }
+
     public function getName()
     {
-        return 'zip';
+        return 'srm_zip';
     }
 }
