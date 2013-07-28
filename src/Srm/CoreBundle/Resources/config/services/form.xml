@@ -4,11 +4,11 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="srm_core.form.type.organisation.basic.class">Srm\CoreBundle\Form\Type\OrganisationBasicType</parameter>
-        <parameter key="srm_core.form.type.organisation.address.class">Srm\CoreBundle\Form\Type\OrganisationAddressType</parameter>
-        <parameter key="srm_core.form.type.zip.class">Srm\CoreBundle\Form\Type\ZipType</parameter>
-        <parameter key="srm_core.form.type.city.class">Srm\CoreBundle\Form\Type\CityType</parameter>
-        <parameter key="srm_core.form.type.country.class">Srm\CoreBundle\Form\Type\CountryType</parameter>
+        <parameter key="srm_core.form.type.organisation.basic.class">Srm\CoreBundle\Form\OrganisationBasicType</parameter>
+        <parameter key="srm_core.form.type.organisation.address.class">Srm\CoreBundle\Form\OrganisationAddressType</parameter>
+        <parameter key="srm_core.form.type.zip.class">Srm\CoreBundle\Form\ZipType</parameter>
+        <parameter key="srm_core.form.type.city.class">Srm\CoreBundle\Form\CityType</parameter>
+        <parameter key="srm_core.form.type.country.class">Srm\CoreBundle\Form\CountryType</parameter>
     </parameters>
 
     <services>
