@@ -23,6 +23,7 @@ class OrganisationAddressType extends AbstractType
             'class'      => 'Srm\CoreBundle\Entity\Address',
             'compound'   => true,
             'data_class' => 'Srm\CoreBundle\Entity\Address',
+            'mapped'     => false,
         ));
     }
 

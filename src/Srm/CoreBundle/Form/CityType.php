@@ -23,9 +23,9 @@ class CityType extends AbstractType
             'class'      => 'Srm\CoreBundle\Entity\City',
             'compound'   => true,
             'data_class' => 'Srm\CoreBundle\Entity\City',
-            'property' => 'name',
-            'expanded' => false,
-            'multiple' => false
+            'property'   => 'name',
+            'expanded'   => false,
+            'multiple'   => false
         ));
     }
 

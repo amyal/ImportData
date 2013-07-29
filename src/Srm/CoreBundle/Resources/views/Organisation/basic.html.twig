@@ -7,30 +7,30 @@
 
             <ul>
                 <li>
-                    {{ form_label(form.label) }} {{ form_widget(form.label) }}
+                    {{  form_label(form.label) }} {{ form_widget(form.label) }}
                     {{ form_errors(form.label) }}
                 </li>
                 <li>
                     {% include 'SrmCoreBundle:Address:address.html.twig' with { 'address': form.address } %}
                 </li>
                 <li>
-                    {{ form_label(form.identificationCode) }} {{ form_widget(form.identificationCode) }}
+                    {{  form_label(form.identificationCode) }} {{ form_widget(form.identificationCode) }}
                     {{ form_errors(form.identificationCode) }}
                 </li>
                 <li>
-                    {{ form_label(form.slogan1) }} {{ form_widget(form.slogan1) }}
+                    {{  form_label(form.slogan1) }} {{ form_widget(form.slogan1) }}
                     {{ form_errors(form.slogan1) }}
                 </li>
                 <li>
-                    {{ form_label(form.slogan2) }} {{ form_widget(form.slogan2) }}
+                    {{  form_label(form.slogan2) }} {{ form_widget(form.slogan2) }}
                     {{ form_errors(form.slogan2) }}
                 </li>
                 <li>
-                    {{ form_label(form.slogan3) }} {{ form_widget(form.slogan3) }}
+                    {{  form_label(form.slogan3) }} {{ form_widget(form.slogan3) }}
                     {{ form_errors(form.slogan3) }}
                 </li>
                 <li>
-                    {{ form_label(form.logo) }} {{ form_widget(form.logo) }}
+                    {{  form_label(form.logo) }} {{ form_widget(form.logo) }}
                     {{ form_errors(form.logo) }}
                 </li>
             </ul>

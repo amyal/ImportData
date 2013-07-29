@@ -30,6 +30,7 @@ class OrganisationBasicType extends AbstractType
             'class'      => 'Srm\CoreBundle\Entity\Organisation',
             'compound'   => true,
             'data_class' => 'Srm\CoreBundle\Entity\Organisation',
+            'mapped'     => false,
         ));
     }
 
