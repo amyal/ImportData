@@ -12,19 +12,20 @@ class CityType extends AbstractType
     {
         $builder
             ->add('name', 'text', array('label' => 'form.address.city'))
-            ->add('country', 'srm_country', array(
-                'class'    => 'Srm\CoreBundle\Entity\Country',
-                'property' => 'name',
-                'expanded' => false,
-                'multiple' => false
-            ))
+
+            ->add('country', 'srm_country')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
+            'class'      => 'Srm\CoreBundle\Entity\City',
+            'compound'   => true,
             'data_class' => 'Srm\CoreBundle\Entity\City',
+            'property' => 'name',
+            'expanded' => false,
+            'multiple' => false
         ));
     }
 

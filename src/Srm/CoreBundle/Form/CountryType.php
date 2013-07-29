@@ -11,7 +11,11 @@ class CountryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
+            'class'      => 'Srm\CoreBundle\Entity\Country',
             'data_class' => 'Srm\CoreBundle\Entity\Country',
+            'property' => 'name',
+            'expanded' => false,
+            'multiple' => false
         ));
     }
 

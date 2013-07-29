@@ -12,19 +12,20 @@ class ZipType extends AbstractType
     {
         $builder
             ->add('code', 'text', array('label' => 'form.address.zip'))
-            ->add('city', 'srm_city', array(
-                'class'    => 'Srm\CoreBundle\Entity\City',
-                'property' => 'name',
-                'expanded' => false,
-                'multiple' => false
-            ))
+
+            ->add('city', 'srm_city')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
+            'class'      => 'Srm\CoreBundle\Entity\Zip',
+            'compound'   => true,
             'data_class' => 'Srm\CoreBundle\Entity\Zip',
+            'property'   => 'code',
+            'expanded'   => false,
+            'multiple'   => false
         ));
     }
 
