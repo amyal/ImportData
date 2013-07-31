@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\SubDepartment" table="vr_sub_department">
+    <id name="subDepartmentId" type="integer" column="SUB_DEPARTMENT_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="label" type="string" column="LABEL" length="50" nullable="true"/>
+    <field name="shortLabel" type="string" column="SHORT_LABEL" length="10" nullable="true"/>
+    <field name="category" type="string" column="CATEGORY" length="100" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
+    <many-to-one field="department" target-entity="Department">
+      <join-columns>
+        <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="site" target-entity="Site" mapped-by="subDepartment"/>
+    <many-to-many field="contact" target-entity="Contact" mapped-by="subDepartment"/>
+  </entity>
+</doctrine-mapping>

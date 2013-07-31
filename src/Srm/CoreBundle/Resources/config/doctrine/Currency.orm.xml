@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\Currency" table="vr_currency">
+    <id name="currencyId" type="integer" column="CURRENCY_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="label" type="string" column="LABEL" length="20" nullable="true"/>
+    <field name="convertEuro" type="float" column="CONVERT_EURO" nullable="true"/>
+  </entity>
+</doctrine-mapping>

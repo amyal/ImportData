@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\SiteActivity" table="vr_site_activity">
+    <id name="siteActivityId" type="integer" column="SITE_ACTIVITY_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
+    <many-to-one field="typeSite" target-entity="TypeSite">
+      <join-columns>
+        <join-column name="TYPE_SITE_ID" referenced-column-name="TYPE_SITE_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="site" target-entity="Site" mapped-by="siteActivity"/>
+  </entity>
+</doctrine-mapping>

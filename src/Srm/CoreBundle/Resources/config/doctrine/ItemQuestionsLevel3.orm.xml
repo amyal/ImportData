@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\ItemQuestionsLevel3" table="v_item_questions_level3">
+    <id name="itemQuestionsLevel3Id" type="integer" column="ITEM_QUESTIONS_LEVEL3_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="label" type="string" column="LABEL" length="50" nullable="true"/>
+    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
+    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <many-to-one field="itemQuestionsLevel2" target-entity="ItemQuestionsLevel2">
+      <join-columns>
+        <join-column name="ITEM_QUESTIONS_LEVEL2_ID" referenced-column-name="ITEM_QUESTIONS_LEVEL2_ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\Indicator" table="v_indicator">
+    <id name="indicatorId" type="integer" column="INDICATOR_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="code" type="string" column="CODE" length="10" nullable="false"/>
+    <field name="reference" type="string" column="REFERENCE" length="15" nullable="true"/>
+    <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
+    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
+    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <many-to-one field="indicatorLevel1" target-entity="IndicatorLevel1">
+      <join-columns>
+        <join-column name="INDICATOR_LEVEL1_ID" referenced-column-name="INDICATOR_LEVEL1_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="indicatorLevel2" target-entity="IndicatorLevel2">
+      <join-columns>
+        <join-column name="INDICATOR_LEVEL2_ID" referenced-column-name="INDICATOR_LEVEL2_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="indicatorLevel3" target-entity="IndicatorLevel3">
+      <join-columns>
+        <join-column name="INDICATOR_LEVEL3_ID" referenced-column-name="INDICATOR_LEVEL3_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="referentiel" target-entity="Referentiel">
+      <join-columns>
+        <join-column name="REFERENTIEL_ID" referenced-column-name="REFERENTIEL_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="item" target-entity="Item" mapped-by="indicator"/>
+  </entity>
+</doctrine-mapping>
