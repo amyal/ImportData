@@ -1,13 +1,47 @@
-{% extends "SrmCoreBundle::layout.html.twig" %}
+{% extends "SrmWebsiteBundle::layout.html.twig" %}
 
 {% block content %}
     <div>
-        <form action="{{ path('srm_core_organisation_basic', {'organisationId': 42}) }}" method="POST">
+        {{ form_start(form) }}
             {{ form_errors(form) }}
 
-            <ul>
-                {{ block('srm_organisation_basic_widget') }}
+            <ul >
+                <li style="list-style-type:none">
+                    {{ form_label( form.label) }}
+                    {{ form_widget(form.label) }}
+                    {{ form_errors(form.label) }}
+                </li>
+
+                {{ include('SrmWebsiteBundle:Organisation:address.html.twig', { address: form.address }, with_context = false) }}
+
+                <li style="list-style-type:none">
+                    {{ form_label( form.identificationCode) }}
+                    {{ form_widget(form.identificationCode) }}
+                    {{ form_errors(form.identificationCode) }}
+                </li>
+                <li style="list-style-type:none">
+                    {{ form_label( form.slogan1) }}
+                    {{ form_widget(form.slogan1) }}
+                    {{ form_errors(form.slogan1) }}
+                </li>
+                <li style="list-style-type:none">
+                    {{ form_label( form.slogan2) }}
+                    {{ form_widget(form.slogan2) }}
+                    {{ form_errors(form.slogan2) }}
+                </li>
+                <li style="list-style-type:none">
+                    {{ form_label( form.slogan3) }}
+                    {{ form_widget(form.slogan3) }}
+                    {{ form_errors(form.slogan3) }}
+                </li>
+                <li style="list-style-type:none">
+                    {{ form_label( form.logo) }}
+                    {{ form_widget(form.logo) }}
+                    {{ form_errors(form.logo) }}
+                </li>
             </ul>
-        </form>
+
+            <input type="submit" />
+        {{ form_end(form) }}
     </div>
 {% endblock %}

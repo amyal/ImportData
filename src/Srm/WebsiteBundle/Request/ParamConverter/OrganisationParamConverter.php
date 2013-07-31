@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInte
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use Srm\CoreBundle\Entity\Organisation;
+
 class OrganisationParamConverter implements ParamConverterInterface
 {
     private $repo;
@@ -27,7 +29,7 @@ class OrganisationParamConverter implements ParamConverterInterface
         $identificationCode = $request->get('identificationCode');
 
         try {
-            if (null === $organisation = $this->repo->get(sprintf('ged_api.%s_document_manager', $ged))->getInfo($list, $docId)) {
+            if (null === $organisation = $this->repo->findOneByIdentificationCode($identificationCode)) {
                 $organisation = new Organisation($identificationCode);
             }
         } catch (\Exception $e) {

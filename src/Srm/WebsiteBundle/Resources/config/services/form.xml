@@ -15,15 +15,24 @@
         <service id="srm_website.form.type.organisation_basic" class="%srm_website.form.type.organisation.basic.class%">
             <tag name="form.type" alias="srm_organisation_basic" />
         </service>
+
         <service id="srm_website.form.type.organisation_address" class="%srm_website.form.type.organisation.address.class%">
             <tag name="form.type" alias="srm_organisation_address" />
         </service>
+
         <service id="srm_website.form.type.zip" class="%srm_website.form.type.zip.class%">
+            <argument type="service" id="srm_website.form.city_listener" />
             <tag name="form.type" alias="srm_zip" />
         </service>
+        <service id="srm_website.form.city_listener" class="Srm\WebsiteBundle\Form\EventListener\CityListener" public="false">
+            <argument type="service" id="form.factory" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
         <service id="srm_website.form.type.city" class="%srm_website.form.type.city.class%">
             <tag name="form.type" alias="srm_city" />
         </service>
+
         <service id="srm_website.form.type.country" class="%srm_website.form.type.country.class%">
             <tag name="form.type" alias="srm_country" />
         </service>

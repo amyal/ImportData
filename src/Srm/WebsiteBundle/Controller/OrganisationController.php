@@ -18,14 +18,15 @@ class OrganisationController extends Controller
 
     public function basicAction(Organisation $organisation)
     {
-        $form = $this->createForm('srm_organisation_basic', $organisation);
-        $form->setAction($this->generateUrl('srm_core_organisation_basic', array('identificationCode' => $organisation->getIdentificationCode())));
-        $form->setMethod('POST');
+        $form = $this->createForm('srm_organisation_basic', $organisation, array(
+            'action' => $this->generateUrl('srm_website_organisation_basic', array('identificationCode' => $organisation->getIdentificationCode())),
+            'method' => 'POST',
+        ));
 
         $request = $this->getRequest();
 
         if ('GET' === $request->getMethod()) {
-            return $this->render('SrmCoreBundle:Organisation:basic.html.twig', array(
+            return $this->render('SrmWebsiteBundle:Organisation:basic.html.twig', array(
                 'form' => $form->createView()
             ));
         }
@@ -33,7 +34,7 @@ class OrganisationController extends Controller
         if (false === $form->handleRequest($request)->isValid()) {
             //$this->setFlash('error', $this->trans('error.organisation_basic_invalid', array(), 'register'));
 
-            return $this->render('SrmCoreBundle:Organisation:basic.html.twig', array(
+            return $this->render('SrmWebsiteBundle:Organisation:basic.html.twig', array(
                 'form' => $form->createView()
             ));
         }

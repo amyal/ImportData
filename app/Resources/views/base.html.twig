@@ -1,12 +1,12 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title '' %}</title>
+        {% block meta '' %}
+        {% block css %}{% endblock %}
     </head>
     <body>
-        <div id="content">
-            {% block body %}{% endblock %}
-        </div>
+        {% block navigation '' %}
+        {% block body '' %}
+        {% block javascripts '' %}
     </body>
 </html>

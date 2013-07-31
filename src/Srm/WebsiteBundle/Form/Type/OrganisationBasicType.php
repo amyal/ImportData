@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\CoreBundle\Form\Type;
+namespace Srm\WebsiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -11,16 +11,16 @@ class OrganisationBasicType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('label', 'text', array('label' => 'form.organisation.basic.label', 'read_only' => true))
+            ->add('label', 'text', array('label' => 'form.organisation.basic.label'))
 
             ->add('address', 'srm_organisation_address')
 
-            ->add('identificationCode', 'text', array('label' => 'form.organisation.basic.identification_code'))
+            ->add('identificationCode', 'text', array('label' => 'form.organisation.basic.identification_code', 'read_only' => true))
             ->add('slogan1', 'text', array('label' => 'form.organisation.basic.slogan1'))
             ->add('slogan2', 'text', array('label' => 'form.organisation.basic.slogan2'))
             ->add('slogan3', 'text', array('label' => 'form.organisation.basic.slogan3'))
 
-            ->add('logo', 'file', array('label' => 'form.organisation.basic.logo'))
+            ->add('logo', 'file', array('label' => 'form.organisation.basic.logo', 'required' => false))
         ;
     }
 
@@ -28,7 +28,7 @@ class OrganisationBasicType extends AbstractType
     {
         $resolver->setDefaults(array(
             'class'      => 'Srm\CoreBundle\Entity\Organisation',
-            'compound'   => true,
+            //'compound'   => true,
             'data_class' => 'Srm\CoreBundle\Entity\Organisation',
             'mapped'     => false,
         ));
