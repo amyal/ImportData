@@ -1,0 +1,13 @@
+{% extends "SrmCoreBundle::layout.html.twig" %}
+
+{% block content %}
+    <div>
+        <form action="{{ path('srm_core_organisation_basic', {'organisationId': 42}) }}" method="POST">
+            {{ form_errors(form) }}
+
+            <ul>
+                {{ block('srm_organisation_basic_widget') }}
+            </ul>
+        </form>
+    </div>
+{% endblock %}

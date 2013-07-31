@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\CoreBundle\Controller;
+namespace Srm\WebsiteBundle\Controller;
 
 use Srm\CoreBundle\Entity\LegalForm;
 use Srm\CoreBundle\Entity\Organisation;
@@ -16,13 +16,11 @@ class OrganisationController extends Controller
         ));
     }
 
-    public function basicAction(Organisation $organisation = null)
+    public function basicAction(Organisation $organisation)
     {
-        if (null === $organisation) {
-            $organisation = new Organisation();
-        }
-
         $form = $this->createForm('srm_organisation_basic', $organisation);
+        $form->setAction($this->generateUrl('srm_core_organisation_basic', array('identificationCode' => $organisation->getIdentificationCode())));
+        $form->setMethod('POST');
 
         $request = $this->getRequest();
 

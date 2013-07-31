@@ -1,0 +1,2 @@
+_organisation:
+    resource: "@SrmWebsiteBundle/Resources/config/routing/organisation.yml"

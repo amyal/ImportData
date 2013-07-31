@@ -98,6 +98,13 @@ class Organisation
     private $currency;
 
 
+    public function __construct($identificationCode = null)
+    {
+        if (null !== $identificationCode) {
+            $this->identificationCode = $identificationCode;
+        }
+    }
+
     /**
      * Set label
      *
