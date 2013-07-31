@@ -1,7 +1,0 @@
-<li>
-    {{ form_widget(address.name) }}
-    {{ form_errors(address.name) }}
-</li>
-<li>
-    {% include 'SrmCoreBundle:Address:zip.html.twig' with { 'zip': address.zip } %}
-</li>

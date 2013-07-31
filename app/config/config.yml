@@ -20,12 +20,13 @@ framework:
     session:         ~
     fragments:       ~
 
-# Twig Configuration
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources:
+            - 'SrmCoreBundle:Form:fields.html.twig'
 
-# Doctrine Configuration
 doctrine:
     dbal:
         driver:   %database_driver%

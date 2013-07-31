@@ -1,7 +1,0 @@
-<li>
-    {{ form_widget(city.name) }}
-    {{ form_errors(city.name) }}
-</li>
-<li>
-    {% include 'SrmCoreBundle:Address:country.html.twig' with { 'country': city.country } %}
-</li>
