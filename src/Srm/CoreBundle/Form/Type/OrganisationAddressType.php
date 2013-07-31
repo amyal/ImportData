@@ -1,41 +1,34 @@
 <?php
 
-namespace Srm\CoreBundle\Form;
+namespace Srm\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ZipType extends AbstractType
+class OrganisationAddressType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('code', 'text', array('label' => 'form.address.zip'))
+            ->add('name', 'text', array('label' => 'form.address.name'))
 
-            ->add('city', 'srm_city')
+            ->add('zip', 'srm_zip')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'      => 'Srm\CoreBundle\Entity\Zip',
+            'class'      => 'Srm\CoreBundle\Entity\Address',
             'compound'   => true,
-            'data_class' => 'Srm\CoreBundle\Entity\Zip',
-            'property'   => 'code',
-            'expanded'   => false,
-            'multiple'   => false
+            'data_class' => 'Srm\CoreBundle\Entity\Address',
+            'mapped'     => false,
         ));
-    }
-
-    public function getParent()
-    {
-        return 'entity';
     }
 
     public function getName()
     {
-        return 'srm_zip';
+        return 'srm_organisation_address';
     }
 }
