@@ -1,0 +1,7 @@
+<li style="list-style-type:none">
+    {{ form_label( address.label) }}
+    {{ form_widget(address.label) }}
+    {{ form_errors(address.label) }}
+</li>
+
+{{ include('SrmWebsiteBundle:Organisation:zip.html.twig', { zip: address.zip }, with_context = false) }}
