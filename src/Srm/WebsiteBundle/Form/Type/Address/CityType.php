@@ -12,35 +12,15 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CityType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('label', 'text', array('label' => 'form.address.city'))
-
-            ->add('country', 'srm_country')
-            //->add('country', new CountryType())
-
-            // ->add('country', 'entity', array(
-            //     'label'         => 'form.address.country',
-            //     'class'         => 'Srm\CoreBundle\Entity\Country',
-            //     'property'      => 'label',
-            //     'empty_value'   => 'form.address.country.choice',
-            //     'data_class'    => 'Srm\CoreBundle\Entity\Country',
-            //     'query_builder' => function(EntityRepository $er) {
-            //         return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC');
-            //     },
-            // ))
-        ;
-    }
-
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\City',
-            'compound'      => true,
             'data_class'    => 'Srm\CoreBundle\Entity\City',
             'empty_value'   => 'form.address.city.choice',
+            'label'         => 'form.address.city',
             'property'      => 'label',
+            'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
                 return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC');
             },

@@ -20,13 +20,7 @@ class ZipType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $factory = $builder->getFormFactory();
-
-        $builder
-            ->add('code', 'text', array('label' => 'form.address.zip'))
-
-            ->add('city', 'srm_city', array('data' => null))
-        ;
+        $builder->add('code', 'text', array('label' => 'form.address.zip'));
 
         $builder->addEventSubscriber($this->zipListener);
     }
@@ -34,7 +28,6 @@ class ZipType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'compound'   => true,
             'data_class' => 'Srm\CoreBundle\Entity\Zip',
         ));
     }

@@ -21,20 +21,6 @@ class OrganisationController extends Controller
 
     public function basicAction(Organisation $organisation)
     {
-        // $formBuilder = $this->createFormBuilder('srm_city');
-        // $formBuilder->setAutoInitialize(false);
-        // $form = $formBuilder->getForm();
-
-        // $form = $this->get('form.factory')->create('srm_city');
-
-        //$form = $this->createForm(new CityType());
-
-        $form = $this->createForm('srm_city');
-        return $this->render('SrmWebsiteBundle:Address:city.html.twig', array(
-            'city' => $form->createView()
-        ));
-
-
         $form = $this->createForm('srm_organisation_basic', $organisation, array(
             'action' => $this->generateUrl('srm_website_organisation_basic', array('identificationCode' => $organisation->getIdentificationCode())),
             'method' => 'POST',

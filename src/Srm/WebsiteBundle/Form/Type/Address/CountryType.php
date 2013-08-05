@@ -20,6 +20,7 @@ class CountryType extends AbstractType
             'empty_value'   => 'form.address.country.choice',
             'label'         => 'form.address.country',
             'property'      => 'label',
+            'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
                 return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC');
             },
