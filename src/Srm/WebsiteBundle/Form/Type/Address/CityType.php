@@ -14,13 +14,11 @@ class CityType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $factory = $builder->getFormFactory();
-
         $builder
             ->add('label', 'text', array('label' => 'form.address.city'))
 
-            //->add('country', 'srm_country')
-            ->add('country', new CountryType())
+            ->add('country', 'srm_country')
+            //->add('country', new CountryType())
 
             // ->add('country', 'entity', array(
             //     'label'         => 'form.address.country',
@@ -51,7 +49,7 @@ class CityType extends AbstractType
 
     public function getParent()
     {
-        return 'choice';
+        return 'entity';
     }
 
     public function getName()

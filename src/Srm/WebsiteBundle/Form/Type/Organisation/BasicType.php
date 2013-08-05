@@ -17,9 +17,7 @@ class BasicType extends AbstractType
                     'attr'  => array('autofocus' => 'autofocus')
                 )
             )
-            ->add(
-                'address', 'srm_address'
-            )
+            ->add('address', 'srm_address')
             ->add(
                 'identificationCode', 'text', array(
                     'label'     => 'form.organisation.basic.identification_code',
