@@ -2,80 +2,48 @@
 
 namespace Srm\WebsiteBundle\Form\EventListener;
 
-use Doctrine\ORM\EntityManager;
+use Srm\CoreBundle\Entity\Zip;
+
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormFactoryInterface;
 
 class CityListener implements EventSubscriberInterface
 {
-    /**
-     * @var FormFactoryInterface
-     */
-    private $factory;
+    private $cityRepo;
 
-    /**
-     * @var EntityManager
-     */
-    private $em;
-
-    /**
-     * @param factory FormFactoryInterface
-     */
-    public function __construct(FormFactoryInterface $factory, EntityManager $em)
+    public function __construct(EntityRepository $cityRepo)
     {
-        $this->factory = $factory;
-        $this->em = $em;
+        $this->cityRepo = $cityRepo;
     }
 
     public static function getSubscribedEvents()
     {
         return array(
+            FormEvents::PRE_SET_DATA => 'preSetData',
             FormEvents::PRE_SUBMIT   => 'preSubmit',
-            //FormEvents::PRE_SET_DATA => 'preSetData',
         );
     }
 
-    /**
-     * @param event FormEvent
-     */
     public function preSetData(FormEvent $event)
     {
-        $zip = $event->getData()->getZip();
+        $data = $event->getData();
 
-        // Before SUBMITing the form, the "zip" will be null
-        if (null === $zip) {
-            return;
+        if ($data instanceof Zip) {
+            if (null !== $city = $data->getCity()) {
+                $event->getForm()->get('country')->setData(array($city->getCountry()->getId()));
+            }
         }
-
-        $form = $event->getForm();
-        $city = $zip->getCity();
-
-        $this->customizeForm($form, $city);
     }
 
     public function preSubmit(FormEvent $event)
     {
-        $data = $event->getData();
-        $code = $data['code'];
+        $data  = $event->getData();
+        $label = $data['label'];
 
-        if (null === $zip = $this->em->getRepository('SrmCoreBundle:Zip')->findOneByCode($code)) {
-            throw new \Exception(sprintf('The event %s could not be found for you registration', $code));
+        if (null === $city = $this->cityRepo->findOneByCode($label)) {
+            throw new \Exception(sprintf('The event %s could not be found for you registration', $label));
         }
-
-        $form = $event->getForm();
-        $city = $zip->getCity();
-
-        $this->customizeForm($form, $city);
-    }
-
-    protected function customizeForm($form, $city)
-    {
-ob_start(); $handle = fopen('/home/users/dacosta/temp/logs/dev.log', 'a');
-echo sprintf('%s::%s::%d', __CLASS__, __FUNCTION__, __LINE__)."\n";
-\Doctrine\Common\Util\Debug::dump($city);
-$print = ob_get_contents(); ob_end_clean(); fwrite($handle, $print."\n"); fclose($handle);
-        $form->add('city', 'srm_city', array('data' => $city));
     }
 }

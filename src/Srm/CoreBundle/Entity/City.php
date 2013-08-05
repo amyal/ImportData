@@ -33,6 +33,11 @@ class City
     private $country;
 
 
+    public function getId()
+    {
+        return $this->cityId;
+    }
+
     /**
      * Set label
      *

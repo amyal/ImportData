@@ -4,3 +4,4 @@
     {{ form_errors(zip.code) }}
 </li>
 
+{{ include('SrmWebsiteBundle:Address:city.html.twig', { city: zip.city }, with_context = false) }}

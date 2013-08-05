@@ -4,11 +4,11 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="srm_website.form.type.organisation.basic.class">Srm\WebsiteBundle\Form\Type\OrganisationBasicType</parameter>
-        <parameter key="srm_website.form.type.organisation.address.class">Srm\WebsiteBundle\Form\Type\OrganisationAddressType</parameter>
-        <parameter key="srm_website.form.type.zip.class">Srm\WebsiteBundle\Form\Type\ZipType</parameter>
-        <parameter key="srm_website.form.type.city.class">Srm\WebsiteBundle\Form\Type\CityType</parameter>
-        <parameter key="srm_website.form.type.country.class">Srm\WebsiteBundle\Form\Type\CountryType</parameter>
+        <parameter key="srm_website.form.type.organisation.basic.class">Srm\WebsiteBundle\Form\Type\Organisation\BasicType</parameter>
+        <parameter key="srm_website.form.type.address.class">Srm\WebsiteBundle\Form\Type\Address\AddressType</parameter>
+        <parameter key="srm_website.form.type.address.zip.class">Srm\WebsiteBundle\Form\Type\Address\ZipType</parameter>
+        <parameter key="srm_website.form.type.address.city.class">Srm\WebsiteBundle\Form\Type\Address\CityType</parameter>
+        <parameter key="srm_website.form.type.address.country.class">Srm\WebsiteBundle\Form\Type\Address\CountryType</parameter>
     </parameters>
 
     <services>
@@ -16,24 +16,38 @@
             <tag name="form.type" alias="srm_organisation_basic" />
         </service>
 
-        <service id="srm_website.form.type.organisation_address" class="%srm_website.form.type.organisation.address.class%">
-            <tag name="form.type" alias="srm_organisation_address" />
+        <service id="srm_website.form.type.address" class="%srm_website.form.type.address.class%">
+            <tag name="form.type" alias="srm_address" />
         </service>
 
-        <service id="srm_website.form.type.zip" class="%srm_website.form.type.zip.class%">
-            <argument type="service" id="srm_website.form.city_listener" />
+        <service id="srm_website.form.type.address_zip" class="%srm_website.form.type.address.zip.class%">
+            <argument type="service" id="srm_website.form.zip_listener" />
             <tag name="form.type" alias="srm_zip" />
         </service>
-        <service id="srm_website.form.city_listener" class="Srm\WebsiteBundle\Form\EventListener\CityListener" public="false">
-            <argument type="service" id="form.factory" />
-            <argument type="service" id="doctrine.orm.entity_manager" />
+        <service id="srm_website.form.zip_listener" class="Srm\WebsiteBundle\Form\EventListener\ZipListener" public="false">
+            <argument type="service">
+                <service class="Doctrine\ORM\EntityRepository"
+                    factory-service="doctrine.orm.entity_manager"
+                    factory-method="getRepository"
+                >
+                    <argument>Srm\CoreBundle\Entity\Zip</argument>
+                </service>
+            </argument>
         </service>
 
-        <service id="srm_website.form.type.city" class="%srm_website.form.type.city.class%">
+        <service id="srm_website.form.type.address_city" class="%srm_website.form.type.address.city.class%">
+            <argument type="service" id="srm_website.form.city_listener" />
             <tag name="form.type" alias="srm_city" />
         </service>
+        <service id="srm_website.form.city_listener" class="Srm\WebsiteBundle\Form\EventListener\CityListener" public="false">
+            <argument type="service">
+                <service class="Doctrine\ORM\EntityRepository" factory-service="doctrine.orm.entity_manager" factory-method="getRepository">
+                    <argument>Srm\CoreBundle\Entity\City</argument>
+                </service>
+            </argument>
+        </service>
 
-        <service id="srm_website.form.type.country" class="%srm_website.form.type.country.class%">
+        <service id="srm_website.form.type.address_country" class="%srm_website.form.type.address.country.class%">
             <tag name="form.type" alias="srm_country" />
         </service>
     </services>

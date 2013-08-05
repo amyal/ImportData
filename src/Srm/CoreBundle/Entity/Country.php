@@ -18,6 +18,11 @@ class Country
     private $countryId;
 
 
+    public function getId()
+    {
+        return $this->countryId;
+    }
+
     /**
      * Set label
      *

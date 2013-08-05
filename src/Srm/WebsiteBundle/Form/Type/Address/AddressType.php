@@ -1,18 +1,18 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type;
+namespace Srm\WebsiteBundle\Form\Type\Address;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class OrganisationAddressType extends AbstractType
+class AddressType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('label', 'text', array('label' => 'form.address.name'))
+            ->add('label', 'text', array('label' => 'form.address.label'))
 
             ->add('zip', 'srm_zip')
         ;
@@ -21,15 +21,13 @@ class OrganisationAddressType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'      => 'Srm\CoreBundle\Entity\Address',
             'compound'   => true,
             'data_class' => 'Srm\CoreBundle\Entity\Address',
-            'mapped'     => false,
         ));
     }
 
     public function getName()
     {
-        return 'srm_organisation_address';
+        return 'srm_address';
     }
 }

@@ -2,9 +2,12 @@
 
 namespace Srm\WebsiteBundle\Controller;
 
+use Srm\CoreBundle\Entity\City;
 use Srm\CoreBundle\Entity\LegalForm;
 use Srm\CoreBundle\Entity\Organisation;
+use Srm\WebsiteBundle\Form\Type\Address\CityType;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class OrganisationController extends Controller
@@ -18,6 +21,20 @@ class OrganisationController extends Controller
 
     public function basicAction(Organisation $organisation)
     {
+        // $formBuilder = $this->createFormBuilder('srm_city');
+        // $formBuilder->setAutoInitialize(false);
+        // $form = $formBuilder->getForm();
+
+        // $form = $this->get('form.factory')->create('srm_city');
+
+        //$form = $this->createForm(new CityType());
+
+        $form = $this->createForm('srm_city');
+        return $this->render('SrmWebsiteBundle:Address:city.html.twig', array(
+            'city' => $form->createView()
+        ));
+
+
         $form = $this->createForm('srm_organisation_basic', $organisation, array(
             'action' => $this->generateUrl('srm_website_organisation_basic', array('identificationCode' => $organisation->getIdentificationCode())),
             'method' => 'POST',
@@ -43,7 +60,11 @@ class OrganisationController extends Controller
         $em->persist($organisation);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('srm_core_organisation_show'));
+        return $this->render('SrmWebsiteBundle:Organisation:basic.html.twig', array(
+            'form' => $form->createView()
+        ));
+
+        //return $this->redirect($this->generateUrl('srm_core_organisation_show'));
     }
 
     public function legalAction(Organisation $organisation)

@@ -23,9 +23,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-    form:
-        resources:
-            - 'SrmWebsiteBundle:Form:fields.html.twig'
+#    form:
+#        resources:
+#            - 'SrmWebsiteBundle:Form:fields.html.twig'
 
 doctrine:
     dbal:

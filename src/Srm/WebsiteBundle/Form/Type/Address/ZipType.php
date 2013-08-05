@@ -1,35 +1,39 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type;
+namespace Srm\WebsiteBundle\Form\Type\Address;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Srm\WebsiteBundle\Form\EventListener\CityListener;
+use Srm\WebsiteBundle\Form\EventListener\ZipListener;
 
 class ZipType extends AbstractType
 {
-    private $cityListener;
+    private $zipListener;
 
-    public function __construct(CityListener $cityListener)
+    public function __construct(ZipListener $zipListener)
     {
-        $this->cityListener = $cityListener;
+        $this->zipListener = $zipListener;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $factory = $builder->getFormFactory();
+
         $builder
             ->add('code', 'text', array('label' => 'form.address.zip'))
+
+            ->add('city', 'srm_city', array('data' => null))
         ;
 
-        $builder->addEventSubscriber($this->cityListener);
+        $builder->addEventSubscriber($this->zipListener);
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'      => 'Srm\CoreBundle\Entity\Zip',
             'compound'   => true,
             'data_class' => 'Srm\CoreBundle\Entity\Zip',
         ));

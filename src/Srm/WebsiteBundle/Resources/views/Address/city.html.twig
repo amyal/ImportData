@@ -1,0 +1,7 @@
+<li style="list-style-type:none">
+    {{ form_label( city) }}
+    {{ form_widget(city) }}
+    {{ form_errors(city) }}
+</li>
+
+{{ include('SrmWebsiteBundle:Address:country.html.twig', { country: city.country }, with_context = false) }}
