@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <imports>
-        <import resource="services/form.xml" />
         <import resource="services/converters.xml" />
+        <import resource="services/form.xml" />
     </imports>
 </container>
