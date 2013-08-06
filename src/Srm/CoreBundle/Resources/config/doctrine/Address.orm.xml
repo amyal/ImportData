@@ -12,6 +12,10 @@
       <join-columns>
         <join-column name="ZIP_ID" referenced-column-name="ZIP_ID"/>
       </join-columns>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
     </many-to-one>
   </entity>
 </doctrine-mapping>
