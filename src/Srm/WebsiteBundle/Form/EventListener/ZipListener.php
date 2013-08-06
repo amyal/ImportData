@@ -46,7 +46,7 @@ class ZipListener implements EventSubscriberInterface
             throw new \Exception(sprintf('Zip code [%s] not found.', $code));
         }
 
-        $data['city'] = $zip->getCity()->getId();
+        $data['city']    = $zip->getCity()->getId();
         $data['country'] = $zip->getCity()->getCountry()->getId();
 
         $event->setData($data);
