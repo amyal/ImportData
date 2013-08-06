@@ -6,7 +6,6 @@
     </id>
     <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
     <field name="identificationCode" type="string" column="IDENTIFICATION_CODE" length="50" nullable="false"/>
-    <field name="logo" type="string" column="LOGO" length="100" nullable="false"/>
     <field name="phone" type="integer" column="PHONE" nullable="true"/>
     <field name="fax" type="integer" column="FAX" nullable="true"/>
     <field name="mail" type="string" column="MAIL" length="100" nullable="true"/>
@@ -14,6 +13,7 @@
     <field name="slogan1" type="string" column="SLOGAN_1" length="255" nullable="true"/>
     <field name="slogan2" type="string" column="SLOGAN_2" length="255" nullable="true"/>
     <field name="slogan3" type="string" column="SLOGAN_3" length="255" nullable="true"/>
+    <field name="logo" type="string" column="LOGO" length="100" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
