@@ -15,10 +15,6 @@ class AddressType extends AbstractType
             ->add('label', 'text', array('label' => 'form.address.label'))
 
             ->add('zip', 'srm_zip')
-
-            ->add('city', 'srm_city')
-
-            ->add('country', 'srm_country')
         ;
     }
 

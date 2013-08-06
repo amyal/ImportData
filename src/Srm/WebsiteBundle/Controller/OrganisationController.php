@@ -41,11 +41,11 @@ class OrganisationController extends Controller
                 'form' => $form->createView()
             ));
         }
-
+/*
         $em = $this->getDoctrine()->getManager();
         $em->persist($organisation);
         $em->flush();
-
+*/
         return $this->render('SrmWebsiteBundle:Organisation:basic.html.twig', array(
             'form' => $form->createView()
         ));

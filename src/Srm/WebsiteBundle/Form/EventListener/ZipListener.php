@@ -28,10 +28,10 @@ class ZipListener implements EventSubscriberInterface
 
     public function preSetData(FormEvent $event)
     {
-        $address = $event->getData();
+        $data = $event->getData();
 
-        if ($address instanceof Address) {
-            if (null !== $zip = $address->getZip()) {
+        if ($data instanceof Address) {
+            if (null !== $zip = $data->getZip()) {
                 $event->getForm()->get('city')->setData(array($zip->getCity()->getId()));
             }
         }
@@ -43,7 +43,12 @@ class ZipListener implements EventSubscriberInterface
         $code = $data['code'];
 
         if (null === $zip = $this->zipRepo->findOneByCode($code)) {
-            throw new \Exception(sprintf('The event %s could not be found for you registration', $code));
+            throw new \Exception(sprintf('Zip code [%s] not found.', $code));
         }
+
+        $data['city'] = $zip->getCity()->getId();
+        $data['country'] = $zip->getCity()->getCountry()->getId();
+
+        $event->setData($data);
     }
 }
