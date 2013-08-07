@@ -2,8 +2,6 @@
 
 namespace Srm\WebsiteBundle\Form\Type\Address;
 
-use Srm\CoreBundle\Entity\Country;
-
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

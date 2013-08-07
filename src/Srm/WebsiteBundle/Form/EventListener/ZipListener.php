@@ -2,12 +2,12 @@
 
 namespace Srm\WebsiteBundle\Form\EventListener;
 
-use Srm\CoreBundle\Entity\Address;
-
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+
+use Srm\CoreBundle\Entity\Address;
 
 class ZipListener implements EventSubscriberInterface
 {

@@ -2,13 +2,11 @@
 
 namespace Srm\WebsiteBundle\Controller;
 
-use Srm\CoreBundle\Entity\City;
-use Srm\CoreBundle\Entity\LegalForm;
-use Srm\CoreBundle\Entity\Organisation;
-use Srm\WebsiteBundle\Form\Type\Address\CityType;
-
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use Srm\CoreBundle\Entity\LegalForm;
+use Srm\CoreBundle\Entity\Organisation;
 
 class OrganisationController extends Controller
 {
