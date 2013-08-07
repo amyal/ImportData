@@ -22,6 +22,10 @@
       <join-columns>
         <join-column name="ADDRESS_ID" referenced-column-name="ADDRESS_ID"/>
       </join-columns>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
     </many-to-one>
     <many-to-one field="language" target-entity="Language">
       <join-columns>
