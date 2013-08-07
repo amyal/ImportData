@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * SubDepartment
  */
@@ -40,11 +38,6 @@ class SubDepartment
     private $subDepartmentId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Department
-     */
-    private $department;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $site;
@@ -55,12 +48,18 @@ class SubDepartment
     private $contact;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $department;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->site = new ArrayCollection();
-        $this->contact = new ArrayCollection();
+        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -189,29 +188,6 @@ class SubDepartment
     }
 
     /**
-     * Set department
-     *
-     * @param \Srm\CoreBundle\Entity\Department $department
-     * @return SubDepartment
-     */
-    public function setDepartment(Department $department = null)
-    {
-        $this->department = $department;
-
-        return $this;
-    }
-
-    /**
-     * Get department
-     *
-     * @return \Srm\CoreBundle\Entity\Department
-     */
-    public function getDepartment()
-    {
-        return $this->department;
-    }
-
-    /**
      * Add site
      *
      * @param \Srm\CoreBundle\Entity\Site $site
@@ -275,5 +251,38 @@ class SubDepartment
     public function getContact()
     {
         return $this->contact;
+    }
+
+    /**
+     * Add department
+     *
+     * @param \Srm\CoreBundle\Entity\Department $department
+     * @return SubDepartment
+     */
+    public function addDepartment(Department $department)
+    {
+        $this->department[] = $department;
+
+        return $this;
+    }
+
+    /**
+     * Remove department
+     *
+     * @param \Srm\CoreBundle\Entity\Department $department
+     */
+    public function removeDepartment(Department $department)
+    {
+        $this->department->removeElement($department);
+    }
+
+    /**
+     * Get department
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDepartment()
+    {
+        return $this->department;
     }
 }

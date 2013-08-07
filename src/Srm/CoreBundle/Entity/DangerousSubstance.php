@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * DangerousSubstance
  */
@@ -34,7 +32,7 @@ class DangerousSubstance
      */
     public function __construct()
     {
-        $this->site = new ArrayCollection();
+        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

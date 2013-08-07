@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Contact
  */
@@ -139,9 +137,9 @@ class Contact
      */
     public function __construct()
     {
-        $this->site = new ArrayCollection();
-        $this->subDepartment = new ArrayCollection();
-        $this->department = new ArrayCollection();
+        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

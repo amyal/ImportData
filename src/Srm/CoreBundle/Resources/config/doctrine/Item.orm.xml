@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Item" table="vr_item">
+  <entity name="Srm\CoreBundle\Entity\Item" table="VR_ITEM">
     <id name="itemId" type="integer" column="ITEM_ID">
       <generator strategy="IDENTITY"/>
     </id>
@@ -13,16 +13,6 @@
     <many-to-one field="subDepartment" target-entity="SubDepartment">
       <join-columns>
         <join-column name="SUB_DEPARTMENT_ID" referenced-column-name="SUB_DEPARTMENT_ID"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="itemQuestions" target-entity="ItemQuestions">
-      <join-columns>
-        <join-column name="ITEM_QUESTIONS_ID" referenced-column-name="ITEM_QUESTIONS_ID"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="answers" target-entity="Answers">
-      <join-columns>
-        <join-column name="ANSWERS_ID" referenced-column-name="ANSWERS_ID"/>
       </join-columns>
     </many-to-one>
     <many-to-many field="indicator" target-entity="Indicator" inversed-by="item">

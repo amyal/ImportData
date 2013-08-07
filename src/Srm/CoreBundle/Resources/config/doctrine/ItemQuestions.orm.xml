@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\ItemQuestions" table="vr_item_questions">
+  <entity name="Srm\CoreBundle\Entity\ItemQuestions" table="VR_ITEM_QUESTIONS">
     <id name="itemQuestionsId" type="integer" column="ITEM_QUESTIONS_ID">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
     <field name="description" type="string" column="DESCRIPTION" length="255" nullable="true"/>
+    <field name="hide" type="boolean" column="HIDE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <many-to-one field="item" target-entity="Item">
+      <join-columns>
+        <join-column name="ITEM_ID" referenced-column-name="ITEM_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="itemQuestionsLevel3" target-entity="ItemQuestionsLevel3">
+      <join-columns>
+        <join-column name="ITEM_QUESTIONS_LEVEL3_ID" referenced-column-name="ITEM_QUESTIONS_LEVEL3_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="itemQuestionsLevel2" target-entity="ItemQuestionsLevel2">
+      <join-columns>
+        <join-column name="ITEM_QUESTIONS_LEVEL2_ID" referenced-column-name="ITEM_QUESTIONS_LEVEL2_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="itemQuestionsLevel1" target-entity="ItemQuestionsLevel1">
+      <join-columns>
+        <join-column name="ITEM_QUESTIONS_LEVEL1_ID" referenced-column-name="ITEM_QUESTIONS_LEVEL1_ID"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Indicator
  */
@@ -45,6 +43,11 @@ class Indicator
     private $indicatorLevel1;
 
     /**
+     * @var \Srm\CoreBundle\Entity\Periodicity
+     */
+    private $periodicity;
+
+    /**
      * @var \Srm\CoreBundle\Entity\IndicatorLevel2
      */
     private $indicatorLevel2;
@@ -69,7 +72,7 @@ class Indicator
      */
     public function __construct()
     {
-        $this->item = new ArrayCollection();
+        $this->item = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -218,6 +221,29 @@ class Indicator
     public function getIndicatorLevel1()
     {
         return $this->indicatorLevel1;
+    }
+
+    /**
+     * Set periodicity
+     *
+     * @param \Srm\CoreBundle\Entity\Periodicity $periodicity
+     * @return Indicator
+     */
+    public function setPeriodicity(Periodicity $periodicity = null)
+    {
+        $this->periodicity = $periodicity;
+
+        return $this;
+    }
+
+    /**
+     * Get periodicity
+     *
+     * @return \Srm\CoreBundle\Entity\Periodicity
+     */
+    public function getPeriodicity()
+    {
+        return $this->periodicity;
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Department
  */
@@ -65,13 +63,19 @@ class Department
     private $contact;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $subDepartment;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->site = new ArrayCollection();
-        $this->pole = new ArrayCollection();
-        $this->contact = new ArrayCollection();
+        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -342,5 +346,38 @@ class Department
     public function getContact()
     {
         return $this->contact;
+    }
+
+    /**
+     * Add subDepartment
+     *
+     * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
+     * @return Department
+     */
+    public function addSubDepartment(SubDepartment $subDepartment)
+    {
+        $this->subDepartment[] = $subDepartment;
+
+        return $this;
+    }
+
+    /**
+     * Remove subDepartment
+     *
+     * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
+     */
+    public function removeSubDepartment(SubDepartment $subDepartment)
+    {
+        $this->subDepartment->removeElement($subDepartment);
+    }
+
+    /**
+     * Get subDepartment
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubDepartment()
+    {
+        return $this->subDepartment;
     }
 }

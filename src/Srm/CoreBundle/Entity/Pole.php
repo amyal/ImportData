@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Pole
  */
@@ -44,8 +42,8 @@ class Pole
      */
     public function __construct()
     {
-        $this->site = new ArrayCollection();
-        $this->department = new ArrayCollection();
+        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

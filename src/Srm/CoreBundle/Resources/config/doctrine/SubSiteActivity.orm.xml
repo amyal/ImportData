@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\SubSiteActivity" table="vr_sub_site_activity">
+  <entity name="Srm\CoreBundle\Entity\SubSiteActivity" table="VR_SUB_SITE_ACTIVITY">
     <id name="subSiteActivityId" type="integer" column="SUB_SITE_ACTIVITY_ID">
       <generator strategy="IDENTITY"/>
     </id>

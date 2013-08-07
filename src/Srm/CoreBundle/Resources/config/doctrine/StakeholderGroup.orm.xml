@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\StakeholderGroup" table="v_stakeholder_group">
+  <entity name="Srm\CoreBundle\Entity\StakeholderGroup" table="V_STAKEHOLDER_GROUP">
     <id name="stakeholderGroupId" type="integer" column="STAKEHOLDER_GROUP_ID">
       <generator strategy="IDENTITY"/>
     </id>

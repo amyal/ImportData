@@ -23,6 +23,11 @@ class ItemAnswers
     private $modificationDate;
 
     /**
+     * @var \DateTime
+     */
+    private $validUntil;
+
+    /**
      * @var integer
      */
     private $itemAnswersId;
@@ -33,29 +38,14 @@ class ItemAnswers
     private $answersStatus;
 
     /**
-     * @var \Srm\CoreBundle\Entity\ItemQuestionsLevel3
+     * @var \Srm\CoreBundle\Entity\ItemQuestions
      */
-    private $itemQuestionsLevel3;
-
-    /**
-     * @var \Srm\CoreBundle\Entity\ItemQuestionsLevel2
-     */
-    private $itemQuestionsLevel2;
-
-    /**
-     * @var \Srm\CoreBundle\Entity\ItemQuestionsLevel1
-     */
-    private $itemQuestionsLevel1;
+    private $itemQuestions;
 
     /**
      * @var \Srm\CoreBundle\Entity\Contact
      */
     private $contact;
-
-    /**
-     * @var \Srm\CoreBundle\Entity\ItemQuestions
-     */
-    private $itemQuestions;
 
     /**
      * @var \Srm\CoreBundle\Entity\Answers
@@ -133,6 +123,29 @@ class ItemAnswers
     }
 
     /**
+     * Set validUntil
+     *
+     * @param \DateTime $validUntil
+     * @return ItemAnswers
+     */
+    public function setValidUntil($validUntil)
+    {
+        $this->validUntil = $validUntil;
+
+        return $this;
+    }
+
+    /**
+     * Get validUntil
+     *
+     * @return \DateTime
+     */
+    public function getValidUntil()
+    {
+        return $this->validUntil;
+    }
+
+    /**
      * Get itemAnswersId
      *
      * @return integer
@@ -166,72 +179,26 @@ class ItemAnswers
     }
 
     /**
-     * Set itemQuestionsLevel3
+     * Set itemQuestions
      *
-     * @param \Srm\CoreBundle\Entity\ItemQuestionsLevel3 $itemQuestionsLevel3
+     * @param \Srm\CoreBundle\Entity\ItemQuestions $itemQuestions
      * @return ItemAnswers
      */
-    public function setItemQuestionsLevel3(ItemQuestionsLevel3 $itemQuestionsLevel3 = null)
+    public function setItemQuestions(ItemQuestions $itemQuestions = null)
     {
-        $this->itemQuestionsLevel3 = $itemQuestionsLevel3;
+        $this->itemQuestions = $itemQuestions;
 
         return $this;
     }
 
     /**
-     * Get itemQuestionsLevel3
+     * Get itemQuestions
      *
-     * @return \Srm\CoreBundle\Entity\ItemQuestionsLevel3
+     * @return \Srm\CoreBundle\Entity\ItemQuestions
      */
-    public function getItemQuestionsLevel3()
+    public function getItemQuestions()
     {
-        return $this->itemQuestionsLevel3;
-    }
-
-    /**
-     * Set itemQuestionsLevel2
-     *
-     * @param \Srm\CoreBundle\Entity\ItemQuestionsLevel2 $itemQuestionsLevel2
-     * @return ItemAnswers
-     */
-    public function setItemQuestionsLevel2(ItemQuestionsLevel2 $itemQuestionsLevel2 = null)
-    {
-        $this->itemQuestionsLevel2 = $itemQuestionsLevel2;
-
-        return $this;
-    }
-
-    /**
-     * Get itemQuestionsLevel2
-     *
-     * @return \Srm\CoreBundle\Entity\ItemQuestionsLevel2
-     */
-    public function getItemQuestionsLevel2()
-    {
-        return $this->itemQuestionsLevel2;
-    }
-
-    /**
-     * Set itemQuestionsLevel1
-     *
-     * @param \Srm\CoreBundle\Entity\ItemQuestionsLevel1 $itemQuestionsLevel1
-     * @return ItemAnswers
-     */
-    public function setItemQuestionsLevel1(ItemQuestionsLevel1 $itemQuestionsLevel1 = null)
-    {
-        $this->itemQuestionsLevel1 = $itemQuestionsLevel1;
-
-        return $this;
-    }
-
-    /**
-     * Get itemQuestionsLevel1
-     *
-     * @return \Srm\CoreBundle\Entity\ItemQuestionsLevel1
-     */
-    public function getItemQuestionsLevel1()
-    {
-        return $this->itemQuestionsLevel1;
+        return $this->itemQuestions;
     }
 
     /**
@@ -255,29 +222,6 @@ class ItemAnswers
     public function getContact()
     {
         return $this->contact;
-    }
-
-    /**
-     * Set itemQuestions
-     *
-     * @param \Srm\CoreBundle\Entity\ItemQuestions $itemQuestions
-     * @return ItemAnswers
-     */
-    public function setItemQuestions(ItemQuestions $itemQuestions = null)
-    {
-        $this->itemQuestions = $itemQuestions;
-
-        return $this;
-    }
-
-    /**
-     * Get itemQuestions
-     *
-     * @return \Srm\CoreBundle\Entity\ItemQuestions
-     */
-    public function getItemQuestions()
-    {
-        return $this->itemQuestions;
     }
 
     /**

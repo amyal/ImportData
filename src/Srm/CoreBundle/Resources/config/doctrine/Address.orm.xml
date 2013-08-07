@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Address" table="v_address">
+  <entity name="Srm\CoreBundle\Entity\Address" table="V_ADDRESS">
     <id name="addressId" type="integer" column="ADDRESS_ID">
       <generator strategy="IDENTITY"/>
     </id>
@@ -12,10 +12,6 @@
       <join-columns>
         <join-column name="ZIP_ID" referenced-column-name="ZIP_ID"/>
       </join-columns>
-
-      <cascade>
-        <cascade-all />
-      </cascade>
     </many-to-one>
   </entity>
 </doctrine-mapping>

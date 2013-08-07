@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * SubSiteActivity
  */
@@ -34,7 +32,7 @@ class SubSiteActivity
      */
     public function __construct()
     {
-        $this->site = new ArrayCollection();
+        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

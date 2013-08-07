@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\IndicatorLevel1" table="vr_indicator_level1">
+  <entity name="Srm\CoreBundle\Entity\IndicatorLevel1" table="VR_INDICATOR_LEVEL1">
     <id name="indicatorLevel1Id" type="integer" column="INDICATOR_LEVEL1_ID">
       <generator strategy="IDENTITY"/>
     </id>

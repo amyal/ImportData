@@ -27,11 +27,6 @@ class ItemQuestionsLevel3
      */
     private $itemQuestionsLevel3Id;
 
-    /**
-     * @var \Srm\CoreBundle\Entity\ItemQuestionsLevel2
-     */
-    private $itemQuestionsLevel2;
-
 
     /**
      * Set label
@@ -110,28 +105,5 @@ class ItemQuestionsLevel3
     public function getItemQuestionsLevel3Id()
     {
         return $this->itemQuestionsLevel3Id;
-    }
-
-    /**
-     * Set itemQuestionsLevel2
-     *
-     * @param \Srm\CoreBundle\Entity\ItemQuestionsLevel2 $itemQuestionsLevel2
-     * @return ItemQuestionsLevel3
-     */
-    public function setItemQuestionsLevel2(ItemQuestionsLevel2 $itemQuestionsLevel2 = null)
-    {
-        $this->itemQuestionsLevel2 = $itemQuestionsLevel2;
-
-        return $this;
-    }
-
-    /**
-     * Get itemQuestionsLevel2
-     *
-     * @return \Srm\CoreBundle\Entity\ItemQuestionsLevel2
-     */
-    public function getItemQuestionsLevel2()
-    {
-        return $this->itemQuestionsLevel2;
     }
 }

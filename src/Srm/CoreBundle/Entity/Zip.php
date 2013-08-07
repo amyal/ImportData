@@ -13,6 +13,16 @@ class Zip
     private $code;
 
     /**
+     * @var float
+     */
+    private $geolong;
+
+    /**
+     * @var float
+     */
+    private $geolat;
+
+    /**
      * @var boolean
      */
     private $enabled;
@@ -54,6 +64,52 @@ class Zip
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * Set geolong
+     *
+     * @param float $geolong
+     * @return Zip
+     */
+    public function setGeolong($geolong)
+    {
+        $this->geolong = $geolong;
+
+        return $this;
+    }
+
+    /**
+     * Get geolong
+     *
+     * @return float
+     */
+    public function getGeolong()
+    {
+        return $this->geolong;
+    }
+
+    /**
+     * Set geolat
+     *
+     * @param float $geolat
+     * @return Zip
+     */
+    public function setGeolat($geolat)
+    {
+        $this->geolat = $geolat;
+
+        return $this;
+    }
+
+    /**
+     * Get geolat
+     *
+     * @return float
+     */
+    public function getGeolat()
+    {
+        return $this->geolat;
     }
 
     /**

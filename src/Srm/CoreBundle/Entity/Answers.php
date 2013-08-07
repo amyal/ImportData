@@ -15,11 +15,6 @@ class Answers
     /**
      * @var boolean
      */
-    private $site;
-
-    /**
-     * @var boolean
-     */
     private $allSites;
 
     /**
@@ -36,6 +31,11 @@ class Answers
      * @var integer
      */
     private $answersId;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Item
+     */
+    private $item;
 
     /**
      * @var \Srm\CoreBundle\Entity\AnswerType
@@ -69,29 +69,6 @@ class Answers
     public function getCode()
     {
         return $this->code;
-    }
-
-    /**
-     * Set site
-     *
-     * @param boolean $site
-     * @return Answers
-     */
-    public function setSite($site)
-    {
-        $this->site = $site;
-
-        return $this;
-    }
-
-    /**
-     * Get site
-     *
-     * @return boolean
-     */
-    public function getSite()
-    {
-        return $this->site;
     }
 
     /**
@@ -171,6 +148,29 @@ class Answers
     public function getAnswersId()
     {
         return $this->answersId;
+    }
+
+    /**
+     * Set item
+     *
+     * @param \Srm\CoreBundle\Entity\Item $item
+     * @return Answers
+     */
+    public function setItem(Item $item = null)
+    {
+        $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * Get item
+     *
+     * @return \Srm\CoreBundle\Entity\Item
+     */
+    public function getItem()
+    {
+        return $this->item;
     }
 
     /**

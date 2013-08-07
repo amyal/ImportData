@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Site
  */
@@ -129,13 +127,13 @@ class Site
      */
     public function __construct()
     {
-        $this->subDepartment = new ArrayCollection();
-        $this->subSiteActivity = new ArrayCollection();
-        $this->contact = new ArrayCollection();
-        $this->vrDangerousSubstanceDangerousSubstance = new ArrayCollection();
-        $this->department = new ArrayCollection();
-        $this->pole = new ArrayCollection();
-        $this->siteActivity = new ArrayCollection();
+        $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subSiteActivity = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->vrDangerousSubstanceDangerousSubstance = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->siteActivity = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

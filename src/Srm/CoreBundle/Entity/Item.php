@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Item
  */
@@ -50,16 +48,6 @@ class Item
     private $subDepartment;
 
     /**
-     * @var \Srm\CoreBundle\Entity\ItemQuestions
-     */
-    private $itemQuestions;
-
-    /**
-     * @var \Srm\CoreBundle\Entity\Answers
-     */
-    private $answers;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $indicator;
@@ -69,7 +57,7 @@ class Item
      */
     public function __construct()
     {
-        $this->indicator = new ArrayCollection();
+        $this->indicator = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -241,52 +229,6 @@ class Item
     public function getSubDepartment()
     {
         return $this->subDepartment;
-    }
-
-    /**
-     * Set itemQuestions
-     *
-     * @param \Srm\CoreBundle\Entity\ItemQuestions $itemQuestions
-     * @return Item
-     */
-    public function setItemQuestions(ItemQuestions $itemQuestions = null)
-    {
-        $this->itemQuestions = $itemQuestions;
-
-        return $this;
-    }
-
-    /**
-     * Get itemQuestions
-     *
-     * @return \Srm\CoreBundle\Entity\ItemQuestions
-     */
-    public function getItemQuestions()
-    {
-        return $this->itemQuestions;
-    }
-
-    /**
-     * Set answers
-     *
-     * @param \Srm\CoreBundle\Entity\Answers $answers
-     * @return Item
-     */
-    public function setAnswers(Answers $answers = null)
-    {
-        $this->answers = $answers;
-
-        return $this;
-    }
-
-    /**
-     * Get answers
-     *
-     * @return \Srm\CoreBundle\Entity\Answers
-     */
-    public function getAnswers()
-    {
-        return $this->answers;
     }
 
     /**

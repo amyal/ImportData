@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\TypeSite" table="vr_type_site">
+  <entity name="Srm\CoreBundle\Entity\TypeSite" table="VR_TYPE_SITE">
     <id name="typeSiteId" type="integer" column="TYPE_SITE_ID">
       <generator strategy="IDENTITY"/>
     </id>

@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Role
  */
@@ -39,7 +37,7 @@ class Role
      */
     public function __construct()
     {
-        $this->affiliation = new ArrayCollection();
+        $this->affiliation = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
