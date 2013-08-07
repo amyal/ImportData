@@ -30,7 +30,8 @@ class OrganisationParamConverter implements ParamConverterInterface
 
         try {
             if (null === $organisation = $this->repo->findOneByIdentificationCode($identificationCode)) {
-                $organisation = new Organisation($identificationCode);
+                $organisation = new Organisation();
+                $organisation->setIdentificationCode($identificationCode);
             }
         } catch (\Exception $e) {
             throw new NotFoundHttpException($e->getMessage());
