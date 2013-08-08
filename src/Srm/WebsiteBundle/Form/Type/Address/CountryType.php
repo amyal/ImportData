@@ -2,7 +2,6 @@
 
 namespace Srm\WebsiteBundle\Form\Type\Address;
 
-use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -19,9 +18,6 @@ class CountryType extends AbstractType
             'label'         => 'form.address.country',
             'property'      => 'label',
             'mapped'        => false,
-            'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC');
-            },
         ));
     }
 

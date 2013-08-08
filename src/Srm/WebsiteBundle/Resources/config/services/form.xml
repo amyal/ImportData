@@ -25,6 +25,7 @@
             <tag name="form.type" alias="srm_zip" />
         </service>
         <service id="srm_website.form.zip_listener" class="Srm\WebsiteBundle\Form\EventListener\ZipListener" public="false">
+            <argument type="service" id="form.factory" />
             <argument type="service">
                 <service class="Doctrine\ORM\EntityRepository"
                     factory-service="doctrine.orm.entity_manager"
@@ -36,15 +37,7 @@
         </service>
 
         <service id="srm_website.form.type.address_city" class="%srm_website.form.type.address.city.class%">
-            <argument type="service" id="srm_website.form.city_listener" />
             <tag name="form.type" alias="srm_city" />
-        </service>
-        <service id="srm_website.form.city_listener" class="Srm\WebsiteBundle\Form\EventListener\CityListener" public="false">
-            <argument type="service">
-                <service class="Doctrine\ORM\EntityRepository" factory-service="doctrine.orm.entity_manager" factory-method="getRepository">
-                    <argument>Srm\CoreBundle\Entity\City</argument>
-                </service>
-            </argument>
         </service>
 
         <service id="srm_website.form.type.address_country" class="%srm_website.form.type.address.country.class%">

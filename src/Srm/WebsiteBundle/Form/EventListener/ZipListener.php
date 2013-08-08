@@ -6,15 +6,19 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormFactoryInterface;
 
-use Srm\CoreBundle\Entity\Address;
+use Srm\CoreBundle\Entity\Country;
+use Srm\CoreBundle\Entity\Zip;
 
 class ZipListener implements EventSubscriberInterface
 {
+    private $factory;
     private $zipRepo;
 
-    public function __construct(EntityRepository $zipRepo)
+    public function __construct(FormFactoryInterface $factory, EntityRepository $zipRepo)
     {
+        $this->factory = $factory;
         $this->zipRepo = $zipRepo;
     }
 
@@ -31,22 +35,51 @@ class ZipListener implements EventSubscriberInterface
         $data = $event->getData();
 
         if ($data instanceof Zip) {
-            $event->getForm()->get('city')->setData(array($data->getCity()->getCityId()));
+            if (null !== $city = $data->getCity()) {
+                $form = $event->getForm();
+                $country = $city->getCountry();
+
+                $this->refreshCities($form, $country);
+                $this->setCountry($form, $country);
+            }
         }
     }
 
     public function preSubmit(FormEvent $event)
     {
         $data = $event->getData();
-        $code = $data['code'];
+        $form = $event->getForm();
 
-        if (null === $zip = $this->zipRepo->findOneByCode($code)) {
-            throw new \Exception(sprintf('Zip code [%s] not found.', $code));
+        if (isset($data['country'])) {
+            $this->refreshCities($form, $data['country']);
         }
+    }
 
-        $data['city']    = $zip->getCity()->getCityId();
-        $data['country'] = $zip->getCity()->getCountry()->getCountryId();
 
-        $event->setData($data);
+    private function refreshCities($form, $country)
+    {
+        $form->add($this->factory->createNamed('city', 'srm_city', null, array(
+            'query_builder' => function(EntityRepository $repository) use ($country)
+            {
+                $qb = $repository->createQueryBuilder('city')->innerJoin('city.country', 'country');
+
+                if ($country instanceof Country) {
+                    $qb->where('city.country = :country')->setParameter('country', $country);
+                } elseif (is_numeric($country)) {
+                    $qb->where('country.countryId = :country')->setParameter('country', $country);
+                } else {
+                    $qb->where('country.label = :country')->setParameter('country', null);
+                }
+
+                return $qb;
+            }
+        )));
+    }
+
+    private function setCountry($form, $country)
+    {
+        $form->add($this->factory->createNamed('country', 'srm_country', null, array(
+            'data' => $country,
+        )));
     }
 }
