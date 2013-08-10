@@ -20,7 +20,7 @@ class CountryType extends AbstractType
             'property'      => 'label',
             'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC')->setMaxResults(20);
+                return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC');
             },
         ));
     }
