@@ -11,7 +11,7 @@
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
     <many-to-one field="city" target-entity="City">
       <join-columns>
-        <join-column name="CITY_ID" referenced-column-name="CITY_ID"/>
+        <join-column name="CITY_ID" referenced-column-name="CITY_ID" nullable="false"/>
       </join-columns>
     </many-to-one>
   </entity>
