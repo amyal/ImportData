@@ -6,9 +6,14 @@ form.organisation.basic.slogan2: "Slogan 2"
 form.organisation.basic.slogan3: "Slogan 3"
 form.organisation.basic.logo: "Logo"
 
+form.organisation.legal.title: "Informations légales"
+
 form.address.label: "Adresse du siège social"
 form.address.zip: "Code postal"
 form.address.city: "Ville"
 form.address.city.choice: "Choix de la ville"
 form.address.country: "Pays"
 form.address.country.choice: "Choix du pays"
+
+navigation.organisation.cancel: "Annuler"
+navigation.organisation.edit: "Modifier"

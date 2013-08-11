@@ -4,14 +4,18 @@
     {{ form_errors(zip.code) }}
 </li>
 
-<li style="list-style-type:none">
-    {{ form_label( zip.city) }}
-    {{ form_widget(zip.city) }}
-    {{ form_errors(zip.city) }}
-</li>
+{% if zip.city is defined %}
+    <li style="list-style-type:none">
+        {{ form_label( zip.city) }}
+        {{ form_widget(zip.city) }}
+        {{ form_errors(zip.city) }}
+    </li>
+{% endif %}
 
-<li style="list-style-type:none">
-    {{ form_label( zip.country) }}
-    {{ form_widget(zip.country) }}
-    {{ form_errors(zip.country) }}
-</li>
+{% if zip.country is defined %}
+    <li style="list-style-type:none">
+        {{ form_label( zip.country) }}
+        {{ form_widget(zip.country) }}
+        {{ form_errors(zip.country) }}
+    </li>
+{% endif %}

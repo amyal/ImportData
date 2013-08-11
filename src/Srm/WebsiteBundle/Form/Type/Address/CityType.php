@@ -14,13 +14,12 @@ class CityType extends AbstractType
     {
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\City',
-            'data_class'    => 'Srm\CoreBundle\Entity\City',
             'empty_value'   => 'form.address.city.choice',
             'label'         => 'form.address.city',
             'property'      => 'label',
             'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC')->setMaxResults(20);
+                return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC')->setMaxResults(25000);
             },
         ));
     }

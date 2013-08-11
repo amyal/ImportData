@@ -14,7 +14,6 @@ class CountryType extends AbstractType
     {
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\Country',
-            'data_class'    => 'Srm\CoreBundle\Entity\Country',
             'empty_value'   => 'form.address.country.choice',
             'label'         => 'form.address.country',
             'property'      => 'label',

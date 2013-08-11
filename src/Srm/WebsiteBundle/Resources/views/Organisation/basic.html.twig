@@ -44,4 +44,8 @@
             <input type="submit" />
         {{ form_end(form) }}
     </div>
+
+    <a href="{{ path('srm_website_organisation_show', {'identificationCode': form.vars.value.identificationCode}) }}">
+        {{ 'navigation.organisation.cancel'|trans }}
+    </a>
 {% endblock %}
