@@ -9,6 +9,7 @@
         <parameter key="srm_website.form.type.address.zip.class">Srm\WebsiteBundle\Form\Type\Address\ZipType</parameter>
         <parameter key="srm_website.form.type.address.city.class">Srm\WebsiteBundle\Form\Type\Address\CityType</parameter>
         <parameter key="srm_website.form.type.address.country.class">Srm\WebsiteBundle\Form\Type\Address\CountryType</parameter>
+        <parameter key="srm_website.form.type.organisation.legal.class">Srm\WebsiteBundle\Form\Type\Organisation\LegalType</parameter>
     </parameters>
 
     <services>
@@ -42,6 +43,11 @@
 
         <service id="srm_website.form.type.address_country" class="%srm_website.form.type.address.country.class%">
             <tag name="form.type" alias="srm_country" />
+        </service>
+
+
+        <service id="srm_website.form.type.organisation_legal" class="%srm_website.form.type.organisation.legal.class%">
+            <tag name="form.type" alias="srm_organisation_legal" />
         </service>
     </services>
 </container>

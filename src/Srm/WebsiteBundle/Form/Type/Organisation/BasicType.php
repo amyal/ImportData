@@ -34,6 +34,7 @@ class BasicType extends AbstractType
                     'required' => false
                 )
             )
+            ->add('save', 'submit', array('label' => 'navigation.button.save'))
         ;
     }
 

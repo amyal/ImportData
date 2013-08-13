@@ -41,11 +41,11 @@
                 </li>
             </ul>
 
-            <input type="submit" />
+            {{ form_widget(form.save) }}
         {{ form_end(form) }}
     </div>
 
-    <a href="{{ path('srm_website_organisation_show', {'identificationCode': form.vars.value.identificationCode}) }}">
-        {{ 'navigation.organisation.cancel'|trans }}
-    </a>
+    <form action="{{ path('srm_website_organisation_show', {'identificationCode': form.vars.value.identificationCode}) }}">
+        <button type="submit">{{ 'navigation.button.cancel'|trans }}</button>
+    </form>
 {% endblock %}

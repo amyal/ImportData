@@ -34,15 +34,28 @@
             </li>
         </ul>
 
-        <a href="{{ path('srm_website_organisation_basic', {'identificationCode': organisation.identificationCode}) }}">{{ 'navigation.organisation.edit'|trans }}</a>
+        <form action="{{ path('srm_website_organisation_basic', {'identificationCode': organisation.identificationCode}) }}">
+            <button type="submit">{{ 'navigation.button.edit'|trans }}</button>
+        </form>
     </fieldset>
 
     <fieldset>
         <legend>{{ 'form.organisation.legal.title'|trans }}</legend>
 
         <ul>
+            <li style="list-style-type:none">
+                {{ 'form.organisation.legal.label'|trans }} : {{ legalForm.label }}
+            </li>
+            <li style="list-style-type:none">
+                {{ 'form.organisation.legal.nature_capital'|trans }} : {{ legalForm.natureCapital }}
+            </li>
+            <li style="list-style-type:none">
+                {{ 'form.organisation.legal.nature_capital'|trans }} : {{ legalForm.registrationDate }}
+            </li>
         </ul>
 
-        <a href="{{ path('srm_website_organisation_legal', {'identificationCode': organisation.identificationCode}) }}">{{ 'navigation.organisation.edit'|trans }}</a>
+        <form action="{{ path('srm_website_organisation_legal', {'organisationId': organisation.organisationId}) }}">
+            <button type="submit">{{ 'navigation.button.edit'|trans }}</button>
+        </form>
     </fieldset>
 {% endblock %}

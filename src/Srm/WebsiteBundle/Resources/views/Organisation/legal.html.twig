@@ -1,0 +1,38 @@
+{% extends "SrmWebsiteBundle::layout.html.twig" %}
+
+{% block content %}
+    <div>
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <ul >
+                <li style="list-style-type:none">
+                    {{ form_label( form.label) }}
+                    {{ form_widget(form.label) }}
+                    {{ form_errors(form.label) }}
+                </li>
+                <li style="list-style-type:none">
+                    {{ form_label( form.natureCapital) }}
+                    {{ form_widget(form.natureCapital) }}
+                    {{ form_errors(form.natureCapital) }}
+                </li>
+                <li style="list-style-type:none">
+                    {{ form_label( form.category) }}
+                    {{ form_widget(form.category) }}
+                    {{ form_errors(form.category) }}
+                </li>
+                <li style="list-style-type:none">
+                    {{ form_label( form.registrationDate) }}
+                    {{ form_widget(form.registrationDate) }}
+                    {{ form_errors(form.registrationDate) }}
+                </li>
+            </ul>
+
+            {{ form_widget(form.save) }}
+        {{ form_end(form) }}
+    </div>
+
+    <form action="{{ path('srm_website_organisation_show', {'identificationCode': identificationCode}) }}">
+        <button type="submit">{{ 'navigation.button.cancel'|trans }}</button>
+    </form>
+{% endblock %}

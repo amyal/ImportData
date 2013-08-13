@@ -26,15 +26,16 @@ class OrganisationParamConverter implements ParamConverterInterface
 
     public function apply(Request $request, ConfigurationInterface $configuration)
     {
-        $identificationCode = $request->get('identificationCode');
-
-        try {
+        if (null !== $identificationCode = $request->get('identificationCode', null)) {
             if (null === $organisation = $this->repo->findOneByIdentificationCode($identificationCode)) {
                 $organisation = new Organisation();
                 $organisation->setIdentificationCode($identificationCode);
             }
-        } catch (\Exception $e) {
-            throw new NotFoundHttpException($e->getMessage());
+        } else {
+            $organisationId = $request->get('organisationId');
+            if (null === $organisation = $this->repo->findOneByOrganisationId($organisationId)) {
+                throw new NotFoundHttpException(sprintf("Aucune organisation trouvée avec l'id [%d]", $organisationId));
+            }
         }
 
         $request->attributes->set($configuration->getName(), $organisation);
