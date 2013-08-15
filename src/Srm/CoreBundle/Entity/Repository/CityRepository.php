@@ -12,7 +12,7 @@ class CityRepository extends EntityRepository
     {
         return $this
             ->createQueryBuilder('c')
-            ->where('u.country = :countryId')->setParameter('countryId', $country->getCountryId())
+            ->where('c.country = :countryId')->setParameter('countryId', $country->getCountryId())
             ->setMaxResults($limit)
         ;
     }
