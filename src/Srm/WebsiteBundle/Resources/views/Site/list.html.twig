@@ -1,0 +1,47 @@
+{% extends "SrmWebsiteBundle::layout.html.twig" %}
+
+{% block content %}
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>{{ 'sites.title'|trans }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <form action="{{ path('srm_website_sites_add', {'organisationId': organisation.organisationId}) }}">
+                            <button type="submit">{{ 'navigation.button.add'|trans }}</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ 'sites.table.header.name'|trans }}</td>
+                    <td>{{ 'sites.table.header.code'|trans }}</td>
+                    <td>{{ 'sites.table.header.type'|trans }}</td>
+                    <td>{{ 'sites.table.header.country'|trans }}</td>
+                    <td>{{ 'sites.table.header.substances'|trans }}</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for site in sites %}
+                    <tr>
+                        <td>{{ site.label }}</td>
+                        <td>{{ site.label }}</td>
+                        <td>{{ site.typeSite }}</td>
+                        <td>{{ site.address.zip.city.country }}</td>
+                        <td>
+                            {% if site.dangerousSubstances %}
+                                {{ site.dangerousSubstances|join(', ') }}
+                            {% else %}
+                                {{ 'sites.no_dangerous_substances'|trans }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="5">{{ 'sites.empty_list'|trans }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
