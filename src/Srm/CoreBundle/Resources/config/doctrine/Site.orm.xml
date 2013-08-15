@@ -69,13 +69,13 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="vrDangerousSubstanceDangerousSubstance" target-entity="DangerousSubstance" inversed-by="site">
+    <many-to-many field="dangerousSubstances" target-entity="DangerousSubstance" inversed-by="site">
       <join-table name="vj_site_dangerous_substance">
         <join-columns>
           <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
         </join-columns>
         <inverse-join-columns>
-          <join-column name="VR_DANGEROUS_SUBSTANCE_DANGEROUS_SUBSTANCE_ID" referenced-column-name="DANGEROUS_SUBSTANCE_ID"/>
+          <join-column name="DANGEROUS_SUBSTANCE_ID" referenced-column-name="DANGEROUS_SUBSTANCE_ID"/>
         </inverse-join-columns>
       </join-table>
     </many-to-many>

@@ -105,7 +105,7 @@ class Site
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $vrDangerousSubstanceDangerousSubstance;
+    private $dangerousSubstances;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -130,7 +130,7 @@ class Site
         $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subSiteActivity = new \Doctrine\Common\Collections\ArrayCollection();
         $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->vrDangerousSubstanceDangerousSubstance = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dangerousSubstances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->department = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
         $this->siteActivity = new \Doctrine\Common\Collections\ArrayCollection();
@@ -591,36 +591,36 @@ class Site
     }
 
     /**
-     * Add vrDangerousSubstanceDangerousSubstance
+     * Add DangerousSubstance
      *
-     * @param \Srm\CoreBundle\Entity\DangerousSubstance $vrDangerousSubstanceDangerousSubstance
+     * @param \Srm\CoreBundle\Entity\DangerousSubstance $DangerousSubstance
      * @return Site
      */
-    public function addVrDangerousSubstanceDangerousSubstance(DangerousSubstance $vrDangerousSubstanceDangerousSubstance)
+    public function addDangerousSubstance(DangerousSubstance $dangerousSubstance)
     {
-        $this->vrDangerousSubstanceDangerousSubstance[] = $vrDangerousSubstanceDangerousSubstance;
+        $this->dangerousSubstances[] = $dangerousSubstance;
 
         return $this;
     }
 
     /**
-     * Remove vrDangerousSubstanceDangerousSubstance
+     * Remove DangerousSubstance
      *
-     * @param \Srm\CoreBundle\Entity\DangerousSubstance $vrDangerousSubstanceDangerousSubstance
+     * @param \Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance
      */
-    public function removeVrDangerousSubstanceDangerousSubstance(DangerousSubstance $vrDangerousSubstanceDangerousSubstance)
+    public function removeDangerousSubstance(DangerousSubstance $dangerousSubstance)
     {
-        $this->vrDangerousSubstanceDangerousSubstance->removeElement($vrDangerousSubstanceDangerousSubstance);
+        $this->dangerousSubstances->removeElement($dangerousSubstance);
     }
 
     /**
-     * Get vrDangerousSubstanceDangerousSubstance
+     * Get DangerousSubstance
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getVrDangerousSubstanceDangerousSubstance()
+    public function getDangerousSubstances()
     {
-        return $this->vrDangerousSubstanceDangerousSubstance;
+        return $this->dangerousSubstances;
     }
 
     /**
