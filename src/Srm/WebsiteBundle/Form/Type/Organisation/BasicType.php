@@ -13,24 +13,24 @@ class BasicType extends AbstractType
         $builder
             ->add(
                 'label', 'text', array(
-                    'label' => 'form.organisation.basic.label',
+                    'label' => 'organisation.form.basic.label',
                     'attr'  => array('autofocus' => 'autofocus')
                 )
             )
             ->add('address', 'srm_address')
             ->add(
                 'identificationCode', 'text', array(
-                    'label'     => 'form.organisation.basic.identification_code',
+                    'label'     => 'organisation.form.basic.identification_code',
                     'read_only' => true
                 )
             )
-            ->add('slogan1', 'text', array('label' => 'form.organisation.basic.slogan1'))
-            ->add('slogan2', 'text', array('label' => 'form.organisation.basic.slogan2'))
-            ->add('slogan3', 'text', array('label' => 'form.organisation.basic.slogan3'))
+            ->add('slogan1', 'text', array('label' => 'organisation.form.basic.slogan1'))
+            ->add('slogan2', 'text', array('label' => 'organisation.form.basic.slogan2'))
+            ->add('slogan3', 'text', array('label' => 'organisation.form.basic.slogan3'))
 
             ->add(
                 'logo', 'file', array(
-                    'label'    => 'form.organisation.basic.logo',
+                    'label'    => 'organisation.form.basic.logo',
                     'required' => false
                 )
             )

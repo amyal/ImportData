@@ -14,8 +14,8 @@ class CityType extends AbstractType
     {
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\City',
-            'empty_value'   => 'form.address.city.choice',
-            'label'         => 'form.address.city',
+            'empty_value'   => 'address.form.city.choice',
+            'label'         => 'address.form.city',
             'property'      => 'label',
             'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {

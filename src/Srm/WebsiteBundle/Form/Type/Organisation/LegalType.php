@@ -13,23 +13,23 @@ class LegalType extends AbstractType
         $builder
             ->add(
                 'label', 'text', array(
-                    'label' => 'form.organisation.legal.label',
+                    'label' => 'organisation.form.legal.label',
                     'attr'  => array('autofocus' => 'autofocus')
                 )
             )
             ->add(
                 'natureCapital', 'text', array(
-                    'label' => 'form.organisation.legal.nature_capital',
+                    'label' => 'organisation.form.legal.nature_capital',
                 )
             )
             ->add(
                 'category', 'text', array(
-                    'label' => 'form.organisation.legal.category',
+                    'label' => 'organisation.form.legal.category',
                 )
             )
             ->add(
                 'registrationDate', 'date', array(
-                    'label' => 'form.organisation.legal.registration_date',
+                    'label' => 'organisation.form.legal.registration_date',
                 )
             )
             ->add('save', 'submit', array('label' => 'navigation.button.save'))

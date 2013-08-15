@@ -14,8 +14,8 @@ class CountryType extends AbstractType
     {
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\Country',
-            'empty_value'   => 'form.address.country.choice',
-            'label'         => 'form.address.country',
+            'empty_value'   => 'address.form.country.choice',
+            'label'         => 'address.form.country',
             'property'      => 'label',
             'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
