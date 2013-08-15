@@ -1,0 +1,11 @@
+srm_website_sites_list:
+    path:       /sites/{organisationId}
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:list"
+
+srm_website_sites_add:
+    path:       /sites/{organisationId}/add
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:add"

@@ -1,0 +1,17 @@
+srm_website_organisation_show:
+    path:       /organisations/{identificationCode}
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Organisations:show"
+
+srm_website_organisation_basic:
+    path:       /organisations/{identificationCode}/basic
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Organisations:basic"
+
+srm_website_organisation_legal:
+    path:       /organisations/{organisationId}/legal
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Organisations:legal"
