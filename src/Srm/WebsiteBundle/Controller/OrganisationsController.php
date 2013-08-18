@@ -21,7 +21,7 @@ class OrganisationsController extends Controller
         ));
     }
 
-    public function basicAction(Organisation $organisation)
+    public function basicFormAction(Organisation $organisation)
     {
         $form = $this->createForm('srm_organisation_basic', $organisation, array(
             'action' => $this->generateUrl('srm_website_organisation_basic', array('identificationCode' => $organisation->getIdentificationCode())),
@@ -58,7 +58,7 @@ class OrganisationsController extends Controller
         )));
     }
 
-    public function legalAction(Organisation $organisation)
+    public function legalFormAction(Organisation $organisation)
     {
         if (null === $legalForm = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneByOrganisation($organisation)) {
             throw new \Exception(sprintf("Aucune information légale pour l'organisation [%s]", $organisation->getIdentificationCode()));

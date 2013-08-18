@@ -8,10 +8,12 @@ srm_website_organisation_basic:
     path:       /organisations/{identificationCode}/basic
     methods:    [GET,POST]
     defaults:
-        _controller:    "SrmWebsiteBundle:Organisations:basic"
+        _controller:    "SrmWebsiteBundle:Organisations:basicForm"
 
 srm_website_organisation_legal:
     path:       /organisations/{organisationId}/legal
     methods:    [GET,POST]
     defaults:
-        _controller:    "SrmWebsiteBundle:Organisations:legal"
+        _controller:    "SrmWebsiteBundle:Organisations:legalForm"
+    requirements:
+        organisationId: \d+
