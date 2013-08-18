@@ -2,14 +2,14 @@
 
 {% block content %}
     <fieldset>
-        <legend>{{ 'organisation.form.basic.title'|trans }}</legend>
+        <legend>{{ 'organisation.basic.title'|trans }}</legend>
 
         <ul>
             <li style="list-style-type:none">
                 {{ 'organisation.form.basic.label'|trans }} : {{ organisation.label }}
             </li>
             <li style="list-style-type:none">
-                {{ 'address.form.label'|trans }} : {{ organisation.address.label }}
+                {{ 'organisation.basic.address'|trans }} : {{ organisation.address.label }}
             </li>
             <li style="list-style-type:none">
                 {{ 'address.form.zip'|trans }} : {{ organisation.address.zip.code }}
@@ -40,7 +40,7 @@
     </fieldset>
 
     <fieldset>
-        <legend>{{ 'organisation.form.legal.title'|trans }}</legend>
+        <legend>{{ 'organisation.legal.title'|trans }}</legend>
 
         <ul>
             <li style="list-style-type:none">

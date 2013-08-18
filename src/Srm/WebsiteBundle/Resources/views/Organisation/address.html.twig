@@ -4,4 +4,20 @@
     {{ form_errors(address.label) }}
 </li>
 
-{{ include('SrmWebsiteBundle:Organisation:zip.html.twig', { zip: address.zip }, with_context = false) }}
+<li style="list-style-type:none">
+    {{ form_label( address.zip.code) }}
+    {{ form_widget(address.zip.code) }}
+    {{ form_errors(address.zip.code) }}
+</li>
+
+<li style="list-style-type:none">
+    {{ form_label( address.zip.city) }}
+    {{ form_widget(address.zip.city) }}
+    {{ form_errors(address.zip.city) }}
+</li>
+
+<li style="list-style-type:none">
+    {{ form_label( address.zip.country) }}
+    {{ form_widget(address.zip.country) }}
+    {{ form_errors(address.zip.country) }}
+</li>

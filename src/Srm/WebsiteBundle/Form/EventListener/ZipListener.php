@@ -7,19 +7,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormFactoryInterface;
 
 use Srm\CoreBundle\Entity\Country;
 use Srm\CoreBundle\Entity\Zip;
 
 class ZipListener implements EventSubscriberInterface
 {
-    private $factory;
     private $zipRepo;
 
-    public function __construct(FormFactoryInterface $factory, EntityRepository $zipRepo)
+    public function __construct(EntityRepository $zipRepo)
     {
-        $this->factory = $factory;
         $this->zipRepo = $zipRepo;
     }
 
@@ -33,17 +30,12 @@ class ZipListener implements EventSubscriberInterface
 
     public function preSetData(FormEvent $event)
     {
-        $data = $event->getData();
-        $form = $event->getForm();
-
-        $form->add($this->factory->createNamed('city',    'srm_city',    null, array('auto_initialize' => false)));
-        $form->add($this->factory->createNamed('country', 'srm_country', null, array('auto_initialize' => false)));
-
-        if (null === $data) {
+        if (null === $data = $event->getData()) {
             return;
         }
 
         if ($data instanceof Zip) {
+            $form = $event->getForm();
             $form->get('city')->setData($data->getCity());
             $form->get('country')->setData($data->getCity()->getCountry());
         }
