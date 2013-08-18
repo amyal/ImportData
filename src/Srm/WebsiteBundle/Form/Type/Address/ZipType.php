@@ -20,7 +20,9 @@ class ZipType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('code', 'text', array('label' => 'address.form.zip'))
+            ->add('code',    'text', array('label' => 'address.form.zip'))
+            ->add('city',    'srm_city')
+            ->add('country', 'srm_country')
         ;
 
         $builder->addEventSubscriber($this->zipListener);

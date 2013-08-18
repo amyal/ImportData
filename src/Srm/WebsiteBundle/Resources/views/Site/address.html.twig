@@ -1,0 +1,14 @@
+<li style="list-style-type:none">
+    {{ form_widget(address.label, { attr: { 'placeholder': 'address.form.label'|trans } }) }}
+    {{ form_errors(address.label) }}
+</li>
+
+<li style="list-style-type:none">
+    {{ form_widget(address.zip.code, { attr: { 'placeholder': 'address.form.zip'|trans } }) }}
+    {{ form_errors(address.zip.code) }}
+</li>
+
+<li style="list-style-type:none">
+    {{ form_widget(address.zip.country, { attr: { 'placeholder': 'address.form.country'|trans } }) }}
+    {{ form_errors(address.zip.country) }}
+</li>

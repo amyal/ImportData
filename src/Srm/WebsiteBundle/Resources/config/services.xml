@@ -5,6 +5,6 @@
 
     <imports>
         <import resource="services/converters.xml" />
-        <import resource="services/form.xml" />
+        <import resource="services/form_types.xml" />
     </imports>
 </container>

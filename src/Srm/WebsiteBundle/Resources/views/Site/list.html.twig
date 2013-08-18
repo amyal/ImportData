@@ -5,7 +5,7 @@
         <table>
             <thead>
                 <tr>
-                    <td>{{ 'sites.title'|trans }}</td>
+                    <td><h2>{{ 'sites.title'|trans }}</h2></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -28,11 +28,15 @@
                     <tr>
                         <td>{{ site.label }}</td>
                         <td>{{ site.label }}</td>
-                        <td>{{ site.typeSite }}</td>
-                        <td>{{ site.address.zip.city.country }}</td>
+                        <td>{{ site.typeSite.label }}</td>
+                        <td>{{ site.address.zip.city.country.label }}</td>
                         <td>
                             {% if site.dangerousSubstances %}
-                                {{ site.dangerousSubstances|join(', ') }}
+                                {% set substancesStr = [] %}
+                                {% for substance in site.dangerousSubstances %}
+                                    {% set substancesStr = substancesStr|merge([substance.label]) %}
+                                {% endfor %}
+                                {{ substancesStr|join(', ') }}
                             {% else %}
                                 {{ 'sites.no_dangerous_substances'|trans }}
                             {% endif %}

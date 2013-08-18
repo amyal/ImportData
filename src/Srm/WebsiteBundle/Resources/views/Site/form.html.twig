@@ -1,0 +1,38 @@
+{% extends "SrmWebsiteBundle::layout.html.twig" %}
+
+{% block content %}
+    <div>
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <ul>
+                <li style="list-style-type:none">
+                    {{ form_widget(form.label) }}
+                    {{ form_errors(form.label) }}
+                </li>
+                <li style="list-style-type:none">
+                    {{ form_widget(form.typeSite) }}
+                    {{ form_errors(form.typeSite) }}
+                </li>
+
+                {{ include('SrmWebsiteBundle:Site:address.html.twig', { address: form.address }, with_context = false) }}
+
+                <li style="list-style-type:none">
+                    <fieldset>
+                        <legend>{{ 'sites.form.dangerous_substances'|trans }}</legend>
+                        {{ form_widget(form.dangerousSubstances) }}
+                        {{ form_errors(form.dangerousSubstances) }}
+                    </fieldset>
+                </li>
+            </ul>
+
+            {{ form_widget(form.save) }}
+
+            {{ form_widget(form._token) }}
+        </form>
+    </div>
+
+    <form action="{{ path('srm_website_sites_list', {'organisationId': organisationId}) }}">
+        <button type="submit">{{ 'navigation.button.cancel'|trans }}</button>
+    </form>
+{% endblock %}

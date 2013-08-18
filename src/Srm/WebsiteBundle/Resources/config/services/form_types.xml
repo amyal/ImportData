@@ -5,28 +5,32 @@
 
     <parameters>
         <parameter key="srm_website.form.type.organisation.basic.class">Srm\WebsiteBundle\Form\Type\Organisation\BasicType</parameter>
+        <parameter key="srm_website.form.type.organisation.legal.class">Srm\WebsiteBundle\Form\Type\Organisation\LegalType</parameter>
         <parameter key="srm_website.form.type.address.class">Srm\WebsiteBundle\Form\Type\Address\AddressType</parameter>
         <parameter key="srm_website.form.type.address.zip.class">Srm\WebsiteBundle\Form\Type\Address\ZipType</parameter>
         <parameter key="srm_website.form.type.address.city.class">Srm\WebsiteBundle\Form\Type\Address\CityType</parameter>
         <parameter key="srm_website.form.type.address.country.class">Srm\WebsiteBundle\Form\Type\Address\CountryType</parameter>
-        <parameter key="srm_website.form.type.organisation.legal.class">Srm\WebsiteBundle\Form\Type\Organisation\LegalType</parameter>
+        <parameter key="srm_website.form.type.site.class">Srm\WebsiteBundle\Form\Type\Site\SiteType</parameter>
+        <parameter key="srm_website.form.type.type_site.class">Srm\WebsiteBundle\Form\Type\Site\TypeSiteType</parameter>
+        <parameter key="srm_website.form.type.dangerous_substance.class">Srm\WebsiteBundle\Form\Type\Site\DangerousSubstanceType</parameter>
     </parameters>
 
     <services>
         <service id="srm_website.form.type.organisation_basic" class="%srm_website.form.type.organisation.basic.class%">
             <tag name="form.type" alias="srm_organisation_basic" />
         </service>
+        <service id="srm_website.form.type.organisation_legal" class="%srm_website.form.type.organisation.legal.class%">
+            <tag name="form.type" alias="srm_organisation_legal" />
+        </service>
 
         <service id="srm_website.form.type.address" class="%srm_website.form.type.address.class%">
             <tag name="form.type" alias="srm_address" />
         </service>
-
         <service id="srm_website.form.type.address_zip" class="%srm_website.form.type.address.zip.class%">
             <argument type="service" id="srm_website.form.zip_listener" />
             <tag name="form.type" alias="srm_zip" />
         </service>
         <service id="srm_website.form.zip_listener" class="Srm\WebsiteBundle\Form\EventListener\ZipListener" public="false">
-            <argument type="service" id="form.factory" />
             <argument type="service">
                 <service class="Doctrine\ORM\EntityRepository"
                     factory-service="doctrine.orm.entity_manager"
@@ -36,18 +40,21 @@
                 </service>
             </argument>
         </service>
-
         <service id="srm_website.form.type.address_city" class="%srm_website.form.type.address.city.class%">
             <tag name="form.type" alias="srm_city" />
         </service>
-
         <service id="srm_website.form.type.address_country" class="%srm_website.form.type.address.country.class%">
             <tag name="form.type" alias="srm_country" />
         </service>
 
-
-        <service id="srm_website.form.type.organisation_legal" class="%srm_website.form.type.organisation.legal.class%">
-            <tag name="form.type" alias="srm_organisation_legal" />
+        <service id="srm_website.form.type.site" class="%srm_website.form.type.site.class%">
+            <tag name="form.type" alias="srm_site" />
+        </service>
+        <service id="srm_website.form.type.type_site" class="%srm_website.form.type.type_site.class%">
+            <tag name="form.type" alias="srm_type_site" />
+        </service>
+        <service id="srm_website.form.type.dangerous_substance" class="%srm_website.form.type.dangerous_substance.class%">
+            <tag name="form.type" alias="srm_dangerous_substance" />
         </service>
     </services>
 </container>

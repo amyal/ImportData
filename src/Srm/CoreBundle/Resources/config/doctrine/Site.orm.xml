@@ -5,10 +5,10 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
-    <field name="phone" type="integer" column="PHONE" nullable="false"/>
-    <field name="mail" type="string" column="MAIL" length="150" nullable="false"/>
+    <field name="phone" type="integer" column="PHONE" nullable="true"/>
+    <field name="mail" type="string" column="MAIL" length="150" nullable="true"/>
     <field name="fax" type="integer" column="FAX" nullable="true"/>
-    <field name="importance" type="boolean" column="IMPORTANCE" nullable="false"/>
+    <field name="importance" type="boolean" column="IMPORTANCE" nullable="true"/>
     <field name="map" type="string" column="MAP" length="255" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
@@ -33,6 +33,10 @@
       <join-columns>
         <join-column name="ADDRESS_ID" referenced-column-name="ADDRESS_ID"/>
       </join-columns>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
     </many-to-one>
     <many-to-one field="organisation" target-entity="Organisation">
       <join-columns>

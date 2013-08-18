@@ -13,7 +13,6 @@ class AddressType extends AbstractType
     {
         $builder
             ->add('label', 'text', array('label' => 'address.form.label'))
-
             ->add('zip', 'srm_zip')
         ;
     }

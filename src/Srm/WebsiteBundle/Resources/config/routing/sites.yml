@@ -1,11 +1,19 @@
 srm_website_sites_list:
-    path:       /sites/{organisationId}
+    path:       /organisations/{organisationId}/sites
     methods:    [GET]
     defaults:
         _controller:    "SrmWebsiteBundle:Sites:list"
 
 srm_website_sites_add:
-    path:       /sites/{organisationId}/add
-    methods:    [GET]
+    path:       /organisations/{organisationId}/sites/add
+    methods:    [GET,POST]
     defaults:
-        _controller:    "SrmWebsiteBundle:Sites:add"
+        _controller:    "SrmWebsiteBundle:Sites:form"
+
+srm_website_sites_edit:
+    path:       /organisations/{organisationId}/sites/{siteId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:form"
+    requirements:
+        siteId: \d+
