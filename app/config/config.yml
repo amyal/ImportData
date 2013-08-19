@@ -23,9 +23,14 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-#    form:
-#        resources:
-#            - 'SrmWebsiteBundle:Form:fields.html.twig'
+    form:
+        resources: [ 'SrmWebsiteBundle::form.html.twig' ]
+
+assetic:
+    debug: %kernel.debug%
+    use_controller: false
+    filters:
+        cssrewrite: ~
 
 doctrine:
     dbal:

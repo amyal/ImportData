@@ -1,33 +1,35 @@
-{% extends "SrmWebsiteBundle::layout.html.twig" %}
+{% extends '@SrmWebsite/layout.html.twig' %}
 
 {% block content %}
     <div>
-        <table>
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <td><h2>{{ 'sites.title'|trans }}</h2></td>
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
                     <td>
-                        <form action="{{ path('srm_website_sites_add', {'organisationId': organisation.organisationId}) }}">
-                            <button type="submit">{{ 'navigation.button.add'|trans }}</button>
+                        <form action="{{ path('srm_website_sites_add', { 'organisationId': organisation.organisationId }) }}">
+                            <button type="submit" class="btn">{{ 'navigation.button.add'|trans }}</button>
                         </form>
                     </td>
                 </tr>
                 <tr>
                     <td>{{ 'sites.table.header.name'|trans }}</td>
-                    <td>{{ 'sites.table.header.code'|trans }}</td>
+                    <td>{{ 'sites.table.header.organisation'|trans }}</td>
                     <td>{{ 'sites.table.header.type'|trans }}</td>
                     <td>{{ 'sites.table.header.country'|trans }}</td>
                     <td>{{ 'sites.table.header.substances'|trans }}</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
                 {% for site in sites %}
                     <tr>
                         <td>{{ site.label }}</td>
-                        <td>{{ site.label }}</td>
+                        <td>{{ site.organisation.label }}</td>
                         <td>{{ site.typeSite.label }}</td>
                         <td>{{ site.address.zip.city.country.label }}</td>
                         <td>
@@ -40,6 +42,11 @@
                             {% else %}
                                 {{ 'sites.no_dangerous_substances'|trans }}
                             {% endif %}
+                        </td>
+                        <td>
+                            <form action="{{ path('srm_website_sites_edit', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}">
+                                <button type="submit" class="btn">{{ 'navigation.button.edit'|trans }}</button>
+                            </form>
                         </td>
                     </tr>
                 {% else %}

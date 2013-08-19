@@ -1,61 +1,61 @@
-{% extends "SrmWebsiteBundle::layout.html.twig" %}
+{% extends '@SrmWebsite/layout.html.twig' %}
 
 {% block content %}
     <fieldset>
         <legend>{{ 'organisation.basic.title'|trans }}</legend>
 
-        <ul>
-            <li style="list-style-type:none">
+        <ul class="unstyled">
+            <li>
                 {{ 'organisation.form.basic.label'|trans }} : {{ organisation.label }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'organisation.basic.address'|trans }} : {{ organisation.address.label }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'address.form.zip'|trans }} : {{ organisation.address.zip.code }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'address.form.city'|trans }} : {{ organisation.address.zip.city.label }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'address.form.country'|trans }} : {{ organisation.address.zip.city.country.label }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'organisation.form.basic.identification_code'|trans }} : {{ organisation.identificationCode }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'organisation.form.basic.slogan1'|trans }} : {{ organisation.slogan1 }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'organisation.form.basic.slogan2'|trans }} : {{ organisation.slogan2 }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'organisation.form.basic.slogan3'|trans }} : {{ organisation.slogan3 }}
             </li>
         </ul>
 
         <form action="{{ path('srm_website_organisation_basic', {'identificationCode': organisation.identificationCode}) }}">
-            <button type="submit">{{ 'navigation.button.edit'|trans }}</button>
+            <button type="submit" class="btn">{{ 'navigation.button.edit'|trans }}</button>
         </form>
     </fieldset>
 
     <fieldset>
         <legend>{{ 'organisation.legal.title'|trans }}</legend>
 
-        <ul>
-            <li style="list-style-type:none">
+        <ul class="unstyled">
+            <li>
                 {{ 'organisation.form.legal.label'|trans }} : {{ legalForm.label }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'organisation.form.legal.nature_capital'|trans }} : {{ legalForm.natureCapital }}
             </li>
-            <li style="list-style-type:none">
+            <li>
                 {{ 'organisation.form.legal.nature_capital'|trans }} : {{ legalForm.registrationDate }}
             </li>
         </ul>
 
         <form action="{{ path('srm_website_organisation_legal', {'organisationId': organisation.organisationId}) }}">
-            <button type="submit">{{ 'navigation.button.edit'|trans }}</button>
+            <button type="submit" class="btn">{{ 'navigation.button.edit'|trans }}</button>
         </form>
     </fieldset>
 {% endblock %}

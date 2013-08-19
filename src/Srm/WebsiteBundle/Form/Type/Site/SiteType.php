@@ -23,7 +23,7 @@ class SiteType extends AbstractType
             ->add('typeSite', 'srm_type_site')
             ->add('address', 'srm_address')
             ->add('dangerousSubstances', 'srm_dangerous_substance')
-            ->add('save', 'submit', array('label' => 'navigation.button.save'))
+            ->add('save', 'submit', array('attr' => array('class' => 'btn'), 'label' => 'navigation.button.save'))
         ;
     }
 
