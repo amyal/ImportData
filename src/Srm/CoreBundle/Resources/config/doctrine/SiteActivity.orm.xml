@@ -10,6 +10,6 @@
         <join-column name="TYPE_SITE_ID" referenced-column-name="TYPE_SITE_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="site" target-entity="Site" mapped-by="siteActivity"/>
+    <many-to-many field="site" target-entity="Site" mapped-by="siteActivities"/>
   </entity>
 </doctrine-mapping>

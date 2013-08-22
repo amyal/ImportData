@@ -11,7 +11,7 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-many field="site" target-entity="Site" mapped-by="department"/>
+    <many-to-many field="sites" target-entity="Site" mapped-by="departments"/>
     <many-to-many field="pole" target-entity="Pole" mapped-by="department"/>
     <many-to-many field="contact" target-entity="Contact" mapped-by="department"/>
     <many-to-many field="subDepartment" target-entity="SubDepartment" inversed-by="department">

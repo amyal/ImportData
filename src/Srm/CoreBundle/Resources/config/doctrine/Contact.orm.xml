@@ -37,7 +37,7 @@
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="site" target-entity="Site" mapped-by="contact"/>
+    <many-to-many field="site" target-entity="Site" mapped-by="contacts"/>
     <many-to-many field="subDepartment" target-entity="SubDepartment" inversed-by="contact">
       <join-table name="vj_contact_sub_department">
         <join-columns>
