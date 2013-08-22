@@ -1,0 +1,47 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block content %}
+    <div>
+        <div>
+            <form action="{{ path('srm_website_department_add', {'identificationCode': organisation.identificationCode}) }}">
+                <button type="submit" class="btn">{{ 'button.edit'|trans }}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block content %}
+    <div>
+        <table class="table table-hover">
+            <caption>
+                <div class="text-left">{{ 'departments.title'|trans }}</div>
+                <div class="text-right">
+                    <a href="{{ path('srm_website_departments_add', {'organisationId': organisation.organisationId}) }}" class="btn">{{ 'button.add'|trans }}</a>
+                </div>
+            </caption>
+            <thead>
+                <tr>
+                    <td><h2>{{ 'departments.title'|trans }}</h2></td>
+                    <td>
+                        <a href="{{ path('srm_website_departments_add', {'organisationId': organisation.organisationId}) }}" class="btn">{{ 'button.add'|trans }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ 'sites.list.name'|trans }}</td>
+                    <td>{{ 'sites.list.substances'|trans }}</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for department in departments %}
+                    <tr>
+                        <td colspan="2">{{ department.label }}</td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="5">{{ 'departments.empty_list'|trans }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

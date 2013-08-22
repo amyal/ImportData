@@ -50,7 +50,7 @@ class Department
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $site;
+    private $sites;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -72,7 +72,7 @@ class Department
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
         $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
@@ -257,7 +257,7 @@ class Department
      */
     public function addSite(Site $site)
     {
-        $this->site[] = $site;
+        $this->sites[] = $site;
 
         return $this;
     }
@@ -269,17 +269,17 @@ class Department
      */
     public function removeSite(Site $site)
     {
-        $this->site->removeElement($site);
+        $this->sites->removeElement($site);
     }
 
     /**
-     * Get site
+     * Get sites
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSite()
+    public function getSites()
     {
-        return $this->site;
+        return $this->sites;
     }
 
     /**

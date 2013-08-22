@@ -21,5 +21,9 @@
         <service id="srm_website.converter.site" class="Srm\WebsiteBundle\Request\ParamConverter\SiteParamConverter">
             <tag name="request.param_converter" converter="site" priority="8" />
         </service>
+
+        <service id="srm_website.converter.department" class="Srm\WebsiteBundle\Request\ParamConverter\DepartmentParamConverter">
+            <tag name="request.param_converter" converter="department" priority="7" />
+        </service>
     </services>
 </container>
