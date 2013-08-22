@@ -6,50 +6,24 @@
             {{ form_errors(form) }}
 
             <ul class="unstyled">
-                <li>
-                    {{ form_label( form.label) }}
-                    {{ form_widget(form.label) }}
-                    {{ form_errors(form.label) }}
-                </li>
+                <li>{{ form_row(form.label) }}</li>
 
-                {{ include('SrmWebsiteBundle:Organisation:address.html.twig', { address: form.address }, with_context = false) }}
+                <li>{{ form_row(form.address.label) }}</li>
+                <li>{{ form_row(form.address.zip.code) }}</li>
+                <li>{{ form_row(form.address.zip.city) }}</li>
+                <li>{{ form_row(form.address.zip.country) }}</li>
 
-                <li>
-                    {{ form_label( form.identificationCode) }}
-                    {{ form_widget(form.identificationCode) }}
-                    {{ form_errors(form.identificationCode) }}
-                </li>
-                <li>
-                    {{ form_label( form.slogan1) }}
-                    {{ form_widget(form.slogan1) }}
-                    {{ form_errors(form.slogan1) }}
-                </li>
-                <li>
-                    {{ form_label( form.slogan2) }}
-                    {{ form_widget(form.slogan2) }}
-                    {{ form_errors(form.slogan2) }}
-                </li>
-                <li>
-                    {{ form_label( form.slogan3) }}
-                    {{ form_widget(form.slogan3) }}
-                    {{ form_errors(form.slogan3) }}
-                </li>
-                <li>
-                    {{ form_label( form.logo) }}
-                    {{ form_widget(form.logo) }}
-                    {{ form_errors(form.logo) }}
-                </li>
+                <li>{{ form_row(form.identificationCode) }}</li>
+                <li>{{ form_row(form.slogan1) }}</li>
+                <li>{{ form_row(form.slogan2) }}</li>
+                <li>{{ form_row(form.slogan3) }}</li>
+                <li>{{ form_row(form.logo) }}</li>
             </ul>
 
-            <div class="control-group">
-                <div class="controls">
-                    {{ form_widget(form.save) }}
-                </div>
-            </div>
+            {{ include('SrmWebsiteBundle:Partials:_actions.html.twig', {
+                save: form.save,
+                url: path('srm_website_organisation_show', {'identificationCode': identificationCode})
+            }, with_context = false) }}
         {{ form_end(form) }}
     </div>
-
-    <form action="{{ path('srm_website_organisation_show', {'identificationCode': form.vars.value.identificationCode}) }}">
-        <button type="submit" class="btn">{{ 'navigation.button.cancel'|trans }}</button>
-    </form>
 {% endblock %}

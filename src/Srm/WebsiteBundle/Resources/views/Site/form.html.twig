@@ -6,37 +6,77 @@
             {{ form_errors(form) }}
 
             <ul class="unstyled">
+                <li>{{ form_row(form.label) }}</li>
+                <li>{{ form_row(form.typeSite) }}</li>
                 <li>
-                    {{ form_widget(form.label) }}
-                    {{ form_errors(form.label) }}
-                </li>
-                <li>
-                    {{ form_widget(form.typeSite) }}
-                    {{ form_errors(form.typeSite) }}
-                </li>
+                    {{ form_errors(form.siteActivities) }}
 
-                {{ include('SrmWebsiteBundle:Site:address.html.twig', { address: form.address }, with_context = false) }}
-
-                <li>
                     <fieldset>
-                        <legend>{{ 'sites.form.dangerous_substances'|trans }}</legend>
-                        {{ form_widget(form.dangerousSubstances) }}
-                        {{ form_errors(form.dangerousSubstances) }}
+                        <legend>{{ 'sites.list.activities'|trans }}</legend>
+
+                        {% for siteActivity in form.siteActivities %}
+                            <dl>
+                                {% if subActivities[siteActivity.vars.value] is defined %}
+                                    <dt>{{ siteActivity.vars.label }}</dt>
+
+                                    {% for subSiteActivity in form.subSiteActivities %}
+                                        {% if subActivities[siteActivity.vars.value] is defined %}
+                                            {% if subSiteActivity.vars.value in subActivities[siteActivity.vars.value] %}
+                                                <dd>
+                                                    <ul class="inline">
+                                                        <li>{{ form_widget(subSiteActivity) }}</li>
+                                                        <li>{{ form_label(subSiteActivity) }}</li>
+                                                    </ul>
+                                                </dd>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <dt>{{ siteActivity.vars.label }} {{ form_widget(siteActivity) }}</dt>
+                                {% endif %}
+                            </dl>
+                        {% endfor %}
                     </fieldset>
                 </li>
+                <li>{{ form_row(form.contacts) }}</li>
+                <li>
+                    <fieldset>
+                        <legend>{{ 'site.dangerous_substances'|trans }}</legend>
+                        {{ form_errors(form.dangerousSubstances) }}
+
+                        {% for substance in form.dangerousSubstances %}
+                            {% if loop.first %}
+                                <ul class="unstyled">
+                            {% endif %}
+
+                            <li>
+                                <ul class="inline">
+                                    <li>{{ form_widget(substance) }}</li>
+                                    <li>{{ form_label(substance) }}</li>
+                                </ul>
+                            </li>
+
+                            {% if loop.last %}
+                                </ul>
+                            {% endif %}
+                        {% endfor %}
+                    </fieldset>
+                </li>
+                <li>{{ form_row(form.currency) }}</li>
+                <li>{{ form_row(form.language) }}</li>
+
+                <li>{{ form_row(form.address.label) }}</li>
+                <li>{{ form_row(form.address.zip.code) }}</li>
+                <li>{{ form_row(form.address.zip.city) }}</li>
+                <li>{{ form_row(form.address.zip.country) }}</li>
             </ul>
 
-            <div class="control-group">
-                <div class="controls">
-                    {{ form_widget(form.save) }}
-                </div>
-            </div>
+            {{ include('SrmWebsiteBundle:Partials:_actions.html.twig', {
+                save: form.save,
+                url: path('srm_website_sites_list', {'organisationId': organisationId})
+            }, with_context = false) }}
 
             {{ form_widget(form._token) }}
         </form>
     </div>
-
-    <form action="{{ path('srm_website_sites_list', {'organisationId': organisationId}) }}">
-        <button type="submit" class="btn">{{ 'navigation.button.cancel'|trans }}</button>
-    </form>
 {% endblock %}
