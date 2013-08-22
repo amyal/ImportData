@@ -95,12 +95,12 @@ class Site
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $subSiteActivity;
+    private $subSiteActivities;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $contact;
+    private $contacts;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -110,7 +110,7 @@ class Site
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $department;
+    private $departments;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -120,7 +120,7 @@ class Site
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $siteActivity;
+    private $siteActivities;
 
     /**
      * Constructor
@@ -128,12 +128,12 @@ class Site
     public function __construct()
     {
         $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->subSiteActivity = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subSiteActivities = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dangerousSubstances = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->siteActivity = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->siteActivities = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -532,7 +532,7 @@ class Site
      */
     public function addSubSiteActivity(SubSiteActivity $subSiteActivity)
     {
-        $this->subSiteActivity[] = $subSiteActivity;
+        $this->subSiteActivities[] = $subSiteActivity;
 
         return $this;
     }
@@ -544,17 +544,17 @@ class Site
      */
     public function removeSubSiteActivity(SubSiteActivity $subSiteActivity)
     {
-        $this->subSiteActivity->removeElement($subSiteActivity);
+        $this->subSiteActivities->removeElement($subSiteActivity);
     }
 
     /**
-     * Get subSiteActivity
+     * Get subSiteActivities
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSubSiteActivity()
+    public function getSubSiteActivities()
     {
-        return $this->subSiteActivity;
+        return $this->subSiteActivities;
     }
 
     /**
@@ -565,7 +565,7 @@ class Site
      */
     public function addContact(Contact $contact)
     {
-        $this->contact[] = $contact;
+        $this->contacts[] = $contact;
 
         return $this;
     }
@@ -577,17 +577,17 @@ class Site
      */
     public function removeContact(Contact $contact)
     {
-        $this->contact->removeElement($contact);
+        $this->contacts->removeElement($contact);
     }
 
     /**
-     * Get contact
+     * Get contacts
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getContact()
+    public function getContacts()
     {
-        return $this->contact;
+        return $this->contacts;
     }
 
     /**
@@ -631,7 +631,7 @@ class Site
      */
     public function addDepartment(Department $department)
     {
-        $this->department[] = $department;
+        $this->departments[] = $department;
 
         return $this;
     }
@@ -643,7 +643,7 @@ class Site
      */
     public function removeDepartment(Department $department)
     {
-        $this->department->removeElement($department);
+        $this->departments->removeElement($department);
     }
 
     /**
@@ -651,9 +651,9 @@ class Site
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDepartment()
+    public function getDepartments()
     {
-        return $this->department;
+        return $this->departments;
     }
 
     /**
@@ -697,7 +697,7 @@ class Site
      */
     public function addSiteActivity(SiteActivity $siteActivity)
     {
-        $this->siteActivity[] = $siteActivity;
+        $this->siteActivities[] = $siteActivity;
 
         return $this;
     }
@@ -709,16 +709,16 @@ class Site
      */
     public function removeSiteActivity(SiteActivity $siteActivity)
     {
-        $this->siteActivity->removeElement($siteActivity);
+        $this->siteActivities->removeElement($siteActivity);
     }
 
     /**
-     * Get siteActivity
+     * Get siteActivities
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSiteActivity()
+    public function getSiteActivities()
     {
-        return $this->siteActivity;
+        return $this->siteActivities;
     }
 }
