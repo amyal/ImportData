@@ -1,37 +1,56 @@
+{% block form_start %}
+    {% spaceless %}
+        {% set attr = attr|merge({class: (attr['class'] is defined ? attr['class'] ~ ' ' : '') ~ 'form-horizontal'}) %}
+
+        {% set method = method|upper %}
+        {% if method in ["GET", "POST"] %}
+            {% set form_method = method %}
+        {% else %}
+            {% set form_method = "POST" %}
+        {% endif %}
+        <form method="{{ form_method|lower }}" action="{{ action }}"{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}{% if multipart %} enctype="multipart/form-data"{% endif %}>
+        {% if form_method != method %}
+            <input type="hidden" name="_method" value="{{ method }}" />
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_start %}
+
 {% block form_row %}
-{% spaceless %}
-    <div id="{{ id }}_field" class="control-group{% if errors|length %} error{% endif %}">
-        {{ form_label(form, label|default(null)) }}
-        <div class="controls">
-            {{ form_widget(form, {'attr': field_attr|default({})}) }}
-            {{ form_errors(form) }}
+    {% spaceless %}
+        <div class="control-group{% if errors|length %} error{% endif %}">
+            {{ form_label(form, label|default(null)) }}
+            <div class="controls">
+                {{ form_widget(form, {'attr': field_attr|default({})}) }}
+                {{ form_errors(form) }}
+            </div>
         </div>
-    </div>
-{% endspaceless %}
+    {% endspaceless %}
 {% endblock form_row %}
 
 {% block form_label %}
-{% spaceless %}
-    {% if not compound %}
-        {% set label_attr = label_attr|merge({'for': id}) %}
-    {% endif %}
-    {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' control-label')|trim}) %}
-    {% if required %}
-        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
-    {% endif %}
-    {% if label is empty %}
-        {% set label = name|humanize %}
-    {% endif %}
-    <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
-{% endspaceless %}
+    {% spaceless %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if 'checkbox' not in form.vars.block_prefixes %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' control-label')|trim}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
+    {% endspaceless %}
 {% endblock form_label %}
 
 {% block form_errors %}
-{% spaceless %}
-    {% if errors|length > 0 %}
-        {% for error in errors %}
-            <div><span class="help-inline">{{ error.messageTemplate|trans(error.messageParameters, 'validators') }}</span></div>
-        {% endfor %}
-    {% endif %}
-{% endspaceless %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            {% for error in errors %}
+                <div><span class="help-inline">{{ error.messageTemplate|trans(error.messageParameters, 'validators') }}</span></div>
+            {% endfor %}
+        {% endif %}
+    {% endspaceless %}
 {% endblock form_errors %}

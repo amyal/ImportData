@@ -4,17 +4,23 @@
         <title>{% block title %}SRM{% endblock %}</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% block stylesheets %}
-            <link href="{{ asset('bundles/srmwebsite/css/main.css') }}" rel="stylesheet" />
-            <link href="{{ asset('bundles/srmwebsite/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-        {% endblock %}
+
+        {% stylesheets filter="cssrewrite" combine=true output="css/all.css"
+            "@SrmWebsiteBundle/Resources/public/vendor/bootstrap/css/bootstrap.min.css"
+            "@SrmWebsiteBundle/Resources/public/css/*"
+        %}
+            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
     </head>
     <body>
         {% block body '' %}
 
-        {% block javascripts %}
-            <script src="{{ asset('bundles/srmwebsite/vendor/jquery-2.0.3.min.js') }}"></script>
-            <script src="{{ asset('bundles/srmwebsite/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-        {% endblock %}
+        {% javascripts combine=true output="js/all.js"
+            "@SrmWebsiteBundle/Resources/public/vendor/jquery-1.10.2.min.js"
+            "@SrmWebsiteBundle/Resources/public/vendor/bootstrap/js/bootstrap.min.js"
+            "@SrmWebsiteBundle/Resources/public/js/*"
+        %}
+            <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
     </body>
 </html>

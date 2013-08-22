@@ -1,7 +1,15 @@
-{% extends "SrmWebsiteBundle::base.html.twig" %}
+{% extends 'SrmWebsiteBundle::base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        {% block content '' %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2">
+                <!--Sidebar content-->
+            </div>
+            <div class="span10">
+                <!--Body content-->
+                {% block content '' %}
+            </div>
+        </div>
     </div>
 {% endblock %}
