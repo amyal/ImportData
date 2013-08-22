@@ -33,13 +33,15 @@ class OrganisationsController extends Controller
 
         if ('GET' === $request->getMethod()) {
             return $this->render('SrmWebsiteBundle:Organisation:basic.html.twig', array(
-                'form' => $form->createView(),
+                'identificationCode' => $organisation->getIdentificationCode(),
+                'form'               => $form->createView(),
             ));
         }
 
         if (false === $form->handleRequest($request)->isValid()) {
             return $this->render('SrmWebsiteBundle:Organisation:basic.html.twig', array(
-                'form' => $form->createView(),
+                'identificationCode' => $organisation->getIdentificationCode(),
+                'form'               => $form->createView(),
             ));
         }
 
