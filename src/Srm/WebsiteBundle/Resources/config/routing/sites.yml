@@ -10,7 +10,23 @@ srm_website_sites_add:
     defaults:
         _controller:    "SrmWebsiteBundle:Sites:form"
 
-srm_website_sites_edit:
+srm_website_site_show:
+    path:       /organisations/{organisationId}/sites/{siteId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:show"
+    requirements:
+        siteId: \d+
+
+srm_website_site_disable:
+    path:       /organisations/{organisationId}/sites/{siteId}
+    methods:    [DELETE]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:disable"
+    requirements:
+        siteId: \d+
+
+srm_website_site_edit:
     path:       /organisations/{organisationId}/sites/{siteId}
     methods:    [GET,POST]
     defaults:

@@ -12,7 +12,12 @@
         <parameter key="srm_website.form.type.address.country.class">Srm\WebsiteBundle\Form\Type\Address\CountryType</parameter>
         <parameter key="srm_website.form.type.site.class">Srm\WebsiteBundle\Form\Type\Site\SiteType</parameter>
         <parameter key="srm_website.form.type.type_site.class">Srm\WebsiteBundle\Form\Type\Site\TypeSiteType</parameter>
+        <parameter key="srm_website.form.type.site_activity.class">Srm\WebsiteBundle\Form\Type\Site\SiteActivityType</parameter>
+        <parameter key="srm_website.form.type.sub_site_activity.class">Srm\WebsiteBundle\Form\Type\Site\SubSiteActivityType</parameter>
+        <parameter key="srm_website.form.type.site_contact.class">Srm\WebsiteBundle\Form\Type\Site\ContactType</parameter>
         <parameter key="srm_website.form.type.dangerous_substance.class">Srm\WebsiteBundle\Form\Type\Site\DangerousSubstanceType</parameter>
+        <parameter key="srm_website.form.type.currency.class">Srm\WebsiteBundle\Form\Type\Site\CurrencyType</parameter>
+        <parameter key="srm_website.form.type.language.class">Srm\WebsiteBundle\Form\Type\Site\LanguageType</parameter>
     </parameters>
 
     <services>
@@ -53,8 +58,23 @@
         <service id="srm_website.form.type.type_site" class="%srm_website.form.type.type_site.class%">
             <tag name="form.type" alias="srm_type_site" />
         </service>
+        <service id="srm_website.form.type.site_activity" class="%srm_website.form.type.site_activity.class%">
+            <tag name="form.type" alias="srm_site_activity" />
+        </service>
+        <service id="srm_website.form.type.sub_site_activity" class="%srm_website.form.type.sub_site_activity.class%">
+            <tag name="form.type" alias="srm_sub_site_activity" />
+        </service>
+        <service id="srm_website.form.type.site_contact" class="%srm_website.form.type.site_contact.class%">
+            <tag name="form.type" alias="srm_site_contact" />
+        </service>
         <service id="srm_website.form.type.dangerous_substance" class="%srm_website.form.type.dangerous_substance.class%">
             <tag name="form.type" alias="srm_dangerous_substance" />
+        </service>
+        <service id="srm_website.form.type.currency" class="%srm_website.form.type.currency.class%">
+            <tag name="form.type" alias="srm_currency" />
+        </service>
+        <service id="srm_website.form.type.language" class="%srm_website.form.type.language.class%">
+            <tag name="form.type" alias="srm_language" />
         </service>
     </services>
 </container>

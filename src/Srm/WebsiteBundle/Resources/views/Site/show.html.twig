@@ -1,0 +1,11 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block content %}
+    <div>
+        <ul class="unstyled">
+            <li>{{ 'site.label'|trans }} : {{ site.label }}</li>
+        </ul>
+
+        <a href="{{ path('srm_website_sites_edit', { 'organisationId': organisationId, 'siteId': site.siteId }) }}" class="btn">{{ 'button.edit'|trans }}</a>
+    </div>
+{% endblock %}

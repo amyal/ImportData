@@ -13,8 +13,28 @@ class SitesController extends Controller
     {
         return $this->render('SrmWebsiteBundle:Site:list.html.twig', array(
             'organisation' => $organisation,
-            'sites'        => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Site')->findByOrganisation($organisation)
+            'sites'        => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Site')->findAllEnabledByOrganisation($organisation),
         ));
+    }
+
+    public function showAction(Organisation $organisation, Site $site)
+    {
+        return $this->render('SrmWebsiteBundle:Site:show.html.twig', array(
+            'organisationId' => $organisation->getOrganisationId(),
+            'site'           => $site,
+        ));
+    }
+
+    public function disableAction(Organisation $organisation, Site $site)
+    {
+        $site->setEnabled(false);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($site);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('srm_website_sites_list', array(
+            'organisationId' => $organisation->getOrganisationId(),
+        )));
     }
 
     public function formAction(Organisation $organisation, Site $site)
@@ -23,7 +43,7 @@ class SitesController extends Controller
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
 
         if (null !== $siteId = $site->getSiteId()) {
-            $formActionRoute = 'srm_website_sites_edit';
+            $formActionRoute = 'srm_website_site_edit';
             $formActionRouteParams['siteId'] = $siteId;
         }
 
@@ -37,15 +57,16 @@ class SitesController extends Controller
 
         if ('GET' === $request->getMethod()) {
             return $this->render('SrmWebsiteBundle:Site:form.html.twig', array(
-                'form'           => $form->createView(),
                 'organisationId' => $organisation->getOrganisationId(),
+                'form'           => $form->createView(),
+                'subActivities'  => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\SubSiteActivity')->findAllGroupedBySiteActivity(),
             ));
         }
 
         if (false === $form->handleRequest($request)->isValid()) {
             return $this->render('SrmWebsiteBundle:Site:form.html.twig', array(
-                'form'           => $form->createView(),
                 'organisationId' => $organisation->getOrganisationId(),
+                'form'           => $form->createView(),
             ));
         }
 

@@ -13,17 +13,41 @@ class SiteType extends AbstractType
         $builder
             ->add(
                 'label', 'text', array(
-                    'label' => 'sites.form.label',
+                    'label' => 'site.label',
                     'attr'  => array(
                         'autofocus'   => 'autofocus',
-                        'placeholder' => 'sites.form.label',
+                        //'placeholder' => 'site.label',
                     )
                 )
             )
             ->add('typeSite', 'srm_type_site')
-            ->add('address', 'srm_address')
+            ->add('siteActivities', 'srm_site_activity')
+            ->add('subSiteActivities', 'srm_sub_site_activity')
+            ->add('contacts', 'srm_site_contact')
             ->add('dangerousSubstances', 'srm_dangerous_substance')
-            ->add('save', 'submit', array('attr' => array('class' => 'btn'), 'label' => 'navigation.button.save'))
+            ->add(
+                'importance', 'choice', array(
+                    'choices' => array()
+                )
+            )
+            ->add('currency', 'srm_currency')
+            ->add('language', 'srm_language')
+            ->add('address', 'srm_address')
+            ->add('phone', 'integer')
+            ->add(
+                'enabled', 'choice', array(
+                    'choices' => array(
+                        'site.enabled',
+                        'site.disabled'
+                    )
+                )
+            )
+            ->add(
+                'save', 'submit', array(
+                    'attr'  => array('class' => 'btn btn-primary'),
+                    'label' => 'button.save'
+                )
+            )
         ;
     }
 
