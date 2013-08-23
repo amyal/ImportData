@@ -8,7 +8,7 @@
     <field name="phone" type="integer" column="PHONE" nullable="true"/>
     <field name="mail" type="string" column="MAIL" length="150" nullable="true"/>
     <field name="fax" type="integer" column="FAX" nullable="true"/>
-    <field name="importance" type="boolean" column="IMPORTANCE" nullable="true"/>
+    <field name="importance" type="string" column="IMPORTANCE" length="50" nullable="true"/>
     <field name="map" type="string" column="MAP" length="255" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
