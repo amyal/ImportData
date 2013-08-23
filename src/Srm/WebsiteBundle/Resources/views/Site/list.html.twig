@@ -6,7 +6,7 @@
             <caption>
                 <div class="text-left"><h3>{{ 'sites.list.title'|trans }}</h3></div>
                 <div class="text-right">
-                    <a href="{{ path('srm_website_sites_add', { 'organisationId': organisation.organisationId }) }}" class="btn">{{ 'button.add'|trans }}</a>
+                    <a href="{{ path('srm_website_sites_add', { 'organisationId': organisation.organisationId }) }}" class="btn" title="{{ 'button.add'|trans }}"><i class="icon-plus"></i> {{ 'button.add'|trans }}</a>
                 </div>
             </caption>
             <thead>
@@ -64,9 +64,13 @@
                             {% endif %}
                         </td>
                         <td>
-                            <a href="{{ path('srm_website_site_show', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn">{{ 'button.show'|trans }}</a>
-                            <a href="{{ path('srm_website_site_edit', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn">{{ 'button.edit'|trans }}</a>
-                            <a href="{{ path('srm_website_site_disable', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn">{{ 'button.delete'|trans }}</a>
+                            <div class="btn-toolbar">
+                                <div class="btn-group">
+                                    <a href="{{ path('srm_website_site_show', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
+                                    <a href="{{ path('srm_website_site_edit', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                    <a href="{{ path('srm_website_site_disable', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 {% else %}
