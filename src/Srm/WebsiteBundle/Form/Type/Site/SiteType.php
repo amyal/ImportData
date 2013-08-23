@@ -23,14 +23,7 @@ class SiteType extends AbstractType
             ->add('subSiteActivities', 'srm_sub_site_activity')
             ->add('contacts', 'srm_site_contact')
             ->add('dangerousSubstances', 'srm_dangerous_substance')
-            ->add(
-                'importance', 'choice', array(
-                    'choices' => array(
-                        'site.not_important',
-                        'site.important',
-                    )
-                )
-            )
+            ->add('importance', 'text', array('label' => 'site.importance'))
             ->add('currency', 'srm_currency', array('required' => true))
             ->add('language', 'srm_language', array('required' => true))
             ->add('address', 'srm_address', array('required' => true))
