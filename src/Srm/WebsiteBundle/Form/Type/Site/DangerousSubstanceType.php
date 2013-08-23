@@ -17,6 +17,7 @@ class DangerousSubstanceType extends AbstractType
             'property'      => 'label',
             'expanded'      => true,
             'multiple'      => true,
+            'label'         => 'site.dangerous_substances',
             'query_builder' => function(EntityRepository $er) {
                 return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC');
             },
