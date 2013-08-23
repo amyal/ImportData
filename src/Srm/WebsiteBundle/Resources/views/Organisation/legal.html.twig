@@ -5,12 +5,10 @@
         {{ form_start(form) }}
             {{ form_errors(form) }}
 
-            <ul class="unstyled">
-                <li>{{ form_row(form.label) }}</li>
-                <li>{{ form_row(form.natureCapital) }}</li>
-                <li>{{ form_row(form.category) }}</li>
-                <li>{{ form_row(form.registrationDate) }}</li>
-            </ul>
+            {{ form_row(form.label) }}
+            {{ form_row(form.natureCapital) }}
+            {{ form_row(form.category) }}
+            {{ form_row(form.registrationDate) }}
 
             {{ include('SrmWebsiteBundle:Partials:_actions.html.twig', {
                 save: form.save,

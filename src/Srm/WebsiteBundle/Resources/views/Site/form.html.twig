@@ -5,71 +5,49 @@
         {{ form_start(form) }}
             {{ form_errors(form) }}
 
-            <ul class="unstyled">
-                <li>{{ form_row(form.label) }}</li>
-                <li>{{ form_row(form.typeSite) }}</li>
-                <li>
-                    {{ form_errors(form.siteActivities) }}
+            {{ form_row(form.label) }}
+            {{ form_row(form.typeSite) }}
 
-                    <fieldset>
-                        <legend>{{ 'sites.list.activities'|trans }}</legend>
+            <fieldset>
+                <legend>{{ 'sites.list.activities'|trans }}</legend>
+                {{ form_errors(form.siteActivities) }}
 
-                        {% for siteActivity in form.siteActivities %}
-                            <dl>
+                {% for siteActivity in form.siteActivities %}
+                    <dl>
+                        {% if subActivities[siteActivity.vars.value] is defined %}
+                            <dt>{{ siteActivity.vars.label }}</dt>
+
+                            {% for subSiteActivity in form.subSiteActivities %}
                                 {% if subActivities[siteActivity.vars.value] is defined %}
-                                    <dt>{{ siteActivity.vars.label }}</dt>
-
-                                    {% for subSiteActivity in form.subSiteActivities %}
-                                        {% if subActivities[siteActivity.vars.value] is defined %}
-                                            {% if subSiteActivity.vars.value in subActivities[siteActivity.vars.value] %}
-                                                <dd>
-                                                    <ul class="inline">
-                                                        <li>{{ form_widget(subSiteActivity) }}</li>
-                                                        <li>{{ form_label(subSiteActivity) }}</li>
-                                                    </ul>
-                                                </dd>
-                                            {% endif %}
-                                        {% endif %}
-                                    {% endfor %}
-                                {% else %}
-                                    <dt>{{ siteActivity.vars.label }} {{ form_widget(siteActivity) }}</dt>
+                                    {% if subSiteActivity.vars.value in subActivities[siteActivity.vars.value] %}
+                                        <dd>{{ form_row(subSiteActivity) }}</dd>
+                                    {% endif %}
                                 {% endif %}
-                            </dl>
-                        {% endfor %}
-                    </fieldset>
-                </li>
-                <li>{{ form_row(form.contacts) }}</li>
-                <li>
-                    <fieldset>
-                        <legend>{{ 'site.dangerous_substances'|trans }}</legend>
-                        {{ form_errors(form.dangerousSubstances) }}
+                            {% endfor %}
+                        {% else %}
+                            <dt>{{ siteActivity.vars.label }} {{ form_widget(siteActivity) }}</dt>
+                        {% endif %}
+                    </dl>
+                {% endfor %}
+            </fieldset>
 
-                        {% for substance in form.dangerousSubstances %}
-                            {% if loop.first %}
-                                <ul class="unstyled">
-                            {% endif %}
+            {{ form_row(form.contacts) }}
 
-                            <li>
-                                <ul class="inline">
-                                    <li>{{ form_widget(substance) }}</li>
-                                    <li>{{ form_label(substance) }}</li>
-                                </ul>
-                            </li>
+            {{ form_row(form.dangerousSubstances) }}
 
-                            {% if loop.last %}
-                                </ul>
-                            {% endif %}
-                        {% endfor %}
-                    </fieldset>
-                </li>
-                <li>{{ form_row(form.currency) }}</li>
-                <li>{{ form_row(form.language) }}</li>
+            {{ form_row(form.importance) }}
+            {{ form_row(form.currency) }}
+            {{ form_row(form.language) }}
 
-                <li>{{ form_row(form.address.label) }}</li>
-                <li>{{ form_row(form.address.zip.code) }}</li>
-                <li>{{ form_row(form.address.zip.city) }}</li>
-                <li>{{ form_row(form.address.zip.country) }}</li>
-            </ul>
+            {{ form_row(form.address.label) }}
+            {{ form_row(form.address.zip.code) }}
+            {{ form_row(form.address.zip.city) }}
+            {{ form_row(form.address.zip.country) }}
+
+            {{ form_row(form.phone) }}
+            {{ form_row(form.fax) }}
+            {{ form_row(form.mail) }}
+            {{ form_row(form.enabled) }}
 
             {{ include('SrmWebsiteBundle:Partials:_actions.html.twig', {
                 save: form.save,
