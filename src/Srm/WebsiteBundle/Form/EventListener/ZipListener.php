@@ -8,7 +8,6 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
-use Srm\CoreBundle\Entity\Country;
 use Srm\CoreBundle\Entity\Zip;
 
 class ZipListener implements EventSubscriberInterface
