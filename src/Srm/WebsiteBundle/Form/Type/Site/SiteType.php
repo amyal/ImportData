@@ -13,35 +13,31 @@ class SiteType extends AbstractType
         $builder
             ->add(
                 'label', 'text', array(
-                    'label' => 'site.label',
-                    'attr'  => array(
-                        'autofocus'   => 'autofocus',
-                        //'placeholder' => 'site.label',
-                    )
+                    'label'    => 'site.label',
+                    'required' => true,
+                    //'attr'     => array('autofocus' => 'autofocus'),
                 )
             )
-            ->add('typeSite', 'srm_type_site')
+            ->add('typeSite', 'srm_type_site', array('required' => true))
             ->add('siteActivities', 'srm_site_activity')
             ->add('subSiteActivities', 'srm_sub_site_activity')
             ->add('contacts', 'srm_site_contact')
             ->add('dangerousSubstances', 'srm_dangerous_substance')
             ->add(
                 'importance', 'choice', array(
-                    'choices' => array()
-                )
-            )
-            ->add('currency', 'srm_currency')
-            ->add('language', 'srm_language')
-            ->add('address', 'srm_address')
-            ->add('phone', 'integer')
-            ->add(
-                'enabled', 'choice', array(
                     'choices' => array(
-                        'site.enabled',
-                        'site.disabled'
+                        'site.not_important',
+                        'site.important',
                     )
                 )
             )
+            ->add('currency', 'srm_currency', array('required' => true))
+            ->add('language', 'srm_language', array('required' => true))
+            ->add('address', 'srm_address', array('required' => true))
+            ->add('phone', 'integer', array('label' => 'phone', 'required' => true))
+            ->add('fax', 'integer', array('label' => 'fax'))
+            ->add('mail', 'email', array('label' => 'email', 'required' => true))
+            ->add('enabled', 'checkbox', array('label' => 'site.enabled'))
             ->add(
                 'save', 'submit', array(
                     'attr'  => array('class' => 'btn btn-primary'),
