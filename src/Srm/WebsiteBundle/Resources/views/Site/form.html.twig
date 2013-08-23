@@ -49,9 +49,9 @@
             {{ form_row(form.mail) }}
             {{ form_row(form.enabled) }}
 
-            {{ include('SrmWebsiteBundle:Partials:_actions.html.twig', {
-                save: form.save,
-                url: path('srm_website_sites_list', {'organisationId': organisationId})
+            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+                save_form: form.save,
+                url_cancel: path('srm_website_sites_list', {'organisationId': organisationId})
             }, with_context = false) }}
 
             {{ form_widget(form._token) }}
