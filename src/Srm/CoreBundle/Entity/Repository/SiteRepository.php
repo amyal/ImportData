@@ -11,7 +11,7 @@ class SiteRepository extends EntityRepository
     public function findAllEnabledByOrganisation(Organisation $organisation)
     {
         $qb = $this->createQueryBuilder('s')
-            ->where('s.enabled = true')
+            ->where('s.enabled = :enabled')->setParameter('enabled', true)
             ->andWhere('s.organisation = :organisation')->setParameter('organisation', $organisation)
         ;
 
