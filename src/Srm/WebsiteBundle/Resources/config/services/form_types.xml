@@ -16,6 +16,7 @@
         <parameter key="srm_website.form.type.sub_site_activity.class">Srm\WebsiteBundle\Form\Type\Site\SubSiteActivityType</parameter>
         <parameter key="srm_website.form.type.site_contact.class">Srm\WebsiteBundle\Form\Type\Site\ContactType</parameter>
         <parameter key="srm_website.form.type.dangerous_substance.class">Srm\WebsiteBundle\Form\Type\Site\DangerousSubstanceType</parameter>
+        <parameter key="srm_website.form.type.product.class">Srm\WebsiteBundle\Form\Type\Site\ProductType</parameter>
         <parameter key="srm_website.form.type.currency.class">Srm\WebsiteBundle\Form\Type\Site\CurrencyType</parameter>
         <parameter key="srm_website.form.type.language.class">Srm\WebsiteBundle\Form\Type\Site\LanguageType</parameter>
     </parameters>
@@ -69,6 +70,9 @@
         </service>
         <service id="srm_website.form.type.dangerous_substance" class="%srm_website.form.type.dangerous_substance.class%">
             <tag name="form.type" alias="srm_dangerous_substance" />
+        </service>
+        <service id="srm_website.form.type.product" class="%srm_website.form.type.product.class%">
+            <tag name="form.type" alias="srm_product" />
         </service>
         <service id="srm_website.form.type.currency" class="%srm_website.form.type.currency.class%">
             <tag name="form.type" alias="srm_currency" />
