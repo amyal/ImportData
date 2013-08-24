@@ -16,7 +16,7 @@
             <li>{{ 'organisation.form.basic.slogan3'|trans }} : {{ organisation.slogan3 }}</li>
         </ul>
 
-        <a href="{{ path('srm_website_organisation_basic', {'identificationCode': organisation.identificationCode}) }}" class="btn">{{ 'button.edit'|trans }}</a>
+        <a href="{{ path('srm_website_organisation_basic', {'identificationCode': organisation.identificationCode}) }}" class="btn"><i class="icon-pencil"></i> {{ 'button.edit'|trans }}</a>
     </fieldset>
 
     <fieldset>
@@ -28,6 +28,6 @@
             <li>{{ 'organisation.form.legal.nature_capital'|trans }} : {{ legalForm.registrationDate }}</li>
         </ul>
 
-        <a href="{{ path('srm_website_organisation_legal', {'organisationId': organisation.organisationId}) }}" class="btn">{{ 'button.edit'|trans }}</a>
+        <a href="{{ path('srm_website_organisation_legal', {'organisationId': organisation.organisationId}) }}" class="btn"><i class="icon-pencil"></i> {{ 'button.edit'|trans }}</a>
     </fieldset>
 {% endblock %}
