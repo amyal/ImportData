@@ -63,7 +63,18 @@
             <tag name="form.type" alias="srm_site_activity" />
         </service>
         <service id="srm_website.form.type.sub_site_activity" class="%srm_website.form.type.sub_site_activity.class%">
+            <argument type="service" id="srm_website.form.sub_site_activity_listener" />
             <tag name="form.type" alias="srm_sub_site_activity" />
+        </service>
+        <service id="srm_website.form.sub_site_activity_listener" class="Srm\WebsiteBundle\Form\EventListener\SubSiteActivityListener" public="false">
+            <argument type="service">
+                <service class="Doctrine\ORM\EntityRepository"
+                    factory-service="doctrine.orm.entity_manager"
+                    factory-method="getRepository"
+                >
+                    <argument>Srm\CoreBundle\Entity\SubSiteActivity</argument>
+                </service>
+            </argument>
         </service>
         <service id="srm_website.form.type.site_contact" class="%srm_website.form.type.site_contact.class%">
             <tag name="form.type" alias="srm_site_contact" />
