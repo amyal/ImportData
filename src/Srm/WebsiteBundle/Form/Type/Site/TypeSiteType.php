@@ -18,7 +18,7 @@ class TypeSiteType extends AbstractType
             'label'         => 'site.type_site',
             'property'      => 'label',
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC');
+                return $er->createQueryBuilder('t')->orderBy('t.label', 'ASC');
             },
         ));
     }

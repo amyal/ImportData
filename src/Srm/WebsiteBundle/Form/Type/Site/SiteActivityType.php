@@ -17,7 +17,7 @@ class SiteActivityType extends AbstractType
             'expanded'      => true,
             'multiple'      => true,
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC');
+                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
             },
         ));
     }

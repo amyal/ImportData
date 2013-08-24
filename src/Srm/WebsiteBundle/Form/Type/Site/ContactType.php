@@ -17,7 +17,7 @@ class ContactType extends AbstractType
             'label'         => 'site.contacts',
             'property'      => 'lastname',
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')->orderBy('u.lastname', 'ASC');
+                return $er->createQueryBuilder('c')->orderBy('c.lastname', 'ASC');
             },
         ));
     }

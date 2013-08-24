@@ -34,11 +34,8 @@ class BasicType extends AbstractType
                     'required' => false
                 )
             )
-            ->add(
-                'save', 'submit', array(
-                    'attr'  => array('class' => 'btn btn-primary'),
-                    'label' => 'button.save'
-                )
+
+            ->add('save', 'submit', array('label' => 'button.save')
             )
         ;
     }

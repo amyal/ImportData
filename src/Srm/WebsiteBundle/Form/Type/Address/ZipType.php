@@ -10,11 +10,11 @@ use Srm\WebsiteBundle\Form\EventListener\ZipListener;
 
 class ZipType extends AbstractType
 {
-    private $zipListener;
+    private $listener;
 
-    public function __construct(ZipListener $zipListener)
+    public function __construct(ZipListener $listener)
     {
-        $this->zipListener = $zipListener;
+        $this->listener = $listener;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -25,7 +25,7 @@ class ZipType extends AbstractType
             ->add('country', 'srm_country')
         ;
 
-        $builder->addEventSubscriber($this->zipListener);
+        $builder->addEventSubscriber($this->listener);
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

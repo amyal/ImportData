@@ -14,12 +14,11 @@ class LanguageType extends AbstractType
     {
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\Language',
+            'property'      => 'label',
             'empty_value'   => 'language.choice',
             'label'         => 'language',
-            'property'      => 'label',
-            'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC');
+                return $er->createQueryBuilder('l')->orderBy('l.label', 'ASC');
             },
         ));
     }

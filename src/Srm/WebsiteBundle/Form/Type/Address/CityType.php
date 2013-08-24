@@ -19,7 +19,7 @@ class CityType extends AbstractType
             'property'      => 'label',
             'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('u')->orderBy('u.label', 'ASC')->setMaxResults(5000);
+                return $er->createQueryBuilder('c')->orderBy('c.label', 'ASC')->setMaxResults(25000);
             },
         ));
     }
