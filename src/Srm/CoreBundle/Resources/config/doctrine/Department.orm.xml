@@ -13,8 +13,8 @@
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
     <many-to-many field="sites" target-entity="Site" mapped-by="departments"/>
     <many-to-many field="pole" target-entity="Pole" mapped-by="department"/>
-    <many-to-many field="contact" target-entity="Contact" mapped-by="department"/>
-    <many-to-many field="subDepartment" target-entity="SubDepartment" inversed-by="department">
+    <many-to-many field="contacts" target-entity="Contact" mapped-by="department"/>
+    <many-to-many field="subDepartments" target-entity="SubDepartment" inversed-by="department">
       <join-table name="sub_department_department">
         <join-columns>
           <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
