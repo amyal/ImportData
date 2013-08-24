@@ -8,15 +8,19 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CurrencyType extends AbstractType
+class ProductType extends AbstractType
 {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('label', 'text', array('label' => 'site.product'))
+        ;
+    }
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Currency',
-            'property'      => 'label',
-            'empty_value'   => 'currency.choice',
-            'label'         => 'currency',
+            'class'  => 'Srm\CoreBundle\Entity\Product',
         ));
     }
 
@@ -27,6 +31,6 @@ class CurrencyType extends AbstractType
 
     public function getName()
     {
-        return 'srm_currency';
+        return 'srm_product';
     }
 }

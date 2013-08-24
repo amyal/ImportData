@@ -16,6 +16,7 @@
         <parameter key="srm_website.form.type.sub_site_activity.class">Srm\WebsiteBundle\Form\Type\Site\SubSiteActivityType</parameter>
         <parameter key="srm_website.form.type.site_contact.class">Srm\WebsiteBundle\Form\Type\Site\ContactType</parameter>
         <parameter key="srm_website.form.type.dangerous_substance.class">Srm\WebsiteBundle\Form\Type\Site\DangerousSubstanceType</parameter>
+        <parameter key="srm_website.form.type.product.class">Srm\WebsiteBundle\Form\Type\Site\ProductType</parameter>
         <parameter key="srm_website.form.type.currency.class">Srm\WebsiteBundle\Form\Type\Site\CurrencyType</parameter>
         <parameter key="srm_website.form.type.language.class">Srm\WebsiteBundle\Form\Type\Site\LanguageType</parameter>
     </parameters>
@@ -62,13 +63,27 @@
             <tag name="form.type" alias="srm_site_activity" />
         </service>
         <service id="srm_website.form.type.sub_site_activity" class="%srm_website.form.type.sub_site_activity.class%">
+            <argument type="service" id="srm_website.form.sub_site_activity_listener" />
             <tag name="form.type" alias="srm_sub_site_activity" />
+        </service>
+        <service id="srm_website.form.sub_site_activity_listener" class="Srm\WebsiteBundle\Form\EventListener\SubSiteActivityListener" public="false">
+            <argument type="service">
+                <service class="Doctrine\ORM\EntityRepository"
+                    factory-service="doctrine.orm.entity_manager"
+                    factory-method="getRepository"
+                >
+                    <argument>Srm\CoreBundle\Entity\SubSiteActivity</argument>
+                </service>
+            </argument>
         </service>
         <service id="srm_website.form.type.site_contact" class="%srm_website.form.type.site_contact.class%">
             <tag name="form.type" alias="srm_site_contact" />
         </service>
         <service id="srm_website.form.type.dangerous_substance" class="%srm_website.form.type.dangerous_substance.class%">
             <tag name="form.type" alias="srm_dangerous_substance" />
+        </service>
+        <service id="srm_website.form.type.product" class="%srm_website.form.type.product.class%">
+            <tag name="form.type" alias="srm_product" />
         </service>
         <service id="srm_website.form.type.currency" class="%srm_website.form.type.currency.class%">
             <tag name="form.type" alias="srm_currency" />
