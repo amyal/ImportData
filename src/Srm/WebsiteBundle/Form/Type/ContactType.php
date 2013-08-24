@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Site;
+namespace Srm\WebsiteBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
@@ -14,8 +14,7 @@ class ContactType extends AbstractType
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\Contact',
             'multiple'      => true,
-            'label'         => 'site.contacts',
-            'property'      => 'lastname',
+            'label'         => 'contacts',
             'query_builder' => function(EntityRepository $er) {
                 return $er->createQueryBuilder('c')->orderBy('c.lastname', 'ASC');
             },
@@ -29,6 +28,6 @@ class ContactType extends AbstractType
 
     public function getName()
     {
-        return 'srm_site_contact';
+        return 'srm_contact';
     }
 }

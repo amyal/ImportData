@@ -733,4 +733,9 @@ class Contact
     {
         return $this->department;
     }
+
+    public function __toString()
+    {
+        return $this->lastname.' '.$this->firstname;
+    }
 }

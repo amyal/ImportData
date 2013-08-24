@@ -14,7 +14,7 @@
         <parameter key="srm_website.form.type.type_site.class">Srm\WebsiteBundle\Form\Type\Site\TypeSiteType</parameter>
         <parameter key="srm_website.form.type.site_activity.class">Srm\WebsiteBundle\Form\Type\Site\SiteActivityType</parameter>
         <parameter key="srm_website.form.type.sub_site_activity.class">Srm\WebsiteBundle\Form\Type\Site\SubSiteActivityType</parameter>
-        <parameter key="srm_website.form.type.site_contact.class">Srm\WebsiteBundle\Form\Type\Site\ContactType</parameter>
+        <parameter key="srm_website.form.type.contact.class">Srm\WebsiteBundle\Form\Type\ContactType</parameter>
         <parameter key="srm_website.form.type.dangerous_substance.class">Srm\WebsiteBundle\Form\Type\Site\DangerousSubstanceType</parameter>
         <parameter key="srm_website.form.type.product.class">Srm\WebsiteBundle\Form\Type\Site\ProductType</parameter>
         <parameter key="srm_website.form.type.currency.class">Srm\WebsiteBundle\Form\Type\Site\CurrencyType</parameter>
@@ -65,8 +65,8 @@
         <service id="srm_website.form.type.sub_site_activity" class="%srm_website.form.type.sub_site_activity.class%">
             <tag name="form.type" alias="srm_sub_site_activity" />
         </service>
-        <service id="srm_website.form.type.site_contact" class="%srm_website.form.type.site_contact.class%">
-            <tag name="form.type" alias="srm_site_contact" />
+        <service id="srm_website.form.type.contact" class="%srm_website.form.type.contact.class%">
+            <tag name="form.type" alias="srm_contact" />
         </service>
         <service id="srm_website.form.type.dangerous_substance" class="%srm_website.form.type.dangerous_substance.class%">
             <tag name="form.type" alias="srm_dangerous_substance" />

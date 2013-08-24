@@ -23,7 +23,7 @@ class SiteType extends AbstractType
             ->add('siteActivities',    'srm_site_activity')
             ->add('subSiteActivities', 'srm_sub_site_activity')
 
-            ->add('contacts', 'srm_site_contact')
+            ->add('contacts', 'srm_contact')
 
             ->add('dangerousSubstances', 'srm_dangerous_substance')
             //->add('products', 'srm_product', array('mapped' => false))
@@ -38,7 +38,7 @@ class SiteType extends AbstractType
             ->add('fax',   'integer', array('label' => 'fax'))
             ->add('mail', 'email', array('label' => 'email', 'required' => true))
 
-            ->add('enabled', 'checkbox', array('label' => 'site.enabled'))
+            ->add('enabled', 'checkbox', array('label' => 'enabled'))
 
             ->add('save', 'submit', array('label' => 'button.save')
             )
