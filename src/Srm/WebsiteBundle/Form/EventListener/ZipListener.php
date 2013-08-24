@@ -43,9 +43,10 @@ class ZipListener implements EventSubscriberInterface
     public function preSubmit(FormEvent $event)
     {
         $data = $event->getData();
-        $form = $event->getForm();
 
         if (isset($data['code'])) {
+            $form = $event->getForm();
+
             if (null === $zip = $this->zipRepo->findOneBy(array('code' => $data['code']))) {
                 $form->addError(new FormError(sprintf('Posted zip code [%d] does not match any zip in the database !!!', $data['code'])));
                 return;
