@@ -13,21 +13,22 @@
                 {{ form_errors(form.siteActivities) }}
 
                 {% for siteActivity in form.siteActivities %}
-                    <dl>
-                        {% if subActivities[siteActivity.vars.value] is defined %}
-                            <dt>{{ siteActivity.vars.label }}</dt>
-
-                            {% for subSiteActivity in form.subSiteActivities %}
-                                {% if subActivities[siteActivity.vars.value] is defined %}
-                                    {% if subSiteActivity.vars.value in subActivities[siteActivity.vars.value] %}
-                                        <dd>{{ form_row(subSiteActivity) }}</dd>
+                    <div class="control-group">
+                        <label class="control-label">{{ siteActivity.vars.label|trans }}</label>
+                        <div class="controls">
+                            {% if subActivities[siteActivity.vars.value] is defined %}
+                                {% for subSiteActivity in form.subSiteActivities %}
+                                    {% if subActivities[siteActivity.vars.value] is defined %}
+                                        {% if subSiteActivity.vars.value in subActivities[siteActivity.vars.value] %}
+                                            {{ form_row(subSiteActivity) }}
+                                        {% endif %}
                                     {% endif %}
-                                {% endif %}
-                            {% endfor %}
-                        {% else %}
-                            <dt>{{ siteActivity.vars.label }} {{ form_widget(siteActivity) }}</dt>
-                        {% endif %}
-                    </dl>
+                                {% endfor %}
+                            {% else %}
+                                {{ form_widget(siteActivity) }}
+                            {% endif %}
+                        </div>
+                    </div>
                 {% endfor %}
             </fieldset>
 
@@ -48,7 +49,13 @@
             {{ form_row(form.phone) }}
             {{ form_row(form.fax) }}
             {{ form_row(form.mail) }}
-            {{ form_row(form.enabled) }}
+
+            <div class="control-group">
+                <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>
+                <div class="controls">
+                    {{ form_widget(form.enabled) }}
+                </div>
+            </div>
 
             {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
                 save_form: form.save,
