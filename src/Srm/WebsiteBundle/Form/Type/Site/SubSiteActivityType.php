@@ -7,22 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Srm\WebsiteBundle\Form\EventListener\SubSiteActivityListener;
-
 class SubSiteActivityType extends AbstractType
 {
-    private $listener;
-
-    public function __construct(SubSiteActivityListener $listener)
-    {
-        $this->listener = $listener;
-    }
-
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->addEventSubscriber($this->listener);
-    }
-
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(

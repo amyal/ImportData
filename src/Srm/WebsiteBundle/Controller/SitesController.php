@@ -70,6 +70,12 @@ class SitesController extends Controller
             ));
         }
 
+        foreach ($site->getSubSiteActivities() as $subSiteActivity) {
+            if (false === $site->getSiteActivities()->contains($subSiteActivity->getSiteActivity())) {
+                $site->addSiteActivity($subSiteActivity->getSiteActivity());
+            }
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($site);
         $em->flush();
