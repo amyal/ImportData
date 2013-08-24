@@ -19,8 +19,8 @@ srm_website_site_show:
         siteId: \d+
 
 srm_website_site_disable:
-    path:       /organisations/{organisationId}/sites/{siteId}
-    methods:    [DELETE]
+    path:       /organisations/{organisationId}/sites/{siteId}/disable
+    methods:    [GET]
     defaults:
         _controller:    "SrmWebsiteBundle:Sites:disable"
     requirements:
