@@ -1,0 +1,27 @@
+Srm\CoreBundle\Entity\DangerousSubstance:
+    dangerous_substance_autres:
+        label:      "Autres"
+    dangerous_substance_comburantes:
+        label:      "Comburantes"
+    dangerous_substance_combustibles:
+        label:      "Combustibles"
+    dangerous_substance_explosives:
+        label:      "Explosives"
+    dangerous_substance_inflammables:
+        label:      "Inflammables"
+    dangerous_substance_radioactives:
+        label:      "Radioactives"
+    dangerous_substance_react_eau:
+        label:      "Substances réagissant avec l'eau"
+    dangerous_substance_toxiques:
+        label:      "Toxiques"
+
+Srm\CoreBundle\Entity\TypeSite:
+    type_site_bureaux:
+        label:      "Bureaux"
+    type_site_commercial:
+        label:      "Commercial"
+    type_site_entrepot:
+        label:      "Entrepôt"
+    type_site_industriel:
+        label:      "Industriel"

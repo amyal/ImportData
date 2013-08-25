@@ -4,18 +4,13 @@
     <id name="subDepartmentId" type="integer" column="SUB_DEPARTMENT_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="NAME" length="100" nullable="false"/>
-    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
-    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="false"/>
+    <field name="label" type="string" column="LABEL" length="50" nullable="true"/>
+    <field name="shortLabel" type="string" column="SHORT_LABEL" length="10" nullable="true"/>
+    <field name="category" type="string" column="CATEGORY" length="100" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
-    <field name="category" type="string" column="CATEGORY" length="50" nullable="false"/>
-    <many-to-one field="department" target-entity="Department">
-      <join-columns>
-        <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
-      </join-columns>
-    </many-to-one>
     <many-to-many field="site" target-entity="Site" mapped-by="subDepartment"/>
     <many-to-many field="contact" target-entity="Contact" mapped-by="subDepartment"/>
+    <many-to-many field="department" target-entity="Department" mapped-by="subDepartments"/>
   </entity>
 </doctrine-mapping>

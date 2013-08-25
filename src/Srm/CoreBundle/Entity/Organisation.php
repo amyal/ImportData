@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Organisation
  */
@@ -12,22 +10,7 @@ class Organisation
     /**
      * @var string
      */
-    private $officialCode;
-
-    /**
-     * @var string
-     */
     private $label;
-
-    /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
 
     /**
      * @var string
@@ -35,19 +18,14 @@ class Organisation
     private $logo;
 
     /**
-     * @var \DateTime
-     */
-    private $creationDate;
-
-    /**
-     * @var \DateTime
-     */
-    private $modificationDate;
-
-    /**
-     * @var string
+     * @var integer
      */
     private $phone;
+
+    /**
+     * @var integer
+     */
+    private $fax;
 
     /**
      * @var string
@@ -57,7 +35,12 @@ class Organisation
     /**
      * @var string
      */
-    private $fax;
+    private $website;
+
+    /**
+     * @var string
+     */
+    private $identificationCode;
 
     /**
      * @var string
@@ -73,6 +56,26 @@ class Organisation
      * @var string
      */
     private $slogan3;
+
+    /**
+     * @var \DateTime
+     */
+    private $creationDate;
+
+    /**
+     * @var \DateTime
+     */
+    private $modificationDate;
+
+    /**
+     * @var boolean
+     */
+    private $enabled;
+
+    /**
+     * @var boolean
+     */
+    private $deleted;
 
     /**
      * @var integer
@@ -96,29 +99,6 @@ class Organisation
 
 
     /**
-     * Set officialCode
-     *
-     * @param string $officialCode
-     * @return Organisation
-     */
-    public function setOfficialCode($officialCode)
-    {
-        $this->officialCode = $officialCode;
-    
-        return $this;
-    }
-
-    /**
-     * Get officialCode
-     *
-     * @return string 
-     */
-    public function getOfficialCode()
-    {
-        return $this->officialCode;
-    }
-
-    /**
      * Set label
      *
      * @param string $label
@@ -127,64 +107,18 @@ class Organisation
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
         return $this->label;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return Organisation
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return Organisation
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
     }
 
     /**
@@ -196,14 +130,14 @@ class Organisation
     public function setLogo($logo)
     {
         $this->logo = $logo;
-    
+
         return $this;
     }
 
     /**
      * Get logo
      *
-     * @return string 
+     * @return string
      */
     public function getLogo()
     {
@@ -211,72 +145,49 @@ class Organisation
     }
 
     /**
-     * Set creationDate
-     *
-     * @param \DateTime $creationDate
-     * @return Organisation
-     */
-    public function setCreationDate($creationDate)
-    {
-        $this->creationDate = $creationDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get creationDate
-     *
-     * @return \DateTime 
-     */
-    public function getCreationDate()
-    {
-        return $this->creationDate;
-    }
-
-    /**
-     * Set modificationDate
-     *
-     * @param \DateTime $modificationDate
-     * @return Organisation
-     */
-    public function setModificationDate($modificationDate)
-    {
-        $this->modificationDate = $modificationDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get modificationDate
-     *
-     * @return \DateTime 
-     */
-    public function getModificationDate()
-    {
-        return $this->modificationDate;
-    }
-
-    /**
      * Set phone
      *
-     * @param string $phone
+     * @param integer $phone
      * @return Organisation
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    
+
         return $this;
     }
 
     /**
      * Get phone
      *
-     * @return string 
+     * @return integer
      */
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set fax
+     *
+     * @param integer $fax
+     * @return Organisation
+     */
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * Get fax
+     *
+     * @return integer
+     */
+    public function getFax()
+    {
+        return $this->fax;
     }
 
     /**
@@ -288,14 +199,14 @@ class Organisation
     public function setMail($mail)
     {
         $this->mail = $mail;
-    
+
         return $this;
     }
 
     /**
      * Get mail
      *
-     * @return string 
+     * @return string
      */
     public function getMail()
     {
@@ -303,26 +214,49 @@ class Organisation
     }
 
     /**
-     * Set fax
+     * Set website
      *
-     * @param string $fax
+     * @param string $website
      * @return Organisation
      */
-    public function setFax($fax)
+    public function setWebsite($website)
     {
-        $this->fax = $fax;
-    
+        $this->website = $website;
+
         return $this;
     }
 
     /**
-     * Get fax
+     * Get website
      *
-     * @return string 
+     * @return string
      */
-    public function getFax()
+    public function getWebsite()
     {
-        return $this->fax;
+        return $this->website;
+    }
+
+    /**
+     * Set identificationCode
+     *
+     * @param string $identificationCode
+     * @return Organisation
+     */
+    public function setIdentificationCode($identificationCode)
+    {
+        $this->identificationCode = $identificationCode;
+
+        return $this;
+    }
+
+    /**
+     * Get identificationCode
+     *
+     * @return string
+     */
+    public function getIdentificationCode()
+    {
+        return $this->identificationCode;
     }
 
     /**
@@ -334,14 +268,14 @@ class Organisation
     public function setSlogan1($slogan1)
     {
         $this->slogan1 = $slogan1;
-    
+
         return $this;
     }
 
     /**
      * Get slogan1
      *
-     * @return string 
+     * @return string
      */
     public function getSlogan1()
     {
@@ -357,14 +291,14 @@ class Organisation
     public function setSlogan2($slogan2)
     {
         $this->slogan2 = $slogan2;
-    
+
         return $this;
     }
 
     /**
      * Get slogan2
      *
-     * @return string 
+     * @return string
      */
     public function getSlogan2()
     {
@@ -380,14 +314,14 @@ class Organisation
     public function setSlogan3($slogan3)
     {
         $this->slogan3 = $slogan3;
-    
+
         return $this;
     }
 
     /**
      * Get slogan3
      *
-     * @return string 
+     * @return string
      */
     public function getSlogan3()
     {
@@ -395,9 +329,101 @@ class Organisation
     }
 
     /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return Organisation
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * Set modificationDate
+     *
+     * @param \DateTime $modificationDate
+     * @return Organisation
+     */
+    public function setModificationDate($modificationDate)
+    {
+        $this->modificationDate = $modificationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get modificationDate
+     *
+     * @return \DateTime
+     */
+    public function getModificationDate()
+    {
+        return $this->modificationDate;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Organisation
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return Organisation
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+
+    /**
      * Get organisationId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrganisationId()
     {
@@ -410,17 +436,17 @@ class Organisation
      * @param \Srm\CoreBundle\Entity\Address $address
      * @return Organisation
      */
-    public function setAddress(\Srm\CoreBundle\Entity\Address $address = null)
+    public function setAddress(Address $address = null)
     {
         $this->address = $address;
-    
+
         return $this;
     }
 
     /**
      * Get address
      *
-     * @return \Srm\CoreBundle\Entity\Address 
+     * @return \Srm\CoreBundle\Entity\Address
      */
     public function getAddress()
     {
@@ -433,17 +459,17 @@ class Organisation
      * @param \Srm\CoreBundle\Entity\Language $language
      * @return Organisation
      */
-    public function setLanguage(\Srm\CoreBundle\Entity\Language $language = null)
+    public function setLanguage(Language $language = null)
     {
         $this->language = $language;
-    
+
         return $this;
     }
 
     /**
      * Get language
      *
-     * @return \Srm\CoreBundle\Entity\Language 
+     * @return \Srm\CoreBundle\Entity\Language
      */
     public function getLanguage()
     {
@@ -456,17 +482,17 @@ class Organisation
      * @param \Srm\CoreBundle\Entity\Currency $currency
      * @return Organisation
      */
-    public function setCurrency(\Srm\CoreBundle\Entity\Currency $currency = null)
+    public function setCurrency(Currency $currency = null)
     {
         $this->currency = $currency;
-    
+
         return $this;
     }
 
     /**
      * Get currency
      *
-     * @return \Srm\CoreBundle\Entity\Currency 
+     * @return \Srm\CoreBundle\Entity\Currency
      */
     public function getCurrency()
     {

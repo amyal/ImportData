@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StakeholderGroup
  */
@@ -12,12 +10,12 @@ class StakeholderGroup
     /**
      * @var string
      */
-    private $name;
+    private $label;
 
     /**
      * @var string
      */
-    private $type;
+    private $stakeholderGroupType;
 
     /**
      * @var string
@@ -35,60 +33,55 @@ class StakeholderGroup
     private $modificationDate;
 
     /**
-     * @var string
-     */
-    private $contact;
-
-    /**
      * @var integer
      */
     private $stakeholderGroupId;
 
 
     /**
-     * Set name
+     * Set label
      *
-     * @param string $name
+     * @param string $label
      * @return StakeholderGroup
      */
-    public function setName($name)
+    public function setLabel($label)
     {
-        $this->name = $name;
-    
+        $this->label = $label;
+
         return $this;
     }
 
     /**
-     * Get name
+     * Get label
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getLabel()
     {
-        return $this->name;
+        return $this->label;
     }
 
     /**
-     * Set type
+     * Set stakeholderGroupType
      *
-     * @param string $type
+     * @param string $stakeholderGroupType
      * @return StakeholderGroup
      */
-    public function setType($type)
+    public function setStakeholderGroupType($stakeholderGroupType)
     {
-        $this->type = $type;
-    
+        $this->stakeholderGroupType = $stakeholderGroupType;
+
         return $this;
     }
 
     /**
-     * Get type
+     * Get stakeholderGroupType
      *
-     * @return string 
+     * @return string
      */
-    public function getType()
+    public function getStakeholderGroupType()
     {
-        return $this->type;
+        return $this->stakeholderGroupType;
     }
 
     /**
@@ -100,14 +93,14 @@ class StakeholderGroup
     public function setArchetype($archetype)
     {
         $this->archetype = $archetype;
-    
+
         return $this;
     }
 
     /**
      * Get archetype
      *
-     * @return string 
+     * @return string
      */
     public function getArchetype()
     {
@@ -123,14 +116,14 @@ class StakeholderGroup
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -146,14 +139,14 @@ class StakeholderGroup
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -161,32 +154,9 @@ class StakeholderGroup
     }
 
     /**
-     * Set contact
-     *
-     * @param string $contact
-     * @return StakeholderGroup
-     */
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
-    
-        return $this;
-    }
-
-    /**
-     * Get contact
-     *
-     * @return string 
-     */
-    public function getContact()
-    {
-        return $this->contact;
-    }
-
-    /**
      * Get stakeholderGroupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStakeholderGroupId()
     {

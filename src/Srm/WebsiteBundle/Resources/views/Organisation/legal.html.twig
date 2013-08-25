@@ -1,0 +1,19 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block content %}
+    <div>
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            {{ form_row(form.label) }}
+            {{ form_row(form.natureCapital) }}
+            {{ form_row(form.category) }}
+            {{ form_row(form.registrationDate) }}
+
+            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+                save_form: form.save,
+                url_cancel: path('srm_website_organisation_show', {'identificationCode': identificationCode})
+            }, with_context = false) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

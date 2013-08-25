@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * ItemHistory
  */
@@ -12,12 +10,22 @@ class ItemHistory
     /**
      * @var string
      */
-    private $name;
+    private $label;
 
     /**
      * @var string
      */
     private $themeDescription;
+
+    /**
+     * @var \DateTime
+     */
+    private $creationDate;
+
+    /**
+     * @var \DateTime
+     */
+    private $modificationDate;
 
     /**
      * @var boolean
@@ -30,42 +38,32 @@ class ItemHistory
     private $deleted;
 
     /**
-     * @var string
-     */
-    private $contact;
-
-    /**
-     * @var \DateTime
-     */
-    private $creationDate;
-
-    /**
      * @var integer
      */
     private $itemHistoryId;
 
 
     /**
-     * Set name
+     * Set label
      *
-     * @param string $name
+     * @param string $label
      * @return ItemHistory
      */
-    public function setName($name)
+    public function setLabel($label)
     {
-        $this->name = $name;
-    
+        $this->label = $label;
+
         return $this;
     }
 
     /**
-     * Get name
+     * Get label
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getLabel()
     {
-        return $this->name;
+        return $this->label;
     }
 
     /**
@@ -77,18 +75,64 @@ class ItemHistory
     public function setThemeDescription($themeDescription)
     {
         $this->themeDescription = $themeDescription;
-    
+
         return $this;
     }
 
     /**
      * Get themeDescription
      *
-     * @return string 
+     * @return string
      */
     public function getThemeDescription()
     {
         return $this->themeDescription;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return ItemHistory
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * Set modificationDate
+     *
+     * @param \DateTime $modificationDate
+     * @return ItemHistory
+     */
+    public function setModificationDate($modificationDate)
+    {
+        $this->modificationDate = $modificationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get modificationDate
+     *
+     * @return \DateTime
+     */
+    public function getModificationDate()
+    {
+        return $this->modificationDate;
     }
 
     /**
@@ -100,14 +144,14 @@ class ItemHistory
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -123,14 +167,14 @@ class ItemHistory
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -138,55 +182,9 @@ class ItemHistory
     }
 
     /**
-     * Set contact
-     *
-     * @param string $contact
-     * @return ItemHistory
-     */
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
-    
-        return $this;
-    }
-
-    /**
-     * Get contact
-     *
-     * @return string 
-     */
-    public function getContact()
-    {
-        return $this->contact;
-    }
-
-    /**
-     * Set creationDate
-     *
-     * @param \DateTime $creationDate
-     * @return ItemHistory
-     */
-    public function setCreationDate($creationDate)
-    {
-        $this->creationDate = $creationDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get creationDate
-     *
-     * @return \DateTime 
-     */
-    public function getCreationDate()
-    {
-        return $this->creationDate;
-    }
-
-    /**
      * Get itemHistoryId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemHistoryId()
     {

@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * SubSiteActivity
  */
@@ -13,16 +11,6 @@ class SubSiteActivity
      * @var string
      */
     private $label;
-
-    /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
 
     /**
      * @var integer
@@ -46,7 +34,7 @@ class SubSiteActivity
     {
         $this->site = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Set label
      *
@@ -56,14 +44,14 @@ class SubSiteActivity
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -71,55 +59,9 @@ class SubSiteActivity
     }
 
     /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return SubSiteActivity
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return SubSiteActivity
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
-
-    /**
      * Get subSiteActivityId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSubSiteActivityId()
     {
@@ -132,17 +74,17 @@ class SubSiteActivity
      * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
      * @return SubSiteActivity
      */
-    public function setSiteActivity(\Srm\CoreBundle\Entity\SiteActivity $siteActivity = null)
+    public function setSiteActivity(SiteActivity $siteActivity = null)
     {
         $this->siteActivity = $siteActivity;
-    
+
         return $this;
     }
 
     /**
      * Get siteActivity
      *
-     * @return \Srm\CoreBundle\Entity\SiteActivity 
+     * @return \Srm\CoreBundle\Entity\SiteActivity
      */
     public function getSiteActivity()
     {
@@ -155,10 +97,10 @@ class SubSiteActivity
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return SubSiteActivity
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->site[] = $site;
-    
+
         return $this;
     }
 
@@ -167,7 +109,7 @@ class SubSiteActivity
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->site->removeElement($site);
     }
@@ -175,7 +117,7 @@ class SubSiteActivity
     /**
      * Get site
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSite()
     {

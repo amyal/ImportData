@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Contact
  */
@@ -12,12 +10,12 @@ class Contact
     /**
      * @var string
      */
-    private $firstName;
+    private $firstname;
 
     /**
      * @var string
      */
-    private $lastName;
+    private $lastname;
 
     /**
      * @var string
@@ -27,7 +25,7 @@ class Contact
     /**
      * @var string
      */
-    private $function;
+    private $contactFunction;
 
     /**
      * @var string
@@ -35,19 +33,9 @@ class Contact
     private $picture;
 
     /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
-
-    /**
      * @var string
      */
-    private $comment;
+    private $comments;
 
     /**
      * @var boolean
@@ -57,7 +45,7 @@ class Contact
     /**
      * @var string
      */
-    private $organizationInvolved;
+    private $organisationInvolved;
 
     /**
      * @var string
@@ -72,12 +60,22 @@ class Contact
     /**
      * @var boolean
      */
-    private $connPlatforme;
+    private $connPlatform;
 
     /**
      * @var string
      */
     private $owner;
+
+    /**
+     * @var integer
+     */
+    private $phone;
+
+    /**
+     * @var string
+     */
+    private $mail;
 
     /**
      * @var \DateTime
@@ -90,19 +88,14 @@ class Contact
     private $modificationDate;
 
     /**
-     * @var string
+     * @var boolean
      */
-    private $phone;
+    private $enabled;
 
     /**
-     * @var string
+     * @var boolean
      */
-    private $mail;
-
-    /**
-     * @var string
-     */
-    private $contact;
+    private $deleted;
 
     /**
      * @var integer
@@ -110,14 +103,14 @@ class Contact
     private $contactId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Address
-     */
-    private $address;
-
-    /**
      * @var \Srm\CoreBundle\Entity\StakeholderGroup
      */
     private $stakeholderGroup;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Role
+     */
+    private $role;
 
     /**
      * @var \Srm\CoreBundle\Entity\Organisation
@@ -148,51 +141,51 @@ class Contact
         $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
         $this->department = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
-     * Set firstName
+     * Set firstname
      *
-     * @param string $firstName
+     * @param string $firstname
      * @return Contact
      */
-    public function setFirstName($firstName)
+    public function setFirstname($firstname)
     {
-        $this->firstName = $firstName;
-    
+        $this->firstname = $firstname;
+
         return $this;
     }
 
     /**
-     * Get firstName
+     * Get firstname
      *
-     * @return string 
+     * @return string
      */
-    public function getFirstName()
+    public function getFirstname()
     {
-        return $this->firstName;
+        return $this->firstname;
     }
 
     /**
-     * Set lastName
+     * Set lastname
      *
-     * @param string $lastName
+     * @param string $lastname
      * @return Contact
      */
-    public function setLastName($lastName)
+    public function setLastname($lastname)
     {
-        $this->lastName = $lastName;
-    
+        $this->lastname = $lastname;
+
         return $this;
     }
 
     /**
-     * Get lastName
+     * Get lastname
      *
-     * @return string 
+     * @return string
      */
-    public function getLastName()
+    public function getLastname()
     {
-        return $this->lastName;
+        return $this->lastname;
     }
 
     /**
@@ -204,14 +197,14 @@ class Contact
     public function setAcronym($acronym)
     {
         $this->acronym = $acronym;
-    
+
         return $this;
     }
 
     /**
      * Get acronym
      *
-     * @return string 
+     * @return string
      */
     public function getAcronym()
     {
@@ -219,26 +212,26 @@ class Contact
     }
 
     /**
-     * Set function
+     * Set contactFunction
      *
-     * @param string $function
+     * @param string $contactFunction
      * @return Contact
      */
-    public function setFunction($function)
+    public function setContactFunction($contactFunction)
     {
-        $this->function = $function;
-    
+        $this->contactFunction = $contactFunction;
+
         return $this;
     }
 
     /**
-     * Get function
+     * Get contactFunction
      *
-     * @return string 
+     * @return string
      */
-    public function getFunction()
+    public function getContactFunction()
     {
-        return $this->function;
+        return $this->contactFunction;
     }
 
     /**
@@ -250,14 +243,14 @@ class Contact
     public function setPicture($picture)
     {
         $this->picture = $picture;
-    
+
         return $this;
     }
 
     /**
      * Get picture
      *
-     * @return string 
+     * @return string
      */
     public function getPicture()
     {
@@ -265,72 +258,26 @@ class Contact
     }
 
     /**
-     * Set enabled
+     * Set comments
      *
-     * @param boolean $enabled
+     * @param string $comments
      * @return Contact
      */
-    public function setEnabled($enabled)
+    public function setComments($comments)
     {
-        $this->enabled = $enabled;
-    
+        $this->comments = $comments;
+
         return $this;
     }
 
     /**
-     * Get enabled
+     * Get comments
      *
-     * @return boolean 
+     * @return string
      */
-    public function getEnabled()
+    public function getComments()
     {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return Contact
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
-
-    /**
-     * Set comment
-     *
-     * @param string $comment
-     * @return Contact
-     */
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-    
-        return $this;
-    }
-
-    /**
-     * Get comment
-     *
-     * @return string 
-     */
-    public function getComment()
-    {
-        return $this->comment;
+        return $this->comments;
     }
 
     /**
@@ -342,14 +289,14 @@ class Contact
     public function setGender($gender)
     {
         $this->gender = $gender;
-    
+
         return $this;
     }
 
     /**
      * Get gender
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getGender()
     {
@@ -357,26 +304,26 @@ class Contact
     }
 
     /**
-     * Set organizationInvolved
+     * Set organisationInvolved
      *
-     * @param string $organizationInvolved
+     * @param string $organisationInvolved
      * @return Contact
      */
-    public function setOrganizationInvolved($organizationInvolved)
+    public function setOrganisationInvolved($organisationInvolved)
     {
-        $this->organizationInvolved = $organizationInvolved;
-    
+        $this->organisationInvolved = $organisationInvolved;
+
         return $this;
     }
 
     /**
-     * Get organizationInvolved
+     * Get organisationInvolved
      *
-     * @return string 
+     * @return string
      */
-    public function getOrganizationInvolved()
+    public function getOrganisationInvolved()
     {
-        return $this->organizationInvolved;
+        return $this->organisationInvolved;
     }
 
     /**
@@ -388,14 +335,14 @@ class Contact
     public function setManager($manager)
     {
         $this->manager = $manager;
-    
+
         return $this;
     }
 
     /**
      * Get manager
      *
-     * @return string 
+     * @return string
      */
     public function getManager()
     {
@@ -411,14 +358,14 @@ class Contact
     public function setDateBirth($dateBirth)
     {
         $this->dateBirth = $dateBirth;
-    
+
         return $this;
     }
 
     /**
      * Get dateBirth
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateBirth()
     {
@@ -426,26 +373,26 @@ class Contact
     }
 
     /**
-     * Set connPlatforme
+     * Set connPlatform
      *
-     * @param boolean $connPlatforme
+     * @param boolean $connPlatform
      * @return Contact
      */
-    public function setConnPlatforme($connPlatforme)
+    public function setConnPlatform($connPlatform)
     {
-        $this->connPlatforme = $connPlatforme;
-    
+        $this->connPlatform = $connPlatform;
+
         return $this;
     }
 
     /**
-     * Get connPlatforme
+     * Get connPlatform
      *
-     * @return boolean 
+     * @return boolean
      */
-    public function getConnPlatforme()
+    public function getConnPlatform()
     {
-        return $this->connPlatforme;
+        return $this->connPlatform;
     }
 
     /**
@@ -457,14 +404,14 @@ class Contact
     public function setOwner($owner)
     {
         $this->owner = $owner;
-    
+
         return $this;
     }
 
     /**
      * Get owner
      *
-     * @return string 
+     * @return string
      */
     public function getOwner()
     {
@@ -472,68 +419,22 @@ class Contact
     }
 
     /**
-     * Set creationDate
-     *
-     * @param \DateTime $creationDate
-     * @return Contact
-     */
-    public function setCreationDate($creationDate)
-    {
-        $this->creationDate = $creationDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get creationDate
-     *
-     * @return \DateTime 
-     */
-    public function getCreationDate()
-    {
-        return $this->creationDate;
-    }
-
-    /**
-     * Set modificationDate
-     *
-     * @param \DateTime $modificationDate
-     * @return Contact
-     */
-    public function setModificationDate($modificationDate)
-    {
-        $this->modificationDate = $modificationDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get modificationDate
-     *
-     * @return \DateTime 
-     */
-    public function getModificationDate()
-    {
-        return $this->modificationDate;
-    }
-
-    /**
      * Set phone
      *
-     * @param string $phone
+     * @param integer $phone
      * @return Contact
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    
+
         return $this;
     }
 
     /**
      * Get phone
      *
-     * @return string 
+     * @return integer
      */
     public function getPhone()
     {
@@ -549,14 +450,14 @@ class Contact
     public function setMail($mail)
     {
         $this->mail = $mail;
-    
+
         return $this;
     }
 
     /**
      * Get mail
      *
-     * @return string 
+     * @return string
      */
     public function getMail()
     {
@@ -564,59 +465,105 @@ class Contact
     }
 
     /**
-     * Set contact
+     * Set creationDate
      *
-     * @param string $contact
+     * @param \DateTime $creationDate
      * @return Contact
      */
-    public function setContact($contact)
+    public function setCreationDate($creationDate)
     {
-        $this->contact = $contact;
-    
+        $this->creationDate = $creationDate;
+
         return $this;
     }
 
     /**
-     * Get contact
+     * Get creationDate
      *
-     * @return string 
+     * @return \DateTime
      */
-    public function getContact()
+    public function getCreationDate()
     {
-        return $this->contact;
+        return $this->creationDate;
+    }
+
+    /**
+     * Set modificationDate
+     *
+     * @param \DateTime $modificationDate
+     * @return Contact
+     */
+    public function setModificationDate($modificationDate)
+    {
+        $this->modificationDate = $modificationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get modificationDate
+     *
+     * @return \DateTime
+     */
+    public function getModificationDate()
+    {
+        return $this->modificationDate;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Contact
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return Contact
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 
     /**
      * Get contactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getContactId()
     {
         return $this->contactId;
-    }
-
-    /**
-     * Set address
-     *
-     * @param \Srm\CoreBundle\Entity\Address $address
-     * @return Contact
-     */
-    public function setAddress(\Srm\CoreBundle\Entity\Address $address = null)
-    {
-        $this->address = $address;
-    
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return \Srm\CoreBundle\Entity\Address 
-     */
-    public function getAddress()
-    {
-        return $this->address;
     }
 
     /**
@@ -625,21 +572,44 @@ class Contact
      * @param \Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup
      * @return Contact
      */
-    public function setStakeholderGroup(\Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup = null)
+    public function setStakeholderGroup(StakeholderGroup $stakeholderGroup = null)
     {
         $this->stakeholderGroup = $stakeholderGroup;
-    
+
         return $this;
     }
 
     /**
      * Get stakeholderGroup
      *
-     * @return \Srm\CoreBundle\Entity\StakeholderGroup 
+     * @return \Srm\CoreBundle\Entity\StakeholderGroup
      */
     public function getStakeholderGroup()
     {
         return $this->stakeholderGroup;
+    }
+
+    /**
+     * Set role
+     *
+     * @param \Srm\CoreBundle\Entity\Role $role
+     * @return Contact
+     */
+    public function setRole(Role $role = null)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Srm\CoreBundle\Entity\Role
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 
     /**
@@ -648,17 +618,17 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Organisation $organisation
      * @return Contact
      */
-    public function setOrganisation(\Srm\CoreBundle\Entity\Organisation $organisation = null)
+    public function setOrganisation(Organisation $organisation = null)
     {
         $this->organisation = $organisation;
-    
+
         return $this;
     }
 
     /**
      * Get organisation
      *
-     * @return \Srm\CoreBundle\Entity\Organisation 
+     * @return \Srm\CoreBundle\Entity\Organisation
      */
     public function getOrganisation()
     {
@@ -671,10 +641,10 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return Contact
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->site[] = $site;
-    
+
         return $this;
     }
 
@@ -683,7 +653,7 @@ class Contact
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->site->removeElement($site);
     }
@@ -691,7 +661,7 @@ class Contact
     /**
      * Get site
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSite()
     {
@@ -704,10 +674,10 @@ class Contact
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      * @return Contact
      */
-    public function addSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment)
+    public function addSubDepartment(SubDepartment $subDepartment)
     {
         $this->subDepartment[] = $subDepartment;
-    
+
         return $this;
     }
 
@@ -716,7 +686,7 @@ class Contact
      *
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      */
-    public function removeSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment)
+    public function removeSubDepartment(SubDepartment $subDepartment)
     {
         $this->subDepartment->removeElement($subDepartment);
     }
@@ -724,7 +694,7 @@ class Contact
     /**
      * Get subDepartment
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSubDepartment()
     {
@@ -737,10 +707,10 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Department $department
      * @return Contact
      */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function addDepartment(Department $department)
     {
         $this->department[] = $department;
-    
+
         return $this;
     }
 
@@ -749,7 +719,7 @@ class Contact
      *
      * @param \Srm\CoreBundle\Entity\Department $department
      */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function removeDepartment(Department $department)
     {
         $this->department->removeElement($department);
     }
@@ -757,10 +727,15 @@ class Contact
     /**
      * Get department
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDepartment()
     {
         return $this->department;
+    }
+
+    public function __toString()
+    {
+        return $this->lastname.' '.$this->firstname;
     }
 }

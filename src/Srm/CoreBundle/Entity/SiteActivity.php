@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * SiteActivity
  */
@@ -13,16 +11,6 @@ class SiteActivity
      * @var string
      */
     private $label;
-
-    /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
 
     /**
      * @var integer
@@ -46,7 +34,7 @@ class SiteActivity
     {
         $this->site = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Set label
      *
@@ -56,14 +44,14 @@ class SiteActivity
     public function setLabel($label)
     {
         $this->label = $label;
-    
+
         return $this;
     }
 
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -71,55 +59,9 @@ class SiteActivity
     }
 
     /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return SiteActivity
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return SiteActivity
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
-
-    /**
      * Get siteActivityId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSiteActivityId()
     {
@@ -132,17 +74,17 @@ class SiteActivity
      * @param \Srm\CoreBundle\Entity\TypeSite $typeSite
      * @return SiteActivity
      */
-    public function setTypeSite(\Srm\CoreBundle\Entity\TypeSite $typeSite = null)
+    public function setTypeSite(TypeSite $typeSite = null)
     {
         $this->typeSite = $typeSite;
-    
+
         return $this;
     }
 
     /**
      * Get typeSite
      *
-     * @return \Srm\CoreBundle\Entity\TypeSite 
+     * @return \Srm\CoreBundle\Entity\TypeSite
      */
     public function getTypeSite()
     {
@@ -155,10 +97,10 @@ class SiteActivity
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return SiteActivity
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->site[] = $site;
-    
+
         return $this;
     }
 
@@ -167,7 +109,7 @@ class SiteActivity
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->site->removeElement($site);
     }
@@ -175,7 +117,7 @@ class SiteActivity
     /**
      * Get site
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSite()
     {

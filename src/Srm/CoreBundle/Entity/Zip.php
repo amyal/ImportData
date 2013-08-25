@@ -2,17 +2,25 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Zip
  */
 class Zip
 {
     /**
-     * @var integer
+     * @var string
      */
     private $code;
+
+    /**
+     * @var float
+     */
+    private $geolong;
+
+    /**
+     * @var float
+     */
+    private $geolat;
 
     /**
      * @var boolean
@@ -38,24 +46,70 @@ class Zip
     /**
      * Set code
      *
-     * @param integer $code
+     * @param string $code
      * @return Zip
      */
     public function setCode($code)
     {
         $this->code = $code;
-    
+
         return $this;
     }
 
     /**
      * Get code
      *
-     * @return integer 
+     * @return string
      */
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * Set geolong
+     *
+     * @param float $geolong
+     * @return Zip
+     */
+    public function setGeolong($geolong)
+    {
+        $this->geolong = $geolong;
+
+        return $this;
+    }
+
+    /**
+     * Get geolong
+     *
+     * @return float
+     */
+    public function getGeolong()
+    {
+        return $this->geolong;
+    }
+
+    /**
+     * Set geolat
+     *
+     * @param float $geolat
+     * @return Zip
+     */
+    public function setGeolat($geolat)
+    {
+        $this->geolat = $geolat;
+
+        return $this;
+    }
+
+    /**
+     * Get geolat
+     *
+     * @return float
+     */
+    public function getGeolat()
+    {
+        return $this->geolat;
     }
 
     /**
@@ -67,14 +121,14 @@ class Zip
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -90,14 +144,14 @@ class Zip
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -107,7 +161,7 @@ class Zip
     /**
      * Get zipId
      *
-     * @return integer 
+     * @return integer
      */
     public function getZipId()
     {
@@ -120,17 +174,17 @@ class Zip
      * @param \Srm\CoreBundle\Entity\City $city
      * @return Zip
      */
-    public function setCity(\Srm\CoreBundle\Entity\City $city = null)
+    public function setCity(City $city = null)
     {
         $this->city = $city;
-    
+
         return $this;
     }
 
     /**
      * Get city
      *
-     * @return \Srm\CoreBundle\Entity\City 
+     * @return \Srm\CoreBundle\Entity\City
      */
     public function getCity()
     {

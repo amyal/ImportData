@@ -4,7 +4,7 @@
     <id name="cityId" type="integer" column="CITY_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="NAME" length="50" nullable="false"/>
+    <field name="label" type="string" column="LABEL" length="80" nullable="false"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
     <many-to-one field="country" target-entity="Country">

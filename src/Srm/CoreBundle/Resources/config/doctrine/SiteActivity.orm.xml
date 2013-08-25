@@ -4,14 +4,12 @@
     <id name="siteActivityId" type="integer" column="SITE_ACTIVITY_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="label" type="string" column="LABEL" length="255" nullable="false"/>
-    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
-    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
     <many-to-one field="typeSite" target-entity="TypeSite">
       <join-columns>
         <join-column name="TYPE_SITE_ID" referenced-column-name="TYPE_SITE_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="site" target-entity="Site" mapped-by="siteActivity"/>
+    <many-to-many field="site" target-entity="Site" mapped-by="siteActivities"/>
   </entity>
 </doctrine-mapping>

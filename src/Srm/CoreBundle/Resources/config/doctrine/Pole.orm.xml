@@ -4,8 +4,19 @@
     <id name="poleId" type="integer" column="POLE_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="NAME" length="50" nullable="false"/>
+    <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <many-to-many field="site" target-entity="Site" mapped-by="pole"/>
+    <many-to-many field="department" target-entity="Department" inversed-by="pole">
+      <join-table name="vj_pole_department">
+        <join-columns>
+          <join-column name="POLE_ID" referenced-column-name="POLE_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
   </entity>
 </doctrine-mapping>

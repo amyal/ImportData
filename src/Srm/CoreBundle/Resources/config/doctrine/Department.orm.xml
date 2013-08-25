@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Department" table="VR_DEPARTMENT">
+  <entity name="Srm\CoreBundle\Entity\Department" table="V_DEPARTMENT">
     <id name="departmentId" type="integer" column="DEPARTMENT_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="NAME" length="100" nullable="false"/>
-    <field name="description" type="string" column="DESCRIPTION" length="500" nullable="false"/>
+    <field name="label" type="string" column="LABEL" length="50" nullable="true"/>
+    <field name="description" type="string" column="DESCRIPTION" length="255" nullable="true"/>
+    <field name="category" type="string" column="CATEGORY" length="150" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="false"/>
-    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
-    <field name="category" type="string" column="CATEGORY" length="25" nullable="false"/>
-    <many-to-many field="site" target-entity="Site" mapped-by="department"/>
-    <many-to-many field="contact" target-entity="Contact" mapped-by="department"/>
+    <many-to-many field="sites" target-entity="Site" mapped-by="departments"/>
+    <many-to-many field="pole" target-entity="Pole" mapped-by="department"/>
+    <many-to-many field="contacts" target-entity="Contact" mapped-by="department"/>
+    <many-to-many field="subDepartments" target-entity="SubDepartment" inversed-by="department">
+      <join-table name="sub_department_department">
+        <join-columns>
+          <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="SUB_DEPARTMENT_ID" referenced-column-name="SUB_DEPARTMENT_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
   </entity>
 </doctrine-mapping>

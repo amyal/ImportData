@@ -1,0 +1,33 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block content %}
+    <fieldset>
+        <legend>{{ 'organisation.basic.title'|trans }}</legend>
+
+        <ul class="unstyled">
+            <li>{{ 'organisation.form.basic.label'|trans }} : {{ organisation.label }}</li>
+            <li>{{ 'organisation.basic.address'|trans }} : {{ organisation.address.label }}</li>
+            <li>{{ 'address.zip'|trans }} : {{ organisation.address.zip.code }}</li>
+            <li>{{ 'address.city'|trans }} : {{ organisation.address.zip.city.label }}</li>
+            <li>{{ 'address.country'|trans }} : {{ organisation.address.zip.city.country.label }}</li>
+            <li>{{ 'organisation.form.basic.identification_code'|trans }} : {{ organisation.identificationCode }}</li>
+            <li>{{ 'organisation.form.basic.slogan1'|trans }} : {{ organisation.slogan1 }}</li>
+            <li>{{ 'organisation.form.basic.slogan2'|trans }} : {{ organisation.slogan2 }}</li>
+            <li>{{ 'organisation.form.basic.slogan3'|trans }} : {{ organisation.slogan3 }}</li>
+        </ul>
+
+        <a href="{{ path('srm_website_organisation_basic', {'identificationCode': organisation.identificationCode}) }}" class="btn"><i class="icon-pencil"></i> {{ 'button.edit'|trans }}</a>
+    </fieldset>
+
+    <fieldset>
+        <legend>{{ 'organisation.legal.title'|trans }}</legend>
+
+        <ul class="unstyled">
+            <li>{{ 'organisation.form.legal.label'|trans }} : {{ legalForm.label }}</li>
+            <li>{{ 'organisation.form.legal.nature_capital'|trans }} : {{ legalForm.natureCapital }}</li>
+            <li>{{ 'organisation.form.legal.nature_capital'|trans }} : {{ legalForm.registrationDate }}</li>
+        </ul>
+
+        <a href="{{ path('srm_website_organisation_legal', {'organisationId': organisation.organisationId}) }}" class="btn"><i class="icon-pencil"></i> {{ 'button.edit'|trans }}</a>
+    </fieldset>
+{% endblock %}

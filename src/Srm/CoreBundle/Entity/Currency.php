@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Currency
  */
@@ -12,22 +10,12 @@ class Currency
     /**
      * @var string
      */
-    private $name;
+    private $label;
 
     /**
      * @var float
      */
     private $convertEuro;
-
-    /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
 
     /**
      * @var integer
@@ -36,26 +24,26 @@ class Currency
 
 
     /**
-     * Set name
+     * Set label
      *
-     * @param string $name
+     * @param string $label
      * @return Currency
      */
-    public function setName($name)
+    public function setLabel($label)
     {
-        $this->name = $name;
-    
+        $this->label = $label;
+
         return $this;
     }
 
     /**
-     * Get name
+     * Get label
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getLabel()
     {
-        return $this->name;
+        return $this->label;
     }
 
     /**
@@ -67,14 +55,14 @@ class Currency
     public function setConvertEuro($convertEuro)
     {
         $this->convertEuro = $convertEuro;
-    
+
         return $this;
     }
 
     /**
      * Get convertEuro
      *
-     * @return float 
+     * @return float
      */
     public function getConvertEuro()
     {
@@ -82,55 +70,9 @@ class Currency
     }
 
     /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return Currency
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return Currency
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
-
-    /**
      * Get currencyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCurrencyId()
     {

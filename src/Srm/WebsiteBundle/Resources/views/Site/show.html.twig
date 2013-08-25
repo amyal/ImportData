@@ -1,0 +1,14 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block content %}
+    <div>
+        <ul class="unstyled">
+            <li>{{ 'site.label'|trans }} : {{ site.label }}</li>
+        </ul>
+
+        {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
+            url_edit:   path('srm_website_site_edit',  {'organisationId': organisationId, 'siteId': site.siteId}),
+            url_cancel: path('srm_website_sites_list', {'organisationId': organisationId})
+        }, with_context = false) }}
+    </div>
+{% endblock %}

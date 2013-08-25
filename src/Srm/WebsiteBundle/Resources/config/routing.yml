@@ -1,0 +1,4 @@
+_organisations:
+    resource: "@SrmWebsiteBundle/Resources/config/routing/organisations.yml"
+_sites:
+    resource: "@SrmWebsiteBundle/Resources/config/routing/sites.yml"

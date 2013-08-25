@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Address
  */
@@ -12,12 +10,12 @@ class Address
     /**
      * @var string
      */
-    private $name;
+    private $label;
 
     /**
      * @var string
      */
-    private $type;
+    private $addressType;
 
     /**
      * @var string
@@ -41,49 +39,49 @@ class Address
 
 
     /**
-     * Set name
+     * Set label
      *
-     * @param string $name
+     * @param string $label
      * @return Address
      */
-    public function setName($name)
+    public function setLabel($label)
     {
-        $this->name = $name;
-    
+        $this->label = $label;
+
         return $this;
     }
 
     /**
-     * Get name
+     * Get label
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getLabel()
     {
-        return $this->name;
+        return $this->label;
     }
 
     /**
-     * Set type
+     * Set addressType
      *
-     * @param string $type
+     * @param string $addressType
      * @return Address
      */
-    public function setType($type)
+    public function setAddressType($addressType)
     {
-        $this->type = $type;
-    
+        $this->addressType = $addressType;
+
         return $this;
     }
 
     /**
-     * Get type
+     * Get addressType
      *
-     * @return string 
+     * @return string
      */
-    public function getType()
+    public function getAddressType()
     {
-        return $this->type;
+        return $this->addressType;
     }
 
     /**
@@ -95,14 +93,14 @@ class Address
     public function setAdditional1($additional1)
     {
         $this->additional1 = $additional1;
-    
+
         return $this;
     }
 
     /**
      * Get additional1
      *
-     * @return string 
+     * @return string
      */
     public function getAdditional1()
     {
@@ -118,14 +116,14 @@ class Address
     public function setAdditional2($additional2)
     {
         $this->additional2 = $additional2;
-    
+
         return $this;
     }
 
     /**
      * Get additional2
      *
-     * @return string 
+     * @return string
      */
     public function getAdditional2()
     {
@@ -135,7 +133,7 @@ class Address
     /**
      * Get addressId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAddressId()
     {
@@ -148,17 +146,17 @@ class Address
      * @param \Srm\CoreBundle\Entity\Zip $zip
      * @return Address
      */
-    public function setZip(\Srm\CoreBundle\Entity\Zip $zip = null)
+    public function setZip(Zip $zip = null)
     {
         $this->zip = $zip;
-    
+
         return $this;
     }
 
     /**
      * Get zip
      *
-     * @return \Srm\CoreBundle\Entity\Zip 
+     * @return \Srm\CoreBundle\Entity\Zip
      */
     public function getZip()
     {

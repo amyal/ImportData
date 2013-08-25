@@ -4,8 +4,6 @@
     <id name="languageId" type="integer" column="LANGUAGE_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="NAME" length="255" nullable="false"/>
-    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
-    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
   </entity>
 </doctrine-mapping>

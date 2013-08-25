@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\Answers" table="VR_ANSWERS">
+    <id name="answersId" type="integer" column="ANSWERS_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="code" type="string" column="CODE" length="20" nullable="true"/>
+    <field name="allSites" type="boolean" column="ALL_SITES" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
+    <many-to-one field="item" target-entity="Item">
+      <join-columns>
+        <join-column name="ITEM_ID" referenced-column-name="ITEM_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="answerType" target-entity="AnswerType">
+      <join-columns>
+        <join-column name="ANSWER_TYPE_ID" referenced-column-name="ANSWER_TYPE_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="periodicity" target-entity="Periodicity">
+      <join-columns>
+        <join-column name="PERIODICITY_ID" referenced-column-name="PERIODICITY_ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

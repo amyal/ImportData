@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Pole
  */
@@ -12,7 +10,7 @@ class Pole
     /**
      * @var string
      */
-    private $name;
+    private $label;
 
     /**
      * @var boolean
@@ -29,28 +27,46 @@ class Pole
      */
     private $poleId;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $site;
 
     /**
-     * Set name
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $department;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set label
      *
-     * @param string $name
+     * @param string $label
      * @return Pole
      */
-    public function setName($name)
+    public function setLabel($label)
     {
-        $this->name = $name;
-    
+        $this->label = $label;
+
         return $this;
     }
 
     /**
-     * Get name
+     * Get label
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getLabel()
     {
-        return $this->name;
+        return $this->label;
     }
 
     /**
@@ -62,14 +78,14 @@ class Pole
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -85,14 +101,14 @@ class Pole
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
-    
+
         return $this;
     }
 
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -102,10 +118,76 @@ class Pole
     /**
      * Get poleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPoleId()
     {
         return $this->poleId;
+    }
+
+    /**
+     * Add site
+     *
+     * @param \Srm\CoreBundle\Entity\Site $site
+     * @return Pole
+     */
+    public function addSite(Site $site)
+    {
+        $this->site[] = $site;
+
+        return $this;
+    }
+
+    /**
+     * Remove site
+     *
+     * @param \Srm\CoreBundle\Entity\Site $site
+     */
+    public function removeSite(Site $site)
+    {
+        $this->site->removeElement($site);
+    }
+
+    /**
+     * Get site
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
+
+    /**
+     * Add department
+     *
+     * @param \Srm\CoreBundle\Entity\Department $department
+     * @return Pole
+     */
+    public function addDepartment(Department $department)
+    {
+        $this->department[] = $department;
+
+        return $this;
+    }
+
+    /**
+     * Remove department
+     *
+     * @param \Srm\CoreBundle\Entity\Department $department
+     */
+    public function removeDepartment(Department $department)
+    {
+        $this->department->removeElement($department);
+    }
+
+    /**
+     * Get department
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDepartment()
+    {
+        return $this->department;
     }
 }

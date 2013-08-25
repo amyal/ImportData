@@ -2,8 +2,6 @@
 
 namespace Srm\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Subscription
  */
@@ -12,7 +10,7 @@ class Subscription
     /**
      * @var string
      */
-    private $name;
+    private $label;
 
     /**
      * @var integer
@@ -25,16 +23,6 @@ class Subscription
     private $price;
 
     /**
-     * @var boolean
-     */
-    private $enabled;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
-
-    /**
      * @var \DateTime
      */
     private $creationDate;
@@ -45,9 +33,14 @@ class Subscription
     private $modificationDate;
 
     /**
-     * @var string
+     * @var boolean
      */
-    private $contact;
+    private $enabled;
+
+    /**
+     * @var boolean
+     */
+    private $deleted;
 
     /**
      * @var integer
@@ -56,26 +49,26 @@ class Subscription
 
 
     /**
-     * Set name
+     * Set label
      *
-     * @param string $name
+     * @param string $label
      * @return Subscription
      */
-    public function setName($name)
+    public function setLabel($label)
     {
-        $this->name = $name;
-    
+        $this->label = $label;
+
         return $this;
     }
 
     /**
-     * Get name
+     * Get label
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getLabel()
     {
-        return $this->name;
+        return $this->label;
     }
 
     /**
@@ -87,14 +80,14 @@ class Subscription
     public function setDuration($duration)
     {
         $this->duration = $duration;
-    
+
         return $this;
     }
 
     /**
      * Get duration
      *
-     * @return integer 
+     * @return integer
      */
     public function getDuration()
     {
@@ -110,64 +103,18 @@ class Subscription
     public function setPrice($price)
     {
         $this->price = $price;
-    
+
         return $this;
     }
 
     /**
      * Get price
      *
-     * @return float 
+     * @return float
      */
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return Subscription
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return Subscription
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-    
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean 
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
     }
 
     /**
@@ -179,14 +126,14 @@ class Subscription
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
-    
+
         return $this;
     }
 
     /**
      * Get creationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
@@ -202,14 +149,14 @@ class Subscription
     public function setModificationDate($modificationDate)
     {
         $this->modificationDate = $modificationDate;
-    
+
         return $this;
     }
 
     /**
      * Get modificationDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModificationDate()
     {
@@ -217,32 +164,55 @@ class Subscription
     }
 
     /**
-     * Set contact
+     * Set enabled
      *
-     * @param string $contact
+     * @param boolean $enabled
      * @return Subscription
      */
-    public function setContact($contact)
+    public function setEnabled($enabled)
     {
-        $this->contact = $contact;
-    
+        $this->enabled = $enabled;
+
         return $this;
     }
 
     /**
-     * Get contact
+     * Get enabled
      *
-     * @return string 
+     * @return boolean
      */
-    public function getContact()
+    public function getEnabled()
     {
-        return $this->contact;
+        return $this->enabled;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return Subscription
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 
     /**
      * Get subscriptionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSubscriptionId()
     {
