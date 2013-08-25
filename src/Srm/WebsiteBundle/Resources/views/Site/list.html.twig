@@ -29,22 +29,14 @@
                         <td>{{ site.typeSite.label }}</td>
                         <td>
                             {% if site.siteActivities %}
-                                {% set activitiesStr = [] %}
-                                {% for activity in site.siteActivities %}
-                                    {% set activitiesStr = activitiesStr|merge([activity.label]) %}
-                                {% endfor %}
-                                {{ activitiesStr|join(', ') }}
+                                {{ site.siteActivities|joinLabels(', ') }}
                             {% else %}
                                 {{ 'sites.list.no_activities'|trans }}
                             {% endif %}
                         </td>
                         <td>
                             {% if site.subSiteActivities %}
-                                {% set subActivitiesStr = [] %}
-                                {% for subActivity in site.subSiteActivities %}
-                                    {% set subActivitiesStr = subActivitiesStr|merge([subActivity.label]) %}
-                                {% endfor %}
-                                {{ subActivitiesStr|join(', ') }}
+                                {{ site.subSiteActivities|joinLabels(', ') }}
                             {% else %}
                                 {{ 'sites.list.no_sub_activities'|trans }}
                             {% endif %}

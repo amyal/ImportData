@@ -7,4 +7,10 @@
         <import resource="services/converters.xml" />
         <import resource="services/form_types.xml" />
     </imports>
+
+    <services>
+        <service id="srm.twig.srm_extension" class="Srm\WebsiteBundle\Twig\SrmExtension">
+            <tag name="twig.extension" />
+        </service>
+    </services>
 </container>
