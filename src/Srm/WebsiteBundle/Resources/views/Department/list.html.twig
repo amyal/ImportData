@@ -13,8 +13,8 @@
                 <tr>
                     <td>{{ 'departments.list.name'|trans }}</td>
                     <td>{{ 'departments.list.sub_departments'|trans }}</td>
-                    <td>{{ 'departments.list.sites'|trans }}</td>
-                    <td>{{ 'departments.list.contacts'|trans }}</td>
+                    {#<td>{{ 'departments.list.sites'|trans }}</td>#}
+                    <td>{{ 'contacts'|trans }}</td>
                     <td>{{ 'departments.list.enabled'|trans }}</td>
                     <td></td>
                 </tr>
@@ -30,11 +30,23 @@
                                 {{ 'departments.list.no_sub_departments'|trans }}
                             {% endif %}
                         </td>
-                        <td>{{ department.typeSite.label }}</td>
-                        <td></td>
+                        <td>
+                            {% if department.contacts %}
+                                {{ department.contacts|joinLabels(', ') }}
+                            {% else %}
+                                {{ 'departments.list.no_contacts'|trans }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if department.enabled %}
+                                {{ 'enabled'|trans }}
+                            {% else %}
+                                {{ 'disabled'|trans }}
+                            {% endif %}
+                        </td>
                     </tr>
                 {% else %}
-                    <tr><td colspan="6">{{ 'departments.list.empty'|trans }}</td></tr>
+                    <tr><td colspan="5">{{ 'departments.list.empty'|trans }}</td></tr>
                 {% endfor %}
             </tbody>
         </table>
