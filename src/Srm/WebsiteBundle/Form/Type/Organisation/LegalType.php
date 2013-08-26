@@ -17,21 +17,10 @@ class LegalType extends AbstractType
                     'attr'  => array('autofocus' => 'autofocus')
                 )
             )
-            ->add(
-                'natureCapital', 'text', array(
-                    'label' => 'organisation.form.legal.nature_capital',
-                )
-            )
-            ->add(
-                'category', 'text', array(
-                    'label' => 'organisation.form.legal.category',
-                )
-            )
-            ->add(
-                'registrationDate', 'date', array(
-                    'label' => 'organisation.form.legal.registration_date',
-                )
-            )
+            ->add('natureCapital',    'text', array('label' => 'organisation.form.legal.nature_capital'))
+            ->add('apeCode',          'text' ,array('label' => 'organisation.form.legal.activity_code'))
+            ->add('category',         'text', array('label' => 'organisation.form.legal.category'))
+            ->add('registrationDate', 'date', array('label' => 'organisation.form.legal.registration_date'))
 
             ->add('save', 'submit', array('label' => 'button.save')
             )
