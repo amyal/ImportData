@@ -2,44 +2,39 @@
 
 {% block content %}
     <div>
-        <div>
-            <form action="{{ path('srm_website_department_add', {'identificationCode': organisation.identificationCode}) }}">
-                <button type="submit" class="btn">{{ 'button.edit'|trans }}</button>
-            </form>
-        </div>
-    </div>
-{% endblock %}
-
-{% extends '@SrmWebsite/layout.html.twig' %}
-
-{% block content %}
-    <div>
-        <table class="table table-hover">
+        <table class="table table-hover table-condensed">
             <caption>
-                <div class="text-left">{{ 'departments.title'|trans }}</div>
+                <div class="text-left"><h3>{{ 'departments.list.title'|trans }}</h3></div>
                 <div class="text-right">
-                    <a href="{{ path('srm_website_departments_add', {'organisationId': organisation.organisationId}) }}" class="btn">{{ 'button.add'|trans }}</a>
+                    <a href="{{ path('srm_website_departments_add', { 'organisationId': organisation.organisationId }) }}" class="btn" title="{{ 'button.add'|trans }}"><i class="icon-plus"></i> {{ 'button.add'|trans }}</a>
                 </div>
             </caption>
             <thead>
                 <tr>
-                    <td><h2>{{ 'departments.title'|trans }}</h2></td>
-                    <td>
-                        <a href="{{ path('srm_website_departments_add', {'organisationId': organisation.organisationId}) }}" class="btn">{{ 'button.add'|trans }}</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ 'sites.list.name'|trans }}</td>
-                    <td>{{ 'sites.list.substances'|trans }}</td>
+                    <td>{{ 'departments.list.name'|trans }}</td>
+                    <td>{{ 'departments.list.sub_departments'|trans }}</td>
+                    <td>{{ 'departments.list.sites'|trans }}</td>
+                    <td>{{ 'departments.list.contacts'|trans }}</td>
+                    <td>{{ 'departments.list.enabled'|trans }}</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
                 {% for department in departments %}
                     <tr>
-                        <td colspan="2">{{ department.label }}</td>
+                        <td>{{ department.label }}</td>
+                        <td>
+                            {% if department.subDepartments %}
+                                {{ department.subDepartments|joinLabels(', ') }}
+                            {% else %}
+                                {{ 'departments.list.no_sub_departments'|trans }}
+                            {% endif %}
+                        </td>
+                        <td>{{ department.typeSite.label }}</td>
+                        <td></td>
                     </tr>
                 {% else %}
-                    <tr><td colspan="5">{{ 'departments.empty_list'|trans }}</td></tr>
+                    <tr><td colspan="6">{{ 'departments.list.empty'|trans }}</td></tr>
                 {% endfor %}
             </tbody>
         </table>
