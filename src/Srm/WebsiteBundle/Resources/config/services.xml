@@ -9,7 +9,7 @@
     </imports>
 
     <services>
-        <service id="srm.twig.srm_extension" class="Srm\WebsiteBundle\Twig\SrmExtension">
+        <service id="srm_website.twig.extension" class="Srm\WebsiteBundle\Twig\SrmExtension">
             <tag name="twig.extension" />
         </service>
     </services>
