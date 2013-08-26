@@ -34,8 +34,8 @@ class SiteType extends AbstractType
 
             ->add('address',  'srm_address',  array('required' => true))
 
-            ->add('phone', 'integer', array('label' => 'phone', 'required' => true))
-            ->add('fax',   'integer', array('label' => 'fax'))
+            ->add('phone', 'text', array('label' => 'phone', 'required' => true))
+            ->add('fax',   'text', array('label' => 'fax'))
             ->add('mail', 'email', array('label' => 'email', 'required' => true))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
