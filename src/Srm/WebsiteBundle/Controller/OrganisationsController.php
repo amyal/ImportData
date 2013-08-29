@@ -48,10 +48,11 @@ class OrganisationsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($organisation);
 
-        $legalForm = new LegalForm();
-        $legalForm->setLabel(sprintf('Société anonyme [%s]', $organisation->getLabel()));
-        $legalForm->setOrganisation($organisation);
-        $em->persist($legalForm);
+        if (null === $legalForm = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneByOrganisation($organisation)) {
+            $legalForm = new LegalForm($organisation);
+            $legalForm->setLabel(sprintf('Société anonyme [%s]', $organisation->getLabel()));
+            $em->persist($legalForm);
+        }
 
         $em->flush();
 
