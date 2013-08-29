@@ -395,8 +395,5 @@ class LegalForm
     public function updateModificationDate()
     {
         $this->modificationDate = new \DateTime();
-ob_start(); $handle = fopen('/home/nelson/www/dev.log', 'a');
-echo sprintf('%s::%s::%d', __CLASS__, __FUNCTION__, __LINE__)."\n";
-$print = ob_get_contents(); ob_end_clean(); fwrite($handle, $print."\n"); fclose($handle);
     }
 }
