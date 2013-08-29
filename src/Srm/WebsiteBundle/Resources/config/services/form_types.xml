@@ -22,6 +22,7 @@
             <tag name="form.type" alias="srm_zip" />
         </service>
         <service id="srm_website.form.zip_listener" class="Srm\WebsiteBundle\Form\EventListener\ZipListener" public="false">
+            <argument type="service" id="form.factory" />
             <argument type="service">
                 <service class="Doctrine\ORM\EntityRepository"
                     factory-service="doctrine.orm.entity_manager"
