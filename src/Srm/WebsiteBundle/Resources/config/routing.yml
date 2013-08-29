@@ -1,6 +1,6 @@
 _organisations:
-    resource: "@SrmWebsiteBundle/Resources/config/routing/organisations.yml"
+    resource: "routing/organisations.yml"
 _sites:
-    resource: "@SrmWebsiteBundle/Resources/config/routing/sites.yml"
+    resource: "routing/sites.yml"
 _departments:
-    resource: "@SrmWebsiteBundle/Resources/config/routing/departments.yml"
+    resource: "routing/departments.yml"
