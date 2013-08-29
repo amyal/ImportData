@@ -1,22 +1,24 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Site;
+namespace Srm\WebsiteBundle\Form\Type\Department;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CurrencyType extends AbstractType
+class SubDepartmentType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Currency',
+            'class'         => 'Srm\CoreBundle\Entity\SubDepartment',
             'property'      => 'label',
-            'empty_value'   => 'currency.choice',
-            'label'         => 'currency',
+            'expanded'      => true,
+            'multiple'      => true,
+            'query_builder' => function(EntityRepository $er) {
+                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
+            },
         ));
     }
 
@@ -27,6 +29,6 @@ class CurrencyType extends AbstractType
 
     public function getName()
     {
-        return 'srm_currency';
+        return 'srm_sub_department';
     }
 }

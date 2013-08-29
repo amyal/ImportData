@@ -5,9 +5,9 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
-    <field name="phone" type="integer" column="PHONE" nullable="true"/>
+    <field name="phone" type="string" column="PHONE" length="20" nullable="true"/>
     <field name="mail" type="string" column="MAIL" length="150" nullable="true"/>
-    <field name="fax" type="integer" column="FAX" nullable="true"/>
+    <field name="fax" type="string" column="FAX" length="20" nullable="true"/>
     <field name="importance" type="string" column="IMPORTANCE" length="50" nullable="true"/>
     <field name="map" type="string" column="MAP" length="255" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>

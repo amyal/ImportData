@@ -20,18 +20,10 @@ class DepartmentParamConverter implements ParamConverterInterface
     public function apply(Request $request, ConfigurationInterface $configuration)
     {
         if (null !== $request->get('departmentId', null)) {
-            return false;   // on laisse le DoctrineParamConverter trouver le site avec le departmentId
+            return false;   // on laisse le DoctrineParamConverter trouver le department avec le departmentId
         }
 
-        $site = new Department();
-
-        if (null === $organisation = $request->get('organisation', null)) {
-            throw new \Exception('Aucune organisation trouvée pour créer des sites.');
-        }
-
-        $site->setOrganisation($organisation);
-
-        $request->attributes->set($configuration->getName(), $site);
+        $request->attributes->set($configuration->getName(), new Department());
 
         return true;
     }

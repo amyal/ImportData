@@ -9,7 +9,7 @@
     <field name="amountCapital" type="float" column="AMOUNT_CAPITAL" nullable="true"/>
     <field name="apeCode" type="string" column="APE_CODE" length="25" nullable="true"/>
     <field name="category" type="float" column="CATEGORY" nullable="true"/>
-    <field name="registrationDate" type="float" column="REGISTRATION_DATE" nullable="true"/>
+    <field name="registrationDate" type="datetime" column="REGISTRATION_DATE" nullable="true"/>
     <field name="siretNumber" type="float" column="SIRET_NUMBER" nullable="true"/>
     <field name="tvaNumber" type="string" column="TVA_NUMBER" length="30" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>

@@ -57,10 +57,10 @@
                         </td>
                         <td>
                             <div class="btn-toolbar">
-                                <div class="btn-group">
+                                <div class="btn-group btn-group-vertical">
                                     <a href="{{ path('srm_website_site_show', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
                                     <a href="{{ path('srm_website_site_edit', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                    <a href="{{ path('srm_website_site_disable', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                    <a href="{{ path('srm_website_site_disable', { 'organisationId': organisation.organisationId, 'siteId': site.siteId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
                                 </div>
                             </div>
                         </td>

@@ -26,7 +26,7 @@ class OrganisationsController extends Controller
         $form = $this->createForm('srm_organisation_basic', $organisation, array(
             'action' => $this->generateUrl('srm_website_organisation_basic', array('identificationCode' => $organisation->getIdentificationCode())),
             'method' => 'POST',
-            'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
+            'attr'   => array('class' => 'form-horizontal'/*, 'novalidate' => 'novalidate'*/),
         ));
 
         $request = $this->getRequest();

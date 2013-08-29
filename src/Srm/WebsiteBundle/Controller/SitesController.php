@@ -27,7 +27,7 @@ class SitesController extends Controller
 
     public function disableAction(Organisation $organisation, Site $site)
     {
-        $site->setEnabled(false);
+        $site->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($site);
         $em->flush();
@@ -75,6 +75,8 @@ class SitesController extends Controller
                 $site->addSiteActivity($subSiteActivity->getSiteActivity());
             }
         }
+
+        $site->setDeleted(false);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($site);
