@@ -134,6 +134,8 @@ class Site
         $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
         $this->siteActivities = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->creationDate = new \DateTime();
     }
 
     /**
@@ -720,5 +722,10 @@ class Site
     public function getSiteActivities()
     {
         return $this->siteActivities;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }
