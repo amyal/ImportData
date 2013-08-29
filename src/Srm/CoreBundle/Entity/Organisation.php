@@ -98,6 +98,11 @@ class Organisation
     private $currency;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
+
     /**
      * Set label
      *
@@ -497,5 +502,10 @@ class Organisation
     public function getCurrency()
     {
         return $this->currency;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

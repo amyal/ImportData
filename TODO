@@ -4,7 +4,7 @@ adresse:
 organisation:
   ☐ upload du logo
   ☐ affichage du logo dans show
-  ☐ city/country not set after save
+  ✔ city/country not set after save @done (13-08-29 23:14)
 
 site:
   ☐ code du site
@@ -12,8 +12,8 @@ site:
   ☐ products
 
 retours:
-  ☐ J'ai crée une organisation, j'ai édité le formulaire, j'ai renseigné d'autres champs, ça m'a crée une deuxième ligne dans la table Organisations
+  ✔ J'ai crée une organisation, j'ai édité le formulaire, j'ai renseigné d'autres champs, ça m'a crée une deuxième ligne dans la table Organisations @done (13-08-30 00:00)
   ☐ Les dates de création et de modification ne sont pas setté à la création ou à la modification (organisations et sites)
-  ☐ J'ai édité une organisation qui existe déjà, j'ai juste cliqué sur Enregistrer sans rien modifier, j'ai l'erreur suivante
+  ✔ J'ai édité une organisation qui existe déjà, j'ai juste cliqué sur Enregistrer sans rien modifier, j'ai l'erreur suivante @done (13-08-30 00:00)
     Could not convert database value "2010" to Doctrine Type datetime. Expected format: Y-m-d H:i:s
-  ☐ J'ai édité un site existant, la ville et le pays ne sont pas sélectionné, pourtant l'address_id est bien renseigné pour le site
+  ✔ J'ai édité un site existant, la ville et le pays ne sont pas sélectionné, pourtant l'address_id est bien renseigné pour le site @done (13-08-29 23:37)

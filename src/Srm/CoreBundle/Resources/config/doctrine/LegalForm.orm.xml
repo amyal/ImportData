@@ -21,5 +21,9 @@
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
     </many-to-one>
+
+    <lifecycle-callbacks>
+      <lifecycle-callback type="preUpdate" method="updateModificationDate" />
+    </lifecycle-callbacks>
   </entity>
 </doctrine-mapping>

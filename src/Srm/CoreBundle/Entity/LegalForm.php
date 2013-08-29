@@ -78,6 +78,11 @@ class LegalForm
     private $organisation;
 
 
+    public function __construct(Organisation $organisation)
+    {
+        $this->organisation = $organisation;
+    }
+
     /**
      * Set label
      *
@@ -385,5 +390,10 @@ class LegalForm
     public function getOrganisation()
     {
         return $this->organisation;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

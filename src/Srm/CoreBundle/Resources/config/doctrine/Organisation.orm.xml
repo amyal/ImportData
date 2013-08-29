@@ -37,5 +37,9 @@
         <join-column name="CURRENCY_ID" referenced-column-name="CURRENCY_ID"/>
       </join-columns>
     </many-to-one>
+
+    <lifecycle-callbacks>
+      <lifecycle-callback type="preUpdate" method="updateModificationDate" />
+    </lifecycle-callbacks>
   </entity>
 </doctrine-mapping>
