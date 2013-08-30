@@ -77,8 +77,6 @@ class SitesController extends Controller
             }
         }
 
-        $site->setDeleted(false);
-
         $em = $this->getDoctrine()->getManager();
         $em->persist($site);
         $em->flush();

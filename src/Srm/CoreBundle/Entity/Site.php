@@ -136,6 +136,7 @@ class Site
         $this->siteActivities = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
+        $this->deleted = false;
     }
 
     /**
