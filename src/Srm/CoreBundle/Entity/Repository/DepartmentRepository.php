@@ -13,7 +13,7 @@ class DepartmentRepository extends EntityRepository
 
         foreach ($sites as $site) {
             foreach ($site->getDepartments() as $department) {
-                $departments[] = $department;
+                $departments[$department->getDepartmentId()] = $department;
             }
         }
 

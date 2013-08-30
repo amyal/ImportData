@@ -734,8 +734,14 @@ class Contact
         return $this->department;
     }
 
-    public function __toString()
+
+    public function getLabel()
     {
         return $this->lastname.' '.$this->firstname;
+    }
+
+    public function __toString()
+    {
+        return $this->getLabel();
     }
 }

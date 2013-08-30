@@ -12,8 +12,7 @@
             <thead>
                 <tr>
                     <td>{{ 'departments.list.name'|trans }}</td>
-                    <td>{{ 'departments.list.sub_departments'|trans }}</td>
-                    {#<td>{{ 'departments.list.sites'|trans }}</td>#}
+                    <td>{{ 'departments.list.sites'|trans }}</td>
                     <td>{{ 'contacts'|trans }}</td>
                     <td>{{ 'departments.list.enabled'|trans }}</td>
                     <td></td>
@@ -24,15 +23,15 @@
                     <tr>
                         <td>{{ department.label }}</td>
                         <td>
-                            {% if department.subDepartments %}
-                                {{ department.subDepartments|joinLabels(', ') }}
+                            {% if department.sites %}
+                                {{ department.sites|joinLabels(', ') }}
                             {% else %}
-                                {{ 'departments.list.no_sub_departments'|trans }}
+                                {{ 'departments.list.no_sites'|trans }}
                             {% endif %}
                         </td>
                         <td>
                             {% if department.contacts %}
-                                {{ department.contacts|joinLabels(', ') }}
+                                {{ department.contacts|joinLabels(', ') }}
                             {% else %}
                                 {{ 'departments.list.no_contacts'|trans }}
                             {% endif %}

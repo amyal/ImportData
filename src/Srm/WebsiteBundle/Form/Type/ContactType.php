@@ -14,7 +14,6 @@ class ContactType extends AbstractType
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\Contact',
             'multiple'      => true,
-            'label'         => 'contacts',
             'query_builder' => function(EntityRepository $er) {
                 return $er->createQueryBuilder('c')->orderBy('c.lastname', 'ASC');
             },
