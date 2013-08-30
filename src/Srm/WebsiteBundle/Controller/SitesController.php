@@ -67,6 +67,7 @@ class SitesController extends Controller
             return $this->render('SrmWebsiteBundle:Site:form.html.twig', array(
                 'organisationId' => $organisation->getOrganisationId(),
                 'form'           => $form->createView(),
+                'subActivities'  => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\SubSiteActivity')->findAllGroupedBySiteActivity(),
             ));
         }
 
