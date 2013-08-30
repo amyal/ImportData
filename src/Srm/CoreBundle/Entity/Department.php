@@ -76,6 +76,9 @@ class Department
         $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
         $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->creationDate = new \DateTime();
+        $this->deleted = false;
     }
 
     /**
@@ -379,5 +382,10 @@ class Department
     public function getSubDepartments()
     {
         return $this->subDepartments;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }
