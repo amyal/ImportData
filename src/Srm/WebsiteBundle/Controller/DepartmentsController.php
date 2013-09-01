@@ -13,7 +13,7 @@ class DepartmentsController extends Controller
     public function listAction(Organisation $organisation)
     {
         $sites       = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Site')->findByOrganisation($organisation);
-        $departments = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Department')->findBySites($sites);
+        $departments = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Department')->findNonDeletedBySites($sites);
 
         return $this->render('SrmWebsiteBundle:Department:list.html.twig', array(
             'organisation' => $organisation,
