@@ -140,6 +140,9 @@ class Contact
         $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->creationDate = new \DateTime();
+        $this->deleted = false;
     }
 
     /**
@@ -743,5 +746,10 @@ class Contact
     public function __toString()
     {
         return $this->getLabel();
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }
