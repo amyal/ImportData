@@ -8,7 +8,7 @@ use Srm\CoreBundle\Entity\Organisation;
 
 class SiteRepository extends EntityRepository
 {
-    public function findAllEnabledByOrganisation(Organisation $organisation)
+    public function findNonDeletedByOrganisation(Organisation $organisation)
     {
         $qb = $this->createQueryBuilder('s')
             ->where('s.deleted != :deleted')->setParameter('deleted', true)
