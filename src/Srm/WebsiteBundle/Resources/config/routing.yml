@@ -4,3 +4,5 @@ _sites:
     resource: "routing/sites.yml"
 _departments:
     resource: "routing/departments.yml"
+_users:
+    resource: "routing/users.yml"
