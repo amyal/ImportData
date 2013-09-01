@@ -29,6 +29,18 @@ class DepartmentsController extends Controller
         ));
     }
 
+    public function disableAction(Organisation $organisation, Department $department)
+    {
+        $department->setDeleted(true);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($department);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('srm_website_departments_list', array(
+            'organisationId' => $organisation->getOrganisationId(),
+        )));
+    }
+
     public function formAction(Organisation $organisation, Department $department)
     {
         $formActionRoute = 'srm_website_departments_add';
