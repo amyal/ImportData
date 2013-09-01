@@ -50,14 +50,14 @@ class Item
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $indicator;
+    private $indicators;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->indicator = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -239,7 +239,7 @@ class Item
      */
     public function addIndicator(Indicator $indicator)
     {
-        $this->indicator[] = $indicator;
+        $this->indicators[] = $indicator;
 
         return $this;
     }
@@ -251,16 +251,16 @@ class Item
      */
     public function removeIndicator(Indicator $indicator)
     {
-        $this->indicator->removeElement($indicator);
+        $this->indicators->removeElement($indicator);
     }
 
     /**
-     * Get indicator
+     * Get indicators
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIndicator()
+    public function getIndicators()
     {
-        return $this->indicator;
+        return $this->indicators;
     }
 }

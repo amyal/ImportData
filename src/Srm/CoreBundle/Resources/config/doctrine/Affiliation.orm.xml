@@ -7,6 +7,6 @@
     <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-many field="role" target-entity="Role" mapped-by="affiliation"/>
+    <many-to-many field="roles" target-entity="Role" mapped-by="affiliations"/>
   </entity>
 </doctrine-mapping>

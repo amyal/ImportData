@@ -9,8 +9,8 @@
     <field name="category" type="string" column="CATEGORY" length="100" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
-    <many-to-many field="site" target-entity="Site" mapped-by="subDepartment"/>
-    <many-to-many field="contact" target-entity="Contact" mapped-by="subDepartment"/>
-    <many-to-many field="department" target-entity="Department" mapped-by="subDepartments"/>
+    <many-to-many field="sites" target-entity="Site" mapped-by="subDepartments"/>
+    <many-to-many field="contacts" target-entity="Contact" mapped-by="subDepartments"/>
+    <many-to-many field="departments" target-entity="Department" mapped-by="subDepartments"/>
   </entity>
 </doctrine-mapping>

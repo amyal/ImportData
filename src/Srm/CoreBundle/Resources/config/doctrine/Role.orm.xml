@@ -7,7 +7,7 @@
     <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-many field="affiliation" target-entity="Affiliation" inversed-by="role">
+    <many-to-many field="affiliations" target-entity="Affiliation" inversed-by="roles">
       <join-table name="vj_affiliation_role">
         <join-columns>
           <join-column name="ROLE_ID" referenced-column-name="ROLE_ID"/>

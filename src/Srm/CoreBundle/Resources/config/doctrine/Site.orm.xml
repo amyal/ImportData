@@ -43,7 +43,7 @@
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="subDepartment" target-entity="SubDepartment" inversed-by="site">
+    <many-to-many field="subDepartments" target-entity="SubDepartment" inversed-by="sites">
       <join-table name="vj_site_sub_department">
         <join-columns>
           <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
@@ -53,7 +53,7 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="subSiteActivities" target-entity="SubSiteActivity" inversed-by="site">
+    <many-to-many field="subSiteActivities" target-entity="SubSiteActivity" inversed-by="sites">
       <join-table name="vj_site_sub_activity">
         <join-columns>
           <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
@@ -63,8 +63,8 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="contacts" target-entity="Contact" inversed-by="site">
-      <join-table name="vj_site_contact">
+    <many-to-many field="contacts" target-entity="Contact" inversed-by="sites">
+      <join-table name="vj_sites_contacts">
         <join-columns>
           <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
         </join-columns>
@@ -72,8 +72,12 @@
           <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
         </inverse-join-columns>
       </join-table>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
     </many-to-many>
-    <many-to-many field="dangerousSubstances" target-entity="DangerousSubstance" inversed-by="site">
+    <many-to-many field="dangerousSubstances" target-entity="DangerousSubstance" inversed-by="sites">
       <join-table name="vj_site_dangerous_substance">
         <join-columns>
           <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
@@ -83,17 +87,8 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="departments" target-entity="Department" inversed-by="sites">
-      <join-table name="vj_site_department">
-        <join-columns>
-          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
-    <many-to-many field="pole" target-entity="Pole" inversed-by="site">
+    <many-to-many field="departments" target-entity="Department" mapped-by="sites"/>
+    <many-to-many field="poles" target-entity="Pole" inversed-by="sites">
       <join-table name="vj_site_pole">
         <join-columns>
           <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
@@ -103,7 +98,7 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="siteActivities" target-entity="SiteActivity" inversed-by="site">
+    <many-to-many field="siteActivities" target-entity="SiteActivity" inversed-by="sites">
       <join-table name="vj_site_activity">
         <join-columns>
           <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>

@@ -34,6 +34,6 @@
         <join-column name="REFERENTIEL_ID" referenced-column-name="REFERENTIEL_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="item" target-entity="Item" mapped-by="indicator"/>
+    <many-to-many field="items" target-entity="Item" mapped-by="indicators"/>
   </entity>
 </doctrine-mapping>

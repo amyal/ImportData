@@ -120,26 +120,26 @@ class Contact
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $site;
+    private $sites;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $subDepartment;
+    private $subDepartments;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $department;
+    private $departments;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -643,7 +643,7 @@ class Contact
      */
     public function addSite(Site $site)
     {
-        $this->site[] = $site;
+        $this->sites[] = $site;
 
         return $this;
     }
@@ -655,17 +655,17 @@ class Contact
      */
     public function removeSite(Site $site)
     {
-        $this->site->removeElement($site);
+        $this->sites->removeElement($site);
     }
 
     /**
-     * Get site
+     * Get sites
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSite()
+    public function getSites()
     {
-        return $this->site;
+        return $this->sites;
     }
 
     /**
@@ -676,7 +676,7 @@ class Contact
      */
     public function addSubDepartment(SubDepartment $subDepartment)
     {
-        $this->subDepartment[] = $subDepartment;
+        $this->subDepartments[] = $subDepartment;
 
         return $this;
     }
@@ -688,17 +688,17 @@ class Contact
      */
     public function removeSubDepartment(SubDepartment $subDepartment)
     {
-        $this->subDepartment->removeElement($subDepartment);
+        $this->subDepartments->removeElement($subDepartment);
     }
 
     /**
-     * Get subDepartment
+     * Get subDepartments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSubDepartment()
+    public function getSubDepartments()
     {
-        return $this->subDepartment;
+        return $this->subDepartments;
     }
 
     /**
@@ -709,7 +709,7 @@ class Contact
      */
     public function addDepartment(Department $department)
     {
-        $this->department[] = $department;
+        $this->departments[] = $department;
 
         return $this;
     }
@@ -721,17 +721,17 @@ class Contact
      */
     public function removeDepartment(Department $department)
     {
-        $this->department->removeElement($department);
+        $this->departments->removeElement($department);
     }
 
     /**
-     * Get department
+     * Get departments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getDepartment()
     {
-        return $this->department;
+        return $this->departments;
     }
 
 

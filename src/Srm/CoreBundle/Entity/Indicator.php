@@ -65,14 +65,14 @@ class Indicator
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $item;
+    private $items;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->item = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -323,7 +323,7 @@ class Indicator
      */
     public function addItem(Item $item)
     {
-        $this->item[] = $item;
+        $this->items[] = $item;
 
         return $this;
     }
@@ -335,16 +335,16 @@ class Indicator
      */
     public function removeItem(Item $item)
     {
-        $this->item->removeElement($item);
+        $this->items->removeElement($item);
     }
 
     /**
-     * Get item
+     * Get items
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getItem()
+    public function getItems()
     {
-        return $this->item;
+        return $this->items;
     }
 }

@@ -37,8 +37,8 @@
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="site" target-entity="Site" mapped-by="contacts"/>
-    <many-to-many field="subDepartment" target-entity="SubDepartment" inversed-by="contact">
+    <many-to-many field="sites" target-entity="Site" mapped-by="contacts"/>
+    <many-to-many field="subDepartments" target-entity="SubDepartment" inversed-by="contacts">
       <join-table name="vj_contact_sub_department">
         <join-columns>
           <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
@@ -48,15 +48,6 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="department" target-entity="Department" inversed-by="contact">
-      <join-table name="vj_contact_department">
-        <join-columns>
-          <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
+    <many-to-many field="departments" target-entity="Department" mapped-by="contacts"/>
   </entity>
 </doctrine-mapping>

@@ -90,7 +90,7 @@ class Site
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $subDepartment;
+    private $subDepartments;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -115,7 +115,7 @@ class Site
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $pole;
+    private $poles;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -127,12 +127,12 @@ class Site
      */
     public function __construct()
     {
-        $this->subDepartment = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subSiteActivities = new \Doctrine\Common\Collections\ArrayCollection();
         $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dangerousSubstances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->poles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->siteActivities = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
@@ -502,7 +502,7 @@ class Site
      */
     public function addSubDepartment(SubDepartment $subDepartment)
     {
-        $this->subDepartment[] = $subDepartment;
+        $this->subDepartments[] = $subDepartment;
 
         return $this;
     }
@@ -514,17 +514,17 @@ class Site
      */
     public function removeSubDepartment(SubDepartment $subDepartment)
     {
-        $this->subDepartment->removeElement($subDepartment);
+        $this->subDepartments->removeElement($subDepartment);
     }
 
     /**
-     * Get subDepartment
+     * Get subDepartments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSubDepartment()
+    public function getSubDepartments()
     {
-        return $this->subDepartment;
+        return $this->subDepartments;
     }
 
     /**
@@ -667,7 +667,7 @@ class Site
      */
     public function addPole(Pole $pole)
     {
-        $this->pole[] = $pole;
+        $this->poles[] = $pole;
 
         return $this;
     }
@@ -679,17 +679,17 @@ class Site
      */
     public function removePole(Pole $pole)
     {
-        $this->pole->removeElement($pole);
+        $this->poles->removeElement($pole);
     }
 
     /**
-     * Get pole
+     * Get poles
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPole()
+    public function getPoles()
     {
-        return $this->pole;
+        return $this->poles;
     }
 
     /**
