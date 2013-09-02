@@ -77,5 +77,9 @@
             </call>
             <tag name="form.type" alias="srm_department_site" />
         </service>
+
+        <service id="srm_website.form.type.user" class="Srm\WebsiteBundle\Form\Type\User\UserType">
+            <tag name="form.type" alias="srm_user" />
+        </service>
     </services>
 </container>
