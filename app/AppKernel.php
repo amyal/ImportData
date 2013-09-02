@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             //new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
-            //new FOS\UserBundle\FOSUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
 
             new Srm\CoreBundle\SrmCoreBundle(),
             new Srm\WebsiteBundle\SrmWebsiteBundle(),

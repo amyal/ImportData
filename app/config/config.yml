@@ -46,7 +46,9 @@ doctrine:
         auto_mapping: true
         #naming_strategy: doctrine.orm.naming_strategy.underscore
 
-# fos_user:
-#     db_driver: orm
-#     firewall_name: main
-#     user_class: Srm\CoreBundle\Entity\Contact
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Srm\CoreBundle\Entity\Contact
+    service:
+        mailer: fos_user.mailer.noop
