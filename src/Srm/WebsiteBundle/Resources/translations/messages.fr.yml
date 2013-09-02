@@ -54,6 +54,8 @@ organisation.form.legal.activity: "Activité"
 organisation.form.legal.category: "Catégorie"
 organisation.form.legal.registration_date: "Date d'immatriculation"
 
+role: "Rôle"
+
 sites.list.title: "Sites"
 sites.list.empty: "Aucun site pour le moment."
 sites.list.name: "Nom"
