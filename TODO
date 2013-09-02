@@ -13,6 +13,7 @@ site:
 
 departement:
   ☐ positionnement du btn d'ajout d'un site
+  ☐ champs commentaire
 
 retours:
   ✔ J'ai crée une organisation, j'ai édité le formulaire, j'ai renseigné d'autres champs, ça m'a crée une deuxième ligne dans la table Organisations @done (13-08-30 00:00)
