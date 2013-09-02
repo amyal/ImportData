@@ -1,9 +1,8 @@
-adresse:
+perfs:
   ☐ transformer les champs zip, city et country en champs de recherche
 
 organisation:
-  ☐ upload du logo
-  ☐ affichage du logo dans show
+  ☐ logo
   ✔ city/country not set after save @done (13-08-29 23:14)
 
 site:
@@ -12,8 +11,17 @@ site:
   ☐ products
 
 departement:
-  ☐ positionnement du btn d'ajout d'un site
+  ☐ btn d'ajout d'un site
+  ☐ responsable qui liste les users ayant le role super utilisateur
   ☐ champs commentaire
+
+users:
+  ☐ photo
+  ☐ table civilité
+  ☐ liaison table adresse
+  ☐ office_phone, mobile_phone
+  ☐ fax
+  ☐ ajax sites/déps/sous-déps
 
 retours:
   ✔ J'ai crée une organisation, j'ai édité le formulaire, j'ai renseigné d'autres champs, ça m'a crée une deuxième ligne dans la table Organisations @done (13-08-30 00:00)
