@@ -30,12 +30,10 @@ class SiteType extends AbstractType
             'multiple'      => true,
             'property'      => 'label',
             'query_builder' => function(EntityRepository $er) use ($organisation) {
-                $qb = $er->createQueryBuilder('s')
+                return $er->createQueryBuilder('s')
                     ->where('s.organisation = :organisation')->setParameter('organisation', $organisation)
                     ->orderBy('s.label', 'ASC')
                 ;
-
-                return $qb;
             },
         ));
     }

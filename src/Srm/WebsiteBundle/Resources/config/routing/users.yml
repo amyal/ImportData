@@ -1,0 +1,35 @@
+srm_website_users_list:
+    path:       /organisations/{organisationId}/users
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Users:list"
+
+srm_website_users_add:
+    path:       /organisations/{organisationId}/users/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Users:form"
+
+srm_website_user_show:
+    path:       /organisations/{organisationId}/users/{userId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Users:show"
+    requirements:
+        userId: \d+
+
+srm_website_user_disable:
+    path:       /organisations/{organisationId}/users/{userId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Users:disable"
+    requirements:
+        userId: \d+
+
+srm_website_user_edit:
+    path:       /organisations/{organisationId}/users/{userId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Users:form"
+    requirements:
+        userId:   \d+

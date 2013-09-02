@@ -11,10 +11,36 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-many field="sites" target-entity="Site" mapped-by="departments"/>
-    <many-to-many field="pole" target-entity="Pole" mapped-by="department"/>
-    <many-to-many field="contacts" target-entity="Contact" mapped-by="department"/>
-    <many-to-many field="subDepartments" target-entity="SubDepartment" inversed-by="department">
+    <many-to-many field="sites" target-entity="Site" inversed-by="departments">
+      <join-table name="vj_departments_sites">
+        <join-columns>
+          <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
+        </inverse-join-columns>
+      </join-table>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-many>
+    <many-to-many field="poles" target-entity="Pole" mapped-by="departments"/>
+    <many-to-many field="contacts" target-entity="Contact" inversed-by="departments">
+      <join-table name="vj_departments_contacts">
+        <join-columns>
+          <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+        </inverse-join-columns>
+      </join-table>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-many>
+    <many-to-many field="subDepartments" target-entity="SubDepartment" inversed-by="departments">
       <join-table name="sub_department_department">
         <join-columns>
           <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
@@ -24,5 +50,9 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
+
+    <lifecycle-callbacks>
+      <lifecycle-callback type="preUpdate" method="updateModificationDate" />
+    </lifecycle-callbacks>
   </entity>
 </doctrine-mapping>

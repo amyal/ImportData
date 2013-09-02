@@ -40,26 +40,26 @@ class SubDepartment
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $site;
+    private $sites;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $contact;
+    private $contacts;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $department;
+    private $departments;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contact = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -195,7 +195,7 @@ class SubDepartment
      */
     public function addSite(Site $site)
     {
-        $this->site[] = $site;
+        $this->sites[] = $site;
 
         return $this;
     }
@@ -207,17 +207,17 @@ class SubDepartment
      */
     public function removeSite(Site $site)
     {
-        $this->site->removeElement($site);
+        $this->sites->removeElement($site);
     }
 
     /**
-     * Get site
+     * Get sites
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSite()
+    public function getSites()
     {
-        return $this->site;
+        return $this->sites;
     }
 
     /**
@@ -228,7 +228,7 @@ class SubDepartment
      */
     public function addContact(Contact $contact)
     {
-        $this->contact[] = $contact;
+        $this->contacts[] = $contact;
 
         return $this;
     }
@@ -240,17 +240,17 @@ class SubDepartment
      */
     public function removeContact(Contact $contact)
     {
-        $this->contact->removeElement($contact);
+        $this->contacts->removeElement($contact);
     }
 
     /**
-     * Get contact
+     * Get contacts
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getContact()
+    public function getContacts()
     {
-        return $this->contact;
+        return $this->contacts;
     }
 
     /**
@@ -261,7 +261,7 @@ class SubDepartment
      */
     public function addDepartment(Department $department)
     {
-        $this->department[] = $department;
+        $this->departments[] = $department;
 
         return $this;
     }
@@ -273,16 +273,16 @@ class SubDepartment
      */
     public function removeDepartment(Department $department)
     {
-        $this->department->removeElement($department);
+        $this->departments->removeElement($department);
     }
 
     /**
-     * Get department
+     * Get departments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDepartment()
+    public function getDepartments()
     {
-        return $this->department;
+        return $this->departments;
     }
 }

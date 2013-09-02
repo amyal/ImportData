@@ -55,7 +55,7 @@ class Department
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $pole;
+    private $poles;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -73,9 +73,12 @@ class Department
     public function __construct()
     {
         $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pole = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->poles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->creationDate = new \DateTime();
+        $this->deleted = false;
     }
 
     /**
@@ -257,6 +260,7 @@ class Department
      */
     public function addSite(Site $site)
     {
+        $site->addDepartment($this);
         $this->sites[] = $site;
 
         return $this;
@@ -269,6 +273,7 @@ class Department
      */
     public function removeSite(Site $site)
     {
+        $site->removeDepartment($this);
         $this->sites->removeElement($site);
     }
 
@@ -290,7 +295,7 @@ class Department
      */
     public function addPole(Pole $pole)
     {
-        $this->pole[] = $pole;
+        $this->poles[] = $pole;
 
         return $this;
     }
@@ -302,17 +307,17 @@ class Department
      */
     public function removePole(Pole $pole)
     {
-        $this->pole->removeElement($pole);
+        $this->poles->removeElement($pole);
     }
 
     /**
-     * Get pole
+     * Get poles
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPole()
+    public function getPoles()
     {
-        return $this->pole;
+        return $this->poles;
     }
 
     /**
@@ -379,5 +384,10 @@ class Department
     public function getSubDepartments()
     {
         return $this->subDepartments;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

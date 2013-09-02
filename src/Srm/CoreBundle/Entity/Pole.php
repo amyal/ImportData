@@ -30,20 +30,20 @@ class Pole
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $site;
+    private $sites;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $department;
+    private $departments;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->site = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->department = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -133,7 +133,7 @@ class Pole
      */
     public function addSite(Site $site)
     {
-        $this->site[] = $site;
+        $this->sites[] = $site;
 
         return $this;
     }
@@ -145,17 +145,17 @@ class Pole
      */
     public function removeSite(Site $site)
     {
-        $this->site->removeElement($site);
+        $this->sites->removeElement($site);
     }
 
     /**
-     * Get site
+     * Get sites
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSite()
+    public function getSites()
     {
-        return $this->site;
+        return $this->sites;
     }
 
     /**
@@ -166,7 +166,7 @@ class Pole
      */
     public function addDepartment(Department $department)
     {
-        $this->department[] = $department;
+        $this->departments[] = $department;
 
         return $this;
     }
@@ -178,16 +178,16 @@ class Pole
      */
     public function removeDepartment(Department $department)
     {
-        $this->department->removeElement($department);
+        $this->departments->removeElement($department);
     }
 
     /**
-     * Get department
+     * Get departments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDepartment()
+    public function getDepartments()
     {
-        return $this->department;
+        return $this->departments;
     }
 }

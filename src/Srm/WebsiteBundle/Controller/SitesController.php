@@ -13,7 +13,7 @@ class SitesController extends Controller
     {
         return $this->render('SrmWebsiteBundle:Site:list.html.twig', array(
             'organisation' => $organisation,
-            'sites'        => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Site')->findAllEnabledByOrganisation($organisation),
+            'sites'        => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Site')->findNonDeletedByOrganisation($organisation),
         ));
     }
 
@@ -76,8 +76,6 @@ class SitesController extends Controller
                 $site->addSiteActivity($subSiteActivity->getSiteActivity());
             }
         }
-
-        $site->setDeleted(false);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($site);

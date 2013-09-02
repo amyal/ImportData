@@ -30,14 +30,14 @@ class Role
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $affiliation;
+    private $affiliations;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->affiliation = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->affiliations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -127,7 +127,7 @@ class Role
      */
     public function addAffiliation(Affiliation $affiliation)
     {
-        $this->affiliation[] = $affiliation;
+        $this->affiliations[] = $affiliation;
 
         return $this;
     }
@@ -139,16 +139,16 @@ class Role
      */
     public function removeAffiliation(Affiliation $affiliation)
     {
-        $this->affiliation->removeElement($affiliation);
+        $this->affiliations->removeElement($affiliation);
     }
 
     /**
-     * Get affiliation
+     * Get affiliations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAffiliation()
+    public function getAffiliations()
     {
-        return $this->affiliation;
+        return $this->affiliations;
     }
 }

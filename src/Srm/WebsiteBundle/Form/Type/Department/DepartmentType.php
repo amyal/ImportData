@@ -15,15 +15,15 @@ class DepartmentType extends AbstractType
                 'label', 'text', array(
                     'label'    => 'department.label',
                     'required' => true,
-                    //'attr'     => array('autofocus' => 'autofocus'),
+                    'attr'     => array('autofocus' => 'autofocus'),
                 )
             )
 
-            ->add('subDepartments', 'srm_sub_department')
+            ->add('subDepartments', 'srm_sub_department', array('required' => true))
 
-            //->add('sites', 'srm_department_site')
+            ->add('sites', 'srm_department_site', array('required' => true))
 
-            ->add('contacts', 'srm_contact')
+            ->add('contacts', 'srm_contact', array('required' => true))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 

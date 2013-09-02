@@ -18,6 +18,14 @@ srm_website_department_show:
     requirements:
         departmentId: \d+
 
+srm_website_department_disable:
+    path:       /organisations/{organisationId}/departments/{departmentId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Departments:disable"
+    requirements:
+        departmentId: \d+
+
 srm_website_department_edit:
     path:       /organisations/{organisationId}/departments/{departmentId}
     methods:    [GET,POST]

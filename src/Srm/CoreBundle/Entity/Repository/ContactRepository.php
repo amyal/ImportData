@@ -6,13 +6,13 @@ use Doctrine\ORM\EntityRepository;
 
 use Srm\CoreBundle\Entity\Organisation;
 
-class SiteRepository extends EntityRepository
+class ContactRepository extends EntityRepository
 {
     public function findNonDeletedByOrganisation(Organisation $organisation)
     {
-        return $this->createQueryBuilder('s')
-            ->where('s.deleted != :deleted')->setParameter('deleted', true)
-            ->andWhere('s.organisation = :organisation')->setParameter('organisation', $organisation)
+        return $this->createQueryBuilder('c')
+            ->where('c.deleted != :deleted')->setParameter('deleted', true)
+            ->andWhere('c.organisation = :organisation')->setParameter('organisation', $organisation)
             ->getQuery()
             ->getResult()
         ;
