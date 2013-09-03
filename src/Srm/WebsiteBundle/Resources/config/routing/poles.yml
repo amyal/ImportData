@@ -1,0 +1,35 @@
+srm_website_poles_list:
+    path:       /organisations/{organisationId}/poles
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Poles:list"
+
+srm_website_poles_add:
+    path:       /organisations/{organisationId}/poles/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Poles:form"
+
+srm_website_pole_show:
+    path:       /organisations/{organisationId}/poles/{poleId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Poles:show"
+    requirements:
+        poleId: \d+
+
+srm_website_pole_disable:
+    path:       /organisations/{organisationId}/poles/{poleId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Poles:disable"
+    requirements:
+        poleId: \d+
+
+srm_website_pole_edit:
+    path:       /organisations/{organisationId}/poles/{poleId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Poles:form"
+    requirements:
+        poleId: \d+

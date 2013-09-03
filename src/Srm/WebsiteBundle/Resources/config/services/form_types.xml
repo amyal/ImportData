@@ -13,6 +13,19 @@
         <service id="srm_website.form.type.language" class="Srm\WebsiteBundle\Form\Type\LanguageType">
             <tag name="form.type" alias="srm_language" />
         </service>
+        <service id="srm_website.form.type.organisation_site" class="Srm\WebsiteBundle\Form\Type\OrganisationSiteType">
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_site" />
+        </service>
+        <service id="srm_website.form.type.site_department" class="Srm\WebsiteBundle\Form\Type\SiteDepartmentType">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_site_department" />
+        </service>
 
         <service id="srm_website.form.type.address" class="Srm\WebsiteBundle\Form\Type\Address\AddressType">
             <tag name="form.type" alias="srm_address" />
@@ -71,15 +84,13 @@
         <service id="srm_website.form.type.department_sub_department" class="Srm\WebsiteBundle\Form\Type\Department\SubDepartmentType">
             <tag name="form.type" alias="srm_sub_department" />
         </service>
-        <service id="srm_website.form.type.department_site" class="Srm\WebsiteBundle\Form\Type\Department\SiteType">
-            <call method="setRequest">
-                <argument type="service" id="request" on-invalid="null" strict="false" />
-            </call>
-            <tag name="form.type" alias="srm_department_site" />
-        </service>
-
+<!--
         <service id="srm_website.form.type.user" class="Srm\WebsiteBundle\Form\Type\User\UserType">
             <tag name="form.type" alias="srm_user" />
+        </service>
+-->
+        <service id="srm_website.form.type.pole" class="Srm\WebsiteBundle\Form\Type\PoleType">
+            <tag name="form.type" alias="srm_pole" />
         </service>
     </services>
 </container>

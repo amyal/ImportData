@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Department;
+namespace Srm\WebsiteBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SiteType extends AbstractType
+class OrganisationSiteType extends AbstractType
 {
     protected $request;
 
@@ -45,6 +45,6 @@ class SiteType extends AbstractType
 
     public function getName()
     {
-        return 'srm_department_site';
+        return 'srm_organisation_site';
     }
 }

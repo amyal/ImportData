@@ -1,29 +1,25 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Department;
+namespace Srm\WebsiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DepartmentType extends AbstractType
+class PoleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add(
-                'label', 'text', array(
-                    'label'    => 'department.label',
-                    'required' => true,
-                    'attr'     => array('autofocus' => 'autofocus'),
-                )
-            )
-
-            ->add('subDepartments', 'srm_sub_department', array('required' => true))
+            ->add('label', 'text', array(
+                'label'    => 'pole.label',
+                'required' => true,
+                'attr'     => array('autofocus' => 'autofocus'),
+            ))
 
             ->add('sites', 'srm_organisation_site', array('required' => true))
 
-            ->add('contacts', 'srm_contact', array('required' => true))
+            ->add('departments', 'srm_site_department', array('required' => true))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 
@@ -35,12 +31,12 @@ class DepartmentType extends AbstractType
     {
         $resolver->setDefaults(array(
             'compound'   => true,
-            'data_class' => 'Srm\CoreBundle\Entity\Department',
+            'data_class' => 'Srm\CoreBundle\Entity\Pole',
         ));
     }
 
     public function getName()
     {
-        return 'srm_department';
+        return 'srm_pole';
     }
 }
