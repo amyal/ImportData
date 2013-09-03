@@ -14,8 +14,8 @@
                 <li>{{ 'email'|trans }} : {{ site.mail }}</li>
                 <li>{{ 'fax'|trans }} : {{ site.fax }}</li>
                 <li>{{ 'site.type_site'|trans }} : {{ site.typeSite.label }}</li>
-                <li>{{ 'sites.list.activities'|trans }} : {% if site.siteActivities %}{{ site.siteActivities|joinLabels(', ') }}{% else %}{{ 'sites.list.no_activities'|trans }}{% endif %}</li>
-                <li>{{ 'sites.list.sub_activities'|trans }} : {% if site.subSiteActivities %}{{ site.subSiteActivities|joinLabels(', ') }}{% else %}{{ 'sites.list.no_sub_activities'|trans }}{% endif %}</li>
+                <li>{{ 'sites.list.activities'|trans }} : {% if site.siteActivities %}{{ site.siteActivities|joinLabels(', ') }}{% else %}{{ 'list.no_activities'|trans }}{% endif %}</li>
+                <li>{{ 'sites.list.sub_activities'|trans }} : {% if site.subSiteActivities %}{{ site.subSiteActivities|joinLabels(', ') }}{% else %}{{ 'list.no_sub_activities'|trans }}{% endif %}</li>
                 <li>{{ 'site.dangerous_substances'|trans }} : {% if site.dangerousSubstances %}{{ site.dangerousSubstances|joinLabels(', ') }}{% else %}-{% endif %}</li>
                 <li>{{ 'site.importance'|trans }} : {{ site.importance }}</li>
             </ul>
