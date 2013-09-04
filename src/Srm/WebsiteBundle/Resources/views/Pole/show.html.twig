@@ -1,0 +1,19 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block content %}
+    <div>
+        <fieldset>
+            <legend>{{ pole.label }}</legend>
+            <ul class="unstyled">
+                <li>{{ 'pole.label'|trans }} : {{ pole.label }}</li>
+                <li>{{ 'poles.list.sites'|trans }} : {% if pole.sites %}{{ pole.sites|joinLabels(', ') }}{% else %}{{ 'list.no_sites'|trans }}{% endif %}</li>
+                <li>{{ 'poles.list.departments'|trans }} : {% if pole.departments %}{{ pole.departments|joinLabels(', ') }}{% else %}{{ 'list.no_departments'|trans }}{% endif %}</li>
+            </ul>
+        </fieldset>
+
+        {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
+            url_edit:   path('srm_website_pole_edit',  {'organisationId': organisationId, 'poleId': pole.poleId}),
+            url_cancel: path('srm_website_poles_list', {'organisationId': organisationId})
+        }, with_context = false) }}
+    </div>
+{% endblock %}

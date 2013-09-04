@@ -1,15 +1,41 @@
-{% extends 'SrmWebsiteBundle::base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}SRM{% endblock %}</title>
 
-{% block body %}
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span2">
-                <!--Sidebar content-->
+        {% block stylesheets %}
+            {% stylesheets filter="cssrewrite" combine=true output="css/all.css"
+                "bundles/srmwebsite/vendor/bootstrap/css/bootstrap.min.css"
+                "bundles/srmwebsite/css/*"
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}"  media="screen"/>
+            {% endstylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span2">
+                        {% block nav '' %}
+                    </div>
+                    <div class="span10">
+                        {% block content '' %}
+                    </div>
+                </div>
             </div>
-            <div class="span10">
-                <!--Body content-->
-                {% block content '' %}
-            </div>
-        </div>
-    </div>
-{% endblock %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% javascripts combine=true output="js/all.js"
+                "bundles/srmwebsite/vendor/jquery-1.10.2.min.js"
+                "bundles/srmwebsite/vendor/bootstrap/js/bootstrap.min.js"
+                "bundles/srmwebsite/js/*"
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>

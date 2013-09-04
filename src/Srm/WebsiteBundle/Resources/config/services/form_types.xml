@@ -4,14 +4,27 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="srm_website.form.type.contact" class="Srm\WebsiteBundle\Form\Type\ContactType">
-            <tag name="form.type" alias="srm_contact" />
+        <service id="srm_website.form.type.contact" class="Srm\WebsiteBundle\Form\Type\ContactsType">
+            <tag name="form.type" alias="srm_contacts" />
         </service>
         <service id="srm_website.form.type.currency" class="Srm\WebsiteBundle\Form\Type\CurrencyType">
             <tag name="form.type" alias="srm_currency" />
         </service>
         <service id="srm_website.form.type.language" class="Srm\WebsiteBundle\Form\Type\LanguageType">
             <tag name="form.type" alias="srm_language" />
+        </service>
+        <service id="srm_website.form.type.organisation_sites" class="Srm\WebsiteBundle\Form\Type\OrganisationSitesType">
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_sites" />
+        </service>
+        <service id="srm_website.form.type.site_departments" class="Srm\WebsiteBundle\Form\Type\SiteDepartmentsType">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_site_departments" />
         </service>
 
         <service id="srm_website.form.type.address" class="Srm\WebsiteBundle\Form\Type\Address\AddressType">
@@ -52,30 +65,32 @@
         <service id="srm_website.form.type.site_type_site" class="Srm\WebsiteBundle\Form\Type\Site\TypeSiteType">
             <tag name="form.type" alias="srm_type_site" />
         </service>
-        <service id="srm_website.form.type.site_activity" class="Srm\WebsiteBundle\Form\Type\Site\SiteActivityType">
-            <tag name="form.type" alias="srm_site_activity" />
+        <service id="srm_website.form.type.site_activities" class="Srm\WebsiteBundle\Form\Type\Site\SiteActivitiesType">
+            <tag name="form.type" alias="srm_site_activities" />
         </service>
-        <service id="srm_website.form.type.site_sub_site_activity" class="Srm\WebsiteBundle\Form\Type\Site\SubSiteActivityType">
-            <tag name="form.type" alias="srm_sub_site_activity" />
+        <service id="srm_website.form.type.site_sub_site_activities" class="Srm\WebsiteBundle\Form\Type\Site\SubSiteActivitiesType">
+            <tag name="form.type" alias="srm_sub_site_activities" />
         </service>
-        <service id="srm_website.form.type.site_dangerous_substance" class="Srm\WebsiteBundle\Form\Type\Site\DangerousSubstanceType">
-            <tag name="form.type" alias="srm_dangerous_substance" />
+        <service id="srm_website.form.type.site_dangerous_substances" class="Srm\WebsiteBundle\Form\Type\Site\DangerousSubstancesType">
+            <tag name="form.type" alias="srm_dangerous_substances" />
         </service>
-        <service id="srm_website.form.type.site_product" class="Srm\WebsiteBundle\Form\Type\Site\ProductType">
-            <tag name="form.type" alias="srm_product" />
+        <service id="srm_website.form.type.site_products" class="Srm\WebsiteBundle\Form\Type\Site\ProductsType">
+            <tag name="form.type" alias="srm_products" />
         </service>
 
         <service id="srm_website.form.type.department" class="Srm\WebsiteBundle\Form\Type\Department\DepartmentType">
             <tag name="form.type" alias="srm_department" />
         </service>
-        <service id="srm_website.form.type.department_sub_department" class="Srm\WebsiteBundle\Form\Type\Department\SubDepartmentType">
-            <tag name="form.type" alias="srm_sub_department" />
+        <service id="srm_website.form.type.department_sub_departments" class="Srm\WebsiteBundle\Form\Type\Department\SubDepartmentsType">
+            <tag name="form.type" alias="srm_sub_departments" />
         </service>
-        <service id="srm_website.form.type.department_site" class="Srm\WebsiteBundle\Form\Type\Department\SiteType">
-            <call method="setRequest">
-                <argument type="service" id="request" on-invalid="null" strict="false" />
-            </call>
-            <tag name="form.type" alias="srm_department_site" />
+<!--
+        <service id="srm_website.form.type.user" class="Srm\WebsiteBundle\Form\Type\User\UserType">
+            <tag name="form.type" alias="srm_user" />
+        </service>
+-->
+        <service id="srm_website.form.type.pole" class="Srm\WebsiteBundle\Form\Type\PoleType">
+            <tag name="form.type" alias="srm_pole" />
         </service>
     </services>
 </container>

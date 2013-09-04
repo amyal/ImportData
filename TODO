@@ -1,9 +1,8 @@
-adresse:
+perfs:
   ☐ transformer les champs zip, city et country en champs de recherche
 
 organisation:
-  ☐ upload du logo
-  ☐ affichage du logo dans show
+  ☐ logo
   ✔ city/country not set after save @done (13-08-29 23:14)
 
 site:
@@ -11,9 +10,22 @@ site:
   ☐ visibilité du référent du site
   ☐ products
 
+departement:
+  ☐ btn d'ajout d'un site
+  ☐ responsable qui liste les users ayant le role super utilisateur
+  ☐ champs commentaire
+
+users:
+  ☐ photo
+  ☐ table civilité
+  ☐ liaison table adresse
+  ☐ office_phone, mobile_phone
+  ☐ fax
+  ☐ ajax sites/déps/sous-déps
+
 retours:
   ✔ J'ai crée une organisation, j'ai édité le formulaire, j'ai renseigné d'autres champs, ça m'a crée une deuxième ligne dans la table Organisations @done (13-08-30 00:00)
-  ☐ Les dates de création et de modification ne sont pas setté à la création ou à la modification (organisations et sites)
+  ✔ Les dates de création et de modification ne sont pas setté à la création ou à la modification (organisations et sites) @done (13-09-02 11:30)
   ✔ J'ai édité une organisation qui existe déjà, j'ai juste cliqué sur Enregistrer sans rien modifier, j'ai l'erreur suivante @done (13-08-30 00:00)
     Could not convert database value "2010" to Doctrine Type datetime. Expected format: Y-m-d H:i:s
   ✔ J'ai édité un site existant, la ville et le pays ne sont pas sélectionné, pourtant l'address_id est bien renseigné pour le site @done (13-08-29 23:37)

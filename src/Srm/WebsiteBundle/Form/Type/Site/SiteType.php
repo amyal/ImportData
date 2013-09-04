@@ -11,22 +11,20 @@ class SiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add(
-                'label', 'text', array(
-                    'label'    => 'site.label',
-                    'required' => true,
-                    //'attr'     => array('autofocus' => 'autofocus'),
-                )
-            )
+            ->add('label', 'text', array(
+                'label'    => 'site.label',
+                'required' => true,
+                //'attr'     => array('autofocus' => 'autofocus'),
+            ))
             ->add('typeSite', 'srm_type_site', array('required' => true))
 
-            ->add('siteActivities',    'srm_site_activity')
-            ->add('subSiteActivities', 'srm_sub_site_activity')
+            ->add('siteActivities',    'srm_site_activities')
+            ->add('subSiteActivities', 'srm_sub_site_activities')
 
-            ->add('contacts', 'srm_contact')
+            ->add('contacts', 'srm_contacts')
 
-            ->add('dangerousSubstances', 'srm_dangerous_substance')
-            //->add('products', 'srm_product', array('mapped' => false))
+            ->add('dangerousSubstances', 'srm_dangerous_substances')
+            //->add('products', 'srm_products', array('mapped' => false))
             ->add('importance', 'text', array('label' => 'site.importance'))
 
             ->add('currency', 'srm_currency', array('required' => true))

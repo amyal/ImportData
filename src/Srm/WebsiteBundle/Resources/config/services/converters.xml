@@ -25,5 +25,13 @@
         <service id="srm_website.converter.department" class="Srm\WebsiteBundle\Request\ParamConverter\DepartmentParamConverter">
             <tag name="request.param_converter" converter="department" priority="7" />
         </service>
+<!--
+        <service id="srm_website.converter.contact" class="Srm\WebsiteBundle\Request\ParamConverter\ContactParamConverter">
+            <tag name="request.param_converter" converter="contact" priority="7" />
+        </service>
+-->
+        <service id="srm_website.converter.pole" class="Srm\WebsiteBundle\Request\ParamConverter\PoleParamConverter">
+            <tag name="request.param_converter" converter="pole" priority="7" />
+        </service>
     </services>
 </container>

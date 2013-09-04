@@ -13,10 +13,10 @@
                 <tr>
                     <td>{{ 'user.lastname'|trans }}</td>
                     <td>{{ 'user.firstname'|trans }}</td>
-                    <td>{{ 'user.contact_function'|trans }}</td>
+                    <td>{{ 'user.function'|trans }}</td>
                     <td>{{ 'phone'|trans }}</td>
                     <td>{{ 'email'|trans }}</td>
-                    <td>{{ 'user.role'|trans }}</td>
+                    <td>{{ 'role'|trans }}</td>
                     <td>{{ 'list.enabled'|trans }}</td>
                     <td></td>
                 </tr>
@@ -40,9 +40,9 @@
                         <td>
                             <div class="btn-toolbar">
                                 <div class="btn-group">
-                                    <a href="{{ path('srm_website_user_show', { 'organisationId': organisation.organisationId, 'userId': user.userId }) }}" class="btn" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
-                                    <a href="{{ path('srm_website_user_edit', { 'organisationId': organisation.organisationId, 'userId': user.userId }) }}" class="btn" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                    <a href="{{ path('srm_website_user_disable', { 'organisationId': organisation.organisationId, 'userId': user.userId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                    <a href="{{ path('srm_website_user_show', { 'organisationId': organisation.organisationId, 'contactId': user.contactId }) }}" class="btn" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
+                                    <a href="{{ path('srm_website_user_edit', { 'organisationId': organisation.organisationId, 'contactId': user.contactId }) }}" class="btn" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                    <a href="{{ path('srm_website_user_disable', { 'organisationId': organisation.organisationId, 'contactId': user.contactId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
                                 </div>
                             </div>
                         </td>

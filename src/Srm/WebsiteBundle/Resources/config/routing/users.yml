@@ -11,25 +11,25 @@ srm_website_users_add:
         _controller:    "SrmWebsiteBundle:Users:form"
 
 srm_website_user_show:
-    path:       /organisations/{organisationId}/users/{userId}/show
+    path:       /organisations/{organisationId}/users/{contactId}/show
     methods:    [GET]
     defaults:
         _controller:    "SrmWebsiteBundle:Users:show"
     requirements:
-        userId: \d+
+        contactId: \d+
 
 srm_website_user_disable:
-    path:       /organisations/{organisationId}/users/{userId}/disable
+    path:       /organisations/{organisationId}/users/{contactId}/disable
     methods:    [GET]
     defaults:
         _controller:    "SrmWebsiteBundle:Users:disable"
     requirements:
-        userId: \d+
+        contactId: \d+
 
 srm_website_user_edit:
-    path:       /organisations/{organisationId}/users/{userId}
+    path:       /organisations/{organisationId}/users/{contactId}
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmWebsiteBundle:Users:form"
     requirements:
-        userId:   \d+
+        contactId:   \d+
