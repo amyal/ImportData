@@ -1,18 +1,18 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Site;
+namespace Srm\WebsiteBundle\Form\Type\Department;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SiteActivityType extends AbstractType
+class SubDepartmentsType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\SiteActivity',
+            'class'         => 'Srm\CoreBundle\Entity\SubDepartment',
             'property'      => 'label',
             'expanded'      => true,
             'multiple'      => true,
@@ -29,6 +29,6 @@ class SiteActivityType extends AbstractType
 
     public function getName()
     {
-        return 'srm_site_activity';
+        return 'srm_sub_departments';
     }
 }

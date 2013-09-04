@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class OrganisationSiteType extends AbstractType
+class OrganisationSitesType extends AbstractType
 {
     protected $request;
 
@@ -45,6 +45,6 @@ class OrganisationSiteType extends AbstractType
 
     public function getName()
     {
-        return 'srm_organisation_site';
+        return 'srm_organisation_sites';
     }
 }

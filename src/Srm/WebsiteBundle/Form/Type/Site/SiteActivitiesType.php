@@ -1,21 +1,23 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type;
+namespace Srm\WebsiteBundle\Form\Type\Site;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ContactType extends AbstractType
+class SiteActivitiesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Contact',
+            'class'         => 'Srm\CoreBundle\Entity\SiteActivity',
+            'property'      => 'label',
+            'expanded'      => true,
             'multiple'      => true,
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('c')->orderBy('c.lastname', 'ASC');
+                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
             },
         ));
     }
@@ -27,6 +29,6 @@ class ContactType extends AbstractType
 
     public function getName()
     {
-        return 'srm_contact';
+        return 'srm_site_activities';
     }
 }

@@ -19,11 +19,11 @@ class DepartmentType extends AbstractType
                 )
             )
 
-            ->add('subDepartments', 'srm_sub_department', array('required' => true))
+            ->add('subDepartments', 'srm_sub_departments', array('required' => true))
 
-            ->add('sites', 'srm_organisation_site', array('required' => true))
+            ->add('sites', 'srm_organisation_sites', array('required' => true))
 
-            ->add('contacts', 'srm_contact', array('required' => true))
+            ->add('contacts', 'srm_contacts', array('required' => true))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 

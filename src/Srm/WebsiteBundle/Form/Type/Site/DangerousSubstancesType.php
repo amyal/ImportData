@@ -8,19 +8,19 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ProductType extends AbstractType
+class DangerousSubstancesType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('label', 'text', array('label' => 'site.product'))
-        ;
-    }
-
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'  => 'Srm\CoreBundle\Entity\Product',
+            'class'         => 'Srm\CoreBundle\Entity\DangerousSubstance',
+            'property'      => 'label',
+            'expanded'      => true,
+            'multiple'      => true,
+            'label'         => 'site.dangerous_substances',
+            'query_builder' => function(EntityRepository $er) {
+                return $er->createQueryBuilder('d')->orderBy('d.label', 'ASC');
+            },
         ));
     }
 
@@ -31,6 +31,6 @@ class ProductType extends AbstractType
 
     public function getName()
     {
-        return 'srm_product';
+        return 'srm_dangerous_substances';
     }
 }

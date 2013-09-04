@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SiteDepartmentType extends AbstractType
+class SiteDepartmentsType extends AbstractType
 {
     protected $request;
     protected $em;
@@ -30,23 +30,25 @@ class SiteDepartmentType extends AbstractType
         }
 
         $organisation = $this->request->get('organisation');
-        $sites       = $this->em->getRepository('Srm\CoreBundle\Entity\Site')->findByOrganisation($organisation);
-        $departments = $this->em->getRepository('Srm\CoreBundle\Entity\Department')->findNonDeletedBySites($sites);
+        $sites        = $this->em->getRepository('Srm\CoreBundle\Entity\Site')->findByOrganisation($organisation);
+        $departments  = $this->em->getRepository('Srm\CoreBundle\Entity\Department')->findNonDeletedBySites($sites);
 
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Site',
-            'multiple'      => true,
-            'property'      => 'label',
+            'class'    => 'Srm\CoreBundle\Entity\Department',
+            'property' => 'label',
+            'label'    => 'poles.list.departments',
+            'choices'  => $departments,
+            'multiple' => true,
         ));
     }
 
     public function getParent()
     {
-        return 'choice';
+        return 'entity';
     }
 
     public function getName()
     {
-        return 'srm_site_department';
+        return 'srm_site_departments';
     }
 }
