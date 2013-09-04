@@ -1,21 +1,19 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Department;
+namespace Srm\WebsiteBundle\Form\Type\Lists;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SubDepartmentsType extends AbstractType
+class SubSiteActivitiesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\SubDepartment',
+            'class'         => 'Srm\CoreBundle\Entity\SubSiteActivity',
             'property'      => 'label',
-            'expanded'      => true,
-            'multiple'      => true,
             'query_builder' => function(EntityRepository $er) {
                 return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
             },
@@ -29,6 +27,6 @@ class SubDepartmentsType extends AbstractType
 
     public function getName()
     {
-        return 'srm_sub_departments';
+        return 'srm_sub_site_activities';
     }
 }

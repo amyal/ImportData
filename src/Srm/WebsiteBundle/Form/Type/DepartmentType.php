@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Department;
+namespace Srm\WebsiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,11 +19,18 @@ class DepartmentType extends AbstractType
                 )
             )
 
-            ->add('subDepartments', 'srm_sub_departments', array('required' => true))
+            ->add('subDepartments', 'srm_sub_departments', array(
+                'required' => true,
+                'expanded' => true,
+                'multiple' => true,
+            ))
 
             ->add('sites', 'srm_organisation_sites', array('required' => true))
 
-            ->add('contacts', 'srm_contacts', array('required' => true))
+            ->add('contacts', 'srm_contacts', array(
+                'required' => true,
+                'multiple' => true,
+            ))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 

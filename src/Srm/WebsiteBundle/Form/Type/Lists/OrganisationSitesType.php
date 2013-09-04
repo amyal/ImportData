@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type;
+namespace Srm\WebsiteBundle\Form\Type\Lists;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;

@@ -1,24 +1,22 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Site;
+namespace Srm\WebsiteBundle\Form\Type\Lists;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SiteActivitiesType extends AbstractType
+class CurrenciesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\SiteActivity',
+            'class'         => 'Srm\CoreBundle\Entity\Currency',
             'property'      => 'label',
-            'expanded'      => true,
-            'multiple'      => true,
-            'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
-            },
+            'empty_value'   => 'currency.choice',
+            'label'         => 'currency',
         ));
     }
 
@@ -29,6 +27,6 @@ class SiteActivitiesType extends AbstractType
 
     public function getName()
     {
-        return 'srm_site_activities';
+        return 'srm_currencies';
     }
 }

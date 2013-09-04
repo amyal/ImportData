@@ -19,7 +19,7 @@ class PoleType extends AbstractType
 
             ->add('sites', 'srm_organisation_sites', array('required' => true))
 
-            ->add('departments', 'srm_site_departments', array('required' => true))
+            ->add('departments', 'srm_organisation_departments', array('required' => true))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 

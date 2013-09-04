@@ -39,8 +39,8 @@ class ZipListener implements EventSubscriberInterface
         if ($data instanceof Zip) {
             $form = $event->getForm();
 
-            $form->add($this->factory->createNamed('city',    'srm_city',    $data->getCity(),               array('auto_initialize' => false)));
-            $form->add($this->factory->createNamed('country', 'srm_country', $data->getCity()->getCountry(), array('auto_initialize' => false)));
+            $form->add($this->factory->createNamed('city',    'srm_cities',    $data->getCity(),               array('auto_initialize' => false)));
+            $form->add($this->factory->createNamed('country', 'srm_countries', $data->getCity()->getCountry(), array('auto_initialize' => false)));
         }
     }
 

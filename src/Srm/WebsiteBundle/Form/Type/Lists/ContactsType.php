@@ -1,25 +1,20 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Site;
+namespace Srm\WebsiteBundle\Form\Type\Lists;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DangerousSubstancesType extends AbstractType
+class ContactsType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\DangerousSubstance',
-            'property'      => 'label',
-            'expanded'      => true,
-            'multiple'      => true,
-            'label'         => 'site.dangerous_substances',
+            'class'         => 'Srm\CoreBundle\Entity\Contact',
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('d')->orderBy('d.label', 'ASC');
+                return $er->createQueryBuilder('c')->orderBy('c.lastname', 'ASC');
             },
         ));
     }
@@ -31,6 +26,6 @@ class DangerousSubstancesType extends AbstractType
 
     public function getName()
     {
-        return 'srm_dangerous_substances';
+        return 'srm_contacts';
     }
 }

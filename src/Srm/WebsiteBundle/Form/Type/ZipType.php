@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Address;
+namespace Srm\WebsiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,8 +21,8 @@ class ZipType extends AbstractType
     {
         $builder
             ->add('code',    'text', array('label' => 'address.zip'))
-            ->add('city',    'srm_city')
-            ->add('country', 'srm_country')
+            ->add('city',    'srm_cities')
+            ->add('country', 'srm_countries')
         ;
 
         $builder->addEventSubscriber($this->listener);
