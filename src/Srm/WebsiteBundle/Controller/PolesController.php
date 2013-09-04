@@ -5,6 +5,7 @@ namespace Srm\WebsiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Srm\CoreBundle\Entity\Organisation;
+use Srm\CoreBundle\Entity\Pole;
 
 class PolesController extends Controller
 {
@@ -17,6 +18,26 @@ class PolesController extends Controller
             'organisation' => $organisation,
             'poles'        => $poles,
         ));
+    }
+
+    public function showAction(Organisation $organisation, Pole $pole)
+    {
+        return $this->render('SrmWebsiteBundle:Pole:show.html.twig', array(
+            'organisationId' => $organisation->getOrganisationId(),
+            'pole'           => $pole,
+        ));
+    }
+
+    public function disableAction(Organisation $organisation, Pole $pole)
+    {
+        $pole->setDeleted(true);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($pole);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('srm_website_poles_list', array(
+            'organisationId' => $organisation->getOrganisationId(),
+        )));
     }
 
     public function formAction(Organisation $organisation, Pole $pole)

@@ -17,9 +17,9 @@ class PoleType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
-            ->add('sites', 'srm_organisation_site', array('required' => true))
+            ->add('sites', 'srm_organisation_sites', array('required' => true))
 
-            ->add('departments', 'srm_site_department', array('required' => true))
+            ->add('departments', 'srm_site_departments', array('required' => true))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 
