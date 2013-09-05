@@ -98,9 +98,14 @@ class Organisation
     private $currency;
 
 
-    public function __construct()
+    public function __construct($identificationCode = null)
     {
+        if (null !== $identificationCode) {
+            $this->identificationCode = $identificationCode;
+        }
+
         $this->creationDate = new \DateTime();
+        $this->deleted = false;
     }
 
     /**

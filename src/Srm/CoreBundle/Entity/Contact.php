@@ -38,11 +38,6 @@ class Contact
     private $comments;
 
     /**
-     * @var boolean
-     */
-    private $gender;
-
-    /**
      * @var string
      */
     private $organisationInvolved;
@@ -68,9 +63,19 @@ class Contact
     private $owner;
 
     /**
-     * @var integer
+     * @var string
      */
-    private $phone;
+    private $officePhone;
+
+    /**
+     * @var string
+     */
+    private $mobilePhone;
+
+    /**
+     * @var string
+     */
+    private $fax;
 
     /**
      * @var string
@@ -103,14 +108,19 @@ class Contact
     private $contactId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\StakeholderGroup
-     */
-    private $stakeholderGroup;
-
-    /**
      * @var \Srm\CoreBundle\Entity\Role
      */
     private $role;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Gender
+     */
+    private $gender;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Address
+     */
+    private $address;
 
     /**
      * @var \Srm\CoreBundle\Entity\Organisation
@@ -120,7 +130,12 @@ class Contact
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $sites;
+    private $departments;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $stakeholders;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -130,16 +145,17 @@ class Contact
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $departments;
+    private $sites;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->stakeholders = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
         $this->deleted = false;
@@ -284,29 +300,6 @@ class Contact
     }
 
     /**
-     * Set gender
-     *
-     * @param boolean $gender
-     * @return Contact
-     */
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-
-        return $this;
-    }
-
-    /**
-     * Get gender
-     *
-     * @return boolean
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
      * Set organisationInvolved
      *
      * @param string $organisationInvolved
@@ -422,26 +415,72 @@ class Contact
     }
 
     /**
-     * Set phone
+     * Set officePhone
      *
-     * @param integer $phone
+     * @param string $officePhone
      * @return Contact
      */
-    public function setPhone($phone)
+    public function setOfficePhone($officePhone)
     {
-        $this->phone = $phone;
+        $this->officePhone = $officePhone;
 
         return $this;
     }
 
     /**
-     * Get phone
+     * Get officePhone
      *
-     * @return integer
+     * @return string
      */
-    public function getPhone()
+    public function getOfficePhone()
     {
-        return $this->phone;
+        return $this->officePhone;
+    }
+
+    /**
+     * Set mobilePhone
+     *
+     * @param string $mobilePhone
+     * @return Contact
+     */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobilePhone = $mobilePhone;
+
+        return $this;
+    }
+
+    /**
+     * Get mobilePhone
+     *
+     * @return string
+     */
+    public function getMobilePhone()
+    {
+        return $this->mobilePhone;
+    }
+
+    /**
+     * Set fax
+     *
+     * @param string $fax
+     * @return Contact
+     */
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * Get fax
+     *
+     * @return string
+     */
+    public function getFax()
+    {
+        return $this->fax;
     }
 
     /**
@@ -570,29 +609,6 @@ class Contact
     }
 
     /**
-     * Set stakeholderGroup
-     *
-     * @param \Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup
-     * @return Contact
-     */
-    public function setStakeholderGroup(StakeholderGroup $stakeholderGroup = null)
-    {
-        $this->stakeholderGroup = $stakeholderGroup;
-
-        return $this;
-    }
-
-    /**
-     * Get stakeholderGroup
-     *
-     * @return \Srm\CoreBundle\Entity\StakeholderGroup
-     */
-    public function getStakeholderGroup()
-    {
-        return $this->stakeholderGroup;
-    }
-
-    /**
      * Set role
      *
      * @param \Srm\CoreBundle\Entity\Role $role
@@ -613,6 +629,52 @@ class Contact
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param \Srm\CoreBundle\Entity\Gender $gender
+     * @return Contact
+     */
+    public function setGender(Gender $gender = null)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return \Srm\CoreBundle\Entity\Gender
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set address
+     *
+     * @param \Srm\CoreBundle\Entity\Address $address
+     * @return Contact
+     */
+    public function setAddress(Address $address = null)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return \Srm\CoreBundle\Entity\Address
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 
     /**
@@ -639,36 +701,69 @@ class Contact
     }
 
     /**
-     * Add site
+     * Add department
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
+     * @param \Srm\CoreBundle\Entity\Department $department
      * @return Contact
      */
-    public function addSite(Site $site)
+    public function addDepartment(Department $department)
     {
-        $this->sites[] = $site;
+        $this->departments[] = $department;
 
         return $this;
     }
 
     /**
-     * Remove site
+     * Remove department
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
+     * @param \Srm\CoreBundle\Entity\Department $department
      */
-    public function removeSite(Site $site)
+    public function removeDepartment(Department $department)
     {
-        $this->sites->removeElement($site);
+        $this->departments->removeElement($department);
     }
 
     /**
-     * Get sites
+     * Get departments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSites()
+    public function getDepartments()
     {
-        return $this->sites;
+        return $this->departments;
+    }
+
+    /**
+     * Add stakeholder
+     *
+     * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
+     * @return Contact
+     */
+    public function addStakeholder(Stakeholder $stakeholder)
+    {
+        $this->stakeholders[] = $stakeholder;
+
+        return $this;
+    }
+
+    /**
+     * Remove stakeholder
+     *
+     * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
+     */
+    public function removeStakeholder(Stakeholder $stakeholder)
+    {
+        $this->stakeholders->removeElement($stakeholder);
+    }
+
+    /**
+     * Get stakeholders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStakeholders()
+    {
+        return $this->stakeholders;
     }
 
     /**
@@ -705,36 +800,36 @@ class Contact
     }
 
     /**
-     * Add department
+     * Add site
      *
-     * @param \Srm\CoreBundle\Entity\Department $department
+     * @param \Srm\CoreBundle\Entity\Site $site
      * @return Contact
      */
-    public function addDepartment(Department $department)
+    public function addSite(Site $site)
     {
-        $this->departments[] = $department;
+        $this->sites[] = $site;
 
         return $this;
     }
 
     /**
-     * Remove department
+     * Remove site
      *
-     * @param \Srm\CoreBundle\Entity\Department $department
+     * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeDepartment(Department $department)
+    public function removeSite(Site $site)
     {
-        $this->departments->removeElement($department);
+        $this->sites->removeElement($site);
     }
 
     /**
-     * Get departments
+     * Get sites
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDepartment()
+    public function getSites()
     {
-        return $this->departments;
+        return $this->sites;
     }
 
 

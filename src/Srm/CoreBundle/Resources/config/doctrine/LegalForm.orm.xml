@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\LegalForm" table="V_LEGAL_FORM">
+  <entity name="Srm\CoreBundle\Entity\LegalForm" table="v_legal_form">
     <id name="legalFormId" type="integer" column="LEGAL_FORM_ID">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
     <field name="natureCapital" type="string" column="NATURE_CAPITAL" length="20" nullable="true"/>
-    <field name="amountCapital" type="float" column="AMOUNT_CAPITAL" nullable="true"/>
+    <field name="activity" type="string" column="ACTIVITY" length="50" nullable="true"/>
     <field name="apeCode" type="string" column="APE_CODE" length="25" nullable="true"/>
-    <field name="category" type="float" column="CATEGORY" nullable="true"/>
+    <field name="category" type="string" column="CATEGORY" length="255" nullable="true"/>
     <field name="registrationDate" type="datetime" column="REGISTRATION_DATE" nullable="true"/>
-    <field name="siretNumber" type="float" column="SIRET_NUMBER" nullable="true"/>
+    <field name="siretNumber" type="string" column="SIRET_NUMBER" length="50" nullable="true"/>
     <field name="tvaNumber" type="string" column="TVA_NUMBER" length="30" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>

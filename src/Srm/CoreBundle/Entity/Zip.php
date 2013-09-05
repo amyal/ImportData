@@ -43,6 +43,11 @@ class Zip
     private $city;
 
 
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
     /**
      * Set code
      *

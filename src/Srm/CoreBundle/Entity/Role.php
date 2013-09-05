@@ -13,6 +13,11 @@ class Role
     private $label;
 
     /**
+     * @var string
+     */
+    private $roleType;
+
+    /**
      * @var boolean
      */
     private $enabled;
@@ -27,17 +32,10 @@ class Role
      */
     private $roleId;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $affiliations;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->affiliations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->deleted = false;
     }
 
     /**
@@ -61,6 +59,29 @@ class Role
     public function getLabel()
     {
         return $this->label;
+    }
+
+    /**
+     * Set roleType
+     *
+     * @param string $roleType
+     * @return Role
+     */
+    public function setRoleType($roleType)
+    {
+        $this->roleType = $roleType;
+
+        return $this;
+    }
+
+    /**
+     * Get roleType
+     *
+     * @return string
+     */
+    public function getRoleType()
+    {
+        return $this->roleType;
     }
 
     /**
@@ -117,38 +138,5 @@ class Role
     public function getRoleId()
     {
         return $this->roleId;
-    }
-
-    /**
-     * Add affiliation
-     *
-     * @param \Srm\CoreBundle\Entity\Affiliation $affiliation
-     * @return Role
-     */
-    public function addAffiliation(Affiliation $affiliation)
-    {
-        $this->affiliations[] = $affiliation;
-
-        return $this;
-    }
-
-    /**
-     * Remove affiliation
-     *
-     * @param \Srm\CoreBundle\Entity\Affiliation $affiliation
-     */
-    public function removeAffiliation(Affiliation $affiliation)
-    {
-        $this->affiliations->removeElement($affiliation);
-    }
-
-    /**
-     * Get affiliations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAffiliations()
-    {
-        return $this->affiliations;
     }
 }

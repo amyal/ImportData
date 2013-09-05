@@ -28,6 +28,11 @@ class AnswerType
     private $answerTypeId;
 
 
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *

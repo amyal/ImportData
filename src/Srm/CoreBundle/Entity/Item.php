@@ -48,6 +48,11 @@ class Item
     private $subDepartment;
 
     /**
+     * @var \Srm\CoreBundle\Entity\ItemQuestions
+     */
+    private $itemQuestions;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $indicators;
@@ -58,6 +63,9 @@ class Item
     public function __construct()
     {
         $this->indicators = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->creationDate = new \DateTime();
+        $this->deleted = false;
     }
 
     /**
@@ -232,6 +240,29 @@ class Item
     }
 
     /**
+     * Set itemQuestions
+     *
+     * @param \Srm\CoreBundle\Entity\ItemQuestions $itemQuestions
+     * @return Item
+     */
+    public function setItemQuestions(ItemQuestions $itemQuestions = null)
+    {
+        $this->itemQuestions = $itemQuestions;
+
+        return $this;
+    }
+
+    /**
+     * Get itemQuestions
+     *
+     * @return \Srm\CoreBundle\Entity\ItemQuestions
+     */
+    public function getItemQuestions()
+    {
+        return $this->itemQuestions;
+    }
+
+    /**
      * Add indicator
      *
      * @param \Srm\CoreBundle\Entity\Indicator $indicator
@@ -262,5 +293,10 @@ class Item
     public function getIndicators()
     {
         return $this->indicators;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

@@ -33,6 +33,11 @@ class IndicatorLevel1
     private $indicatorLevel1Id;
 
 
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *

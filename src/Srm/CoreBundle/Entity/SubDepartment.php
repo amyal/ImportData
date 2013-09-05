@@ -40,7 +40,7 @@ class SubDepartment
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $sites;
+    private $departments;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -48,18 +48,14 @@ class SubDepartment
     private $contacts;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $departments;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
         $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->creationDate = new \DateTime();
     }
 
     /**
@@ -188,36 +184,36 @@ class SubDepartment
     }
 
     /**
-     * Add site
+     * Add department
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
+     * @param \Srm\CoreBundle\Entity\Department $department
      * @return SubDepartment
      */
-    public function addSite(Site $site)
+    public function addDepartment(Department $department)
     {
-        $this->sites[] = $site;
+        $this->departments[] = $department;
 
         return $this;
     }
 
     /**
-     * Remove site
+     * Remove department
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
+     * @param \Srm\CoreBundle\Entity\Department $department
      */
-    public function removeSite(Site $site)
+    public function removeDepartment(Department $department)
     {
-        $this->sites->removeElement($site);
+        $this->departments->removeElement($department);
     }
 
     /**
-     * Get sites
+     * Get departments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSites()
+    public function getDepartments()
     {
-        return $this->sites;
+        return $this->departments;
     }
 
     /**
@@ -253,36 +249,8 @@ class SubDepartment
         return $this->contacts;
     }
 
-    /**
-     * Add department
-     *
-     * @param \Srm\CoreBundle\Entity\Department $department
-     * @return SubDepartment
-     */
-    public function addDepartment(Department $department)
+    public function updateModificationDate()
     {
-        $this->departments[] = $department;
-
-        return $this;
-    }
-
-    /**
-     * Remove department
-     *
-     * @param \Srm\CoreBundle\Entity\Department $department
-     */
-    public function removeDepartment(Department $department)
-    {
-        $this->departments->removeElement($department);
-    }
-
-    /**
-     * Get departments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDepartments()
-    {
-        return $this->departments;
+        $this->modificationDate = new \DateTime();
     }
 }

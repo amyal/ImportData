@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\DependancyAnswers" table="v_dependancy_answers">
+    <id name="dependancyAnswersId" type="integer" column="DEPENDANCY_ANSWERS_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="itemAnswers" target-entity="ItemAnswers">
+      <join-columns>
+        <join-column name="ITEM_ANSWERS_ID" referenced-column-name="ITEM_ANSWERS_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="itemAnswersDependancy" target-entity="ItemAnswers">
+      <join-columns>
+        <join-column name="ITEM_ANSWERS_DEPENDANCY_ID" referenced-column-name="ITEM_ANSWERS_ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -53,6 +53,11 @@ class ItemAnswers
     private $answers;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
+
     /**
      * Set answer
      *
@@ -245,5 +250,10 @@ class ItemAnswers
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

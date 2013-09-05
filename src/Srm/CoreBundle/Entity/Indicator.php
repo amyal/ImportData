@@ -73,6 +73,8 @@ class Indicator
     public function __construct()
     {
         $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->deleted = false;
     }
 
     /**

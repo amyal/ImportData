@@ -3,9 +3,9 @@
 namespace Srm\CoreBundle\Entity;
 
 /**
- * IndicatorLevel2
+ * Gender
  */
-class IndicatorLevel2
+class Gender
 {
     /**
      * @var string
@@ -15,7 +15,7 @@ class IndicatorLevel2
     /**
      * @var string
      */
-    private $description;
+    private $shortLabel;
 
     /**
      * @var boolean
@@ -23,26 +23,16 @@ class IndicatorLevel2
     private $enabled;
 
     /**
-     * @var boolean
-     */
-    private $deleted;
-
-    /**
      * @var integer
      */
-    private $indicatorLevel2Id;
+    private $genderId;
 
-
-    public function __construct()
-    {
-        $this->deleted = false;
-    }
 
     /**
      * Set label
      *
      * @param string $label
-     * @return IndicatorLevel2
+     * @return Gender
      */
     public function setLabel($label)
     {
@@ -62,33 +52,33 @@ class IndicatorLevel2
     }
 
     /**
-     * Set description
+     * Set shortLabel
      *
-     * @param string $description
-     * @return IndicatorLevel2
+     * @param string $shortLabel
+     * @return Gender
      */
-    public function setDescription($description)
+    public function setShortLabel($shortLabel)
     {
-        $this->description = $description;
+        $this->shortLabel = $shortLabel;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get shortLabel
      *
      * @return string
      */
-    public function getDescription()
+    public function getShortLabel()
     {
-        return $this->description;
+        return $this->shortLabel;
     }
 
     /**
      * Set enabled
      *
      * @param boolean $enabled
-     * @return IndicatorLevel2
+     * @return Gender
      */
     public function setEnabled($enabled)
     {
@@ -108,35 +98,12 @@ class IndicatorLevel2
     }
 
     /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return IndicatorLevel2
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
-
-    /**
-     * Get indicatorLevel2Id
+     * Get genderId
      *
      * @return integer
      */
-    public function getIndicatorLevel2Id()
+    public function getGenderId()
     {
-        return $this->indicatorLevel2Id;
+        return $this->genderId;
     }
 }

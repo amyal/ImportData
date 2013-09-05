@@ -33,6 +33,11 @@ class Referentiel
     private $referentielId;
 
 
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *

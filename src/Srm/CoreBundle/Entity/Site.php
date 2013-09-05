@@ -13,7 +13,7 @@ class Site
     private $label;
 
     /**
-     * @var integer
+     * @var string
      */
     private $phone;
 
@@ -23,12 +23,12 @@ class Site
     private $mail;
 
     /**
-     * @var integer
+     * @var string
      */
     private $fax;
 
     /**
-     * @var boolean
+     * @var string
      */
     private $importance;
 
@@ -68,11 +68,6 @@ class Site
     private $language;
 
     /**
-     * @var \Srm\CoreBundle\Entity\TypeSite
-     */
-    private $typeSite;
-
-    /**
      * @var \Srm\CoreBundle\Entity\Currency
      */
     private $currency;
@@ -88,9 +83,9 @@ class Site
     private $organisation;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Srm\CoreBundle\Entity\TypeSite
      */
-    private $subDepartments;
+    private $typeSite;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -100,7 +95,12 @@ class Site
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $contacts;
+    private $departments;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $siteActivities;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -110,30 +110,24 @@ class Site
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $departments;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $poles;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $siteActivities;
+    private $contacts;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subSiteActivities = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dangerousSubstances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->poles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->siteActivities = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dangerousSubstances = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->poles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
         $this->deleted = false;
@@ -165,7 +159,7 @@ class Site
     /**
      * Set phone
      *
-     * @param integer $phone
+     * @param string $phone
      * @return Site
      */
     public function setPhone($phone)
@@ -178,7 +172,7 @@ class Site
     /**
      * Get phone
      *
-     * @return integer
+     * @return string
      */
     public function getPhone()
     {
@@ -211,7 +205,7 @@ class Site
     /**
      * Set fax
      *
-     * @param integer $fax
+     * @param string $fax
      * @return Site
      */
     public function setFax($fax)
@@ -224,7 +218,7 @@ class Site
     /**
      * Get fax
      *
-     * @return integer
+     * @return string
      */
     public function getFax()
     {
@@ -234,7 +228,7 @@ class Site
     /**
      * Set importance
      *
-     * @param boolean $importance
+     * @param string $importance
      * @return Site
      */
     public function setImportance($importance)
@@ -247,7 +241,7 @@ class Site
     /**
      * Get importance
      *
-     * @return boolean
+     * @return string
      */
     public function getImportance()
     {
@@ -403,29 +397,6 @@ class Site
     }
 
     /**
-     * Set typeSite
-     *
-     * @param \Srm\CoreBundle\Entity\TypeSite $typeSite
-     * @return Site
-     */
-    public function setTypeSite(TypeSite $typeSite = null)
-    {
-        $this->typeSite = $typeSite;
-
-        return $this;
-    }
-
-    /**
-     * Get typeSite
-     *
-     * @return \Srm\CoreBundle\Entity\TypeSite
-     */
-    public function getTypeSite()
-    {
-        return $this->typeSite;
-    }
-
-    /**
      * Set currency
      *
      * @param \Srm\CoreBundle\Entity\Currency $currency
@@ -495,59 +466,49 @@ class Site
     }
 
     /**
-     * Add subDepartment
+     * Set typeSite
      *
-     * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
+     * @param \Srm\CoreBundle\Entity\TypeSite $typeSite
      * @return Site
      */
-    public function addSubDepartment(SubDepartment $subDepartment)
+    public function setTypeSite(TypeSite $typeSite = null)
     {
-        $this->subDepartments[] = $subDepartment;
+        $this->typeSite = $typeSite;
 
         return $this;
     }
 
     /**
-     * Remove subDepartment
+     * Get typeSite
      *
-     * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
+     * @return \Srm\CoreBundle\Entity\TypeSite
      */
-    public function removeSubDepartment(SubDepartment $subDepartment)
+    public function getTypeSite()
     {
-        $this->subDepartments->removeElement($subDepartment);
+        return $this->typeSite;
     }
 
     /**
-     * Get subDepartments
+     * Add subSiteActivitie
      *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSubDepartments()
-    {
-        return $this->subDepartments;
-    }
-
-    /**
-     * Add subSiteActivity
-     *
-     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
+     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie
      * @return Site
      */
-    public function addSubSiteActivity(SubSiteActivity $subSiteActivity)
+    public function addSubSiteActiviy(SubSiteActivity $subSiteActivitie)
     {
-        $this->subSiteActivities[] = $subSiteActivity;
+        $this->subSiteActivities[] = $subSiteActivitie;
 
         return $this;
     }
 
     /**
-     * Remove subSiteActivity
+     * Remove subSiteActivitie
      *
-     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
+     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie
      */
-    public function removeSubSiteActivity(SubSiteActivity $subSiteActivity)
+    public function removeSubSiteActiviy(SubSiteActivity $subSiteActivitie)
     {
-        $this->subSiteActivities->removeElement($subSiteActivity);
+        $this->subSiteActivities->removeElement($subSiteActivitie);
     }
 
     /**
@@ -558,72 +519,6 @@ class Site
     public function getSubSiteActivities()
     {
         return $this->subSiteActivities;
-    }
-
-    /**
-     * Add contact
-     *
-     * @param \Srm\CoreBundle\Entity\Contact $contact
-     * @return Site
-     */
-    public function addContact(Contact $contact)
-    {
-        $this->contacts[] = $contact;
-
-        return $this;
-    }
-
-    /**
-     * Remove contact
-     *
-     * @param \Srm\CoreBundle\Entity\Contact $contact
-     */
-    public function removeContact(Contact $contact)
-    {
-        $this->contacts->removeElement($contact);
-    }
-
-    /**
-     * Get contacts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getContacts()
-    {
-        return $this->contacts;
-    }
-
-    /**
-     * Add DangerousSubstance
-     *
-     * @param \Srm\CoreBundle\Entity\DangerousSubstance $DangerousSubstance
-     * @return Site
-     */
-    public function addDangerousSubstance(DangerousSubstance $dangerousSubstance)
-    {
-        $this->dangerousSubstances[] = $dangerousSubstance;
-
-        return $this;
-    }
-
-    /**
-     * Remove DangerousSubstance
-     *
-     * @param \Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance
-     */
-    public function removeDangerousSubstance(DangerousSubstance $dangerousSubstance)
-    {
-        $this->dangerousSubstances->removeElement($dangerousSubstance);
-    }
-
-    /**
-     * Get DangerousSubstance
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDangerousSubstances()
-    {
-        return $this->dangerousSubstances;
     }
 
     /**
@@ -650,13 +545,79 @@ class Site
     }
 
     /**
-     * Get department
+     * Get departments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getDepartments()
     {
         return $this->departments;
+    }
+
+    /**
+     * Add siteActivity
+     *
+     * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
+     * @return Site
+     */
+    public function addSiteActiviy(SiteActivity $siteActivity)
+    {
+        $this->siteActivities[] = $siteActivity;
+
+        return $this;
+    }
+
+    /**
+     * Remove siteActivity
+     *
+     * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
+     */
+    public function removeSiteActiviy(SiteActivity $siteActivity)
+    {
+        $this->siteActivities->removeElement($siteActivity);
+    }
+
+    /**
+     * Get siteActivities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSiteActivities()
+    {
+        return $this->siteActivities;
+    }
+
+    /**
+     * Add dangerousSubstance
+     *
+     * @param \Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance
+     * @return Site
+     */
+    public function addDangerousSubstance(DangerousSubstance $dangerousSubstance)
+    {
+        $this->dangerousSubstances[] = $dangerousSubstance;
+
+        return $this;
+    }
+
+    /**
+     * Remove dangerousSubstance
+     *
+     * @param \Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance
+     */
+    public function removeDangerousSubstance(DangerousSubstance $dangerousSubstance)
+    {
+        $this->dangerousSubstances->removeElement($dangerousSubstance);
+    }
+
+    /**
+     * Get dangerousSubstances
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDangerousSubstances()
+    {
+        return $this->dangerousSubstances;
     }
 
     /**
@@ -693,36 +654,36 @@ class Site
     }
 
     /**
-     * Add siteActivity
+     * Add contact
      *
-     * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
+     * @param \Srm\CoreBundle\Entity\Contact $contact
      * @return Site
      */
-    public function addSiteActivity(SiteActivity $siteActivity)
+    public function addContact(Contact $contact)
     {
-        $this->siteActivities[] = $siteActivity;
+        $this->contacts[] = $contact;
 
         return $this;
     }
 
     /**
-     * Remove siteActivity
+     * Remove contact
      *
-     * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
+     * @param \Srm\CoreBundle\Entity\Contact $contact
      */
-    public function removeSiteActivity(SiteActivity $siteActivity)
+    public function removeContact(Contact $contact)
     {
-        $this->siteActivities->removeElement($siteActivity);
+        $this->contacts->removeElement($contact);
     }
 
     /**
-     * Get siteActivities
+     * Get contacts
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSiteActivities()
+    public function getContacts()
     {
-        return $this->siteActivities;
+        return $this->contacts;
     }
 
     public function updateModificationDate()

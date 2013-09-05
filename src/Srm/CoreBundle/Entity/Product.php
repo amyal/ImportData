@@ -48,6 +48,12 @@ class Product
     private $site;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *
@@ -217,5 +223,10 @@ class Product
     public function getSite()
     {
         return $this->site;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

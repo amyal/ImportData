@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Contact" table="V_CONTACT" repository-class="Srm\CoreBundle\Entity\Repository\ContactRepository">
+  <entity name="Srm\CoreBundle\Entity\Contact" table="v_contact" repository-class="Srm\CoreBundle\Repository\ContactRepository">
     <id name="contactId" type="integer" column="CONTACT_ID">
       <generator strategy="IDENTITY"/>
     </id>
@@ -10,34 +10,54 @@
     <field name="contactFunction" type="string" column="CONTACT_FUNCTION" length="255" nullable="true"/>
     <field name="picture" type="string" column="PICTURE" length="150" nullable="true"/>
     <field name="comments" type="string" column="COMMENTS" length="255" nullable="true"/>
-    <field name="gender" type="boolean" column="GENDER" nullable="true"/>
     <field name="organisationInvolved" type="string" column="ORGANISATION_INVOLVED" length="255" nullable="true"/>
     <field name="manager" type="string" column="MANAGER" length="150" nullable="true"/>
     <field name="dateBirth" type="date" column="DATE_BIRTH" nullable="true"/>
     <field name="connPlatform" type="boolean" column="CONN_PLATFORM" nullable="true"/>
     <field name="owner" type="string" column="OWNER" length="150" nullable="true"/>
-    <field name="phone" type="integer" column="PHONE" nullable="true"/>
+    <field name="officePhone" type="string" column="OFFICE_PHONE" length="50" nullable="true"/>
+    <field name="mobilePhone" type="string" column="MOBILE_PHONE" length="50" nullable="true"/>
+    <field name="fax" type="string" column="FAX" length="50" nullable="true"/>
     <field name="mail" type="string" column="MAIL" length="150" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-one field="stakeholderGroup" target-entity="StakeholderGroup">
-      <join-columns>
-        <join-column name="STAKEHOLDER_GROUP_ID" referenced-column-name="STAKEHOLDER_GROUP_ID"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="role" target-entity="Role">
       <join-columns>
         <join-column name="ROLE_ID" referenced-column-name="ROLE_ID"/>
       </join-columns>
+    </many-to-one>
+    <many-to-one field="gender" target-entity="Gender">
+      <join-columns>
+        <join-column name="GENDER_ID" referenced-column-name="GENDER_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="address" target-entity="Address">
+      <join-columns>
+        <join-column name="ADDRESS_ID" referenced-column-name="ADDRESS_ID"/>
+      </join-columns>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
     </many-to-one>
     <many-to-one field="organisation" target-entity="Organisation">
       <join-columns>
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="sites" target-entity="Site" mapped-by="contacts"/>
+    <many-to-many field="departments" target-entity="Department" mapped-by="contacts"/>
+    <many-to-many field="stakeholders" target-entity="Stakeholder" inversed-by="contacts">
+      <join-table name="v_stakeholder_contact">
+        <join-columns>
+          <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="STAKEHOLDER_ID" referenced-column-name="STAKEHOLDER_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
     <many-to-many field="subDepartments" target-entity="SubDepartment" inversed-by="contacts">
       <join-table name="vj_contact_sub_department">
         <join-columns>
@@ -48,6 +68,10 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="departments" target-entity="Department" mapped-by="contacts"/>
+    <many-to-many field="sites" target-entity="Site" mapped-by="contacts"/>
+
+    <lifecycle-callbacks>
+      <lifecycle-callback type="preUpdate" method="updateModificationDate" />
+    </lifecycle-callbacks>
   </entity>
 </doctrine-mapping>

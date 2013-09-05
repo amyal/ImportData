@@ -48,6 +48,11 @@ class Answers
     private $periodicity;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
+
     /**
      * Set code
      *
@@ -217,5 +222,10 @@ class Answers
     public function getPeriodicity()
     {
         return $this->periodicity;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

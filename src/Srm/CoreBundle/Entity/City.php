@@ -33,6 +33,11 @@ class City
     private $country;
 
 
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Answers" table="VR_ANSWERS">
+  <entity name="Srm\CoreBundle\Entity\Answers" table="vr_answers">
     <id name="answersId" type="integer" column="ANSWERS_ID">
       <generator strategy="IDENTITY"/>
     </id>
@@ -23,5 +23,9 @@
         <join-column name="PERIODICITY_ID" referenced-column-name="PERIODICITY_ID"/>
       </join-columns>
     </many-to-one>
+
+    <lifecycle-callbacks>
+      <lifecycle-callback type="preUpdate" method="updateModificationDate" />
+    </lifecycle-callbacks>
   </entity>
 </doctrine-mapping>

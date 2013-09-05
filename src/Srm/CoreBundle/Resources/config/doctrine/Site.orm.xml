@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Site" table="V_SITE" repository-class="Srm\CoreBundle\Entity\Repository\SiteRepository">
+  <entity name="Srm\CoreBundle\Entity\Site" table="v_site" repository-class="Srm\CoreBundle\Repository\SiteRepository">
     <id name="siteId" type="integer" column="SITE_ID">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
-    <field name="phone" type="string" column="PHONE" length="20" nullable="true"/>
-    <field name="mail" type="string" column="MAIL" length="150" nullable="true"/>
+    <field name="phone" type="string" column="PHONE" length="20" nullable="false"/>
+    <field name="mail" type="string" column="MAIL" length="150" nullable="false"/>
     <field name="fax" type="string" column="FAX" length="20" nullable="true"/>
-    <field name="importance" type="string" column="IMPORTANCE" length="50" nullable="true"/>
+    <field name="importance" type="string" column="IMPORTANCE" length="10" nullable="false"/>
     <field name="map" type="string" column="MAP" length="255" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
@@ -17,11 +17,6 @@
     <many-to-one field="language" target-entity="Language">
       <join-columns>
         <join-column name="LANGUAGE_ID" referenced-column-name="LANGUAGE_ID"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="typeSite" target-entity="TypeSite">
-      <join-columns>
-        <join-column name="TYPE_SITE_ID" referenced-column-name="TYPE_SITE_ID"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="currency" target-entity="Currency">
@@ -43,16 +38,11 @@
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="subDepartments" target-entity="SubDepartment" inversed-by="sites">
-      <join-table name="vj_site_sub_department">
-        <join-columns>
-          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="SUB_DEPARTMENT_ID" referenced-column-name="SUB_DEPARTMENT_ID"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
+    <many-to-one field="typeSite" target-entity="TypeSite">
+      <join-columns>
+        <join-column name="TYPE_SITE_ID" referenced-column-name="TYPE_SITE_ID"/>
+      </join-columns>
+    </many-to-one>
     <many-to-many field="subSiteActivities" target-entity="SubSiteActivity" inversed-by="sites">
       <join-table name="vj_site_sub_activity">
         <join-columns>
@@ -63,8 +53,39 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
+    <many-to-many field="departments" target-entity="Department" mapped-by="sites"/>
+    <many-to-many field="siteActivities" target-entity="SiteActivity" inversed-by="sites">
+      <join-table name="vj_site_activity">
+        <join-columns>
+          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="SITE_ACTIVITY_ID" referenced-column-name="SITE_ACTIVITY_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="dangerousSubstances" target-entity="DangerousSubstance" inversed-by="sites">
+      <join-table name="vj_site_dangerous_substance">
+        <join-columns>
+          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="VR_DANGEROUS_SUBSTANCE_DANGEROUS_SUBSTANCE_ID" referenced-column-name="DANGEROUS_SUBSTANCE_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="poles" target-entity="Pole" inversed-by="sites">
+      <join-table name="vj_site_pole">
+        <join-columns>
+          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="POLE_ID" referenced-column-name="POLE_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
     <many-to-many field="contacts" target-entity="Contact" inversed-by="sites">
-      <join-table name="vj_sites_contacts">
+      <join-table name="v_sites_contacts">
         <join-columns>
           <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
         </join-columns>
@@ -76,28 +97,6 @@
       <cascade>
         <cascade-all />
       </cascade>
-    </many-to-many>
-    <many-to-many field="dangerousSubstances" target-entity="DangerousSubstance" inversed-by="sites">
-      <join-table name="vj_site_dangerous_substance">
-        <join-columns>
-          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="DANGEROUS_SUBSTANCE_ID" referenced-column-name="DANGEROUS_SUBSTANCE_ID"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
-    <many-to-many field="departments" target-entity="Department" mapped-by="sites"/>
-    <many-to-many field="poles" target-entity="Pole" mapped-by="sites"/>
-    <many-to-many field="siteActivities" target-entity="SiteActivity" inversed-by="sites">
-      <join-table name="vj_site_activity">
-        <join-columns>
-          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="SITE_ACTIVITY_ID" referenced-column-name="SITE_ACTIVITY_ID"/>
-        </inverse-join-columns>
-      </join-table>
     </many-to-many>
 
     <lifecycle-callbacks>

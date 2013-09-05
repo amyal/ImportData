@@ -13,30 +13,25 @@ class StakeholderGroup
     private $label;
 
     /**
-     * @var string
+     * @var boolean
      */
-    private $stakeholderGroupType;
+    private $enabled;
 
     /**
-     * @var string
+     * @var boolean
      */
-    private $archetype;
-
-    /**
-     * @var \DateTime
-     */
-    private $creationDate;
-
-    /**
-     * @var \DateTime
-     */
-    private $modificationDate;
+    private $deleted;
 
     /**
      * @var integer
      */
     private $stakeholderGroupId;
 
+
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
 
     /**
      * Set label
@@ -62,95 +57,49 @@ class StakeholderGroup
     }
 
     /**
-     * Set stakeholderGroupType
+     * Set enabled
      *
-     * @param string $stakeholderGroupType
+     * @param boolean $enabled
      * @return StakeholderGroup
      */
-    public function setStakeholderGroupType($stakeholderGroupType)
+    public function setEnabled($enabled)
     {
-        $this->stakeholderGroupType = $stakeholderGroupType;
+        $this->enabled = $enabled;
 
         return $this;
     }
 
     /**
-     * Get stakeholderGroupType
+     * Get enabled
      *
-     * @return string
+     * @return boolean
      */
-    public function getStakeholderGroupType()
+    public function getEnabled()
     {
-        return $this->stakeholderGroupType;
+        return $this->enabled;
     }
 
     /**
-     * Set archetype
+     * Set deleted
      *
-     * @param string $archetype
+     * @param boolean $deleted
      * @return StakeholderGroup
      */
-    public function setArchetype($archetype)
+    public function setDeleted($deleted)
     {
-        $this->archetype = $archetype;
+        $this->deleted = $deleted;
 
         return $this;
     }
 
     /**
-     * Get archetype
+     * Get deleted
      *
-     * @return string
+     * @return boolean
      */
-    public function getArchetype()
+    public function getDeleted()
     {
-        return $this->archetype;
-    }
-
-    /**
-     * Set creationDate
-     *
-     * @param \DateTime $creationDate
-     * @return StakeholderGroup
-     */
-    public function setCreationDate($creationDate)
-    {
-        $this->creationDate = $creationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get creationDate
-     *
-     * @return \DateTime
-     */
-    public function getCreationDate()
-    {
-        return $this->creationDate;
-    }
-
-    /**
-     * Set modificationDate
-     *
-     * @param \DateTime $modificationDate
-     * @return StakeholderGroup
-     */
-    public function setModificationDate($modificationDate)
-    {
-        $this->modificationDate = $modificationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get modificationDate
-     *
-     * @return \DateTime
-     */
-    public function getModificationDate()
-    {
-        return $this->modificationDate;
+        return $this->deleted;
     }
 
     /**

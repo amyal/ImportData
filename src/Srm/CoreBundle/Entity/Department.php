@@ -260,7 +260,6 @@ class Department
      */
     public function addSite(Site $site)
     {
-        $site->addDepartment($this);
         $this->sites[] = $site;
 
         return $this;
@@ -273,7 +272,6 @@ class Department
      */
     public function removeSite(Site $site)
     {
-        $site->removeDepartment($this);
         $this->sites->removeElement($site);
     }
 

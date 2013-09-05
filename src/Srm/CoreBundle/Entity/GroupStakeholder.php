@@ -3,24 +3,14 @@
 namespace Srm\CoreBundle\Entity;
 
 /**
- * Shareholder
+ * GroupStakeholder
  */
-class Shareholder
+class GroupStakeholder
 {
-    /**
-     * @var integer
-     */
-    private $contactId;
-
     /**
      * @var string
      */
     private $label;
-
-    /**
-     * @var integer
-     */
-    private $parts;
 
     /**
      * @var \DateTime
@@ -45,48 +35,35 @@ class Shareholder
     /**
      * @var integer
      */
-    private $shareholderId;
+    private $groupStakeholderId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\LegalForm
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $legalForm;
+    private $stakeholders;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $stakeholderArchetypes;
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
+        $this->stakeholders = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->stakeholderArchetypes = new \Doctrine\Common\Collections\ArrayCollection();
+
         $this->creationDate = new \DateTime();
         $this->deleted = false;
-    }
-
-    /**
-     * Set contactId
-     *
-     * @param integer $contactId
-     * @return Shareholder
-     */
-    public function setContactId($contactId)
-    {
-        $this->contactId = $contactId;
-
-        return $this;
-    }
-
-    /**
-     * Get contactId
-     *
-     * @return integer
-     */
-    public function getContactId()
-    {
-        return $this->contactId;
     }
 
     /**
      * Set label
      *
      * @param string $label
-     * @return Shareholder
+     * @return GroupStakeholder
      */
     public function setLabel($label)
     {
@@ -106,33 +83,10 @@ class Shareholder
     }
 
     /**
-     * Set parts
-     *
-     * @param integer $parts
-     * @return Shareholder
-     */
-    public function setParts($parts)
-    {
-        $this->parts = $parts;
-
-        return $this;
-    }
-
-    /**
-     * Get parts
-     *
-     * @return integer
-     */
-    public function getParts()
-    {
-        return $this->parts;
-    }
-
-    /**
      * Set creationDate
      *
      * @param \DateTime $creationDate
-     * @return Shareholder
+     * @return GroupStakeholder
      */
     public function setCreationDate($creationDate)
     {
@@ -155,7 +109,7 @@ class Shareholder
      * Set modificationDate
      *
      * @param \DateTime $modificationDate
-     * @return Shareholder
+     * @return GroupStakeholder
      */
     public function setModificationDate($modificationDate)
     {
@@ -178,7 +132,7 @@ class Shareholder
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Shareholder
+     * @return GroupStakeholder
      */
     public function setEnabled($enabled)
     {
@@ -201,7 +155,7 @@ class Shareholder
      * Set deleted
      *
      * @param boolean $deleted
-     * @return Shareholder
+     * @return GroupStakeholder
      */
     public function setDeleted($deleted)
     {
@@ -221,36 +175,79 @@ class Shareholder
     }
 
     /**
-     * Get shareholderId
+     * Get groupStakeholderId
      *
      * @return integer
      */
-    public function getShareholderId()
+    public function getGroupStakeholderId()
     {
-        return $this->shareholderId;
+        return $this->groupStakeholderId;
     }
 
     /**
-     * Set legalForm
+     * Add stakeholder
      *
-     * @param \Srm\CoreBundle\Entity\LegalForm $legalForm
-     * @return Shareholder
+     * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
+     * @return GroupStakeholder
      */
-    public function setLegalForm(LegalForm $legalForm = null)
+    public function addStakeholder(Stakeholder $stakeholder)
     {
-        $this->legalForm = $legalForm;
+        $this->stakeholders[] = $stakeholder;
 
         return $this;
     }
 
     /**
-     * Get legalForm
+     * Remove stakeholder
      *
-     * @return \Srm\CoreBundle\Entity\LegalForm
+     * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
      */
-    public function getLegalForm()
+    public function removeStakeholder(Stakeholder $stakeholder)
     {
-        return $this->legalForm;
+        $this->stakeholders->removeElement($stakeholder);
+    }
+
+    /**
+     * Get stakeholders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStakeholders()
+    {
+        return $this->stakeholders;
+    }
+
+    /**
+     * Add stakeholderArchetype
+     *
+     * @param \Srm\CoreBundle\Entity\StakeholderArchetype $stakeholderArchetype
+     * @return GroupStakeholder
+     */
+    public function addStakeholderArchetype(StakeholderArchetype $stakeholderArchetype)
+    {
+        $this->stakeholderArchetypes[] = $stakeholderArchetype;
+
+        return $this;
+    }
+
+    /**
+     * Remove stakeholderArchetype
+     *
+     * @param \Srm\CoreBundle\Entity\StakeholderArchetype $stakeholderArchetype
+     */
+    public function removeStakeholderArchetype(StakeholderArchetype $stakeholderArchetype)
+    {
+        $this->stakeholderArchetypes->removeElement($stakeholderArchetype);
+    }
+
+    /**
+     * Get stakeholderArchetypes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStakeholderArchetypes()
+    {
+        return $this->stakeholderArchetypes;
     }
 
     public function updateModificationDate()
