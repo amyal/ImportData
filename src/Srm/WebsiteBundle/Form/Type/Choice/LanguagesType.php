@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Lists;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
@@ -8,15 +8,18 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CurrenciesType extends AbstractType
+class LanguagesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Currency',
+            'class'         => 'Srm\CoreBundle\Entity\Language',
             'property'      => 'label',
-            'empty_value'   => 'currency.choice',
-            'label'         => 'currency',
+            'empty_value'   => 'language.choice',
+            'label'         => 'language',
+            'query_builder' => function(EntityRepository $er) {
+                return $er->createQueryBuilder('l')->orderBy('l.label', 'ASC');
+            },
         ));
     }
 
@@ -27,6 +30,6 @@ class CurrenciesType extends AbstractType
 
     public function getName()
     {
-        return 'srm_currencies';
+        return 'srm_languages';
     }
 }

@@ -1,24 +1,21 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Lists;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TypeSiteType extends AbstractType
+class SubSiteActivitiesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\TypeSite',
-            'empty_value'   => 'site.type_site.choice',
-            'label'         => 'site.type_site',
+            'class'         => 'Srm\CoreBundle\Entity\SubSiteActivity',
             'property'      => 'label',
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('t')->orderBy('t.label', 'ASC');
+                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
             },
         ));
     }
@@ -30,6 +27,6 @@ class TypeSiteType extends AbstractType
 
     public function getName()
     {
-        return 'srm_type_site';
+        return 'srm_sub_site_activities';
     }
 }

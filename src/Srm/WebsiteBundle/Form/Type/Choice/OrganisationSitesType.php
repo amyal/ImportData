@@ -1,22 +1,16 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Lists;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class OrganisationDepartmentsType extends AbstractType
+class OrganisationSitesType extends AbstractType
 {
     protected $request;
-    protected $em;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
 
     public function setRequest(Request $request = null)
     {
@@ -30,15 +24,17 @@ class OrganisationDepartmentsType extends AbstractType
         }
 
         $organisation = $this->request->get('organisation');
-        $sites        = $this->em->getRepository('Srm\CoreBundle\Entity\Site')->findByOrganisation($organisation);
-        $departments  = $this->em->getRepository('Srm\CoreBundle\Entity\Department')->findNonDeletedBySites($sites);
 
         $resolver->setDefaults(array(
-            'class'    => 'Srm\CoreBundle\Entity\Department',
-            'property' => 'label',
-            'label'    => 'poles.list.departments',
-            'choices'  => $departments,
-            'multiple' => true,
+            'class'         => 'Srm\CoreBundle\Entity\Site',
+            'multiple'      => true,
+            'property'      => 'label',
+            'query_builder' => function(EntityRepository $er) use ($organisation) {
+                return $er->createQueryBuilder('s')
+                    ->where('s.organisation = :organisation')->setParameter('organisation', $organisation)
+                    ->orderBy('s.label', 'ASC')
+                ;
+            },
         ));
     }
 
@@ -49,6 +45,6 @@ class OrganisationDepartmentsType extends AbstractType
 
     public function getName()
     {
-        return 'srm_organisation_departments';
+        return 'srm_organisation_sites';
     }
 }

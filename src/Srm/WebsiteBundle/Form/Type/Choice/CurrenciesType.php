@@ -1,21 +1,22 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Lists;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ContactsType extends AbstractType
+class CurrenciesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Contact',
-            'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('c')->orderBy('c.lastname', 'ASC');
-            },
+            'class'         => 'Srm\CoreBundle\Entity\Currency',
+            'property'      => 'label',
+            'empty_value'   => 'currency.choice',
+            'label'         => 'currency',
         ));
     }
 
@@ -26,6 +27,6 @@ class ContactsType extends AbstractType
 
     public function getName()
     {
-        return 'srm_contacts';
+        return 'srm_currencies';
     }
 }

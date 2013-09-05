@@ -4,47 +4,47 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\CitiesType" id="srm_website.form.type.cities">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\CitiesType" id="srm_website.form.type.cities">
             <tag name="form.type" alias="srm_cities" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\ContactsType" id="srm_website.form.type.contacts">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\ContactsType" id="srm_website.form.type.contacts">
             <tag name="form.type" alias="srm_contacts" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\CountriesType" id="srm_website.form.type.countries">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\CountriesType" id="srm_website.form.type.countries">
             <tag name="form.type" alias="srm_countries" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\CurrenciesType" id="srm_website.form.type.currencies">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\CurrenciesType" id="srm_website.form.type.currencies">
             <tag name="form.type" alias="srm_currencies" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\DangerousSubstancesType" id="srm_website.form.type.dangerous_substances">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\DangerousSubstancesType" id="srm_website.form.type.dangerous_substances">
             <tag name="form.type" alias="srm_dangerous_substances" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\LanguagesType" id="srm_website.form.type.languages">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\LanguagesType" id="srm_website.form.type.languages">
             <tag name="form.type" alias="srm_languages" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\OrganisationDepartmentsType" id="srm_website.form.type.organisation_departments">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\OrganisationDepartmentsType" id="srm_website.form.type.organisation_departments">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
             <tag name="form.type" alias="srm_organisation_departments" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\OrganisationSitesType" id="srm_website.form.type.organisation_sites">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\OrganisationSitesType" id="srm_website.form.type.organisation_sites">
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
             <tag name="form.type" alias="srm_organisation_sites" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\SiteActivitiesType" id="srm_website.form.type.site_activities">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\SiteActivitiesType" id="srm_website.form.type.site_activities">
             <tag name="form.type" alias="srm_site_activities" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\SubDepartmentsType" id="srm_website.form.type.sub_departments">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\SubDepartmentsType" id="srm_website.form.type.sub_departments">
             <tag name="form.type" alias="srm_sub_departments" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\SubSiteActivitiesType" id="srm_website.form.type.sub_site_activities">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\SubSiteActivitiesType" id="srm_website.form.type.sub_site_activities">
             <tag name="form.type" alias="srm_sub_site_activities" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Lists\TypeSiteType" id="srm_website.form.type.type_site">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\TypeSiteType" id="srm_website.form.type.type_site">
             <tag name="form.type" alias="srm_type_site" />
         </service>
 

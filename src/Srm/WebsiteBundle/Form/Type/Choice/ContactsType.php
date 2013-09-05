@@ -1,24 +1,20 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Lists;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class LanguagesType extends AbstractType
+class ContactsType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Language',
-            'property'      => 'label',
-            'empty_value'   => 'language.choice',
-            'label'         => 'language',
+            'class'         => 'Srm\CoreBundle\Entity\Contact',
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('l')->orderBy('l.label', 'ASC');
+                return $er->createQueryBuilder('c')->orderBy('c.lastname', 'ASC');
             },
         ));
     }
@@ -30,6 +26,6 @@ class LanguagesType extends AbstractType
 
     public function getName()
     {
-        return 'srm_languages';
+        return 'srm_contacts';
     }
 }

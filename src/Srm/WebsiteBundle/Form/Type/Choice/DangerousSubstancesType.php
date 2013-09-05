@@ -1,21 +1,23 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Lists;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SiteActivitiesType extends AbstractType
+class DangerousSubstancesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\SiteActivity',
+            'class'         => 'Srm\CoreBundle\Entity\DangerousSubstance',
             'property'      => 'label',
+            'label'         => 'site.dangerous_substances',
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
+                return $er->createQueryBuilder('d')->orderBy('d.label', 'ASC');
             },
         ));
     }
@@ -27,6 +29,6 @@ class SiteActivitiesType extends AbstractType
 
     public function getName()
     {
-        return 'srm_site_activities';
+        return 'srm_dangerous_substances';
     }
 }

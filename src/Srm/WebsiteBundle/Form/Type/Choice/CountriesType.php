@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Lists;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
@@ -8,16 +8,18 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DangerousSubstancesType extends AbstractType
+class CountriesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\DangerousSubstance',
+            'class'         => 'Srm\CoreBundle\Entity\Country',
+            'empty_value'   => 'address.country.choice',
+            'label'         => 'address.country',
             'property'      => 'label',
-            'label'         => 'site.dangerous_substances',
+            'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('d')->orderBy('d.label', 'ASC');
+                return $er->createQueryBuilder('c')->orderBy('c.label', 'ASC');
             },
         ));
     }
@@ -29,6 +31,6 @@ class DangerousSubstancesType extends AbstractType
 
     public function getName()
     {
-        return 'srm_dangerous_substances';
+        return 'srm_countries';
     }
 }
