@@ -10,7 +10,7 @@
     <field name="validUntil" type="datetime" column="VALID_UNTIL" nullable="true"/>
     <many-to-one field="answersStatus" target-entity="AnswersStatus">
       <join-columns>
-        <join-column name="ANSWERS_STATUS_ID" referenced-column-name="ITEM_ANSWERS_STATUS_ID"/>
+        <join-column name="ANSWERS_STATUS_ID" referenced-column-name="ANSWERS_STATUS_ID"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="itemQuestions" target-entity="ItemQuestions">
