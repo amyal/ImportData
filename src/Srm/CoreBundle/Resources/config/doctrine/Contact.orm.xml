@@ -49,7 +49,7 @@
     </many-to-one>
     <many-to-many field="departments" target-entity="Department" mapped-by="contacts"/>
     <many-to-many field="stakeholders" target-entity="Stakeholder" inversed-by="contacts">
-      <join-table name="v_stakeholder_contact">
+      <join-table name="vj_stakeholder_contact">
         <join-columns>
           <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
         </join-columns>

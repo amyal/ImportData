@@ -41,7 +41,7 @@
       </cascade>
     </many-to-many>
     <many-to-many field="subDepartments" target-entity="SubDepartment" inversed-by="departments">
-      <join-table name="sub_department_department">
+      <join-table name="vj_sub_department_department">
         <join-columns>
           <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
         </join-columns>
