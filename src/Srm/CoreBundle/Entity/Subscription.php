@@ -48,6 +48,12 @@ class Subscription
     private $subscriptionId;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *
@@ -217,5 +223,10 @@ class Subscription
     public function getSubscriptionId()
     {
         return $this->subscriptionId;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

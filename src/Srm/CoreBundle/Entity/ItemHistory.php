@@ -43,6 +43,13 @@ class ItemHistory
     private $itemHistoryId;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *
@@ -189,5 +196,10 @@ class ItemHistory
     public function getItemHistoryId()
     {
         return $this->itemHistoryId;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

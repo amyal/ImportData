@@ -18,9 +18,9 @@ class LegalForm
     private $natureCapital;
 
     /**
-     * @var float
+     * @var string
      */
-    private $amountCapital;
+    private $activity;
 
     /**
      * @var string
@@ -28,17 +28,17 @@ class LegalForm
     private $apeCode;
 
     /**
-     * @var float
+     * @var string
      */
     private $category;
 
     /**
-     * @var float
+     * @var \DateTime
      */
     private $registrationDate;
 
     /**
-     * @var float
+     * @var string
      */
     private $siretNumber;
 
@@ -81,6 +81,9 @@ class LegalForm
     public function __construct(Organisation $organisation)
     {
         $this->organisation = $organisation;
+
+        $this->creationDate = new \DateTime();
+        $this->deleted = false;
     }
 
     /**
@@ -130,26 +133,26 @@ class LegalForm
     }
 
     /**
-     * Set amountCapital
+     * Set activity
      *
-     * @param float $amountCapital
+     * @param string $activity
      * @return LegalForm
      */
-    public function setAmountCapital($amountCapital)
+    public function setActivity($activity)
     {
-        $this->amountCapital = $amountCapital;
+        $this->activity = $activity;
 
         return $this;
     }
 
     /**
-     * Get amountCapital
+     * Get activity
      *
-     * @return float
+     * @return string
      */
-    public function getAmountCapital()
+    public function getActivity()
     {
-        return $this->amountCapital;
+        return $this->activity;
     }
 
     /**
@@ -178,7 +181,7 @@ class LegalForm
     /**
      * Set category
      *
-     * @param float $category
+     * @param string $category
      * @return LegalForm
      */
     public function setCategory($category)
@@ -191,7 +194,7 @@ class LegalForm
     /**
      * Get category
      *
-     * @return float
+     * @return string
      */
     public function getCategory()
     {
@@ -201,7 +204,7 @@ class LegalForm
     /**
      * Set registrationDate
      *
-     * @param float $registrationDate
+     * @param \DateTime $registrationDate
      * @return LegalForm
      */
     public function setRegistrationDate($registrationDate)
@@ -214,7 +217,7 @@ class LegalForm
     /**
      * Get registrationDate
      *
-     * @return float
+     * @return \DateTime
      */
     public function getRegistrationDate()
     {
@@ -224,7 +227,7 @@ class LegalForm
     /**
      * Set siretNumber
      *
-     * @param float $siretNumber
+     * @param string $siretNumber
      * @return LegalForm
      */
     public function setSiretNumber($siretNumber)
@@ -237,7 +240,7 @@ class LegalForm
     /**
      * Get siretNumber
      *
-     * @return float
+     * @return string
      */
     public function getSiretNumber()
     {
@@ -375,7 +378,7 @@ class LegalForm
      * @param \Srm\CoreBundle\Entity\Organisation $organisation
      * @return LegalForm
      */
-    public function setOrganisation(Organisation $organisation = null)
+    public function setOrganisation(\Srm\CoreBundle\Entity\Organisation $organisation = null)
     {
         $this->organisation = $organisation;
 

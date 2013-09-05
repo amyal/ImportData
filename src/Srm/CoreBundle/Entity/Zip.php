@@ -43,6 +43,11 @@ class Zip
     private $city;
 
 
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
     /**
      * Set code
      *
@@ -174,7 +179,7 @@ class Zip
      * @param \Srm\CoreBundle\Entity\City $city
      * @return Zip
      */
-    public function setCity(City $city = null)
+    public function setCity(\Srm\CoreBundle\Entity\City $city = null)
     {
         $this->city = $city;
 

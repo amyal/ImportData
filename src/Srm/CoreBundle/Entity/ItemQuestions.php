@@ -38,11 +38,6 @@ class ItemQuestions
     private $itemQuestionsId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Item
-     */
-    private $item;
-
-    /**
      * @var \Srm\CoreBundle\Entity\ItemQuestionsLevel3
      */
     private $itemQuestionsLevel3;
@@ -57,6 +52,11 @@ class ItemQuestions
      */
     private $itemQuestionsLevel1;
 
+
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
 
     /**
      * Set label
@@ -184,35 +184,12 @@ class ItemQuestions
     }
 
     /**
-     * Set item
-     *
-     * @param \Srm\CoreBundle\Entity\Item $item
-     * @return ItemQuestions
-     */
-    public function setItem(Item $item = null)
-    {
-        $this->item = $item;
-
-        return $this;
-    }
-
-    /**
-     * Get item
-     *
-     * @return \Srm\CoreBundle\Entity\Item
-     */
-    public function getItem()
-    {
-        return $this->item;
-    }
-
-    /**
      * Set itemQuestionsLevel3
      *
      * @param \Srm\CoreBundle\Entity\ItemQuestionsLevel3 $itemQuestionsLevel3
      * @return ItemQuestions
      */
-    public function setItemQuestionsLevel3(ItemQuestionsLevel3 $itemQuestionsLevel3 = null)
+    public function setItemQuestionsLevel3(\Srm\CoreBundle\Entity\ItemQuestionsLevel3 $itemQuestionsLevel3 = null)
     {
         $this->itemQuestionsLevel3 = $itemQuestionsLevel3;
 
@@ -235,7 +212,7 @@ class ItemQuestions
      * @param \Srm\CoreBundle\Entity\ItemQuestionsLevel2 $itemQuestionsLevel2
      * @return ItemQuestions
      */
-    public function setItemQuestionsLevel2(ItemQuestionsLevel2 $itemQuestionsLevel2 = null)
+    public function setItemQuestionsLevel2(\Srm\CoreBundle\Entity\ItemQuestionsLevel2 $itemQuestionsLevel2 = null)
     {
         $this->itemQuestionsLevel2 = $itemQuestionsLevel2;
 
@@ -258,7 +235,7 @@ class ItemQuestions
      * @param \Srm\CoreBundle\Entity\ItemQuestionsLevel1 $itemQuestionsLevel1
      * @return ItemQuestions
      */
-    public function setItemQuestionsLevel1(ItemQuestionsLevel1 $itemQuestionsLevel1 = null)
+    public function setItemQuestionsLevel1(\Srm\CoreBundle\Entity\ItemQuestionsLevel1 $itemQuestionsLevel1 = null)
     {
         $this->itemQuestionsLevel1 = $itemQuestionsLevel1;
 

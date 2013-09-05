@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\ItemAnswers" table="V_ITEM_ANSWERS">
+  <entity name="Srm\CoreBundle\Entity\ItemAnswers" table="v_item_answers">
     <id name="itemAnswersId" type="integer" column="ITEM_ANSWERS_ID">
       <generator strategy="IDENTITY"/>
     </id>
@@ -10,7 +10,7 @@
     <field name="validUntil" type="datetime" column="VALID_UNTIL" nullable="true"/>
     <many-to-one field="answersStatus" target-entity="AnswersStatus">
       <join-columns>
-        <join-column name="ANSWERS_STATUS_ID" referenced-column-name="ANSWERS_STATUS_ID"/>
+        <join-column name="ANSWERS_STATUS_ID" referenced-column-name="ITEM_ANSWERS_STATUS_ID"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="itemQuestions" target-entity="ItemQuestions">
@@ -28,5 +28,9 @@
         <join-column name="ANSWERS_ID" referenced-column-name="ANSWERS_ID"/>
       </join-columns>
     </many-to-one>
+
+    <lifecycle-callbacks>
+      <lifecycle-callback type="preUpdate" method="updateModificationDate" />
+    </lifecycle-callbacks>
   </entity>
 </doctrine-mapping>

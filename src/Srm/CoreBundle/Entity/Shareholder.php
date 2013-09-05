@@ -53,6 +53,12 @@ class Shareholder
     private $legalForm;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+        $this->deleted = false;
+    }
+
     /**
      * Set contactId
      *
@@ -230,7 +236,7 @@ class Shareholder
      * @param \Srm\CoreBundle\Entity\LegalForm $legalForm
      * @return Shareholder
      */
-    public function setLegalForm(LegalForm $legalForm = null)
+    public function setLegalForm(\Srm\CoreBundle\Entity\LegalForm $legalForm = null)
     {
         $this->legalForm = $legalForm;
 
@@ -245,5 +251,10 @@ class Shareholder
     public function getLegalForm()
     {
         return $this->legalForm;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

@@ -31,8 +31,7 @@ class OrganisationParamConverter implements ParamConverterInterface
         }
 
         if (null === $organisation = $this->repo->findOneByIdentificationCode($identificationCode)) {
-            $organisation = new Organisation();
-            $organisation->setIdentificationCode($identificationCode);
+            $organisation = new Organisation($identificationCode);
         }
 
         $request->attributes->set($configuration->getName(), $organisation);

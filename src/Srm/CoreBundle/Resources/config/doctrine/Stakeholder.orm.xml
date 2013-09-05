@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\Stakeholder" table="v_stakeholder">
+    <id name="stakeholderId" type="integer" column="STAKEHOLDER_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
+    <field name="companySize" type="integer" column="COMPANY_SIZE" nullable="true"/>
+    <field name="startActivity" type="datetime" column="START_ACTIVITY" nullable="true"/>
+    <field name="identificationNumber" type="integer" column="IDENTIFICATION_NUMBER" nullable="true"/>
+    <field name="turnovers" type="float" column="TURNOVERS" nullable="true"/>
+    <field name="website" type="string" column="WEBSITE" length="255" nullable="true"/>
+    <field name="phone" type="string" column="PHONE" length="20" nullable="true"/>
+    <field name="fax" type="string" column="FAX" length="20" nullable="true"/>
+    <field name="email" type="string" column="EMAIL" length="255" nullable="true"/>
+    <field name="parent" type="string" column="PARENT" length="255" nullable="true"/>
+    <field name="subsidiary" type="string" column="SUBSIDIARY" length="255" nullable="true"/>
+    <field name="importance" type="string" column="IMPORTANCE" length="10" nullable="true"/>
+    <field name="connexion" type="boolean" column="CONNEXION" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
+    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
+    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <many-to-one field="address" target-entity="Address">
+      <join-columns>
+        <join-column name="ADDRESS_ID" referenced-column-name="ADDRESS_ID"/>
+      </join-columns>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-one>
+    <many-to-many field="groupStakeholders" target-entity="GroupStakeholder" inversed-by="stakeholders">
+      <join-table name="v_stakeholder_stakeholder_group">
+        <join-columns>
+          <join-column name="STAKEHOLDER_ID" referenced-column-name="STAKEHOLDER_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="GROUP_STAKEHOLDER_ID" referenced-column-name="GROUP_STAKEHOLDER_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="contacts" target-entity="Contact" mapped-by="stakeholders"/>
+
+    <lifecycle-callbacks>
+      <lifecycle-callback type="preUpdate" method="updateModificationDate" />
+    </lifecycle-callbacks>
+  </entity>
+</doctrine-mapping>

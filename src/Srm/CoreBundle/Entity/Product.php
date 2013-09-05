@@ -48,6 +48,12 @@ class Product
     private $site;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *
@@ -202,7 +208,7 @@ class Product
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return Product
      */
-    public function setSite(Site $site = null)
+    public function setSite(\Srm\CoreBundle\Entity\Site $site = null)
     {
         $this->site = $site;
 
@@ -217,5 +223,10 @@ class Product
     public function getSite()
     {
         return $this->site;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

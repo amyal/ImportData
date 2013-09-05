@@ -48,6 +48,11 @@ class Answers
     private $periodicity;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
+
     /**
      * Set code
      *
@@ -156,7 +161,7 @@ class Answers
      * @param \Srm\CoreBundle\Entity\Item $item
      * @return Answers
      */
-    public function setItem(Item $item = null)
+    public function setItem(\Srm\CoreBundle\Entity\Item $item = null)
     {
         $this->item = $item;
 
@@ -179,7 +184,7 @@ class Answers
      * @param \Srm\CoreBundle\Entity\AnswerType $answerType
      * @return Answers
      */
-    public function setAnswerType(AnswerType $answerType = null)
+    public function setAnswerType(\Srm\CoreBundle\Entity\AnswerType $answerType = null)
     {
         $this->answerType = $answerType;
 
@@ -202,7 +207,7 @@ class Answers
      * @param \Srm\CoreBundle\Entity\Periodicity $periodicity
      * @return Answers
      */
-    public function setPeriodicity(Periodicity $periodicity = null)
+    public function setPeriodicity(\Srm\CoreBundle\Entity\Periodicity $periodicity = null)
     {
         $this->periodicity = $periodicity;
 
@@ -217,5 +222,10 @@ class Answers
     public function getPeriodicity()
     {
         return $this->periodicity;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

@@ -53,6 +53,11 @@ class ItemAnswers
     private $answers;
 
 
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
+
     /**
      * Set answer
      *
@@ -161,7 +166,7 @@ class ItemAnswers
      * @param \Srm\CoreBundle\Entity\AnswersStatus $answersStatus
      * @return ItemAnswers
      */
-    public function setAnswersStatus(AnswersStatus $answersStatus = null)
+    public function setAnswersStatus(\Srm\CoreBundle\Entity\AnswersStatus $answersStatus = null)
     {
         $this->answersStatus = $answersStatus;
 
@@ -184,7 +189,7 @@ class ItemAnswers
      * @param \Srm\CoreBundle\Entity\ItemQuestions $itemQuestions
      * @return ItemAnswers
      */
-    public function setItemQuestions(ItemQuestions $itemQuestions = null)
+    public function setItemQuestions(\Srm\CoreBundle\Entity\ItemQuestions $itemQuestions = null)
     {
         $this->itemQuestions = $itemQuestions;
 
@@ -207,7 +212,7 @@ class ItemAnswers
      * @param \Srm\CoreBundle\Entity\Contact $contact
      * @return ItemAnswers
      */
-    public function setContact(Contact $contact = null)
+    public function setContact(\Srm\CoreBundle\Entity\Contact $contact = null)
     {
         $this->contact = $contact;
 
@@ -230,7 +235,7 @@ class ItemAnswers
      * @param \Srm\CoreBundle\Entity\Answers $answers
      * @return ItemAnswers
      */
-    public function setAnswers(Answers $answers = null)
+    public function setAnswers(\Srm\CoreBundle\Entity\Answers $answers = null)
     {
         $this->answers = $answers;
 
@@ -245,5 +250,10 @@ class ItemAnswers
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\AnswerType" table="VR_ANSWER_TYPE">
+  <entity name="Srm\CoreBundle\Entity\AnswerType" table="vr_answer_type">
     <id name="answerTypeId" type="integer" column="ANSWER_TYPE_ID">
       <generator strategy="IDENTITY"/>
     </id>

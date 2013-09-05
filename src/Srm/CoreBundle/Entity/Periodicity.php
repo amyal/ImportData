@@ -33,6 +33,11 @@ class Periodicity
     private $periodicityId;
 
 
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *

@@ -1,8 +1,7 @@
 <?php
 
-namespace Srm\CoreBundle\Entity\Repository;
+namespace Srm\CoreBundle\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 
 class DepartmentRepository extends EntityRepository

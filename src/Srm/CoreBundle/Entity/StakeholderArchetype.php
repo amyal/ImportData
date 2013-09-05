@@ -3,9 +3,9 @@
 namespace Srm\CoreBundle\Entity;
 
 /**
- * Pole
+ * StakeholderArchetype
  */
-class Pole
+class StakeholderArchetype
 {
     /**
      * @var string
@@ -25,25 +25,24 @@ class Pole
     /**
      * @var integer
      */
-    private $poleId;
+    private $stakeholderArchetypeId;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\StakeholderGroup
+     */
+    private $stakeholderGroup;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $sites;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $departments;
+    private $groupStakeholders;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->groupStakeholders = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->deleted = false;
     }
@@ -52,7 +51,7 @@ class Pole
      * Set label
      *
      * @param string $label
-     * @return Pole
+     * @return StakeholderArchetype
      */
     public function setLabel($label)
     {
@@ -75,7 +74,7 @@ class Pole
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Pole
+     * @return StakeholderArchetype
      */
     public function setEnabled($enabled)
     {
@@ -98,7 +97,7 @@ class Pole
      * Set deleted
      *
      * @param boolean $deleted
-     * @return Pole
+     * @return StakeholderArchetype
      */
     public function setDeleted($deleted)
     {
@@ -118,78 +117,68 @@ class Pole
     }
 
     /**
-     * Get poleId
+     * Get stakeholderArchetypeId
      *
      * @return integer
      */
-    public function getPoleId()
+    public function getStakeholderArchetypeId()
     {
-        return $this->poleId;
+        return $this->stakeholderArchetypeId;
     }
 
     /**
-     * Add site
+     * Set stakeholderGroup
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
-     * @return Pole
+     * @param \Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup
+     * @return StakeholderArchetype
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function setStakeholderGroup(\Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup = null)
     {
-        $this->sites[] = $site;
+        $this->stakeholderGroup = $stakeholderGroup;
 
         return $this;
     }
 
     /**
-     * Remove site
+     * Get stakeholderGroup
      *
-     * @param \Srm\CoreBundle\Entity\Site $site
+     * @return \Srm\CoreBundle\Entity\StakeholderGroup
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function getStakeholderGroup()
     {
-        $this->sites->removeElement($site);
+        return $this->stakeholderGroup;
     }
 
     /**
-     * Get sites
+     * Add groupStakeholder
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param \Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder
+     * @return StakeholderArchetype
      */
-    public function getSites()
+    public function addGroupStakeholder(\Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder)
     {
-        return $this->sites;
-    }
-
-    /**
-     * Add department
-     *
-     * @param \Srm\CoreBundle\Entity\Department $department
-     * @return Pole
-     */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
-    {
-        $this->departments[] = $department;
+        $this->groupStakeholders[] = $groupStakeholder;
 
         return $this;
     }
 
     /**
-     * Remove department
+     * Remove groupStakeholder
      *
-     * @param \Srm\CoreBundle\Entity\Department $department
+     * @param \Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder
      */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function removeGroupStakeholder(\Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder)
     {
-        $this->departments->removeElement($department);
+        $this->groupStakeholders->removeElement($groupStakeholder);
     }
 
     /**
-     * Get departments
+     * Get groupStakeholders
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDepartments()
+    public function getGroupStakeholders()
     {
-        return $this->departments;
+        return $this->groupStakeholders;
     }
 }

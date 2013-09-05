@@ -33,6 +33,11 @@ class City
     private $country;
 
 
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *
@@ -118,7 +123,7 @@ class City
      * @param \Srm\CoreBundle\Entity\Country $country
      * @return City
      */
-    public function setCountry(Country $country = null)
+    public function setCountry(\Srm\CoreBundle\Entity\Country $country = null)
     {
         $this->country = $country;
 

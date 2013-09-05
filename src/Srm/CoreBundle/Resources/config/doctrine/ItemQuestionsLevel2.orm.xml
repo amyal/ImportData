@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\ItemQuestionsLevel2" table="V_ITEM_QUESTIONS_LEVEL2">
+  <entity name="Srm\CoreBundle\Entity\ItemQuestionsLevel2" table="v_item_questions_level2">
     <id name="itemQuestionsLevel2Id" type="integer" column="ITEM_QUESTIONS_LEVEL2_ID">
       <generator strategy="IDENTITY"/>
     </id>

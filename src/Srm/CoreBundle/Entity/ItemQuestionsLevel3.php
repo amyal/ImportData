@@ -28,6 +28,11 @@ class ItemQuestionsLevel3
     private $itemQuestionsLevel3Id;
 
 
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
     /**
      * Set label
      *

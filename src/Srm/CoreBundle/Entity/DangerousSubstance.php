@@ -97,7 +97,7 @@ class DangerousSubstance
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return DangerousSubstance
      */
-    public function addSite(Site $site)
+    public function addSite(\Srm\CoreBundle\Entity\Site $site)
     {
         $this->sites[] = $site;
 
@@ -109,7 +109,7 @@ class DangerousSubstance
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(Site $site)
+    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
     {
         $this->sites->removeElement($site);
     }

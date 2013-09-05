@@ -25,8 +25,13 @@ class AnswersStatus
     /**
      * @var integer
      */
-    private $answersStatusId;
+    private $itemAnswersStatusId;
 
+
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
 
     /**
      * Set label
@@ -98,12 +103,12 @@ class AnswersStatus
     }
 
     /**
-     * Get answersStatusId
+     * Get itemAnswersStatusId
      *
      * @return integer
      */
-    public function getAnswersStatusId()
+    public function getItemAnswersStatusId()
     {
-        return $this->answersStatusId;
+        return $this->itemAnswersStatusId;
     }
 }
