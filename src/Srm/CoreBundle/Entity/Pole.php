@@ -133,7 +133,7 @@ class Pole
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return Pole
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->sites[] = $site;
 
@@ -145,7 +145,7 @@ class Pole
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->sites->removeElement($site);
     }
@@ -166,7 +166,7 @@ class Pole
      * @param \Srm\CoreBundle\Entity\Department $department
      * @return Pole
      */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function addDepartment(Department $department)
     {
         $this->departments[] = $department;
 
@@ -178,7 +178,7 @@ class Pole
      *
      * @param \Srm\CoreBundle\Entity\Department $department
      */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function removeDepartment(Department $department)
     {
         $this->departments->removeElement($department);
     }

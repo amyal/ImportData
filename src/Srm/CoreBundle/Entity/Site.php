@@ -379,7 +379,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\Language $language
      * @return Site
      */
-    public function setLanguage(\Srm\CoreBundle\Entity\Language $language = null)
+    public function setLanguage(Language $language = null)
     {
         $this->language = $language;
 
@@ -402,7 +402,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\Currency $currency
      * @return Site
      */
-    public function setCurrency(\Srm\CoreBundle\Entity\Currency $currency = null)
+    public function setCurrency(Currency $currency = null)
     {
         $this->currency = $currency;
 
@@ -425,7 +425,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\Address $address
      * @return Site
      */
-    public function setAddress(\Srm\CoreBundle\Entity\Address $address = null)
+    public function setAddress(Address $address = null)
     {
         $this->address = $address;
 
@@ -448,7 +448,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\Organisation $organisation
      * @return Site
      */
-    public function setOrganisation(\Srm\CoreBundle\Entity\Organisation $organisation = null)
+    public function setOrganisation(Organisation $organisation = null)
     {
         $this->organisation = $organisation;
 
@@ -471,7 +471,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\TypeSite $typeSite
      * @return Site
      */
-    public function setTypeSite(\Srm\CoreBundle\Entity\TypeSite $typeSite = null)
+    public function setTypeSite(TypeSite $typeSite = null)
     {
         $this->typeSite = $typeSite;
 
@@ -494,7 +494,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie
      * @return Site
      */
-    public function addSubSiteActiviy(\Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie)
+    public function addSubSiteActiviy(SubSiteActivity $subSiteActivitie)
     {
         $this->subSiteActivities[] = $subSiteActivitie;
 
@@ -506,7 +506,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie
      */
-    public function removeSubSiteActiviy(\Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie)
+    public function removeSubSiteActiviy(SubSiteActivity $subSiteActivitie)
     {
         $this->subSiteActivities->removeElement($subSiteActivitie);
     }
@@ -527,7 +527,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\Department $department
      * @return Site
      */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function addDepartment(Department $department)
     {
         $this->departments[] = $department;
 
@@ -539,7 +539,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\Department $department
      */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function removeDepartment(Department $department)
     {
         $this->departments->removeElement($department);
     }
@@ -560,7 +560,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
      * @return Site
      */
-    public function addSiteActiviy(\Srm\CoreBundle\Entity\SiteActivity $siteActivity)
+    public function addSiteActiviy(SiteActivity $siteActivity)
     {
         $this->siteActivities[] = $siteActivity;
 
@@ -572,7 +572,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
      */
-    public function removeSiteActiviy(\Srm\CoreBundle\Entity\SiteActivity $siteActivity)
+    public function removeSiteActiviy(SiteActivity $siteActivity)
     {
         $this->siteActivities->removeElement($siteActivity);
     }
@@ -593,7 +593,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance
      * @return Site
      */
-    public function addDangerousSubstance(\Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance)
+    public function addDangerousSubstance(DangerousSubstance $dangerousSubstance)
     {
         $this->dangerousSubstances[] = $dangerousSubstance;
 
@@ -605,7 +605,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance
      */
-    public function removeDangerousSubstance(\Srm\CoreBundle\Entity\DangerousSubstance $dangerousSubstance)
+    public function removeDangerousSubstance(DangerousSubstance $dangerousSubstance)
     {
         $this->dangerousSubstances->removeElement($dangerousSubstance);
     }
@@ -626,7 +626,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\Pole $pole
      * @return Site
      */
-    public function addPole(\Srm\CoreBundle\Entity\Pole $pole)
+    public function addPole(Pole $pole)
     {
         $this->poles[] = $pole;
 
@@ -638,7 +638,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\Pole $pole
      */
-    public function removePole(\Srm\CoreBundle\Entity\Pole $pole)
+    public function removePole(Pole $pole)
     {
         $this->poles->removeElement($pole);
     }
@@ -659,7 +659,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\Contact $contact
      * @return Site
      */
-    public function addContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function addContact(Contact $contact)
     {
         $this->contacts[] = $contact;
 
@@ -671,7 +671,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\Contact $contact
      */
-    public function removeContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function removeContact(Contact $contact)
     {
         $this->contacts->removeElement($contact);
     }

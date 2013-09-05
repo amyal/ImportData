@@ -208,7 +208,7 @@ class Indicator
      * @param \Srm\CoreBundle\Entity\IndicatorLevel1 $indicatorLevel1
      * @return Indicator
      */
-    public function setIndicatorLevel1(\Srm\CoreBundle\Entity\IndicatorLevel1 $indicatorLevel1 = null)
+    public function setIndicatorLevel1(IndicatorLevel1 $indicatorLevel1 = null)
     {
         $this->indicatorLevel1 = $indicatorLevel1;
 
@@ -231,7 +231,7 @@ class Indicator
      * @param \Srm\CoreBundle\Entity\Periodicity $periodicity
      * @return Indicator
      */
-    public function setPeriodicity(\Srm\CoreBundle\Entity\Periodicity $periodicity = null)
+    public function setPeriodicity(Periodicity $periodicity = null)
     {
         $this->periodicity = $periodicity;
 
@@ -254,7 +254,7 @@ class Indicator
      * @param \Srm\CoreBundle\Entity\IndicatorLevel2 $indicatorLevel2
      * @return Indicator
      */
-    public function setIndicatorLevel2(\Srm\CoreBundle\Entity\IndicatorLevel2 $indicatorLevel2 = null)
+    public function setIndicatorLevel2(IndicatorLevel2 $indicatorLevel2 = null)
     {
         $this->indicatorLevel2 = $indicatorLevel2;
 
@@ -277,7 +277,7 @@ class Indicator
      * @param \Srm\CoreBundle\Entity\IndicatorLevel3 $indicatorLevel3
      * @return Indicator
      */
-    public function setIndicatorLevel3(\Srm\CoreBundle\Entity\IndicatorLevel3 $indicatorLevel3 = null)
+    public function setIndicatorLevel3(IndicatorLevel3 $indicatorLevel3 = null)
     {
         $this->indicatorLevel3 = $indicatorLevel3;
 
@@ -300,7 +300,7 @@ class Indicator
      * @param \Srm\CoreBundle\Entity\Referentiel $referentiel
      * @return Indicator
      */
-    public function setReferentiel(\Srm\CoreBundle\Entity\Referentiel $referentiel = null)
+    public function setReferentiel(Referentiel $referentiel = null)
     {
         $this->referentiel = $referentiel;
 
@@ -323,7 +323,7 @@ class Indicator
      * @param \Srm\CoreBundle\Entity\Item $item
      * @return Indicator
      */
-    public function addItem(\Srm\CoreBundle\Entity\Item $item)
+    public function addItem(Item $item)
     {
         $this->items[] = $item;
 
@@ -335,7 +335,7 @@ class Indicator
      *
      * @param \Srm\CoreBundle\Entity\Item $item
      */
-    public function removeItem(\Srm\CoreBundle\Entity\Item $item)
+    public function removeItem(Item $item)
     {
         $this->items->removeElement($item);
     }

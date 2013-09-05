@@ -531,7 +531,7 @@ class Stakeholder
      * @param \Srm\CoreBundle\Entity\Address $address
      * @return Stakeholder
      */
-    public function setAddress(\Srm\CoreBundle\Entity\Address $address = null)
+    public function setAddress(Address $address = null)
     {
         $this->address = $address;
 
@@ -554,7 +554,7 @@ class Stakeholder
      * @param \Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder
      * @return Stakeholder
      */
-    public function addGroupStakeholder(\Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder)
+    public function addGroupStakeholder(GroupStakeholder $groupStakeholder)
     {
         $this->groupStakeholders[] = $groupStakeholder;
 
@@ -566,7 +566,7 @@ class Stakeholder
      *
      * @param \Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder
      */
-    public function removeGroupStakeholder(\Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder)
+    public function removeGroupStakeholder(GroupStakeholder $groupStakeholder)
     {
         $this->groupStakeholders->removeElement($groupStakeholder);
     }
@@ -587,7 +587,7 @@ class Stakeholder
      * @param \Srm\CoreBundle\Entity\Contact $contact
      * @return Stakeholder
      */
-    public function addContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function addContact(Contact $contact)
     {
         $this->contacts[] = $contact;
 
@@ -599,7 +599,7 @@ class Stakeholder
      *
      * @param \Srm\CoreBundle\Entity\Contact $contact
      */
-    public function removeContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function removeContact(Contact $contact)
     {
         $this->contacts->removeElement($contact);
     }

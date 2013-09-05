@@ -446,7 +446,7 @@ class Organisation
      * @param \Srm\CoreBundle\Entity\Address $address
      * @return Organisation
      */
-    public function setAddress(\Srm\CoreBundle\Entity\Address $address = null)
+    public function setAddress(Address $address = null)
     {
         $this->address = $address;
 
@@ -469,7 +469,7 @@ class Organisation
      * @param \Srm\CoreBundle\Entity\Language $language
      * @return Organisation
      */
-    public function setLanguage(\Srm\CoreBundle\Entity\Language $language = null)
+    public function setLanguage(Language $language = null)
     {
         $this->language = $language;
 
@@ -492,7 +492,7 @@ class Organisation
      * @param \Srm\CoreBundle\Entity\Currency $currency
      * @return Organisation
      */
-    public function setCurrency(\Srm\CoreBundle\Entity\Currency $currency = null)
+    public function setCurrency(Currency $currency = null)
     {
         $this->currency = $currency;
 

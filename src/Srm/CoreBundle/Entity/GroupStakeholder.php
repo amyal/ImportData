@@ -190,7 +190,7 @@ class GroupStakeholder
      * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
      * @return GroupStakeholder
      */
-    public function addStakeholder(\Srm\CoreBundle\Entity\Stakeholder $stakeholder)
+    public function addStakeholder(Stakeholder $stakeholder)
     {
         $this->stakeholders[] = $stakeholder;
 
@@ -202,7 +202,7 @@ class GroupStakeholder
      *
      * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
      */
-    public function removeStakeholder(\Srm\CoreBundle\Entity\Stakeholder $stakeholder)
+    public function removeStakeholder(Stakeholder $stakeholder)
     {
         $this->stakeholders->removeElement($stakeholder);
     }
@@ -223,7 +223,7 @@ class GroupStakeholder
      * @param \Srm\CoreBundle\Entity\StakeholderArchetype $stakeholderArchetype
      * @return GroupStakeholder
      */
-    public function addStakeholderArchetype(\Srm\CoreBundle\Entity\StakeholderArchetype $stakeholderArchetype)
+    public function addStakeholderArchetype(StakeholderArchetype $stakeholderArchetype)
     {
         $this->stakeholderArchetypes[] = $stakeholderArchetype;
 
@@ -235,7 +235,7 @@ class GroupStakeholder
      *
      * @param \Srm\CoreBundle\Entity\StakeholderArchetype $stakeholderArchetype
      */
-    public function removeStakeholderArchetype(\Srm\CoreBundle\Entity\StakeholderArchetype $stakeholderArchetype)
+    public function removeStakeholderArchetype(StakeholderArchetype $stakeholderArchetype)
     {
         $this->stakeholderArchetypes->removeElement($stakeholderArchetype);
     }

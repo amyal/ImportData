@@ -614,7 +614,7 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Role $role
      * @return Contact
      */
-    public function setRole(\Srm\CoreBundle\Entity\Role $role = null)
+    public function setRole(Role $role = null)
     {
         $this->role = $role;
 
@@ -637,7 +637,7 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Gender $gender
      * @return Contact
      */
-    public function setGender(\Srm\CoreBundle\Entity\Gender $gender = null)
+    public function setGender(Gender $gender = null)
     {
         $this->gender = $gender;
 
@@ -660,7 +660,7 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Address $address
      * @return Contact
      */
-    public function setAddress(\Srm\CoreBundle\Entity\Address $address = null)
+    public function setAddress(Address $address = null)
     {
         $this->address = $address;
 
@@ -683,7 +683,7 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Organisation $organisation
      * @return Contact
      */
-    public function setOrganisation(\Srm\CoreBundle\Entity\Organisation $organisation = null)
+    public function setOrganisation(Organisation $organisation = null)
     {
         $this->organisation = $organisation;
 
@@ -706,7 +706,7 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Department $department
      * @return Contact
      */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function addDepartment(Department $department)
     {
         $this->departments[] = $department;
 
@@ -718,7 +718,7 @@ class Contact
      *
      * @param \Srm\CoreBundle\Entity\Department $department
      */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function removeDepartment(Department $department)
     {
         $this->departments->removeElement($department);
     }
@@ -739,7 +739,7 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
      * @return Contact
      */
-    public function addStakeholder(\Srm\CoreBundle\Entity\Stakeholder $stakeholder)
+    public function addStakeholder(Stakeholder $stakeholder)
     {
         $this->stakeholders[] = $stakeholder;
 
@@ -751,7 +751,7 @@ class Contact
      *
      * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
      */
-    public function removeStakeholder(\Srm\CoreBundle\Entity\Stakeholder $stakeholder)
+    public function removeStakeholder(Stakeholder $stakeholder)
     {
         $this->stakeholders->removeElement($stakeholder);
     }
@@ -772,7 +772,7 @@ class Contact
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      * @return Contact
      */
-    public function addSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment)
+    public function addSubDepartment(SubDepartment $subDepartment)
     {
         $this->subDepartments[] = $subDepartment;
 
@@ -784,7 +784,7 @@ class Contact
      *
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      */
-    public function removeSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment)
+    public function removeSubDepartment(SubDepartment $subDepartment)
     {
         $this->subDepartments->removeElement($subDepartment);
     }
@@ -805,7 +805,7 @@ class Contact
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return Contact
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->sites[] = $site;
 
@@ -817,7 +817,7 @@ class Contact
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->sites->removeElement($site);
     }

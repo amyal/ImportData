@@ -222,7 +222,7 @@ class Item
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      * @return Item
      */
-    public function setSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment = null)
+    public function setSubDepartment(SubDepartment $subDepartment = null)
     {
         $this->subDepartment = $subDepartment;
 
@@ -245,7 +245,7 @@ class Item
      * @param \Srm\CoreBundle\Entity\ItemQuestions $itemQuestions
      * @return Item
      */
-    public function setItemQuestions(\Srm\CoreBundle\Entity\ItemQuestions $itemQuestions = null)
+    public function setItemQuestions(ItemQuestions $itemQuestions = null)
     {
         $this->itemQuestions = $itemQuestions;
 
@@ -268,7 +268,7 @@ class Item
      * @param \Srm\CoreBundle\Entity\Indicator $indicator
      * @return Item
      */
-    public function addIndicator(\Srm\CoreBundle\Entity\Indicator $indicator)
+    public function addIndicator(Indicator $indicator)
     {
         $this->indicators[] = $indicator;
 
@@ -280,7 +280,7 @@ class Item
      *
      * @param \Srm\CoreBundle\Entity\Indicator $indicator
      */
-    public function removeIndicator(\Srm\CoreBundle\Entity\Indicator $indicator)
+    public function removeIndicator(Indicator $indicator)
     {
         $this->indicators->removeElement($indicator);
     }

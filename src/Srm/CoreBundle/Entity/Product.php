@@ -208,7 +208,7 @@ class Product
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return Product
      */
-    public function setSite(\Srm\CoreBundle\Entity\Site $site = null)
+    public function setSite(Site $site = null)
     {
         $this->site = $site;
 

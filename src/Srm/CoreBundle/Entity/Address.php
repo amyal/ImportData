@@ -146,7 +146,7 @@ class Address
      * @param \Srm\CoreBundle\Entity\Zip $zip
      * @return Address
      */
-    public function setZip(\Srm\CoreBundle\Entity\Zip $zip = null)
+    public function setZip(Zip $zip = null)
     {
         $this->zip = $zip;
 

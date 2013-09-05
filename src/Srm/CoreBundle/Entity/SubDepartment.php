@@ -189,7 +189,7 @@ class SubDepartment
      * @param \Srm\CoreBundle\Entity\Department $department
      * @return SubDepartment
      */
-    public function addDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function addDepartment(Department $department)
     {
         $this->departments[] = $department;
 
@@ -201,7 +201,7 @@ class SubDepartment
      *
      * @param \Srm\CoreBundle\Entity\Department $department
      */
-    public function removeDepartment(\Srm\CoreBundle\Entity\Department $department)
+    public function removeDepartment(Department $department)
     {
         $this->departments->removeElement($department);
     }
@@ -222,7 +222,7 @@ class SubDepartment
      * @param \Srm\CoreBundle\Entity\Contact $contact
      * @return SubDepartment
      */
-    public function addContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function addContact(Contact $contact)
     {
         $this->contacts[] = $contact;
 
@@ -234,7 +234,7 @@ class SubDepartment
      *
      * @param \Srm\CoreBundle\Entity\Contact $contact
      */
-    public function removeContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function removeContact(Contact $contact)
     {
         $this->contacts->removeElement($contact);
     }

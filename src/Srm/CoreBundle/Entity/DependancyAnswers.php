@@ -39,7 +39,7 @@ class DependancyAnswers
      * @param \Srm\CoreBundle\Entity\ItemAnswers $itemAnswers
      * @return DependancyAnswers
      */
-    public function setItemAnswers(\Srm\CoreBundle\Entity\ItemAnswers $itemAnswers = null)
+    public function setItemAnswers(ItemAnswers $itemAnswers = null)
     {
         $this->itemAnswers = $itemAnswers;
 
@@ -62,7 +62,7 @@ class DependancyAnswers
      * @param \Srm\CoreBundle\Entity\ItemAnswers $itemAnswersDependancy
      * @return DependancyAnswers
      */
-    public function setItemAnswersDependancy(\Srm\CoreBundle\Entity\ItemAnswers $itemAnswersDependancy = null)
+    public function setItemAnswersDependancy(ItemAnswers $itemAnswersDependancy = null)
     {
         $this->itemAnswersDependancy = $itemAnswersDependancy;
 

@@ -258,7 +258,7 @@ class Department
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return Department
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->sites[] = $site;
 
@@ -270,7 +270,7 @@ class Department
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->sites->removeElement($site);
     }
@@ -291,7 +291,7 @@ class Department
      * @param \Srm\CoreBundle\Entity\Pole $pole
      * @return Department
      */
-    public function addPole(\Srm\CoreBundle\Entity\Pole $pole)
+    public function addPole(Pole $pole)
     {
         $this->poles[] = $pole;
 
@@ -303,7 +303,7 @@ class Department
      *
      * @param \Srm\CoreBundle\Entity\Pole $pole
      */
-    public function removePole(\Srm\CoreBundle\Entity\Pole $pole)
+    public function removePole(Pole $pole)
     {
         $this->poles->removeElement($pole);
     }
@@ -324,7 +324,7 @@ class Department
      * @param \Srm\CoreBundle\Entity\Contact $contact
      * @return Department
      */
-    public function addContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function addContact(Contact $contact)
     {
         $this->contacts[] = $contact;
 
@@ -336,7 +336,7 @@ class Department
      *
      * @param \Srm\CoreBundle\Entity\Contact $contact
      */
-    public function removeContact(\Srm\CoreBundle\Entity\Contact $contact)
+    public function removeContact(Contact $contact)
     {
         $this->contacts->removeElement($contact);
     }
@@ -357,7 +357,7 @@ class Department
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      * @return Department
      */
-    public function addSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment)
+    public function addSubDepartment(SubDepartment $subDepartment)
     {
         $this->subDepartments[] = $subDepartment;
 
@@ -369,7 +369,7 @@ class Department
      *
      * @param \Srm\CoreBundle\Entity\SubDepartment $subDepartment
      */
-    public function removeSubDepartment(\Srm\CoreBundle\Entity\SubDepartment $subDepartment)
+    public function removeSubDepartment(SubDepartment $subDepartment)
     {
         $this->subDepartments->removeElement($subDepartment);
     }

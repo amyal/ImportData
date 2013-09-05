@@ -132,7 +132,7 @@ class StakeholderArchetype
      * @param \Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup
      * @return StakeholderArchetype
      */
-    public function setStakeholderGroup(\Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup = null)
+    public function setStakeholderGroup(StakeholderGroup $stakeholderGroup = null)
     {
         $this->stakeholderGroup = $stakeholderGroup;
 
@@ -155,7 +155,7 @@ class StakeholderArchetype
      * @param \Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder
      * @return StakeholderArchetype
      */
-    public function addGroupStakeholder(\Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder)
+    public function addGroupStakeholder(GroupStakeholder $groupStakeholder)
     {
         $this->groupStakeholders[] = $groupStakeholder;
 
@@ -167,7 +167,7 @@ class StakeholderArchetype
      *
      * @param \Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder
      */
-    public function removeGroupStakeholder(\Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder)
+    public function removeGroupStakeholder(GroupStakeholder $groupStakeholder)
     {
         $this->groupStakeholders->removeElement($groupStakeholder);
     }

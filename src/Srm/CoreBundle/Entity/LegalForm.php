@@ -378,7 +378,7 @@ class LegalForm
      * @param \Srm\CoreBundle\Entity\Organisation $organisation
      * @return LegalForm
      */
-    public function setOrganisation(\Srm\CoreBundle\Entity\Organisation $organisation = null)
+    public function setOrganisation(Organisation $organisation = null)
     {
         $this->organisation = $organisation;
 

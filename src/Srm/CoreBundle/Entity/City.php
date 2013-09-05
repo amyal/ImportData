@@ -123,7 +123,7 @@ class City
      * @param \Srm\CoreBundle\Entity\Country $country
      * @return City
      */
-    public function setCountry(\Srm\CoreBundle\Entity\Country $country = null)
+    public function setCountry(Country $country = null)
     {
         $this->country = $country;
 

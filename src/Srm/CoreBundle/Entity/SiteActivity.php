@@ -74,7 +74,7 @@ class SiteActivity
      * @param \Srm\CoreBundle\Entity\TypeSite $typeSite
      * @return SiteActivity
      */
-    public function setTypeSite(\Srm\CoreBundle\Entity\TypeSite $typeSite = null)
+    public function setTypeSite(TypeSite $typeSite = null)
     {
         $this->typeSite = $typeSite;
 
@@ -97,7 +97,7 @@ class SiteActivity
      * @param \Srm\CoreBundle\Entity\Site $site
      * @return SiteActivity
      */
-    public function addSite(\Srm\CoreBundle\Entity\Site $site)
+    public function addSite(Site $site)
     {
         $this->sites[] = $site;
 
@@ -109,7 +109,7 @@ class SiteActivity
      *
      * @param \Srm\CoreBundle\Entity\Site $site
      */
-    public function removeSite(\Srm\CoreBundle\Entity\Site $site)
+    public function removeSite(Site $site)
     {
         $this->sites->removeElement($site);
     }

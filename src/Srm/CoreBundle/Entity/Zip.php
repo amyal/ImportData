@@ -179,7 +179,7 @@ class Zip
      * @param \Srm\CoreBundle\Entity\City $city
      * @return Zip
      */
-    public function setCity(\Srm\CoreBundle\Entity\City $city = null)
+    public function setCity(City $city = null)
     {
         $this->city = $city;
 

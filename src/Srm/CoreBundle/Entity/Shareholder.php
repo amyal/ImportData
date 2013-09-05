@@ -236,7 +236,7 @@ class Shareholder
      * @param \Srm\CoreBundle\Entity\LegalForm $legalForm
      * @return Shareholder
      */
-    public function setLegalForm(\Srm\CoreBundle\Entity\LegalForm $legalForm = null)
+    public function setLegalForm(LegalForm $legalForm = null)
     {
         $this->legalForm = $legalForm;
 

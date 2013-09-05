@@ -161,7 +161,7 @@ class Answers
      * @param \Srm\CoreBundle\Entity\Item $item
      * @return Answers
      */
-    public function setItem(\Srm\CoreBundle\Entity\Item $item = null)
+    public function setItem(Item $item = null)
     {
         $this->item = $item;
 
@@ -184,7 +184,7 @@ class Answers
      * @param \Srm\CoreBundle\Entity\AnswerType $answerType
      * @return Answers
      */
-    public function setAnswerType(\Srm\CoreBundle\Entity\AnswerType $answerType = null)
+    public function setAnswerType(AnswerType $answerType = null)
     {
         $this->answerType = $answerType;
 
@@ -207,7 +207,7 @@ class Answers
      * @param \Srm\CoreBundle\Entity\Periodicity $periodicity
      * @return Answers
      */
-    public function setPeriodicity(\Srm\CoreBundle\Entity\Periodicity $periodicity = null)
+    public function setPeriodicity(Periodicity $periodicity = null)
     {
         $this->periodicity = $periodicity;
 
