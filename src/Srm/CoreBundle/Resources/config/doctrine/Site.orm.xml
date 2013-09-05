@@ -74,16 +74,7 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="poles" target-entity="Pole" inversed-by="sites">
-      <join-table name="vj_site_pole">
-        <join-columns>
-          <join-column name="SITE_ID" referenced-column-name="SITE_ID"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="POLE_ID" referenced-column-name="POLE_ID"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
+    <many-to-many field="poles" target-entity="Pole" mapped-by="sites"/>
     <many-to-many field="contacts" target-entity="Contact" inversed-by="sites">
       <join-table name="v_sites_contacts">
         <join-columns>
