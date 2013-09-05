@@ -18,17 +18,26 @@ class SiteType extends AbstractType
             ))
             ->add('typeSite', 'srm_type_site', array('required' => true))
 
-            ->add('siteActivities',    'srm_site_activities')
-            ->add('subSiteActivities', 'srm_sub_site_activities')
+            ->add('siteActivities', 'srm_site_activities', array(
+                'expanded' => true,
+                'multiple' => true,
+            ))
+            ->add('subSiteActivities', 'srm_sub_site_activities', array(
+                'expanded' => true,
+                'multiple' => true,
+            ))
 
-            ->add('contacts', 'srm_contacts')
+            ->add('contacts', 'srm_contacts', array('multiple' => true))
 
-            ->add('dangerousSubstances', 'srm_dangerous_substances')
+            ->add('dangerousSubstances', 'srm_dangerous_substances', array(
+                'expanded' => true,
+                'multiple' => true,
+            ))
             //->add('products', 'srm_products', array('mapped' => false))
             ->add('importance', 'text', array('label' => 'site.importance'))
 
-            ->add('currency', 'srm_currency', array('required' => true))
-            ->add('language', 'srm_language', array('required' => true))
+            ->add('currency', 'srm_currencies', array('required' => true))
+            ->add('language', 'srm_languages',  array('required' => true))
 
             ->add('address',  'srm_address',  array('required' => true))
 

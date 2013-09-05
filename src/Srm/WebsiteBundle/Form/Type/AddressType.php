@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Address;
+namespace Srm\WebsiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

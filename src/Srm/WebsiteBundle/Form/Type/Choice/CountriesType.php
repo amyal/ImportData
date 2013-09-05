@@ -1,23 +1,25 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Site;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SubSiteActivitiesType extends AbstractType
+class CountriesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\SubSiteActivity',
+            'class'         => 'Srm\CoreBundle\Entity\Country',
+            'empty_value'   => 'address.country.choice',
+            'label'         => 'address.country',
             'property'      => 'label',
-            'expanded'      => true,
-            'multiple'      => true,
+            'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
+                return $er->createQueryBuilder('c')->orderBy('c.label', 'ASC');
             },
         ));
     }
@@ -29,6 +31,6 @@ class SubSiteActivitiesType extends AbstractType
 
     public function getName()
     {
-        return 'srm_sub_site_activities';
+        return 'srm_countries';
     }
 }

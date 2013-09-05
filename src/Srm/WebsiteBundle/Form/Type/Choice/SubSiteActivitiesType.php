@@ -1,24 +1,21 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class LanguageType extends AbstractType
+class SubSiteActivitiesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Language',
+            'class'         => 'Srm\CoreBundle\Entity\SubSiteActivity',
             'property'      => 'label',
-            'empty_value'   => 'language.choice',
-            'label'         => 'language',
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('l')->orderBy('l.label', 'ASC');
+                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
             },
         ));
     }
@@ -30,6 +27,6 @@ class LanguageType extends AbstractType
 
     public function getName()
     {
-        return 'srm_language';
+        return 'srm_sub_site_activities';
     }
 }

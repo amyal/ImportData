@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Site;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
@@ -8,19 +8,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DangerousSubstancesType extends AbstractType
+class CurrenciesType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\DangerousSubstance',
+            'class'         => 'Srm\CoreBundle\Entity\Currency',
             'property'      => 'label',
-            'expanded'      => true,
-            'multiple'      => true,
-            'label'         => 'site.dangerous_substances',
-            'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('d')->orderBy('d.label', 'ASC');
-            },
+            'empty_value'   => 'currency.choice',
+            'label'         => 'currency',
         ));
     }
 
@@ -31,6 +27,6 @@ class DangerousSubstancesType extends AbstractType
 
     public function getName()
     {
-        return 'srm_dangerous_substances';
+        return 'srm_currencies';
     }
 }

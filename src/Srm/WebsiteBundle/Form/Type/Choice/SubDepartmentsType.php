@@ -1,25 +1,21 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Address;
+namespace Srm\WebsiteBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CountryType extends AbstractType
+class SubDepartmentsType extends AbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Country',
-            'empty_value'   => 'address.country.choice',
-            'label'         => 'address.country',
+            'class'         => 'Srm\CoreBundle\Entity\SubDepartment',
             'property'      => 'label',
-            'mapped'        => false,
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('c')->orderBy('c.label', 'ASC');
+                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
             },
         ));
     }
@@ -31,6 +27,6 @@ class CountryType extends AbstractType
 
     public function getName()
     {
-        return 'srm_country';
+        return 'srm_sub_departments';
     }
 }
