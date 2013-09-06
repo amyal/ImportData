@@ -13,7 +13,7 @@
       </join-columns>
     </many-to-one>
     <many-to-many field="groupStakeholders" target-entity="GroupStakeholder" inversed-by="stakeholderArchetypes">
-      <join-table name="v_stakeholder_group_archetype">
+      <join-table name="vj_stakeholder_group_archetype">
         <join-columns>
           <join-column name="STAKEHOLDER_ARCHETYPE_ID" referenced-column-name="STAKEHOLDER_ARCHETYPE_ID"/>
         </join-columns>

@@ -31,7 +31,7 @@
       </cascade>
     </many-to-one>
     <many-to-many field="groupStakeholders" target-entity="GroupStakeholder" inversed-by="stakeholders">
-      <join-table name="v_stakeholder_stakeholder_group">
+      <join-table name="vj_stakeholder_stakeholder_group">
         <join-columns>
           <join-column name="STAKEHOLDER_ID" referenced-column-name="STAKEHOLDER_ID"/>
         </join-columns>

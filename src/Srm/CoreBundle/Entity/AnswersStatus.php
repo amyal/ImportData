@@ -25,7 +25,7 @@ class AnswersStatus
     /**
      * @var integer
      */
-    private $itemAnswersStatusId;
+    private $answersStatusId;
 
 
     public function __construct()
@@ -103,12 +103,12 @@ class AnswersStatus
     }
 
     /**
-     * Get itemAnswersStatusId
+     * Get answersStatusId
      *
      * @return integer
      */
-    public function getItemAnswersStatusId()
+    public function getAnswersStatusId()
     {
-        return $this->itemAnswersStatusId;
+        return $this->answersStatusId;
     }
 }
