@@ -7,9 +7,6 @@
         <service class="Srm\WebsiteBundle\Form\Type\Choice\CitiesType" id="srm_website.form.type.cities">
             <tag name="form.type" alias="srm_cities" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Choice\ContactsType" id="srm_website.form.type.contacts">
-            <tag name="form.type" alias="srm_contacts" />
-        </service>
         <service class="Srm\WebsiteBundle\Form\Type\Choice\CountriesType" id="srm_website.form.type.countries">
             <tag name="form.type" alias="srm_countries" />
         </service>
@@ -21,6 +18,12 @@
         </service>
         <service class="Srm\WebsiteBundle\Form\Type\Choice\LanguagesType" id="srm_website.form.type.languages">
             <tag name="form.type" alias="srm_languages" />
+        </service>
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\OrganisationContactsType" id="srm_website.form.type.organisation_contacts">
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_contacts" />
         </service>
         <service class="Srm\WebsiteBundle\Form\Type\Choice\OrganisationDepartmentsType" id="srm_website.form.type.organisation_departments">
             <argument type="service" id="doctrine.orm.entity_manager" />
