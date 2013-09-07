@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Department" table="V_DEPARTMENT" repository-class="Srm\CoreBundle\Repository\DepartmentRepository">
+  <entity name="Srm\CoreBundle\Entity\Department" table="v_department" repository-class="Srm\CoreBundle\Repository\DepartmentRepository">
     <id name="departmentId" type="integer" column="DEPARTMENT_ID">
       <generator strategy="IDENTITY"/>
     </id>
