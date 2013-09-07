@@ -494,7 +494,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie
      * @return Site
      */
-    public function addSubSiteActiviy(SubSiteActivity $subSiteActivitie)
+    public function addSubSiteActivity(SubSiteActivity $subSiteActivitie)
     {
         $this->subSiteActivities[] = $subSiteActivitie;
 
@@ -506,7 +506,7 @@ class Site
      *
      * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie
      */
-    public function removeSubSiteActiviy(SubSiteActivity $subSiteActivitie)
+    public function removeSubSiteActivity(SubSiteActivity $subSiteActivitie)
     {
         $this->subSiteActivities->removeElement($subSiteActivitie);
     }
@@ -560,7 +560,7 @@ class Site
      * @param \Srm\CoreBundle\Entity\SiteActivity $siteActivity
      * @return Site
      */
-    public function addSiteActiviy(SiteActivity $siteActivity)
+    public function addSiteActivity(SiteActivity $siteActivity)
     {
         $this->siteActivities[] = $siteActivity;
 
