@@ -14,6 +14,11 @@
             <li>{{ 'organisation.form.basic.slogan1'|trans }} : {{ organisation.slogan1 }}</li>
             <li>{{ 'organisation.form.basic.slogan2'|trans }} : {{ organisation.slogan2 }}</li>
             <li>{{ 'organisation.form.basic.slogan3'|trans }} : {{ organisation.slogan3 }}</li>
+            {% if organisation.logo %}
+                <li>{{ 'organisation.form.basic.logo'|trans }} :
+                    <img src="{{ asset('uploads/documents/' ~ organisation.identificationCode ~ '/' ~ organisation.logo)}}" alt="logo" height="70" width="66" />
+                </li>
+            {% endif %}
         </ul>
 
         <a href="{{ path('srm_website_organisation_basic', {'identificationCode': organisation.identificationCode}) }}" class="btn btn-info">{{ 'button.edit'|trans }}</a>

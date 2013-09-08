@@ -29,7 +29,7 @@ class BasicType extends AbstractType
             ->add('slogan3', 'text', array('label' => 'organisation.form.basic.slogan3'))
 
             ->add(
-                'logo', 'file', array(
+                'picture', 'file', array(
                     'label'    => 'organisation.form.basic.logo',
                     'required' => false
                 )
