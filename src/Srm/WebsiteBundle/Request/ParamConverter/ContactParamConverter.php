@@ -20,18 +20,18 @@ class ContactParamConverter implements ParamConverterInterface
     public function apply(Request $request, ConfigurationInterface $configuration)
     {
         if (null !== $request->get('contactId', null)) {
-            return false;   // on laisse le DoctrineParamConverter trouver le user avec le contactId
+            return false;   // on laisse le DoctrineParamConverter trouver le contact avec le contactId
         }
 
-        $user = new Contact();
+        $contact = new Contact();
 
         if (null === $organisation = $request->get('organisation', null)) {
-            throw new \Exception('Aucune organisation trouvée pour créer des users.');
+            throw new \Exception('Aucune organisation trouvée pour créer des contacts.');
         }
 
-        $user->setOrganisation($organisation);
+        $contact->setOrganisation($organisation);
 
-        $request->attributes->set($configuration->getName(), $user);
+        $request->attributes->set($configuration->getName(), $contact);
 
         return true;
     }

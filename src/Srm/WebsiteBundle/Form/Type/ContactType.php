@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserType extends AbstractType
+class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,14 +18,14 @@ class UserType extends AbstractType
                 'required' => true,
             ))
             ->add('lastname', 'text', array(
-                'label'    => 'user.lastname',
+                'label'    => 'contact.lastname',
                 'required' => 'true',
             ))
             ->add('firstname', 'text', array(
-                'label'    => 'user.firstname',
+                'label'    => 'contact.firstname',
                 'required' => 'true',
             ))
-            ->add('contactFunction', 'text', array('label' => 'user.function'))
+            ->add('contactFunction', 'text', array('label' => 'contact.function'))
             ->add('officePhone', 'text', array(
                 'label'    => 'phone.office',
                 'required' => 'true',
@@ -46,8 +46,8 @@ class UserType extends AbstractType
                 'required' => true,
             ))
 
-            ->add('picture', 'file', array('label' => 'user.picture'))
-            ->add('comments', 'textarea', array('label' => 'user.comments'))
+            ->add('picture', 'file', array('label' => 'contact.picture'))
+            ->add('comments', 'textarea', array('label' => 'contact.comments'))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 
@@ -65,6 +65,6 @@ class UserType extends AbstractType
 
     public function getName()
     {
-        return 'srm_user';
+        return 'srm_contact';
     }
 }

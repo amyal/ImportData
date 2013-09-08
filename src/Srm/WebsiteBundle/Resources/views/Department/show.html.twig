@@ -7,7 +7,7 @@
             <ul class="unstyled">
                 <li>{{ 'department.label'|trans }} : {{ department.label }}</li>
                 <li>{{ 'departments.list.sub_departments'|trans }} : {% if department.subDepartments %}{{ department.subDepartments|joinLabels(', ') }}{% else %}-{% endif %}</li>
-                <li>{{ 'departments.list.users'|trans }} : {% if department.contacts %}{{ department.contacts|joinLabels(', ') }}{% else %}-{% endif %}</li>
+                <li>{{ 'departments.list.contacts'|trans }} : {% if department.contacts %}{{ department.contacts|joinLabels(', ') }}{% else %}-{% endif %}</li>
             </ul>
         </fieldset>
 
