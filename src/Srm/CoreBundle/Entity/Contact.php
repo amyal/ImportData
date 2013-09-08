@@ -65,6 +65,11 @@ class Contact
     /**
      * @var boolean
      */
+    private $isUser;
+
+    /**
+     * @var boolean
+     */
     private $shareholder;
 
     /**
@@ -424,6 +429,29 @@ class Contact
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Set isUser
+     *
+     * @param boolean $isUser
+     * @return Contact
+     */
+    public function setIsUser($isUser)
+    {
+        $this->isUser = $isUser;
+
+        return $this;
+    }
+
+    /**
+     * Get isUser
+     *
+     * @return string
+     */
+    public function getIsUser()
+    {
+        return $this->isUser;
     }
 
     /**
