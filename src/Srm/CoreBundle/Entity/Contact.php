@@ -172,6 +172,7 @@ class Contact
         $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
 
+        $this->isUser = false;
         $this->shareholder = false;
 
         $this->creationDate = new \DateTime();
