@@ -11,7 +11,7 @@ class SiteRepository extends EntityRepository
     public function findNonDeletedByOrganisation(Organisation $organisation)
     {
         return $this->createQueryBuilder('s')
-            ->where('s.deleted != :deleted')->setParameter('deleted', true)
+            ->where('s.deleted = :deleted')->setParameter('deleted', false)
             ->andWhere('s.organisation = :organisation')->setParameter('organisation', $organisation)
             ->getQuery()
             ->getResult()
