@@ -167,6 +167,8 @@ class Contact
         $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
 
+        $this->shareholder = false;
+
         $this->creationDate = new \DateTime();
         $this->deleted = false;
     }
