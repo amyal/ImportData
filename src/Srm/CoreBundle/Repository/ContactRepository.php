@@ -13,6 +13,7 @@ class ContactRepository extends EntityRepository
         return $this->createQueryBuilder('c')
             ->where('c.deleted = :deleted')->setParameter('deleted', false)
             ->andWhere('c.organisation = :organisation')->setParameter('organisation', $organisation)
+            ->andWhere('c.shareholder = :shareholder')->setParameter('shareholder', false)
             ->getQuery()
             ->getResult()
         ;
