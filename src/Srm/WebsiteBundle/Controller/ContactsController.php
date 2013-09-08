@@ -17,6 +17,18 @@ class ContactsController extends Controller
         ));
     }
 
+    public function disableAction(Organisation $organisation, Contact $contact)
+    {
+        $contact->setDeleted(true);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($contact);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
+            'organisationId' => $organisation->getOrganisationId(),
+        )));
+    }
+
     public function formAction(Organisation $organisation, Contact $contact)
     {
         $formActionRoute = 'srm_website_contacts_add';
