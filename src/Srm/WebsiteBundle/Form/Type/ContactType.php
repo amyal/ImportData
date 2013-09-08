@@ -25,7 +25,10 @@ class ContactType extends AbstractType
                 'label'    => 'contact.firstname',
                 'required' => 'true',
             ))
-            ->add('contactFunction', 'text', array('label' => 'contact.function'))
+            ->add('contactFunction', 'text', array(
+                'label'    => 'contact.function',
+                'required' => 'true',
+            ))
             ->add('officePhone', 'text', array(
                 'label'    => 'phone.office',
                 'required' => 'true',
@@ -38,6 +41,8 @@ class ContactType extends AbstractType
             ))
 
             ->add('address', 'srm_address')
+
+            ->add('shareholder', 'checkbox', array('label' => 'shareholder'))
 
             ->add('role', 'entity', array(
                 'class'    => 'Srm\CoreBundle\Entity\Role',

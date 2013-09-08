@@ -20,6 +20,13 @@
             {{ form_row(form.address.zip.city) }}
             {{ form_row(form.address.zip.country) }}
 
+            <div class="control-group">
+                <label class="control-label" for="srm_contact_shareholder">{{ form.shareholder.vars.label|trans }}</label>
+                <div class="controls">
+                    {{ form_widget(form.shareholder) }}
+                </div>
+            </div>
+
             {{ form_row(form.role) }}
 
             {{ form_row(form.picture) }}

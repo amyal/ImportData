@@ -68,6 +68,8 @@ pole.label: "Nom"
 
 role: "Rôle"
 
+shareholder: "Actionnaire"
+
 sites.list.title: "Sites"
 sites.list.empty: "Aucun site pour le moment."
 sites.list.name: "Nom"
