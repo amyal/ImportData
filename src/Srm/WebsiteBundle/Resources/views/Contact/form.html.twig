@@ -27,10 +27,19 @@
                 </div>
             </div>
 
+            {{ form_row(form.parts) }}
+
             {{ form_row(form.role) }}
 
             {{ form_row(form.picture) }}
             {{ form_row(form.comments) }}
+
+            <div class="control-group">
+                <label class="control-label" for="srm_contact_isUser">{{ form.isUser.vars.label|trans }}</label>
+                <div class="controls">
+                    {{ form_widget(form.isUser) }}
+                </div>
+            </div>
 
             <div class="control-group">
                 <label class="control-label" for="srm_contact_enabled">{{ form.enabled.vars.label|trans }}</label>
