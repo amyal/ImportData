@@ -1,3 +1,9 @@
+srm_website_organisation_index:
+    path:       /organisations/{identificationCode}/index
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Organisations:index"
+
 srm_website_organisation_show:
     path:       /organisations/{identificationCode}
     methods:    [GET]
