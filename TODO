@@ -21,6 +21,7 @@ contacts:
   ✔ liaison table adresse @done (13-09-08 09:38)
   ✔ office_phone, mobile_phone @done (13-09-08 10:28)
   ✔ fax @done (13-09-08 10:28)
+  ☐ js qui affiche "roles" si case "utilisateur logiciel" cochée
   ☐ js qui affiche "parts" si case "actionnaire" cochée
   ☐ ajax sites/déps/sous-déps
 
