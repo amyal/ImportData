@@ -1,0 +1,70 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav.info'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'organisation.legal.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <div class="box">
+                <div class="box-header">
+                    <span class="title"> Informations juridiques </span>
+                </div>
+
+                {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
+                    {{ form_errors(form) }}
+                    
+                    <div class="box-content padded">
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'organisation.form.legal.label'|trans }} :</label>
+                                <div class="controls">{{ form_widget(form.label) }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'organisation.form.legal.nature_capital'|trans }} :</label>
+                                <div class="controls">{{ form_widget(form.natureCapital) }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'organisation.form.legal.activity_code'|trans }} :</label>
+                                <div class="controls">{{ form_widget(form.apeCode) }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'organisation.form.legal.category'|trans }} : </label>
+                                <div class="controls">{{ form_widget(form.category) }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'organisation.form.legal.registration_date'|trans }} :</label>
+                                <div class="controls">
+                                    {{ form_widget(form.registrationDate) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+                        save_form: form.save,
+                        url_cancel: path('srm_website_organisation_show', {'identificationCode': identificationCode})
+                    }, with_context = false) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

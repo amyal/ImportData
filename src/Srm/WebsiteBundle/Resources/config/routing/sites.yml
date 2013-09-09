@@ -1,0 +1,35 @@
+srm_website_sites_list:
+    path:       /organisations/{organisationId}/sites
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:list"
+
+srm_website_sites_add:
+    path:       /organisations/{organisationId}/sites/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:form"
+
+srm_website_site_show:
+    path:       /organisations/{organisationId}/sites/{siteId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:show"
+    requirements:
+        siteId: \d+
+
+srm_website_site_disable:
+    path:       /organisations/{organisationId}/sites/{siteId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:disable"
+    requirements:
+        siteId: \d+
+
+srm_website_site_edit:
+    path:       /organisations/{organisationId}/sites/{siteId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Sites:form"
+    requirements:
+        siteId: \d+

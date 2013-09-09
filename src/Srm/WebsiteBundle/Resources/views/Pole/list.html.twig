@@ -1,0 +1,85 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-circle-blank"></i> {{ 'poles.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'poles.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title"> {{ 'poles.list.title'|trans }} </span>
+                        <ul class="box-toolbar">
+                            <li><a class="btn btn-green btn-mini spacer" href="{{ path('srm_website_poles_add', { 'organisationId': organisation.organisationId }) }}">{{ 'button.add'|trans }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="box-content">
+
+                        <table class="table table-normal">
+                            <thead>
+                                <tr><td>{{ 'poles.list.label'|trans }}</td>
+                                    <td>{{ 'poles.list.sites'|trans }}</td>
+                                    <td>{{ 'poles.list.departments'|trans }}</td>
+                                    <td>{{ 'list.enabled'|trans }}</td>
+                                    <td style="width:115px"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pole in poles %}
+                                    <tr>
+                                        <td>{{ pole.label }}</td>
+                                        <td>
+                                            {% if pole.sites %}
+                                                {{ pole.sites|joinLabels(', ') }}
+                                            {% else %}
+                                                {{ 'list.no_sites'|trans }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if pole.departments %}
+                                                {{ pole.departments|joinLabels(', ') }}
+                                            {% else %}
+                                                {{ 'list_no_departments'|trans }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if pole.enabled %}
+                                                {{ 'enabled'|trans }}
+                                            {% else %}
+                                                {{ 'disabled'|trans }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="{{ path('srm_website_pole_show', { 'organisationId': organisation.organisationId, 'poleId': pole.poleId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
+                                                <a href="{{ path('srm_website_pole_edit', { 'organisationId': organisation.organisationId, 'poleId': pole.poleId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                                <a href="{{ path('srm_website_pole_disable', { 'organisationId': organisation.organisationId, 'poleId': pole.poleId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr class="info"><td colspan="9">{{ 'sites.list.empty'|trans }}</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

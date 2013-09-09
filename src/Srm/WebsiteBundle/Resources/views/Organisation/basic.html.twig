@@ -1,0 +1,130 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav.info'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'organisation.basic.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span8 offset2">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title">{{ 'organisation.basic.title'|trans }}</span>
+                    </div>
+
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up validatable'}}) }}
+                        {{ form_errors(form) }}
+
+                        <div class="box-content padded">
+                            <div class="padded-box">
+                                <div class="control-group">
+                                    <label class="control-label">{{ 'organisation.form.basic.label'|trans }} :</label>
+                                    <div class="controls">
+                                        {{ form_widget(form.label, {'attr': {'class': 'falidate[required]', 'data-prompt-position': 'topLeft'}}) }}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{{ 'organisation.basic.address'|trans }} :</label>
+                                    <div class="controls">
+                                        {{ form_widget(form.address.label, {'attr': {'class': 'falidate[required]', 'data-prompt-position': 'topLeft'}}) }}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{{ 'address.zip'|trans }} :</label>
+                                    <div class="controls">
+                                        {{ form_widget(form.address.zip.code, {'attr': {'class': 'falidate[required]', 'data-prompt-position': 'topLeft'}}) }}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{{ 'address.city'|trans }} :</label>
+                                    <div class="controls">
+                                        {{ form_widget(form.address.zip.city, {'attr': {'class': 'chzn-select'}}) }}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{{ 'address.country'|trans }} :</label>
+                                    <div class="controls">
+                                        {{ form_widget(form.address.zip.country, {'attr': {'class': 'chzn-select'}}) }}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{{ 'organisation.form.basic.identification_code'|trans }} :</label>
+                                    <div class="controls">{{ form_widget(form.identificationCode) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{{ 'organisation.form.basic.slogan1'|trans }} :</label>
+                                    <div class="controls">{{ form_widget(form.slogan1) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{{ 'organisation.form.basic.slogan2'|trans }} :</label>
+                                    <div class="controls">{{ form_widget(form.slogan2) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{{ 'organisation.form.basic.slogan3'|trans }} :</label>
+                                    <div class="controls">{{ form_widget(form.slogan3) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Logo :</label>
+                                    <div class="controls">{{ form_widget(form.picture) }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+                            save_form: form.save,
+                            url_cancel: path('srm_website_organisation_show', {'identificationCode': identificationCode})
+                        }, with_context = false) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+
+
+
+    {#
+
+
+    <input type="text" data-prompt-position="topLeft" class="validate[required]" value="Organisation 1">
+    <div>
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            {{ form_row(form.label) }}
+
+            {{ form_row(form.address.label) }}
+            {{ form_row(form.address.zip.code) }}
+            {{ form_row(form.address.zip.city) }}
+            {{ form_row(form.address.zip.country) }}
+
+            {{ form_row(form.identificationCode) }}
+            {{ form_row(form.slogan1) }}
+            {{ form_row(form.slogan2) }}
+            {{ form_row(form.slogan3) }}
+            {{ form_row(form.logo) }}
+
+            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+                save_form: form.save,
+                url_cancel: path('srm_website_organisation_show', {'identificationCode': identificationCode})
+            }, with_context = false) }}
+        {{ form_end(form) }}
+    </div>
+    #}
+{% endblock %}

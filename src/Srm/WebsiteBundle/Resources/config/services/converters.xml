@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="srm_website.converter.organisation" class="Srm\WebsiteBundle\Request\ParamConverter\OrganisationParamConverter">
+            <argument type="service">
+                <service
+                    class="Doctrine\ORM\EntityRepository"
+                    factory-service="doctrine.orm.default_entity_manager"
+                    factory-method="getRepository"
+                >
+                    <argument>Srm\CoreBundle\Entity\Organisation</argument>
+                </service>
+            </argument>
+
+            <tag name="request.param_converter" converter="organisation" priority="9" />
+        </service>
+
+        <service id="srm_website.converter.site" class="Srm\WebsiteBundle\Request\ParamConverter\SiteParamConverter">
+            <tag name="request.param_converter" converter="site" priority="8" />
+        </service>
+
+        <service id="srm_website.converter.department" class="Srm\WebsiteBundle\Request\ParamConverter\DepartmentParamConverter">
+            <tag name="request.param_converter" converter="department" priority="7" />
+        </service>
+<!--
+        <service id="srm_website.converter.contact" class="Srm\WebsiteBundle\Request\ParamConverter\ContactParamConverter">
+            <tag name="request.param_converter" converter="contact" priority="7" />
+        </service>
+-->
+        <service id="srm_website.converter.pole" class="Srm\WebsiteBundle\Request\ParamConverter\PoleParamConverter">
+            <tag name="request.param_converter" converter="pole" priority="7" />
+        </service>
+    </services>
+</container>

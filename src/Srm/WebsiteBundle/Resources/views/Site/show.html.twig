@@ -1,0 +1,97 @@
+{% extends '@SrmWebsite/layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-building"></i> {{ 'sites.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'sites.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title"> {{ site.label }} </span>
+                    </div>
+                    <div class="box-content padded">
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'site.label'|trans }} :</label>
+                                <div class="controls">{{ site.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'address.label'|trans }} :</label>
+                                <div class="controls">{{ site.address.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'address.zip'|trans }} :</label>
+                                <div class="controls">{{ site.address.zip.code }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'address.city'|trans }} :</label>
+                                <div class="controls">{{ site.address.zip.city.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'address.country'|trans }} :</label>
+                                <div class="controls">{{ site.address.zip.city.country.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'phone'|trans }} :</label>
+                                <div class="controls">{{ site.phone }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'email'|trans }} :</label>
+                                <div class="controls">{{ site.mail }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'fax'|trans }} :</label>
+                                <div class="controls"> {{ site.fax }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'site.type_site'|trans }} :</label>
+                                <div class="controls">{{ site.typeSite.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'sites.list.activities'|trans }} :</label>
+                                <div class="controls">
+                                    {% if site.siteActivities %}{{ site.siteActivities|joinLabels(', ') }}{% else %}{{ 'list.no_activities'|trans }}{% endif %}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'sites.list.sub_activities'|trans }} :</label>
+                                <div class="controls">
+                                    {% if site.subSiteActivities %}{{ site.subSiteActivities|joinLabels(', ') }}{% else %}{{ 'list.no_sub_activities'|trans }}{% endif %}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'site.dangerous_substances'|trans }} :</label>
+                                <div class="controls">
+                                    {{ 'site.dangerous_substances'|trans }} : {% if site.dangerousSubstances %}{{ site.dangerousSubstances|joinLabels(', ') }}{% else %}-{% endif %}   
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'site.importance'|trans }} :</label>
+                                <div class="controls">{{ site.importance }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
+                        url_edit:   path('srm_website_site_edit',  {'organisationId': organisationId, 'siteId': site.siteId}),
+                        url_cancel: path('srm_website_sites_list', {'organisationId': organisationId})
+                    }, with_context = false) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

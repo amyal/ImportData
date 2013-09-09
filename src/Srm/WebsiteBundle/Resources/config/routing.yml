@@ -1,0 +1,10 @@
+_organisations:
+    resource: "routing/organisations.yml"
+_sites:
+    resource: "routing/sites.yml"
+_departments:
+    resource: "routing/departments.yml"
+_users:
+    resource: "routing/users.yml"
+_poles:
+    resource: "routing/poles.yml"
