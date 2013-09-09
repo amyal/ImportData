@@ -43,6 +43,7 @@ class ContactType extends AbstractType
             ->add('address', 'srm_address')
 
             ->add('shareholder', 'checkbox', array('label' => 'shareholder'))
+            ->add('parts', 'text', array('label' => 'shareholder.parts'))
 
             ->add('role', 'entity', array(
                 'class'    => 'Srm\CoreBundle\Entity\Role',
@@ -54,6 +55,7 @@ class ContactType extends AbstractType
             ->add('picture', 'file', array('label' => 'contact.picture'))
             ->add('comments', 'textarea', array('label' => 'contact.comments'))
 
+            ->add('isUser',  'checkbox', array('label' => 'contact.is_user'))
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 
             ->add('save', 'submit', array('label' => 'button.save'))
