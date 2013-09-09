@@ -20,7 +20,13 @@ class LegalType extends AbstractType
             ->add('natureCapital',    'text', array('label' => 'organisation.form.legal.nature_capital'))
             ->add('apeCode',          'text' ,array('label' => 'organisation.form.legal.activity_code'))
             ->add('category',         'text', array('label' => 'organisation.form.legal.category'))
-            ->add('registrationDate', 'date', array('label' => 'organisation.form.legal.registration_date'))
+            ->add('registrationDate', 'date', array(
+            										'label'  => 'organisation.form.legal.registration_date',
+            										'widget' => 'single_text',
+													'format' => 'dd/MM/y',
+													'input'  => 'datetime',
+													'attr'   => array('class' => 'datepicker fill-up'),
+            									))
 
             ->add('save', 'submit', array('label' => 'button.save')
             )
