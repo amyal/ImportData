@@ -27,7 +27,7 @@ class SiteType extends AbstractType
                 'multiple' => true,
             ))
 
-            ->add('contacts', 'srm_contacts', array('multiple' => true))
+            ->add('contacts', 'srm_organisation_contacts', array('multiple' => true))
 
             ->add('dangerousSubstances', 'srm_dangerous_substances', array(
                 'expanded' => true,

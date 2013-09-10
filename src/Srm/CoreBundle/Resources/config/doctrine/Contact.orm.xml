@@ -15,6 +15,9 @@
     <field name="dateBirth" type="date" column="DATE_BIRTH" nullable="true"/>
     <field name="connPlatform" type="boolean" column="CONN_PLATFORM" nullable="true"/>
     <field name="owner" type="string" column="OWNER" length="150" nullable="true"/>
+    <field name="isUser" type="boolean" column="IS_USER" nullable="true"/>
+    <field name="shareholder" type="boolean" column="SHAREHOLDER" nullable="true"/>
+    <field name="parts" type="string" column="PARTS" length="15" nullable="true"/>
     <field name="officePhone" type="string" column="OFFICE_PHONE" length="50" nullable="true"/>
     <field name="mobilePhone" type="string" column="MOBILE_PHONE" length="50" nullable="true"/>
     <field name="fax" type="string" column="FAX" length="50" nullable="true"/>

@@ -1,0 +1,35 @@
+srm_website_contacts_list:
+    path:       /organisations/{organisationId}/contacts
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Contacts:list"
+
+srm_website_contacts_add:
+    path:       /organisations/{organisationId}/contacts/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Contacts:form"
+
+srm_website_contact_show:
+    path:       /organisations/{organisationId}/contacts/{contactId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Contacts:show"
+    requirements:
+        contactId: \d+
+
+srm_website_contact_disable:
+    path:       /organisations/{organisationId}/contacts/{contactId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Contacts:disable"
+    requirements:
+        contactId: \d+
+
+srm_website_contact_edit:
+    path:       /organisations/{organisationId}/contacts/{contactId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Contacts:form"
+    requirements:
+        contactId:   \d+

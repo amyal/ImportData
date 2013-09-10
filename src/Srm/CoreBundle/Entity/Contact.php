@@ -63,6 +63,21 @@ class Contact
     private $owner;
 
     /**
+     * @var boolean
+     */
+    private $isUser;
+
+    /**
+     * @var boolean
+     */
+    private $shareholder;
+
+    /**
+     * @var string
+     */
+    private $parts;
+
+    /**
      * @var string
      */
     private $officePhone;
@@ -156,6 +171,9 @@ class Contact
         $this->stakeholders = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subDepartments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->isUser = false;
+        $this->shareholder = false;
 
         $this->creationDate = new \DateTime();
         $this->deleted = false;
@@ -412,6 +430,75 @@ class Contact
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Set isUser
+     *
+     * @param boolean $isUser
+     * @return Contact
+     */
+    public function setIsUser($isUser)
+    {
+        $this->isUser = $isUser;
+
+        return $this;
+    }
+
+    /**
+     * Get isUser
+     *
+     * @return string
+     */
+    public function getIsUser()
+    {
+        return $this->isUser;
+    }
+
+    /**
+     * Set shareholder
+     *
+     * @param boolean $shareholder
+     * @return Contact
+     */
+    public function setShareholder($shareholder)
+    {
+        $this->shareholder = $shareholder;
+
+        return $this;
+    }
+
+    /**
+     * Get shareholder
+     *
+     * @return string
+     */
+    public function getShareholder()
+    {
+        return $this->shareholder;
+    }
+
+    /**
+     * Set parts
+     *
+     * @param string $parts
+     * @return Contact
+     */
+    public function setParts($parts)
+    {
+        $this->parts = $parts;
+
+        return $this;
+    }
+
+    /**
+     * Get parts
+     *
+     * @return string
+     */
+    public function getParts()
+    {
+        return $this->parts;
     }
 
     /**
@@ -741,6 +828,7 @@ class Contact
      */
     public function addStakeholder(Stakeholder $stakeholder)
     {
+        $stakeholder->addContact($this);
         $this->stakeholders[] = $stakeholder;
 
         return $this;
@@ -753,6 +841,7 @@ class Contact
      */
     public function removeStakeholder(Stakeholder $stakeholder)
     {
+        $stakeholder->removeContact($this);
         $this->stakeholders->removeElement($stakeholder);
     }
 
@@ -774,6 +863,7 @@ class Contact
      */
     public function addSubDepartment(SubDepartment $subDepartment)
     {
+        $subDepartment->addContact($this);
         $this->subDepartments[] = $subDepartment;
 
         return $this;
@@ -786,6 +876,7 @@ class Contact
      */
     public function removeSubDepartment(SubDepartment $subDepartment)
     {
+        $subDepartment->removeContact($this);
         $this->subDepartments->removeElement($subDepartment);
     }
 

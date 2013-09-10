@@ -135,6 +135,7 @@ class Pole
      */
     public function addSite(Site $site)
     {
+        $site->addPole($this);
         $this->sites[] = $site;
 
         return $this;
@@ -147,6 +148,7 @@ class Pole
      */
     public function removeSite(Site $site)
     {
+        $site->removePole($this);
         $this->sites->removeElement($site);
     }
 
@@ -168,6 +170,7 @@ class Pole
      */
     public function addDepartment(Department $department)
     {
+        $department->addPole($this);
         $this->departments[] = $department;
 
         return $this;
@@ -180,6 +183,7 @@ class Pole
      */
     public function removeDepartment(Department $department)
     {
+        $department->removePole($this);
         $this->departments->removeElement($department);
     }
 
