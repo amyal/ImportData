@@ -489,26 +489,26 @@ class Site
     }
 
     /**
-     * Add subSiteActivitie
+     * Add subSiteActivity
      *
-     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie
+     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
      * @return Site
      */
-    public function addSubSiteActivity(SubSiteActivity $subSiteActivitie)
+    public function addSubSiteActivity(SubSiteActivity $subSiteActivity)
     {
-        $this->subSiteActivities[] = $subSiteActivitie;
+        $this->subSiteActivities[] = $subSiteActivity;
 
         return $this;
     }
 
     /**
-     * Remove subSiteActivitie
+     * Remove subSiteActivity
      *
-     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivitie
+     * @param \Srm\CoreBundle\Entity\SubSiteActivity $subSiteActivity
      */
-    public function removeSubSiteActivity(SubSiteActivity $subSiteActivitie)
+    public function removeSubSiteActivity(SubSiteActivity $subSiteActivity)
     {
-        $this->subSiteActivities->removeElement($subSiteActivitie);
+        $this->subSiteActivities->removeElement($subSiteActivity);
     }
 
     /**
