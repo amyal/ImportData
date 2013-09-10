@@ -828,6 +828,7 @@ class Contact
      */
     public function addStakeholder(Stakeholder $stakeholder)
     {
+        $stakeholder->addContact($this);
         $this->stakeholders[] = $stakeholder;
 
         return $this;
@@ -840,6 +841,7 @@ class Contact
      */
     public function removeStakeholder(Stakeholder $stakeholder)
     {
+        $stakeholder->removeContact($this);
         $this->stakeholders->removeElement($stakeholder);
     }
 
@@ -861,6 +863,7 @@ class Contact
      */
     public function addSubDepartment(SubDepartment $subDepartment)
     {
+        $subDepartment->addContact($this);
         $this->subDepartments[] = $subDepartment;
 
         return $this;
@@ -873,6 +876,7 @@ class Contact
      */
     public function removeSubDepartment(SubDepartment $subDepartment)
     {
+        $subDepartment->removeContact($this);
         $this->subDepartments->removeElement($subDepartment);
     }
 

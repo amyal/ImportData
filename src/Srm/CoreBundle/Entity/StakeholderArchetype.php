@@ -157,6 +157,7 @@ class StakeholderArchetype
      */
     public function addGroupStakeholder(GroupStakeholder $groupStakeholder)
     {
+        $groupStakeholder->addStakeholderArchetype($this);
         $this->groupStakeholders[] = $groupStakeholder;
 
         return $this;
@@ -169,6 +170,7 @@ class StakeholderArchetype
      */
     public function removeGroupStakeholder(GroupStakeholder $groupStakeholder)
     {
+        $groupStakeholder->removeStakeholderArchetype($this);
         $this->groupStakeholders->removeElement($groupStakeholder);
     }
 

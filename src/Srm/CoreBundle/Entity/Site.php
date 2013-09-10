@@ -496,6 +496,7 @@ class Site
      */
     public function addSubSiteActivity(SubSiteActivity $subSiteActivity)
     {
+        $subSiteActivity->addSite($this);
         $this->subSiteActivities[] = $subSiteActivity;
 
         return $this;
@@ -508,6 +509,7 @@ class Site
      */
     public function removeSubSiteActivity(SubSiteActivity $subSiteActivity)
     {
+        $subSiteActivity->removeSite($this);
         $this->subSiteActivities->removeElement($subSiteActivity);
     }
 
@@ -562,6 +564,7 @@ class Site
      */
     public function addSiteActivity(SiteActivity $siteActivity)
     {
+        $siteActivity->addSite($this);
         $this->siteActivities[] = $siteActivity;
 
         return $this;
@@ -574,6 +577,7 @@ class Site
      */
     public function removeSiteActiviy(SiteActivity $siteActivity)
     {
+        $siteActivity->removeSite($this);
         $this->siteActivities->removeElement($siteActivity);
     }
 
@@ -595,6 +599,7 @@ class Site
      */
     public function addDangerousSubstance(DangerousSubstance $dangerousSubstance)
     {
+        $dangerousSubstance->addSite($this);
         $this->dangerousSubstances[] = $dangerousSubstance;
 
         return $this;
@@ -607,6 +612,7 @@ class Site
      */
     public function removeDangerousSubstance(DangerousSubstance $dangerousSubstance)
     {
+        $dangerousSubstance->removeSite($this);
         $this->dangerousSubstances->removeElement($dangerousSubstance);
     }
 
@@ -661,6 +667,7 @@ class Site
      */
     public function addContact(Contact $contact)
     {
+        $contact->addSite($this);
         $this->contacts[] = $contact;
 
         return $this;
@@ -673,6 +680,7 @@ class Site
      */
     public function removeContact(Contact $contact)
     {
+        $contact->removeSite($this);
         $this->contacts->removeElement($contact);
     }
 

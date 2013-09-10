@@ -270,6 +270,7 @@ class Item
      */
     public function addIndicator(Indicator $indicator)
     {
+        $indicator->addItem($this);
         $this->indicators[] = $indicator;
 
         return $this;
@@ -282,6 +283,7 @@ class Item
      */
     public function removeIndicator(Indicator $indicator)
     {
+        $indicator->removeItem($this);
         $this->indicators->removeElement($indicator);
     }
 

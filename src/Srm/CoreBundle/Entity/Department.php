@@ -260,6 +260,7 @@ class Department
      */
     public function addSite(Site $site)
     {
+        $site->addDepartment($this);
         $this->sites[] = $site;
 
         return $this;
@@ -272,6 +273,7 @@ class Department
      */
     public function removeSite(Site $site)
     {
+        $site->removeDepartment($this);
         $this->sites->removeElement($site);
     }
 
@@ -326,6 +328,7 @@ class Department
      */
     public function addContact(Contact $contact)
     {
+        $contact->addDepartment($this);
         $this->contacts[] = $contact;
 
         return $this;
@@ -338,6 +341,7 @@ class Department
      */
     public function removeContact(Contact $contact)
     {
+        $contact->removeDepartment($this);
         $this->contacts->removeElement($contact);
     }
 
@@ -359,6 +363,7 @@ class Department
      */
     public function addSubDepartment(SubDepartment $subDepartment)
     {
+        $subDepartment->addDepartment($this);
         $this->subDepartments[] = $subDepartment;
 
         return $this;
@@ -371,6 +376,7 @@ class Department
      */
     public function removeSubDepartment(SubDepartment $subDepartment)
     {
+        $subDepartment->removeDepartment($this);
         $this->subDepartments->removeElement($subDepartment);
     }
 
