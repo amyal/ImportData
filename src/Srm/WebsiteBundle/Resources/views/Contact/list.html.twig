@@ -37,7 +37,6 @@
 				                    <td>{{ 'address.city'|trans }}</td>
 				                    <td>{{ 'phone.office'|trans }}</td>
 				                    <td>{{ 'email'|trans }}</td>
-				                    <td>{{ 'role'|trans }}</td>
 				                    <td>{{ 'contact.enabled'|trans }}</td>
 				                    <td></td>
 				                </tr>
@@ -51,7 +50,6 @@
                                         <td>{% if contact.address %}{{ contact.address.zip.city.label }}{% endif %}</td>
                                         <td>{{ contact.officePhone }}</td>
                                         <td>{{ contact.mail }}</td>
-                                        <td>{% if contact.role %}{{ contact.role.label }}{% endif %}</td>
                                         <td>
                                             {% if contact.enabled %}
                                                 {{ 'enabled'|trans }}
@@ -70,7 +68,7 @@
                                         </td>
                                     </tr>
                                 {% else %}
-                                    <tr class="info"><td colspan="9">{{ 'contacts.list.empty'|trans }}</td></tr>
+                                    <tr class="info"><td colspan="8">{{ 'contacts.list.empty'|trans }}</td></tr>
                                 {% endfor %}
                             </tbody>
                         </table>
