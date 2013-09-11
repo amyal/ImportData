@@ -16,7 +16,7 @@
         {% endblock %}
 
         <link href="{{ asset('bundles/srmwebsite/css/font-awesome.css') }}" rel="stylesheet">
-        
+
     </head>
     <body>
         {% block body %}
@@ -28,14 +28,14 @@
 
                         <!-- ? -->
                         <ul class="nav pull-right">
-                            <li class="toggle-primary-sidebar hidden-desktop" 
-                                data-toggle="collapse" 
+                            <li class="toggle-primary-sidebar hidden-desktop"
+                                data-toggle="collapse"
                                 data-target=".nav-collapse-primary">
                                 <button type="button" class="btn btn-navbar"><i class="icon-th-list"></i></button>
                             </li>
 
-                            <li class="hidden-desktop" 
-                                data-toggle="collapse" 
+                            <li class="hidden-desktop"
+                                data-toggle="collapse"
                                 data-target=".nav-collapse-top">
                                 <button type="button" class="btn btn-navbar"><i class="icon-align-justify"></i></button>
                             </li>
@@ -107,13 +107,11 @@
                         <a  {% if identificationCode is defined %}
                             href="{{ path('srm_website_organisation_index', { 'identificationCode': identificationCode }) }}"
                         {% elseif organisation is defined %}
-                            href="{{ path('srm_website_organisation_index', { 'identificationCode': organisation.organisationId }) }}"
-                        {% else %}
-                            href="{{ path('srm_website_organisation_index', { 'identificationCode': organisationId }) }}"
+                            href="{{ path('srm_website_organisation_index', { 'identificationCode': organisation.identificationCode }) }}"
                         {% endif %}>
                             <i class="icon-home icon-2x"></i><span>{{ 'home'|trans }}</span>
                         </a>
-                    </li>        
+                    </li>
 
                     <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal','srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit','srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit','srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}active{% endif %}">
                         <span class="glow"></span>
@@ -131,12 +129,12 @@
                                     {% else %}
                                         href="{{ path('srm_website_organisation_show', { 'identificationCode': organisationId }) }}"
                                     {% endif %}>
-                                    <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }} 
+                                    <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }}
                                 </a>
                             </li>
                             <li class="#">
                                 <a href="#">
-                                    <i class="icon-resize-vertical"></i> {{ 'configuration.nav.property'|trans }} 
+                                    <i class="icon-resize-vertical"></i> {{ 'configuration.nav.property'|trans }}
                                 </a>
                             </li>
                             <li class="{% if app.request.attributes.get('_route') in ['srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit'] %}active{% endif %}">
@@ -147,7 +145,7 @@
                                     {% else %}
                                         href="{{ path('srm_website_sites_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
-                                    <i class="icon-building"></i> {{ 'sites.list.title'|trans }} 
+                                    <i class="icon-building"></i> {{ 'sites.list.title'|trans }}
                                 </a>
                             </li>
                             <li class="{% if app.request.attributes.get('_route') in ['srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit'] %}active{% endif %}">
@@ -158,9 +156,9 @@
                                     {% else %}
                                         href="{{ path('srm_website_departments_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
-                                    <i class="icon-sitemap"></i> {{ 'departments.list.title'|trans }} 
+                                    <i class="icon-sitemap"></i> {{ 'departments.list.title'|trans }}
                                 </a>
-                            </li>  
+                            </li>
                             <li class="{% if app.request.attributes.get('_route') in ['srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}active{% endif %}">
                                 <a  {% if organisation is defined %}
                                         href="{{ path('srm_website_poles_list', { 'organisationId': organisation.organisationId }) }}"
@@ -169,9 +167,9 @@
                                     {% else %}
                                         href="{{ path('srm_website_poles_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
-                                    <i class="icon-circle-blank"></i> {{ 'poles.list.title'|trans }} 
+                                    <i class="icon-circle-blank"></i> {{ 'poles.list.title'|trans }}
                                 </a>
-                            </li>  
+                            </li>
                         </ul>
                     </li>
 
@@ -255,7 +253,7 @@
                             </li>
                         </ul>
                     </li>
-                
+
                     <li class="dark-nav ">
                         <span class="glow"></span>
                         <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown5">
@@ -275,7 +273,7 @@
                             </li>
                         </ul>
                     </li>
-                
+
                     <li class="dark-nav ">
                         <span class="glow"></span>
                         <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown6">
