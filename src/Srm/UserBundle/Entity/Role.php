@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\CoreBundle\Entity;
+namespace Srm\UserBundle\Entity;
 
 /**
  * Role

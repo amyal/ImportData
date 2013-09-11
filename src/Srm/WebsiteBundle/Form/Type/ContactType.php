@@ -46,7 +46,7 @@ class ContactType extends AbstractType
             ->add('parts', 'text', array('label' => 'shareholder.parts'))
 
             ->add('role', 'entity', array(
-                'class'    => 'Srm\CoreBundle\Entity\Role',
+                'class'    => 'Srm\UserBundle\Entity\Role',
                 'property' => 'label',
                 'label'    => 'role',
                 'required' => true,
