@@ -22,21 +22,27 @@ class User extends BaseUser
     private $deleted;
 
     /**
-     * @var integer
-     */
-    private $userId;
-
-    /**
      * @var \Srm\UserBundle\Entity\Role
      */
     private $role;
+
+    /**
+     * @var integer
+     */
+    protected $id;
 
 
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct($id = null)
     {
+        parent::__construct();
+
+        if (null !== $id) {
+            $this->id = $id;
+        }
+
         $this->creationDate = new \DateTime();
         $this->deleted = false;
     }
@@ -50,6 +56,7 @@ class User extends BaseUser
     public function setRole(Role $role = null)
     {
         $this->role = $role;
+        $this->addRole($role->getRoleType());
 
         return $this;
     }
