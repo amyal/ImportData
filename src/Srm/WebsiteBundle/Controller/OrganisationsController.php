@@ -9,7 +9,14 @@ use Srm\CoreBundle\Entity\Organisation;
 
 class OrganisationsController extends Controller
 {
-    public function showAction(Organisation $organisation)
+    public function indexAction(Organisation $organisation)
+    {
+        return $this->render('SrmWebsiteBundle:Organisation:index.html.twig', array(
+            'organisation' => $organisation
+        ));
+    }
+	
+	public function showAction(Organisation $organisation)
     {
         if (null === $legalForm = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneByOrganisation($organisation)) {
             throw new \Exception(sprintf("Aucune information légale pour l'organisation [%s]", $organisation->getIdentificationCode()));

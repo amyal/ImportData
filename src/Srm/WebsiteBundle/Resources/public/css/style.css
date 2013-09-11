@@ -1,0 +1,90 @@
+.padded-box {
+	padding: 4px 15px;
+}
+
+.padded-box .control-group {
+	margin: 0;
+}
+
+.padded-box .control-group:before, .padded-box .control-group:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+
+.padded-box .control-group:after {
+    clear: both;
+}
+
+.padded-box .control-group:before, .padded-box .control-group:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+
+.padded-box .control-group:last-child {
+    margin-bottom: 0;
+}
+
+.padded-box .control-label {
+    float: left;
+    text-align: right;
+    width: 190px;
+}
+
+.padded-box .controls {
+    margin-left: 210px;
+    margin-top: 1px;
+}
+
+.box-toolbar a.spacer {
+	margin-right: 3px;
+}
+
+.table thead td i {
+	margin-right: 5px;
+}
+
+.box .form-actions {
+	margin-top: 0;
+	padding: 12px 20px;
+}
+
+.box .form-actions button {
+	margin-right: 2px;
+}
+
+.modal-footer {
+	padding: 7px 13px;
+}
+
+.padded-box .icheckbox_flat-aero {
+    margin-top: 4px;
+}
+
+.padded-box .checkbox .icheckbox_flat-aero {
+    margin-top: 0;
+    margin-right: 5px;
+}
+
+.space-box {
+    margin-top: 15px;
+}
+
+.space-box2 {
+    margin-top: 8px;
+}
+
+.subtitle-box {
+    color: #6DA7CB;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #CDCDCD; 
+    margin-bottom: 5px;
+    padding: 0 0 2px 10px;
+}
+
+.sub-activity-label {
+    color:#81C6EB;
+    font-weight:bold
+}

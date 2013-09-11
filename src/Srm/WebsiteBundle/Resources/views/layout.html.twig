@@ -5,23 +5,342 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}SRM{% endblock %}</title>
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800">
         {% block stylesheets %}
             {% stylesheets filter="cssrewrite" combine=true output="css/all.css"
-                "bundles/srmwebsite/vendor/bootstrap/css/bootstrap.min.css"
-                "bundles/srmwebsite/css/*"
+                "bundles/srmwebsite/css/application.css"
+                "bundles/srmwebsite/css/style.css"
             %}
                 <link rel="stylesheet" href="{{ asset_url }}"  media="screen"/>
             {% endstylesheets %}
         {% endblock %}
+
+        <link href="{{ asset('bundles/srmwebsite/css/font-awesome.css') }}" rel="stylesheet">
+        
     </head>
     <body>
         {% block body %}
-            <div class="container-fluid">
-                <div class="row-fluid">
-                    <div class="span2">
-                        {% block nav '' %}
+            <div class="navbar navbar-top navbar-inverse">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <!-- Logo -->
+                        <a class="brand" href="dashboard.html#">Verseo SRM</a>
+
+                        <!-- ? -->
+                        <ul class="nav pull-right">
+                            <li class="toggle-primary-sidebar hidden-desktop" 
+                                data-toggle="collapse" 
+                                data-target=".nav-collapse-primary">
+                                <button type="button" class="btn btn-navbar"><i class="icon-th-list"></i></button>
+                            </li>
+
+                            <li class="hidden-desktop" 
+                                data-toggle="collapse" 
+                                data-target=".nav-collapse-top">
+                                <button type="button" class="btn btn-navbar"><i class="icon-align-justify"></i></button>
+                            </li>
+                        </ul>
+
+                        <!-- Header Profil container -->
+                        <div class="nav-collapse nav-collapse-top collapse">
+                            <ul class="nav full pull-right">
+                                <li class="dropdown user-avatar">
+                                    <!-- Visible -->
+                                    <a href="dashboard.html#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span>
+                                            <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> <span>John Smith <i class="icon-caret-down"></i></span>
+                                            <!--<span class="badge badge-dark-red">5</span>-->
+                                        </span>
+                                    </a>
+
+                                    <!-- Dropdown -->
+                                    <ul class="dropdown-menu">
+                                        <li class="with-image">
+                                            <div class="avatar">
+                                                <img src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" />
+                                            </div>
+                                            <span>John Smith</span>
+                                        </li>
+                                        <li class="divider"></li>
+
+                                        <li><a href="#">
+                                                <i class="icon-user"></i> <span>{{ 'header.profile.profile'|trans }}</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-cog"></i> <span>{{ 'header.profile.settings'|trans }} </span>
+                                            </a>
+                                        </li>
+                                        <li><a href="#">
+                                                <i class="icon-envelope"></i> <span>{{ 'header.profile.message'|trans }} </span>
+                                            </a>
+                                        </li>
+                                        <li><a href="#">
+                                                <i class="icon-off"></i> <span>{{ 'header.profile.logout'|trans }} </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <!-- Header search -->
+                            <form class="navbar-search pull-right">
+                                <input type="text" class="search-query animated" placeholder="{{ 'header.profile.search'|trans }} ">
+                                <i class="icon-search"></i>
+                            </form>
+                        </div>
                     </div>
-                    <div class="span10">
+                </div>
+            </div>
+
+            <!-- ? -->
+            <div class="sidebar-background">
+                <div class="primary-sidebar-background"></div>
+            </div>
+
+            <!-- Side Bar nav -->
+            <div class="primary-sidebar">
+                <ul class="nav nav-collapse collapse nav-collapse-primary">
+                    <li class="">
+                        <span class="glow"></span>
+                        <a  {% if identificationCode is defined %}
+                            href="{{ path('srm_website_organisation_index', { 'identificationCode': identificationCode }) }}"
+                        {% elseif organisation is defined %}
+                            href="{{ path('srm_website_organisation_index', { 'identificationCode': organisation.organisationId }) }}"
+                        {% else %}
+                            href="{{ path('srm_website_organisation_index', { 'identificationCode': organisationId }) }}"
+                        {% endif %}>
+                            <i class="icon-home icon-2x"></i><span>{{ 'home'|trans }}</span>
+                        </a>
+                    </li>        
+
+                    <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal','srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit','srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit','srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}active{% endif %}">
+                        <span class="glow"></span>
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown1">
+                            <i class="icon-cogs icon-2x"></i>
+                            <span>{{ 'configuration.nav'|trans }}  <i class="icon-caret-down"></i></span>
+                        </a>
+                        <ul id="dropdown1" class="collapse {% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal','srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit','srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit','srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}in{% endif %}">
+
+                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal'] %}active{% endif %}">
+                                <a  {% if identificationCode is defined %}
+                                        href="{{ path('srm_website_organisation_show', { 'identificationCode': identificationCode }) }}"
+                                    {% elseif organisation is defined %}
+                                        href="{{ path('srm_website_organisation_show', { 'identificationCode': organisation.organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_website_organisation_show', { 'identificationCode': organisationId }) }}"
+                                    {% endif %}>
+                                    <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }} 
+                                </a>
+                            </li>
+                            <li class="#">
+                                <a href="#">
+                                    <i class="icon-resize-vertical"></i> {{ 'configuration.nav.property'|trans }} 
+                                </a>
+                            </li>
+                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit'] %}active{% endif %}">
+                                <a  {% if organisation is defined %}
+                                        href="{{ path('srm_website_sites_list', { 'organisationId': organisation.organisationId }) }}"
+                                    {% elseif organisationId is defined %}
+                                        href="{{ path('srm_website_sites_list', { 'organisationId': organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_website_sites_list', { 'organisationId': identificationCode }) }}"
+                                    {% endif %}>
+                                    <i class="icon-building"></i> {{ 'sites.list.title'|trans }} 
+                                </a>
+                            </li>
+                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit'] %}active{% endif %}">
+                                <a  {% if organisation is defined %}
+                                        href="{{ path('srm_website_departments_list', { 'organisationId': organisation.organisationId }) }}"
+                                    {% elseif organisationId is defined %}
+                                        href="{{ path('srm_website_departments_list', { 'organisationId': organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_website_departments_list', { 'organisationId': identificationCode }) }}"
+                                    {% endif %}>
+                                    <i class="icon-sitemap"></i> {{ 'departments.list.title'|trans }} 
+                                </a>
+                            </li>  
+                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}active{% endif %}">
+                                <a  {% if organisation is defined %}
+                                        href="{{ path('srm_website_poles_list', { 'organisationId': organisation.organisationId }) }}"
+                                    {% elseif organisationId is defined %}
+                                        href="{{ path('srm_website_poles_list', { 'organisationId': organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_website_poles_list', { 'organisationId': identificationCode }) }}"
+                                    {% endif %}>
+                                    <i class="icon-circle-blank"></i> {{ 'poles.list.title'|trans }} 
+                                </a>
+                            </li>  
+                        </ul>
+                    </li>
+
+                    <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_user_show','srm_website_user_edit'] %}active{% endif %}">
+                        <span class="glow"></span>
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown2">
+                            <i class="icon-user icon-2x"></i>
+                            <span>{{ 'contacts.list.title'|trans }} <i class="icon-caret-down"></i></span>
+                        </a>
+                        <ul id="dropdown2" class="collapse {% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_user_show','srm_website_contact_edit'] %}in{% endif %}">
+                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_contact_show','srm_website_user_edit'] %}active{% endif %}">
+                                <a  {% if organisation is defined %}
+                                        href="{{ path('srm_website_contacts_list', { 'organisationId': organisation.organisationId }) }}"
+                                    {% elseif organisationId is defined %}
+                                        href="{{ path('srm_website_contacts_list', { 'organisationId': organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_website_contacts_list', { 'organisationId': identificationCode }) }}"
+                                    {% endif %}>
+                                    <i class="icon-group"></i> {{ 'contacts.nav.general'|trans }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-user-md"></i> {{ 'role'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dark-nav ">
+                        <span class="glow"></span>
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown3">
+                            <i class="icon-hand-right icon-2x"></i>
+                            <span>{{ 'indicator.nav'|trans }} <i class="icon-caret-down"></i></span>
+                        </a>
+                        <ul id="dropdown3" class="collapse ">
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-list-alt"></i> {{ 'indicator.nav.activate'|trans }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-reorder"></i> {{ 'indicator.nav.control'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dark-nav ">
+                        <span class="glow"></span>
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown4">
+                            <i class="icon-table icon-2x"></i>
+                            <span>{{ 'data.nav'|trans }} <i class="icon-caret-down"></i></span>
+                        </a>
+                        <ul id="dropdown4" class="collapse ">
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-bell-alt"></i> {{ 'data.nav.alert'|trans }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-pencil"></i> {{ 'data.nav.saissie'|trans }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-paper-clip"></i> {{ 'data.nav.doc'|trans }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-download-alt"></i> {{ 'data.nav.import'|trans }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-edit"></i> {{ 'data.nav.edit'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                
+                    <li class="dark-nav ">
+                        <span class="glow"></span>
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown5">
+                            <i class="icon-eye-open icon-2x"></i>
+                            <span>{{ 'monitoring.nav'|trans }} <i class="icon-caret-down"></i></span>
+                        </a>
+                        <ul id="dropdown5" class="collapse ">
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-dashboard"></i> {{ 'monitoring.nav.dashboard'|trans }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-book"></i> {{ 'monitoring.nav.report'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                
+                    <li class="dark-nav ">
+                        <span class="glow"></span>
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown6">
+                            <i class="icon-exchange icon-2x"></i>
+                            <span>{{ 'external.nav'|trans }} <i class="icon-caret-down"></i></span>
+                        </a>
+                        <ul id="dropdown6" class="collapse ">
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-briefcase"></i> {{ 'external.nav.partie'|trans }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-link"></i> {{ 'external.nav.chaine'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dark-nav ">
+                        <span class="glow"></span>
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown7">
+                            <i class="icon-certificate icon-2x"></i>
+                            <span>{{ 'advanced.nav'|trans }} <i class="icon-caret-down"></i></span>
+                        </a>
+                        <ul id="dropdown7" class="collapse ">
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-hand-up"></i> Sub Menu
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main Container -->
+            <div class="main-content">
+                <div class="container-fluid">
+                    <div class="row-fluid">
+
+                        <!-- Header -->
+                        <div class="area-top clearfix">
+                            <div class="pull-left header">
+                                <h3 class="title">
+                                    {% block main_container_header '' %}
+                                </h3>
+                            </div>
+                        </div>
+
+
+                        <!-- Fil d'arianne -->
+                        <div class="container-fluid padded">
+                            <div class="row-fluid">
+                                <div id="breadcrumbs">
+                                    <div class="breadcrumb-button blue">
+                                        <span class="breadcrumb-label">Accueil</span>
+                                        <span class="breadcrumb-arrow"><span></span></span>
+                                    </div>
+                                    {% block breadcrumb '' %}
+                                </div>
+                            </div>
+                        </div>
+
                         {% block content '' %}
                     </div>
                 </div>
@@ -30,8 +349,6 @@
 
         {% block javascripts %}
             {% javascripts combine=true output="js/all.js"
-                "bundles/srmwebsite/vendor/jquery-1.10.2.min.js"
-                "bundles/srmwebsite/vendor/bootstrap/js/bootstrap.min.js"
                 "bundles/srmwebsite/js/*"
             %}
                 <script src="{{ asset_url }}"></script>

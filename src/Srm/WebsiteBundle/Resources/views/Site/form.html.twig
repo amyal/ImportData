@@ -1,68 +1,138 @@
 {% extends '@SrmWebsite/layout.html.twig' %}
 
+{% block main_container_header %}
+    <i class="icon-building"></i> {{ 'sites.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'sites.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
 {% block content %}
-    <div>
-        {{ form_start(form) }}
-            {{ form_errors(form) }}
-
-            {{ form_row(form.label) }}
-            {{ form_row(form.typeSite) }}
-
-            <fieldset>
-                <legend>{{ 'sites.list.activities'|trans }}</legend>
-                {{ form_errors(form.siteActivities) }}
-
-                {% for siteActivity in form.siteActivities %}
-                    <div class="control-group">
-                        <label class="control-label">{{ siteActivity.vars.label|trans }}</label>
-                        <div class="controls">
-                            {% if subActivities[siteActivity.vars.value] is defined %}
-                                {% for subSiteActivity in form.subSiteActivities %}
-                                    {% if subActivities[siteActivity.vars.value] is defined %}
-                                        {% if subSiteActivity.vars.value in subActivities[siteActivity.vars.value] %}
-                                            {{ form_row(subSiteActivity) }}
-                                        {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-                            {% else %}
-                                {{ form_widget(siteActivity) }}
-                            {% endif %}
-                        </div>
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title"> {{ 'sites.list.title'|trans }} </span>
                     </div>
-                {% endfor %}
-            </fieldset>
 
-            {{ form_row(form.contacts) }}
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
+                        {{ form_errors(form) }}
 
-            {{ form_row(form.dangerousSubstances) }}
+                        <div class="box-content padded">
+                            <div class="padded-box">
+                                <div class="control-group">
+                                    {{ form_label(form.label) }}
+                                    <div class="controls">{{ form_widget(form.label) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.typeSite) }}
+                                    <div class="controls">{{ form_widget(form.typeSite, {'attr': {'class': 'chzn-select'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.label) }}
+                                    <div class="controls">{{ form_widget(form.address.label) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.zip.code) }}
+                                    <div class="controls">{{ form_widget(form.address.zip.code) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.zip.city) }}
+                                    <div class="controls">{{ form_widget(form.address.zip.city, {'attr': {'class': 'chzn-select'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.zip.country) }}
+                                    <div class="controls">{{ form_widget(form.address.zip.country, {'attr': {'class': 'chzn-select'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.phone) }}
+                                    <div class="controls">{{ form_widget(form.phone) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.fax) }}
+                                    <div class="controls">{{ form_widget(form.fax) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.mail) }}
+                                    <div class="controls">{{ form_widget(form.mail) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.importance) }}
+                                    <div class="controls">{{ form_widget(form.importance) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.currency) }}
+                                    <div class="controls">{{ form_widget(form.currency, {'attr': {'class': 'chzn-select'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.language) }}
+                                    <div class="controls">{{ form_widget(form.language, {'attr': {'class': 'chzn-select'}}) }}</div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>
+                                    <div class="controls">
+                                        {{ form_widget(form.enabled, {'attr': {'class': 'icheck'}}) }}
+                                    </div>
+                                </div>
+                            </div>
 
-            {#{{ form_row(form.products) }}#}
-            {{ form_row(form.importance) }}
-            {{ form_row(form.currency) }}
-            {{ form_row(form.language) }}
+                            <div class="padded-box space-box2">
+                                <div class="control-group">
+                                    {{ form_label(form.contacts) }}
+                                    <div class="controls">{{ form_widget(form.contacts, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.dangerousSubstances) }}
+                                    <div class="controls">{{ form_widget(form.dangerousSubstances, {'attr': {'class': 'icheck'}}) }}</div>
+                                </div>
+                            </div>
 
-            {{ form_row(form.address.label) }}
-            {{ form_row(form.address.zip.code) }}
-            {{ form_row(form.address.zip.city) }}
-            {{ form_row(form.address.zip.country) }}
+                            <div class="padded-box space-box">
+                                <div class="subtitle-box">{{ 'sites.list.activities'|trans }}</div>
+                                {% for siteActivity in form.siteActivities %}
+                                    <div class="control-group">
+                                        <label class="control-label sub-activity-label">{{ siteActivity.vars.label|trans }}</label>
+                                        <div class="controls">
+                                            {% if subActivities[siteActivity.vars.value] is defined %}
+                                                {% for subSiteActivity in form.subSiteActivities %}
+                                                    {% if subActivities[siteActivity.vars.value] is defined %}
+                                                        {% if subSiteActivity.vars.value in subActivities[siteActivity.vars.value] %}
+                                                            {{ form_row(subSiteActivity, {'attr': {'class': 'icheck'}}) }}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                {{ form_widget(siteActivity, {'attr': {'class': 'icheck'}}) }}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}  
+                            </div>
+                        </div>
 
-            {{ form_row(form.phone) }}
-            {{ form_row(form.fax) }}
-            {{ form_row(form.mail) }}
+                        {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+                            save_form: form.save,
+                            url_cancel: path('srm_website_sites_list', {'organisationId': organisationId})
+                        }, with_context = false) }}
 
-            <div class="control-group">
-                <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>
-                <div class="controls">
-                    {{ form_widget(form.enabled) }}
+                        <div class="hide">
+                            {{ form_widget(form._token) }}
+                            {{ form_rest(form) }}
+                        </div>
+                    {{ form_end(form) }}
                 </div>
             </div>
-
-            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
-                save_form: form.save,
-                url_cancel: path('srm_website_sites_list', {'organisationId': organisationId})
-            }, with_context = false) }}
-
-            {{ form_widget(form._token) }}
-        </form>
+        </div>
     </div>
+
 {% endblock %}

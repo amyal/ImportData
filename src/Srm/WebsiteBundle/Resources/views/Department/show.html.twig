@@ -1,19 +1,55 @@
 {% extends '@SrmWebsite/layout.html.twig' %}
 
-{% block content %}
-    <div>
-        <fieldset>
-            <legend>{{ department.label }}</legend>
-            <ul class="unstyled">
-                <li>{{ 'department.label'|trans }} : {{ department.label }}</li>
-                <li>{{ 'departments.list.sub_departments'|trans }} : {% if department.subDepartments %}{{ department.subDepartments|joinLabels(', ') }}{% else %}-{% endif %}</li>
-                <li>{{ 'departments.list.contacts'|trans }} : {% if department.contacts %}{{ department.contacts|joinLabels(', ') }}{% else %}-{% endif %}</li>
-            </ul>
-        </fieldset>
+{% block main_container_header %}
+    <i class="icon-sitemap"></i> {{ 'departments.list.title'|trans }}
+{% endblock %}
 
-        {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
-            url_edit:   path('srm_website_department_edit',  {'organisationId': organisationId, 'departmentId': department.departmentId}),
-            url_cancel: path('srm_website_departments_list', {'organisationId': organisationId})
-        }, with_context = false) }}
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'departments.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title">  {{ department.label }} </span>
+                    </div>
+                    <div class="box-content padded">
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'department.label'|trans }} :</label>
+                                <div class="controls">{{ department.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'departments.list.sub_departments'|trans }} : </label>
+                                <div class="controls">
+                                    {% if department.subDepartments %}{{ department.subDepartments|joinLabels(', ') }}{% else %}-{% endif %}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'departments.list.users'|trans }} :</label>
+                                <div class="controls">
+                                    {% if department.contacts %}{{ department.contacts|joinLabels(', ') }}{% else %}-{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
+                        url_edit:   path('srm_website_department_edit',  {'organisationId': organisationId, 'departmentId': department.departmentId}),
+                        url_cancel: path('srm_website_departments_list', {'organisationId': organisationId})
+                    }, with_context = false) }}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
