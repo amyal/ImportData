@@ -28,7 +28,6 @@
                         </ul>
                     </div>
                     <div class="box-content">
-
 						<table class="table table-normal">
 			            	<thead>
 				                <tr>
@@ -36,44 +35,46 @@
 				                    <td>{{ 'contact.firstname'|trans }}</td>
 				                    <td>{{ 'contact.function'|trans }}</td>
 				                    <td>{{ 'address.city'|trans }}</td>
-				                    <td>{{ 'contact.phone.office'|trans }}</td>
+				                    <td>{{ 'phone.office'|trans }}</td>
 				                    <td>{{ 'email'|trans }}</td>
-				                    <td>{{ 'role'|trans }}</td>
 				                    <td>{{ 'contact.enabled'|trans }}</td>
 				                    <td></td>
 				                </tr>
 				            </thead>
-			            <tbody>
-                {% for contact in contacts %}
-                    <tr>
-                        <td>{{ contact.lastname }}</td>
-                        <td>{{ contact.firstname }}</td>
-                        <td>{{ contact.contactFunction }}</td>
-                        <td>{% if contact.address %}{{ contact.address.zip.city.label }}{% endif %}</td>
-                        <td>{{ contact.officePhone }}</td>
-                        <td>{{ contact.mail }}</td>
-                        <td>{% if contact.role %}{{ contact.role.label }}{% endif %}</td>
-                        <td>
-                            {% if contact.enabled %}
-                                {{ 'enabled'|trans }}
-                            {% else %}
-                                {{ 'disabled'|trans }}
-                            {% endif %}
-                        </td>
-                        <td>
-                            <div class="btn-toolbar">
-                                <div class="btn-group">
-                                    <a href="{{ path('srm_website_contact_show', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
-                                    <a href="{{ path('srm_website_contact_edit', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                    <a href="{{ path('srm_website_contact_disable', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr class="info"><td colspan="9">{{ 'contacts.list.empty'|trans }}</td></tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    			            <tbody>
+                                {% for contact in contacts %}
+                                    <tr>
+                                        <td>{{ contact.lastname }}</td>
+                                        <td>{{ contact.firstname }}</td>
+                                        <td>{{ contact.contactFunction }}</td>
+                                        <td>{% if contact.address %}{{ contact.address.zip.city.label }}{% endif %}</td>
+                                        <td>{{ contact.officePhone }}</td>
+                                        <td>{{ contact.mail }}</td>
+                                        <td>
+                                            {% if contact.enabled %}
+                                                {{ 'enabled'|trans }}
+                                            {% else %}
+                                                {{ 'disabled'|trans }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-toolbar">
+                                                <div class="btn-group">
+                                                    <a href="{{ path('srm_website_contact_show', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
+                                                    <a href="{{ path('srm_website_contact_edit', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                                    <a href="{{ path('srm_website_contact_disable', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr class="info"><td colspan="8">{{ 'contacts.list.empty'|trans }}</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

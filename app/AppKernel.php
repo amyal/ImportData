@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
 
             new Srm\CoreBundle\SrmCoreBundle(),
+            new Srm\UserBundle\SrmUserBundle(),
             new Srm\WebsiteBundle\SrmWebsiteBundle(),
         );
 

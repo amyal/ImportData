@@ -49,6 +49,6 @@ doctrine:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: Srm\CoreBundle\Entity\Contact
+    user_class: Srm\UserBundle\Entity\User
     service:
         mailer: fos_user.mailer.noop

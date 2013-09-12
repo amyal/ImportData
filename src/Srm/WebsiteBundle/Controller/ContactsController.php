@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Srm\CoreBundle\Entity\Contact;
 use Srm\CoreBundle\Entity\Organisation;
+use Srm\UserBundle\Entity\User;
 
 class ContactsController extends Controller
 {
@@ -14,6 +15,14 @@ class ContactsController extends Controller
         return $this->render('SrmWebsiteBundle:Contact:list.html.twig', array(
             'organisation' => $organisation,
             'contacts'     => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Contact')->findNonDeletedByOrganisation($organisation),
+        ));
+    }
+
+    public function showAction(Organisation $organisation, Contact $contact)
+    {
+        return $this->render('SrmWebsiteBundle:Contact:show.html.twig', array(
+            'organisationId' => $organisation->getOrganisationId(),
+            'contact'        => $contact,
         ));
     }
 
@@ -64,6 +73,14 @@ class ContactsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($contact);
         $em->flush();
+
+        if (true === $contact->getIsUser()) {
+            $user = new User($contact->getContactId());
+            $user->setRole($this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Role')->findOneByRoleType('ROLE_U'));
+
+            $em->persist($user);
+            $em->flush();
+        }
 
         return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
             'organisationId' => $organisation->getOrganisationId(),

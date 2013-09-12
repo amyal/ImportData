@@ -2,7 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Srm\CoreBundle\Entity\Contact" table="v_contact" repository-class="Srm\CoreBundle\Repository\ContactRepository">
     <id name="contactId" type="integer" column="CONTACT_ID">
-      <generator strategy="IDENTITY"/>
+      <generator strategy="AUTO"/>
     </id>
     <field name="firstname" type="string" column="FIRSTNAME" length="100" nullable="false"/>
     <field name="lastname" type="string" column="LASTNAME" length="100" nullable="true"/>
@@ -26,11 +26,6 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-one field="role" target-entity="Role">
-      <join-columns>
-        <join-column name="ROLE_ID" referenced-column-name="ROLE_ID"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="gender" target-entity="Gender">
       <join-columns>
         <join-column name="GENDER_ID" referenced-column-name="GENDER_ID"/>

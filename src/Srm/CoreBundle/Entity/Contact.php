@@ -123,11 +123,6 @@ class Contact
     private $contactId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Role
-     */
-    private $role;
-
-    /**
      * @var \Srm\CoreBundle\Entity\Gender
      */
     private $gender;
@@ -693,29 +688,6 @@ class Contact
     public function getContactId()
     {
         return $this->contactId;
-    }
-
-    /**
-     * Set role
-     *
-     * @param \Srm\CoreBundle\Entity\Role $role
-     * @return Contact
-     */
-    public function setRole(Role $role = null)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return \Srm\CoreBundle\Entity\Role
-     */
-    public function getRole()
-    {
-        return $this->role;
     }
 
     /**
