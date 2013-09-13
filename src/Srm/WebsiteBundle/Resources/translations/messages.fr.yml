@@ -108,6 +108,7 @@ configuration.nav: "Configuration"
 configuration.nav.info: "Informations générales"
 configuration.nav.property: "Propriétés"
 
+header.profile.connect: "Connexion"
 header.profile.profile: "Informations"
 header.profile.logout: "Déconnexion"
 header.profile.message: "Messages"
