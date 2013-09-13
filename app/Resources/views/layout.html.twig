@@ -9,14 +9,12 @@
         {% block stylesheets %}
             {% stylesheets filter="cssrewrite" combine=true output="css/all.css"
                 "bundles/srmwebsite/css/application.css"
+                "bundles/srmwebsite/css/font-awesome.css"
                 "bundles/srmwebsite/css/style.css"
             %}
                 <link rel="stylesheet" href="{{ asset_url }}"  media="screen"/>
             {% endstylesheets %}
         {% endblock %}
-
-        <link href="{{ asset('bundles/srmwebsite/css/font-awesome.css') }}" rel="stylesheet">
-
     </head>
     <body>
         {% block body %}
@@ -45,42 +43,32 @@
                         <div class="nav-collapse nav-collapse-top collapse">
                             <ul class="nav full pull-right">
                                 <li class="dropdown user-avatar">
-                                    <!-- Visible -->
-                                    <a href="dashboard.html#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <span>
-                                            <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> <span>John Smith <i class="icon-caret-down"></i></span>
-                                            <!--<span class="badge badge-dark-red">5</span>-->
-                                        </span>
-                                    </a>
+                                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                        <!-- Visible -->
+                                        <a href="dashboard.html#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span>
+                                                <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> <span>{{ app.user.username }} <i class="icon-caret-down"></i></span>
+                                                <!--<span class="badge badge-dark-red">5</span>-->
+                                            </span>
+                                        </a>
 
-                                    <!-- Dropdown -->
-                                    <ul class="dropdown-menu">
-                                        <li class="with-image">
-                                            <div class="avatar">
-                                                <img src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" />
-                                            </div>
-                                            <span>John Smith</span>
-                                        </li>
-                                        <li class="divider"></li>
-
-                                        <li><a href="#">
-                                                <i class="icon-user"></i> <span>{{ 'header.profile.profile'|trans }}</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="icon-cog"></i> <span>{{ 'header.profile.settings'|trans }} </span>
-                                            </a>
-                                        </li>
-                                        <li><a href="#">
-                                                <i class="icon-envelope"></i> <span>{{ 'header.profile.message'|trans }} </span>
-                                            </a>
-                                        </li>
-                                        <li><a href="#">
-                                                <i class="icon-off"></i> <span>{{ 'header.profile.logout'|trans }} </span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                        <!-- Dropdown -->
+                                        <ul class="dropdown-menu">
+                                            <li class="with-image">
+                                                <div class="avatar">
+                                                    <img src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" />
+                                                </div>
+                                                <span>{{ app.user.username }}</span>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-user"></i> <span>{{ 'header.profile.profile'|trans }}</span></a></li>
+                                            <li><a href="#"><i class="icon-cog"></i> <span>{{ 'header.profile.settings'|trans }} </span></a></li>
+                                            <li><a href="#"><i class="icon-envelope"></i> <span>{{ 'header.profile.message'|trans }} </span></a></li>
+                                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="icon-off"></i> <span>{{ 'header.profile.logout'|trans }} </span></a></li>
+                                        </ul>
+                                    {% else %}
+                                        <a href="{{ path('fos_user_security_login') }}">{{ 'header.profile.connect'|trans }}</a>
+                                    {% endif %}
                                 </li>
                             </ul>
 
