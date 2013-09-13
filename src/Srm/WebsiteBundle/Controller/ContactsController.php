@@ -75,11 +75,13 @@ class ContactsController extends Controller
         $em->flush();
 
         if (true === $contact->getIsUser()) {
-            $user = new User($contact->getContactId());
-            $user->setRole($this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Role')->findOneByRoleType('ROLE_U'));
+            if (null === $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->findOneById($contact->getContactId())) {
+                $user = new User($contact);
+                $user->setRole($this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Role')->findOneByRoleType('ROLE_U'));
 
-            $em->persist($user);
-            $em->flush();
+                $em->persist($user);
+                $em->flush();
+            }
         }
 
         return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
