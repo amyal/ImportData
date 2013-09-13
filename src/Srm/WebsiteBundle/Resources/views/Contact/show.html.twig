@@ -26,8 +26,86 @@
                     <div class="box-content padded">
                         <div class="padded-box">
                             <div class="control-group">
-                                <label class="control-label">{{ 'contact.label'|trans }} :</label>
-                                <div class="controls">{{ contact.label }}</div>
+                                <label class="control-label">{{ 'contact.gender'|trans }} :</label>
+                                <div class="controls">{{ contact.gender.label }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.lastname'|trans }} :</label>
+                                <div class="controls">{{ contact.lastname }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.firstname'|trans }} :</label>
+                                <div class="controls">{{ contact.firstname }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.function'|trans }} :</label>
+                                <div class="controls">{{ contact.contactFunction }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'phone.office'|trans }} :</label>
+                                <div class="controls">{{ contact.officePhone }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'phone.mobile'|trans }} :</label>
+                                <div class="controls">{{ contact.mobilePhone }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'fax'|trans }} :</label>
+                                <div class="controls">{{ contact.fax }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'email'|trans }} :</label>
+                                <div class="controls">{{ contact.mail }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.picture'|trans }} :</label>
+                                <div class="controls">{{ contact.picture }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.comments'|trans }} :</label>
+                                <div class="controls">{{ contact.comments }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.is_user'|trans }} :</label>
+                                <div class="controls">
+                                	{% if contact.isUser %}
+                                        {{ 'enabled'|trans }}
+                                    {% else %}
+                                        {{ 'disabled'|trans }}
+                                    {% endif %}	
+                                </div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.enabled'|trans }} :</label>
+                                <div class="controls">
+                                	{% if contact.enabled %}
+                                        {{ 'enabled'|trans }}
+                                    {% else %}
+                                        {{ 'disabled'|trans }}
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>

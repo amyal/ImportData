@@ -39,8 +39,8 @@ phone: "Téléphone"
 phone.mobile: "Téléphone mobile"
 phone.office: "Téléphone bureau"
 
-enabled: "Actif"
-disabled: "Inactif"
+enabled: "Oui"
+disabled: "Non"
 
 departments.list.title: "Départements"
 departments.list.empty: "Aucun département pour le moment."
