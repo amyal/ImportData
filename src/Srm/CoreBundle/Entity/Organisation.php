@@ -546,7 +546,7 @@ class Organisation
 
     protected function getUploadRootDir() {
         // the absolute directory path where uploaded documents should be saved
-        return $this->getTmpUploadRootDir().$this->getIdentificationCode()."/";
+        return $this->getTmpUploadRootDir().$this->getIdentificationCode();
     }
 
     protected function getTmpUploadRootDir() {
@@ -576,7 +576,7 @@ class Organisation
         $this->getPicture()->move($this->getUploadRootDir(), $this->logo);
 
         // check if we have an old image
-        if (isset($this->tempFile)) {
+        if (isset($this->tempFile) && $this->tempFile != '') {
             // delete the old image
             unlink($this->getUploadRootDir().'/'.$this->tempFile);
             // clear the temp image path
