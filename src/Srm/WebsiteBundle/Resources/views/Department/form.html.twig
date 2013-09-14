@@ -1,4 +1,4 @@
-{% extends '@SrmWebsite/layout.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block main_container_header %}
     <i class="icon-sitemap"></i> {{ 'departments.list.title'|trans }}
@@ -35,7 +35,7 @@
                                 </div>
 
                                 {{ form_row(form.subDepartments, {'attr': {'class': 'icheck'}}) }}
-                                
+
                                 <div class="control-group">
                                     {{ form_label(form.sites) }}
                                     <div class="controls">{{ form_widget(form.sites, {'attr': {'class': 'chzn-select select2'}}) }}</div>

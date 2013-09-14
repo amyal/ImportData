@@ -4,18 +4,14 @@ security:
 
     role_hierarchy:
         ROLE_SU: ROLE_U
-        ROLE_A: [ROLE_SU, ROLE_U]
-        ROLE_SA: [ROLE_A, Role_SU, ROLE_U]
+        ROLE_A:  ROLE_SU
+        ROLE_SA: ROLE_A
 
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
 
     firewalls:
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
         main:
             pattern: ^/
             form_login:
@@ -28,4 +24,4 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/admin/, role: ROLE_SA }
