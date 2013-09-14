@@ -24,6 +24,18 @@ class BasicType extends AbstractType
                     'read_only' => true
                 )
             )
+            ->add('employees', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\Employees',
+                'property' => 'label',
+                'label'    => 'organisation.form.basic.employees',
+                'required' => true,
+            ))
+            ->add('turnover', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\Turnover',
+                'property' => 'label',
+                'label'    => 'organisation.form.basic.turnover',
+                'required' => true,
+            ))
             ->add('slogan1', 'text', array('label' => 'organisation.form.basic.slogan1'))
             ->add('slogan2', 'text', array('label' => 'organisation.form.basic.slogan2'))
             ->add('slogan3', 'text', array('label' => 'organisation.form.basic.slogan3'))
