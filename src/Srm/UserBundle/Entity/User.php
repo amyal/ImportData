@@ -19,20 +19,18 @@ class User extends BaseUser
     protected $id;
 
 
-    /**
-     * Constructor
-     */
     public function __construct(Contact $contact = null)
     {
         parent::__construct();
 
+        $this->enabled = true;
+
         if (null !== $contact) {
-            list($username, $ignored) = explode('@', $contact->getMail());
+            $contactEmail = $contact->getMail();
 
             $this->id       = $contact->getContactId();
-            $this->username = $username;
-            $this->email    = $contact->getMail();
-            $this->password = $username;
+            $this->username = $contactEmail;
+            $this->email    = $contactEmail;
         }
     }
 
@@ -58,5 +56,13 @@ class User extends BaseUser
     public function getRole()
     {
         return $this->role;
+    }
+
+
+    private function getUsernameFromEmail($email)
+    {
+        list($username, $ignored) = explode('@', $email);
+
+        return $username;
     }
 }
