@@ -18,6 +18,7 @@ class LegalType extends AbstractType
                 )
             )
             ->add('natureCapital',    'text', array('label' => 'organisation.form.legal.nature_capital'))
+            ->add('activity',         'text' ,array('label' => 'organisation.form.legal.activity'))
             ->add('apeCode',          'text' ,array('label' => 'organisation.form.legal.activity_code'))
             ->add('category',         'text', array('label' => 'organisation.form.legal.category'))
             ->add('registrationDate', 'date', array(
@@ -27,6 +28,8 @@ class LegalType extends AbstractType
 													'input'  => 'datetime',
 													'attr'   => array('class' => 'datepicker fill-up'),
             									))
+			->add('siretNumber',       'text' ,array('label' => 'organisation.form.legal.siretNumber'))
+            ->add('nationality',       'text' ,array('label' => 'organisation.form.legal.nationality'))
 
             ->add('save', 'submit', array('label' => 'button.save')
             )

@@ -72,6 +72,8 @@ organisation.form.legal.activity_code: "Code d'activité"
 organisation.form.legal.activity: "Activité"
 organisation.form.legal.category: "Catégorie"
 organisation.form.legal.registration_date: "Date d'immatriculation"
+organisation.form.legal.siret_number: "SIRET"
+organisation.form.legal.nationality: "Nationnalité"
 
 poles.list.title: "Pôles"
 poles.list.empty: "Aucun pôle pour le moment."

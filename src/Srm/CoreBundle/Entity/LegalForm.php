@@ -48,6 +48,11 @@ class LegalForm
     private $tvaNumber;
 
     /**
+     * @var string
+     */
+    private $nationality;
+
+    /**
      * @var \DateTime
      */
     private $creationDate;
@@ -268,6 +273,29 @@ class LegalForm
     public function getTvaNumber()
     {
         return $this->tvaNumber;
+    }
+
+    /**
+     * Set nationality
+     *
+     * @param string $nationality
+     * @return LegalForm
+     */
+    public function setNationality($nationality)
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    /**
+     * Get nationality
+     *
+     * @return string
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
     }
 
     /**

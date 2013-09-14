@@ -12,6 +12,7 @@
     <field name="registrationDate" type="datetime" column="REGISTRATION_DATE" nullable="true"/>
     <field name="siretNumber" type="string" column="SIRET_NUMBER" length="50" nullable="true"/>
     <field name="tvaNumber" type="string" column="TVA_NUMBER" length="30" nullable="true"/>
+    <field name="nationality" type="string" column="NATIONALITY" length="50" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>

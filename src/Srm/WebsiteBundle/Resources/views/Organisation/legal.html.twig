@@ -41,6 +41,14 @@
                                 <div class="controls">{{ form_widget(form.natureCapital) }}</div>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">{{ 'organisation.form.legal.siret_number'|trans }} :</label>
+                                <div class="controls">{{ form_widget(form.siretNumber) }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'organisation.form.legal.activity'|trans }} :</label>
+                                <div class="controls">{{ form_widget(form.activity) }}</div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.activity_code'|trans }} :</label>
                                 <div class="controls">{{ form_widget(form.apeCode) }}</div>
                             </div>
@@ -53,6 +61,10 @@
                                 <div class="controls">
                                     {{ form_widget(form.registrationDate) }}
                                 </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'organisation.form.legal.nationality'|trans }} :</label>
+                                <div class="controls">{{ form_widget(form.nationality) }}</div>
                             </div>
                         </div>
                     </div>

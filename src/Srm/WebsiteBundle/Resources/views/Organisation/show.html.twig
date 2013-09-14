@@ -91,12 +91,12 @@
                     <div class="box-content padded">
                         <div class="padded-box">
                             <div class="control-group">
-                                <label class="control-label">{{ 'organisation.form.legal.label'|trans }} :</label>
-                                <div class="controls">{{ legalForm.label }}</div>
+                                <label class="control-label">{{ 'organisation.form.legal.siret_number'|trans }} : </label>
+                                <div class="controls">{{ legalForm.siretNumber }}</div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">{{ 'organisation.form.legal.nature_capital'|trans }} :</label>
-                                <div class="controls">{{ legalForm.natureCapital }}</div>
+                                <label class="control-label">{{ 'organisation.form.legal.activity'|trans }} :</label>
+                                <div class="controls">{{ legalForm.activity }}</div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.activity_code'|trans }} :</label>
@@ -109,6 +109,10 @@
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.registration_date'|trans }} :</label>
                                 <div class="controls">{{ legalForm.registrationDate|date("d/m/Y") }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'organisation.form.legal.nationality'|trans }} : </label>
+                                <div class="controls">{{ legalForm.category }}</div>
                             </div>
                         </div>
                     </div>
