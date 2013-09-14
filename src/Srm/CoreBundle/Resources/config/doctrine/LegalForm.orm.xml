@@ -22,6 +22,11 @@
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="legalStatus" target-entity="LegalStatus">
+      <join-columns>
+        <join-column name="LEGAL_STATUS_ID" referenced-column-name="LEGAL_STATUS_ID"/>
+      </join-columns>
+    </many-to-one>
 
     <lifecycle-callbacks>
       <lifecycle-callback type="preUpdate" method="updateModificationDate" />
