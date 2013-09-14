@@ -101,6 +101,16 @@ class Organisation
     private $currency;
 
     /**
+     * @var \Srm\CoreBundle\Entity\Employees
+     */
+    private $employees;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Turnover
+     */
+    private $turnover;
+
+    /**
      * @var string $picture
      *
      * @Assert\File( maxSize = "5000k", mimeTypesMessage = "Merci de charger une image")
@@ -518,6 +528,52 @@ class Organisation
     public function getCurrency()
     {
         return $this->currency;
+    }
+
+    /**
+     * Set employees
+     *
+     * @param \Srm\CoreBundle\Entity\Employees $employees
+     * @return Organisation
+     */
+    public function setEmployees(Employees $employees = null)
+    {
+        $this->employees = $employees;
+
+        return $this;
+    }
+
+    /**
+     * Get employees
+     *
+     * @return \Srm\CoreBundle\Entity\Employees
+     */
+    public function getEmployees()
+    {
+        return $this->employees;
+    }
+
+    /**
+     * Set turnover
+     *
+     * @param \Srm\CoreBundle\Entity\Turnover $turnover
+     * @return Organisation
+     */
+    public function setTurnover(Turnover $turnover = null)
+    {
+        $this->turnover = $turnover;
+
+        return $this;
+    }
+
+    /**
+     * Get turnover
+     *
+     * @return \Srm\CoreBundle\Entity\Turnover
+     */
+    public function getTurnover()
+    {
+        return $this->turnover;
     }
 
     public function updateModificationDate()

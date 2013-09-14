@@ -37,6 +37,16 @@
         <join-column name="CURRENCY_ID" referenced-column-name="CURRENCY_ID"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="employees" target-entity="Employees">
+      <join-columns>
+        <join-column name="EMPLOYEES_ID" referenced-column-name="EMPLOYEES_ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="turnover" target-entity="Turnover">
+      <join-columns>
+        <join-column name="TURNOVER_ID" referenced-column-name="TURNOVER_ID"/>
+      </join-columns>
+    </many-to-one>
 
     <lifecycle-callbacks>
       <lifecycle-callback type="preUpdate" method="updateModificationDate" />
