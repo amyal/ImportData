@@ -79,8 +79,11 @@ class ContactsController extends Controller
                 $user = new User($contact);
                 $user->setRole($this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Role')->findOneByRoleType('ROLE_U'));
 
-                $em->persist($user);
-                $em->flush();
+                $encoder = $this->get('security.encoder_factory')->getEncoder($user);
+                $password = $encoder->encodePassword('toto', $user->getSalt());
+                $user->setPassword($password);
+
+                $this->get('fos_user.user_manager')->updateUser($user);
             }
         }
 
