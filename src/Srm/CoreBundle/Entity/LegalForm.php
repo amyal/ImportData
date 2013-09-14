@@ -82,6 +82,11 @@ class LegalForm
      */
     private $organisation;
 
+    /**
+     * @var \Srm\CoreBundle\Entity\LegalStatus
+     */
+    private $legalStatus;
+
 
     public function __construct(Organisation $organisation)
     {
@@ -427,4 +432,28 @@ class LegalForm
     {
         $this->modificationDate = new \DateTime();
     }
+    
+    /**
+     * Set legalStatus
+     *
+     * @param \Srm\CoreBundle\Entity\LegalStatus $legalStatus
+     * @return LegalStatus
+     */
+    public function setLegalStatus(LegalStatus $legalStatus = null)
+    {
+        $this->legalStatus = $legalStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get legalStatus
+     *
+     * @return \Srm\CoreBundle\Entity\LegalStatus
+     */
+    public function getLegalStatus()
+    {
+        return $this->legalStatus;
+    }
+
 }

@@ -11,12 +11,12 @@ class LegalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add(
-                'label', 'text', array(
-                    'label' => 'organisation.form.legal.label',
-                    'attr'  => array('autofocus' => 'autofocus')
-                )
-            )
+            ->add('legalStatus', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\LegalStatus',
+                'property' => 'label',
+                'label'    => 'organisation.form.legal.label',
+                'required' => true,
+            ))
             ->add('natureCapital',    'text', array('label' => 'organisation.form.legal.nature_capital'))
             ->add('activity',         'text' ,array('label' => 'organisation.form.legal.activity'))
             ->add('apeCode',          'text' ,array('label' => 'organisation.form.legal.activity_code'))
