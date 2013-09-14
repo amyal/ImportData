@@ -4,23 +4,10 @@ namespace Srm\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 
+use Srm\CoreBundle\Entity\Contact;
+
 class User extends BaseUser
 {
-    /**
-     * @var \DateTime
-     */
-    private $creationDate;
-
-    /**
-     * @var \DateTime
-     */
-    private $modificationDate;
-
-    /**
-     * @var boolean
-     */
-    private $deleted;
-
     /**
      * @var \Srm\UserBundle\Entity\Role
      */
@@ -35,16 +22,18 @@ class User extends BaseUser
     /**
      * Constructor
      */
-    public function __construct($id = null)
+    public function __construct(Contact $contact = null)
     {
         parent::__construct();
 
-        if (null !== $id) {
-            $this->id = $id;
-        }
+        if (null !== $contact) {
+            list($username, $ignored) = explode('@', $contact->getMail());
 
-        $this->creationDate = new \DateTime();
-        $this->deleted = false;
+            $this->id       = $contact->getContactId();
+            $this->username = $username;
+            $this->email    = $contact->getMail();
+            $this->password = $username;
+        }
     }
 
     /**
@@ -56,7 +45,7 @@ class User extends BaseUser
     public function setRole(Role $role = null)
     {
         $this->role = $role;
-        $this->addRole($role->getRoleType());
+        $this->setRoles(array($role->getRoleType()));
 
         return $this;
     }
@@ -69,11 +58,5 @@ class User extends BaseUser
     public function getRole()
     {
         return $this->role;
-    }
-
-
-    public function updateModificationDate()
-    {
-        $this->modificationDate = new \DateTime();
     }
 }

@@ -1,4 +1,4 @@
-{% extends '@SrmWebsite/layout.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block main_container_header %}
     <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }}
@@ -20,7 +20,6 @@
 {% endblock %}
 
 {% block content %}
-
     <div class="row-fluid">
         <div class="span8 offset2">
             <div class="box">
@@ -30,7 +29,7 @@
 
                 {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
                     {{ form_errors(form) }}
-                    
+
                     <div class="box-content padded">
                         <div class="padded-box">
                             <div class="control-group">

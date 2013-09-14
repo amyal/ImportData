@@ -1,4 +1,4 @@
-{% extends '@SrmWebsite/layout.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block main_container_header %}
     <i class="icon-sitemap"></i> {{ 'departments.list.title'|trans }}
@@ -16,7 +16,6 @@
 {% endblock %}
 
 {% block content %}
-
     <div class="container-fluid padded">
         <div class="row-fluid">
             <div class="span12">
@@ -83,5 +82,5 @@
             </div>
         </div>
     </div>
-    
+
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends '@SrmWebsite/layout.html.twig' %}
+{% extends '::layout.html.twig' %}
 
 {% block main_container_header %}
     <i class="icon-building"></i> {{ 'sites.list.title'|trans }}
@@ -76,7 +76,7 @@
                             <div class="control-group">
                                 <label class="control-label">{{ 'site.dangerous_substances'|trans }} :</label>
                                 <div class="controls">
-                                    {{ 'site.dangerous_substances'|trans }} : {% if site.dangerousSubstances %}{{ site.dangerousSubstances|joinLabels(', ') }}{% else %}-{% endif %}   
+                                    {{ 'site.dangerous_substances'|trans }} : {% if site.dangerousSubstances %}{{ site.dangerousSubstances|joinLabels(', ') }}{% else %}-{% endif %}
                                 </div>
                             </div>
                             <div class="control-group">
