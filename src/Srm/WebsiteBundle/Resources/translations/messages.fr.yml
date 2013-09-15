@@ -127,9 +127,9 @@ monitoring.nav: "Monitoring"
 monitoring.nav.dashboard: "Tableaux de bord dynamiques"
 monitoring.nav.report: "Rapports"
 
-external.nav: "Externe"
-external.nav.partie: "Parties prenantes"
-external.nav.chaine: "Chaine d'approvisionnement"
+stakeholder.nav: "Parties prenantes"
+stakeholder.nav.group: "Groupe"
+stakeholder.nav.stakeholder: "Partie prenante"
 
 advanced.nav: "Avancé"
 
