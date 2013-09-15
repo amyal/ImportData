@@ -21,7 +21,7 @@
             <div class="span8 offset2">
                 <div class="box">
                     <div class="box-header">
-                        <span class="title"> {{ organisation.label }} </span>
+                        <span class="title"> {{ 'organisation.basic.title'|trans }} - {{ organisation.label }} </span>
                         <ul class="box-toolbar">
                             <li><a  href="{{ path('srm_website_organisation_basic', {'identificationCode': organisation.identificationCode}) }}" class="btn btn-blue btn-mini">{{ 'button.edit'|trans }}</a></li>
                         </ul>
@@ -91,7 +91,7 @@
             <div class="span8 offset2">
                 <div class="box">
                     <div class="box-header">
-                        <span class="title"> {{ 'organisation.legal.title'|trans }} </span>
+                        <span class="title"> {{ 'organisation.legal.title'|trans }} - {{ organisation.label }} </span>
                         <ul class="box-toolbar">
                             <li><a href="{{ path('srm_website_organisation_legal', {'organisationId': organisation.organisationId}) }}" class="btn btn-blue btn-mini">{{ 'button.edit'|trans }}</a></li>
                         </ul>
