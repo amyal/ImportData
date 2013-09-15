@@ -114,8 +114,6 @@
                                         href="{{ path('srm_website_organisation_show', { 'identificationCode': identificationCode }) }}"
                                     {% elseif organisation is defined %}
                                         href="{{ path('srm_website_organisation_show', { 'identificationCode': organisation.organisationId }) }}"
-                                    {% else %}
-                                        href="{{ path('srm_website_organisation_show', { 'identificationCode': organisationId }) }}"
                                     {% endif %}>
                                     <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }}
                                 </a>
@@ -130,8 +128,6 @@
                                         href="{{ path('srm_website_sites_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
                                         href="{{ path('srm_website_sites_list', { 'organisationId': organisationId }) }}"
-                                    {% else %}
-                                        href="{{ path('srm_website_sites_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
                                     <i class="icon-building"></i> {{ 'sites.list.title'|trans }}
                                 </a>
@@ -141,8 +137,6 @@
                                         href="{{ path('srm_website_departments_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
                                         href="{{ path('srm_website_departments_list', { 'organisationId': organisationId }) }}"
-                                    {% else %}
-                                        href="{{ path('srm_website_departments_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
                                     <i class="icon-sitemap"></i> {{ 'departments.list.title'|trans }}
                                 </a>
@@ -152,8 +146,6 @@
                                         href="{{ path('srm_website_poles_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
                                         href="{{ path('srm_website_poles_list', { 'organisationId': organisationId }) }}"
-                                    {% else %}
-                                        href="{{ path('srm_website_poles_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
                                     <i class="icon-circle-blank"></i> {{ 'poles.list.title'|trans }}
                                 </a>
@@ -173,17 +165,10 @@
                                         href="{{ path('srm_website_contacts_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
                                         href="{{ path('srm_website_contacts_list', { 'organisationId': organisationId }) }}"
-                                    {% else %}
-                                        href="{{ path('srm_website_contacts_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
                                     <i class="icon-group"></i> {{ 'contacts.nav.general'|trans }}
                                 </a>
                             </li>
-                            <!--<li class="">
-                                <a href="#">
-                                    <i class="icon-user-md"></i> {{ 'role'|trans }}
-                                </a>
-                            </li>-->
                         </ul>
                     </li>
 

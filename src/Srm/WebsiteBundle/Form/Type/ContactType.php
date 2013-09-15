@@ -49,7 +49,7 @@ class ContactType extends AbstractType
             ->add('comments', 'textarea', array('label' => 'contact.comments'))
 
             ->add('isUser',  'checkbox', array('label' => 'contact.is_user'))
-            ->add('enabled', 'checkbox', array('label' => 'enabled'))
+            ->add('enabled', 'checkbox', array('label' => 'contact.enabled'))
 
             ->add('save', 'submit', array('label' => 'button.save'))
         ;
