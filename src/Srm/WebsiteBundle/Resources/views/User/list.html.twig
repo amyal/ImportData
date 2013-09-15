@@ -23,54 +23,36 @@
                     <div class="box-header">
                         <span class="title"> {{ 'users.list.title'|trans }} </span>
                         <ul class="box-toolbar">
-                            <li><a class="btn btn-green btn-mini spacer" href="{{ path('srm_website_users_add', { 'organisationId': organisation.organisationId }) }}">{{ 'button.add'|trans }}</a>
-                            </li>
+                            <li><a class="btn btn-green btn-mini spacer" href="{{ path('srm_website_contacts_add', { 'organisationId': organisation.organisationId }) }}">{{ 'button.add'|trans }}</a></li>
                         </ul>
                     </div>
                     <div class="box-content">
-
                         <table class="table table-normal">
                             <thead>
-                                <tr><td>{{ 'user.lastname'|trans }}</td>
-                                    <td>{{ 'user.firstname'|trans }}</td>
-                                    <td>{{ 'user.function'|trans }}</td>
-                                    <td>{{ 'phone'|trans }}</td>
+                                <tr>
+                                    <td>{{ 'list.header.username'|trans }}</td>
                                     <td>{{ 'email'|trans }}</td>
                                     <td>{{ 'role'|trans }}</td>
-                                    <td>{{ 'list.enabled'|trans }}</td>
                                     <td style="width:115px"></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for user in users %}
                                     <tr>
-                                        <td>{{ user.lastname }}</td>
-                                        <td>{{ user.firstname }}</td>
-                                        <td>{{ user.contactFunction }}</td>
-                                        <td>{{ user.phone }}</td>
-                                        <td>{{ user.mail }}</td>
+                                        <td>{{ user.username }}</td>
+                                        <td>{{ user.email }}</td>
                                         <td>{{ user.role.label }}</td>
                                         <td>
-                                            {% if user.enabled %}
-                                                {{ 'enabled'|trans }}
-                                            {% else %}
-                                                {{ 'disabled'|trans }}
-                                            {% endif %}
-                                        </td>
-                                        <td>
                                             <div class="btn-group">
-                                                <a href="{{ path('srm_website_user_show', { 'organisationId': organisation.organisationId, 'contactId': user.contactId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
-                                                <a href="{{ path('srm_website_user_edit', { 'organisationId': organisation.organisationId, 'contactId': user.contactId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                                <a href="{{ path('srm_website_user_disable', { 'organisationId': organisation.organisationId, 'contactId': user.contactId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                                <a href="{{ path('srm_website_user_edit', { 'organisationId': organisation.organisationId, 'userId': user.id }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
                                             </div>
                                         </td>
                                     </tr>
                                 {% else %}
-                                    <tr class="info"><td colspan="8">{{ 'users.list.empty'|trans }}</td></tr>
+                                    <tr class="info"><td colspan="4">{{ 'users.list.empty'|trans }}</td></tr>
                                 {% endfor %}
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>

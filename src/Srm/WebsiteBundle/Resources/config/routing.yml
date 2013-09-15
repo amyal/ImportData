@@ -6,5 +6,7 @@ _departments:
     resource: "routing/departments.yml"
 _contacts:
     resource: "routing/contacts.yml"
+_users:
+    resource: "routing/users.yml"
 _poles:
     resource: "routing/poles.yml"
