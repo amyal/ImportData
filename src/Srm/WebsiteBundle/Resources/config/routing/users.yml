@@ -1,0 +1,13 @@
+srm_website_users_list:
+    path:       /organisations/{organisationId}/users
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Users:list"
+
+srm_website_user_edit:
+    path:       /organisations/{organisationId}/users/{userId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Users:form"
+    requirements:
+        userId:   \d+

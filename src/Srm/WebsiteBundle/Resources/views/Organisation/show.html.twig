@@ -100,31 +100,31 @@
                         <div class="padded-box">
                         	<div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.label'|trans }} :</label>
-                                <div class="controls">{{ legalForm.legalStatus.label }}</div>
+                                {% if legalForm.legalStatus %}<div class="controls">{{ legalForm.legalStatus.label }}</div>{% endif %}
                             </div>
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.siret_number'|trans }} : </label>
-                                <div class="controls">{{ legalForm.siretNumber }}</div>
+                                {% if legalForm %}<div class="controls">{{ legalForm.siretNumber }}</div>{% endif %}
                             </div>
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.activity'|trans }} :</label>
-                                <div class="controls">{{ legalForm.activity }}</div>
+                                {% if legalForm %}<div class="controls">{{ legalForm.activity }}</div>{% endif %}
                             </div>
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.activity_code'|trans }} :</label>
-                                <div class="controls">{{ legalForm.apeCode }}</div>
+                                {% if legalForm %}<div class="controls">{{ legalForm.apeCode }}</div>{% endif %}
                             </div>
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.category'|trans }} : </label>
-                                <div class="controls">{{ legalForm.category }}</div>
+                                {% if legalForm %}<div class="controls">{{ legalForm.category }}</div>{% endif %}
                             </div>
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.registration_date'|trans }} :</label>
-                                <div class="controls">{{ legalForm.registrationDate|date("d/m/Y") }}</div>
+                                {% if legalForm %}<div class="controls">{{ legalForm.registrationDate|date("d/m/Y") }}</div>{% endif %}
                             </div>
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.nationality'|trans }} : </label>
-                                <div class="controls">{{ legalForm.nationality }}</div>
+                                {% if legalForm %}<div class="controls">{{ legalForm.nationality }}</div>{% endif %}
                             </div>
                         </div>
                     </div>
