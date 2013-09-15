@@ -1,29 +1,96 @@
 {% extends '::layout.html.twig' %}
 
+{% block main_container_header %}
+    <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav.info'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
 {% block content %}
-    <div>
-        {{ form_start(form) }}
-            {{ form_errors(form) }}
+	<div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title"> {{ 'organisation.basic.title'|trans }} </span>
+                    </div>
 
-            {{ form_row(form.label) }}
-
-            {{ form_row(form.address.label) }}
-            {{ form_row(form.address.zip.code) }}
-            {{ form_row(form.address.zip.city) }}
-            {{ form_row(form.address.zip.country) }}
-
-            {{ form_row(form.identificationCode) }}
-            {{ form_row(form.employees) }}
-            {{ form_row(form.turnover) }}
-            {{ form_row(form.slogan1) }}
-            {{ form_row(form.slogan2) }}
-            {{ form_row(form.slogan3) }}
-            {{ form_row(form.picture) }}
-
-            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
-                save_form: form.save,
-                url_cancel: path('srm_website_organisation_show', {'identificationCode': identificationCode})
-            }, with_context = false) }}
-        {{ form_end(form) }}
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
+                        {{ form_errors(form) }}
+                        
+							<div class="box-content padded">
+                            	<div class="padded-box">
+                            		<div class="control-group">
+	                                    {{ form_label(form.label) }}
+	                                    <div class="controls">{{ form_widget(form.label) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.address.label) }}
+	                                    <div class="controls">{{ form_widget(form.address.label) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.address.zip.code) }}
+	                                    <div class="controls">{{ form_widget(form.address.zip.code) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.address.zip.city) }}
+	                                    <div class="controls">{{ form_widget(form.address.zip.city) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.address.zip.country) }}
+	                                    <div class="controls">{{ form_widget(form.address.zip.country) }}</div>
+	                                </div>
+	                                
+	                                <div class="control-group">
+	                                    {{ form_label(form.identificationCode) }}
+	                                    <div class="controls">{{ form_widget(form.identificationCode) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.employees) }}
+	                                    <div class="controls">{{ form_widget(form.employees) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.turnover) }}
+	                                    <div class="controls">{{ form_widget(form.turnover) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.slogan1) }}
+	                                    <div class="controls">{{ form_widget(form.slogan1) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.slogan2) }}
+	                                    <div class="controls">{{ form_widget(form.slogan2) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.slogan3) }}
+	                                    <div class="controls">{{ form_widget(form.slogan3) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.picture) }}
+	                                    <div class="controls">{{ form_widget(form.picture) }}</div>
+	                                </div>
+	                                
+				            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+				                save_form: form.save,
+				                url_cancel: path('srm_website_organisation_show', {'identificationCode': identificationCode})
+				            }, with_context = false) }}
+				       
+			        	<div class="hide">
+                            {{ form_widget(form._token) }}
+                            {{ form_rest(form) }}
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
