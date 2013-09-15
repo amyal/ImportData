@@ -1,56 +1,122 @@
 {% extends '::layout.html.twig' %}
 
+
+{% block main_container_header %}
+    <i class="icon-sitemap"></i> {{ 'contacts.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'contacts.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'contacts.nav.general'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
 {% block content %}
-    <div>
-        {{ form_start(form) }}
-            {{ form_errors(form) }}
+	<div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title"> {{ 'contacts.nav.general'|trans }} </span>
+                    </div>
 
-            {{ form_row(form.gender) }}
-            {{ form_row(form.lastname) }}
-            {{ form_row(form.firstname) }}
-            {{ form_row(form.contactFunction) }}
-            {{ form_row(form.officePhone) }}
-            {{ form_row(form.mobilePhone) }}
-            {{ form_row(form.fax) }}
-            {{ form_row(form.mail) }}
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
+                        {{ form_errors(form) }}
+                        
+							<div class="box-content padded">
+                            	<div class="padded-box">
+                            		<div class="control-group">
+	                                    {{ form_label(form.gender) }}
+	                                    <div class="controls">{{ form_widget(form.gender) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.lastname) }}
+	                                    <div class="controls">{{ form_widget(form.lastname) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.firstname) }}
+	                                    <div class="controls">{{ form_widget(form.firstname) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contactFunction) }}
+	                                    <div class="controls">{{ form_widget(form.contactFunction) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.officePhone) }}
+	                                    <div class="controls">{{ form_widget(form.officePhone) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.mobilePhone) }}
+	                                    <div class="controls">{{ form_widget(form.mobilePhone) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.fax) }}
+	                                    <div class="controls">{{ form_widget(form.fax) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.mail) }}
+	                                    <div class="controls">{{ form_widget(form.mail) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.address.label) }}
+	                                    <div class="controls">{{ form_widget(form.address.label) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.address.zip.code) }}
+	                                    <div class="controls">{{ form_widget(form.address.zip.code) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.address.zip.city) }}
+	                                    <div class="controls">{{ form_widget(form.address.zip.city) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.address.zip.country) }}
+	                                    <div class="controls">{{ form_widget(form.address.zip.country) }}</div>
+	                                </div>
+	                                
+						            <div class="control-group">
+						                <label class="control-label" for="srm_contact_shareholder">{{ form.shareholder.vars.label|trans }}</label>
+						                <div class="controls">
+						                    {{ form_widget(form.shareholder) }}
+						                </div>
+						            </div>
+						
+						            {{ form_row(form.parts) }}
+						
+						            {{ form_row(form.picture) }}
+						            {{ form_row(form.comments) }}
+						
+						            <div class="control-group">
+						                <label class="control-label" for="srm_contact_isUser">{{ form.isUser.vars.label|trans }}</label>
+						                <div class="controls">
+						                    {{ form_widget(form.isUser) }}
+						                </div>
+						            </div>
+						
+						            <div class="control-group">
+						                <label class="control-label" for="srm_contact_enabled">{{ form.enabled.vars.label|trans }}</label>
+						                <div class="controls">
+						                    {{ form_widget(form.enabled) }}
+						                </div>
+						            </div>
+						
+					            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+					                save_form: form.save,
+					                url_cancel: path('srm_website_contacts_list', {'organisationId': organisationId})
+					            }, with_context = false) }}
 
-            {{ form_row(form.address.label) }}
-            {{ form_row(form.address.zip.code) }}
-            {{ form_row(form.address.zip.city) }}
-            {{ form_row(form.address.zip.country) }}
-
-            <div class="control-group">
-                <label class="control-label" for="srm_contact_shareholder">{{ form.shareholder.vars.label|trans }}</label>
-                <div class="controls">
-                    {{ form_widget(form.shareholder) }}
+            			<div class="hide">
+                            {{ form_widget(form._token) }}
+                            {{ form_rest(form) }}
+                        </div>
+                    {{ form_end(form) }}
                 </div>
             </div>
-
-            {{ form_row(form.parts) }}
-
-            {{ form_row(form.picture) }}
-            {{ form_row(form.comments) }}
-
-            <div class="control-group">
-                <label class="control-label" for="srm_contact_isUser">{{ form.isUser.vars.label|trans }}</label>
-                <div class="controls">
-                    {{ form_widget(form.isUser) }}
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="srm_contact_enabled">{{ form.enabled.vars.label|trans }}</label>
-                <div class="controls">
-                    {{ form_widget(form.enabled) }}
-                </div>
-            </div>
-
-            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
-                save_form: form.save,
-                url_cancel: path('srm_website_contacts_list', {'organisationId': organisationId})
-            }, with_context = false) }}
-
-            {{ form_widget(form._token) }}
-        </form>
+        </div>
     </div>
 {% endblock %}
