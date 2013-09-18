@@ -29,9 +29,9 @@
         <join-column name="INDICATOR_LEVEL3_ID" referenced-column-name="INDICATOR_LEVEL3_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="referentiel" target-entity="Referentiel">
+    <many-to-one field="repository" target-entity="Repository">
       <join-columns>
-        <join-column name="REFERENTIEL_ID" referenced-column-name="REFERENTIEL_ID"/>
+        <join-column name="REPOSITORY_ID" referenced-column-name="REPOSITORY_ID"/>
       </join-columns>
     </many-to-one>
     <many-to-many field="items" target-entity="Item" mapped-by="indicators"/>

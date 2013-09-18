@@ -58,9 +58,9 @@ class Indicator
     private $indicatorLevel3;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Referentiel
+     * @var \Srm\CoreBundle\Entity\Repository
      */
-    private $referentiel;
+    private $repository;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -295,26 +295,26 @@ class Indicator
     }
 
     /**
-     * Set referentiel
+     * Set repository
      *
-     * @param \Srm\CoreBundle\Entity\Referentiel $referentiel
+     * @param \Srm\CoreBundle\Entity\Repository $repository
      * @return Indicator
      */
-    public function setReferentiel(Referentiel $referentiel = null)
+    public function setRepository(Repository $repository = null)
     {
-        $this->referentiel = $referentiel;
+        $this->repository = $repository;
 
         return $this;
     }
 
     /**
-     * Get referentiel
+     * Get repository
      *
-     * @return \Srm\CoreBundle\Entity\Referentiel
+     * @return \Srm\CoreBundle\Entity\Repository
      */
-    public function getReferentiel()
+    public function getRepository()
     {
-        return $this->referentiel;
+        return $this->repository;
     }
 
     /**
