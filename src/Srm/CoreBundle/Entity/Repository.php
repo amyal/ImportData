@@ -3,9 +3,9 @@
 namespace Srm\CoreBundle\Entity;
 
 /**
- * Referentiel
+ * Repository
  */
-class Referentiel
+class Repository
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ class Referentiel
     /**
      * @var integer
      */
-    private $referentielId;
+    private $repositoryId;
 
 
     public function __construct()
@@ -42,7 +42,7 @@ class Referentiel
      * Set label
      *
      * @param string $label
-     * @return Referentiel
+     * @return Repository
      */
     public function setLabel($label)
     {
@@ -65,7 +65,7 @@ class Referentiel
      * Set description
      *
      * @param string $description
-     * @return Referentiel
+     * @return Repository
      */
     public function setDescription($description)
     {
@@ -88,7 +88,7 @@ class Referentiel
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Referentiel
+     * @return Repository
      */
     public function setEnabled($enabled)
     {
@@ -111,7 +111,7 @@ class Referentiel
      * Set deleted
      *
      * @param boolean $deleted
-     * @return Referentiel
+     * @return Repository
      */
     public function setDeleted($deleted)
     {
@@ -131,12 +131,12 @@ class Referentiel
     }
 
     /**
-     * Get referentielId
+     * Get repositoryId
      *
      * @return integer
      */
-    public function getReferentielId()
+    public function getRepositoryId()
     {
-        return $this->referentielId;
+        return $this->repositoryId;
     }
 }
