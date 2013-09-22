@@ -9,8 +9,8 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-many field="indicator" target-entity="Indicator" inversed-by="organisationRepository">
-      <join-table name="vj_repositories_indicators">
+    <many-to-many field="repositoryIndicators" target-entity="Indicator" inversed-by="organisationRepositories">
+      <join-table name="vj_repository_indicators">
         <join-columns>
           <join-column name="ORGANISATION_REPOSITORY_ID" referenced-column-name="ORGANISATION_REPOSITORY_ID"/>
         </join-columns>

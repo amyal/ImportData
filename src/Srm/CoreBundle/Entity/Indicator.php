@@ -68,11 +68,17 @@ class Indicator
     private $items;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $organisationRepositories;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->organisationRepositories = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->deleted = false;
     }
@@ -348,5 +354,38 @@ class Indicator
     public function getItems()
     {
         return $this->items;
+    }
+    
+    /**
+     * Add organisationRepository
+     *
+     * @param \Srm\CoreBundle\Entity\OrganisationRepository $organisationRepository
+     * @return Indicator
+     */
+    public function addOrganisationRepository(OrganisationRepository $organisationRepository)
+    {
+        $this->organisationRepositories[] = $organisationRepository;
+
+        return $this;
+    }
+
+    /**
+     * Remove organisationRepository
+     *
+     * @param \Srm\CoreBundle\Entity\OrganisationRepository $organisationRepository
+     */
+    public function removeOrganisationRepository(OrganisationRepository $organisationRepository)
+    {
+        $this->organisationRepositories->removeElement($organisationRepository);
+    }
+
+    /**
+     * Get organisationRepositories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrganisationRepositories()
+    {
+        return $this->organisationRepositories;
     }
 }
