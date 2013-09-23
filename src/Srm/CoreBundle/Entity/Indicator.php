@@ -58,9 +58,9 @@ class Indicator
     private $indicatorLevel3;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Repository
+     * @var \Srm\CoreBundle\Entity\Referencial
      */
-    private $repository;
+    private $referencial;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -70,7 +70,7 @@ class Indicator
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $organisationRepositories;
+    private $repositories;
 
     /**
      * Constructor
@@ -78,7 +78,7 @@ class Indicator
     public function __construct()
     {
         $this->items = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->organisationRepositories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->repositories = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->deleted = false;
     }
@@ -301,26 +301,26 @@ class Indicator
     }
 
     /**
-     * Set repository
+     * Set referencial
      *
-     * @param \Srm\CoreBundle\Entity\Repository $repository
-     * @return Indicator
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     * @return Referencial
      */
-    public function setRepository(Repository $repository = null)
+    public function setReferencial(Referencial $referencial = null)
     {
-        $this->repository = $repository;
+        $this->referencial = $referencial;
 
         return $this;
     }
 
     /**
-     * Get repository
+     * Get referencial
      *
-     * @return \Srm\CoreBundle\Entity\Repository
+     * @return \Srm\CoreBundle\Entity\Referencial
      */
-    public function getRepository()
+    public function getReferencial()
     {
-        return $this->repository;
+        return $this->referencial;
     }
 
     /**
@@ -357,35 +357,35 @@ class Indicator
     }
     
     /**
-     * Add organisationRepository
+     * Add repository
      *
-     * @param \Srm\CoreBundle\Entity\OrganisationRepository $organisationRepository
+     * @param \Srm\CoreBundle\Entity\Repository $repository
      * @return Indicator
      */
-    public function addOrganisationRepository(OrganisationRepository $organisationRepository)
+    public function addRepository(Repository $repository)
     {
-        $this->organisationRepositories[] = $organisationRepository;
+        $this->repositories[] = $repository;
 
         return $this;
     }
 
     /**
-     * Remove organisationRepository
+     * Remove repository
      *
-     * @param \Srm\CoreBundle\Entity\OrganisationRepository $organisationRepository
+     * @param \Srm\CoreBundle\Entity\Repository $repository
      */
-    public function removeOrganisationRepository(OrganisationRepository $organisationRepository)
+    public function removeRepository(Repository $repository)
     {
-        $this->organisationRepositories->removeElement($organisationRepository);
+        $this->repositories->removeElement($repository);
     }
 
     /**
-     * Get organisationRepositories
+     * Get repositories
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getOrganisationRepositories()
+    public function getRepositories()
     {
-        return $this->organisationRepositories;
+        return $this->repositories;
     }
 }

@@ -103,6 +103,19 @@ site.dangerous_substances: "Substances dangereuses"
 site.importance: "Importance"
 site.product: "Produit(s)/service(s)"
 
+
+repositories.list.title: "Référentiels"
+repositories.list.empty: "Aucun référentiel."
+repositories.list.label: "Nom"
+repositories.list.repositories: "Référentiel(s)"
+repositories.list.repositoryIndicators: "Indicateur(s)"
+repositories.list.name: "Nom"
+repositories.list.description: "Description"
+
+repository.label: "Nom"
+repository.description: "Description"
+
+
 shareholders.list.title: "Actionnaires"
 shareholders.list.empty: "Aucun actionnaire pour le moment."
 

@@ -10,5 +10,5 @@ _users:
     resource: "routing/users.yml"
 _poles:
     resource: "routing/poles.yml"
-_organisationRepositories:
+_repositories:
     resource: "routing/organisationRepositories.yml"

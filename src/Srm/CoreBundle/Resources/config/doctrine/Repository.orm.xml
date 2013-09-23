@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Repository" table="vr_repository">
+  <entity name="Srm\CoreBundle\Entity\Repository" table="v_repository" repository-class="Srm\CoreBundle\Repository\RepositoryRepository">
     <id name="repositoryId" type="integer" column="REPOSITORY_ID">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
     <field name="description" type="string" column="DESCRIPTION" length="255" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <many-to-many field="repositoryIndicators" target-entity="Indicator" inversed-by="repositories">
+      <join-table name="vj_repository_indicators">
+        <join-columns>
+          <join-column name="REPOSITORY_ID" referenced-column-name="REPOSITORY_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="INDICATORS_ID" referenced-column-name="INDICATORS_ID"/>
+        </inverse-join-columns>
+      </join-table>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-many>
+    <many-to-one field="organisation" target-entity="Organisation">
+      <join-columns>
+        <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

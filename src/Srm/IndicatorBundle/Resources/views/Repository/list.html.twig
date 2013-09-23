@@ -1,1 +1,71 @@
-{# empty Twig template #}
+{% extends '::layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-building"></i> {{ 'repositories.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'repositories.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title"> {{ 'repositories.list.title'|trans }} </span>
+                        <ul class="box-toolbar">
+                            <li><a class="btn btn-green btn-mini spacer" href="{{ path('srm_indicator_repository_add', { 'organisationId': organisation.organisationId }) }}">{{ 'button.add'|trans }}</a>
+                                <!--<a class="btn btn-green btn-mini">Exporter</a>-->
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="box-content">
+                        <table class="table table-normal">
+                            <thead>
+                                <tr><td>{{ 'repositories.list.name'|trans }}</td>
+                                    <td>{{ 'repositories.list.description'|trans }}</td>
+                                    <td>{{ 'list.enabled'|trans }}</td>
+                                    <td style="width:115px"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for repository in repositories %}
+                                    <tr>
+                                        <td>{{ repository.label }}</td>
+                                        <td>{{ repository.description }}</td>
+                                        <td>
+                                            {% if repository.enabled %}
+                                                {{ 'enabled'|trans }}
+                                            {% else %}
+                                                {{ 'disabled'|trans }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="{{ path('srm_indicator_repository_show', { 'organisationId': organisation.organisationId, 'repositoryId': repository.repositoryId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
+                                                <a href="{{ path('srm_indicator_repository_edit', { 'organisationId': organisation.organisationId, 'repositoryId': repository.repositoryId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                                <a href="{{ path('srm_indicator_repository_disable', { 'organisationId': organisation.organisationId, 'repositoryId': repository.repositoryId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr class="info"><td colspan="9">{{ 'repositories.list.empty'|trans }}</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

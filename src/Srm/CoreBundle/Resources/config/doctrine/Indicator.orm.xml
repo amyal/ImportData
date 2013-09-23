@@ -24,12 +24,12 @@
         <join-column name="INDICATOR_LEVEL3_ID" referenced-column-name="INDICATOR_LEVEL3_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="repository" target-entity="Repository">
+    <many-to-one field="referencial" target-entity="Referencial">
       <join-columns>
-        <join-column name="REPOSITORY_ID" referenced-column-name="REPOSITORY_ID"/>
+        <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
       </join-columns>
     </many-to-one>
     <many-to-many field="items" target-entity="Item" mapped-by="indicators"/>
-    <many-to-many field="organisationRepositories" target-entity="OrganisationRepository" mapped-by="repositoryIndicators"/>
+    <many-to-many field="repositories" target-entity="Repository" mapped-by="repositoryIndicators"/>
   </entity>
 </doctrine-mapping>

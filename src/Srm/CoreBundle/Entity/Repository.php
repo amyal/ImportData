@@ -7,6 +7,7 @@ namespace Srm\CoreBundle\Entity;
  */
 class Repository
 {
+
     /**
      * @var string
      */
@@ -16,6 +17,16 @@ class Repository
      * @var string
      */
     private $description;
+
+    /**
+     * @var \DateTime
+     */
+    private $creationDate;
+
+    /**
+     * @var \DateTime
+     */
+    private $modificationDate;
 
     /**
      * @var boolean
@@ -32,9 +43,24 @@ class Repository
      */
     private $repositoryId;
 
+    /**
+     * @var \Srm\CoreBundle\Entity\Organisation
+     */
+    private $organisation;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $repositoryIndicators;
+
+    /**
+     * Constructor
+     */
     public function __construct()
     {
+        $this->repositoryIndicators = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->creationDate = new \DateTime();
         $this->deleted = false;
     }
 
@@ -82,6 +108,52 @@ class Repository
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return Repository
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * Set modificationDate
+     *
+     * @param \DateTime $modificationDate
+     * @return Repository
+     */
+    public function setModificationDate($modificationDate)
+    {
+        $this->modificationDate = $modificationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get modificationDate
+     *
+     * @return \DateTime
+     */
+    public function getModificationDate()
+    {
+        return $this->modificationDate;
     }
 
     /**
@@ -138,5 +210,68 @@ class Repository
     public function getRepositoryId()
     {
         return $this->repositoryId;
+    }
+
+    /**
+     * Set organisation
+     *
+     * @param \Srm\CoreBundle\Entity\Organisation $organisation
+     * @return organisation
+     */
+    public function setOrganisation(Organisation $organisation = null)
+    {
+        $this->organisation = $organisation;
+
+        return $this;
+    }
+
+    /**
+     * Get organisation
+     *
+     * @return \Srm\CoreBundle\Entity\Organisation
+     */
+    public function getOrganisation()
+    {
+        return $this->organisation;
+    }
+
+    /**
+     * Add indicator
+     *
+     * @param \Srm\CoreBundle\Entity\Indicator $indicator
+     * @return Repository
+     */
+    public function addIndicator(Indicator $indicator)
+    {
+        $indicator->addRepository($this);
+        $this->repositoryIndicators[] = $indicator;
+
+        return $this;
+    }
+
+    /**
+     * Remove indicator
+     *
+     * @param \Srm\CoreBundle\Entity\Indicator $indicator
+     */
+    public function removeIndicator(Indicator $indicator)
+    {
+        $indicator->removeRepository($this);
+        $this->repositoryIndicators->removeElement($indicator);
+    }
+
+    /**
+     * Get repositoryIndicators
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRepositoryIndicators()
+    {
+        return $this->repositoryIndicators;
+    }
+
+    public function updateModificationDate()
+    {
+        $this->modificationDate = new \DateTime();
     }
 }

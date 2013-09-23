@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Controller;
+namespace Srm\IndicatorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -11,18 +11,15 @@ class RepositoriesController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
-        $sites = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Site')->findByOrganisation($organisation);
-        $repositories = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Repository')->findNonDeletedBySites($sites);
-
-        return $this->render('SrmWebsiteBundle:Repository:list.html.twig', array(
+        return $this->render('SrmIndicatorBundle:Repository:list.html.twig', array(
             'organisation' => $organisation,
-            'repositories' => $repositories,
+            'repositories' => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Repository')->findNonDeletedByOrganisation($organisation),
         ));
     }
 
     public function showAction(Organisation $organisation, Repository $repository)
     {
-        return $this->render('SrmWebsiteBundle:Repository:show.html.twig', array(
+        return $this->render('SrmIndicatorBundle:Repository:show.html.twig', array(
             'organisationId' => $organisation->getOrganisationId(),
             'repository'     => $repository,
         ));
@@ -35,22 +32,22 @@ class RepositoriesController extends Controller
         $em->persist($repository);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('srm_website_repositories_list', array(
+        return $this->redirect($this->generateUrl('srm_indicator_repository_list', array(
             'organisationId' => $organisation->getOrganisationId(),
         )));
     }
 
     public function formAction(Organisation $organisation, Repository $repository)
     {
-        $formActionRoute = 'srm_website_repositories_add';
+        $formActionRoute = 'srm_indicator_repository_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
 
         if (null !== $repositoryId = $repository->getRepositoryId()) {
-            $formActionRoute = 'srm_website_repository_edit';
+            $formActionRoute = 'srm_indicator_repository_edit';
             $formActionRouteParams['repositoryId'] = $repositoryId;
         }
 
-        $form = $this->createForm('srm_repository', $repository, array(
+        $form = $this->createForm('srm_indicator_repository', $repository, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
             'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
@@ -59,14 +56,14 @@ class RepositoriesController extends Controller
         $request = $this->getRequest();
 
         if ('GET' === $request->getMethod()) {
-            return $this->render('SrmWebsiteBundle:Repository:form.html.twig', array(
+            return $this->render('SrmIndicatorBundle:Repository:form.html.twig', array(
                 'organisationId' => $organisation->getOrganisationId(),
                 'form'           => $form->createView(),
             ));
         }
 
         if (false === $form->handleRequest($request)->isValid()) {
-            return $this->render('SrmWebsiteBundle:Repository:form.html.twig', array(
+            return $this->render('SrmIndicatorBundle:Repository:form.html.twig', array(
                 'organisationId' => $organisation->getOrganisationId(),
                 'form'           => $form->createView(),
             ));
@@ -76,7 +73,7 @@ class RepositoriesController extends Controller
         $em->persist($repository);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('srm_website_repositories_list', array(
+        return $this->redirect($this->generateUrl('srm_indicator_repository_list', array(
             'organisationId' => $organisation->getOrganisationId(),
         )));
     }
