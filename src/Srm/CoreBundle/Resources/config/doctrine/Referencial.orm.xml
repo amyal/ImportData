@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\Referencial" table="vr_referencial">
+    <id name="referencialId" type="integer" column="REFERENCIAL_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
+    <field name="description" type="string" column="DESCRIPTION" length="255" nullable="true"/>
+    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
+    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+  </entity>
+</doctrine-mapping>
