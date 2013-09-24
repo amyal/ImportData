@@ -25,6 +25,12 @@ class RepositoryParamConverter implements ParamConverterInterface
 
         $repository = new Repository();
 
+        if (null === $organisation = $request->get('organisation', null)) {
+            throw new \Exception('Aucune organisation trouvée pour créer un référentiel.');
+        }
+
+        $repository->setOrganisation($organisation);
+
         $request->attributes->set($configuration->getName(), $repository);
 
         return true;

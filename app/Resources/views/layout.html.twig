@@ -43,43 +43,43 @@
                         <div class="nav-collapse nav-collapse-top collapse">
                             <ul class="nav full pull-right">
                                 <li class="dropdown user-avatar">
-	                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-	                                    <!-- Visible -->
-	                                    <a href="dashboard.html#" class="dropdown-toggle" data-toggle="dropdown">
-	                                        <span>
-	                                            <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> <span>{{ app.user.username }}<i class="icon-caret-down"></i></span>
-	                                            <!--<span class="badge badge-dark-red">5</span>-->
-	                                        </span>
-	                                    </a>
-	
-	                                    <!-- Dropdown -->
-	                                    <ul class="dropdown-menu">
-	                                        <li class="with-image">
-	                                            <div class="avatar">
-	                                                <img src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" />
-	                                            </div>
-	                                            <span>{{ app.user.username }}</span>
-	                                        </li>
-	                                        <li class="divider"></li>
-	
-	                                        <li><a href="#{#{ path('srm_website_contact_edit',  {'organisationId': organisationId, 'contactId': app.user.id}) }#}">
-	                                                <i class="icon-user"></i> <span>{{ 'header.profile.profile'|trans }}</span>
-	                                            </a>
-	                                        </li>
-	                                        <li>
-	                                            <a href="#">
-	                                                <i class="icon-cog"></i> <span>{{ 'header.profile.settings'|trans }} </span>
-	                                            </a>
-	                                        </li>
-	                                        <li><a href="#">
-	                                                <i class="icon-envelope"></i> <span>{{ 'header.profile.message'|trans }} </span>
-	                                            </a>
-	                                        </li>
-	                                        <li><a href="{{ path('fos_user_security_logout') }}">
-	                                                <i class="icon-off"></i> <span>{{ 'header.profile.logout'|trans }} </span>
-	                                            </a>
-	                                        </li>
-	                                    </ul>
+                                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                        <!-- Visible -->
+                                        <a href="dashboard.html#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span>
+                                                <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> <span>{{ app.user.username }}<i class="icon-caret-down"></i></span>
+                                                <!--<span class="badge badge-dark-red">5</span>-->
+                                            </span>
+                                        </a>
+    
+                                        <!-- Dropdown -->
+                                        <ul class="dropdown-menu">
+                                            <li class="with-image">
+                                                <div class="avatar">
+                                                    <img src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" />
+                                                </div>
+                                                <span>{{ app.user.username }}</span>
+                                            </li>
+                                            <li class="divider"></li>
+    
+                                            <li><a href="#{#{ path('srm_website_contact_edit',  {'organisationId': organisationId, 'contactId': app.user.id}) }#}">
+                                                    <i class="icon-user"></i> <span>{{ 'header.profile.profile'|trans }}</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon-cog"></i> <span>{{ 'header.profile.settings'|trans }} </span>
+                                                </a>
+                                            </li>
+                                            <li><a href="#">
+                                                    <i class="icon-envelope"></i> <span>{{ 'header.profile.message'|trans }} </span>
+                                                </a>
+                                            </li>
+                                            <li><a href="{{ path('fos_user_security_logout') }}">
+                                                    <i class="icon-off"></i> <span>{{ 'header.profile.logout'|trans }} </span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     {% else %}
                                         <a href="{{ path('fos_user_security_login') }}">{{ 'header.profile.connect'|trans }}</a>
                                     {% endif %}
@@ -211,7 +211,13 @@
                         </a>
                         <ul id="dropdown3" class="collapse ">
                             <li class="">
-                                <a href="#">
+                                <a  {% if organisation is defined %}
+                                        href="{{ path('srm_indicator_repository_list', { 'organisationId': organisation.organisationId }) }}"
+                                    {% elseif organisationId is defined %}
+                                        href="{{ path('srm_indicator_repository_list', { 'organisationId': organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_indicator_repository_list', { 'organisationId': identificationCode }) }}"
+                                    {% endif %}>
                                     <i class="icon-list-alt"></i> {{ 'indicator.nav.activate'|trans }}
                                 </a>
                             </li>

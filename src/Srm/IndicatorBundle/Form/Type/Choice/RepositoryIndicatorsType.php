@@ -29,9 +29,8 @@ class RepositoryIndicatorsType extends AbstractType
             throw new \Exception('Organisation cannot be retrieved to build indicators list if the request is not accessible.');
         }
 
-        $organisation = $this->request->get('organisation');
-        $repository    = $this->em->getRepository('Srm\CoreBundle\Entity\Repository')->findByOrganisation($organisation);
-        $indicators  = $this->em->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByRepository($repository);
+        $organisation   = $this->request->get('organisation');
+        $indicators     = $this->em->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByRepository();
 
         $resolver->setDefaults(array(
             'class'    => 'Srm\CoreBundle\Entity\Indicator',

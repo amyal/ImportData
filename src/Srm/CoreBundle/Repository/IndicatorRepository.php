@@ -6,18 +6,12 @@ use Doctrine\ORM\EntityRepository;
 
 class IndicatorRepository extends EntityRepository
 {
-    public function findNonDeletedByRepository($repositories)
+    public function findNonDeletedByRepository()
     {
-        $indicators = array();
-
-        foreach ($repositories as $repository) {
-            foreach ($repository->getRepositoryIndicators() as $indicator) {
-                if (!$indicator->getDeleted()) {
-                    $indicators[$indicator->getIndicatorId()] = $indicator;
-                }
-            }
-        }
-
-        return $indicators;
+        return $this->createQueryBuilder('c')
+            ->where('c.deleted = :deleted')->setParameter('deleted', false)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }
