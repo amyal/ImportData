@@ -47,7 +47,7 @@ class RepositoriesController extends Controller
             $formActionRouteParams['repositoryId'] = $repositoryId;
         }
 
-        $form = $this->createForm('srm_indicator_repository', $repository, array(
+        $form = $this->createForm('srm_repository', $repository, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
             'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),

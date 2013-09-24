@@ -32,7 +32,7 @@
             </call>
             <tag name="form.type" alias="srm_organisation_departments" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Choice\repositoryIndicatorsType" id="srm_indicator.form.type.repository_indicators">
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\RepositoryIndicatorsType" id="srm_indicator.form.type.repository_indicators">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
