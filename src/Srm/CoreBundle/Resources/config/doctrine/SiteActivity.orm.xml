@@ -4,7 +4,7 @@
     <id name="siteActivityId" type="integer" column="SITE_ACTIVITY_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
+    <field name="label" type="string" column="LABEL" length="500" nullable="false"/>
     <many-to-one field="typeSite" target-entity="TypeSite">
       <join-columns>
         <join-column name="TYPE_SITE_ID" referenced-column-name="TYPE_SITE_ID"/>
