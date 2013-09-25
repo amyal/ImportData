@@ -32,6 +32,12 @@
             </call>
             <tag name="form.type" alias="srm_organisation_departments" />
         </service>
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\OrganisationSitesType" id="srm_website.form.type.organisation_sites">
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_sites" />
+        </service>
         <service class="Srm\IndicatorBundle\Form\Type\Choice\RepositoryIndicatorsType" id="srm_indicator.form.type.repository_indicators">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <call method="setRequest">
@@ -39,12 +45,14 @@
             </call>
             <tag name="form.type" alias="srm_organisation_repositoryIndicators" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Choice\OrganisationSitesType" id="srm_website.form.type.organisation_sites">
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\IndicatorLevel1Type" id="srm_indicator.form.type.indicatorLevels1">
+            <argument type="service" id="doctrine.orm.entity_manager" />
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
-            <tag name="form.type" alias="srm_organisation_sites" />
+            <tag name="form.type" alias="srm_organisation_indicatorLevel1" />
         </service>
+        
         <service class="Srm\WebsiteBundle\Form\Type\Choice\SiteActivitiesType" id="srm_website.form.type.site_activities">
             <tag name="form.type" alias="srm_site_activities" />
         </service>

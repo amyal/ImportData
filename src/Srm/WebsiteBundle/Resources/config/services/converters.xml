@@ -37,5 +37,9 @@
         <service id="srm_website.converter.repository" class="Srm\WebsiteBundle\Request\ParamConverter\RepositoryParamConverter">
             <tag name="request.param_converter" converter="repository" priority="7" />
         </service>
+        
+        <service id="srm_website.converter.indicatorLevel1" class="Srm\WebsiteBundle\Request\ParamConverter\IndicatorLevel1ParamConverter">
+            <tag name="request.param_converter" converter="category" priority="7" />
+        </service>
     </services>
 </container>

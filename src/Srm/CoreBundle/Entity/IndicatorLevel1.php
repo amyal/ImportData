@@ -32,9 +32,16 @@ class IndicatorLevel1
      */
     private $indicatorLevel1Id;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $categories;
+
 
     public function __construct()
     {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        
         $this->deleted = false;
     }
 
@@ -138,5 +145,40 @@ class IndicatorLevel1
     public function getIndicatorLevel1Id()
     {
         return $this->indicatorLevel1Id;
+    }
+    
+    /**
+     * Add indicatorLevel1
+     *
+     * @param \Srm\CoreBundle\Entity\IndicatorLevel1 $category
+     * @return IndicatorLevel1
+     */
+    public function addIndicatorLevel1(IndicatorLevel1 $category)
+    {
+        $category->addIndicatorLevel1($this);
+        $this->indicatorLevel1[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove indicatorLevel1
+     *
+     * @param \Srm\CoreBundle\Entity\IndicatorLevel1 $category
+     */
+    public function removeIndicatorLevel1(IndicatorLevel1 $category)
+    {
+        $category->removeIndicatorLevel1($this);
+        $this->indicatorLevel1->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIndicatorLevels1()
+    {
+        return $this->categories;
     }
 }

@@ -38,6 +38,10 @@
                                     <div class="controls">{{ form_widget(form.description) }}</div>
                                 </div>
                                 <div class="control-group">
+                                    {{ form_label(form.repositoryCategories) }}
+                                    <div class="controls">{{ form_widget(form.repositoryCategories, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div>
+                                <div class="control-group">
                                     {{ form_label(form.repositoryIndicators) }}
                                     <div class="controls">{{ form_widget(form.repositoryIndicators, {'attr': {'class': 'chzn-select select2'}}) }}</div>
                                 </div>
@@ -52,7 +56,7 @@
 
                         {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
                             save_form: form.save,
-                            url_cancel: path('srm_website_poles_list', {'organisationId': organisationId})
+                            url_cancel: path('srm_indicator_repository_list', {'organisationId': organisationId})
                         }, with_context = false) }}
 
                         <div class="hide">

@@ -23,6 +23,8 @@ class RepositoryType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
+            ->add('repositoryCategories', 'srm_organisation_indicatorLevel1', array('required' => true))
+            
             ->add('repositoryIndicators', 'srm_organisation_repositoryIndicators', array('required' => true))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))

@@ -24,6 +24,21 @@
         <cascade-all />
       </cascade>
     </many-to-many>
+    <many-to-many field="repositoryCategories" target-entity="IndicatorLevel1" inversed-by="categories">
+      <join-table name="vj_repository_categories">
+        <join-columns>
+          <join-column name="REPOSITORY_ID" referenced-column-name="REPOSITORY_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="INDICATOR_LEVEL1_ID" referenced-column-name="INDICATOR_LEVEL1_ID"/>
+        </inverse-join-columns>
+      </join-table>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-many>
+    
     <many-to-one field="organisation" target-entity="Organisation">
       <join-columns>
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>

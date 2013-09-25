@@ -54,11 +54,17 @@ class Repository
     private $repositoryIndicators;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $repositoryCategories;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->repositoryIndicators = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->repositoryCategories = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
         $this->deleted = false;
@@ -268,6 +274,41 @@ class Repository
     public function getRepositoryIndicators()
     {
         return $this->repositoryIndicators;
+    }
+
+    /**
+     * Add indicatorLevel1
+     *
+     * @param \Srm\CoreBundle\Entity\IndicatorLevel1 $indicatorLevel1
+     * @return Repository
+     */
+    public function addIndicatorLevel1(IndicatorLevel1 $indicatorLevel1)
+    {
+        $indicatorLevel1->addRepository($this);
+        $this->repositoryCategories[] = $indicatorLevel1;
+
+        return $this;
+    }
+
+    /**
+     * Remove indicatorLevel1
+     *
+     * @param \Srm\CoreBundle\Entity\IndicatorLevel1 $indicatorLevel1
+     */
+    public function removeIndicatorLevel1(IndicatorLevel1 $indicatorLevel1)
+    {
+        $indicatorLevel1->removeRepository($this);
+        $this->repositoryCategories->removeElement($indicatorLevel1);
+    }
+
+    /**
+     * Get repositoryCategories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRepositoryCategories()
+    {
+        return $this->repositoryCategories;
     }
 
     public function updateModificationDate()

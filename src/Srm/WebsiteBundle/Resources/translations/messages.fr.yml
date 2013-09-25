@@ -111,6 +111,7 @@ repositories.list.repositories: "Référentiel(s)"
 repositories.list.repositoryIndicators: "Indicateur(s) actif(s)"
 repositories.list.name: "Nom"
 repositories.list.description: "Description"
+repositories.list.categories: "Catégorie(s)"
 
 repository.label: "Nom"
 repository.description: "Description"
