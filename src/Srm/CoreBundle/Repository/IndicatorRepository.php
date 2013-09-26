@@ -11,7 +11,14 @@ class IndicatorRepository extends EntityRepository
         return $this->createQueryBuilder('c')
             ->where('c.deleted = :deleted')->setParameter('deleted', false)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
+    }
+    
+    public function findNonDeletedByCategories($categoryIds)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.deleted = :deleted')->setParameter('deleted', false)
+            ->andWhere('c.indicatorLevel1 IN (:category)')->setParameter('category', explode(',', $categoryIds))
+            ->getQuery()->getResult();
     }
 }

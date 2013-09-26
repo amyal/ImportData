@@ -1,4 +1,23 @@
 {% extends '::layout.html.twig' %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#srm_repository_repositoryCategories').on('change', function() {
+                    $('#srm_repository_repositoryIndicators option').remove();
+                    $.ajax({
+                        url: "{{ path('indicators_by_categories', {'organisationId': organisationId}) }}",
+                        type: "GET",
+                        data: "categories_id="+$(this).val(),
+                        success: function(data){
+                            $('#srm_repository_repositoryIndicators').append(data);
+                        }
+                    });
+                });
+            });   
+        </script>
+{% endblock %}
 
 {% block main_container_header %}
     <i class="icon-circle-blank"></i> {{ 'repositories.list.title'|trans }}

@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Repository;
 
+use Symfony\Component\HttpFoundation\Response;
+
 class RepositoriesController extends Controller
 {
     public function listAction(Organisation $organisation)
@@ -76,5 +78,26 @@ class RepositoriesController extends Controller
         return $this->redirect($this->generateUrl('srm_indicator_repository_list', array(
             'organisationId' => $organisation->getOrganisationId(),
         )));
+    }
+
+    public function indicatorsByCategoriesAction()
+    {
+        $categoryIds = $this->getRequest()->query->get('categories_id');
+
+        if ($categoryIds) {
+            $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByCategories($categoryIds);
+        }
+        else {
+            $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findAll();
+        }
+
+        $html = '';
+        foreach($indicators as $indicator) {
+            if ($indicator->getIndicatorId() == '')
+                $html .= '<option value=\"-1\">Aucune réponse</option>';
+            $html = $html . sprintf("<option value=\"%d\">%s</option>", $indicator->getIndicatorId(), $indicator->getLabel());
+        }
+
+        return new Response($html);
     }
 }
