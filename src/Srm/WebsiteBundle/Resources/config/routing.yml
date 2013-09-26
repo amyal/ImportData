@@ -12,3 +12,7 @@ _poles:
     resource: "routing/poles.yml"
 _repositories:
     resource: "routing/repositories.yml"
+_stakeholderGroup:
+    resource: "routing/stakeholderGroup.yml"
+_stakeholder:
+    resource: "routing/stakeholder.yml"

@@ -34,7 +34,6 @@ srm_indicator_repository_edit:
     requirements:
         repositoryId: \d+
 
-# Liste déroulante des indicateurs
 indicators_by_categories:
     path:       /organisations/{organisationId}/indicators/by_categories
     methods:    [GET,POST]

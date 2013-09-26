@@ -46,6 +46,12 @@ class GroupStakeholder
      * @var \Doctrine\Common\Collections\Collection
      */
     private $stakeholderArchetypes;
+    
+    /**
+     * @var \Srm\CoreBundle\Entity\Organisation
+     */
+    private $organisation;
+
 
     /**
      * Constructor
@@ -248,6 +254,29 @@ class GroupStakeholder
     public function getStakeholderArchetypes()
     {
         return $this->stakeholderArchetypes;
+    }
+
+    /**
+     * Set organisation
+     *
+     * @param \Srm\CoreBundle\Entity\Organisation $organisation
+     * @return Site
+     */
+    public function setOrganisation(Organisation $organisation = null)
+    {
+        $this->organisation = $organisation;
+
+        return $this;
+    }
+
+    /**
+     * Get organisation
+     *
+     * @return \Srm\CoreBundle\Entity\Organisation
+     */
+    public function getOrganisation()
+    {
+        return $this->organisation;
     }
 
     public function updateModificationDate()

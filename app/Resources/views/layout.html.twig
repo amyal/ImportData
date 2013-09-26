@@ -296,17 +296,23 @@
                         <span class="glow"></span>
                         <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown6">
                             <i class="icon-exchange icon-2x"></i>
-                            <span>{{ 'external.nav'|trans }} <i class="icon-caret-down"></i></span>
+                            <span>{{ 'stakeholder.nav'|trans }} <i class="icon-caret-down"></i></span>
                         </a>
                         <ul id="dropdown6" class="collapse ">
                             <li class="">
-                                <a href="#">
-                                    <i class="icon-briefcase"></i> {{ 'external.nav.partie'|trans }}
+                                <a {% if organisation is defined %}
+                                        href="{{ path('srm_website_stakeholderGroup_list', { 'organisationId': organisation.organisationId }) }}"
+                                    {% elseif organisationId is defined %}
+                                        href="{{ path('srm_website_stakeholderGroup_list', { 'organisationId': organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_website_stakeholderGroup_list', { 'organisationId': identificationCode }) }}"
+                                    {% endif %}>
+                                    <i class="icon-briefcase"></i> {{ 'stakeholder.nav.group'|trans }}
                                 </a>
                             </li>
                             <li class="">
                                 <a href="#">
-                                    <i class="icon-link"></i> {{ 'external.nav.chaine'|trans }}
+                                    <i class="icon-link"></i> {{ 'stakeholder.nav.stakeholder'|trans }}
                                 </a>
                             </li>
                         </ul>
