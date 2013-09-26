@@ -1,0 +1,43 @@
+srm_website_stakeholderGroup_list:
+    path:       /organisations/{organisationId}/stakeholdersGroup
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:StakeholdersGroup:list"
+
+srm_website_stakeholderGroup_add:
+    path:       /organisations/{organisationId}/stakeholdersGroup/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:StakeholdersGroup:form"
+
+srm_website_stakeholderGroup_show:
+    path:       /organisations/{organisationId}/stakeholdersGroup/{stakeholderGroupId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:StakeholdersGroup:show"
+    requirements:
+        stakeholderGroupId: \d+
+
+srm_website_stakeholderGroup_disable:
+    path:       /organisations/{organisationId}/stakeholdersGroup/{stakeholderGroupId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:StakeholdersGroup:disable"
+    requirements:
+        stakeholderGroupId: \d+
+
+srm_website_stakeholderGroup_edit:
+    path:       /organisations/{organisationId}/stakeholdersGroup/{stakeholderGroupId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:StakeholdersGroup:form"
+    requirements:
+        stakeholderGroupId: \d+
+
+archetypes_by_types:
+    path:       /organisations/{organisationId}/indicators/by_categories
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:StakeholdersGroup:archetypesByTypes"
+    requirements:
+        stakeholderGroupId: \d+

@@ -1,0 +1,35 @@
+srm_stakeholder_list:
+    path:       /organisations/{organisationId}/stakeholders
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Stakeholders:list"
+
+srm_stakeholder_add:
+    path:       /organisations/{organisationId}/stakeholders/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Stakeholders:form"
+
+srm_stakeholder_show:
+    path:       /organisations/{organisationId}/stakeholders/{stakeholderId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Stakeholders:show"
+    requirements:
+        stakeholderId: \d+
+
+srm_stakeholder_disable:
+    path:       /organisations/{organisationId}/stakeholders/{stakeholderId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Stakeholders:disable"
+    requirements:
+        stakeholderId: \d+
+
+srm_stakeholder_edit:
+    path:       /organisations/{organisationId}/stakeholders/{stakeholderId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Stakeholders:form"
+    requirements:
+        stakeholderId: \d+
