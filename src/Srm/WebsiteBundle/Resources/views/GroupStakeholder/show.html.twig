@@ -1,0 +1,55 @@
+{% extends '::layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-circle-blank"></i> {{ 'poles.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'poles.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title">  {{ pole.label }} </span>
+                    </div>
+                    <div class="box-content padded">
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'pole.label'|trans }} :</label>
+                                <div class="controls">{{ pole.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'poles.list.sites'|trans }}  : </label>
+                                <div class="controls">
+                                    {% if pole.sites %}{{ pole.sites|joinLabels(', ') }}{% else %}{{ 'list.no_sites'|trans }}{% endif %}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'poles.list.departments'|trans }} :</label>
+                                <div class="controls">
+                                    {% if pole.departments %}{{ pole.departments|joinLabels(', ') }}{% else %}{{ 'list.no_departments'|trans }}{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
+                        url_edit:   path('srm_website_pole_edit',  {'organisationId': organisationId, 'poleId': pole.poleId}),
+                        url_cancel: path('srm_website_poles_list', {'organisationId': organisationId})
+                    }, with_context = false) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

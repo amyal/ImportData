@@ -41,5 +41,10 @@
         <service id="srm_website.converter.indicatorLevel1" class="Srm\WebsiteBundle\Request\ParamConverter\IndicatorLevel1ParamConverter">
             <tag name="request.param_converter" converter="category" priority="7" />
         </service>
+        
+        <service id="srm_website.converter.groupStakeholder" class="Srm\WebsiteBundle\Request\ParamConverter\GroupStakeholderParamConverter">
+            <tag name="request.param_converter" converter="groupStakeholder" priority="7" />
+        </service>
+        
     </services>
 </container>

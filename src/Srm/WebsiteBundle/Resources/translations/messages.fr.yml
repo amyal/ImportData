@@ -158,3 +158,24 @@ data.nav.edit: "Edition"
 
 users.list.title: "Utilisateurs"
 list.header.username: "Login"
+
+groupStakeholders.list.title: "Groupes"
+groupStakeholders.list.empty: "Aucun groupe pour le moment."
+groupStakeholders.list.label: "Nom"
+groupStakeholders.list.type: "Type"
+groupStakeholders.list.archetype: "Archétype(s)"
+groupStakeholders.label: "Nom"
+groupStakeholders.archetypes: "Archétype(s)"
+
+list.no_stakeholdersGroup: "Aucun type"
+list_no_stakeholderArchetypes: "Aucun achétype"
+
+
+stakeholders.list.title: "Parties prenantes"
+stakeholders.list.empty: "Aucune partie prenante pour le moment."
+stakeholders.list.label: "Nom"
+stakeholders.list.contacts: "Contact(s)"
+stakeholders.label: "Nom"
+
+list.no_groupStakeholders: "Aucun groupe"
+list_no_contacts: "Aucun contact"

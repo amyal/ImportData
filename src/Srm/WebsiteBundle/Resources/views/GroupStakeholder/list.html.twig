@@ -1,0 +1,85 @@
+{% extends '::layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-circle-blank"></i> {{ 'groupStakeholders.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'stakeholder.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'groupStakeholders.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title"> {{ 'groupStakeholders.list.title'|trans }} </span>
+                        <ul class="box-toolbar">
+                            <li><a class="btn btn-green btn-mini spacer" href="{{ path('srm_website_groupStakeholders_add', { 'organisationId': organisation.organisationId }) }}">{{ 'button.add'|trans }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="box-content">
+
+                        <table class="table table-normal">
+                            <thead>
+                                <tr><td>{{ 'groupStakeholders.list.label'|trans }}</td>
+                                    <td>{{ 'groupStakeholders.list.type'|trans }}</td>
+                                    <td>{{ 'groupStakeholders.list.archetype'|trans }}</td>
+                                    <td>{{ 'list.enabled'|trans }}</td>
+                                    <td style="width:115px"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for groupStakeholder in groupStakeholders %}
+                                    <tr>
+                                        <td>{{ groupStakeholder.label }}</td>
+                                        <td>
+                                            {% if groupStakeholder.stakeholdersGroup %}
+                                                {{ groupStakeholder.stakeholdersGroup|joinLabels(', ') }}
+                                            {% else %}
+                                                {{ 'list.no_stakeholdersGroup'|trans }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if groupStakeholder.stakeholderArchetypes %}
+                                                {{ groupStakeholder.stakeholderArchetypes|joinLabels(', ') }}
+                                            {% else %}
+                                                {{ 'list_no_stakeholderArchetypes'|trans }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if groupStakeholder.enabled %}
+                                                {{ 'enabled'|trans }}
+                                            {% else %}
+                                                {{ 'disabled'|trans }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="{{ path('srm_website_groupStakeholders_show', { 'organisationId': organisation.organisationId, 'groupStakeholderId': groupStakeholder.groupStakeholderId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
+                                                <a href="{{ path('srm_website_groupStakeholders_edit', { 'organisationId': organisation.organisationId, 'groupStakeholderId': groupStakeholder.groupStakeholderId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                                <a href="{{ path('srm_website_groupStakeholders_disable', { 'organisationId': organisation.organisationId, 'groupStakeholderId': groupStakeholder.groupStakeholderId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr class="info"><td colspan="9">{{ 'groupStakeholders.list.empty'|trans }}</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

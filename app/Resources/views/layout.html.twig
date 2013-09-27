@@ -301,17 +301,23 @@
                         <ul id="dropdown6" class="collapse ">
                             <li class="">
                                 <a {% if organisation is defined %}
-                                        href="{{ path('srm_website_stakeholderGroup_list', { 'organisationId': organisation.organisationId }) }}"
+                                        href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
-                                        href="{{ path('srm_website_stakeholderGroup_list', { 'organisationId': organisationId }) }}"
+                                        href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': organisationId }) }}"
                                     {% else %}
-                                        href="{{ path('srm_website_stakeholderGroup_list', { 'organisationId': identificationCode }) }}"
+                                        href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
                                     <i class="icon-briefcase"></i> {{ 'stakeholder.nav.group'|trans }}
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#">
+                                <a {% if organisation is defined %}
+                                        href="{{ path('srm_website_stakeholders_list', { 'organisationId': organisation.organisationId }) }}"
+                                    {% elseif organisationId is defined %}
+                                        href="{{ path('srm_website_stakeholders_list', { 'organisationId': organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_website_stakeholders_list', { 'organisationId': identificationCode }) }}"
+                                    {% endif %}>
                                     <i class="icon-link"></i> {{ 'stakeholder.nav.stakeholder'|trans }}
                                 </a>
                             </li>

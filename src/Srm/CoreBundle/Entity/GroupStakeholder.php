@@ -48,6 +48,11 @@ class GroupStakeholder
     private $stakeholderArchetypes;
     
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $stakeholdersGroup;
+    
+    /**
      * @var \Srm\CoreBundle\Entity\Organisation
      */
     private $organisation;
@@ -60,6 +65,7 @@ class GroupStakeholder
     {
         $this->stakeholders = new \Doctrine\Common\Collections\ArrayCollection();
         $this->stakeholderArchetypes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->stakeholdersGroup = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
         $this->deleted = false;
@@ -254,6 +260,65 @@ class GroupStakeholder
     public function getStakeholderArchetypes()
     {
         return $this->stakeholderArchetypes;
+    }
+
+    /**
+     * Set stakeholderArchetypes
+     *
+     * @param \Srm\CoreBundle\Entity\StakeholderArchetype $stakeholderArchetype
+     * @return GroupStakeholder
+     */
+    public function setStakeholderArchetypes(StakeholderArchetype $stakeholderArchetype = null)
+    {
+        $this->stakeholderArchetypes = $stakeholderArchetype;
+
+        return $this;
+    }
+
+    /**
+     * Add stakeholdersGroup
+     *
+     * @param StakeholdersGroup $stakeholdersGroup
+     * @return GroupStakeholder
+     */
+    public function addStakeholdersGroup(StakeholdersGroup $stakeholdersGroup)
+    {
+        $this->stakeholdersGroup[] = $stakeholdersGroup;
+
+        return $this;
+    }
+
+    /**
+     * Remove stakeholdersGroup
+     *
+     * @param \Srm\CoreBundle\Entity\StakeholdersGroup $stakeholdersGroup
+     */
+    public function removeStakeholdersGroup(StakeholdersGroup $stakeholdersGroup)
+    {
+        $this->stakeholdersGroup->removeElement($stakeholdersGroup);
+    }
+
+    /**
+     * Get stakeholdersGroup
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStakeholdersGroup()
+    {
+        return $this->stakeholdersGroup;
+    }
+
+    /**
+     * Set stakeholdersGroup
+     *
+     * @param \Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup
+     * @return GroupStakeholder
+     */
+    public function setStakeholdersGroup(StakeholderGroup $stakeholderGroup = null)
+    {
+        $this->stakeholdersGroup = $stakeholderGroup;
+
+        return $this;
     }
 
     /**

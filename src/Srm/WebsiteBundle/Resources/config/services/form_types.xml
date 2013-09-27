@@ -52,6 +52,18 @@
             </call>
             <tag name="form.type" alias="srm_organisation_indicatorLevel1" />
         </service>
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\StakeholderGroupType" id="srm_website.form.type.stakeholderGroup_types">
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_stakeholderGroup_types" />
+        </service>
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\StakeholderArchetypeType" id="srm_website.form.type.stakeholderArchetypes">
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_stakeholderArchetypes" />
+        </service>
         
         <service class="Srm\WebsiteBundle\Form\Type\Choice\SiteActivitiesType" id="srm_website.form.type.site_activities">
             <tag name="form.type" alias="srm_site_activities" />
@@ -112,5 +124,10 @@
         <service class="Srm\IndicatorBundle\Form\Type\RepositoryType" id="srm_indicator.form.type.repository">
             <tag name="form.type" alias="srm_repository" />
         </service>
+        
+        <service class="Srm\WebsiteBundle\Form\Type\GroupStakeholderType" id="srm_website.form.type.groupStakeholder">
+            <tag name="form.type" alias="srm_groupStakeholder" />
+        </service>
+
     </services>
 </container>

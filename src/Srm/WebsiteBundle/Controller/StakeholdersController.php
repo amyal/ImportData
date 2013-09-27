@@ -11,8 +11,7 @@ class StakeholdersController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
-        $sites = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Site')->findByOrganisation($organisation);
-        $stakeholders = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Stakeholder')->findNonDeletedBySites($sites);
+        $stakeholders = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Stakeholder')->findNonDeletedByOrganisation($organisation);
 
         return $this->render('SrmWebsiteBundle:Stakeholder:list.html.twig', array(
             'organisation' => $organisation,
