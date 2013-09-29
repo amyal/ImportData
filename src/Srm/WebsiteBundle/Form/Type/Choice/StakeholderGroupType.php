@@ -42,6 +42,6 @@ class StakeholderGroupType extends AbstractType
 
     public function getName()
     {
-        return 'srm_stakeholderGroup_types';
+        return 'srm_stakeholderGroup';
     }
 }

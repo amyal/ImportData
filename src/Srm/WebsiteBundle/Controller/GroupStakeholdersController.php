@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\GroupStakeholder;
 
+use Symfony\Component\HttpFoundation\Response;
+
 class GroupStakeholdersController extends Controller
 {
     public function listAction(Organisation $organisation)
@@ -76,5 +78,26 @@ class GroupStakeholdersController extends Controller
         return $this->redirect($this->generateUrl('srm_website_groupStakeholders_list', array(
             'organisationId' => $organisation->getOrganisationId(),
         )));
+    }
+
+    public function archetypesByTypesAction()
+    {
+        $typeId = $this->getRequest()->query->get('type_id');
+
+        if ($typeId) {
+            $archetypes = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\StakeholderArchetype')->findNonDeletedByType($typeId);
+        }
+        else {
+            $archetypes = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\StakeholderArchetype')->findAll();
+        }
+
+        $html = '';
+        foreach($archetypes as $archetype) {
+            if ($archetype->getStakeholderArchetypeId() == '')
+                $html .= '<option value=\"-1\">Aucune réponse</option>';
+            $html = $html . sprintf("<option value=\"%d\">%s</option>", $archetype->getStakeholderArchetypeId(), $archetype->getLabel());
+        }
+
+        return new Response($html);
     }
 }

@@ -48,9 +48,9 @@ class GroupStakeholder
     private $stakeholderArchetypes;
     
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Srm\CoreBundle\Entity\StakeholderGroup
      */
-    private $stakeholdersGroup;
+    private $stakeholderGroup;
     
     /**
      * @var \Srm\CoreBundle\Entity\Organisation
@@ -65,7 +65,6 @@ class GroupStakeholder
     {
         $this->stakeholders = new \Doctrine\Common\Collections\ArrayCollection();
         $this->stakeholderArchetypes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->stakeholdersGroup = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
         $this->deleted = false;
@@ -276,52 +275,6 @@ class GroupStakeholder
     }
 
     /**
-     * Add stakeholdersGroup
-     *
-     * @param StakeholdersGroup $stakeholdersGroup
-     * @return GroupStakeholder
-     */
-    public function addStakeholdersGroup(StakeholdersGroup $stakeholdersGroup)
-    {
-        $this->stakeholdersGroup[] = $stakeholdersGroup;
-
-        return $this;
-    }
-
-    /**
-     * Remove stakeholdersGroup
-     *
-     * @param \Srm\CoreBundle\Entity\StakeholdersGroup $stakeholdersGroup
-     */
-    public function removeStakeholdersGroup(StakeholdersGroup $stakeholdersGroup)
-    {
-        $this->stakeholdersGroup->removeElement($stakeholdersGroup);
-    }
-
-    /**
-     * Get stakeholdersGroup
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getStakeholdersGroup()
-    {
-        return $this->stakeholdersGroup;
-    }
-
-    /**
-     * Set stakeholdersGroup
-     *
-     * @param \Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup
-     * @return GroupStakeholder
-     */
-    public function setStakeholdersGroup(StakeholderGroup $stakeholderGroup = null)
-    {
-        $this->stakeholdersGroup = $stakeholderGroup;
-
-        return $this;
-    }
-
-    /**
      * Set organisation
      *
      * @param \Srm\CoreBundle\Entity\Organisation $organisation
@@ -342,6 +295,29 @@ class GroupStakeholder
     public function getOrganisation()
     {
         return $this->organisation;
+    }
+
+    /**
+     * Set stakeholderGroup
+     *
+     * @param \Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup
+     * @return StakeholderGroup
+     */
+    public function setStakeholderGroup(StakeholderGroup $stakeholderGroup = null)
+    {
+        $this->stakeholderGroup = $stakeholderGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get stakeholderGroup
+     *
+     * @return \Srm\CoreBundle\Entity\StakeholderGroup
+     */
+    public function getStakeholderGroup()
+    {
+        return $this->stakeholderGroup;
     }
 
     public function updateModificationDate()

@@ -52,17 +52,23 @@
             </call>
             <tag name="form.type" alias="srm_organisation_indicatorLevel1" />
         </service>
-        <service class="Srm\WebsiteBundle\Form\Type\Choice\StakeholderGroupType" id="srm_website.form.type.stakeholderGroup_types">
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\StakeholderGroupType" id="srm_website.form.type.stakeholderGroup">
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
-            <tag name="form.type" alias="srm_stakeholderGroup_types" />
+            <tag name="form.type" alias="srm_stakeholderGroup" />
         </service>
         <service class="Srm\WebsiteBundle\Form\Type\Choice\StakeholderArchetypeType" id="srm_website.form.type.stakeholderArchetypes">
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
             <tag name="form.type" alias="srm_stakeholderArchetypes" />
+        </service>
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\ReferencialType" id="srm_indicator.form.type.referencials">
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_referencials" />
         </service>
         
         <service class="Srm\WebsiteBundle\Form\Type\Choice\SiteActivitiesType" id="srm_website.form.type.site_activities">

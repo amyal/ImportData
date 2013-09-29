@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\WebsiteBundle\Form\Type\Choice;
+namespace Srm\IndicatorBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class StakeholderArchetypeType extends AbstractType
+class ReferencialType extends AbstractType
 {
     protected $request;
 
@@ -23,16 +23,13 @@ class StakeholderArchetypeType extends AbstractType
             throw new \Exception('Organisation cannot be retrieved to build categories list if the request is not accessible.');
         }
 
-        //$categories     = $this->em->getRepository('Srm\CoreBundle\Entity\IndicatorLevel1')->findAllNonDeleted();
-
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\StakeholderArchetype',
+            'class'         => 'Srm\CoreBundle\Entity\Referencial',
             'property'      => 'label',
-            'label'         => 'groupStakeholders.list.archetype',
+            'label'         => 'repositories.referencial.list.type',
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('sa')->orderBy('sa.label', 'ASC');
+                return $er->createQueryBuilder('s')->orderBy('s.referencialId', 'ASC');
             },
-            'multiple' => true,
         ));
     }
 
@@ -43,6 +40,6 @@ class StakeholderArchetypeType extends AbstractType
 
     public function getName()
     {
-        return 'srm_stakeholderArchetypes';
+        return 'srm_referencials';
     }
 }

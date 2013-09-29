@@ -1,17 +1,17 @@
 srm_website_groupStakeholders_list:
-    path:       /organisations/{organisationId}/stakeholdersGroup
+    path:       /organisations/{organisationId}/groupStakeholders
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmWebsiteBundle:GroupStakeholders:list"
 
 srm_website_groupStakeholders_add:
-    path:       /organisations/{organisationId}/stakeholdersGroup/add
+    path:       /organisations/{organisationId}/groupStakeholders/add
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmWebsiteBundle:GroupStakeholders:form"
 
 srm_website_groupStakeholders_show:
-    path:       /organisations/{organisationId}/stakeholdersGroup/{groupStakeholderId}/show
+    path:       /organisations/{organisationId}/groupStakeholders/{groupStakeholderId}/show
     methods:    [GET]
     defaults:
         _controller:    "SrmWebsiteBundle:GroupStakeholders:show"
@@ -19,7 +19,7 @@ srm_website_groupStakeholders_show:
         groupStakeholderId: \d+
 
 srm_website_groupStakeholders_disable:
-    path:       /organisations/{organisationId}/stakeholdersGroup/{groupStakeholderId}/disable
+    path:       /organisations/{organisationId}/groupStakeholders/{groupStakeholderId}/disable
     methods:    [GET]
     defaults:
         _controller:    "SrmWebsiteBundle:GroupStakeholders:disable"
@@ -27,7 +27,7 @@ srm_website_groupStakeholders_disable:
         groupStakeholderId: \d+
 
 srm_website_groupStakeholders_edit:
-    path:       /organisations/{organisationId}/stakeholdersGroup/{groupStakeholderId}
+    path:       /organisations/{organisationId}/groupStakeholders/{groupStakeholderId}
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmWebsiteBundle:GroupStakeholders:form"

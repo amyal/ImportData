@@ -59,12 +59,18 @@ class Repository
     private $repositoryCategories;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $referencials;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->repositoryIndicators = new \Doctrine\Common\Collections\ArrayCollection();
         $this->repositoryCategories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->referencials         = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
         $this->deleted = false;
@@ -309,6 +315,41 @@ class Repository
     public function getRepositoryCategories()
     {
         return $this->repositoryCategories;
+    }
+
+    /**
+     * Add referencial
+     *
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     * @return Referencial
+     */
+    public function addReferencial(Referencial $referencial)
+    {
+        $referencial->addRepository($this);
+        $this->referencials[] = $referencial;
+
+        return $this;
+    }
+
+    /**
+     * Remove referencial
+     *
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     */
+    public function removeReferencial(Referencial $referencial)
+    {
+        $referencial->removeRepository($this);
+        $this->referencials->removeElement($referencial);
+    }
+
+    /**
+     * Get referencials
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReferencials()
+    {
+        return $this->referencials;
     }
 
     public function updateModificationDate()

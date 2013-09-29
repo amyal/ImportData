@@ -25,8 +25,13 @@ class GroupStakeholderParamConverter implements ParamConverterInterface
 
         $groupStakeholder = new GroupStakeholder();
 
-        $request->attributes->set($configuration->getName(), $groupStakeholder);
+        if (null === $organisation = $request->get('organisation', null)) {
+            throw new \Exception('Aucune organisation trouvée pour créer un référentiel.');
+        }
 
+        $groupStakeholder->setOrganisation($organisation);
+
+        $request->attributes->set($configuration->getName(), $groupStakeholder);
         return true;
     }
 }

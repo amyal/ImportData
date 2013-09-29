@@ -49,6 +49,10 @@
                         <div class="box-content padded">
                             <div class="padded-box">
                                 <div class="control-group">
+                                    {{ form_label(form.referencials) }}
+                                    <div class="controls">{{ form_widget(form.referencials, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div>
+                                <div class="control-group">
                                     {{ form_label(form.label) }}
                                     <div class="controls">{{ form_widget(form.label) }}</div>
                                 </div>

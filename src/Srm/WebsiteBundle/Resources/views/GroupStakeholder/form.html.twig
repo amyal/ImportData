@@ -14,6 +14,25 @@
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
 {% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#srm_groupStakeholder_stakeholderGroup').on('change', function() {
+                    $('#srm_groupStakeholder_stakeholderArchetypes option').remove();
+                    $.ajax({
+                        url: "{{ path('archetypes_by_types', {'organisationId': organisationId}) }}",
+                        type: "GET",
+                        data: "type_id="+$(this).val(),
+                        success: function(data){
+                            $('#srm_groupStakeholder_stakeholderArchetypes').append(data);
+                        }
+                    });
+                });
+            });   
+        </script>
+{% endblock %}
 
 {% block content %}
     <div class="container-fluid padded">
@@ -34,8 +53,8 @@
                                     <div class="controls">{{ form_widget(form.label) }}</div>
                                 </div>
                                 <div class="control-group">
-                                    {{ form_label(form.stakeholdersGroup) }}
-                                    <div class="controls">{{ form_widget(form.stakeholdersGroup, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                    {{ form_label(form.stakeholderGroup) }}
+                                    <div class="controls">{{ form_widget(form.stakeholderGroup, {'attr': {'class': 'chzn-select select2'}}) }}</div>
                                 </div>
                                 <div class="control-group">
                                     {{ form_label(form.stakeholderArchetypes) }}

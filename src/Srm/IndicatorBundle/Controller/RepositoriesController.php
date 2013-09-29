@@ -88,7 +88,8 @@ class RepositoriesController extends Controller
             $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByCategories($categoryIds);
         }
         else {
-            $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findAll();
+            //$indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findAll();
+            $indicators = array();
         }
 
         $html = '';

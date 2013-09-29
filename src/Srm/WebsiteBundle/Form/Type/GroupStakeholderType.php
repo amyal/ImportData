@@ -17,7 +17,7 @@ class GroupStakeholderType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
-            ->add('stakeholdersGroup', 'srm_stakeholderGroup_types', array('required' => true))
+            ->add('stakeholderGroup', 'srm_stakeholderGroup', array('required' => true))
 
             ->add('stakeholderArchetypes', 'srm_stakeholderArchetypes', array('required' => true))
 
