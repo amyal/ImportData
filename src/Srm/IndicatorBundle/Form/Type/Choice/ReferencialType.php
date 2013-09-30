@@ -26,7 +26,7 @@ class ReferencialType extends AbstractType
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\Referencial',
             'property'      => 'label',
-            'label'         => 'repositories.referencial.list.type',
+            'label'         => 'repositories.list.referencial',
             'query_builder' => function(EntityRepository $er) {
                 return $er->createQueryBuilder('s')->orderBy('s.referencialId', 'ASC');
             },

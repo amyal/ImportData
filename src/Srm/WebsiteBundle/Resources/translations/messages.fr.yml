@@ -114,7 +114,7 @@ site.enabled: "Ouvert"
 
 repositories.list.title: "Référentiels"
 repositories.list.empty: "Aucun référentiel."
-repositories.referencial.list.type: "Référentiel"
+repositories.list.referencial: "Type de référentiel"
 repositories.list.label: "Nom"
 repositories.list.repositories: "Référentiel(s)"
 repositories.list.repositoryIndicators: "Indicateur(s) actif(s)"

@@ -44,5 +44,11 @@
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
     </many-to-one>
+        
+    <many-to-one field="referencial" target-entity="Referencial">
+      <join-columns>
+        <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

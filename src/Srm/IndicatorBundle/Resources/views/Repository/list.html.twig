@@ -31,7 +31,9 @@
                     <div class="box-content">
                         <table class="table table-normal">
                             <thead>
-                                <tr><td>{{ 'repositories.list.name'|trans }}</td>
+                                <tr>
+                                    <td>{{ 'repositories.list.referencial'|trans }}</td>
+                                    <td>{{ 'repositories.list.name'|trans }}</td>
                                     <td>{{ 'repositories.list.description'|trans }}</td>
                                     <td>{{ 'list.enabled'|trans }}</td>
                                     <td style="width:115px"></td>
@@ -40,6 +42,7 @@
                             <tbody>
                                 {% for repository in repositories %}
                                     <tr>
+                                        <td>{{ repository.referencial.label }}</td>
                                         <td>{{ repository.label }}</td>
                                         <td>{{ repository.description }}</td>
                                         <td>

@@ -61,7 +61,7 @@ class Repository
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $referencials;
+    private $referencial;
 
     /**
      * Constructor
@@ -318,38 +318,26 @@ class Repository
     }
 
     /**
-     * Add referencial
+     * Set referencial
      *
      * @param \Srm\CoreBundle\Entity\Referencial $referencial
-     * @return Referencial
+     * @return organisation
      */
-    public function addReferencial(Referencial $referencial)
+    public function setReferencial(Referencial $referencial = null)
     {
-        $referencial->addRepository($this);
-        $this->referencials[] = $referencial;
+        $this->referencial = $referencial;
 
         return $this;
     }
 
     /**
-     * Remove referencial
+     * Get referencial
      *
-     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     * @return \Srm\CoreBundle\Entity\Referencial
      */
-    public function removeReferencial(Referencial $referencial)
+    public function getReferencial()
     {
-        $referencial->removeRepository($this);
-        $this->referencials->removeElement($referencial);
-    }
-
-    /**
-     * Get referencials
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getReferencials()
-    {
-        return $this->referencials;
+        return $this->referencial;
     }
 
     public function updateModificationDate()
