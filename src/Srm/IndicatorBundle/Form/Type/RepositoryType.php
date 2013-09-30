@@ -11,7 +11,7 @@ class RepositoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('referencials', 'srm_referencials', array('required' => true))
+            ->add('referencial', 'srm_referencials', array('required' => true))
 
             ->add('label', 'text', array(
                 'label'    => 'repository.label',
