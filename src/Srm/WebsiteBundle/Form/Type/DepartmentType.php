@@ -32,7 +32,7 @@ class DepartmentType extends AbstractType
                 'multiple' => true,
             ))
 
-            ->add('enabled', 'checkbox', array('label' => 'enabled'))
+            ->add('enabled', 'checkbox', array('label' => 'department.enabled'))
 
             ->add('save', 'submit', array('label' => 'button.save'))
         ;

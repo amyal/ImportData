@@ -45,6 +45,10 @@
         <service id="srm_website.converter.groupStakeholder" class="Srm\WebsiteBundle\Request\ParamConverter\GroupStakeholderParamConverter">
             <tag name="request.param_converter" converter="groupStakeholder" priority="7" />
         </service>
+         
+        <service id="srm_website.converter.stakeholder" class="Srm\WebsiteBundle\Request\ParamConverter\StakeholderParamConverter">
+            <tag name="request.param_converter" converter="stakeholder" priority="7" />
+        </service>
         
     </services>
 </container>

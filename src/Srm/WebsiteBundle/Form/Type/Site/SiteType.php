@@ -45,7 +45,7 @@ class SiteType extends AbstractType
             ->add('fax',   'text', array('label' => 'fax'))
             ->add('mail', 'email', array('label' => 'email', 'required' => true))
 
-            ->add('enabled', 'checkbox', array('label' => 'enabled'))
+            ->add('enabled', 'checkbox', array('label' => 'site.enabled'))
 
             ->add('save', 'submit', array('label' => 'button.save')
             )

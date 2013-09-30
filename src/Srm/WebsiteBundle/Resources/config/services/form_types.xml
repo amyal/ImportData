@@ -70,6 +70,12 @@
             </call>
             <tag name="form.type" alias="srm_referencials" />
         </service>
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\GroupStakeholderType" id="srm_website.form.type.groupStakeholders">
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_groupStakeholder" />
+        </service>
         
         <service class="Srm\WebsiteBundle\Form\Type\Choice\SiteActivitiesType" id="srm_website.form.type.site_activities">
             <tag name="form.type" alias="srm_site_activities" />
@@ -133,6 +139,10 @@
         
         <service class="Srm\WebsiteBundle\Form\Type\GroupStakeholderType" id="srm_website.form.type.groupStakeholder">
             <tag name="form.type" alias="srm_groupStakeholder" />
+        </service>
+
+        <service class="Srm\WebsiteBundle\Form\Type\StakeholderType" id="srm_website.form.type.stakeholder">
+            <tag name="form.type" alias="srm_stakeholder" />
         </service>
 
     </services>

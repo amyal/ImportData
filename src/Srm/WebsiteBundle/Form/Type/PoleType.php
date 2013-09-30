@@ -21,7 +21,7 @@ class PoleType extends AbstractType
 
             ->add('departments', 'srm_organisation_departments', array('required' => true))
 
-            ->add('enabled', 'checkbox', array('label' => 'enabled'))
+            ->add('enabled', 'checkbox', array('label' => 'pole.enabled'))
 
             ->add('save', 'submit', array('label' => 'button.save'))
         ;

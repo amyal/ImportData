@@ -15,7 +15,7 @@ class StakeholdersController extends Controller
 
         return $this->render('SrmWebsiteBundle:Stakeholder:list.html.twig', array(
             'organisation' => $organisation,
-            'stakeholders'        => $stakeholders,
+            'stakeholders' => $stakeholders,
         ));
     }
 
@@ -44,12 +44,12 @@ class StakeholdersController extends Controller
         $formActionRoute = 'srm_website_stakeholders_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
 
-        if (null !== $poleId = $stakeholders->getPoleId()) {
-            $formActionRoute = 'srm_website_pole_edit';
-            $formActionRouteParams['poleId'] = $poleId;
+        if (null !== $stakeholderId = $stakeholders->getStakeholderId()) {
+            $formActionRoute = 'srm_website_stakeholders_edit';
+            $formActionRouteParams['stakeholderId'] = $stakeholderId;
         }
 
-        $form = $this->createForm('srm_pole', $stakeholders, array(
+        $form = $this->createForm('srm_stakeholder', $stakeholders, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
             'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),

@@ -1,7 +1,7 @@
 {% extends '::layout.html.twig' %}
 
 {% block main_container_header %}
-    <i class="icon-circle-blank"></i> {{ 'groupStakeholders.list.title'|trans }}
+    <i class="icon-circle-blank"></i> {{ 'stakeholders.list.title'|trans }}
 {% endblock %}
 
 {% block breadcrumb %}
@@ -10,7 +10,7 @@
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
     <div class="breadcrumb-button">
-        <span class="breadcrumb-label">{{ 'groupStakeholders.list.title'|trans }}</span>
+        <span class="breadcrumb-label">{{ 'stakeholders.list.title'|trans }}</span>
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
 {% endblock %}
@@ -21,7 +21,7 @@
             <div class="span10 offset1">
                 <div class="box">
                     <div class="box-header">
-                        <span class="title"> {{ 'groupStakeholders.list.title'|trans }} </span>
+                        <span class="title"> {{ 'stakeholders.list.title'|trans }} </span>
                     </div>
 
                     {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
@@ -34,15 +34,69 @@
                                     <div class="controls">{{ form_widget(form.label) }}</div>
                                 </div>
                                 <div class="control-group">
-                                    {{ form_label(form.stakeholdersGroup) }}
-                                    <div class="controls">{{ form_widget(form.stakeholdersGroup, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                    {{ form_label(form.email) }}
+                                    <div class="controls">{{ form_widget(form.email) }}</div>
                                 </div>
                                 <div class="control-group">
-                                    {{ form_label(form.stakeholderArchetypes) }}
-                                    <div class="controls">{{ form_widget(form.stakeholderArchetypes, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                    {{ form_label(form.groupStakeholders) }}
+                                    <div class="controls">{{ form_widget(form.groupStakeholders, {'attr': {'class': 'chzn-select select2'}}) }}</div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>
+                                    {{ form_label(form.contacts) }}
+                                    <div class="controls">{{ form_widget(form.contacts, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.importance) }}
+                                    <div class="controls">{{ form_widget(form.importance) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="srm_connexion">{{ form.connexion.vars.label|trans }}</label>
+                                    <div class="controls">
+                                        {{ form_widget(form.connexion, {'attr': {'class': 'icheck'}}) }}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.label) }}
+                                    <div class="controls">{{ form_widget(form.address.label) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.zip.code) }}
+                                    <div class="controls">{{ form_widget(form.address.zip.code) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.zip.city) }}
+                                    <div class="controls">{{ form_widget(form.address.zip.city, {'attr': {'class': 'chzn-select'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.zip.country) }}
+                                    <div class="controls">{{ form_widget(form.address.zip.country, {'attr': {'class': 'chzn-select'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.subsidiary) }}
+                                    <div class="controls">{{ form_widget(form.subsidiary) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.startActivity) }}
+                                    <div class="controls">{{ form_widget(form.startActivity) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.turnovers) }}
+                                    <div class="controls">{{ form_widget(form.turnovers) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.identificationNumber) }}
+                                    <div class="controls">{{ form_widget(form.identificationNumber) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.phone) }}
+                                    <div class="controls">{{ form_widget(form.phone) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.fax) }}
+                                    <div class="controls">{{ form_widget(form.fax) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="srm_stakeholder_enabled">{{ form.enabled.vars.label|trans }}</label>
                                     <div class="controls">
                                         {{ form_widget(form.enabled, {'attr': {'class': 'icheck'}}) }}
                                     </div>
@@ -52,7 +106,7 @@
 
                         {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
                             save_form: form.save,
-                            url_cancel: path('srm_website_groupStakeholders_list', {'organisationId': organisationId})
+                            url_cancel: path('srm_website_stakeholders_list', {'organisationId': organisationId})
                         }, with_context = false) }}
 
                         <div class="hide">
