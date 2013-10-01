@@ -25,7 +25,6 @@ class AppKernel extends Kernel
             new Srm\IndicatorBundle\SrmIndicatorBundle(),
             new Srm\UserBundle\SrmUserBundle(),
             new Srm\WebsiteBundle\SrmWebsiteBundle(),
-            new Srm\IndicatorBundle\SrmIndicatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
