@@ -45,8 +45,18 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="contacts" target-entity="Contact" mapped-by="stakeholders"/>
-
+    
+    <many-to-many field="contacts" target-entity="Contact" inversed-by="stakeholders">
+      <join-table name="vj_stakeholder_contact">
+        <join-columns>
+          <join-column name="STAKEHOLDER_ID" referenced-column-name="STAKEHOLDER_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    
     <lifecycle-callbacks>
       <lifecycle-callback type="preUpdate" method="updateModificationDate" />
     </lifecycle-callbacks>
