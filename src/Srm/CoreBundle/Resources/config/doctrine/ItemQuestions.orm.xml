@@ -5,6 +5,7 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
+    <field name="code" type="string" column="CODE" length="20" nullable="true"/>
     <field name="description" type="string" column="DESCRIPTION" length="255" nullable="true"/>
     <field name="hide" type="boolean" column="HIDE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>

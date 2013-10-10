@@ -15,6 +15,11 @@ class ItemQuestions
     /**
      * @var string
      */
+    private $code;
+
+    /**
+     * @var string
+     */
     private $description;
 
     /**
@@ -79,6 +84,29 @@ class ItemQuestions
     public function getLabel()
     {
         return $this->label;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return Answers
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**
