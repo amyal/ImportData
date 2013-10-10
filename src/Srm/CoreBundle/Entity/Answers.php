@@ -47,6 +47,11 @@ class Answers
      */
     private $periodicity;
 
+    /**
+     * @var \Srm\CoreBundle\Entity\UnitClass
+     */
+    private $unitClass;
+
 
     public function __construct()
     {
@@ -224,6 +229,29 @@ class Answers
         return $this->periodicity;
     }
 
+    /**
+     * Set unitClass
+     *
+     * @param \Srm\CoreBundle\Entity\UnitClass $unitClass
+     * @return UnitMeasurement
+     */
+    public function setUnitClass(UnitClass $unitClass = null)
+    {
+        $this->unitClass = $unitClass;
+
+        return $this;
+    }
+
+    /**
+     * Get unitClass
+     *
+     * @return \Srm\CoreBundle\Entity\UnitClass
+     */
+    public function getUnitClass()
+    {
+        return $this->unitClass;
+    }
+    
     public function updateModificationDate()
     {
         $this->modificationDate = new \DateTime();

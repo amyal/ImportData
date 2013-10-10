@@ -52,6 +52,11 @@ class ItemAnswers
      */
     private $answers;
 
+    /**
+     * @var \Srm\CoreBundle\Entity\UnitMeasurement
+     */
+    private $unitMeasurement;
+
 
     public function __construct()
     {
@@ -250,6 +255,29 @@ class ItemAnswers
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    /**
+     * Set unitMeasurement
+     *
+     * @param \Srm\CoreBundle\Entity\UnitMeasurement $unitMeasurement
+     * @return UnitMeasurement
+     */
+    public function setUnitMeasurement(UnitMeasurement $unitMeasurement = null)
+    {
+        $this->unitMeasurement = $unitMeasurement;
+
+        return $this;
+    }
+
+    /**
+     * Get unitMeasurement
+     *
+     * @return \Srm\CoreBundle\Entity\UnitMeasurement
+     */
+    public function getUnitMeasurement()
+    {
+        return $this->unitMeasurement;
     }
 
     public function updateModificationDate()

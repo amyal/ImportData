@@ -23,6 +23,11 @@
         <join-column name="PERIODICITY_ID" referenced-column-name="PERIODICITY_ID"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="unitClass" target-entity="UnitClass">
+      <join-columns>
+        <join-column name="UNIT_MEASUREMENT_CLASS_ID" referenced-column-name="UNIT_MEASUREMENT_CLASS_ID"/>
+      </join-columns>
+    </many-to-one>
 
     <lifecycle-callbacks>
       <lifecycle-callback type="preUpdate" method="updateModificationDate" />
