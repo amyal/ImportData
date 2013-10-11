@@ -4,7 +4,7 @@ parameters:
     database_port:      ~
     database_name:      srm
     database_user:      srm
-    database_password:
+    database_password:  srm
 
     locale:             fr
     fallback_locale:    en
