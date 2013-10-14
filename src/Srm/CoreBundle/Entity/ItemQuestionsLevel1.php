@@ -13,6 +13,11 @@ class ItemQuestionsLevel1
     private $label;
 
     /**
+     * @var string
+     */
+    private $code;
+
+    /**
      * @var boolean
      */
     private $enabled;
@@ -54,6 +59,29 @@ class ItemQuestionsLevel1
     public function getLabel()
     {
         return $this->label;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return ItemQuestionsLevel1
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**
