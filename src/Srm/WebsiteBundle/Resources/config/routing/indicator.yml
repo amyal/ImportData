@@ -1,0 +1,43 @@
+srm_indicator_indicator_list:
+    path:       /organisations/{organisationId}/indicators
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Indicators:list"
+
+srm_indicator_indicator_add:
+    path:       /organisations/{organisationId}/indicators/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Indicators:form"
+
+srm_indicator_indicator_show:
+    path:       /organisations/{organisationId}/indicators/{indicatorId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Indicators:show"
+    requirements:
+        indicatorId: \d+
+
+srm_indicator_indicator_disable:
+    path:       /organisations/{organisationId}/indicators/{indicatorId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Indicators:disable"
+    requirements:
+        indicatorId: \d+
+
+srm_indicator_indicator_edit:
+    path:       /organisations/{organisationId}/indicators/{indicatorId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Indicators:form"
+    requirements:
+        indicatorId: \d+
+
+indicators_by_categories:
+    path:       /organisations/{organisationId}/indicators/by_categories
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Indicators:indicatorsByCategories"
+    requirements:
+        indicatorId: \d+
