@@ -10,7 +10,7 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-many field="repositoryIndicators" target-entity="Indicator" inversed-by="repositories">
+    <many-to-many field="repositoryIndicators" target-entity="Indicators" inversed-by="repositories">
       <join-table name="vj_repository_indicators">
         <join-columns>
           <join-column name="REPOSITORY_ID" referenced-column-name="REPOSITORY_ID"/>

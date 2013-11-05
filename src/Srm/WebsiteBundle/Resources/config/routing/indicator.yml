@@ -1,5 +1,5 @@
 srm_indicator_indicator_list:
-    path:       /organisations/{organisationId}/indicators
+    path:       /organisations/{organisationId}/indicators/{repositoryId}
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmIndicatorBundle:Indicators:list"
@@ -26,8 +26,9 @@ srm_indicator_indicator_disable:
     requirements:
         indicatorId: \d+
 
+
 srm_indicator_indicator_edit:
-    path:       /organisations/{organisationId}/indicators/{indicatorId}
+    path:       /organisations/{organisationId}/indicators/{repositoryId}/questions/{indicatorId}
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmIndicatorBundle:Indicators:form"

@@ -250,10 +250,10 @@ class Repository
     /**
      * Add indicator
      *
-     * @param \Srm\CoreBundle\Entity\Indicator $indicator
+     * @param \Srm\CoreBundle\Entity\Indicators $indicator
      * @return Repository
      */
-    public function addIndicator(Indicator $indicator)
+    public function addIndicator(Indicators $indicator)
     {
         $indicator->addRepository($this);
         $this->repositoryIndicators[] = $indicator;
@@ -264,9 +264,9 @@ class Repository
     /**
      * Remove indicator
      *
-     * @param \Srm\CoreBundle\Entity\Indicator $indicator
+     * @param \Srm\CoreBundle\Entity\Indicators $indicator
      */
-    public function removeIndicator(Indicator $indicator)
+    public function removeIndicator(Indicators $indicator)
     {
         $indicator->removeRepository($this);
         $this->repositoryIndicators->removeElement($indicator);

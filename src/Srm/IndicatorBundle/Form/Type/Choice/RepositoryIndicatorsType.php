@@ -30,10 +30,10 @@ class RepositoryIndicatorsType extends AbstractType
         }
 
         $organisation   = $this->request->get('organisation');
-        $indicators     = $this->em->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByRepository();
+        $indicators     = $this->em->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByRepository();
 
         $resolver->setDefaults(array(
-            'class'    => 'Srm\CoreBundle\Entity\Indicator',
+            'class'    => 'Srm\CoreBundle\Entity\Indicators',
             'property' => 'label',
             'label'    => 'repositories.list.repositoryIndicators',
             'choices'  => $indicators,

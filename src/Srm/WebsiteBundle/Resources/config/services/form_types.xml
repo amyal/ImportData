@@ -137,6 +137,10 @@
             <tag name="form.type" alias="srm_repository" />
         </service>
         
+        <service class="Srm\IndicatorBundle\Form\Type\IndicatorType" id="srm_indicator.form.type.indicator">
+            <tag name="form.type" alias="srm_indicator" />
+        </service>
+        
         <service class="Srm\WebsiteBundle\Form\Type\GroupStakeholderType" id="srm_website.form.type.groupStakeholder">
             <tag name="form.type" alias="srm_groupStakeholder" />
         </service>

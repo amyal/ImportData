@@ -20,7 +20,7 @@
         <join-column name="ITEM_QUESTIONS_ID" referenced-column-name="ITEM_QUESTIONS_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="indicators" target-entity="Indicator" inversed-by="items">
+    <many-to-many field="indicators" target-entity="Indicators" inversed-by="items">
       <join-table name="vj_item_indicator">
         <join-columns>
           <join-column name="ITEM_ID" referenced-column-name="ITEM_ID"/>

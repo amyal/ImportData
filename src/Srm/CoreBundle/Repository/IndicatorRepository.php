@@ -4,14 +4,19 @@ namespace Srm\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Srm\CoreBundle\Entity\Repository;
+
 class IndicatorRepository extends EntityRepository
 {
-    public function findNonDeletedByRepository()
+    public function findNonDeletedByRepository(Repository $repository)
     {
+
         return $this->createQueryBuilder('c')
             ->where('c.deleted = :deleted')->setParameter('deleted', false)
+            ->andWhere('c.repository = :repository')->setParameter('repository', $repository)
             ->getQuery()
             ->getResult();
+        
     }
     
     public function findNonDeletedByCategories($categoryIds)

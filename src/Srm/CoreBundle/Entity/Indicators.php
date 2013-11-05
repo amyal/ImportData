@@ -3,9 +3,9 @@
 namespace Srm\CoreBundle\Entity;
 
 /**
- * Indicator
+ * Indicators
  */
-class Indicator
+class Indicators
 {
     /**
      * @var string
@@ -35,7 +35,7 @@ class Indicator
     /**
      * @var integer
      */
-    private $indicatorId;
+    private $indicatorsId;
 
     /**
      * @var \Srm\CoreBundle\Entity\IndicatorLevel1
@@ -58,15 +58,28 @@ class Indicator
     private $indicatorLevel3;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Repository
+     * @var \Srm\CoreBundle\Entity\Referencial
      */
-    private $repository;
+    private $referencial;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $items;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $repositories;
 
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->repositories = new \Doctrine\Common\Collections\ArrayCollection();
+
         $this->deleted = false;
     }
 
@@ -186,13 +199,13 @@ class Indicator
     }
 
     /**
-     * Get indicatorId
+     * Get indicatorsId
      *
      * @return integer
      */
-    public function getIndicatorId()
+    public function getIndicatorsId()
     {
-        return $this->indicatorId;
+        return $this->indicatorsId;
     }
 
     /**
@@ -288,25 +301,91 @@ class Indicator
     }
 
     /**
-     * Set repository
+     * Set referencial
      *
-     * @param \Srm\CoreBundle\Entity\Repository $repository
-     * @return Repository
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     * @return Referencial
      */
-    public function setRepository(Referencial $repository = null)
+    public function setReferencial(Referencial $referencial = null)
     {
-        $this->repository = $repository;
+        $this->referencial = $referencial;
 
         return $this;
     }
 
     /**
-     * Get repository
+     * Get referencial
      *
-     * @return \Srm\CoreBundle\Entity\Repository
+     * @return \Srm\CoreBundle\Entity\Referencial
      */
-    public function getRepository()
+    public function getReferencial()
     {
-        return $this->repository;
+        return $this->referencial;
+    }
+
+    /**
+     * Add item
+     *
+     * @param \Srm\CoreBundle\Entity\Item $item
+     * @return Indicator
+     */
+    public function addItem(Item $item)
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \Srm\CoreBundle\Entity\Item $item
+     */
+    public function removeItem(Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+    
+    /**
+     * Add repository
+     *
+     * @param \Srm\CoreBundle\Entity\Repository $repository
+     * @return Indicator
+     */
+    public function addRepository(Repository $repository)
+    {
+        $this->repositories[] = $repository;
+
+        return $this;
+    }
+
+    /**
+     * Remove repository
+     *
+     * @param \Srm\CoreBundle\Entity\Repository $repository
+     */
+    public function removeRepository(Repository $repository)
+    {
+        $this->repositories->removeElement($repository);
+    }
+
+    /**
+     * Get repositories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRepositories()
+    {
+        return $this->repositories;
     }
 }
