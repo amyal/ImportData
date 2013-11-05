@@ -8,12 +8,12 @@ use Srm\CoreBundle\Entity\Repository;
 
 class IndicatorRepository extends EntityRepository
 {
-    public function findNonDeletedByRepository(Repository $repository)
+    public function findNonDeletedByRepository()
     {
 
         return $this->createQueryBuilder('c')
             ->where('c.deleted = :deleted')->setParameter('deleted', false)
-            ->andWhere('c.repository = :repository')->setParameter('repository', $repository)
+            //->andWhere('c.repository = :repository')->setParameter('repository', $repository)
             ->getQuery()
             ->getResult();
         
