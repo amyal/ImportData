@@ -16,3 +16,5 @@ _groupStakeholder:
     resource: "routing/groupStakeholder.yml"
 _stakeholder:
     resource: "routing/stakeholder.yml"
+_indicator:
+    resource: "routing/indicator.yml"

@@ -85,17 +85,17 @@ class RepositoriesController extends Controller
         $categoryIds = $this->getRequest()->query->get('categories_id');
 
         if ($categoryIds) {
-            $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByCategories($categoryIds);
+            $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByCategories($categoryIds);
         }
         else {
-            //$indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findAll();
+            //$indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findAll();
             $indicators = array();
         }
 
         $html = '';
         foreach($indicators as $indicator) {
             if ($indicator->getIndicatorId() == '')
-                $html .= '<option value=\"-1\">Aucune réponse</option>';
+                $html .= '<option value=\"-1\">Aucune rï¿½ponse</option>';
             $html = $html . sprintf("<option value=\"%d\">%s</option>", $indicator->getIndicatorId(), $indicator->getLabel());
         }
 

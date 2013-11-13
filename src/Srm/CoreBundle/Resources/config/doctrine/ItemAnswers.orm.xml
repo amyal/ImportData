@@ -28,7 +28,7 @@
         <join-column name="ANSWERS_ID" referenced-column-name="ANSWERS_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="unitMeasurement" target-entity="unitMeasurement">
+    <many-to-one field="unitMeasurement" target-entity="UnitMeasurement">
       <join-columns>
         <join-column name="UNIT_MEASUREMENT_ID" referenced-column-name="UNIT_MEASUREMENT_ID"/>
       </join-columns>

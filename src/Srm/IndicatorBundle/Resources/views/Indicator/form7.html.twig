@@ -30,15 +30,27 @@
                         <div class="box-content padded">
                             <div class="padded-box">
                                 <div class="control-group">
-                                    {{ form_label(form.label, 'Nombre de références produits') }}
-                                    <div class="controls">{{ form_widget(form.label) }}</div>
+                                    {{ form_label(form.label, 'Nombre d\'accidents du travail (salariés, hommes)') }}
+                                    <div class="controls"><input id="srm_indicator_label" type="text" value="1" autofocus="autofocus" required="required" name="srm_indicator[label]"></div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.label, 'Nombre d\'accidents du travail (salariés, femmes)') }}
+                                    <div class="controls"><input id="srm_indicator_label" type="text" value="3" autofocus="autofocus" required="required" name="srm_indicator[label]"></div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.label, 'Nombre d\'accidents du travail (indépendants, hommes)') }}
+                                    <div class="controls"><input id="srm_indicator_label" type="text" value="2" autofocus="autofocus" required="required" name="srm_indicator[label]"></div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.label, 'Nombre d\'accidents du travail (indépendants, femmes)') }}
+                                    <div class="controls"><input id="srm_indicator_label" type="text" value="1" autofocus="autofocus" required="required" name="srm_indicator[label]"></div>
                                 </div>
                             </div>
                         </div>
 
                         {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
                             save_form: form.save,
-                            url_cancel: path('srm_indicator_indicator_list', {'organisationId': organisationId, 'referencialId': referencialId})
+                            url_cancel: path('srm_indicator_indicator_list', {'organisationId': organisationId, 'repositoryId': repositoryId})
                         }, with_context = false) }}
 
                         <div class="hide">

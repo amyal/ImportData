@@ -265,10 +265,10 @@ class Item
     /**
      * Add indicator
      *
-     * @param \Srm\CoreBundle\Entity\Indicator $indicator
+     * @param \Srm\CoreBundle\Entity\Indicators $indicator
      * @return Item
      */
-    public function addIndicator(Indicator $indicator)
+    public function addIndicator(Indicators $indicator)
     {
         $indicator->addItem($this);
         $this->indicators[] = $indicator;
@@ -279,9 +279,9 @@ class Item
     /**
      * Remove indicator
      *
-     * @param \Srm\CoreBundle\Entity\Indicator $indicator
+     * @param \Srm\CoreBundle\Entity\Indicators $indicator
      */
-    public function removeIndicator(Indicator $indicator)
+    public function removeIndicator(Indicators $indicator)
     {
         $indicator->removeItem($this);
         $this->indicators->removeElement($indicator);

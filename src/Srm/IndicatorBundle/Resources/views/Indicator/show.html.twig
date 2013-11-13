@@ -1,0 +1,47 @@
+{% extends '::layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-circle-blank"></i> {{ 'indicators.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'indicator.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'indicators.list.control'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title">   </span>
+                    </div>
+                    <div class="box-content padded">
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'indicators.list.repository'|trans }} :</label>
+                                <div class="controls">{{ indicator.repository.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'indicators.list.name'|trans }} :</label>
+                                <div class="controls">{{ indicator.label }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
+                        url_edit:   path('srm_indicator_indicator_edit',  {'organisationId': organisationId, 'repositoryId': 2, 'indicatorId' : indicator.indicatorId}),
+                        url_cancel: path('srm_indicator_indicator_list', {'organisationId': organisationId, 'repositoryId': 2})
+                    }, with_context = false) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
