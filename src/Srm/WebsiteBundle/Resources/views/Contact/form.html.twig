@@ -1,5 +1,21 @@
 {% extends '::layout.html.twig' %}
+{% block javascripts %}
+   
+<script type="text/javascript">
+       function getval(sel) {
+       if (sel.value == 1){
+            document.getElementById('interne').style.display="block";
+            document.getElementById('actionnaire').style.display ="none";
+       } else if (sel.value == 2)  {
+        document.getElementById('interne').style.display="none";
+        document.getElementById('actionnaire').style.display ="none";
+       }
+         else   {
+         document.getElementById('actionnaire').style.display ="block";
+       }}
 
+         </script>
+{% endblock %}
 
 {% block main_container_header %}
     <i class="icon-sitemap"></i> {{ 'contacts.list.title'|trans }}
@@ -30,7 +46,19 @@
                         
 							<div class="box-content padded">
                             	<div class="padded-box">
-                            		<div class="control-group">
+                                   
+                                    <div class="control-group"> 
+                                     <label class="required control-label" >Type</label>  
+                                       <div class="controls">
+                                                <select onchange="getval(this);">
+                                                            <option value="1">Utilisateur interne</option>
+                                                            <option value="2">Utilisateur externe</option>
+                                                            <option value="3">Actionnaire</option>
+                                                </select>
+                                                    </div>             </div>  
+                                    
+                                       
+                            		<div class="control-group">         
 	                                    {{ form_label(form.gender) }}
 	                                    <div class="controls">{{ form_widget(form.gender) }}</div>
 	                                </div>
@@ -78,15 +106,9 @@
 	                                    {{ form_label(form.address.zip.country) }}
 	                                    <div class="controls">{{ form_widget(form.address.zip.country) }}</div>
 	                                </div>
-	                                
-						            <div class="control-group">
-						                <label class="control-label" for="srm_contact_shareholder">{{ form.shareholder.vars.label|trans }}</label>
-						                <div class="controls">
-						                    {{ form_widget(form.shareholder) }}
-						                </div>
-						            </div>
-						
-						            {{ form_row(form.parts) }}
+	                                 
+						        
+						        
 						
 						            {{ form_row(form.picture) }}
 						            {{ form_row(form.comments) }}
@@ -102,8 +124,15 @@
 						                <label class="control-label" for="srm_contact_enabled">{{ form.enabled.vars.label|trans }}</label>
 						                <div class="controls">
 						                    {{ form_widget(form.enabled) }}
-						                </div>
-						            </div>
+                                                                    </div> </div>
+                                                                <div id="interne" >
+                                                                
+                                                                </div>
+                                            <div id="actionnaire">
+                                            {{ form_row(form.parts) }}
+                                            </div>
+                                                
+                                        </div>
 						
 					            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
 					                save_form: form.save,
