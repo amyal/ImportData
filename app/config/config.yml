@@ -53,3 +53,11 @@ fos_user:
     user_class: Srm\UserBundle\Entity\User
     service:
         mailer: fos_user.mailer.noop
+
+swiftmailer:
+    transport:  smtp
+    encryption: ssl
+    auth_mode:  login
+    host:       ssl0.ovh.net
+    username:   'rachid.amyal@verseo-consulting.com'
+    password:   verseo
