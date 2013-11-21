@@ -50,10 +50,10 @@
                                         <td>{{ site.typeSite.label }}</td>
                                         <td>{{ site.address.label }}</td>
                                         <td>{{ site.address.zip.code }}</td>
-                                        <td>{{ site.address.zip.city.label }}</td>
-                                        <td>{{ site.address.zip.city.country.label }}</td>
+                                        <td>{{ site.address.zip.code }}</td>   {# .zip.city.label #}
+                                        <td>{{ site.address.zip.code }}</td> {#zip.city.country.label#}
                                         <td>
-                                            {% if site.enabled %}
+                                            {% if site.enabled %} 
                                                 {{ 'enabled'|trans }}
                                             {% else %}
                                                 {{ 'disabled'|trans }}
