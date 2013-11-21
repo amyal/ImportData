@@ -1,21 +1,5 @@
 {% extends '::layout.html.twig' %}
-{% block javascripts %}
-   
-<script type="text/javascript">
-       function getval(sel) {
-       if (sel.value == 1){
-            document.getElementById('interne').style.display="block";
-            document.getElementById('actionnaire').style.display ="none";
-       } else if (sel.value == 2)  {
-        document.getElementById('interne').style.display="none";
-        document.getElementById('actionnaire').style.display ="none";
-       }
-         else   {
-         document.getElementById('actionnaire').style.display ="block";
-       }}
 
-         </script>
-{% endblock %}
 
 {% block main_container_header %}
     <i class="icon-sitemap"></i> {{ 'contacts.list.title'|trans }}
@@ -50,7 +34,8 @@
                                     <div class="control-group"> 
                                      <label class="required control-label" >Type</label>  
                                        <div class="controls">
-                                                <select onchange="getval(this);">
+                                                <select onchange="getval(this);" >
+                                                            <option selected="yes" value="0">choisissez le type d'utilisateur </option>
                                                             <option value="1">Utilisateur interne</option>
                                                             <option value="2">Utilisateur externe</option>
                                                             <option value="3">Actionnaire</option>
@@ -148,4 +133,27 @@
             </div>
         </div>
     </div>
+                </div>
+{% endblock %}
+
+   
+    {% block javascripts %}
+   
+<script type="text/javascript">
+       function getval(sel) {
+       if (sel.value == 1){
+            document.getElementById('interne').style.display="block";
+            document.getElementById('actionnaire').style.display ="none";
+       } else if (sel.value == 2)  {
+        document.getElementById('interne').style.display="none";
+        document.getElementById('actionnaire').style.display ="none";
+       }
+         else if (sel.value == 3)   {
+         document.getElementById('actionnaire').style.display ="block";
+       }
+         else    {
+          alert("Il faut choisir le type d'utilisateur");
+       }}
+
+         </script>
 {% endblock %}
