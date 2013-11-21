@@ -34,7 +34,7 @@
 				                    <td>{{ 'contact.lastname'|trans }}</td>
 				                    <td>{{ 'contact.firstname'|trans }}</td>
 				                    <td>{{ 'contact.function'|trans }}</td>
-				                    <td>{{ 'address.city'|trans }}</td>
+				                    <td>{{ 'address'|trans }}</td>
 				                    <td>{{ 'phone.office'|trans }}</td>
 				                    <td>{{ 'email'|trans }}</td>
 				                    <td>{{ 'contact.enabled'|trans }}</td>
@@ -47,7 +47,7 @@
                                         <td>{{ contact.lastname }}</td>
                                         <td>{{ contact.firstname }}</td>
                                         <td>{{ contact.contactFunction }}</td>
-                                        <td>{% if contact.address %}{{ contact.address.zip.city.label }}{% endif %}</td>
+                                      <td>{% if contact.address %}{{ contact.address.label }}{% endif %}</td>
                                         <td>{{ contact.officePhone }}</td>
                                         <td>{{ contact.mail }}</td>
                                         <td>
