@@ -94,16 +94,6 @@
             <tag name="form.type" alias="srm_address" />
         </service>
         <service class="Srm\WebsiteBundle\Form\Type\ZipType" id="srm_website.form.type.zip">
-            <argument type="service">
-                <service class="Srm\WebsiteBundle\Form\EventListener\ZipListener">
-                    <argument type="service" id="form.factory" />
-                    <argument type="service">
-                        <service class="Doctrine\ORM\EntityRepository" factory-service="doctrine.orm.entity_manager" factory-method="getRepository">
-                            <argument>Srm\CoreBundle\Entity\Zip</argument>
-                        </service>
-                    </argument>
-                </service>
-            </argument>
             <tag name="form.type" alias="srm_zip" />
         </service>
 
