@@ -39,14 +39,15 @@ class ContactsController extends Controller
     }
 
     public function formAction(Organisation $organisation, Contact $contact)
-    {
+    {   
         $formActionRoute = 'srm_website_contacts_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
-
+        $FormEdit=$contact->getContactId() ; //  if the variable equal Null -> add else edition 
+        
         if (null !== $contactId = $contact->getContactId()) {
             $formActionRoute = 'srm_website_contact_edit';
             $formActionRouteParams['contactId'] = $contactId;
-        }
+                 }
 
         $form = $this->createForm('srm_contact', $contact, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
@@ -86,7 +87,24 @@ class ContactsController extends Controller
                 $this->get('fos_user.user_manager')->updateUser($user);
             }
         }
+        
+       if ($FormEdit==Null) { // if the user added a new contact, they will 
+        $message = \Swift_Message::newInstance() // we create a new instance of the Swift_Message class
+        ->setSubject('Verseo SRM') // we configure the title
+        ->setFrom('rachid.amyal@verseo-consulting.com') // we configure the sender
+        ->setTo($contact->getMail()) // we configure the recipient
+        ->setBody($contact->getGender()->getLabel().' '.$contact->getFirstname().
+                ' '.$contact->getLastname() . ', votre Login est : ' .
+                $contact->getMail().' et votre Mot de passe est :'.
+                $contact->getMail());
+        // and we pass the $name variable to the text template which serves as a body of the message
+        ;
+        $this->get('mailer')->send($message); // then we send the message.
 
+            //     return new Response('Email bien envoyé');
+
+        
+       }
         return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
             'organisationId' => $organisation->getOrganisationId(),
         )));
