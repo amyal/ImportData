@@ -83,16 +83,20 @@ class ContactsController extends Controller
                 $encoder = $this->get('security.encoder_factory')->getEncoder($user);
                 $password = $encoder->encodePassword('toto', $user->getSalt());
                 $user->setPassword($password);
-               
+
                 $this->get('fos_user.user_manager')->updateUser($user);
-                if ($contact->getParts()==Null ) { // if the user it's not a shareholder, then 
+            }
+        }
+        
+       if ($FormEdit==Null) { // if the user added a new contact, they will 
         $message = \Swift_Message::newInstance() // we create a new instance of the Swift_Message class
         ->setSubject('Verseo SRM') // we configure the title
         ->setFrom('rachid.amyal@verseo-consulting.com') // we configure the sender
         ->setTo($contact->getMail()) // we configure the recipient
         ->setBody($contact->getGender()->getLabel().' '.$contact->getFirstname().
                 ' '.$contact->getLastname() . ', votre Login est : ' .
-                $user->getUserName().' et votre Mot de passe est : toto');
+                $contact->getMail().' et votre Mot de passe est :'.
+                $contact->getMail());
         // and we pass the $name variable to the text template which serves as a body of the message
         ;
         $this->get('mailer')->send($message); // then we send the message.
@@ -100,7 +104,7 @@ class ContactsController extends Controller
             //     return new Response('Email bien envoyé');
 
         
-       }        }    }
+       }
         return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
             'organisationId' => $organisation->getOrganisationId(),
         )));
