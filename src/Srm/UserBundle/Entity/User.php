@@ -18,7 +18,7 @@ class User extends BaseUser
      */
     protected $id;
 
-
+    
     public function __construct(Contact $contact = null)
     {
         parent::__construct();
@@ -27,11 +27,26 @@ class User extends BaseUser
 
         if (null !== $contact) {
             $contactEmail = $contact->getMail();
-
+ 
             $this->id       = $contact->getContactId();
             $this->username = $contactEmail;
             $this->email    = $contactEmail;
         }
+    }
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getUserName()
+    {
+        return $this->username;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
