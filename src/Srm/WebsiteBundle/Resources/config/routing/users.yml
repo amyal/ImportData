@@ -11,3 +11,9 @@ srm_website_user_edit:
         _controller:    "SrmWebsiteBundle:Users:form"
     requirements:
         userId:   \d+
+        
+srm_website_users_index:
+    path:       /organisations/{identificationCode}
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:Users:index"
