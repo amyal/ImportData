@@ -54,6 +54,7 @@ fos_user:
     service:
         mailer: fos_user.mailer.noop
 
+
 swiftmailer:
     transport:  smtp
     encryption: ssl
