@@ -10,6 +10,19 @@ use Srm\UserBundle\Entity\User;
 
 class UsersController extends Controller
 {
+  /*   public function indexAction(Organisation $organisation)
+    {  // $contact    = $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Contact')->findOneById($user->getId());
+       // $identificationCode = $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Organisation\IdentificationCode')->findOneByIdentificationCode($contact->getOrganisation());
+        //$user    = $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->find();
+        $contact = $contact->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Contact')->findOneBy($this);
+        $organisation = $organisation->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Organisation')->findOneBy($contact);
+         return $this->render('SrmWebsiteBundle:User:index.html.twig', array(
+            'organisation' => $organisation,
+            'identificationCode'        => $organisation->getIdentificationCode(),
+        ));
+      //  return $this->redirect($this->generateUrl('srm_website_users_index', array('identificationCode' =>1)));
+           }
+           */
     public function listAction(Organisation $organisation)
     {
         $contacts = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Contact')->findNonDeletedUsersByOrganisation($organisation);
