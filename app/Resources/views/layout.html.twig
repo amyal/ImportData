@@ -62,16 +62,8 @@
                                 <li class="dropdown user-avatar">
                                     {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                                         <!-- Visible -->
-                                        <a class="brand"  {% if identificationCode is defined %}
-                                            href="{{ path('srm_website_organisation_index', { 'identificationCode': identificationCode }) }}"
-                                        {% elseif organisation is defined %}
-                                            href="{{ path('srm_website_organisation_index', { 'identificationCode': organisation.organisationId }) }}"
-                                        {% else %}
-                                            href="{{ path('srm_website_organisation_index', { 'identificationCode': organisationId }) }}"
-                                        {% endif %}>
-                                            <i class="icon-home icon-2x"></i>Verseo SRM
-                                        </a>
-                                        <!--<a href="dashboard.html#" class="dropdown-toggle" data-toggle="dropdown">-->
+                                      
+                                        <a href="dashboard.html#" class="dropdown-toggle" data-toggle="dropdown"> 
                                             <span>
                                                 <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> <span>{{ app.user.username }}<i class="icon-caret-down"></i></span>
                                                 <!--<span class="badge badge-dark-red">5</span>-->
@@ -84,11 +76,17 @@
                                                 <div class="avatar">
                                                     <img src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" />
                                                 </div>
-                                                <span>{{ app.user.username }}</span>
-                                            </li>
-                                            <li class="divider"></li>
-    
-                                            <li><a href="#{#{ path('srm_website_contact_edit',  {'organisationId': organisationId, 'contactId': app.user.id}) }#}">
+                                                        <span>{{ app.user.username }}</span>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li><a {% if identificationCode is defined %}
+                                    href="{{ path('srm_website_contact_edit', { 'organisationId': identificationCode, 'contactId': app.user.id }) }}"
+                                {% elseif organisation is defined %}
+                                    href="{{ path('srm_website_contact_edit', { 'organisationId': organisation.organisationId, 'contactId': app.user.id }) }}"
+                                {% else %}
+                                    href="{{ path('srm_website_contact_edit', { 'organisationId': organisationId, 'contactId': app.user.id }) }}"
+                                {% endif %}>
+
                                                     <i class="icon-user"></i> <span>{{ 'header.profile.profile'|trans }}</span>
                                                 </a>
                                             </li>
