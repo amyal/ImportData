@@ -77,7 +77,7 @@ class ContactsController extends Controller
 
         if (true === $contact->getIsUser()) {
             if (null === $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->findOneById($contact->getContactId())) {
-                $user = new User($contact);
+                $user = new User($contact->getContactId(),$contact->getMail());
                 $user->setRole($this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Role')->findOneByRoleType('ROLE_U'));
 
                 $encoder = $this->get('security.encoder_factory')->getEncoder($user);
