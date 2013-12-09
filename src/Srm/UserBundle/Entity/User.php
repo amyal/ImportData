@@ -5,6 +5,7 @@ namespace Srm\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 
 use Srm\CoreBundle\Entity\Contact;
+use Srm\CoreBundle\Entity\Stakeholder;
 
 class User extends BaseUser
 {
@@ -19,22 +20,20 @@ class User extends BaseUser
     protected $id;
 
 
-    public function __construct(Contact $contact = null)
+    public function __construct($id,$mail)
     {
         parent::__construct();
 
         $this->enabled = true;
 
-        if (null !== $contact) {
-            $contactEmail = $contact->getMail();
-
-            $this->id       = $contact->getContactId();
-            $this->username = $contactEmail;
-            $this->email    = $contactEmail;
+        if (null !== $id) {
+            $this->id       = $id;
+            $this->username = $mail;
+            $this->email    = $mail;
         }
     }
-
-    /**
+    
+  /**
      * Set role
      *
      * @param \Srm\UserBundle\Entity\Role $role
