@@ -800,7 +800,6 @@ class Contact
      */
     public function addStakeholder(Stakeholder $stakeholder)
     {
-        $stakeholder->addContact($this);
         $this->stakeholders[] = $stakeholder;
 
         return $this;
