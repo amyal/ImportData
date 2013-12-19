@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Stakeholder;
-use Srm\UserBundle\Entity\User;
+use Srm\UserBundle\Entity\Contact;
 
 class StakeholdersController extends Controller
 {
@@ -75,51 +75,37 @@ class StakeholdersController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($stakeholders);
         $em->flush();
+        if ($formActionRoute=='srm_website_stakeholders_add'){ 
+//if a new stakeholder ,send message and redirect to create contact, else redirect to stakeholders's list
+            
         
-            if (true === $stakeholders->getConnexion()) { // if the user check Connexion then
-            if (null === $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->findOneById($stakeholders->getStakeholderId())) {
-                $user = new User($stakeholders->getStakeholderId(),$stakeholders->getEmail()); // create a new user 
-                $user->setRole($this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Role')->findOneByRoleType('ROLE_A')); 
-                
-                $encoder = $this->get('security.encoder_factory')->getEncoder($user);
-                $password = $encoder->encodePassword('toto', $user->getSalt());
-                $user->setPassword($password);
-                $this->get('fos_user.user_manager')->updateUser($user);
-                
-                $org_stakeholder = new Organisation($stakeholders->getIdentificationNumber()); //create a new organisation 
+      $this->get('session')->getFlashBag()->set('success', 'La partie prenante "'.$stakeholders->getLabel().'" a été enregistré avec succés');
+               $org_stakeholder = new Organisation($stakeholders->getIdentificationNumber()); //create a new organisation 
                 $org_stakeholder->setLabel($stakeholders->getLabel());
                 $em->persist($org_stakeholder);
-                $em->flush();     
-        $message = \Swift_Message::newInstance() // message of the stakeholder
-        ->setSubject('Verseo SRM') // we configure the title
-        ->setFrom('rachid.amyal@verseo-consulting.com') // we configure the sender
-        ->setTo($stakeholders->getEmail()) // we configure the recipient
-        ->setBody($stakeholders->getLabel(). ', votre Login est : ' .
-                $user->getUserName().' et votre Mot de passe est : toto');
-        // and we pass the $name variable to the text template which serves as a body of the message
-        ;
-        $this->get('mailer')->send($message); // then we send the message.
-
-          
-                }
-        }
-              
-         $current_user = $this->getUser();
+                $em->flush(); 
+            $current_user = $this->getUser();
                 $message = \Swift_Message::newInstance() // message of the Creator (Contact)
                ->setSubject('Verseo SRM, Création d\'une partie prenante') // we configure the title
                ->setFrom('rachid.amyal@verseo-consulting.com') // we configure the sender
-
                ->setTo($current_user->getUsername()) // we configure the recipient
                ->setBody('La partie prenante "'.$stakeholders->getLabel().'" a été enregistré avec succès ');
                // and we pass the $name variable to the text template which serves as a body of the message
-               ;
-               $this->get('mailer')->send($message); // then we send the message.
-               $this->get('session')->getFlashBag()->set('success', 'La partie prenante a été enregistré avec succés');
-               
+                $this->get('mailer')->send($message); // then we send the message.
        
-      
-        return $this->redirect($this->generateUrl('srm_website_stakeholders_list', array(
+   
+                          
+                 return $this->redirect($this->generateUrl('srm_website_contacts_add', array(
             'organisationId' => $organisation->getOrganisationId(),
+            'type'=>"externe",
+           'stakeholderid' =>  $stakeholders->getStakeholderId(),
+            'org_clt'=> $org_stakeholder->getOrganisationId()
         )));
+         }   
+        else 
+        {  return $this->redirect($this->generateUrl('srm_website_stakeholders_list', array(
+            'organisationId' => $organisation->getOrganisationId(),
+            
+        )));}
     }
 }
