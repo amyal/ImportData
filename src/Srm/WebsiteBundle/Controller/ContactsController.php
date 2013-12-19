@@ -39,12 +39,12 @@ class ContactsController extends Controller
         )));
     }
 
-    public function formAction(Organisation $organisation,$type, Contact $contact)
-    {   
+    public function formAction(Organisation $organisation,Contact $contact,$type="")
+    {  
         $request = $this->getRequest();//récupérer les ids de partie prenante et la nouvelle organisation 
         $stakeholderid = $request->query->get('stakeholderid'); 
         $org_clt = $request->query->get('org_clt');
-        
+       
         $formActionRoute = 'srm_website_contacts_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(),'type'=>$type,'stakeholderid'=>$stakeholderid, 'org_clt'=>$org_clt);
         $FormEdit=$contact->getContactId() ; //  if the variable equal Null -> add else edition 
@@ -111,13 +111,12 @@ class ContactsController extends Controller
        } 
                 }
         }
-       if ($type=="interne"){ return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
+       if ($type=="externe"){  return $this->redirect($this->generateUrl('srm_website_stakeholders_list', array(
             'organisationId' => $organisation->getOrganisationId(),
         )));}
        else 
-            return $this->redirect($this->generateUrl('srm_website_stakeholders_list', array(
-            'organisationId' => $organisation->getOrganisationId(),
-                
+                return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
+            'organisationId' => $organisation->getOrganisationId(), 
         )));
        
     }
