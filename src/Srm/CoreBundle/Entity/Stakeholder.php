@@ -595,7 +595,7 @@ class Stakeholder
      * @return Stakeholder
      */
     public function addContact(Contact $contact)
-    {
+    {   // $contact->addStackholder($this);
         $this->contacts[] = $contact;
 
         return $this;
@@ -643,7 +643,10 @@ class Stakeholder
     {
         return $this->organisation;
     }
-
+    public function __toString()
+    {
+        return $this->getLabel();
+    }
     public function updateModificationDate()
     {
         $this->modificationDate = new \DateTime();
