@@ -25,7 +25,7 @@ class StakeholderType extends AbstractType
 
             ->add('groupStakeholders', 'srm_organisation_groupStakeholder', array('required' => true))
 
-            ->add('contacts', 'srm_organisation_contacts', array('multiple' => true))
+        //   ->add('contacts', 'srm_organisation_stackeholders', array('multiple' => true))
             
             ->add('importance', 'text', array(
                 'label'    => 'stakeholders.importance',
@@ -47,13 +47,11 @@ class StakeholderType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
-            ->add('startActivity', 'date', array(
-            										'label'  => 'stakeholders.startActivity',
-            										'widget' => 'single_text',
-													'format' => 'dd/MM/y',
-													'input'  => 'datetime',
-													'attr'   => array('class' => 'datepicker fill-up'),
-            									))
+            ->add('startActivity', 'date', array('label'  => 'stakeholders.startActivity',
+            	'widget' => 'single_text',										'format' => 'dd/MM/y',
+		'input'  => 'datetime',
+		'attr'   => array('class' => 'datepicker fill-up'),
+            	))
 
             ->add('turnovers', 'text', array(
                 'label'    => 'stakeholders.turnovers',
