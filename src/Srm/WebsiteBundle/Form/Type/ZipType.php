@@ -13,8 +13,8 @@ class ZipType extends AbstractType
     {
         $builder
             ->add('code',    'text')
-            ->add('city',    'srm_cities')
-            ->add('country', 'srm_countries')
+            ->add('city',    'srm_cities',array('attr'=>array('class'=>'chzn-select', 'name'=>'colors')))
+            ->add('country', 'srm_countries',array('attr'=>array('class'=>'chzn-select', 'name'=>'colors')))
         ;
     }
 
