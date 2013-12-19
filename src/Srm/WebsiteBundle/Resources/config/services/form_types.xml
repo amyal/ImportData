@@ -25,6 +25,12 @@
             </call>
             <tag name="form.type" alias="srm_organisation_contacts" />
         </service>
+         <service class="Srm\WebsiteBundle\Form\Type\Choice\OrganisationStakeholdersType" id="srm_website.form.type.organisation_stakeholders">
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_stakeholders" />
+        </service>
         <service class="Srm\WebsiteBundle\Form\Type\Choice\OrganisationDepartmentsType" id="srm_website.form.type.organisation_departments">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <call method="setRequest">
