@@ -29,22 +29,11 @@
                         {{ form_errors(form) }}
                         
 							<div class="box-content padded">
-                            	<div class="padded-box">
+                            	<div class="row-fluid">
+                                    <div class="span6">
                                    
-                                    <div class="control-group"> 
-                                     <label class="required control-label" >Type</label>  
-                                       <div class="controls">
-                                                <select onchange="getval(this);" >
-                                                            <option selected="yes" value="0">choisissez le type d'utilisateur </option>
-                                                            <option value="1">Utilisateur interne</option>
-                                                            <option value="2">Utilisateur externe</option>
-                                                            <option value="3">Actionnaire</option>
-                                                </select>
-                                                    </div>             </div>  
-                                    
-                                       
                             		<div class="control-group">         
-	                                    {{ form_label(form.gender) }}
+	                                    {{ form_label(form.gender) }} 
 	                                    <div class="controls">{{ form_widget(form.gender) }}</div>
 	                                </div>
 	                                <div class="control-group">
@@ -75,6 +64,17 @@
 	                                    {{ form_label(form.mail) }}
 	                                    <div class="controls">{{ form_widget(form.mail) }}</div>
 	                                </div>
+                                
+                                  <div class="control-group">
+                                    {{ form_label(form.departments) }}
+                                    <div class="controls">{{ form_widget(form.departments, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div> 
+                                <div class="control-group">
+                                    {{ form_label(form.sites) }}
+                                    <div class="controls">{{ form_widget(form.sites, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div> 
+                                        </div>
+                                        <div class="span6">
 	                                <div class="control-group">
 	                                    {{ form_label(form.address.label) }}
 	                                    <div class="controls">{{ form_widget(form.address.label) }}</div>
@@ -117,8 +117,8 @@
                                             {{ form_row(form.parts) }}
                                             </div>
                                                 
-                                        </div>
-						
+                                            </div>
+                                    </div>				
 					            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
 					                save_form: form.save,
 					                url_cancel: path('srm_website_contacts_list', {'organisationId': organisationId})
@@ -134,26 +134,4 @@
         </div>
     </div>
                 </div>
-{% endblock %}
-
-   
-    {% block javascripts %}
-   
-<script type="text/javascript">
-       function getval(sel) {
-       if (sel.value == 1){
-            document.getElementById('interne').style.display="block";
-            document.getElementById('actionnaire').style.display ="none";
-       } else if (sel.value == 2)  {
-        document.getElementById('interne').style.display="none";
-        document.getElementById('actionnaire').style.display ="none";
-       }
-         else if (sel.value == 3)   {
-         document.getElementById('actionnaire').style.display ="block";
-       }
-         else    {
-          alert("Il faut choisir le type d'utilisateur");
-       }}
-
-         </script>
 {% endblock %}
