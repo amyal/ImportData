@@ -44,6 +44,9 @@
             </call>
             <tag name="form.type" alias="srm_organisation_sites" />
         </service>
+        <service class="Srm\WebsiteBundle\Form\Type\Choice\RolesType" id="srm_website.form.type.roles">
+            <tag name="form.type" alias="srm_roles" />
+        </service>
         <service class="Srm\IndicatorBundle\Form\Type\Choice\RepositoryIndicatorsType" id="srm_indicator.form.type.repository_indicators">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <call method="setRequest">
