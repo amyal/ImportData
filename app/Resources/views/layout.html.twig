@@ -140,7 +140,7 @@
                             <i class="icon-home icon-2x"></i><span>{{ 'home'|trans }}</span>
                         </a>
                     </li>        
-
+ <!-- app.request.attributes.get il ya une liaison entre les routes et le flash dans le rubrique Contacts dans le menu -->
                     <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal','srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit','srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit','srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}active{% endif %}">
                         <span class="glow"></span>
                         <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown1">
@@ -296,15 +296,36 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                
-                    <li class="dark-nav ">
+                    </li>  
+                <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_user_show','srm_website_user_edit'] %}active{% endif %}">
                         <span class="glow"></span>
                         <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown5">
+                            <i class="icon-share icon-2x"></i>
+                            <span>{{ 'diffusion.list.title'|trans }} <i class="icon-caret-down"></i></span>
+                        </a>
+                        <ul id="dropdown5" class="collapse">
+                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_contact_show','srm_website_user_edit'] %}active{% endif %}">
+                                <a  {% if organisation is defined %}
+                                        href="{{ path('srm_website_contacts_list', { 'organisationId': organisation.organisationId }) }}"
+                                    {% elseif organisationId is defined %}
+                                        href="{{ path('srm_website_contacts_list', { 'organisationId': organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_website_contacts_list', { 'organisationId': identificationCode }) }}"
+                                    {% endif %}>
+                                    <i class="icon-reorder"></i> {{ 'diffusion.nav.general'|trans }}
+                                </a>
+                            </li>
+                          
+                        </ul>
+                    </li>
+                                        
+                    <li class="dark-nav ">
+                        <span class="glow"></span>
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown6">
                             <i class="icon-eye-open icon-2x"></i>
                             <span>{{ 'monitoring.nav'|trans }} <i class="icon-caret-down"></i></span>
                         </a>
-                        <ul id="dropdown5" class="collapse ">
+                        <ul id="dropdown6" class="collapse ">
                             <li class="">
                                 <a class="brand"  {% if identificationCode is defined %}
                                     href="{{ path('srm_website_organisation_index', { 'identificationCode': identificationCode }) }}"
@@ -326,11 +347,11 @@
                 
                     <li class="dark-nav ">
                         <span class="glow"></span>
-                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown6">
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown7">
                             <i class="icon-exchange icon-2x"></i>
                             <span>{{ 'stakeholder.nav'|trans }} <i class="icon-caret-down"></i></span>
                         </a>
-                        <ul id="dropdown6" class="collapse ">
+                        <ul id="dropdown7" class="collapse ">
                             <li class="">
                                 <a {% if organisation is defined %}
                                         href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': organisation.organisationId }) }}"
@@ -358,11 +379,11 @@
 
                     <li class="dark-nav ">
                         <span class="glow"></span>
-                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown7">
+                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown8">
                             <i class="icon-certificate icon-2x"></i>
                             <span>{{ 'advanced.nav'|trans }} <i class="icon-caret-down"></i></span>
                         </a>
-                        <ul id="dropdown7" class="collapse ">
+                        <ul id="dropdown8" class="collapse ">
                             <li class="">
                                 <a href="#">
                                     <i class="icon-hand-up"></i> Sub Menu
