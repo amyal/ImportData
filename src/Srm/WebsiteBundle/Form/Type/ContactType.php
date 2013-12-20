@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {  
         $builder
             ->add('gender', 'entity', array(
                 'class'    => 'Srm\CoreBundle\Entity\Gender',
@@ -44,13 +44,16 @@ class ContactType extends AbstractType
 
             ->add('shareholder', 'checkbox', array('label' => 'shareholder'))
             ->add('parts', 'text', array('label' => 'shareholder.parts'))
-
+            
             ->add('picture', 'file', array('label' => 'contact.picture'))
             ->add('comments', 'textarea', array('label' => 'contact.comments'))
-
-            ->add('isUser',  'checkbox', array('label' => 'contact.is_user'))
-            ->add('enabled', 'checkbox', array('label' => 'contact.enabled'))
-
+           // ->add('stakeholders', 'srm_organisation_stakeholders', array('multiple' => true))
+           ->add('departments',    'srm_organisation_departments',array('attr'=>array('multiple'=>true,'class'=>'chzn-select', 'name'=>'colors')))
+           ->add('sites',    'srm_organisation_sites',array('attr'=>array('class'=>'chzn-select', 'name'=>'colors')))
+           
+            ->add('isUser',  'checkbox', array('attr'=>array('class'=>'iButton-icons'),'label' => 'contact.is_user'))
+            ->add('enabled', 'checkbox', array('attr'=>array('class'=>'iButton-icons'),'label' => 'contact.enabled'))
+            
             ->add('save', 'submit', array('label' => 'button.save'))
         ;
     }
