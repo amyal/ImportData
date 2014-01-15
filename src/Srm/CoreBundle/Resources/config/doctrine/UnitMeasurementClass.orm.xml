@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\UnitMeasurementClass" table="vr_unit_measurement_class">
+    <id name="unitMeasurementClassId" type="integer" column="UNIT_MEASUREMENT_CLASS_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="label" type="string" column="LABEL" length="25" nullable="true"/>
+    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
+  </entity>
+</doctrine-mapping>

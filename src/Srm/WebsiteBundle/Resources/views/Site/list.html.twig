@@ -49,9 +49,9 @@
                                         <td>{{ site.organisation.label }}</td>
                                         <td>{{ site.typeSite.label }}</td>
                                         <td>{{ site.address.label }}</td>
-                                        <td>{{ site.address.zip.code }}</td>
-                                        <td>{{ site.address.zip.code }}</td>   {# .zip.city.label #}
-                                        <td>{{ site.address.zip.code }}</td> {#zip.city.country.label#}
+                                        <td>{{ site.address.zip }}</td>
+                                        <td>{{ site.address.city }}</td>
+                                        <td>{{ site.address.country.label }}</td>
                                         <td>
                                             {% if site.enabled %} 
                                                 {{ 'enabled'|trans }}

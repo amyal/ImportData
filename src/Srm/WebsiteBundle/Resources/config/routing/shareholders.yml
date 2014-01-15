@@ -1,0 +1,35 @@
+srm_website_shareholders_list:
+    path:       /organisations/{organisationId}/shareholders
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:ShareHolders:list"
+
+srm_website_shareholders_add:
+    path:       /organisations/{organisationId}/shareholders/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:ShareHolders:form"
+
+srm_website_shareholders_show:
+    path:       /organisations/{organisationId}/shareholders/{shareholderId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:ShareHolders:show"
+    requirements:
+        shareholderId: \d+
+
+srm_website_shareholders_disable:
+    path:       /organisations/{organisationId}/shareholders/{shareholderId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmWebsiteBundle:ShareHolders:disable"
+    requirements:
+        shareholderId: \d+
+
+srm_website_shareholders_edit:
+    path:       /organisations/{organisationId}/shareholders/{shareholderId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:ShareHolders:form"
+    requirements:
+        shareholderId:   \d+

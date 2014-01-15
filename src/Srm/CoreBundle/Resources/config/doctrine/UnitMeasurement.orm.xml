@@ -6,7 +6,7 @@
     </id>
     <field name="label" type="string" column="LABEL" length="25" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
-    <many-to-one field="unitClass" target-entity="UnitClass">
+    <many-to-one field="unitMeasurementClass" target-entity="UnitMeasurementClass">
       <join-columns>
         <join-column name="UNIT_MEASUREMENT_CLASS_ID" referenced-column-name="UNIT_MEASUREMENT_CLASS_ID"/>
       </join-columns>

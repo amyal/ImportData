@@ -73,7 +73,7 @@ class UsersController extends Controller
         if (true === $user->getIsUser()) {
             if (null === $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->findOneById($user->getUserId())) {
                 $user = new User($user);
-                $user->setRole($this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Role')->findOneByRoleType('ROLE_U'));
+                $user->setRole($this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Role')->findOneByRoleType('ROLE_U'));
 
                 $encoder = $this->get('security.encoder_factory')->getEncoder($user);
                 $password = $encoder->encodePassword('toto', $user->getSalt());

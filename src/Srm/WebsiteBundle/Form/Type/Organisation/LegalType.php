@@ -16,6 +16,7 @@ class LegalType extends AbstractType
                 'property' => 'label',
                 'label'    => 'organisation.form.legal.label',
                 'required' => true,
+                'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
             ))
             ->add('natureCapital',    'text', array('label' => 'organisation.form.legal.nature_capital'))
             ->add('activity',         'text' ,array('label' => 'organisation.form.legal.activity'))

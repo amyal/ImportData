@@ -10,11 +10,13 @@ _users:
     resource: "routing/users.yml"
 _poles:
     resource: "routing/poles.yml"
-_repositories:
-    resource: "routing/repositories.yml"
+_referencials:
+    resource: "routing/referencials.yml"
 _groupStakeholder:
     resource: "routing/groupStakeholder.yml"
 _stakeholder:
     resource: "routing/stakeholder.yml"
+_shareholders:
+    resource: "routing/shareholders.yml"
 _indicator:
     resource: "routing/indicator.yml"

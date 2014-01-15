@@ -1,0 +1,82 @@
+{% extends '::layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-resize-vertical"></i> {{ 'configuration.nav.shareholder'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'shareholders.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title">{{ shareholder.contact.label }}</span>
+                    </div>
+                    <div class="box-content padded">
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.gender'|trans }} :</label>
+                                <div class="controls">{{ shareholder.contact.gender.label }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.lastname'|trans }} :</label>
+                                <div class="controls">{{ shareholder.contact.lastname }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.firstname'|trans }} :</label>
+                                <div class="controls">{{ shareholder.contact.firstname }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'contact.function'|trans }} :</label>
+                                <div class="controls">{{ shareholder.contact.contactFunction }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'phone.office'|trans }} :</label>
+                                <div class="controls">{{ shareholder.contact.officePhone }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'phone.mobile'|trans }} :</label>
+                                <div class="controls">{{ shareholder.contact.mobilePhone }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'email'|trans }} :</label>
+                                <div class="controls">{{ shareholder.contact.mail }}</div>
+                            </div>
+                        </div>
+                        <div class="padded-box">
+                            <div class="control-group">
+                                <label class="control-label">{{ 'parts'|trans }} :</label>
+                                <div class="controls">{{ shareholder.parts }}</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
+                        url_edit:   path('srm_website_shareholders_edit',  {'organisationId': organisationId, 'shareholderId': shareholder.shareholderId}),
+                        url_cancel: path('srm_website_shareholders_list', {'organisationId': organisationId})
+                    }, with_context = false) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

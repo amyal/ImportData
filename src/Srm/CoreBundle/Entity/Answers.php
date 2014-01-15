@@ -13,11 +13,6 @@ class Answers
     private $code;
 
     /**
-     * @var boolean
-     */
-    private $allSites;
-
-    /**
      * @var \DateTime
      */
     private $creationDate;
@@ -48,9 +43,14 @@ class Answers
     private $periodicity;
 
     /**
-     * @var \Srm\CoreBundle\Entity\UnitClass
+     * @var \Srm\CoreBundle\Entity\UnitMeasurement
      */
-    private $unitClass;
+    private $unitMeasurement;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\IndicatorZone
+     */
+    private $indicatorZone;
 
 
     public function __construct()
@@ -230,28 +230,51 @@ class Answers
     }
 
     /**
-     * Set unitClass
+     * Set unitMeasurement
      *
-     * @param \Srm\CoreBundle\Entity\UnitClass $unitClass
+     * @param \Srm\CoreBundle\Entity\UnitMeasurement $unitMeasurement
      * @return UnitMeasurement
      */
-    public function setUnitClass(UnitClass $unitClass = null)
+    public function setUnitMeasurement(UnitMeasurement $unitMeasurement = null)
     {
-        $this->unitClass = $unitClass;
+        $this->unitMeasurement = $unitMeasurement;
 
         return $this;
     }
 
     /**
-     * Get unitClass
+     * Get unitMeasurement
      *
-     * @return \Srm\CoreBundle\Entity\UnitClass
+     * @return \Srm\CoreBundle\Entity\UnitMeasurement
      */
-    public function getUnitClass()
+    public function getUnitMeasurement()
     {
-        return $this->unitClass;
+        return $this->unitMeasurement;
     }
     
+    /**
+     * Set indicatorZone
+     *
+     * @param \Srm\CoreBundle\Entity\IndicatorZone $indicatorZone
+     * @return Indicator
+     */
+    public function setIndicatorZone(IndicatorZone $indicatorZone = null)
+    {
+        $this->indicatorZone = $indicatorZone;
+
+        return $this;
+    }
+
+    /**
+     * Get indicatorZone
+     *
+     * @return \Srm\CoreBundle\Entity\IndicatorZone
+     */
+    public function getIndicatorZone()
+    {
+        return $this->indicatorZone;
+    }
+
     public function updateModificationDate()
     {
         $this->modificationDate = new \DateTime();

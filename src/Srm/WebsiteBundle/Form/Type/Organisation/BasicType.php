@@ -29,12 +29,14 @@ class BasicType extends AbstractType
                 'property' => 'label',
                 'label'    => 'organisation.form.basic.employees',
                 'required' => true,
+                'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
             ))
             ->add('turnover', 'entity', array(
                 'class'    => 'Srm\CoreBundle\Entity\Turnover',
                 'property' => 'label',
                 'label'    => 'organisation.form.basic.turnover',
                 'required' => true,
+                'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
             ))
             ->add('slogan1', 'text', array('label' => 'organisation.form.basic.slogan1'))
             ->add('slogan2', 'text', array('label' => 'organisation.form.basic.slogan2'))

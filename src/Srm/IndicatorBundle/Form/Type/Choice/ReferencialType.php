@@ -20,15 +20,15 @@ class ReferencialType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         if (null === $this->request) {
-            throw new \Exception('Organisation cannot be retrieved to build categories list if the request is not accessible.');
+            throw new \Exception('Organisation cannot be retrieved to build ReferencialType list if the request is not accessible.');
         }
 
         $resolver->setDefaults(array(
-            'class'         => 'Srm\CoreBundle\Entity\Referencial',
+            'class'         => 'Srm\CoreBundle\Entity\ReferencialType',
             'property'      => 'label',
-            'label'         => 'repositories.list.referencial',
+            'label'         => 'indicators.list.referencialType',
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('s')->orderBy('s.referencialId', 'ASC');
+                return $er->createQueryBuilder('s')->orderBy('s.referencialTypeId', 'ASC');
             },
         ));
     }
@@ -40,6 +40,6 @@ class ReferencialType extends AbstractType
 
     public function getName()
     {
-        return 'srm_referencials';
+        return 'srm_referencialTypes';
     }
 }

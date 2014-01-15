@@ -28,7 +28,7 @@ class IndicatorType extends AbstractType
     {
         $resolver->setDefaults(array(
             'compound'   => true,
-            'data_class' => 'Srm\CoreBundle\Entity\Indicator',
+            'data_class' => 'Srm\CoreBundle\Entity\Indicators',
         ));
     }
 

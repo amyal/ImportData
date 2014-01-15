@@ -15,11 +15,6 @@ class Indicators
     /**
      * @var string
      */
-    private $reference;
-
-    /**
-     * @var string
-     */
     private $label;
 
     /**
@@ -38,29 +33,34 @@ class Indicators
     private $indicatorsId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\IndicatorLevel1
+     * @var \Srm\CoreBundle\Entity\Category1
      */
-    private $indicatorLevel1;
+    private $category1;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Periodicity
+     * @var \Srm\CoreBundle\Entity\UnitMeasurement
      */
-    private $periodicity;
+    private $unitMeasurement;
 
     /**
-     * @var \Srm\CoreBundle\Entity\IndicatorLevel2
+     * @var \Srm\CoreBundle\Entity\IndicatorZone
      */
-    private $indicatorLevel2;
+    private $indicatorZone;
 
     /**
-     * @var \Srm\CoreBundle\Entity\IndicatorLevel3
+     * @var \Srm\CoreBundle\Entity\IndicatorGraph
      */
-    private $indicatorLevel3;
+    private $indicatorGraph;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\ReferencialType
+     */
+    //private $referencialType;
 
     /**
      * @var \Srm\CoreBundle\Entity\Referencial
      */
-    private $referencial;
+    //private $referencial;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -70,7 +70,7 @@ class Indicators
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $repositories;
+    private $referencials;
 
     /**
      * Constructor
@@ -78,7 +78,7 @@ class Indicators
     public function __construct()
     {
         $this->items = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->repositories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->referencials = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->deleted = false;
     }
@@ -104,29 +104,6 @@ class Indicators
     public function getCode()
     {
         return $this->code;
-    }
-
-    /**
-     * Set reference
-     *
-     * @param string $reference
-     * @return Indicator
-     */
-    public function setReference($reference)
-    {
-        $this->reference = $reference;
-
-        return $this;
-    }
-
-    /**
-     * Get reference
-     *
-     * @return string
-     */
-    public function getReference()
-    {
-        return $this->reference;
     }
 
     /**
@@ -209,95 +186,95 @@ class Indicators
     }
 
     /**
-     * Set indicatorLevel1
+     * Set category1
      *
-     * @param \Srm\CoreBundle\Entity\IndicatorLevel1 $indicatorLevel1
+     * @param \Srm\CoreBundle\Entity\Category1 $category1
      * @return Indicator
      */
-    public function setIndicatorLevel1(IndicatorLevel1 $indicatorLevel1 = null)
+    public function setCategory1(Category1 $category1 = null)
     {
-        $this->indicatorLevel1 = $indicatorLevel1;
+        $this->category1 = $category1;
 
         return $this;
     }
 
     /**
-     * Get indicatorLevel1
+     * Get category1
      *
-     * @return \Srm\CoreBundle\Entity\IndicatorLevel1
+     * @return \Srm\CoreBundle\Entity\Category1
      */
-    public function getIndicatorLevel1()
+    public function getCategory1()
     {
-        return $this->indicatorLevel1;
+        return $this->category1;
     }
 
     /**
-     * Set periodicity
+     * Set indicatorZone
      *
-     * @param \Srm\CoreBundle\Entity\Periodicity $periodicity
+     * @param \Srm\CoreBundle\Entity\IndicatorZone $indicatorZone
      * @return Indicator
      */
-    public function setPeriodicity(Periodicity $periodicity = null)
+    public function setIndicatorZone(IndicatorZone $indicatorZone = null)
     {
-        $this->periodicity = $periodicity;
+        $this->indicatorZone = $indicatorZone;
 
         return $this;
     }
 
     /**
-     * Get periodicity
+     * Get indicatorZone
      *
-     * @return \Srm\CoreBundle\Entity\Periodicity
+     * @return \Srm\CoreBundle\Entity\IndicatorZone
      */
-    public function getPeriodicity()
+    public function getIndicatorZone()
     {
-        return $this->periodicity;
+        return $this->indicatorZone;
     }
 
     /**
-     * Set indicatorLevel2
+     * Set indicatorGraph
      *
-     * @param \Srm\CoreBundle\Entity\IndicatorLevel2 $indicatorLevel2
+     * @param \Srm\CoreBundle\Entity\IndicatorGraph $indicatorGraph
      * @return Indicator
      */
-    public function setIndicatorLevel2(IndicatorLevel2 $indicatorLevel2 = null)
+    public function setIndicatorGraph(IndicatorGraph $indicatorGraph = null)
     {
-        $this->indicatorLevel2 = $indicatorLevel2;
+        $this->indicatorGraph = $indicatorGraph;
 
         return $this;
     }
 
     /**
-     * Get indicatorLevel2
+     * Get indicatorGraph
      *
-     * @return \Srm\CoreBundle\Entity\IndicatorLevel2
+     * @return \Srm\CoreBundle\Entity\IndicatorGraph
      */
-    public function getIndicatorLevel2()
+    public function getIndicatorGraph()
     {
-        return $this->indicatorLevel2;
+        return $this->indicatorGraph;
     }
 
     /**
-     * Set indicatorLevel3
+     * Set unitMeasurement
      *
-     * @param \Srm\CoreBundle\Entity\IndicatorLevel3 $indicatorLevel3
+     * @param \Srm\CoreBundle\Entity\UnitMeasurement $unitMeasurement
      * @return Indicator
      */
-    public function setIndicatorLevel3(IndicatorLevel3 $indicatorLevel3 = null)
+    public function setUnitMeasurement(UnitMeasurement $unitMeasurement = null)
     {
-        $this->indicatorLevel3 = $indicatorLevel3;
+        $this->unitMeasurement = $unitMeasurement;
 
         return $this;
     }
 
     /**
-     * Get indicatorLevel3
+     * Get unitMeasurement
      *
-     * @return \Srm\CoreBundle\Entity\IndicatorLevel3
+     * @return \Srm\CoreBundle\Entity\UnitMeasurement
      */
-    public function getIndicatorLevel3()
+    public function getUnitMeasurementh()
     {
-        return $this->indicatorLevel3;
+        return $this->unitMeasurement;
     }
 
     /**
@@ -306,22 +283,45 @@ class Indicators
      * @param \Srm\CoreBundle\Entity\Referencial $referencial
      * @return Referencial
      */
-    public function setReferencial(Referencial $referencial = null)
+    /*public function setReferencial(Referencial $referencial = null)
     {
         $this->referencial = $referencial;
 
         return $this;
-    }
+    }*/
 
     /**
      * Get referencial
      *
      * @return \Srm\CoreBundle\Entity\Referencial
      */
-    public function getReferencial()
+    /*public function getReferencial()
     {
         return $this->referencial;
-    }
+    }*/
+
+    /**
+     * Set referencialType
+     *
+     * @param \Srm\CoreBundle\Entity\ReferencialType $referencialType
+     * @return ReferencialType
+     */
+    /*public function setReferencialType(ReferencialType $referencialType = null)
+    {
+        $this->referencialType = $referencial;
+
+        return $this;
+    }*/
+
+    /**
+     * Get referencialType
+     *
+     * @return \Srm\CoreBundle\Entity\ReferencialType
+     */
+    /*public function getReferencialType()
+    {
+        return $this->referencialType;
+    }*/
 
     /**
      * Add item
@@ -357,35 +357,35 @@ class Indicators
     }
     
     /**
-     * Add repository
+     * Add referencial
      *
-     * @param \Srm\CoreBundle\Entity\Repository $repository
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
      * @return Indicator
      */
-    public function addRepository(Repository $repository)
+    public function addReferencial(Referencial $referencial)
     {
-        $this->repositories[] = $repository;
+        $this->referencials[] = $referencial;
 
         return $this;
     }
 
     /**
-     * Remove repository
+     * Remove referencial
      *
-     * @param \Srm\CoreBundle\Entity\Repository $repository
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
      */
-    public function removeRepository(Repository $repository)
+    public function removeReferencial(Referencial $referencial)
     {
-        $this->repositories->removeElement($repository);
+        $this->referencials->removeElement($referencial);
     }
 
     /**
-     * Get repositories
+     * Get referencials
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getRepositories()
+    public function getReferencials()
     {
-        return $this->repositories;
+        return $this->referencials;
     }
 }

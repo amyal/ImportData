@@ -34,8 +34,12 @@
             <tag name="request.param_converter" converter="pole" priority="7" />
         </service>
         
-        <service id="srm_website.converter.repository" class="Srm\WebsiteBundle\Request\ParamConverter\RepositoryParamConverter">
-            <tag name="request.param_converter" converter="repository" priority="7" />
+        <service id="srm_website.converter.referencial" class="Srm\WebsiteBundle\Request\ParamConverter\ReferencialParamConverter">
+            <tag name="request.param_converter" converter="referencial" priority="7" />
+        </service>
+        
+        <service id="srm_website.converter.indicator" class="Srm\WebsiteBundle\Request\ParamConverter\IndicatorParamConverter">
+            <tag name="request.param_converter" converter="indicator" priority="7" />
         </service>
         
         <service id="srm_website.converter.indicatorLevel1" class="Srm\WebsiteBundle\Request\ParamConverter\IndicatorLevel1ParamConverter">
@@ -50,5 +54,9 @@
             <tag name="request.param_converter" converter="stakeholder" priority="7" />
         </service>
         
+        <service id="srm_website.converter.shareholder" class="Srm\WebsiteBundle\Request\ParamConverter\ShareholderParamConverter">
+            <tag name="request.param_converter" converter="shareholder" priority="7" />
+        </service>
+
     </services>
 </container>

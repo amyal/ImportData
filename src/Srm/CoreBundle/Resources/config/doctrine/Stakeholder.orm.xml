@@ -30,11 +30,13 @@
         <cascade-all />
       </cascade>
     </many-to-one>
+    
     <many-to-one field="organisation" target-entity="Organisation">
       <join-columns>
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
     </many-to-one>
+    
     <many-to-many field="groupStakeholders" target-entity="GroupStakeholder" inversed-by="stakeholders">
       <join-table name="vj_stakeholder_stakeholder_group">
         <join-columns>

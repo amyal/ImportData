@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\IndicatorAnswers" table="v_indicator_answers">
+    <id name="indicatorAnswersId" type="integer" column="INDICATOR_ANSWERS_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="answer" type="string" column="ANSWER" length="255" nullable="true"/>
+    <field name="answerStatus" type="string" column="ANSWER_STATUS" length="25" nullable="true"/>
+    <field name="updatedDate" type="string" column="UPDATED_DATE" length="25" nullable="true"/>
+    <field name="creationDate" type="string" column="CREATION_DATE" length="25" nullable="true"/>
+    <field name="modificationDate" type="boolean" column="MODIFICATION_DATE" nullable="true"/>
+
+    <many-to-one field="indicators" target-entity="Indicators">
+      <join-columns>
+        <join-column name="INDICATORS_ID" referenced-column-name="INDICATORS_ID"/>
+      </join-columns>
+    </many-to-one>
+    
+  </entity>
+</doctrine-mapping>

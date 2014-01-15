@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Indicators" table="vr_indicators" repository-class="Srm\CoreBundle\Repository\IndicatorRepository">
+  <entity name="Srm\CoreBundle\Entity\Indicators" table="vr_indicators" repository-class="Srm\CoreBundle\Repository\IndicatorsRepository">
     <id name="indicatorsId" type="integer" column="INDICATORS_ID">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="code" type="string" column="CODE" length="10" nullable="false"/>
-    <field name="reference" type="string" column="REFERENCE" length="15" nullable="true"/>
     <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-one field="indicatorLevel1" target-entity="IndicatorLevel1">
+
+    <many-to-one field="category1" target-entity="Category1">
       <join-columns>
-        <join-column name="INDICATOR_LEVEL1_ID" referenced-column-name="INDICATOR_LEVEL1_ID"/>
+        <join-column name="CATEGORY1_ID" referenced-column-name="CATEGORY1_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="indicatorLevel2" target-entity="IndicatorLevel2">
+
+    <many-to-one field="unitMeasurement" target-entity="UnitMeasurement">
       <join-columns>
-        <join-column name="INDICATOR_LEVEL2_ID" referenced-column-name="INDICATOR_LEVEL2_ID"/>
+        <join-column name="UNIT_MEASUREMENT_ID" referenced-column-name="UNIT_MEASUREMENT_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="indicatorLevel3" target-entity="IndicatorLevel3">
+
+    <many-to-one field="indicatorZone" target-entity="IndicatorZone">
       <join-columns>
-        <join-column name="INDICATOR_LEVEL3_ID" referenced-column-name="INDICATOR_LEVEL3_ID"/>
+        <join-column name="INDICATOR_ZONE_ID" referenced-column-name="INDICATOR_ZONE_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="referencial" target-entity="Referencial">
+
+    <many-to-one field="indicatorGraph" target-entity="IndicatorGraph">
       <join-columns>
-        <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
+        <join-column name="INDICATOR_GRAPH_ID" referenced-column-name="INDICATOR_GRAPH_ID"/>
       </join-columns>
     </many-to-one>
+
     <many-to-many field="items" target-entity="Item" mapped-by="indicators"/>
-    <many-to-many field="repositories" target-entity="Repository" mapped-by="repositoryIndicators"/>
+    <many-to-many field="referencials" target-entity="Referencial" mapped-by="referencialIndicators"/>
   </entity>
 </doctrine-mapping>

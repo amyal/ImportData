@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\Shareholder" table="v_shareholder" repository-class="Srm\CoreBundle\Repository\ShareholderRepository">
+    <id name="shareholderId" type="integer" column="SHAREHOLDER_ID">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
+    <field name="parts" type="string" column="PARTS" length="15" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
+    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
+    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    <many-to-one field="contact" target-entity="Contact">
+      <join-columns>
+        <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+      </join-columns>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-one>
+    
+    <lifecycle-callbacks>
+      <lifecycle-callback type="preUpdate" method="updateModificationDate" />
+    </lifecycle-callbacks>
+  </entity>
+</doctrine-mapping>

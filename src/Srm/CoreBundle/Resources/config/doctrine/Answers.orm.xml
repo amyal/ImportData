@@ -5,7 +5,6 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="code" type="string" column="CODE" length="20" nullable="true"/>
-    <field name="allSites" type="boolean" column="ALL_SITES" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <many-to-one field="item" target-entity="Item">
@@ -13,19 +12,28 @@
         <join-column name="ITEM_ID" referenced-column-name="ITEM_ID"/>
       </join-columns>
     </many-to-one>
+    
     <many-to-one field="answerType" target-entity="AnswerType">
       <join-columns>
         <join-column name="ANSWER_TYPE_ID" referenced-column-name="ANSWER_TYPE_ID"/>
       </join-columns>
     </many-to-one>
+
     <many-to-one field="periodicity" target-entity="Periodicity">
       <join-columns>
         <join-column name="PERIODICITY_ID" referenced-column-name="PERIODICITY_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="unitClass" target-entity="UnitClass">
+
+    <many-to-one field="indicatorZone" target-entity="IndicatorZone">
       <join-columns>
-        <join-column name="UNIT_MEASUREMENT_CLASS_ID" referenced-column-name="UNIT_MEASUREMENT_CLASS_ID"/>
+        <join-column name="INDICATOR_ZONE_ID" referenced-column-name="INDICATOR_ZONE_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="unitMeasurement" target-entity="UnitMeasurement">
+      <join-columns>
+        <join-column name="UNIT_MEASUREMENT_ID" referenced-column-name="UNIT_MEASUREMENT_ID"/>
       </join-columns>
     </many-to-one>
 

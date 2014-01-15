@@ -16,6 +16,7 @@ class ContactType extends AbstractType
                 'property' => 'label',
                 'label'    => 'gender',
                 'required' => true,
+                'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
             ))
             ->add('lastname', 'text', array(
                 'label'    => 'contact.lastname',
@@ -43,7 +44,6 @@ class ContactType extends AbstractType
             ->add('address', 'srm_address')
 
             ->add('shareholder', 'checkbox', array('label' => 'shareholder'))
-            ->add('parts', 'text', array('label' => 'shareholder.parts'))
             
             ->add('picture', 'file', array('label' => 'contact.picture'))
             ->add('comments', 'textarea', array('label' => 'contact.comments'))

@@ -1,0 +1,99 @@
+{% extends '::layout.html.twig' %}
+
+{% block main_container_header %}
+    <i class="icon-resize-vertical"></i> {{ 'configuration.nav.shareholder'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'shareholders.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title"> {{ 'shareholders.list.title'|trans }} </span>
+                    </div>
+
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
+                        {{ form_errors(form) }}
+                        
+							<div class="box-content padded">
+                            	<div class="row-fluid">
+                                    <div class="span6">
+                                   
+                            		<div class="control-group">         
+	                                    {{ form_label(form.contact.gender) }} 
+	                                    <div class="controls">{{ form_widget(form.contact.gender) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contact.lastname) }}
+	                                    <div class="controls">{{ form_widget(form.contact.lastname) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contact.firstname) }}
+	                                    <div class="controls">{{ form_widget(form.contact.firstname) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contact.contactFunction) }}
+	                                    <div class="controls">{{ form_widget(form.contact.contactFunction) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contact.mail) }}
+	                                    <div class="controls">{{ form_widget(form.contact.mail) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                	{{ form_label(form.parts) }}
+	                                    <div class="controls">{{ form_widget(form.parts) }}</div>
+                                    </div>  
+                                </div>
+
+                                <div class="span6">
+                                	<div class="control-group">
+	                                    {{ form_label(form.contact.officePhone) }}
+	                                    <div class="controls">{{ form_widget(form.contact.officePhone) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contact.mobilePhone) }}
+	                                    <div class="controls">{{ form_widget(form.contact.mobilePhone) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contact.address.label) }}
+	                                    <div class="controls">{{ form_widget(form.contact.address.label) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contact.address.zip) }}
+	                                    <div class="controls">{{ form_widget(form.contact.address.zip) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contact.address.city) }}
+	                                    <div class="controls">{{ form_widget(form.contact.address.city) }}</div>
+	                                </div>
+	                                <div class="control-group">
+	                                    {{ form_label(form.contact.address.country) }}
+	                                    <div class="controls">{{ form_widget(form.contact.address.country, {'attr': {'class': 'chzn-select'}}) }}</div>
+	                                </div>
+
+                                </div>
+                            </div>				
+				            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+				                save_form: form.save,
+				                url_cancel: path('srm_website_shareholders_list', {'organisationId': organisationId})
+				            }, with_context = false) }}
+
+            			<div class="hide">
+                            {{ form_widget(form._token) }}
+                            {{ form_rest(form) }}
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+                </div>
+{% endblock %}

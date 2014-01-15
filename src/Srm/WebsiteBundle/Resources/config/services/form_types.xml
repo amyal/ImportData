@@ -47,12 +47,12 @@
         <service class="Srm\WebsiteBundle\Form\Type\Choice\RolesType" id="srm_website.form.type.roles">
             <tag name="form.type" alias="srm_roles" />
         </service>
-        <service class="Srm\IndicatorBundle\Form\Type\Choice\RepositoryIndicatorsType" id="srm_indicator.form.type.repository_indicators">
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\ReferencialIndicatorsType" id="srm_indicator.form.type.referencial_indicators">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
-            <tag name="form.type" alias="srm_organisation_repositoryIndicators" />
+            <tag name="form.type" alias="srm_organisation_referencialIndicators" />
         </service>
         <service class="Srm\IndicatorBundle\Form\Type\Choice\IndicatorLevel1Type" id="srm_indicator.form.type.indicatorLevels1">
             <argument type="service" id="doctrine.orm.entity_manager" />
@@ -73,11 +73,11 @@
             </call>
             <tag name="form.type" alias="srm_stakeholderArchetypes" />
         </service>
-        <service class="Srm\IndicatorBundle\Form\Type\Choice\ReferencialType" id="srm_indicator.form.type.referencials">
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\ReferencialType" id="srm_indicator.form.type.referencialTypes">
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
-            <tag name="form.type" alias="srm_referencials" />
+            <tag name="form.type" alias="srm_referencialTypes" />
         </service>
         <service class="Srm\WebsiteBundle\Form\Type\Choice\GroupStakeholderType" id="srm_website.form.type.groupStakeholders">
             <call method="setRequest">
@@ -132,8 +132,8 @@
             <tag name="form.type" alias="srm_contact" />
         </service>
         
-        <service class="Srm\IndicatorBundle\Form\Type\RepositoryType" id="srm_indicator.form.type.repository">
-            <tag name="form.type" alias="srm_repository" />
+        <service class="Srm\IndicatorBundle\Form\Type\ReferencialType" id="srm_indicator.form.type.referencial">
+            <tag name="form.type" alias="srm_referencial" />
         </service>
         
         <service class="Srm\IndicatorBundle\Form\Type\IndicatorType" id="srm_indicator.form.type.indicator">
@@ -148,5 +148,9 @@
             <tag name="form.type" alias="srm_stakeholder" />
         </service>
 
+        <service class="Srm\WebsiteBundle\Form\Type\ShareholderType" id="srm_website.form.type.shareholder">
+            <tag name="form.type" alias="srm_shareholder" />
+        </service>
+        
     </services>
 </container>

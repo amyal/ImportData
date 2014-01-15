@@ -1,0 +1,43 @@
+srm_indicator_referencial_list:
+    path:       /organisations/{organisationId}/referencials
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Referencials:list"
+
+srm_indicator_referencial_add:
+    path:       /organisations/{organisationId}/referencials/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Referencials:form"
+
+srm_indicator_referencial_show:
+    path:       /organisations/{organisationId}/referencials/{referencialId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Referencials:show"
+    requirements:
+        referencialId: \d+
+
+srm_indicator_referencial_disable:
+    path:       /organisations/{organisationId}/referencials/{referencialId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Referencials:disable"
+    requirements:
+        referencialId: \d+
+
+srm_indicator_referencial_edit:
+    path:       /organisations/{organisationId}/referencials/{referencialId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Referencials:form"
+    requirements:
+        referencialId: \d+
+
+indicators_by_categories:
+    path:       /organisations/{organisationId}/indicators/by_categories
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Referencials:indicatorsByCategories"
+    requirements:
+        referencialId: \d+

@@ -1,5 +1,5 @@
 srm_indicator_indicator_list:
-    path:       /organisations/{organisationId}/indicators/{repositoryId}
+    path:       /organisations/{organisationId}/indicators
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmIndicatorBundle:Indicators:list"
@@ -11,29 +11,29 @@ srm_indicator_indicator_add:
         _controller:    "SrmIndicatorBundle:Indicators:form"
 
 srm_indicator_indicator_show:
-    path:       /organisations/{organisationId}/indicators/{indicatorId}/show
+    path:       /organisations/{organisationId}/indicators/{indicatorsId}/show
     methods:    [GET]
     defaults:
         _controller:    "SrmIndicatorBundle:Indicators:show"
     requirements:
-        indicatorId: \d+
+        indicatorsId: \d+
 
 srm_indicator_indicator_disable:
-    path:       /organisations/{organisationId}/indicators/{indicatorId}/disable
+    path:       /organisations/{organisationId}/indicators/{indicatorsId}/disable
     methods:    [GET]
     defaults:
         _controller:    "SrmIndicatorBundle:Indicators:disable"
     requirements:
-        indicatorId: \d+
+        indicatorsId: \d+
 
 
 srm_indicator_indicator_edit:
-    path:       /organisations/{organisationId}/indicators/{repositoryId}/questions/{indicatorId}
+    path:       /organisations/{organisationId}/indicators/{indicatorsId}
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmIndicatorBundle:Indicators:form"
     requirements:
-        indicatorId: \d+
+        indicatorsId: \d+
 
 indicators_by_categories:
     path:       /organisations/{organisationId}/indicators/by_categories
@@ -41,4 +41,4 @@ indicators_by_categories:
     defaults:
         _controller:    "SrmIndicatorBundle:Indicators:indicatorsByCategories"
     requirements:
-        indicatorId: \d+
+        indicatorsId: \d+

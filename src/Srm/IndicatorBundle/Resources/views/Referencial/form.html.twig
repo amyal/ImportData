@@ -1,0 +1,91 @@
+{% extends '::layout.html.twig' %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#srm_referencial_referencialCategories').on('change', function() {
+                    $('#srm_referencial_referencialIndicators option').remove();
+                    $.ajax({
+                        url: "{{ path('indicators_by_categories', {'organisationId': organisationId}) }}",
+                        type: "GET",
+                        data: "categories_id="+$(this).val(),
+                        success: function(data){
+                            $('#srm_referencial_referencialIndicators').append(data);
+                        }
+                    });
+                });
+            });   
+        </script>
+{% endblock %}
+
+{% block main_container_header %}
+    <i class="icon-circle-blank"></i> {{ 'referencials.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'referencials.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid padded">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <div class="box">
+                    <div class="box-header">
+                        <span class="title"> {{ 'referencials.list.title'|trans }} </span>
+                    </div>
+
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
+                        {{ form_errors(form) }}
+
+                        <div class="box-content padded">
+                            <div class="padded-box">
+                                <div class="control-group">
+                                    {{ form_label(form.referencialType) }}
+                                    <div class="controls">{{ form_widget(form.referencialType, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.label) }}
+                                    <div class="controls">{{ form_widget(form.label) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.description) }}
+                                    <div class="controls">{{ form_widget(form.description) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.referencialIndicators) }}
+                                    <div class="controls">{{ form_widget(form.referencialIndicators, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>
+                                    <div class="controls">
+                                        {{ form_widget(form.enabled, {'attr': {'class': 'icheck'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+                            save_form: form.save,
+                            url_cancel: path('srm_indicator_referencial_list', {'organisationId': organisationId})
+                        }, with_context = false) }}
+
+                        <div class="hide">
+                            {{ form_widget(form._token) }}
+                            {{ form_rest(form) }}
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

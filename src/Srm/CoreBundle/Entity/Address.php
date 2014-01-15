@@ -30,12 +30,22 @@ class Address
     /**
      * @var integer
      */
+    private $zip;
+
+    /**
+     * @var string
+     */
+    private $city;
+
+    /**
+     * @var integer
+     */
     private $addressId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Zip
+     * @var \Srm\CoreBundle\Entity\Country
      */
-    private $zip;
+    private $country;
 
 
     /**
@@ -131,6 +141,52 @@ class Address
     }
 
     /**
+     * Set zip
+     *
+     * @param integer $zip
+     * @return Address
+     */
+    public function setZip($zip)
+    {
+        $this->zip = $zip;
+
+        return $this;
+    }
+
+    /**
+     * Get zip
+     *
+     * @return integer
+     */
+    public function getZip()
+    {
+        return $this->zip;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return Address
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
      * Get addressId
      *
      * @return integer
@@ -141,25 +197,25 @@ class Address
     }
 
     /**
-     * Set zip
+     * Set country
      *
-     * @param \Srm\CoreBundle\Entity\Zip $zip
+     * @param \Srm\CoreBundle\Entity\Country $country
      * @return Address
      */
-    public function setZip(Zip $zip = null)
+    public function setCountry(Country $country = null)
     {
-        $this->zip = $zip;
+        $this->country = $country;
 
         return $this;
     }
 
     /**
-     * Get zip
+     * Get country
      *
-     * @return \Srm\CoreBundle\Entity\Zip
+     * @return \Srm\CoreBundle\Entity\Country
      */
-    public function getZip()
+    public function getCountry()
     {
-        return $this->zip;
+        return $this->country;
     }
 }

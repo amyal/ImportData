@@ -13,7 +13,10 @@ class AddressType extends AbstractType
     {
         $builder
             ->add('label', 'text', array('label' => 'address.label'))
-            ->add('zip', 'srm_zip')
+            ->add('zip', 'text', array('label' => 'address.zip'))
+            ->add('city', 'text', array('label' => 'address.city'))
+            ->add('country', 'srm_countries')
+            //->add('zip', 'srm_zip')
         ;
     }
 

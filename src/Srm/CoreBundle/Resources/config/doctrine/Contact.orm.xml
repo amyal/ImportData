@@ -17,7 +17,6 @@
     <field name="owner" type="string" column="OWNER" length="150" nullable="true"/>
     <field name="isUser" type="boolean" column="IS_USER" nullable="true"/>
     <field name="shareholder" type="boolean" column="SHAREHOLDER" nullable="true"/>
-    <field name="parts" type="string" column="PARTS" length="15" nullable="true"/>
     <field name="officePhone" type="string" column="OFFICE_PHONE" length="50" nullable="true"/>
     <field name="mobilePhone" type="string" column="MOBILE_PHONE" length="50" nullable="true"/>
     <field name="fax" type="string" column="FAX" length="50" nullable="true"/>
@@ -61,17 +60,8 @@
     
     <many-to-many field="departments" target-entity="Department" mapped-by="contacts"/>
     
-    
-     <many-to-many field="stakeholders" target-entity="Stakeholder" inversed-by="contacts">
-      <join-table name="vj_stakeholder_contact">
-        <join-columns>
-          <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="STAKEHOLDER_ID" referenced-column-name="STAKEHOLDER_ID"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
+    <many-to-many field="stakeholders" target-entity="Stakeholder" mapped-by="contacts"/>
+     
     <lifecycle-callbacks>
       <lifecycle-callback type="preUpdate" method="updateModificationDate" />
     </lifecycle-callbacks>

@@ -5,32 +5,31 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="answer" type="string" column="ANSWER" length="255" nullable="true"/>
+    <field name="validUntil" type="datetime" column="VALID_UNTIL" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
-    <field name="validUntil" type="datetime" column="VALID_UNTIL" nullable="true"/>
-    <many-to-one field="answersStatus" target-entity="AnswersStatus">
-      <join-columns>
-        <join-column name="ANSWERS_STATUS_ID" referenced-column-name="ANSWERS_STATUS_ID"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="itemQuestions" target-entity="ItemQuestions">
-      <join-columns>
-        <join-column name="ITEM_QUESTIONS_ID" referenced-column-name="ITEM_QUESTIONS_ID"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="contact" target-entity="Contact">
-      <join-columns>
-        <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
-      </join-columns>
-    </many-to-one>
+
     <many-to-one field="answers" target-entity="Answers">
       <join-columns>
         <join-column name="ANSWERS_ID" referenced-column-name="ANSWERS_ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="unitMeasurement" target-entity="UnitMeasurement">
+
+    <many-to-one field="answersStatus" target-entity="AnswersStatus">
       <join-columns>
-        <join-column name="UNIT_MEASUREMENT_ID" referenced-column-name="UNIT_MEASUREMENT_ID"/>
+        <join-column name="ANSWERS_STATUS_ID" referenced-column-name="ANSWERS_STATUS_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="itemQuestions" target-entity="ItemQuestions">
+      <join-columns>
+        <join-column name="ITEM_QUESTIONS_ID" referenced-column-name="ITEM_QUESTIONS_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="contact" target-entity="Contact">
+      <join-columns>
+        <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
       </join-columns>
     </many-to-one>
 

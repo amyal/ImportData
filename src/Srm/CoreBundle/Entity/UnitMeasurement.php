@@ -28,9 +28,9 @@ class UnitMeasurement
     private $unitMeasurementId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\UnitClass
+     * @var \Srm\CoreBundle\Entity\UnitMeasurementClass
      */
-    private $unitClass;
+    private $unitMeasurementClass;
 
 
     public function __construct()
@@ -95,25 +95,25 @@ class UnitMeasurement
     }
 
     /**
-     * Set unitClass
+     * Set unitMeasurementClass
      *
-     * @param \Srm\CoreBundle\Entity\UnitClass $unitClass
+     * @param \Srm\CoreBundle\Entity\UnitMeasurementClass $unitMeasurementClass
      * @return UnitMeasurement
      */
-    public function setUnitClass(UnitClass $unitClass = null)
+    public function setUnitMeasurementClass(UnitMeasurementClass $unitMeasurementClass = null)
     {
-        $this->unitClass = $unitClass;
+        $this->unitMeasurementClass = $unitMeasurementClass;
 
         return $this;
     }
 
     /**
-     * Get unitClass
+     * Get unitMeasurementClass
      *
-     * @return \Srm\CoreBundle\Entity\UnitClass
+     * @return \Srm\CoreBundle\Entity\UnitMeasurementClass
      */
-    public function getUnitClass()
+    public function getUnitMeasurementClass()
     {
-        return $this->unitClass;
+        return $this->unitMeasurementClass;
     }
 }

@@ -75,11 +75,6 @@ class Contact
     /**
      * @var string
      */
-    private $parts;
-
-    /**
-     * @var string
-     */
     private $officePhone;
 
     /**
@@ -471,29 +466,6 @@ class Contact
     public function getShareholder()
     {
         return $this->shareholder;
-    }
-
-    /**
-     * Set parts
-     *
-     * @param string $parts
-     * @return Contact
-     */
-    public function setParts($parts)
-    {
-        $this->parts = $parts;
-
-        return $this;
-    }
-
-    /**
-     * Get parts
-     *
-     * @return string
-     */
-    public function getParts()
-    {
-        return $this->parts;
     }
 
     /**

@@ -30,6 +30,7 @@ class ContactParamConverter implements ParamConverterInterface
         }
 
         $contact->setOrganisation($organisation);
+        //$contact->setShareholder(true);
 
         $request->attributes->set($configuration->getName(), $contact);
 

@@ -39,27 +39,26 @@ class ContactsController extends Controller
         )));
     }
 
-    public function formAction(Organisation $organisation,Contact $contact,$type="")
+    public function formAction(Organisation $organisation, Contact $contact, $type = "")
     {  
         $request = $this->getRequest();//récupérer les ids de partie prenante et la nouvelle organisation 
         $stakeholderid = $request->query->get('stakeholderid'); 
         $org_clt = $request->query->get('org_clt');
-       
+
         $formActionRoute = 'srm_website_contacts_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(),'type'=>$type,'stakeholderid'=>$stakeholderid, 'org_clt'=>$org_clt);
         $FormEdit=$contact->getContactId() ; //  if the variable equal Null -> add else edition 
-        
+
         if (null !== $contactId = $contact->getContactId()) {
             $formActionRoute = 'srm_website_contact_edit';
             $formActionRouteParams['contactId'] = $contactId;
-                 }
-                 
+        }
+
         $form = $this->createForm('srm_contact', $contact, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
             'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
         ));
-
 
         if ('GET' === $request->getMethod()) {
             return $this->render('SrmWebsiteBundle:Contact:form.html.twig', array(
@@ -74,18 +73,20 @@ class ContactsController extends Controller
                 'form'           => $form->createView(),
             ));
         }
-                    
-   if ($type=="externe"){ // liéer le contact à la nouvelle organisation et la partie prenante
-       $contact->addStakeholder($this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Stakeholder')->find($stakeholderid)); //mapping with stakeholder table
-       $contact->setOrganisation($this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Organisation')->find($org_clt));
-   }   
+
+        if ($type == "externe"){ // liéer le contact à la nouvelle organisation et la partie prenante
+            $contact->addStakeholder($this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Stakeholder')->find($stakeholderid)); //mapping with stakeholder table
+            $contact->setOrganisation($this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Organisation')->find($org_clt));
+        }   
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($contact);
         $em->flush();
-                
-    if (true === $contact->getIsUser()) {
+
+        if (true === $contact->getIsUser()) {
             if (null === $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->findOneById($contact->getContactId())) {
-                $user = new User($contact->getContactId(),$contact->getMail());
+                $contactName = $contact->getFirstname().' '.$contact->getLastname();
+                $user = new User($contact->getContactId(), $contactName, $contact->getMail());
                 $user->setRole($this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Role')->findOneByRoleType('ROLE_U'));
 
                 $encoder = $this->get('security.encoder_factory')->getEncoder($user);
@@ -93,31 +94,29 @@ class ContactsController extends Controller
                 $user->setPassword($password);
 
                 $this->get('fos_user.user_manager')->updateUser($user);
-                          if ($contact->getParts()==Null ) { // if the user it's not a shareholder, then 
-        $message = \Swift_Message::newInstance() // we create a new instance of the Swift_Message class
-        ->setSubject('Verseo SRM') // we configure the title
-        ->setFrom('rachid.amyal@verseo-consulting.com') // we configure the sender
-        ->setTo($contact->getMail()) // we configure the recipient
-        ->setBody($contact->getGender()->getLabel().' '.$contact->getFirstname().
-                ' '.$contact->getLastname() . ', votre Login est : ' .
-                $user->getUserName().' et votre Mot de passe est : toto');
-        // and we pass the $name variable to the text template which serves as a body of the message
-        ;
-        $this->get('mailer')->send($message); // then we send the message.
+                if ($contact->getParts()==Null ) { // if the user it's not a shareholder, then 
+                    $message = \Swift_Message::newInstance() // we create a new instance of the Swift_Message class
+                    ->setSubject('Verseo SRM') // we configure the title
+                    ->setFrom('contact@verseo-consulting.com') // we configure the sender
+                    ->setTo($contact->getMail()) // we configure the recipient
+                    ->setBody($contact->getGender()->getLabel().' '.$contact->getFirstname().
+                            ' '.$contact->getLastname() . ', votre Login est : ' .
+                            $user->getUserName().' et votre Mot de passe est : toto');
+                    // and we pass the $name variable to the text template which serves as a body of the message
+                    //$this->get('mailer')->send($message); // then we send the message.
 
-            //     return new Response('Email bien envoyé');
-
-        
-       } 
-                }
+                    //     return new Response('Email bien envoyé');
+                } 
+            }
         }
-       if ($type=="externe"){  return $this->redirect($this->generateUrl('srm_website_stakeholders_list', array(
-            'organisationId' => $organisation->getOrganisationId(),
-        )));}
-       else 
-                return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
-            'organisationId' => $organisation->getOrganisationId(), 
-        )));
-       
-    }
+
+        if ($type == "externe"){  
+            return $this->redirect($this->generateUrl('srm_website_stakeholders_list', array(
+                        'organisationId' => $organisation->getOrganisationId(),
+                    )));
+        } else 
+            return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
+                        'organisationId' => $organisation->getOrganisationId(), 
+                    )));
+        }
 }

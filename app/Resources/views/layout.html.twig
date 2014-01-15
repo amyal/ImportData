@@ -6,23 +6,17 @@
         <title>{% block title %}SRM{% endblock %}</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800">
-        {% block stylesheets %}
-            {% stylesheets filter="cssrewrite" combine=true output="css/all.css"
-                "bundles/srmwebsite/css/application.css"
-                "bundles/srmwebsite/css/font-awesome.css"
-                "bundles/srmwebsite/css/style.css"
-            %}
-                <link rel="stylesheet" href="{{ asset_url }}"  media="screen"/>
-            {% endstylesheets %}
-        {% endblock %}
-                
-        {% block javascripts %}
-            {% javascripts combine=true output="js/all.js"
-                "bundles/srmwebsite/js/*"
-            %}
-                <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-        {% endblock %}
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/srmwebsite/css/application.css') }}" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/srmwebsite/css/font-awesome.css') }}" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/srmwebsite/css/style.css') }}" media="screen" />
+        {% block stylesheets %}{% endblock %}
+
+        <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/application.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/graphs.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/highcharts.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+
     </head>
     <body>
         {% block body %}
@@ -79,13 +73,13 @@
                                                         <span>{{ app.user.username }}</span>
                                                     </li>
                                                     <li class="divider"></li>
-                                                    <li><a {% if identificationCode is defined %}
-                                    href="{{ path('srm_website_contact_edit', { 'organisationId': identificationCode, 'contactId': app.user.id }) }}"
-                                {% elseif organisation is defined %}
-                                    href="{{ path('srm_website_contact_edit', { 'organisationId': organisation.organisationId, 'contactId': app.user.id }) }}"
-                                {% else %}
-                                    href="{{ path('srm_website_contact_edit', { 'organisationId': organisationId, 'contactId': app.user.id }) }}"
-                                {% endif %}>
+                                                    <li><a  {% if identificationCode is defined %}
+                                                                href="{{ path('srm_website_contact_show', { 'organisationId': identificationCode, 'contactId': app.user.id }) }}"
+                                                            {% elseif organisation is defined %}
+                                                                href="{{ path('srm_website_contact_show', { 'organisationId': organisation.organisationId, 'contactId': app.user.id }) }}"
+                                                            {% else %}
+                                                                href="{{ path('srm_website_contact_show', { 'organisationId': organisationId, 'contactId': app.user.id }) }}"
+                                                            {% endif %}>
 
                                                     <i class="icon-user"></i> <span>{{ 'header.profile.profile'|trans }}</span>
                                                 </a>
@@ -161,8 +155,14 @@
                                 </a>
                             </li>
                             <li class="{% if app.request.attributes.get('_route') in ['srm_website_shareholders_list','srm_website_shareholders_add'] %}active{% endif %}">
-                                <a href="#">
-                                    <i class="icon-resize-vertical"></i> {{ 'configuration.nav.property'|trans }} 
+                                <a  {% if organisation is defined %}
+                                        href="{{ path('srm_website_shareholders_list', { 'organisationId': organisation.organisationId }) }}"
+                                    {% elseif organisationId is defined %}
+                                        href="{{ path('srm_website_shareholders_list', { 'organisationId': organisationId }) }}"
+                                    {% else %}
+                                        href="{{ path('srm_website_shareholders_list', { 'organisationId': identificationCode }) }}"
+                                    {% endif %}>
+                                    <i class="icon-resize-vertical"></i> {{ 'configuration.nav.shareholder'|trans }} 
                                 </a>
                             </li>
                             <li class="{% if app.request.attributes.get('_route') in ['srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit'] %}active{% endif %}">
@@ -236,22 +236,22 @@
                         <ul id="dropdown3" class="collapse ">
                             <li class="">
                                 <a  {% if organisation is defined %}
-                                        href="{{ path('srm_indicator_repository_list', { 'organisationId': organisation.organisationId }) }}"
+                                        href="{{ path('srm_indicator_referencial_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
-                                        href="{{ path('srm_indicator_repository_list', { 'organisationId': organisationId }) }}"
+                                        href="{{ path('srm_indicator_referencial_list', { 'organisationId': organisationId }) }}"
                                     {% else %}
-                                        href="{{ path('srm_indicator_repository_list', { 'organisationId': identificationCode }) }}"
+                                        href="{{ path('srm_indicator_referencial_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
                                     <i class="icon-list-alt"></i> {{ 'indicator.nav.activate'|trans }}
                                 </a>
                             </li>
                             <li class="">
                                 <a  {% if organisation is defined %}
-                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisation.organisationId, 'repositoryId': 2 }) }}"
+                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
-                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisationId, 'repositoryId': 2 }) }}"
+                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisationId }) }}"
                                     {% else %}
-                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': identificationCode, 'repositoryId': 2 }) }}"
+                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
                                     <i class="icon-reorder"></i> {{ 'indicator.nav.control'|trans }}
                                 </a>
@@ -273,9 +273,9 @@
                             </li>
                             <li class="">
                                 <a  {% if organisation is defined %}
-                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisation.organisationId, 'repositoryId': 2 }) }}"
+                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisation.organisationId, 'referencialTypeId': 1 }) }}"
                                     {% elseif organisationId is defined %}
-                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisationId, 'repositoryId': 2 }) }}"
+                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisationId, 'referencialTypeId': 1 }) }}"
                                     {% endif %}>
                                     <i class="icon-list-alt"></i> {{ 'data.nav.saisie'|trans }}
                                 </a>
@@ -297,85 +297,82 @@
                             </li>
                         </ul>
                     </li>  
-                <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_user_show','srm_website_user_edit'] %}active{% endif %}">
-                        <span class="glow"></span>
-                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown5">
-                            <i class="icon-share icon-2x"></i>
-                            <span>{{ 'diffusion.list.title'|trans }} <i class="icon-caret-down"></i></span>
-                        </a>
-                        <ul id="dropdown5" class="collapse">
-                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_contact_show','srm_website_user_edit'] %}active{% endif %}">
-                                <a  {% if organisation is defined %}
-                                        href="{{ path('srm_website_contacts_list', { 'organisationId': organisation.organisationId }) }}"
-                                    {% elseif organisationId is defined %}
-                                        href="{{ path('srm_website_contacts_list', { 'organisationId': organisationId }) }}"
-                                    {% else %}
-                                        href="{{ path('srm_website_contacts_list', { 'organisationId': identificationCode }) }}"
-                                    {% endif %}>
-                                    <i class="icon-reorder"></i> {{ 'diffusion.nav.general'|trans }}
-                                </a>
-                            </li>
-                          
-                        </ul>
-                    </li>
+                <!-- <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_user_show','srm_website_user_edit'] %}active{% endif %}">
+                    <span class="glow"></span>
+                    <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown5">
+                        <i class="icon-share icon-2x"></i>
+                        <span>{{ 'diffusion.list.title'|trans }} <i class="icon-caret-down"></i></span>
+                    </a>
+                </li> -->
                                         
-                    <li class="dark-nav ">
-                        <span class="glow"></span>
-                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown6">
-                            <i class="icon-eye-open icon-2x"></i>
-                            <span>{{ 'monitoring.nav'|trans }} <i class="icon-caret-down"></i></span>
-                        </a>
-                        <ul id="dropdown6" class="collapse ">
-                            <li class="">
-                                <a class="brand"  {% if identificationCode is defined %}
-                                    href="{{ path('srm_website_organisation_index', { 'identificationCode': identificationCode }) }}"
-                                {% elseif organisation is defined %}
-                                    href="{{ path('srm_website_organisation_index', { 'identificationCode': organisation.organisationId }) }}"
-                                {% else %}
-                                    href="{{ path('srm_website_organisation_index', { 'identificationCode': organisationId }) }}"
-                                {% endif %}>
-                                    <i class="icon-dashboard"></i> {{ 'monitoring.nav.dashboard'|trans }}
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#">
-                                    <i class="icon-book"></i> {{ 'monitoring.nav.report'|trans }}
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="dark-nav ">
+                    <span class="glow"></span>
+                    <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown6">
+                        <i class="icon-eye-open icon-2x"></i>
+                        <span>{{ 'monitoring.nav'|trans }} <i class="icon-caret-down"></i></span>
+                    </a>
+                    <ul id="dropdown6" class="collapse ">
+                        <li class="">
+                            <a class="brand"  {% if identificationCode is defined %}
+                                href="{{ path('srm_website_organisation_index', { 'identificationCode': identificationCode }) }}"
+                            {% elseif organisation is defined %}
+                                href="{{ path('srm_website_organisation_index', { 'identificationCode': organisation.organisationId }) }}"
+                            {% else %}
+                                href="{{ path('srm_website_organisation_index', { 'identificationCode': organisationId }) }}"
+                            {% endif %}>
+                                <i class="icon-dashboard"></i> {{ 'monitoring.nav.dashboard'|trans }}
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#">
+                                <i class="icon-book"></i> {{ 'monitoring.nav.report'|trans }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 
-                    <li class="dark-nav ">
-                        <span class="glow"></span>
-                        <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown7">
-                            <i class="icon-exchange icon-2x"></i>
-                            <span>{{ 'stakeholder.nav'|trans }} <i class="icon-caret-down"></i></span>
-                        </a>
-                        <ul id="dropdown7" class="collapse ">
-                            <li class="">
-                                <a {% if organisation is defined %}
-                                        href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': organisation.organisationId }) }}"
-                                    {% elseif organisationId is defined %}
-                                        href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': organisationId }) }}"
-                                    {% else %}
-                                        href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': identificationCode }) }}"
-                                    {% endif %}>
-                                    <i class="icon-briefcase"></i> {{ 'stakeholder.nav.group'|trans }}
-                                </a>
-                            </li>
-                            <li class="">
-                                <a {% if organisation is defined %}
-                                        href="{{ path('srm_website_stakeholders_list', { 'organisationId': organisation.organisationId }) }}"
-                                    {% elseif organisationId is defined %}
-                                        href="{{ path('srm_website_stakeholders_list', { 'organisationId': organisationId }) }}"
-                                    {% else %}
-                                        href="{{ path('srm_website_stakeholders_list', { 'organisationId': identificationCode }) }}"
-                                    {% endif %}>
-                                    <i class="icon-link"></i> {{ 'stakeholder.nav.stakeholder'|trans }}
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="dark-nav ">
+                    <span class="glow"></span>
+                    <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown7">
+                        <i class="icon-exchange icon-2x"></i>
+                        <span>{{ 'stakeholder.nav'|trans }} <i class="icon-caret-down"></i></span>
+                    </a>
+                    <ul id="dropdown7" class="collapse ">
+                        <li class="">
+                            <a {% if organisation is defined %}
+                                    href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': organisation.organisationId }) }}"
+                                {% elseif organisationId is defined %}
+                                    href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': organisationId }) }}"
+                                {% else %}
+                                    href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': identificationCode }) }}"
+                                {% endif %}>
+                                <i class="icon-briefcase"></i> {{ 'stakeholder.nav.group'|trans }}
+                            </a>
+                        </li>
+                        <li class="">
+                            <a {% if organisation is defined %}
+                                    href="{{ path('srm_website_stakeholders_list', { 'organisationId': organisation.organisationId }) }}"
+                                {% elseif organisationId is defined %}
+                                    href="{{ path('srm_website_stakeholders_list', { 'organisationId': organisationId }) }}"
+                                {% else %}
+                                    href="{{ path('srm_website_stakeholders_list', { 'organisationId': identificationCode }) }}"
+                                {% endif %}>
+                                <i class="icon-link"></i> {{ 'stakeholder.nav.stakeholder'|trans }}
+                            </a>
+                        </li>
+                        <li class="{% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_contact_show','srm_website_user_edit'] %}active{% endif %}">
+                            <a  {% if organisation is defined %}
+                                    href="{{ path('srm_website_contacts_list', { 'organisationId': organisation.organisationId }) }}"
+                                {% elseif organisationId is defined %}
+                                    href="{{ path('srm_website_contacts_list', { 'organisationId': organisationId }) }}"
+                                {% else %}
+                                    href="{{ path('srm_website_contacts_list', { 'organisationId': identificationCode }) }}"
+                                {% endif %}>
+                                <i class="icon-share icon-2"></i> {{ 'diffusion.nav.general'|trans }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                     <li class="dark-nav ">
                         <span class="glow"></span>
