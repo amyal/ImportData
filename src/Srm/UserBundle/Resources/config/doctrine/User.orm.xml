@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="USER_ID">
       <generator strategy="NONE"/>
     </id>
-       <field name="username" type="string" column="username" length="255"/>
+    <field name="username" type="string" column="username" length="255"/>
     <field name="usernameCanonical" type="string" column="username_canonical" length="255"/>
     <field name="email" type="string" column="email" length="255"/>
     <field name="emailCanonical" type="string" column="email_canonical" length="255"/>
@@ -25,5 +25,10 @@
         <join-column name="ROLE_ID" referenced-column-name="ROLE_ID"/>
       </join-columns>
     </many-to-one>
+        <one-to-one field="contact" target-entity="Srm\CoreBundle\Entity\Contact">
+      <join-columns>
+        <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+      </join-columns>
+    </one-to-one>
   </entity>
 </doctrine-mapping>
