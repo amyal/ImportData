@@ -98,7 +98,12 @@ class User extends BaseUser
      * @var \Srm\UserBundle\Entity\Role
      */
     protected $role;
-
+    
+     /**
+     * @var \Srm\CoreBundle\Entity\Contact
+     */
+    protected $contact;
+    
     public function __construct($id, $user, $mail)
     {
         parent::__construct();
@@ -364,7 +369,7 @@ class User extends BaseUser
 
         return $this;
     }
-
+    
     /**
      * Get expiresAt
      *
@@ -443,7 +448,28 @@ class User extends BaseUser
     {
         return $this->roles;
     }
+/**
+     * Set contacts
+     *
+     * @param string $contacts
+     * @return User
+     */
+    public function setContacts(array $contacts)
+    {
+        $this->contacts = $contacts;
 
+        return $this;
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return string 
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
+    }
     /**
      * Set credentialsExpired
      *
@@ -514,7 +540,30 @@ class User extends BaseUser
         return $this->role;
     }
 
+    /**
+     * Set contact
+     *
+     * @param \Srm\CoreBundle\Entity\Contact $contact
+     * @return User
+     */
+    public function setContact(Contact $contact = null)
+    {
+        $this->contact = $contact;
+        $this->setContacts(array($contact->getContactType()));
 
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return \Srm\CoreBundle\Entity\Contact
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+    
     protected function getUsernameFromEmail($email)
     {
         list($username, $ignored) = explode('@', $email);
