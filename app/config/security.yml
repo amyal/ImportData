@@ -18,9 +18,11 @@ security:
                 login_path: fos_user_security_login  
                 check_path: fos_user_security_check
                 provider: fos_userbundle
-                csrf_provider: form.csrf_provider
-                always_use_default_target_path: true
-                default_target_path: /organisations/1
+              #  csrf_provider: form.csrf_provider
+                always_use_default_target_path: false
+                default_target_path: 
+                target_path_parameter:          _target_path
+                use_referer:                    false
             logout: 
                 path:       fos_user_security_logout      
                 target:     fos_user_security_login
