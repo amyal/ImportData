@@ -38,14 +38,15 @@
 	  				<div class="box-content padded">
 
 						<form action="{{ path("fos_user_security_check") }}" method="post">
-						    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-							<div class="input-prepend">
+						    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" /> 
+                                                    
+                                          	<div class="input-prepend">
           						<span class="add-on" href="#"><i class="icon-user"></i></span>
             					<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
           					</div>
           					<div class="input-prepend">
           						<span class="add-on" href="#"><i class="icon-key"></i></span>
+                                                   <input type="hidden" name="_target_path" value="/organisations/{{ identificationCode }}" />
             					<input type="password" id="password" name="_password" required="required" />
           					</div>
 
