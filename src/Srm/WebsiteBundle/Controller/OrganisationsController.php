@@ -3,21 +3,27 @@
 namespace Srm\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Srm\CoreBundle\Entity\LegalForm;
 use Srm\CoreBundle\Entity\Organisation;
 
 class OrganisationsController extends Controller
 {
     public function indexAction(Organisation $organisation)
-    {
+    {  if (!$this->get('security.context')->isGranted('ROLE_U')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser())) {
+      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+      throw new AccessDeniedHttpException('Accès interdit');
+    }
         return $this->render('SrmWebsiteBundle:Organisation:index.html.twig', array(
             'organisation' => $organisation
         ));
     }
 	
 	public function showAction(Organisation $organisation)
-    {
+    {  if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser())) {
+      // Sinon on déclenche une exception « Accès interdit »
+      throw new AccessDeniedHttpException('Accès limité aux administrateurs');
+    }
         if (null === $legalForm = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneByOrganisation($organisation)) {
             throw new \Exception(sprintf("Aucune information légale pour l'organisation [%s]", $organisation->getIdentificationCode()));
         }
@@ -29,7 +35,10 @@ class OrganisationsController extends Controller
     }
 
     public function basicFormAction(Organisation $organisation)
-    {
+    {   if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser())) {
+      // Sinon on déclenche une exception « Accès interdit »
+      throw new AccessDeniedHttpException('Accès limité aux administrateurs');
+    }
         $form = $this->createForm('srm_organisation_basic', $organisation, array(
             'action' => $this->generateUrl('srm_website_organisation_basic', array('identificationCode' => $organisation->getIdentificationCode())),
             'method' => 'POST',
@@ -69,7 +78,10 @@ class OrganisationsController extends Controller
     }
 
     public function legalFormAction(Organisation $organisation)
-    {
+    {   if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser())) {
+      // Sinon on déclenche une exception « Accès interdit »
+      throw new AccessDeniedHttpException('Accès limité aux administrateurs');
+    }
         if (null === $legalForm = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneByOrganisation($organisation)) {
             throw new \Exception(sprintf("Aucune information légale pour l'organisation [%s]", $organisation->getIdentificationCode()));
         }
