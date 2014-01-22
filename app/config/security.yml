@@ -3,9 +3,14 @@ security:
         Srm\UserBundle\Entity\User: sha512
 
     role_hierarchy:
-        ROLE_SU: ROLE_U
-        ROLE_A:  ROLE_SU
-        ROLE_SA: ROLE_A
+        ROLE_SU: [ROLE_U]
+        ROLE_A:  [ROLE_SU]
+        ROLE_SA: 
+          - ROLE_U
+          - ROLE_SU
+          - ROLE_A
+          - ROLE_ALLOWED_TO_SWITCH
+          # ?_switch_user=toto login d'un utilisateur
 
     providers:
         fos_userbundle:
@@ -18,7 +23,7 @@ security:
                 login_path: fos_user_security_login  
                 check_path: fos_user_security_check
                 provider: fos_userbundle
-              #  csrf_provider: form.csrf_provider
+                csrf_provider: form.csrf_provider
                 always_use_default_target_path: false
                 default_target_path: 
                 target_path_parameter:          _target_path
@@ -27,10 +32,11 @@ security:
                 path:       fos_user_security_logout      
                 target:     fos_user_security_login
                 invalidate_session: false
-            anonymous: true
+            anonymous:    true
+            switch_user: true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY,requires_channel: https }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_SA }
