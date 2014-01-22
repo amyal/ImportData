@@ -52,9 +52,15 @@ fos_user:
     firewall_name: main
     user_class: Srm\UserBundle\Entity\User
     service:
-        mailer: fos_user.mailer.noop
+        mailer: fos_user.mailer.default
+    resetting:
+        email:
+            from_email:
+                address:        contact@verseo-consulting.com
+                sender_name:    Changement de mot de passe Verseo SRM
+                #template: SrmUserBundle:User:resetting.email.html.twig
 
-
+       
 swiftmailer:
     transport:  smtp
     encryption: ssl
