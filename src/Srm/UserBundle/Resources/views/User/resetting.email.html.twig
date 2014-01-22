@@ -1,0 +1,20 @@
+
+{% block subject %}Resetting your password{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+Hello {{ user.username }} !
+
+You can reset your email by accessing {{ confirmationUrl }}
+
+Greetings,
+the Verseo SRM team
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+	<div class="box-header">
+			        	<span class="title">hello</span>
+			     	</div>
+{% include 'SrmUserBundle:User:resetting.email.html.twig' %}
+{% endblock %}
