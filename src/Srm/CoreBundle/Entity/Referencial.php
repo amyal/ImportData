@@ -51,7 +51,12 @@ class Referencial
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $referencialIndicators;
+    //private $referencialIndicators;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $organisationReferencials;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -68,8 +73,9 @@ class Referencial
      */
     public function __construct()
     {
-        $this->referencialIndicators = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->referencialIndicators = new \Doctrine\Common\Collections\ArrayCollection();
         //$this->repositoryCategories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->organisationReferencials = new \Doctrine\Common\Collections\ArrayCollection();
         $this->referencialType         = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
@@ -253,10 +259,45 @@ class Referencial
      * @param \Srm\CoreBundle\Entity\Indicators $indicator
      * @return Referencial
      */
-    public function addIndicator(Indicators $indicator)
+    /*public function addIndicator(Indicators $indicator)
     {
         $indicator->addReferencial($this);
         $this->referencialIndicators[] = $indicator;
+
+        return $this;
+    }*/
+
+    /**
+     * Remove indicator
+     *
+     * @param \Srm\CoreBundle\Entity\Indicators $indicator
+     */
+    /*public function removeIndicator(Indicators $indicator)
+    {
+        $indicator->removeReferencial($this);
+        $this->referencialIndicators->removeElement($indicator);
+    }*/
+
+    /**
+     * Get referencialIndicators
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    /*public function getReferencialIndicators()
+    {
+        return $this->referencialIndicators;
+    }*/
+
+    /**
+     * Add indicator
+     *
+     * @param \Srm\CoreBundle\Entity\Indicators $indicator
+     * @return Referencial
+     */
+    public function addIndicator(Indicators $indicator)
+    {
+        $indicator->addReferencial($this);
+        $this->organisationReferencials[] = $indicator;
 
         return $this;
     }
@@ -269,17 +310,17 @@ class Referencial
     public function removeIndicator(Indicators $indicator)
     {
         $indicator->removeReferencial($this);
-        $this->referencialIndicators->removeElement($indicator);
+        $this->organisationReferencials->removeElement($indicator);
     }
 
     /**
-     * Get referencialIndicators
+     * Get organisationReferencials
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getReferencialIndicators()
+    public function getOrganisationReferencials()
     {
-        return $this->referencialIndicators;
+        return $this->organisationReferencials;
     }
 
     /**

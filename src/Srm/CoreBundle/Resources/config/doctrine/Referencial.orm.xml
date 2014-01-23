@@ -10,7 +10,23 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
-    <many-to-many field="referencialIndicators" target-entity="Indicators" inversed-by="referencials">
+
+    <many-to-many field="organisationReferencials" target-entity="Organisation" inversed-by="referencials">
+      <join-table name="vj_organisatin_referencials">
+        <join-columns>
+          <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
+        </inverse-join-columns>
+      </join-table>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-many>
+
+    <!-- <many-to-many field="referencialIndicators" target-entity="Indicators" inversed-by="referencials">
       <join-table name="vj_referencial_indicators">
         <join-columns>
           <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
@@ -23,7 +39,7 @@
       <cascade>
         <cascade-all />
       </cascade>
-    </many-to-many>
+    </many-to-many> -->
 
     <!-- <many-to-many field="repositoryCategories" target-entity="IndicatorLevel1" inversed-by="categories">
       <join-table name="vj_repository_categories">
@@ -40,12 +56,12 @@
       </cascade>
     </many-to-many> -->
     
-    <many-to-one field="organisation" target-entity="Organisation">
+    <!-- <many-to-one field="organisation" target-entity="Organisation">
       <join-columns>
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
       </join-columns>
-    </many-to-one>
-        
+    </many-to-one> -->
+
     <many-to-one field="referencialType" target-entity="ReferencialType">
       <join-columns>
         <join-column name="REFERENCIAL_TYPE_ID" referenced-column-name="REFERENCIAL_TYPE_ID"/>

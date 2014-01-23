@@ -33,6 +33,11 @@ class Indicators
     private $indicatorsId;
 
     /**
+     * @var \Srm\CoreBundle\Entity\Indicators
+     */
+    private $indicatorsParentId;
+
+    /**
      * @var \Srm\CoreBundle\Entity\Category1
      */
     private $category1;
@@ -53,9 +58,24 @@ class Indicators
     private $indicatorGraph;
 
     /**
+     * @var \Srm\CoreBundle\Entity\ScreenPeriod
+     */
+    private $screenPeriod;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\PublicationFrequency
+     */
+    private $publicationFrequency;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\PublicationDelay
+     */
+    private $publicationDelay;
+
+    /**
      * @var \Srm\CoreBundle\Entity\ReferencialType
      */
-    //private $referencialType;
+    private $referencialType;
 
     /**
      * @var \Srm\CoreBundle\Entity\Referencial
@@ -70,7 +90,7 @@ class Indicators
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $referencials;
+    //private $referencials;
 
     /**
      * Constructor
@@ -78,7 +98,7 @@ class Indicators
     public function __construct()
     {
         $this->items = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->referencials = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->referencials = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->deleted = false;
     }
@@ -186,6 +206,29 @@ class Indicators
     }
 
     /**
+     * Set indicatorsParentId
+     *
+     * @param \Srm\CoreBundle\Entity\Indicators $indicatorsParentId
+     * @return Indicator
+     */
+    public function setIndicatorsParentId(Indicators $indicatorsParentId = null)
+    {
+        $this->indicatorsParentId = $indicatorsParentId;
+
+        return $this;
+    }
+
+    /**
+     * Get indicatorsParentId
+     *
+     * @return \Srm\CoreBundle\Entity\Indicators
+     */
+    public function getIndicatorsParentId()
+    {
+        return $this->indicatorsParentId;
+    }
+
+    /**
      * Set category1
      *
      * @param \Srm\CoreBundle\Entity\Category1 $category1
@@ -222,6 +265,29 @@ class Indicators
     }
 
     /**
+     * Set unitMeasurement
+     *
+     * @param \Srm\CoreBundle\Entity\UnitMeasurement $unitMeasurement
+     * @return Indicator
+     */
+    public function setUnitMeasurement(UnitMeasurement $unitMeasurement = null)
+    {
+        $this->unitMeasurement = $unitMeasurement;
+
+        return $this;
+    }
+
+    /**
+     * Get unitMeasurement
+     *
+     * @return \Srm\CoreBundle\Entity\UnitMeasurement
+     */
+    public function getUnitMeasurement()
+    {
+        return $this->unitMeasurement;
+    }
+
+    /**
      * Get indicatorZone
      *
      * @return \Srm\CoreBundle\Entity\IndicatorZone
@@ -255,26 +321,72 @@ class Indicators
     }
 
     /**
-     * Set unitMeasurement
+     * Set screenPeriod
      *
-     * @param \Srm\CoreBundle\Entity\UnitMeasurement $unitMeasurement
+     * @param \Srm\CoreBundle\Entity\ScreenPeriod $screenPeriod
      * @return Indicator
      */
-    public function setUnitMeasurement(UnitMeasurement $unitMeasurement = null)
+    public function setScreenPeriod(ScreenPeriod $screenPeriod = null)
     {
-        $this->unitMeasurement = $unitMeasurement;
+        $this->screenPeriod = $screenPeriod;
 
         return $this;
     }
 
     /**
-     * Get unitMeasurement
+     * Get screenPeriod
      *
-     * @return \Srm\CoreBundle\Entity\UnitMeasurement
+     * @return \Srm\CoreBundle\Entity\ScreenPeriod
      */
-    public function getUnitMeasurementh()
+    public function getScreenPeriod()
     {
-        return $this->unitMeasurement;
+        return $this->screenPeriod;
+    }
+
+    /**
+     * Set publicationFrequency
+     *
+     * @param \Srm\CoreBundle\Entity\PublicationFrequency $publicationFrequency
+     * @return Indicator
+     */
+    public function setPublicationFrequency(PublicationFrequency $publicationFrequency = null)
+    {
+        $this->publicationFrequency = $publicationFrequency;
+
+        return $this;
+    }
+
+    /**
+     * Get publicationFrequency
+     *
+     * @return \Srm\CoreBundle\Entity\PublicationFrequency
+     */
+    public function getPublicationFrequency()
+    {
+        return $this->publicationFrequency;
+    }
+
+    /**
+     * Set publicationDelay
+     *
+     * @param \Srm\CoreBundle\Entity\PublicationDelay $publicationDelay
+     * @return Indicator
+     */
+    public function setPublicationDelay(PublicationDelay $publicationDelay = null)
+    {
+        $this->publicationDelay = $publicationDelay;
+
+        return $this;
+    }
+
+    /**
+     * Get publicationDelay
+     *
+     * @return \Srm\CoreBundle\Entity\PublicationDelay
+     */
+    public function getPublicationDelayy()
+    {
+        return $this->publicationDelay;
     }
 
     /**
@@ -306,22 +418,22 @@ class Indicators
      * @param \Srm\CoreBundle\Entity\ReferencialType $referencialType
      * @return ReferencialType
      */
-    /*public function setReferencialType(ReferencialType $referencialType = null)
+    public function setReferencialType(ReferencialType $referencialType = null)
     {
         $this->referencialType = $referencial;
 
         return $this;
-    }*/
+    }
 
     /**
      * Get referencialType
      *
      * @return \Srm\CoreBundle\Entity\ReferencialType
      */
-    /*public function getReferencialType()
+    public function getReferencialType()
     {
         return $this->referencialType;
-    }*/
+    }
 
     /**
      * Add item
@@ -362,30 +474,30 @@ class Indicators
      * @param \Srm\CoreBundle\Entity\Referencial $referencial
      * @return Indicator
      */
-    public function addReferencial(Referencial $referencial)
+    /*public function addReferencial(Referencial $referencial)
     {
         $this->referencials[] = $referencial;
 
         return $this;
-    }
+    }*/
 
     /**
      * Remove referencial
      *
      * @param \Srm\CoreBundle\Entity\Referencial $referencial
      */
-    public function removeReferencial(Referencial $referencial)
+    /*public function removeReferencial(Referencial $referencial)
     {
         $this->referencials->removeElement($referencial);
-    }
+    }*/
 
     /**
      * Get referencials
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getReferencials()
+    /*public function getReferencials()
     {
         return $this->referencials;
-    }
+    }*/
 }

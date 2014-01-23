@@ -9,6 +9,18 @@
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
 
+    <many-to-one field="indicatorsParentId" target-entity="Indicators">
+      <join-columns>
+        <join-column name="INDICATORS_PARENT_ID" referenced-column-name="INDICATORS_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="referencialType" target-entity="ReferencialType">
+      <join-columns>
+        <join-column name="REFERENCIAL_TYPE_ID" referenced-column-name="REFERENCIAL_TYPE_ID"/>
+      </join-columns>
+    </many-to-one>
+
     <many-to-one field="category1" target-entity="Category1">
       <join-columns>
         <join-column name="CATEGORY1_ID" referenced-column-name="CATEGORY1_ID"/>
@@ -33,7 +45,25 @@
       </join-columns>
     </many-to-one>
 
+    <many-to-one field="screenPeriod" target-entity="ScreenPeriod">
+      <join-columns>
+        <join-column name="SCREEN_PERIOD_ID" referenced-column-name="SCREEN_PERIOD_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="publicationFrequency" target-entity="PublicationFrequency">
+      <join-columns>
+        <join-column name="PUBLICATION_FREQUENCY_ID" referenced-column-name="PUBLICATION_FREQUENCY_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="publicationDelay" target-entity="PublicationDelay">
+      <join-columns>
+        <join-column name="PUBLICATION_DELAY_ID" referenced-column-name="PUBLICATION_DELAY_ID"/>
+      </join-columns>
+    </many-to-one>
+
     <many-to-many field="items" target-entity="Item" mapped-by="indicators"/>
-    <many-to-many field="referencials" target-entity="Referencial" mapped-by="referencialIndicators"/>
+    <!-- <many-to-many field="referencials" target-entity="Referencial" mapped-by="referencialIndicators"/> -->
   </entity>
 </doctrine-mapping>

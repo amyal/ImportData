@@ -111,6 +111,11 @@ class Organisation
     private $turnover;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $referencials;
+
+    /**
      * @var string $picture
      *
      * @Assert\File( maxSize = "5000k", mimeTypesMessage = "Merci de charger une image")
@@ -125,6 +130,8 @@ class Organisation
             $this->identificationCode = $identificationCode;
         }
 
+        $this->referencials = new \Doctrine\Common\Collections\ArrayCollection();
+        
         $this->creationDate = new \DateTime();
         $this->deleted = false;
     }
@@ -574,6 +581,39 @@ class Organisation
     public function getTurnover()
     {
         return $this->turnover;
+    }
+
+    /**
+     * Add referencial
+     *
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     * @return Indicator
+     */
+    public function addReferencial(Referencial $referencial)
+    {
+        $this->referencials[] = $referencial;
+
+        return $this;
+    }
+
+    /**
+     * Remove referencial
+     *
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     */
+    public function removeReferencial(Referencial $referencial)
+    {
+        $this->referencials->removeElement($referencial);
+    }
+
+    /**
+     * Get referencials
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReferencials()
+    {
+        return $this->referencials;
     }
 
     public function updateModificationDate()

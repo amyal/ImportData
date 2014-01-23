@@ -48,6 +48,8 @@
       </join-columns>
     </many-to-one>
 
+    <many-to-many field="referencials" target-entity="Referencial" mapped-by="organisationReferencials"/>
+
     <lifecycle-callbacks>
       <lifecycle-callback type="preUpdate" method="updateModificationDate" />
       <lifecycle-callback type="prePersist" method="preUpload" />
