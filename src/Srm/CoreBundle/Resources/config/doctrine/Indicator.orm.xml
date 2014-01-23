@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Srm\CoreBundle\Entity\Indicator" table="v_indicator" repository-class="Srm\CoreBundle\Repository\IndicatorRepository">
+    <id name="indicatorId" type="integer" column="INDICATOR_ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="code" type="string" column="CODE" length="10" nullable="false"/>
+    <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
+    <field name="createdBy" type="integer" column="CREATED_BY" nullable="true"/>
+    <field name="modifiedBy" type="integer" column="MODIFIED_BY" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
+    <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
+    <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+
+    <many-to-one field="indicatorsId" target-entity="Indicators">
+      <join-columns>
+        <join-column name="INDICATORS_ID" referenced-column-name="INDICATORS_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="referencial" target-entity="Referencial">
+      <join-columns>
+        <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="unitMeasurement" target-entity="UnitMeasurement">
+      <join-columns>
+        <join-column name="UNIT_MEASUREMENT_ID" referenced-column-name="UNIT_MEASUREMENT_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="indicatorZone" target-entity="IndicatorZone">
+      <join-columns>
+        <join-column name="INDICATOR_ZONE_ID" referenced-column-name="INDICATOR_ZONE_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="indicatorGraph" target-entity="IndicatorGraph">
+      <join-columns>
+        <join-column name="INDICATOR_GRAPH_ID" referenced-column-name="INDICATOR_GRAPH_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="screenPeriod" target-entity="ScreenPeriod">
+      <join-columns>
+        <join-column name="SCREEN_PERIOD_ID" referenced-column-name="SCREEN_PERIOD_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="publicationFrequency" target-entity="PublicationFrequency">
+      <join-columns>
+        <join-column name="PUBLICATION_FREQUENCY_ID" referenced-column-name="PUBLICATION_FREQUENCY_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="publicationDelay" target-entity="PublicationDelay">
+      <join-columns>
+        <join-column name="PUBLICATION_DELAY_ID" referenced-column-name="PUBLICATION_DELAY_ID"/>
+      </join-columns>
+    </many-to-one>
+
+  </entity>
+</doctrine-mapping>
