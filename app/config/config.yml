@@ -68,3 +68,19 @@ swiftmailer:
     host:       ssl0.ovh.net
     username:   'rachid.amyal@verseo-consulting.com'
     password:   verseo
+
+ 
+services:
+    userrepository:
+        class: Srm\UserBundle\Repository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Srm\UserBundle\Entity\User
+            
+    srm_login_success_handler:
+        class:  Srm\UserBundle\Component\Authentication\Handler\LoginSuccessHandler
+        arguments:  ["@router","@security.context","@userrepository"]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' } 
+    
