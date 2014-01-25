@@ -45,9 +45,8 @@
             					<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
           					</div>
           					<div class="input-prepend">
-          						<span class="add-on" href="#"><i class="icon-key"></i></span>
-                                                   <input type="hidden" name="_target_path" value="/organisations/{{ identificationCode }}" />
-            					<input type="password" id="password" name="_password" required="required" />
+          						<span class="add-on" href="#"><i class="icon-key"></i></span>                                                 
+                                                            <input type="password" id="password" name="_password" required="required" />
           					</div>
 
           					<div class="checkbox">
@@ -56,7 +55,7 @@
 						    </div>
 
 						    <input class="btn btn-blue btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
-						</form>
+                                                </form>
 
 					<div>
           			
@@ -67,5 +66,5 @@
       		</div>
     	</div>
     
-	</div>
-{% endblock fos_user_content %}
+                            </div>
+{% endblock fos_user_content %}         
