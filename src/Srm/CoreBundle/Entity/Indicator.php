@@ -55,7 +55,7 @@ class Indicator
     /**
      * @var \Srm\CoreBundle\Entity\Indicators
      */
-    private $indicatorsId;
+    private $indicators;
 
     /**
      * @var \Srm\CoreBundle\Entity\UnitMeasurement
@@ -90,7 +90,7 @@ class Indicator
     /**
      * @var \Srm\CoreBundle\Entity\Referencial
      */
-    private $referencial;
+    private $referencials;
 
     /**
      * Constructor
@@ -203,26 +203,26 @@ class Indicator
     }
 
     /**
-     * Set indicatorsId
+     * Set indicators
      *
-     * @param \Srm\CoreBundle\Entity\Indicators $indicatorId
+     * @param \Srm\CoreBundle\Entity\Indicators $indicators
      * @return Indicator
      */
-    public function setIndicatorsId(Indicators $indicatorsId = null)
+    public function setIndicators(Indicators $indicators = null)
     {
-        $this->indicatorsId = $indicatorsId;
+        $this->indicators = $indicators;
 
         return $this;
     }
 
     /**
-     * Get indicatorsId
+     * Get indicators
      *
      * @return \Srm\CoreBundle\Entity\Indicators
      */
-    public function getIndicatorsId()
+    public function getIndicators()
     {
-        return $this->indicatorsId;
+        return $this->indicators;
     }
 
     /**
@@ -364,26 +364,26 @@ class Indicator
     }
 
     /**
-     * Set referencial
+     * Set referencials
      *
-     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     * @param \Srm\CoreBundle\Entity\Referencials $referencials
      * @return Referencial
      */
-    public function setReferencial(Referencial $referencial = null)
+    public function setReferencials(Referencials $referencials = null)
     {
-        $this->referencial = $referencial;
+        $this->referencials = $referencials;
 
         return $this;
     }
 
     /**
-     * Get referencial
+     * Get referencials
      *
-     * @return \Srm\CoreBundle\Entity\Referencial
+     * @return \Srm\CoreBundle\Entity\Referencials
      */
-    public function getReferencial()
+    public function getReferencials()
     {
-        return $this->referencial;
+        return $this->referencials;
     }
 
 }

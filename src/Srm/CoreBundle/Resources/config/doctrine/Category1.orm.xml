@@ -9,12 +9,6 @@
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
     
-    <many-to-one field="category2" target-entity="category2">
-      <join-columns>
-        <join-column name="CATEGORY2_ID" referenced-column-name="CATEGORY2_ID"/>
-      </join-columns>
-    </many-to-one>
-
     <!-- <many-to-many field="categories" target-entity="Repository" mapped-by="repositoryCategories"/> -->
   </entity>
 </doctrine-mapping>

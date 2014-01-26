@@ -27,6 +27,18 @@
       </join-columns>
     </many-to-one>
 
+    <many-to-one field="category2" target-entity="Category2">
+      <join-columns>
+        <join-column name="CATEGORY2_ID" referenced-column-name="CATEGORY2_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="category3" target-entity="Category3">
+      <join-columns>
+        <join-column name="CATEGORY3_ID" referenced-column-name="CATEGORY3_ID"/>
+      </join-columns>
+    </many-to-one>
+
     <many-to-one field="unitMeasurement" target-entity="UnitMeasurement">
       <join-columns>
         <join-column name="UNIT_MEASUREMENT_ID" referenced-column-name="UNIT_MEASUREMENT_ID"/>
@@ -64,6 +76,6 @@
     </many-to-one>
 
     <many-to-many field="items" target-entity="Item" mapped-by="indicators"/>
-    <!-- <many-to-many field="referencials" target-entity="Referencial" mapped-by="referencialIndicators"/> -->
+    <many-to-many field="referencials" target-entity="Referencial" mapped-by="referencialIndicators"/>
   </entity>
 </doctrine-mapping>

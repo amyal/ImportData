@@ -32,6 +32,11 @@ class Category3
      */
     private $category3Id;
 
+    /**
+     * @var \Srm\CoreBundle\Entity\Category2
+     */
+    private $category2;
+
 
     public function __construct()
     {
@@ -138,5 +143,28 @@ class Category3
     public function getCategory3Id()
     {
         return $this->category3Id;
+    }
+
+    /**
+     * Set category2
+     *
+     * @param \Srm\CoreBundle\Entity\Category2 $category2
+     * @return Category3
+     */
+    public function setCategory2(Category2 $category2 = null)
+    {
+        $this->category2 = $category2;
+
+        return $this;
+    }
+
+    /**
+     * Get category2
+     *
+     * @return \Srm\CoreBundle\Entity\Category2
+     */
+    public function getCategory2()
+    {
+        return $this->category2;
     }
 }

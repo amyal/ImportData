@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\Category2" table="vr_category2">
+  <entity name="Srm\CoreBundle\Entity\Category2" table="vr_category2" repository-class="Srm\CoreBundle\Repository\Category2Repository">
     <id name="category2Id" type="integer" column="CATEGORY2_ID">
       <generator strategy="IDENTITY"/>
     </id>
@@ -9,9 +9,9 @@
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
 
-    <many-to-one field="category3" target-entity="category3">
+    <many-to-one field="category1" target-entity="Category1">
       <join-columns>
-        <join-column name="CATEGORY3_ID" referenced-column-name="CATEGORY3_ID"/>
+        <join-column name="CATEGORY1_ID" referenced-column-name="CATEGORY1_ID"/>
       </join-columns>
     </many-to-one>
 

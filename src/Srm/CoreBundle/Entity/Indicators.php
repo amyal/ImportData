@@ -43,6 +43,16 @@ class Indicators
     private $category1;
 
     /**
+     * @var \Srm\CoreBundle\Entity\Category2
+     */
+    private $category2;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Category3
+     */
+    private $category3;
+
+    /**
      * @var \Srm\CoreBundle\Entity\UnitMeasurement
      */
     private $unitMeasurement;
@@ -90,7 +100,7 @@ class Indicators
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    //private $referencials;
+    private $referencials;
 
     /**
      * Constructor
@@ -98,7 +108,7 @@ class Indicators
     public function __construct()
     {
         $this->items = new \Doctrine\Common\Collections\ArrayCollection();
-        //$this->referencials = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->referencials = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->deleted = false;
     }
@@ -249,6 +259,52 @@ class Indicators
     public function getCategory1()
     {
         return $this->category1;
+    }
+
+    /**
+     * Set category2
+     *
+     * @param \Srm\CoreBundle\Entity\Category2 $category2
+     * @return Indicator
+     */
+    public function setCategory2(Category2 $category2 = null)
+    {
+        $this->category2 = $category2;
+
+        return $this;
+    }
+
+    /**
+     * Get category2
+     *
+     * @return \Srm\CoreBundle\Entity\Category2
+     */
+    public function getCategory2()
+    {
+        return $this->category2;
+    }
+
+    /**
+     * Set category3
+     *
+     * @param \Srm\CoreBundle\Entity\Category3 $category3
+     * @return Indicator
+     */
+    public function setCategory3(Category3 $category3 = null)
+    {
+        $this->category3 = $category3;
+
+        return $this;
+    }
+
+    /**
+     * Get category3
+     *
+     * @return \Srm\CoreBundle\Entity\Category3
+     */
+    public function getCategory3()
+    {
+        return $this->category3;
     }
 
     /**
@@ -474,30 +530,30 @@ class Indicators
      * @param \Srm\CoreBundle\Entity\Referencial $referencial
      * @return Indicator
      */
-    /*public function addReferencial(Referencial $referencial)
+    public function addReferencial(Referencial $referencial)
     {
         $this->referencials[] = $referencial;
 
         return $this;
-    }*/
+    }
 
     /**
      * Remove referencial
      *
      * @param \Srm\CoreBundle\Entity\Referencial $referencial
      */
-    /*public function removeReferencial(Referencial $referencial)
+    public function removeReferencial(Referencial $referencial)
     {
         $this->referencials->removeElement($referencial);
-    }*/
+    }
 
     /**
      * Get referencials
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    /*public function getReferencials()
+    public function getReferencials()
     {
         return $this->referencials;
-    }*/
+    }
 }
