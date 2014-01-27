@@ -27,7 +27,7 @@
     </many-to-one>
         <one-to-one field="contact" target-entity="Srm\CoreBundle\Entity\Contact">
       <join-columns>
-        <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+        <join-column name="USER_ID" referenced-column-name="CONTACT_ID"/>
       </join-columns>
     </one-to-one>
   </entity>
