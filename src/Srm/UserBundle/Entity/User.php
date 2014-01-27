@@ -12,7 +12,7 @@ class User extends BaseUser
     /**
      * @var integer
      */
-    protected $userId;
+    protected $id;
 
     /**
      * @var string
@@ -118,13 +118,13 @@ class User extends BaseUser
     }
 
   /**
-     * Get userId
+     * Get id
      *
      * @return integer 
      */
     public function getUserId()
     {
-        return $this->userId;
+        return $this->id;
     }
 
     /**
@@ -544,12 +544,12 @@ class User extends BaseUser
      * Set contact
      *
      * @param \Srm\CoreBundle\Entity\Contact $contact
-     * @return User
+     * @return Contact
      */
     public function setContact(Contact $contact = null)
     {
         $this->contact = $contact;
-        $this->setContacts(array($contact->getContactType()));
+       // $this->setContacts(array($contact->getContactType()));
 
         return $this;
     }
