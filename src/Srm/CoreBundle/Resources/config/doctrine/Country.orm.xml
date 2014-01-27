@@ -4,6 +4,10 @@
     <id name="countryId" type="integer" column="COUNTRY_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="label" type="string" column="LABEL" length="50" nullable="false"/>
+    <field name="code" type="string" column="CODE" length="3" nullable="false"/>
+    <field name="alpha2" type="string" column="ALPHA2" length="2" nullable="false"/>
+    <field name="alpha3" type="string" column="ALPHA3" length="3" nullable="false"/>
+    <field name="label_an" type="string" column="LABEL_AN" length="45" nullable="false"/>
+    <field name="label" type="string" column="LABEL" length="45" nullable="false"/>
   </entity>
 </doctrine-mapping>
