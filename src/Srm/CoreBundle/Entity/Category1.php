@@ -32,11 +32,6 @@ class Category1
      */
     private $category1Id;
 
-    /**
-     * @var \Srm\CoreBundle\Entity\Category2
-     */
-    private $category2;
-
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -165,29 +160,6 @@ class Category1
         $this->category1[] = $category;
 
         return $this;
-    }
-
-    /**
-     * Set category2
-     *
-     * @param \Srm\CoreBundle\Entity\Category1 $category2
-     * @return Category1
-     */
-    public function setCategory2(Category2 $category2 = null)
-    {
-        $this->category2 = $category2;
-
-        return $this;
-    }
-
-    /**
-     * Get category2
-     *
-     * @return \Srm\CoreBundle\Entity\Category2
-     */
-    public function getCategory2()
-    {
-        return $this->category2;
     }
 
     /**

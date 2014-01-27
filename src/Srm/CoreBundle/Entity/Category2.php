@@ -33,9 +33,9 @@ class Category2
     private $category2Id;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Category3
+     * @var \Srm\CoreBundle\Entity\Category1
      */
-    private $category3;
+    private $category1;
 
 
     public function __construct()
@@ -146,26 +146,26 @@ class Category2
     }
 
     /**
-     * Set category3
+     * Set category1
      *
-     * @param \Srm\CoreBundle\Entity\Category3 $category3
+     * @param \Srm\CoreBundle\Entity\Category1 $category1
      * @return Category2
      */
-    public function setCategory3(Category3 $category3 = null)
+    public function setCategory1(Category1 $category1 = null)
     {
-        $this->category3 = $category3;
+        $this->category1 = $category1;
 
         return $this;
     }
 
     /**
-     * Get category3
+     * Get category1
      *
-     * @return \Srm\CoreBundle\Entity\Category3
+     * @return \Srm\CoreBundle\Entity\Category1
      */
-    public function getCategory3()
+    public function getCategory1()
     {
-        return $this->category3;
+        return $this->category1;
     }
 
 }

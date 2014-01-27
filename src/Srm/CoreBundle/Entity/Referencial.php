@@ -44,14 +44,9 @@ class Referencial
     private $referencialId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Organisation
-     */
-    private $organisation;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    //private $referencialIndicators;
+    private $referencialIndicators;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -69,11 +64,26 @@ class Referencial
     private $referencialType;
 
     /**
+     * @var \Srm\CoreBundle\Entity\Category1
+     */
+    private $category1;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Category2
+     */
+    private $category2;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Category3
+     */
+    private $category3;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        //$this->referencialIndicators = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->referencialIndicators = new \Doctrine\Common\Collections\ArrayCollection();
         //$this->repositoryCategories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->organisationReferencials = new \Doctrine\Common\Collections\ArrayCollection();
         $this->referencialType         = new \Doctrine\Common\Collections\ArrayCollection();
@@ -231,64 +241,6 @@ class Referencial
     }
 
     /**
-     * Set organisation
-     *
-     * @param \Srm\CoreBundle\Entity\Organisation $organisation
-     * @return organisation
-     */
-    public function setOrganisation(Organisation $organisation = null)
-    {
-        $this->organisation = $organisation;
-
-        return $this;
-    }
-
-    /**
-     * Get organisation
-     *
-     * @return \Srm\CoreBundle\Entity\Organisation
-     */
-    public function getOrganisation()
-    {
-        return $this->organisation;
-    }
-
-    /**
-     * Add indicator
-     *
-     * @param \Srm\CoreBundle\Entity\Indicators $indicator
-     * @return Referencial
-     */
-    /*public function addIndicator(Indicators $indicator)
-    {
-        $indicator->addReferencial($this);
-        $this->referencialIndicators[] = $indicator;
-
-        return $this;
-    }*/
-
-    /**
-     * Remove indicator
-     *
-     * @param \Srm\CoreBundle\Entity\Indicators $indicator
-     */
-    /*public function removeIndicator(Indicators $indicator)
-    {
-        $indicator->removeReferencial($this);
-        $this->referencialIndicators->removeElement($indicator);
-    }*/
-
-    /**
-     * Get referencialIndicators
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    /*public function getReferencialIndicators()
-    {
-        return $this->referencialIndicators;
-    }*/
-
-    /**
      * Add indicator
      *
      * @param \Srm\CoreBundle\Entity\Indicators $indicator
@@ -297,7 +249,7 @@ class Referencial
     public function addIndicator(Indicators $indicator)
     {
         $indicator->addReferencial($this);
-        $this->organisationReferencials[] = $indicator;
+        $this->referencialIndicators[] = $indicator;
 
         return $this;
     }
@@ -310,8 +262,43 @@ class Referencial
     public function removeIndicator(Indicators $indicator)
     {
         $indicator->removeReferencial($this);
-        $this->organisationReferencials->removeElement($indicator);
+        $this->referencialIndicators->removeElement($indicator);
     }
+
+    /**
+     * Get referencialIndicators
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReferencialIndicators()
+    {
+        return $this->referencialIndicators;
+    }
+
+    /**
+     * Add indicator
+     *
+     * @param \Srm\CoreBundle\Entity\Indicators $indicator
+     * @return Referencial
+     */
+    /*public function addIndicator(Indicators $indicator)
+    {
+        $indicator->addReferencial($this);
+        $this->organisationReferencials[] = $indicator;
+
+        return $this;
+    }*/
+
+    /**
+     * Remove indicator
+     *
+     * @param \Srm\CoreBundle\Entity\Indicators $indicator
+     */
+    /*public function removeIndicator(Indicators $indicator)
+    {
+        $indicator->removeReferencial($this);
+        $this->organisationReferencials->removeElement($indicator);
+    }*/
 
     /**
      * Get organisationReferencials
@@ -379,6 +366,75 @@ class Referencial
     public function getReferencialType()
     {
         return $this->referencialType;
+    }
+
+    /**
+     * Set category1
+     *
+     * @param \Srm\CoreBundle\Entity\Category1 $category1
+     * @return Referencial
+     */
+    public function setCategory1(Category1 $category1 = null)
+    {
+        $this->category1 = $category1;
+
+        return $this;
+    }
+
+    /**
+     * Get category1
+     *
+     * @return \Srm\CoreBundle\Entity\Category1
+     */
+    public function getCategory1()
+    {
+        return $this->category1;
+    }
+
+    /**
+     * Set category2
+     *
+     * @param \Srm\CoreBundle\Entity\Category2 $category2
+     * @return Indicator
+     */
+    public function setCategory2(Category2 $category2 = null)
+    {
+        $this->category2 = $category2;
+
+        return $this;
+    }
+
+    /**
+     * Get category2
+     *
+     * @return \Srm\CoreBundle\Entity\Category2
+     */
+    public function getCategory2()
+    {
+        return $this->category2;
+    }
+
+    /**
+     * Set category3
+     *
+     * @param \Srm\CoreBundle\Entity\Category3 $category3
+     * @return Indicator
+     */
+    public function setCategory3(Category3 $category3 = null)
+    {
+        $this->category3 = $category3;
+
+        return $this;
+    }
+
+    /**
+     * Get category3
+     *
+     * @return \Srm\CoreBundle\Entity\Category3
+     */
+    public function getCategory3()
+    {
+        return $this->category3;
     }
 
     public function updateModificationDate()
