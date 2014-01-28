@@ -3,7 +3,7 @@
 namespace Srm\IndicatorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Indicators;
 
@@ -13,6 +13,10 @@ class IndicatorsController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         return $this->render('SrmIndicatorBundle:Indicator:list.html.twig', array(
             'organisation' => $organisation,
             'indicators' => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByOrganisation($organisation),
@@ -21,6 +25,11 @@ class IndicatorsController extends Controller
 
     public function showAction(Organisation $organisation, Indicators $indicator)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         return $this->render('SrmIndicatorBundle:Indicator:show.html.twig', array(
             'organisationId' => $organisation->getOrganisationId(),
             'indicator'     => $indicator,
@@ -29,6 +38,10 @@ class IndicatorsController extends Controller
 
     public function disableAction(Referencial $referencial, Indicator $indicator)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         $indicator->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($indicator);
@@ -41,6 +54,10 @@ class IndicatorsController extends Controller
 
     public function formAction(Organisation $organisation, Indicators $indicator)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         $formActionRoute = 'srm_indicator_indicator_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(), 'indicatorId' => $indicator->getIndicatorsId());
 
@@ -176,6 +193,10 @@ class IndicatorsController extends Controller
 
     public function indicatorsByCategoriesAction()
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         $categoryIds = $this->getRequest()->query->get('categories_id');
 
         if ($categoryIds) {
