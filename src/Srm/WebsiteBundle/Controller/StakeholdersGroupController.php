@@ -3,7 +3,7 @@
 namespace Srm\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\StakeholderGroup;
 
@@ -11,6 +11,11 @@ class StakeholdersGroupController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+         
         return $this->render('SrmWebsiteBundle:StakeholderGroup:list.html.twig', array(
             'organisation'      => $organisation,
             'stakeholdersGroup' => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\GroupStakeholder')->findNonDeletedByOrganisation($organisation),
@@ -19,6 +24,11 @@ class StakeholdersGroupController extends Controller
 
     public function showAction(Organisation $organisation, StakeholderGroup $stakeholderGroup)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+         
         return $this->render('SrmWebsiteBundle:StakeholderGroup:show.html.twig', array(
             'organisationId' => $organisation->getOrganisationId(),
             'stakeholderGroup'           => $stakeholderGroup,
@@ -27,6 +37,11 @@ class StakeholdersGroupController extends Controller
 
     public function disableAction(Organisation $organisation, StakeholderGroup $stakeholderGroup)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+         
         $stakeholderGroup->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($stakeholderGroup);
@@ -39,6 +54,11 @@ class StakeholdersGroupController extends Controller
 
     public function formAction(Organisation $organisation, StakeholderGroup $stakeholderGroup)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+         
         $formActionRoute = 'srm_website_stakeholdersGroup_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
 
