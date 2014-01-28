@@ -8,11 +8,17 @@ use Srm\CoreBundle\Entity\Shareholder;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Stakeholder;
 use Srm\UserBundle\Entity\User;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class ShareHoldersController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+                
         return $this->render('SrmWebsiteBundle:Shareholder:list.html.twig', array(
             'organisation' => $organisation,
             'shareholders'     => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Shareholder')->findNonDeletedByOrganisation($organisation),
@@ -21,6 +27,11 @@ class ShareHoldersController extends Controller
 
     public function showAction(Organisation $organisation, Shareholder $shareholder)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+         
         return $this->render('SrmWebsiteBundle:Shareholder:show.html.twig', array(
             'organisationId' => $organisation->getOrganisationId(),
             'shareholder'        => $shareholder,
@@ -29,6 +40,11 @@ class ShareHoldersController extends Controller
 
     public function disableAction(Organisation $organisation, Shareholder $shareholder)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+         
         $shareHolder->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($shareHolder);
@@ -41,6 +57,11 @@ class ShareHoldersController extends Controller
 
     public function formAction(Organisation $organisation, Shareholder $shareholder)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+         
         $request = $this->getRequest();//récupérer les ids de partie prenante et la nouvelle organisation 
         $shareholderId = $request->query->get('shareholderId'); 
         
