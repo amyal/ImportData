@@ -3,28 +3,20 @@
 namespace Srm\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Srm\CoreBundle\Entity\Contact;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\UserBundle\Entity\User;
 
 class UsersController extends Controller
 {
-  /*   public function indexAction(Organisation $organisation)
-    {  // $contact    = $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Contact')->findOneById($user->getId());
-       // $identificationCode = $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Organisation\IdentificationCode')->findOneByIdentificationCode($contact->getOrganisation());
-        //$user    = $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->find();
-        $contact = $contact->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Contact')->findOneBy($this);
-        $organisation = $organisation->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Organisation')->findOneBy($contact);
-         return $this->render('SrmWebsiteBundle:User:index.html.twig', array(
-            'organisation' => $organisation,
-            'identificationCode'        => $organisation->getIdentificationCode(),
-        ));
-      //  return $this->redirect($this->generateUrl('srm_website_users_index', array('identificationCode' =>1)));
-           }
-           */
     public function listAction(Organisation $organisation)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+         
         $contacts = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Contact')->findNonDeletedUsersByOrganisation($organisation);
         $users    = $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->findByContacts($contacts);
 
@@ -36,6 +28,11 @@ class UsersController extends Controller
 
     public function formAction(Organisation $organisation, User $user)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+         
         $formActionRoute = 'srm_website_users_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
 
