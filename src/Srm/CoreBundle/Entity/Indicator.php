@@ -366,7 +366,7 @@ class Indicator
     /**
      * Set referencials
      *
-     * @param \Srm\CoreBundle\Entity\Referencials $referencials
+     * @param \Srm\CoreBundle\Entity\Referencial $referencials
      * @return Referencial
      */
     public function setReferencials(Referencials $referencials = null)
@@ -379,7 +379,7 @@ class Indicator
     /**
      * Get referencials
      *
-     * @return \Srm\CoreBundle\Entity\Referencials
+     * @return \Srm\CoreBundle\Entity\Referencial
      */
     public function getReferencials()
     {
