@@ -3,7 +3,7 @@
 namespace Srm\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Srm\CoreBundle\Entity\Department;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Site;
@@ -12,6 +12,11 @@ class DepartmentsController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         $sites       = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Site')->findByOrganisation($organisation);
         $departments = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Department')->findNonDeletedBySites($sites);
 
@@ -23,6 +28,11 @@ class DepartmentsController extends Controller
 
     public function showAction(Organisation $organisation, Department $department)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         return $this->render('SrmWebsiteBundle:Department:show.html.twig', array(
             'organisationId' => $organisation->getOrganisationId(),
             'department'     => $department,
@@ -31,6 +41,11 @@ class DepartmentsController extends Controller
 
     public function disableAction(Organisation $organisation, Department $department)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         $department->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($department);
@@ -43,6 +58,11 @@ class DepartmentsController extends Controller
 
     public function formAction(Organisation $organisation, Department $department)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         $formActionRoute = 'srm_website_departments_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
 
