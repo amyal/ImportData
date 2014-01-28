@@ -3,7 +3,7 @@
 namespace Srm\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Pole;
 
@@ -11,6 +11,11 @@ class PolesController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         $sites = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Site')->findByOrganisation($organisation);
         $poles = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Pole')->findNonDeletedBySites($sites);
 
@@ -22,6 +27,11 @@ class PolesController extends Controller
 
     public function showAction(Organisation $organisation, Pole $pole)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         return $this->render('SrmWebsiteBundle:Pole:show.html.twig', array(
             'organisationId' => $organisation->getOrganisationId(),
             'pole'           => $pole,
@@ -30,6 +40,11 @@ class PolesController extends Controller
 
     public function disableAction(Organisation $organisation, Pole $pole)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         $pole->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($pole);
@@ -42,6 +57,11 @@ class PolesController extends Controller
 
     public function formAction(Organisation $organisation, Pole $pole)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         $formActionRoute = 'srm_website_poles_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
 
