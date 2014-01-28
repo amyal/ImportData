@@ -3,6 +3,7 @@
 namespace Srm\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpFoundation\Request;
 use Srm\CoreBundle\Entity\Contact;
 use Srm\CoreBundle\Entity\Organisation;
@@ -12,7 +13,11 @@ use Srm\UserBundle\Entity\User;
 class ContactsController extends Controller
 {
     public function listAction(Organisation $organisation)
-    {
+    { 
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         return $this->render('SrmWebsiteBundle:Contact:list.html.twig', array(
             'organisation' => $organisation,
             'contacts'     => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Contact')->findNonDeletedByOrganisation($organisation),
@@ -20,7 +25,11 @@ class ContactsController extends Controller
     }
 
     public function showAction(Organisation $organisation, Contact $contact)
-    {
+    {  
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         return $this->render('SrmWebsiteBundle:Contact:show.html.twig', array(
             'organisationId' => $organisation->getOrganisationId(),
             'contact'        => $contact,
@@ -28,7 +37,11 @@ class ContactsController extends Controller
     }
 
     public function disableAction(Organisation $organisation, Contact $contact)
-    {
+    { 
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         $contact->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($contact);
@@ -41,6 +54,11 @@ class ContactsController extends Controller
 
     public function formAction(Organisation $organisation, Contact $contact, $type = "")
     {  
+        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
+          
         $request = $this->getRequest();//récupérer les ids de partie prenante et la nouvelle organisation 
         $stakeholderid = $request->query->get('stakeholderid'); 
         $org_clt = $request->query->get('org_clt');
@@ -49,10 +67,11 @@ class ContactsController extends Controller
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(),'type'=>$type,'stakeholderid'=>$stakeholderid, 'org_clt'=>$org_clt);
         $FormEdit=$contact->getContactId() ; //  if the variable equal Null -> add else edition 
 
-        if (null !== $contactId = $contact->getContactId()) {
+        if (null !== $contactId = $contact->getContactId()) 
+          {
             $formActionRoute = 'srm_website_contact_edit';
             $formActionRouteParams['contactId'] = $contactId;
-        }
+          }
 
         $form = $this->createForm('srm_contact', $contact, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
