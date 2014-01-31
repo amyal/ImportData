@@ -91,9 +91,12 @@
 	                                    {{ form_label(form.address.country) }}
 	                                    <div class="controls">{{ form_widget(form.address.country, {'attr': {'class': 'chzn-select'}}) }}</div>
 	                                </div>
-	                                 
-						            {{ form_row(form.picture) }}
-						            {{ form_row(form.comments) }}
+	                                 <div class="control-group">
+	                                    {{ form_label(form.image) }}
+	                                    <div class="controls">{{ form_widget(form.image) }}</div>
+	                                </div> 
+					
+					{{ form_row(form.comments) }}
 						
 						            <div class="control-group">
 						                <label class="control-label" for="srm_contact_isUser">{{ form.isUser.vars.label|trans }}</label>
