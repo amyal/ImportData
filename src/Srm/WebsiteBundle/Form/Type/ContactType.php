@@ -45,7 +45,8 @@ class ContactType extends AbstractType
 
             ->add('shareholder', 'checkbox', array('label' => 'shareholder'))
             
-            ->add('picture', 'file', array('label' => 'contact.picture'))
+            //->add('picture', 'file', array('label' => 'contact.picture','required' => false))
+            ->add('image', 'file', array('label' => 'contact.picture','required' => false))
             ->add('comments', 'textarea', array('label' => 'contact.comments'))
            // ->add('stakeholders', 'srm_organisation_stakeholders', array('multiple' => true))
            ->add('departments',    'srm_organisation_departments',array('attr'=>array('multiple'=>true,'class'=>'chzn-select', 'name'=>'colors')))
