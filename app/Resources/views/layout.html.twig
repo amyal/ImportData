@@ -59,7 +59,11 @@
                                       
                                         <a href="dashboard.html#" class="dropdown-toggle" data-toggle="dropdown"> 
                                             <span>
-                                                <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> <span>{{ app.user.username }}<i class="icon-caret-down"></i></span>
+                                                {% if app.user.contact.image %}
+                                                    <img class="menu-avatar" src="{{ asset('uploads/documents/' ~ app.user.contact.lastname ~ '/' ~ app.user.contact.picture)}}"/> <span>{{ app.user.username }}<i class="icon-caret-down"></i></span>
+				                {% else %}
+                                                    <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> <span>{{ app.user.username }}<i class="icon-caret-down"></i></span>
+                                                {% endif %}
                                                 <!--<span class="badge badge-dark-red">5</span>-->
                                             </span>
                                         </a>
@@ -68,7 +72,11 @@
                                         <ul class="dropdown-menu">
                                             <li class="with-image">
                                                 <div class="avatar">
-                                                    <img src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" />
+                                                   {% if app.user.contact.image %}
+                                                        <img class="menu-avatar" src="{{ asset('uploads/documents/contact' ~ app.user.contact.lastname ~ '/' ~ app.user.contact.picture)}}"/> 
+                                                   {% else %}
+                                                        <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> 
+                                                   {% endif %}
                                                 </div>
                                                         <span>{{ app.user.username }}</span>
                                                     </li>
