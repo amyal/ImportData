@@ -1,7 +1,8 @@
 <?php
 
 namespace Srm\CoreBundle\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Contact
  */
@@ -151,6 +152,16 @@ class Contact
      * @var \Doctrine\Common\Collections\Collection
      */
     private $sites;
+    
+     /**
+     * @var string $image
+     *
+     * @Assert\File( maxSize = "5000k", mimeTypesMessage = "Merci de charger une image")
+     *
+     */
+    private $image;
+    private $tempFile;
+    
 
     /**
      * Constructor
@@ -880,5 +891,64 @@ class Contact
     public function updateModificationDate()
     {
         $this->modificationDate = new \DateTime();
+    }
+   // Upload files
+    public function setImage($image)
+    {
+        $this->image = $image;
+        // check if we have an old image path
+        if (isset($this->picture)) {
+            // store the old name to delete after the update
+            $this->tempFile = $this->picture;
+            $this->picture = null;
+        } else {
+            $this->picture = 'initial';
+        }
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    protected function getUploadRootDir() {
+        // the absolute directory path where uploaded documents should be saved
+        return $this->getTmpUploadRootDir().$this->getLastname();
+    }
+
+    protected function getTmpUploadRootDir() {
+        // the absolute directory path where uploaded documents should be saved
+            return __DIR__ . '/../../../../web/uploads/documents/';
+    }
+
+    public function preUpload()
+    {
+        if (null !== $this->getImage()) {
+            // do whatever you want to generate a unique name (php_fileinfo is necessary)
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->picture = $filename.'.'.$this->getImage()->guessExtension();
+            //$this->picture = $this->image->getClientOriginalName();
+        }
+    }
+
+    public function upload()
+    {
+        if (null === $this->getImage()) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->getImage()->move($this->getUploadRootDir(), $this->picture);
+
+        // check if we have an old image
+        if (isset($this->tempFile) && $this->tempFile != '') {
+            // delete the old image
+            unlink($this->getUploadRootDir().'/'.$this->tempFile);
+            // clear the temp image path
+            $this->tempFile = null;
+        }
+        $this->image = null;
     }
 }
