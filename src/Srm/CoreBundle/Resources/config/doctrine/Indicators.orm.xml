@@ -76,6 +76,6 @@
     </many-to-one>
 
     <many-to-many field="items" target-entity="Item" mapped-by="indicators"/>
-    <many-to-many field="referencials" target-entity="Referencial" mapped-by="referencialIndicators"/>
+    <many-to-many field="referencials" target-entity="Referencial" mapped-by="indicators"/>
   </entity>
 </doctrine-mapping>

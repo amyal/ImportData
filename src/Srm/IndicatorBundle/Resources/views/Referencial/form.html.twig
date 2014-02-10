@@ -4,17 +4,92 @@
     {{ parent() }}
     <script type="text/javascript">
             $(document).ready(function() {
-                $('#srm_referencial_referencialCategories').on('change', function() {
-                    $('#srm_referencial_referencialIndicators option').remove();
+
+                $('#srm_referencial_referencialType').on('change', function() {
+                    getIndicators($(this), 'referencialType', '');
+                }).trigger('change');
+
+                $('#srm_referencial_category2').hide();
+                $('[for=srm_referencial_category2]').hide();
+                $('#srm_referencial_category3').hide();
+                $('[for=srm_referencial_category3]').hide();
+                
+                $('#srm_referencial_toGroupStakeholder').on('change', function() {
+                    if ($('#srm_referencial_toGroupStakeholder').val() == ''){
+                        $('[for=srm_referencial_fromGroupStakeholder]').show();
+                        $('#srm_referencial_fromGroupStakeholder').show();
+                        $('$srm_referencial_fromGroupStakeholder').addClass('chzn-select');
+                    } else  {
+                        $('#srm_referencial_fromGroupStakeholder').hide();
+                        $('[for=srm_referencial_fromGroupStakeholder]').hide();
+                    }
+                }).trigger('change');
+
+                $('#srm_referencial_category1').on('change', function() {
+                    
+                    $('#srm_referencial_category2 option').remove();
+                    $.ajax({
+                        url: "{{ path('category2_by_category1', {'organisationId': organisationId}) }}",
+                        type: "GET",
+                        data: "category1_ids="+$(this).val(),
+                        success: function(data){
+                            if (data != ''){
+                                $('#srm_referencial_category2').show();
+                                $('[for=srm_referencial_category2]').show();
+                                $('#srm_referencial_category2').append(data);
+                            }
+                        }
+                    }).trigger('select');
+                    getIndicators($(this), 'category1', $('#srm_referencial_referencialType').val());
+                });
+
+                $('#srm_referencial_category2').on('change', function() {
+                    
+                    $('#srm_referencial_category3 option').remove();
+                    $.ajax({
+                        url: "{{ path('category3_by_category2', {'organisationId': organisationId}) }}",
+                        type: "GET",
+                        data: "category2_ids="+$(this).val(),
+                        success: function(data){
+                            if (data != ''){
+                                $('#srm_referencial_category3').show();
+                                $('[for=srm_referencial_category3]').show();
+                                $('#srm_referencial_category3').append(data);
+                            }  
+                        }
+                    }).trigger('change');
+                    getIndicators($(this), 'category2', $('#srm_referencial_referencialType').val());
+                });
+
+                $('#srm_referencial_category3').on('change', function() {
+                    getIndicators($(this), 'category3', $('#srm_referencial_referencialType').val());
+                }).trigger('change');
+
+                function getIndicators(element, elementType, referencialTypeId){
+                    $('#srm_referencial_referencialIndicators_indicators option').remove();
+                    $.ajax({
+                        url: "{{ path('indicators_by_categories', {'organisationId': organisationId}) }}",
+                        type: "GET",
+                        data: "elements_id="+$(element).val()+"&elementType="+elementType+"&referencialType="+referencialTypeId,
+                        success: function(data){
+                            $('#srm_referencial_referencialIndicators_indicators').append(data);
+                        }
+                    });
+                }
+
+                /*$('#srm_referencial_referencialCategories').on('change', function() {
+                    $('#srm_referencial option').remove();
                     $.ajax({
                         url: "{{ path('indicators_by_categories', {'organisationId': organisationId}) }}",
                         type: "GET",
                         data: "categories_id="+$(this).val(),
                         success: function(data){
-                            $('#srm_referencial_referencialIndicators').append(data);
+                            $('#srm_referencial').append(data);
                         }
                     });
-                });
+                });*/
+
+                
             });   
         </script>
 {% endblock %}
@@ -60,10 +135,36 @@
                                     {{ form_label(form.description) }}
                                     <div class="controls">{{ form_widget(form.description) }}</div>
                                 </div>
+       
                                 <div class="control-group">
-                                    {{ form_label(form.referencialIndicators) }}
-                                    <div class="controls">{{ form_widget(form.referencialIndicators, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                    {{ form_label(form.toGroupStakeholder) }}
+                                    <div class="controls">{{ form_widget(form.toGroupStakeholder) }}</div>
+                                </div>  
+
+                                <div class="control-group">
+                                    {{ form_label(form.category1) }}
+                                    <div class="controls">{{ form_widget(form.category1) }}</div>
+                                </div>  
+
+                                <div class="control-group">
+                                    {{ form_label(form.category2) }}
+                                    <div class="controls">{{ form_widget(form.category2) }}</div>
+                                </div>  
+
+                                <div class="control-group">
+                                    {{ form_label(form.category3) }}
+                                    <div class="controls">{{ form_widget(form.category3) }}</div>
+                                </div>  
+
+                                <div class="control-group">
+                                    {{ form_label(form.indicators) }}
+                                    <div class="controls">{{ form_widget(form.indicators) }}</div>
                                 </div>
+
+                                <div class="control-group">
+                                    {{ form_label(form.fromGroupStakeholder) }}
+                                    <div class="controls">{{ form_widget(form.fromGroupStakeholder) }}</div>
+                                </div>  
 
                                 <div class="control-group">
                                     <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>

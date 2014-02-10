@@ -42,7 +42,15 @@
             <tag name="request.param_converter" converter="indicator" priority="7" />
         </service>
         
-        <service id="srm_website.converter.indicatorLevel1" class="Srm\WebsiteBundle\Request\ParamConverter\IndicatorLevel1ParamConverter">
+        <service id="srm_website.converter.category1" class="Srm\WebsiteBundle\Request\ParamConverter\Category1ParamConverter">
+            <tag name="request.param_converter" converter="category" priority="7" />
+        </service>
+        
+        <service id="srm_website.converter.category2" class="Srm\WebsiteBundle\Request\ParamConverter\Category2ParamConverter">
+            <tag name="request.param_converter" converter="category" priority="7" />
+        </service>
+        
+        <service id="srm_website.converter.category3" class="Srm\WebsiteBundle\Request\ParamConverter\Category3ParamConverter">
             <tag name="request.param_converter" converter="category" priority="7" />
         </service>
         

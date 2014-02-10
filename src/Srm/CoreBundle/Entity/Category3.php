@@ -37,9 +37,16 @@ class Category3
      */
     private $category2;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $referencialsCat3;
+
 
     public function __construct()
     {
+        $this->referencialsCat3 = new \Doctrine\Common\Collections\ArrayCollection();
+
         $this->deleted = false;
     }
 
@@ -144,27 +151,38 @@ class Category3
     {
         return $this->category3Id;
     }
-
+    
     /**
-     * Set category2
+     * Add referencial
      *
-     * @param \Srm\CoreBundle\Entity\Category2 $category2
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
      * @return Category3
      */
-    public function setCategory2(Category2 $category2 = null)
+    public function addReferencial(Referencial $referencial)
     {
-        $this->category2 = $category2;
+        $this->referencialsCat3[] = $referencial;
 
         return $this;
     }
 
     /**
-     * Get category2
+     * Remove referencial
      *
-     * @return \Srm\CoreBundle\Entity\Category2
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
      */
-    public function getCategory2()
+    public function removeReferencial(Referencial $referencial)
     {
-        return $this->category2;
+        $this->referencialsCat3->removeElement($referencial);
     }
+
+    /**
+     * Get referencialsCat3
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReferencialsCat3()
+    {
+        return $this->referencialsCat3;
+    }
+
 }

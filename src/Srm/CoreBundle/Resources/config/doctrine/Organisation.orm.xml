@@ -18,6 +18,7 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+
     <many-to-one field="address" target-entity="Address">
       <join-columns>
         <join-column name="ADDRESS_ID" referenced-column-name="ADDRESS_ID"/>
@@ -27,28 +28,44 @@
         <cascade-all />
       </cascade>
     </many-to-one>
+
+    <many-to-one field="organisationStatus" target-entity="OrganisationStatus">
+      <join-columns>
+        <join-column name="ORGANISATION_STATUS_ID" referenced-column-name="ORGANISATION_STATUS_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="subscription" target-entity="Subscription">
+      <join-columns>
+        <join-column name="SUBSCRIPTION_ID" referenced-column-name="SUBSCRIPTION_ID"/>
+      </join-columns>
+    </many-to-one>
+
     <many-to-one field="language" target-entity="Language">
       <join-columns>
         <join-column name="LANGUAGE_ID" referenced-column-name="LANGUAGE_ID"/>
       </join-columns>
     </many-to-one>
+
     <many-to-one field="currency" target-entity="Currency">
       <join-columns>
         <join-column name="CURRENCY_ID" referenced-column-name="CURRENCY_ID"/>
       </join-columns>
     </many-to-one>
+
     <many-to-one field="employees" target-entity="Employees">
       <join-columns>
         <join-column name="EMPLOYEES_ID" referenced-column-name="EMPLOYEES_ID"/>
       </join-columns>
     </many-to-one>
+
     <many-to-one field="turnover" target-entity="Turnover">
       <join-columns>
         <join-column name="TURNOVER_ID" referenced-column-name="TURNOVER_ID"/>
       </join-columns>
     </many-to-one>
 
-    <many-to-many field="referencials" target-entity="Referencial" mapped-by="organisationReferencials"/>
+    <!-- <many-to-many field="referencials" target-entity="Referencial" mapped-by="organisationReferencials"/> -->
 
     <lifecycle-callbacks>
       <lifecycle-callback type="preUpdate" method="updateModificationDate" />

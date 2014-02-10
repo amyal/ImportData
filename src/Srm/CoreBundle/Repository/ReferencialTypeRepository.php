@@ -8,7 +8,7 @@ use Srm\CoreBundle\Entity\Organisation;
 
 class ReferencialTypeRepository extends EntityRepository
 {
-    public function findNonDeleted()
+    public function findNonDeleted($organisation)
     {
         return $this->createQueryBuilder('r')
             ->where('r.deleted = :deleted')->setParameter('deleted', false)

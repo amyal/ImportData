@@ -29,7 +29,7 @@ class ReferencialParamConverter implements ParamConverterInterface
             throw new \Exception('Aucune organisation trouvée pour créer un référentiel.');
         }
 
-        $referencial->setOrganisation($organisation);
+        //$referencial->setOrganisation($organisation);
 
         $request->attributes->set($configuration->getName(), $referencial);
 

@@ -2,6 +2,8 @@
 
 namespace Srm\CoreBundle\Entity;
 
+use \Srm\CoreBundle\Entity\Indicator;
+
 /**
  * Indicator
  */
@@ -53,11 +55,6 @@ class Indicator
     private $indicatorId;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Indicators
-     */
-    private $indicators;
-
-    /**
      * @var \Srm\CoreBundle\Entity\UnitMeasurement
      */
     private $unitMeasurement;
@@ -86,6 +83,11 @@ class Indicator
      * @var \Srm\CoreBundle\Entity\PublicationDelay
      */
     private $publicationDelay;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Indicator
+     */
+    private $indicators;
 
     /**
      * @var \Srm\CoreBundle\Entity\Referencial
@@ -208,22 +210,22 @@ class Indicator
      * @param \Srm\CoreBundle\Entity\Indicators $indicators
      * @return Indicator
      */
-    public function setIndicators(Indicators $indicators = null)
+    /*public function setIndicators(Indicators $indicators = null)
     {
         $this->indicators = $indicators;
 
         return $this;
-    }
+    }*/
 
     /**
      * Get indicators
      *
      * @return \Srm\CoreBundle\Entity\Indicators
      */
-    public function getIndicators()
+    /*public function getIndicators()
     {
         return $this->indicators;
-    }
+    }*/
 
     /**
      * Set indicatorZone
@@ -358,7 +360,7 @@ class Indicator
      *
      * @return \Srm\CoreBundle\Entity\PublicationDelay
      */
-    public function getPublicationDelayy()
+    public function getPublicationDelay()
     {
         return $this->publicationDelay;
     }
@@ -369,7 +371,7 @@ class Indicator
      * @param \Srm\CoreBundle\Entity\Referencial $referencials
      * @return Referencial
      */
-    public function setReferencials(Referencials $referencials = null)
+    public function setReferencials(Referencial $referencials = null)
     {
         $this->referencials = $referencials;
 
@@ -384,6 +386,51 @@ class Indicator
     public function getReferencials()
     {
         return $this->referencials;
+    }
+
+    /**
+     * Set indicators
+     *
+     * @param \Srm\CoreBundle\Entity\Indicators $indicators
+     * @return Indicator
+     */
+    /*public function setIndicators(Indicators $indicators = null)
+    {
+        $this->indicators = $indicators;
+
+        return $this;
+    }*/
+
+    /**
+     * Get indicators
+     *
+     * @return \Srm\CoreBundle\Entity\Indicators
+     */
+    /*public function getIndicators()
+    {
+        return $this->indicators;
+    }*/
+
+
+    /**
+     * Remove indicators
+     *
+     * @param \Srm\CoreBundle\Entity\Indicator $indicators
+     */
+    public function removeIndicator(Indicator $indicators)
+    {
+        $indicators->removeReferencial($this);
+        $this->indicators->removeElement($indicators);
+    }
+
+    /**
+     * Get indicators
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIndicators()
+    {
+        return $this->indicators;
     }
 
 }

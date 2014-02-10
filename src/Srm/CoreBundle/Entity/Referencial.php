@@ -49,19 +49,29 @@ class Referencial
     private $referencialIndicators;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Srm\CoreBundle\Entity\Organisation
      */
-    private $organisationReferencials;
+    //private $organisationReferencials;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    //private $repositoryCategories;
+    private $indicator;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $referencialType;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $toGroupStakeholder;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $fromGroupStakeholder;
 
     /**
      * @var \Srm\CoreBundle\Entity\Category1
@@ -79,17 +89,30 @@ class Referencial
     private $category3;
 
     /**
+     * @var \Srm\CoreBundle\Entity\Indicators
+     */
+    private $indicators;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Organisation
+     */
+    private $organisation;
+
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->referencialIndicators = new \Doctrine\Common\Collections\ArrayCollection();
-        //$this->repositoryCategories = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->organisationReferencials = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->referencialType         = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->referencialIndicators    = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->indicator                = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->referencialType          = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->toGroupStakeholder       = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fromGroupStakeholder     = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
         $this->deleted = false;
+
     }
 
     /**
@@ -241,32 +264,7 @@ class Referencial
     }
 
     /**
-     * Add indicator
-     *
-     * @param \Srm\CoreBundle\Entity\Indicators $indicator
-     * @return Referencial
-     */
-    public function addIndicator(Indicators $indicator)
-    {
-        $indicator->addReferencial($this);
-        $this->referencialIndicators[] = $indicator;
-
-        return $this;
-    }
-
-    /**
-     * Remove indicator
-     *
-     * @param \Srm\CoreBundle\Entity\Indicators $indicator
-     */
-    public function removeIndicator(Indicators $indicator)
-    {
-        $indicator->removeReferencial($this);
-        $this->referencialIndicators->removeElement($indicator);
-    }
-
-    /**
-     * Get referencialIndicators
+     * Get 
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -275,76 +273,47 @@ class Referencial
         return $this->referencialIndicators;
     }
 
-    /**
-     * Add indicator
-     *
-     * @param \Srm\CoreBundle\Entity\Indicators $indicator
-     * @return Referencial
-     */
-    /*public function addIndicator(Indicators $indicator)
+    public function setReferencialIndicators($referencialIndicators)
     {
-        $indicator->addReferencial($this);
-        $this->organisationReferencials[] = $indicator;
+        $this->referencialIndicators = $referencialIndicators;
 
         return $this;
-    }*/
-
-    /**
-     * Remove indicator
-     *
-     * @param \Srm\CoreBundle\Entity\Indicators $indicator
-     */
-    /*public function removeIndicator(Indicators $indicator)
-    {
-        $indicator->removeReferencial($this);
-        $this->organisationReferencials->removeElement($indicator);
-    }*/
+    }
 
     /**
      * Get organisationReferencials
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getOrganisationReferencials()
+    /*public function getOrganisationReferencials()
     {
         return $this->organisationReferencials;
     }
 
-    /**
-     * Add indicatorLevel1
-     *
-     * @param \Srm\CoreBundle\Entity\IndicatorLevel1 $indicatorLevel1
-     * @return Referencial
-     */
-    /*public function addIndicatorLevel1(IndicatorLevel1 $indicatorLevel1)
+    public function setOrganisationReferencials($organisation)
     {
-        $indicatorLevel1->addReferencial($this);
-        $this->repositoryCategories[] = $indicatorLevel1;
+        $this->organisation = $organisation;
 
         return $this;
     }*/
 
     /**
-     * Remove indicatorLevel1
-     *
-     * @param \Srm\CoreBundle\Entity\IndicatorLevel1 $indicatorLevel1
-     */
-    /*public function removeIndicatorLevel1(IndicatorLevel1 $indicatorLevel1)
-    {
-        $indicatorLevel1->removeReferencial($this);
-        $this->repositoryCategories->removeElement($indicatorLevel1);
-    }*/
-
-    /**
-     * Get repositoryCategories
+     * Get indicators
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    /*public function getRepositoryCategories()
+    public function getIndicators()
     {
-        return $this->repositoryCategories;
+        return $this->indicators;
     }
-*/
+
+    public function setIndicators($indicators)
+    {
+        $this->indicators = $indicators;
+
+        return $this;
+    }
+
     /**
      * Set referencialType
      *
@@ -369,10 +338,56 @@ class Referencial
     }
 
     /**
+     * Set toGroupStakeholder
+     *
+     * @param \Srm\CoreBundle\Entity\GroupStakeholder $toGroupStakeholder
+     * @return organisation
+     */
+    public function setToGroupStakeholder(GroupStakeholder $toGroupStakeholder = null)
+    {
+        $this->toGroupStakeholder = $toGroupStakeholder;
+
+        return $this;
+    }
+
+    /**
+     * Get toGroupStakeholder
+     *
+     * @return \Srm\CoreBundle\Entity\GroupStakeholder
+     */
+    public function getToGroupStakeholder()
+    {
+        return $this->toGroupStakeholder;
+    }
+
+    /**
+     * Set fromGroupStakeholder
+     *
+     * @param \Srm\CoreBundle\Entity\GroupStakeholder $fromGroupStakeholder
+     * @return organisation
+     */
+    public function setFromGroupStakeholder(GroupStakeholder $fromGroupStakeholder = null)
+    {
+        $this->fromGroupStakeholder = $fromGroupStakeholder;
+
+        return $this;
+    }
+
+    /**
+     * Get fromGroupStakeholder
+     *
+     * @return \Srm\CoreBundle\Entity\GroupStakeholder
+     */
+    public function getFromGroupStakeholder()
+    {
+        return $this->fromGroupStakeholder;
+    }
+
+    /**
      * Set category1
      *
      * @param \Srm\CoreBundle\Entity\Category1 $category1
-     * @return Referencial
+     * @return Indicator
      */
     public function setCategory1(Category1 $category1 = null)
     {
@@ -437,6 +452,62 @@ class Referencial
         return $this->category3;
     }
 
+    /**
+     * Set organisation
+     *
+     * @param \Srm\CoreBundle\Entity\Organisation $organisation
+     * @return Site
+     */
+    public function setOrganisation(Organisation $organisation = null)
+    {
+        $this->organisation = $organisation;
+
+        return $this;
+    }
+
+    /**
+     * Get organisation
+     *
+     * @return \Srm\CoreBundle\Entity\Organisation
+     */
+    public function getOrganisation()
+    {
+        return $this->organisation;
+    }
+    
+    /**
+     * Add indicator
+     *
+     * @param \Srm\CoreBundle\Entity\Indicator $indicator
+     * @return Referencial
+     */
+    public function addIndicator(Indicator $indicator)
+    {
+        $this->indicator->setDeleted(true);
+        $this->indicator[] = $indicator;
+
+        return $this;
+    }
+
+    /**
+     * Remove referencial
+     *
+     * @param \Srm\CoreBundle\Entity\Indicator $indicator
+     */
+    public function removeIndicator(Indicator $indicator)
+    {
+        $this->indicator->removeElement($indicator);
+    }
+
+    /**
+     * Get indicator
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIndicator()
+    {
+        return $this->indicator;
+    }
     public function updateModificationDate()
     {
         $this->modificationDate = new \DateTime();

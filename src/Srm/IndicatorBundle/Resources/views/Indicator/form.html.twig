@@ -30,15 +30,49 @@
                         <div class="box-content padded">
                             <div class="padded-box">
                                 <div class="control-group">
-                                    {{ form_label(form.label, 'Nombre de références produits') }}
+                                    {{ form_label(form.label) }}
                                     <div class="controls">{{ form_widget(form.label) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.code) }}
+                                    <div class="controls">{{ form_widget(form.code) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.indicatorZone) }}
+                                    <div class="controls">{{ form_widget(form.indicatorZone) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.indicatorGraph) }}
+                                    <div class="controls">{{ form_widget(form.indicatorGraph) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.unitMeasurement) }}
+                                    <div class="controls">{{ form_widget(form.unitMeasurement) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.screenPeriod) }}
+                                    <div class="controls">{{ form_widget(form.screenPeriod) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.publicationFrequency) }}
+                                    <div class="controls">{{ form_widget(form.publicationFrequency) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.publicationDelay) }}
+                                    <div class="controls">{{ form_widget(form.publicationDelay) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="srm_indicator_enabled">{{ form.enabled.vars.label|trans }}</label>
+                                    <div class="controls">
+                                        {{ form_widget(form.enabled, {'attr': {'class': 'icheck'}}) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
                             save_form: form.save,
-                            url_cancel: path('srm_indicator_indicator_list', {'organisationId': organisationId, 'referencialId': referencialId})
+                            url_cancel: path('srm_indicator_indicator_list', {'organisationId': organisationId})
                         }, with_context = false) }}
 
                         <div class="hide">

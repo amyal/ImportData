@@ -11,7 +11,15 @@ class ReferencialType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('referencialType', 'srm_referencialTypes', array('required' => true))
+            
+            ->add('referencialType', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\ReferencialType',
+                'property' => 'label',
+                'label'    => 'referencials.list.referencial',
+                'required' => true,
+                'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
+            ))
+            /*->add('referencialType', 'srm_referencialTypes', array('required' => true))*/
 
             ->add('label', 'text', array(
                 'label'    => 'referencial.label',
@@ -25,11 +33,51 @@ class ReferencialType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
-            //->add('referencialCategories', 'srm_organisation_indicatorLevel1', array('required' => true))
+            ->add('toGroupStakeholder', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\GroupStakeholder',
+                'property' => 'label',
+                'label'    => 'referencials.list.toGroupStakeholder',
+                'empty_value' => 'Interne',
+                'required' => true,
+                'attr'=>array('class'=>'chzn-select')
+            ))
             
-            ->add('referencialIndicators', 'srm_organisation_referencialIndicators', array('required' => true))
+            //->add('organisationReferencials', 'srm_organisation_organisationReferencials', array('required' => true))
 
-            ->add('enabled', 'checkbox', array('label' => 'enabled'))
+            ->add('category1', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\Category1',
+                'property' => 'label',
+                'label'    => 'referencials.list.category1',
+                'required' => true,
+                'multiple' => true
+            ))
+
+            ->add('category2', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\Category2',
+                'property' => 'label',
+                'label'    => 'referencials.list.category2',
+                'required' => true,
+                'multiple' => true
+            ))
+
+            ->add('category3', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\Category3',
+                'property' => 'label',
+                'label'    => 'referencials.list.category3',
+                'required' => true,
+                'multiple' => true
+            ))
+
+            ->add('indicators', 'srm_organisation_referencialIndicators', array('required' => true))
+
+            ->add('fromGroupStakeholder', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\GroupStakeholder',
+                'property' => 'label',
+                'label'    => 'referencials.list.fromGroupStakeholder',
+                'required' => true
+            ))
+            
+            ->add('enabled', 'checkbox', array('label' => 'referencials.enabled'))
 
             ->add('save', 'submit', array('label' => 'button.save'))
         ;

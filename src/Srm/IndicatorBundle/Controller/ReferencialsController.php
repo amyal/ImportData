@@ -3,9 +3,10 @@
 namespace Srm\IndicatorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Referencial;
+use Srm\CoreBundle\Entity\Indicator;
 
 use Symfony\Component\HttpFoundation\Response;
 
@@ -13,10 +14,6 @@ class ReferencialsController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
-        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
-          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
-           throw new AccessDeniedHttpException('Accès interdit');
-          }
         return $this->render('SrmIndicatorBundle:Referencial:list.html.twig', array(
             'organisation' => $organisation,
             'referencials' => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Referencial')->findNonDeletedByOrganisation($organisation),
@@ -25,10 +22,6 @@ class ReferencialsController extends Controller
 
     public function showAction(Organisation $organisation, Referencial $referencial)
     {
-        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
-          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
-           throw new AccessDeniedHttpException('Accès interdit');
-          }
         return $this->render('SrmIndicatorBundle:Referencial:show.html.twig', array(
             'organisationId' => $organisation->getOrganisationId(),
             'referencial'     => $referencial,
@@ -37,10 +30,6 @@ class ReferencialsController extends Controller
 
     public function disableAction(Organisation $organisation, Referencial $referencial)
     {
-        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
-          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
-           throw new AccessDeniedHttpException('Accès interdit');
-          }
         $referencial->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($referencial);
@@ -53,10 +42,7 @@ class ReferencialsController extends Controller
 
     public function formAction(Organisation $organisation, Referencial $referencial)
     {
-        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
-          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
-           throw new AccessDeniedHttpException('Accès interdit');
-          }
+        
         $formActionRoute = 'srm_indicator_referencial_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
 
@@ -76,6 +62,7 @@ class ReferencialsController extends Controller
         if ('GET' === $request->getMethod()) {
             return $this->render('SrmIndicatorBundle:Referencial:form.html.twig', array(
                 'organisationId' => $organisation->getOrganisationId(),
+                'referencialId' => $referencial->getReferencialId(),
                 'form'           => $form->createView(),
             ));
         }
@@ -85,6 +72,31 @@ class ReferencialsController extends Controller
                 'organisationId' => $organisation->getOrganisationId(),
                 'form'           => $form->createView(),
             ));
+        } else {
+            // Un référentiel peut soit être interne (getToGroupStakeholder == Interne) 
+            // soit peut être ouvert à un groupe de partie prenante pour saisie de données 
+            // (getToGroupStakeholder != Interne) donc, setToGroupStakeholder = null
+            if ( $referencial->getToGroupStakeholder() ){
+                if ($referencial->getToGroupStakeholder()->getGroupStakeholderId() != null){
+                    $referencial->setFromGroupStakeholder(null);
+                }
+            }
+
+            if ( $referencial->getFromGroupStakeholder() ){
+                if ($referencial->getFromGroupStakeholder()->getGroupStakeholderId() != null){
+                    $referencial->setToGroupStakeholder(null);
+                }
+            }
+
+            $indicator = new Indicator();
+            $indicator->setDeleted(false);
+
+            foreach ($referencial->getIndicators() as $indicators) {
+                echo "<pre>"; 
+                \Doctrine\Common\Util\Debug::dump($indicators->getReferencials()->getReferencialIndicators(), 2); 
+                exit;
+                $indicators->getReferencials()->getIndicator()->setDeleted($indicators->getDeleted());
+            }
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -96,30 +108,67 @@ class ReferencialsController extends Controller
         )));
     }
 
-    public function indicatorsByCategoriesAction()
+    /*public function category1ByReferencialTypeAction()
     {
-        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
-          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
-           throw new AccessDeniedHttpException('Accès interdit');
-          }
-        echo 'ok';exit;
-        $categoryIds = $this->getRequest()->query->get('categories_id');
+        $referencialTypeIds = $this->getRequest()->query->get('referencialType_ids');
 
-        if ($categoryIds) {
-            $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByCategories($categoryIds);
+        if ($referencialTypeIds) {
+            $categories1 = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByReferencialTypeIds($referencialTypeIds);
         }
         else {
             //$indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findAll();
-            $indicators = array();
+            $categories1 = array();
         }
-echo "<pre>"; 
-\Doctrine\Common\Util\Debug::dump($indicators, 2); 
-exit;
+
         $html = '';
-        foreach($indicators as $indicator) {
-            if ($indicator->getIndicatorId() == '')
+        foreach($categories1 as $category1) {
+            if (!is_null($category1->getCategory1Id()) && $category1->getCategory1Id() == '')
                 $html .= '<option value=\"-1\">Aucune réponse</option>';
-            $html = $html . sprintf("<option value=\"%d\">%s</option>", $indicator->getIndicatorId(), $indicator->getLabel());
+            $html = $html . sprintf("<option value=\"%d\">%s</option>", $category1->getCategory1Id(), $category1->getLabel());
+        }
+
+        return new Response($html);
+    }*/
+
+    public function category2ByCategory1Action()
+    {
+        $categoryIds = $this->getRequest()->query->get('category1_ids');
+
+        if ($categoryIds) {
+            $categories2 = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Category2')->findNonDeletedByCategory1($categoryIds);
+        }
+        else {
+            //$indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findAll();
+            $categories2 = array();
+        }
+
+        $html = '';
+        foreach($categories2 as $category2) {
+            if ($category2->getCategory2Id() == '')
+                $html .= '<option value=\"-1\">Aucune réponse</option>';
+            $html = $html . sprintf("<option value=\"%d\">%s</option>", $category2->getCategory2Id(), $category2->getLabel());
+        }
+
+        return new Response($html);
+    }
+
+    public function category3ByCategory2Action()
+    {
+        $categoryIds = $this->getRequest()->query->get('category2_ids');
+
+        if ($categoryIds) {
+            $categories3 = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Category3')->findNonDeletedByCategory2($categoryIds);
+        }
+        else {
+            //$indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findAll();
+            $categories3 = array();
+        }
+
+        $html = '';
+        foreach($categories3 as $category3) {
+            if ($category3->getCategory3Id() == '')
+                $html .= '<option value=\"-1\">Aucune réponse</option>';
+            $html = $html . sprintf("<option value=\"%d\">%s</option>", $category3->getCategory3Id(), $category3->getLabel());
         }
 
         return new Response($html);

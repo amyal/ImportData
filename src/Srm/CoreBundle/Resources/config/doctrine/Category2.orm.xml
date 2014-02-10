@@ -15,5 +15,7 @@
       </join-columns>
     </many-to-one>
 
+    <many-to-many field="referencialsCat2" target-entity="Referencial" mapped-by="category2"/>
+
   </entity>
 </doctrine-mapping>

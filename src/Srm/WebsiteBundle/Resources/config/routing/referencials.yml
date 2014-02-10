@@ -41,3 +41,27 @@ indicators_by_categories:
         _controller:    "SrmIndicatorBundle:Referencials:indicatorsByCategories"
     requirements:
         referencialId: \d+
+
+category1_by_referencialType:
+    path:       /organisations/{organisationId}/category1/by_referencialType
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Referencials:category1ByReferencialType"
+    requirements:
+        referencialId: \d+
+
+category2_by_category1:
+    path:       /organisations/{organisationId}/category2/by_category1
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Referencials:category2ByCategory1"
+    requirements:
+        referencialId: \d+
+
+category3_by_category2:
+    path:       /organisations/{organisationId}/category3/by_category2
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Referencials:category3ByCategory2"
+    requirements:
+        referencialId: \d+

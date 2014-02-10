@@ -32,6 +32,10 @@ class Category1
      */
     private $category1Id;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $referencialsCat1;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -42,6 +46,7 @@ class Category1
     public function __construct()
     {
         //$this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->referencialsCat1 = new \Doctrine\Common\Collections\ArrayCollection();
         
         $this->deleted = false;
     }
@@ -149,37 +154,36 @@ class Category1
     }
     
     /**
-     * Add category1
+     * Add referencial
      *
-     * @param \Srm\CoreBundle\Entity\Category1 $category
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
      * @return Category1
      */
-    public function addCategory1(Category1 $category)
+    public function addReferencial(Referencial $referencial)
     {
-        $category->addCategory1($this);
-        $this->category1[] = $category;
+        $this->referencialsCat1[] = $referencial;
 
         return $this;
     }
 
     /**
-     * Remove category1
+     * Remove referencial
      *
-     * @param \Srm\CoreBundle\Entity\Category1 $category
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
      */
-    /*public function removeCategory1(Category1 $category)
+    public function removeReferencial(Referencial $referencial)
     {
-        $category->removeCategory1($this);
-        $this->category1->removeElement($category);
-    }*/
+        $this->referencialsCat1->removeElement($referencial);
+    }
 
     /**
-     * Get categories
+     * Get referencialsCat1
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    /*public function getIndicatorLevels1()
+    public function getReferencialsCat1()
     {
-        return $this->categories;
-    }*/
+        return $this->referencialsCat1;
+    }
+
 }

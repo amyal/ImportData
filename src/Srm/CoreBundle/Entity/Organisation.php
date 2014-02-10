@@ -86,6 +86,16 @@ class Organisation
     private $organisationId;
 
     /**
+     * @var \Srm\CoreBundle\Entity\OrganisationStatus
+     */
+    private $organisationStatus;
+
+    /**
+     * @var \Srm\CoreBundle\Entity\Subscription
+     */
+    private $subscription;
+
+    /**
      * @var \Srm\CoreBundle\Entity\Address
      */
     private $address;
@@ -489,6 +499,52 @@ class Organisation
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Set organisationStatus
+     *
+     * @param \Srm\CoreBundle\Entity\OrganisationStatus $organisationStatus
+     * @return Organisation
+     */
+    public function setOrganisationStatus(OrganisationStatus $organisationStatus = null)
+    {
+        $this->organisationStatus = $organisationStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get organisationStatus
+     *
+     * @return \Srm\CoreBundle\Entity\OrganisationStatus
+     */
+    public function getOrganisationStatus()
+    {
+        return $this->organisationStatus;
+    }
+
+    /**
+     * Set subscription
+     *
+     * @param \Srm\CoreBundle\Entity\Subscription $subscription
+     * @return Organisation
+     */
+    public function setSubscription(Subscription $subscription = null)
+    {
+        $this->subscription = $subscription;
+
+        return $this;
+    }
+
+    /**
+     * Get subscription
+     *
+     * @return \Srm\CoreBundle\Entity\Subscription
+     */
+    public function getSubscription()
+    {
+        return $this->subscription;
     }
 
     /**

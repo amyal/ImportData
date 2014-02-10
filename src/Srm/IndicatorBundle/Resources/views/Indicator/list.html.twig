@@ -38,12 +38,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for indicator in indicators %}
+                                {% for indicators in indicator %}
                                     <tr>
-                                        <td>{{ indicator.label }}</td>
-                                        <td>{{ indicator.referencials.label }}</td>
+                                        <td>{{ indicators.label }}</td>
+                                        <td>{{ indicators.referencials.label }}</td>
                                         <td>
-                                            {% if indicator.enabled %}
+                                            {% if indicators.enabled %}
                                                 {{ 'enabled'|trans }}
                                             {% else %}
                                                 {{ 'disabled'|trans }}
@@ -51,9 +51,9 @@
                                         </td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ path('srm_indicator_indicator_show', { 'organisationId': organisation.organisationId, 'indicatorsId': indicator.indicatorsId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
-                                                <a href="{{ path('srm_indicator_indicator_edit', { 'organisationId': organisation.organisationId, 'indicatorsId': indicator.indicatorsId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                                <a href="{{ path('srm_indicator_indicator_disable', { 'organisationId': organisation.organisationId, 'indicatorsId': indicator.indicatorsId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                                <a href="{{ path('srm_indicator_indicator_show', { 'organisationId': organisation.organisationId, 'indicatorId': indicators.indicatorId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
+                                                <a href="{{ path('srm_indicator_indicator_edit', { 'organisationId': organisation.organisationId, 'indicatorId': indicators.indicatorId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                                <a href="{{ path('srm_indicator_indicator_disable', { 'organisationId': organisation.organisationId, 'indicatorId': indicators.indicatorId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

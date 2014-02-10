@@ -47,19 +47,47 @@
         <service class="Srm\WebsiteBundle\Form\Type\Choice\RolesType" id="srm_website.form.type.roles">
             <tag name="form.type" alias="srm_roles" />
         </service>
-        <service class="Srm\IndicatorBundle\Form\Type\Choice\ReferencialIndicatorsType" id="srm_indicator.form.type.referencial_indicators">
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\IndicatorsType" id="srm_indicator.form.type.organisation_indicators">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_indicators" />
+        </service>
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\ReferencialIndicatorsType" id="srm_indicator.form.type.organisation_referencialIndicators">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
             <tag name="form.type" alias="srm_organisation_referencialIndicators" />
         </service>
-        <service class="Srm\IndicatorBundle\Form\Type\Choice\IndicatorLevel1Type" id="srm_indicator.form.type.indicatorLevels1">
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\OrganisationReferencialsType" id="srm_indicator.form.type.organisation_referencials">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
-            <tag name="form.type" alias="srm_organisation_indicatorLevel1" />
+            <tag name="form.type" alias="srm_organisation_organisationReferencials" />
+        </service>
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\Category1Type" id="srm_indicator.form.type.category1">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_category1" />
+        </service>
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\Category2Type" id="srm_indicator.form.type.category2">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_category2" />
+        </service>
+        <service class="Srm\IndicatorBundle\Form\Type\Choice\Category3Type" id="srm_indicator.form.type.category3">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="null" strict="false" />
+            </call>
+            <tag name="form.type" alias="srm_organisation_category3" />
         </service>
         <service class="Srm\WebsiteBundle\Form\Type\Choice\StakeholderGroupType" id="srm_website.form.type.stakeholderGroup">
             <call method="setRequest">
@@ -134,6 +162,10 @@
         
         <service class="Srm\IndicatorBundle\Form\Type\ReferencialType" id="srm_indicator.form.type.referencial">
             <tag name="form.type" alias="srm_referencial" />
+        </service>
+
+        <service class="Srm\IndicatorBundle\Form\Type\ReferencialIndicatorsType" id="srm_indicator.form.type.referencialIndicators">
+            <tag name="form.type" alias="srm_referencialIndicators" />
         </service>
         
         <service class="Srm\IndicatorBundle\Form\Type\IndicatorType" id="srm_indicator.form.type.indicator">

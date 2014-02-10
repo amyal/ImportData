@@ -26,19 +26,43 @@
                     <div class="box-content padded">
                         <div class="padded-box">
                             <div class="control-group">
-                                <label class="control-label">{{ 'indicators.list.repository'|trans }} :</label>
-                                <div class="controls">{{ indicator.repository.label }}</div>
+                                <label class="control-label">{{ 'indicator.label'|trans }} :</label>
+                                <div class="controls">{{ indicator.label }}</div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">{{ 'indicators.list.name'|trans }} :</label>
-                                <div class="controls">{{ indicator.label }}</div>
+                                <label class="control-label">{{ 'indicator.code'|trans }} :</label>
+                                <div class="controls">{{ indicator.code }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'indicator.indicatorZone'|trans }} :</label>
+                                <div class="controls">{{ indicator.indicatorZone.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'indicator.indicatorGraph'|trans }} :</label>
+                                <div class="controls">{{ indicator.indicatorGraph.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'indicator.unitMeasurement'|trans }} :</label>
+                                <div class="controls">{{ indicator.unitMeasurement.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'indicator.screenPeriod'|trans }} :</label>
+                                <div class="controls">{{ indicator.screenPeriod.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'indicator.publicationDelay'|trans }} :</label>
+                                <div class="controls">{{ indicator.publicationDelay.label }}</div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{{ 'indicator.publicationFrequency'|trans }} :</label>
+                                <div class="controls">{{ indicator.publicationFrequency.label }}</div>
                             </div>
                         </div>
                     </div>
 
                     {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
-                        url_edit:   path('srm_indicator_indicator_edit',  {'organisationId': organisationId, 'repositoryId': 2, 'indicatorId' : indicator.indicatorId}),
-                        url_cancel: path('srm_indicator_indicator_list', {'organisationId': organisationId, 'repositoryId': 2})
+                        url_edit:   path('srm_indicator_indicator_edit',  {'organisationId': organisationId, 'indicatorId' : indicator.indicatorId}),
+                        url_cancel: path('srm_indicator_indicator_list', {'organisationId': organisationId})
                     }, with_context = false) }}
                 </div>
             </div>

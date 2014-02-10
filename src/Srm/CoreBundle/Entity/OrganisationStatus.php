@@ -3,19 +3,19 @@
 namespace Srm\CoreBundle\Entity;
 
 /**
- * IndicatorGraph
+ * OrganisationStatus
  */
-class IndicatorGraph
+class OrganisationStatus
 {
     /**
      * @var string
      */
     private $label;
-    
+
     /**
      * @var string
      */
-    private $code;
+    private $description;
 
     /**
      * @var boolean
@@ -23,26 +23,16 @@ class IndicatorGraph
     private $enabled;
 
     /**
-     * @var boolean
-     */
-    private $deleted;
-
-    /**
      * @var integer
      */
-    private $indicatorGraphId;
+    private $organisationStatusId;
 
-
-    public function __construct()
-    {
-        $this->deleted = false;
-    }
 
     /**
      * Set label
      *
      * @param string $label
-     * @return IndicatorGraph
+     * @return OrganisationStatus
      */
     public function setLabel($label)
     {
@@ -62,33 +52,33 @@ class IndicatorGraph
     }
 
     /**
-     * Set code
+     * Set description
      *
-     * @param string $code
-     * @return IndicatorGraph
+     * @param string $description
+     * @return OrganisationStatus
      */
-    public function setCode($code)
+    public function setDescription($description)
     {
-        $this->code = $code;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get code
+     * Get description
      *
      * @return string
      */
-    public function getCode()
+    public function getDescription()
     {
-        return $this->code;
+        return $this->description;
     }
 
     /**
      * Set enabled
      *
      * @param boolean $enabled
-     * @return IndicatorGraph
+     * @return OrganisationStatus
      */
     public function setEnabled($enabled)
     {
@@ -108,35 +98,12 @@ class IndicatorGraph
     }
 
     /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return IndicatorGraph
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return boolean
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
-
-    /**
-     * Get indicatorGraphId
+     * Get organisationStatusId
      *
      * @return integer
      */
-    public function getIndicatorGraphId()
+    public function getOrganisationStatusId()
     {
-        return $this->indicatorGraphId;
+        return $this->organisationStatusId;
     }
 }

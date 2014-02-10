@@ -11,13 +11,73 @@
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
 
+    <many-to-one field="organisation" target-entity="Organisation">
+      <join-columns>
+        <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
+      </join-columns>
+    </many-to-one>
+
     <many-to-one field="referencialType" target-entity="ReferencialType">
       <join-columns>
         <join-column name="REFERENCIAL_TYPE_ID" referenced-column-name="REFERENCIAL_TYPE_ID"/>
       </join-columns>
     </many-to-one>
-    
-    <many-to-many field="organisationReferencials" target-entity="Organisation" inversed-by="referencials">
+
+    <many-to-one field="toGroupStakeholder" target-entity="GroupStakeholder">
+      <join-columns>
+        <join-column name="GROUP_STAKEHOLDER_TO_ID" referenced-column-name="GROUP_STAKEHOLDER_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-many field="category1" target-entity="Category1" inversed-by="referencialsCat1">
+      <join-table name="vj_referencial_category1">
+        <join-columns>
+          <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="CATEGORY1_ID" referenced-column-name="CATEGORY1_ID"/>
+        </inverse-join-columns>
+      </join-table>
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-many>
+
+    <many-to-many field="category2" target-entity="Category2" inversed-by="referencialsCat2">
+      <join-table name="vj_referencial_category2">
+        <join-columns>
+          <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="CATEGORY2_ID" referenced-column-name="CATEGORY2_ID"/>
+        </inverse-join-columns>
+      </join-table>
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-many>
+
+    <many-to-many field="category3" target-entity="Category3" inversed-by="referencialsCat3">
+      <join-table name="vj_referencial_category3">
+        <join-columns>
+          <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="CATEGORY3_ID" referenced-column-name="CATEGORY3_ID"/>
+        </inverse-join-columns>
+      </join-table>
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-many>
+
+    <many-to-one field="fromGroupStakeholder" target-entity="GroupStakeholder">
+      <join-columns>
+        <join-column name="GROUP_STAKEHOLDER_FROM_ID" referenced-column-name="GROUP_STAKEHOLDER_ID"/>
+      </join-columns>
+    </many-to-one>
+                
+    <!-- <many-to-many field="organisationReferencials" target-entity="Organisation" inversed-by="referencials">
       <join-table name="vj_organisatin_referencials">
         <join-columns>
           <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
@@ -30,9 +90,9 @@
       <cascade>
         <cascade-all />
       </cascade>
-    </many-to-many>
+    </many-to-many> -->
 
-    <!-- <many-to-many field="referencialIndicators" target-entity="Indicators" inversed-by="referencials">
+    <many-to-many field="indicators" target-entity="Indicators" inversed-by="referencials">
       <join-table name="v_indicator">
         <join-columns>
           <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
@@ -45,22 +105,7 @@
       <cascade>
         <cascade-all />
       </cascade>
-    </many-to-many> -->
-
-    <!-- <many-to-many field="repositoryCategories" target-entity="IndicatorLevel1" inversed-by="categories">
-      <join-table name="vj_repository_categories">
-        <join-columns>
-          <join-column name="REPOSITORY_ID" referenced-column-name="REPOSITORY_ID"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="INDICATOR_LEVEL1_ID" referenced-column-name="INDICATOR_LEVEL1_ID"/>
-        </inverse-join-columns>
-      </join-table>
-
-      <cascade>
-        <cascade-all />
-      </cascade>
-    </many-to-many> -->
+    </many-to-many>
 
   </entity>
 </doctrine-mapping>

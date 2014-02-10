@@ -1,6 +1,6 @@
 <?php
 
-namespace Srm\IndicatorBundle\Form\Type\Choice;
+namespace Srm\indicatorBundle\Form\Type\Choice;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ReferencialIndicatorsType extends AbstractType
+class OrganisationReferencialsType extends AbstractType
 {
     protected $request;
     protected $em;
@@ -17,6 +17,7 @@ class ReferencialIndicatorsType extends AbstractType
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
+        //$this->referencialType = $referencialType;
     }
 
     public function setRequest(Request $request = null)
@@ -31,15 +32,14 @@ class ReferencialIndicatorsType extends AbstractType
         }
 
         $organisation       = $this->request->get('organisation');
-        $referencialType    = $this->em->getRepository('Srm\CoreBundle\Entity\ReferencialType')->findNonDeleted($organisation);
-        $indicators         = $this->em->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByReferencialType($referencialType);
+        //$groupStakeholders  = $this->em->getRepository('Srm\CoreBundle\Entity\Organisation')->findNonDeletedByOrganisation($organisation);
 
         $resolver->setDefaults(array(
-            'class'    => 'Srm\CoreBundle\Entity\Indicators',
+            'class'    => 'Srm\CoreBundle\Entity\Organisation',
             'property' => 'label',
-            'label'    => 'referencials.list.ReferencialIndicators',
-            'choices'  => $indicators,
-            'multiple' => true,
+            'label'    => 'referencials.list.organisationReferencials',
+            'choices'  => $organisation,
+            'multiple' => false,
         ));
     }
 
@@ -50,6 +50,6 @@ class ReferencialIndicatorsType extends AbstractType
 
     public function getName()
     {
-        return 'srm_organisation_referencialIndicators';
+        return 'srm_organisation_organisationReferencials';
     }
 }

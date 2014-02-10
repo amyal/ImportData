@@ -37,9 +37,16 @@ class Category2
      */
     private $category1;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $referencialsCat2;
+
 
     public function __construct()
     {
+        $this->referencialsCat2 = new \Doctrine\Common\Collections\ArrayCollection();
+
         $this->deleted = false;
     }
 
@@ -166,6 +173,39 @@ class Category2
     public function getCategory1()
     {
         return $this->category1;
+    }
+
+    /**
+     * Add referencial
+     *
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     * @return Category2
+     */
+    public function addReferencial(Referencial $referencial)
+    {
+        $this->referencialsCat2[] = $referencial;
+
+        return $this;
+    }
+
+    /**
+     * Remove referencial
+     *
+     * @param \Srm\CoreBundle\Entity\Referencial $referencial
+     */
+    public function removeReferencial(Referencial $referencial)
+    {
+        $this->referencialsCat2->removeElement($referencial);
+    }
+
+    /**
+     * Get referencialsCat2
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReferencialsCat2()
+    {
+        return $this->referencialsCat2;
     }
 
 }
