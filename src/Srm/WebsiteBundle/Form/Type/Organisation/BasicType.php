@@ -38,9 +38,9 @@ class BasicType extends AbstractType
                 'required' => true,
                 'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
             ))
-            ->add('slogan1', 'text', array('label' => 'organisation.form.basic.slogan1'))
-            ->add('slogan2', 'text', array('label' => 'organisation.form.basic.slogan2'))
-            ->add('slogan3', 'text', array('label' => 'organisation.form.basic.slogan3'))
+            ->add('slogan1', 'text', array('label' => 'organisation.form.basic.slogan1','required' => false))
+            ->add('slogan2', 'text', array('label' => 'organisation.form.basic.slogan2','required' => false))
+            ->add('slogan3', 'text', array('label' => 'organisation.form.basic.slogan3','required' => false))
 
             ->add(
                 'picture', 'file', array(
