@@ -175,6 +175,7 @@ indicator.screenPeriod: "Période d'affihage"
 indicator.publicationDelay: "Délai de publication"
 indicator.publicationFrequency: "Fréquence de publication"
 indicator.enabled: "Actif"
+indicator.list.empty: "Aucun indicateur."
 
 
 monitoring.nav: "Monitoring"
