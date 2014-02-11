@@ -59,7 +59,7 @@
                                       
                                         <a href="dashboard.html#" class="dropdown-toggle" data-toggle="dropdown"> 
                                             <span>
-                                                {% if app.user.contact.image %}
+                                                {% if app.user.contact.picture %}
                                                     <img class="menu-avatar" src="{{ asset('uploads/documents/' ~ app.user.contact.lastname ~ '/' ~ app.user.contact.picture)}}"/> <span>{{ app.user.username }}<i class="icon-caret-down"></i></span>
 				                {% else %}
                                                     <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> <span>{{ app.user.username }}<i class="icon-caret-down"></i></span>
@@ -72,8 +72,8 @@
                                         <ul class="dropdown-menu">
                                             <li class="with-image">
                                                 <div class="avatar">
-                                                   {% if app.user.contact.image %}
-                                                        <img class="menu-avatar" src="{{ asset('uploads/documents/contact' ~ app.user.contact.lastname ~ '/' ~ app.user.contact.picture)}}"/> 
+                                                   {% if app.user.contact.picture %}
+                                                        <img class="menu-avatar" src="{{ asset('uploads/documents/' ~ app.user.contact.lastname ~ '/' ~ app.user.contact.picture)}}"/> 
                                                    {% else %}
                                                         <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> 
                                                    {% endif %}
@@ -97,10 +97,10 @@
                                                     <i class="icon-cog"></i> <span>{{ 'header.profile.settings'|trans }} </span>
                                                 </a>
                                             </li>
-                                            <li><a href="#">
+                                           <!-- <li><a href="#">
                                                     <i class="icon-envelope"></i> <span>{{ 'header.profile.message'|trans }} </span>
                                                 </a>
-                                            </li>
+                                            </li>-->
                                             <li><a href="{{ path('fos_user_security_logout') }}">
                                                     <i class="icon-off"></i> <span>{{ 'header.profile.logout'|trans }} </span>
                                                 </a>
