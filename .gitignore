@@ -7,5 +7,6 @@
 /web/css/
 /web/img/
 /web/js/
+/web/uploads/
 composer.lock
 sybinit.err
