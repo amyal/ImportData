@@ -22,15 +22,13 @@ class LegalType extends AbstractType
             ->add('activity',         'text' ,array('label' => 'organisation.form.legal.activity'))
             ->add('apeCode',          'text' ,array('label' => 'organisation.form.legal.activity_code'))
             ->add('category',         'text', array('label' => 'organisation.form.legal.category'))
-            ->add('registrationDate', 'date', array(
-            										'label'  => 'organisation.form.legal.registration_date',
-            										'widget' => 'single_text',
-													'format' => 'dd/MM/y',
-													'input'  => 'datetime',
-													'attr'   => array('class' => 'datepicker fill-up'),
-            									))
-			->add('siretNumber',       'text' ,array('label' => 'organisation.form.legal.siretNumber'))
-            ->add('nationality',       'text' ,array('label' => 'organisation.form.legal.nationality'))
+            ->add('registrationDate', 'date', array('label'  => 'organisation.form.legal.registration_date',
+                                                    'widget' => 'single_text',
+						    'format' => 'dd/MM/y',
+						    'input'  => 'datetime',
+						    'attr'   => array('class' => 'datepicker fill-up'),	))
+            ->add('siretNumber',      'text' ,array('label' => 'organisation.form.legal.siretNumber'))
+            ->add('nationality',      'text' ,array('label' => 'organisation.form.legal.nationality'))
 
             ->add('save', 'submit', array('label' => 'button.save')
             )
