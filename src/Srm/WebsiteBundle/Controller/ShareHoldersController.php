@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Srm\CoreBundle\Entity\Shareholder;
 use Srm\CoreBundle\Entity\Organisation;
-use Srm\CoreBundle\Entity\Stakeholder;
+use Srm\CoreBundle\Entity\Contact;
 use Srm\UserBundle\Entity\User;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
@@ -45,9 +45,9 @@ class ShareHoldersController extends Controller
            throw new AccessDeniedHttpException('Accès interdit');
           }
          
-        $shareHolder->setDeleted(true);
+        $shareholder->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
-        $em->persist($shareHolder);
+        $em->persist($shareholder);
         $em->flush();
 
         return $this->redirect($this->generateUrl('srm_website_shareholders_list', array(
@@ -55,18 +55,18 @@ class ShareHoldersController extends Controller
         )));
     }
 
-    public function formAction(Organisation $organisation, Shareholder $shareholder)
+    public function formAction(Organisation $organisation, Shareholder $shareholder, $type = "",Contact $contact)
     {
         if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
            throw new AccessDeniedHttpException('Accès interdit');
           }
          
-        $request = $this->getRequest();//récupérer les ids de partie prenante et la nouvelle organisation 
+        $request = $this->getRequest();//récupérer les ids des actionnaires 
         $shareholderId = $request->query->get('shareholderId'); 
         
         $formActionRoute = 'srm_website_shareholders_add';
-        $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(), 'shareholderId' => $shareholderId);
+        $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(),'type'=>$type, 'shareholderId' => $shareholderId);
         $FormEdit=$shareholder->getShareholderId() ; //  if the variable equal Null -> add else edition 
 
         if (null !== $shareholderId = $shareholder->getShareholderId()) {
@@ -93,7 +93,9 @@ class ShareHoldersController extends Controller
                 'form'           => $form->createView(),
             ));
         }
-
+        $contact = $shareholder->getContact();
+        $contact->setOrganisation($organisation);
+        $contact->setShareholder(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($shareholder);
         $em->flush();
