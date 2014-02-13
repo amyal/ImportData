@@ -78,7 +78,9 @@
 	                                    {{ form_label(form.picture) }}
 	                                    <div class="controls">{{ form_widget(form.picture) }}</div>
 	                                </div>
-	                                
+	                                 </div>
+            </div>
+                    
 				            {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
 				                save_form: form.save,
 				                url_cancel: path('srm_website_organisation_show', {'identificationCode': identificationCode})
@@ -92,5 +94,5 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 {% endblock %}
