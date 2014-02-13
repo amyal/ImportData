@@ -52,7 +52,7 @@ departments.list.empty: "Aucun département pour le moment."
 departments.list.name: "Nom"
 departments.list.sub_departments: "Sous-département(s)"
 departments.list.sites: "Site(s)"
-departments.list.contacts: "Contact(s)"
+departments.list.users: "Contact(s)"
 department.label: "Nom du département"
 department.enabled: "Ouvert"
 
