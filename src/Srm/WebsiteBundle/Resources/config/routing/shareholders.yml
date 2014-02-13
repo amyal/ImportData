@@ -5,7 +5,7 @@ srm_website_shareholders_list:
         _controller:    "SrmWebsiteBundle:ShareHolders:list"
 
 srm_website_shareholders_add:
-    path:       /organisations/{organisationId}/shareholders/add
+    path:       /organisations/{organisationId}/shareholders/{type}/add
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmWebsiteBundle:ShareHolders:form"
