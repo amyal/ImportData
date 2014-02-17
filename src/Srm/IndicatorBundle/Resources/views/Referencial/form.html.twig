@@ -9,10 +9,10 @@
                     getIndicators($(this), 'referencialType', '');
                 });
 
-                $('#srm_referencial_category2').hide();
-                $('[for=srm_referencial_category2]').hide();
-                $('#srm_referencial_category3').hide();
-                $('[for=srm_referencial_category3]').hide();
+                $('#srm_referencial_categories2').hide();
+                $('[for=srm_referencial_categories2]').hide();
+                $('#srm_referencial_categories3').hide();
+                $('[for=srm_referencial_categories3]').hide();
                 
                 $('#srm_referencial_toGroupStakeholder').on('change', function() {
                     if ($('#srm_referencial_toGroupStakeholder').val() == ''){
@@ -25,27 +25,27 @@
                     }
                 }).trigger('change');
 
-                $('#srm_referencial_category1').on('change', function() {
+                $('#srm_referencial_categories1').on('change', function() {
                     
-                    $('#srm_referencial_category2 option').remove();
+                    $('#srm_referencial_categories2 option').remove();
                     $.ajax({
                         url: "{{ path('category2_by_category1', {'organisationId': organisationId}) }}",
                         type: "GET",
                         data: "category1_ids="+$(this).val(),
                         success: function(data){
                             if (data != ''){
-                                $('#srm_referencial_category2').show();
-                                $('[for=srm_referencial_category2]').show();
-                                $('#srm_referencial_category2').append(data);
+                                $('#srm_referencial_categories2').show();
+                                $('[for=srm_referencial_categories2]').show();
+                                $('#srm_referencial_categories2').append(data);
                             }
                         }
                     });
                     getIndicators($(this), 'category1', $('#srm_referencial_referencialType').val());
                 }).trigger('change');
 
-                $('#srm_referencial_category2').on('change', function() {
+                $('#srm_referencial_categories2').on('change', function() {
                     
-                    $('#srm_referencial_category3 option').remove();
+                    $('#srm_referencial_categories3 option').remove();
                     $.ajax({
                         url: "{{ path('category3_by_category2', {'organisationId': organisationId}) }}",
                         type: "GET",
@@ -142,18 +142,18 @@
                                 </div>  
 
                                 <div class="control-group">
-                                    {{ form_label(form.category1) }}
-                                    <div class="controls">{{ form_widget(form.category1) }}</div>
+                                    {{ form_label(form.categories1) }}
+                                    <div class="controls">{{ form_widget(form.categories1) }}</div>
                                 </div>  
 
                                 <div class="control-group">
-                                    {{ form_label(form.category2) }}
-                                    <div class="controls">{{ form_widget(form.category2) }}</div>
+                                    {{ form_label(form.categories2) }}
+                                    <div class="controls">{{ form_widget(form.categories2) }}</div>
                                 </div>  
 
                                 <div class="control-group">
-                                    {{ form_label(form.category3) }}
-                                    <div class="controls">{{ form_widget(form.category3) }}</div>
+                                    {{ form_label(form.categories3) }}
+                                    <div class="controls">{{ form_widget(form.categories3) }}</div>
                                 </div>  
 
                                 <div class="control-group">

@@ -91,14 +91,14 @@ class ReferencialsController extends Controller
             $indicator = new Indicator();
             $indicator->setDeleted(false);
 
-            foreach ($referencial->getIndicators() as $indicators) {
+         /*   foreach ($referencial->getIndicators() as $indicators) {
                 echo "<pre>"; 
                 \Doctrine\Common\Util\Debug::dump($indicators->getReferencials()->getReferencialIndicators(), 2); 
                 exit;
                 $indicators->getReferencials()->getIndicator()->setDeleted($indicators->getDeleted());
-            }
+            } */
         }
-
+        $referencial->setOrganisation($organisation);
         $em = $this->getDoctrine()->getManager();
         $em->persist($referencial);
         $em->flush();
