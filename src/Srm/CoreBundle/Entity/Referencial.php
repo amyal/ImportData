@@ -74,19 +74,19 @@ class Referencial
     private $fromGroupStakeholder;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Category1
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $category1;
+    private $categories1;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Category2
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $category2;
+    private $categories2;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Category3
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $category3;
+    private $categories3;
 
     /**
      * @var \Srm\CoreBundle\Entity\Indicators
@@ -382,75 +382,117 @@ class Referencial
     {
         return $this->fromGroupStakeholder;
     }
-
+   
     /**
-     * Set category1
+     * Add category1
      *
      * @param \Srm\CoreBundle\Entity\Category1 $category1
-     * @return Indicator
+     * @return Referencial
      */
-    public function setCategory1(Category1 $category1 = null)
+    public function addCategories1(Category1 $category1)
     {
-        $this->category1 = $category1;
+        $category1->addReferencial($this);
+        $this->categories1[] = $category1;
 
         return $this;
     }
 
     /**
-     * Get category1
+     * Remove category1
      *
-     * @return \Srm\CoreBundle\Entity\Category1
+     * @param \Srm\CoreBundle\Entity\Category1 $category1
      */
-    public function getCategory1()
+    public function removeCategories1(Category1 $category1)
     {
-        return $this->category1;
+        $category1->removeReferencial($this);
+        $this->categories1->removeElement($category1);
     }
 
     /**
-     * Set category2
+     * Get categories1
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories1()
+    {
+        return $this->categories1;
+    }
+
+    
+    /**
+     * Add category2
      *
      * @param \Srm\CoreBundle\Entity\Category2 $category2
-     * @return Indicator
+     * @return Referencial
      */
-    public function setCategory2(Category2 $category2 = null)
+    public function addCategories2(Category2 $category2)
     {
-        $this->category2 = $category2;
+        $category2->addReferencial($this);
+        $this->categories2[] = $category2;
 
         return $this;
     }
 
     /**
-     * Get category2
+     * Remove category2
      *
-     * @return \Srm\CoreBundle\Entity\Category2
+     * @param \Srm\CoreBundle\Entity\Category2 $category2
      */
-    public function getCategory2()
+    public function removeCategories2(Category2 $category2)
     {
-        return $this->category2;
+        $category2->removeReferencial($this);
+        $this->categories2->removeElement($category2);
     }
 
     /**
-     * Set category3
+     * Get categories2
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories2()
+    {
+        return $this->categories2;
+    }
+
+  
+    
+   /**
+     * Add category3
      *
      * @param \Srm\CoreBundle\Entity\Category3 $category3
-     * @return Indicator
+     * @return Referencial
      */
-    public function setCategory3(Category3 $category3 = null)
+    public function addCategories3(Category3 $category3)
     {
-        $this->category3 = $category3;
+        $category3->addReferencial($this);
+        $this->categories3[] = $category3;
 
         return $this;
     }
 
     /**
-     * Get category3
+     * Remove category3
      *
-     * @return \Srm\CoreBundle\Entity\Category3
+     * @param \Srm\CoreBundle\Entity\Category3 $category3
      */
-    public function getCategory3()
+    public function removeCategories3(Category3 $category3)
     {
-        return $this->category3;
+        $category3->removeReferencial($this);
+        $this->categories3->removeElement($category3);
     }
+
+    /**
+     * Get categories3
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories3()
+    {
+        return $this->categories3;
+    }
+
+      
+    
 
     /**
      * Set organisation
