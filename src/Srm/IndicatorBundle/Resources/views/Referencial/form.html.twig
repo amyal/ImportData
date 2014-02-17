@@ -7,7 +7,7 @@
 
                 $('#srm_referencial_referencialType').on('change', function() {
                     getIndicators($(this), 'referencialType', '');
-                }).trigger('change');
+                });
 
                 $('#srm_referencial_category2').hide();
                 $('[for=srm_referencial_category2]').hide();
@@ -39,9 +39,9 @@
                                 $('#srm_referencial_category2').append(data);
                             }
                         }
-                    }).trigger('select');
+                    });
                     getIndicators($(this), 'category1', $('#srm_referencial_referencialType').val());
-                });
+                }).trigger('change');
 
                 $('#srm_referencial_category2').on('change', function() {
                     
@@ -57,22 +57,22 @@
                                 $('#srm_referencial_category3').append(data);
                             }  
                         }
-                    }).trigger('change');
+                    });
                     getIndicators($(this), 'category2', $('#srm_referencial_referencialType').val());
-                });
+                }).trigger('change');
 
                 $('#srm_referencial_category3').on('change', function() {
                     getIndicators($(this), 'category3', $('#srm_referencial_referencialType').val());
                 }).trigger('change');
 
                 function getIndicators(element, elementType, referencialTypeId){
-                    $('#srm_referencial_referencialIndicators_indicators option').remove();
+                    $('#srm_referencial_indicators option').remove();
                     $.ajax({
                         url: "{{ path('indicators_by_categories', {'organisationId': organisationId}) }}",
                         type: "GET",
                         data: "elements_id="+$(element).val()+"&elementType="+elementType+"&referencialType="+referencialTypeId,
                         success: function(data){
-                            $('#srm_referencial_referencialIndicators_indicators').append(data);
+                            $('#srm_referencial_indicators').append(data);
                         }
                     });
                 }

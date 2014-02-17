@@ -9,6 +9,7 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+    
     <many-to-one field="organisation" target-entity="Organisation">
       <join-columns>
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
@@ -23,7 +24,7 @@
 
     <many-to-many field="stakeholders" target-entity="Stakeholder" mapped-by="groupStakeholders"/>
 
-    <many-to-many field="stakeholderArchetypes" target-entity="StakeholderArchetype" inversed-by="archetypes">
+    <many-to-many field="stakeholderArchetypes" target-entity="StakeholderArchetype" inversed-by="stakeholderArchetypes">
       <join-table name="vj_stakeholder_group_archetype">
         <join-columns>
           <join-column name="GROUP_STAKEHOLDER_ID" referenced-column-name="GROUP_STAKEHOLDER_ID"/>
