@@ -266,7 +266,7 @@ class Referencial
     /**
      * Get 
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Srm\CoreBundle\Entity\Indicators
      */
     public function getReferencialIndicators()
     {
@@ -508,6 +508,7 @@ class Referencial
     {
         return $this->indicator;
     }
+    
     public function updateModificationDate()
     {
         $this->modificationDate = new \DateTime();

@@ -8,9 +8,10 @@ use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Indicator;
 use Srm\CoreBundle\Entity\Referencial;
 
+
 use Symfony\Component\HttpFoundation\Response;
 
-class IndicatorController extends Controller
+class DataController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
@@ -65,15 +66,7 @@ class IndicatorController extends Controller
                 'form'           => $form->createView(),
             ));
         }
-        /*if ('GET' === $request->getMethod() && $indicator->getIndicatorId() == 2) {
-            return $this->render('SrmIndicatorBundle:Indicator:form2.html.twig', array(
-                'organisationId' => $organisation->getOrganisationId(),
-                'referencialId' => $referencial->getReferencialId(),
-                'indicatorId' => $indicator->getIndicatorId(),
-                'form'           => $form->createView(),
-            ));
-        }*/
-        
+
         if (false === $form->handleRequest($request)->isValid()) {
             return $this->render('SrmIndicatorBundle:Indicator:form.html.twig', array(
                 'organisationId' => $organisation->getOrganisationId(),
@@ -87,44 +80,7 @@ class IndicatorController extends Controller
 
         return $this->redirect($this->generateUrl('srm_indicator_indicator_list', array(
             'organisationId' => $organisation->getOrganisationId(),
-            //'referencialId' => $referencial->getReferencialId(),
-            //'indicatorId' => $indicator->getIndicatorId(),
         )));
-    }
-
-    
-    public function indicatorsByCategoriesAction()
-    {
-        $elementIds         = $this->getRequest()->query->get('elements_id');
-        $elementType        = $this->getRequest()->query->get('elementType');
-        $referencialTypeId  = $this->getRequest()->query->get('referencialType');
-
-        if ($elementIds != 'null') {
-            if ($elementType == 'referencialType')
-                $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByReferencialType($elementIds);
-            elseif ($elementType == 'category1')
-                $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByCategories($elementIds, 1, $referencialTypeId);
-            elseif ($elementType == 'category2')
-                $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByCategories($elementIds, 2, $referencialTypeId);
-            elseif ($elementType == 'category3')
-                $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByCategories($elementIds, 3, $referencialTypeId);
-        }
-        else {
-            if ($referencialTypeId != 'null')
-                $indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findNonDeletedByReferencialType($referencialTypeId);
-            else
-                $indicators = array();
-                //$indicators = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicators')->findAll();
-        }
-
-        $html = '';
-        foreach($indicators as $indicator) {
-            if ($indicator->getIndicatorsId() == '')
-                $html .= '<option value=\"-1\">Aucune réponse</option>';
-            $html = $html . sprintf("<option value=\"%d\">%s</option>", $indicator->getIndicatorsId(), $indicator->getLabel());
-        }
-
-        return new Response($html);
     }
 
 }
