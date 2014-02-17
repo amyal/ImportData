@@ -44,7 +44,7 @@ class ReferencialType extends AbstractType
             
             //->add('organisationReferencials', 'srm_organisation_organisationReferencials', array('required' => true))
 
-            ->add('category1', 'entity', array(
+            ->add('categories1', 'entity', array(
                 'class'    => 'Srm\CoreBundle\Entity\Category1',
                 'property' => 'label',
                 'label'    => 'referencials.list.category1',
@@ -52,7 +52,7 @@ class ReferencialType extends AbstractType
                 'multiple' => true
             ))
 
-            ->add('category2', 'entity', array(
+            ->add('categories2', 'entity', array(
                 'class'    => 'Srm\CoreBundle\Entity\Category2',
                 'property' => 'label',
                 'label'    => 'referencials.list.category2',
@@ -60,7 +60,7 @@ class ReferencialType extends AbstractType
                 'multiple' => true
             ))
 
-            ->add('category3', 'entity', array(
+            ->add('categories3', 'entity', array(
                 'class'    => 'Srm\CoreBundle\Entity\Category3',
                 'property' => 'label',
                 'label'    => 'referencials.list.category3',

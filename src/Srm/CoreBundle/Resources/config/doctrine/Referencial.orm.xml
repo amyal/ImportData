@@ -29,7 +29,7 @@
       </join-columns>
     </many-to-one>
 
-    <many-to-many field="category1" target-entity="Category1" inversed-by="referencialsCat1">
+    <many-to-many field="categories1" target-entity="Category1" inversed-by="referencialsCat1">
       <join-table name="vj_referencial_category1">
         <join-columns>
           <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
@@ -43,7 +43,7 @@
       </cascade>
     </many-to-many>
 
-    <many-to-many field="category2" target-entity="Category2" inversed-by="referencialsCat2">
+    <many-to-many field="categories2" target-entity="Category2" inversed-by="referencialsCat2">
       <join-table name="vj_referencial_category2">
         <join-columns>
           <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
@@ -57,7 +57,7 @@
       </cascade>
     </many-to-many>
 
-    <many-to-many field="category3" target-entity="Category3" inversed-by="referencialsCat3">
+    <many-to-many field="categories3" target-entity="Category3" inversed-by="referencialsCat3">
       <join-table name="vj_referencial_category3">
         <join-columns>
           <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>

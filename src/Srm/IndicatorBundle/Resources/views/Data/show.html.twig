@@ -1,7 +1,7 @@
 {% extends '::layout.html.twig' %}
 
 {% block main_container_header %}
-    <i class="icon-circle-blank"></i> {{ 'referencials.list.title'|trans }}
+    <i class="icon-circle-blank"></i> {{ 'datas.list.title'|trans }}
 {% endblock %}
 
 {% block breadcrumb %}
@@ -10,7 +10,7 @@
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
     <div class="breadcrumb-button">
-        <span class="breadcrumb-label">{{ 'referencials.list.title'|trans }}</span>
+        <span class="breadcrumb-label">{{ 'datas.list.title'|trans }}</span>
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
 {% endblock %}
@@ -21,42 +21,27 @@
             <div class="span10 offset1">
                 <div class="box">
                     <div class="box-header">
-                        <span class="title">  {{ referencial.label }} </span>
+                        <span class="title">  {{ data.label }} </span>
                     </div>
                     <div class="box-content padded">
                         <div class="padded-box">
                             <div class="control-group">
-                                <label class="control-label">{{ 'referencial.referencialType'|trans }} :</label>
-                                <div class="controls">{{ referencial.referencialType.label }}</div>
+                                <label class="control-label">{{ 'data.label'|trans }} :</label>
+                                <div class="controls">{{ data.label }}</div>
                             </div>
-                        </div>
-                        <div class="padded-box">
+                            
                             <div class="control-group">
-                                <label class="control-label">{{ 'referencial.label'|trans }} :</label>
-                                <div class="controls">{{ referencial.label }}</div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">{{ 'referencial.description'|trans }} :</label>
-                                <div class="controls">{{ referencial.description }}</div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">{{ 'referencials.list.categories'|trans }}  : </label>
+                                <label class="control-label">{{ 'datas.list.organisationReferencials'|trans }}  : </label>
                                 <div class="controls">
-                                    {#% if referencial.referencialCategories %}{{ referencial.referencialCategories|joinLabels(', ') }}{% else %}{{ 'list.no_referencialCategories'|trans }}{% endif %#}
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">{{ 'referencials.list.organisationReferencials'|trans }}  : </label>
-                                <div class="controls">
-                                    {% if referencial.organisationReferencials %}{{ referencial.organisationReferencials|joinLabels(', ') }}{% else %}{{ 'list.no_organisationReferencials'|trans }}{% endif %}
+                                    {% if data.organisationReferencials %}{{ data.organisationReferencials|joinLabels(', ') }}{% else %}{{ 'list.no_organisationReferencials'|trans }}{% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
-                        url_edit:   path('srm_indicator_referencial_edit',  {'organisationId': organisationId, 'referencialId': referencial.referencialId}),
-                        url_cancel: path('srm_indicator_referencial_list', {'organisationId': organisationId})
+                        url_edit:   path('srm_indicator_data_edit',  {'organisationId': organisationId, 'dataId': data.dataId}),
+                        url_cancel: path('srm_indicator_data_list', {'organisationId': organisationId})
                     }, with_context = false) }}
                 </div>
             </div>
