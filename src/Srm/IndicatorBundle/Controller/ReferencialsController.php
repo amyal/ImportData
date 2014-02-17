@@ -58,6 +58,7 @@ class ReferencialsController extends Controller
         ));
 
         $request = $this->getRequest();
+        $org_clt = $request->query->get('org_clt');
 
         if ('GET' === $request->getMethod()) {
             return $this->render('SrmIndicatorBundle:Referencial:form.html.twig', array(
@@ -73,6 +74,8 @@ class ReferencialsController extends Controller
                 'form'           => $form->createView(),
             ));
         } else {
+            $referencial->setOrganisation($this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Organisation')->find($org_clt));
+            
             // Un référentiel peut soit être interne (getToGroupStakeholder == Interne) 
             // soit peut être ouvert à un groupe de partie prenante pour saisie de données 
             // (getToGroupStakeholder != Interne) donc, setToGroupStakeholder = null
@@ -88,17 +91,17 @@ class ReferencialsController extends Controller
                 }
             }
 
-            $indicator = new Indicator();
+            /*$indicator = new Indicator();
             $indicator->setDeleted(false);
 
-         /*   foreach ($referencial->getIndicators() as $indicators) {
+            foreach ($referencial->getIndicators() as $indicators) {
                 echo "<pre>"; 
                 \Doctrine\Common\Util\Debug::dump($indicators->getReferencials()->getReferencialIndicators(), 2); 
                 exit;
                 $indicators->getReferencials()->getIndicator()->setDeleted($indicators->getDeleted());
-            } */
+            }*/
         }
-        $referencial->setOrganisation($organisation);
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($referencial);
         $em->flush();

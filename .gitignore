@@ -11,3 +11,5 @@
 composer.lock
 sybinit.err
 /nbproject/private/
+.editorconfig
+composer.phar

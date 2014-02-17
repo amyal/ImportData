@@ -13,7 +13,7 @@
         {% block stylesheets %}{% endblock %}
 
         <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/application.js') }}"></script>
-        <!--<script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/graphs.js') }}"></script>-->
+        <!-- <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/graphs.js') }}"></script> -->
         <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/highcharts.js') }}"></script>
         {% block javascripts %}{% endblock %}
 
@@ -286,14 +286,14 @@
                             </li>
                             <li class="">
                                 <a  {% if organisation is defined %}
-                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisation.organisationId, 'referencialTypeId': 1 }) }}"
+                                        href="{{ path('srm_indicator_data_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
-                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisationId, 'referencialTypeId': 1 }) }}"
+                                        href="{{ path('srm_indicator_data_list', { 'organisationId': organisationId }) }}"
                                     {% endif %}>
                                     <i class="icon-list-alt"></i> {{ 'data.nav.saisie'|trans }}
                                 </a>
                             </li>
-                            <li class="">
+                            {# <li class="">
                                 <a href="#">
                                     <i class="icon-paper-clip"></i> {{ 'data.nav.doc'|trans }}
                                 </a>
@@ -307,7 +307,7 @@
                                 <a href="#">
                                     <i class="icon-edit"></i> {{ 'data.nav.edit'|trans }}
                                 </a>
-                            </li>
+                            </li> #}
                         </ul>
                     </li> 
                     {% endif %} 
