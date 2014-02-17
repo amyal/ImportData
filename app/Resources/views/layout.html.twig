@@ -348,14 +348,14 @@
                 </li>
              {% endif %} 
         {% if is_granted('ROLE_SU') %}     
-                <li class="dark-nav ">
+                <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_groupStakeholders_list','srm_website_groupStakeholders_add','srm_website_groupStakeholders_show','srm_website_groupStakeholders_edit'],'srm_website_contacts_list','srm_website_contacts_add','srm_website_contact_show','srm_website_user_edit' %}active{% endif %}">
                     <span class="glow"></span>
                     <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown7">
                         <i class="icon-exchange icon-2x"></i>
                         <span>{{ 'stakeholder.nav'|trans }} <i class="icon-caret-down"></i></span>
                     </a>
-                    <ul id="dropdown7" class="collapse ">
-                        <li class="">
+                    <ul id="dropdown7" class="collapse {% if app.request.attributes.get('_route') in ['srm_website_groupStakeholders_list','srm_website_groupStakeholders_add','srm_website_groupStakeholders_show','srm_website_groupStakeholders_edit'] %}active{% endif %}">
+                        <li class="{% if app.request.attributes.get('_route') in ['srm_website_groupStakeholders_list','srm_website_groupStakeholders_add','srm_website_groupStakeholders_show','srm_website_groupStakeholders_edit'] %}active{% endif %}">
                             <a {% if organisation is defined %}
                                     href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': organisation.organisationId }) }}"
                                 {% elseif organisationId is defined %}
@@ -366,7 +366,7 @@
                                 <i class="icon-briefcase"></i> {{ 'stakeholder.nav.group'|trans }}
                             </a>
                         </li>
-                        <li class="">
+                                     <li class="{% if app.request.attributes.get('_route') in ['srm_website_groupStakeholders_list','srm_website_groupStakeholders_add','srm_website_groupStakeholders_show','srm_website_groupStakeholders_edit'] %}active{% endif %}">
                             <a {% if organisation is defined %}
                                     href="{{ path('srm_website_stakeholders_list', { 'organisationId': organisation.organisationId }) }}"
                                 {% elseif organisationId is defined %}
