@@ -51,7 +51,7 @@ class ReferencialType extends AbstractType
                 'required' => true,
                 'multiple' => true
             ))
-
+                
             ->add('categories2', 'entity', array(
                 'class'    => 'Srm\CoreBundle\Entity\Category2',
                 'property' => 'label',
