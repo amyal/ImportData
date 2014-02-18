@@ -52,16 +52,16 @@
                         data: "category2_ids="+$(this).val(),
                         success: function(data){
                             if (data != ''){
-                                $('#srm_referencial_category3').show();
-                                $('[for=srm_referencial_category3]').show();
-                                $('#srm_referencial_category3').append(data);
+                                $('#srm_referencial_categories3').show();
+                                $('[for=srm_referencial_categories3]').show();
+                                $('#srm_referencial_categories3').append(data);
                             }  
                         }
                     });
                     getIndicators($(this), 'category2', $('#srm_referencial_referencialType').val());
                 }).trigger('change');
 
-                $('#srm_referencial_category3').on('change', function() {
+                $('#srm_referencial_categories3').on('change', function() {
                     getIndicators($(this), 'category3', $('#srm_referencial_referencialType').val());
                 }).trigger('change');
 
