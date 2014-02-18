@@ -348,8 +348,8 @@
                 </li>
              {% endif %} 
         {% if is_granted('ROLE_SU') %}     
-                <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_groupStakeholders_list','srm_website_groupStakeholders_add','srm_website_groupStakeholders_show','srm_website_groupStakeholders_edit'],'srm_website_contacts_list','srm_website_contacts_add','srm_website_contact_show','srm_website_user_edit' %}active{% endif %}">
-                    <span class="glow"></span>
+                <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_groupStakeholders_list','srm_website_groupStakeholders_add','srm_website_groupStakeholders_show','srm_website_groupStakeholders_edit','srm_website_contacts_list','srm_website_contacts_add','srm_website_contact_show','srm_website_user_edit'] %}active{% endif %}">
+                        <span class="glow"></span>
                     <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown7">
                         <i class="icon-exchange icon-2x"></i>
                         <span>{{ 'stakeholder.nav'|trans }} <i class="icon-caret-down"></i></span>
