@@ -85,7 +85,7 @@ class Indicator
     private $publicationDelay;
 
     /**
-     * @var \Srm\CoreBundle\Entity\Indicator
+     * @var \Srm\CoreBundle\Entity\Indicators
      */
     private $indicators;
 
@@ -98,7 +98,7 @@ class Indicator
      * Constructor
      */
     public function __construct()
-    {
+    { 
         $this->deleted = false;
     }
 
