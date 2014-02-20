@@ -1,4 +1,23 @@
 {% extends '::layout.html.twig' %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#srm_stakeholder_stakeholderGroup').on('change', function() {
+                    $('#srm_stakeholder_archetypes option').remove();
+                    $.ajax({
+                        url: "{{ path('archetypes_by_types', {'organisationId': organisationId}) }}",
+                        type: "GET",
+                        data: "type_id="+$(this).val(),
+                        success: function(data){
+                            $('#srm_stakeholder_archetypes').append(data);
+                        }
+                    });
+                }).trigger('change');
+            });   
+        </script>
+{% endblock %}
 
 {% block main_container_header %}
     <i class="icon-circle-blank"></i> {{ 'stakeholders.list.title'|trans }}
@@ -74,9 +93,13 @@
                                     <div class="controls">{{ form_widget(form.address.country, {'attr': {'class': 'chzn-select'}}) }}</div>
                                 </div>
                                 <div class="control-group">
-                                    {{ form_label(form.groupStakeholders) }}
-                                    <div class="controls">{{ form_widget(form.groupStakeholders, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                    {{ form_label(form.stakeholderGroup) }}
+                                    <div class="controls">{{ form_widget(form.stakeholderGroup, {'attr': {'class': 'chzn-select select2'}}) }}</div>
                                 </div>
+                                <div class="control-group">
+                                    {{ form_label(form.archetypes) }}
+                                    <div class="controls">{{ form_widget(form.archetypes, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div>  
                                 <div class="control-group">
                                     {{ form_label(form.importance) }}
                                     <div class="controls">{{ form_widget(form.importance) }}</div>
