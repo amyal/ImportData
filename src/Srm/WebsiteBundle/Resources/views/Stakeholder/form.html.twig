@@ -34,8 +34,44 @@
                                     <div class="controls">{{ form_widget(form.label) }}</div>
                                 </div>
                                 <div class="control-group">
+                                    {{ form_label(form.siretNumber) }}
+                                    <div class="controls">{{ form_widget(form.siretNumber) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.lastname) }}
+                                    <div class="controls">{{ form_widget(form.lastname) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.firstname) }}
+                                    <div class="controls">{{ form_widget(form.firstname) }}</div>
+                                </div>
+                                <div class="control-group">
                                     {{ form_label(form.email) }}
                                     <div class="controls">{{ form_widget(form.email) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.phone) }}
+                                    <div class="controls">{{ form_widget(form.phone) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.fax) }}
+                                    <div class="controls">{{ form_widget(form.fax) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.label) }}
+                                    <div class="controls">{{ form_widget(form.address.label) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.zip) }}
+                                    <div class="controls">{{ form_widget(form.address.zip) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.city) }}
+                                    <div class="controls">{{ form_widget(form.address.city) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.address.country) }}
+                                    <div class="controls">{{ form_widget(form.address.country, {'attr': {'class': 'chzn-select'}}) }}</div>
                                 </div>
                                 <div class="control-group">
                                     {{ form_label(form.groupStakeholders) }}
@@ -52,22 +88,6 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    {{ form_label(form.address.label) }}
-                                    <div class="controls">{{ form_widget(form.address.label) }}</div>
-                                </div>
-                                <div class="control-group">
-                                    {{ form_label(form.address.zip.code) }}
-                                    <div class="controls">{{ form_widget(form.address.zip.code) }}</div>
-                                </div>
-                                <div class="control-group">
-                                    {{ form_label(form.address.zip.city) }}
-                                    <div class="controls">{{ form_widget(form.address.zip.city, {'attr': {'class': 'chzn-select'}}) }}</div>
-                                </div>
-                                <div class="control-group">
-                                    {{ form_label(form.address.zip.country) }}
-                                    <div class="controls">{{ form_widget(form.address.zip.country, {'attr': {'class': 'chzn-select'}}) }}</div>
-                                </div>
-                                <div class="control-group">
                                     {{ form_label(form.subsidiary) }}
                                     <div class="controls">{{ form_widget(form.subsidiary) }}</div>
                                 </div>
@@ -79,18 +99,7 @@
                                     {{ form_label(form.turnovers) }}
                                     <div class="controls">{{ form_widget(form.turnovers) }}</div>
                                 </div>
-                                <div class="control-group">
-                                    {{ form_label(form.identificationNumber) }}
-                                    <div class="controls">{{ form_widget(form.identificationNumber) }}</div>
-                                </div>
-                                <div class="control-group">
-                                    {{ form_label(form.phone) }}
-                                    <div class="controls">{{ form_widget(form.phone) }}</div>
-                                </div>
-                                <div class="control-group">
-                                    {{ form_label(form.fax) }}
-                                    <div class="controls">{{ form_widget(form.fax) }}</div>
-                                </div>
+                                
                                 <div class="control-group">
                                     <label class="control-label" for="srm_stakeholder_enabled">{{ form.enabled.vars.label|trans }}</label>
                                     <div class="controls">

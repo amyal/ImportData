@@ -25,7 +25,8 @@
                         <table class="table table-normal">
                             <thead>
                                 <tr><td>{{ 'indicators.list.name'|trans }}</td>
-                                    <td>{{ 'indicators.list.referencialType'|trans }}</td>
+                                    <td>{{ 'indicators.list.referencial'|trans }}</td>
+                                    <td>{{ 'indicators.list.diffusion'|trans }}</td>
                                     <td>{{ 'list.enabled'|trans }}</td>
                                     <td style="width:115px"></td>
                                 </tr>
@@ -35,6 +36,13 @@
                                     <tr>
                                         <td>{{ indicators.label }}</td>
                                         <td>{{ indicators.referencials.label }}</td>
+                                        <td>
+                                            {% if indicators.referencials.toGroupStakeholder %}
+                                                {{ indicators.referencials.toGroupStakeholder.label }}
+                                            {% else %}
+                                                {{ indicators.referencials.fromGroupStakeholder.label }}
+                                            {% endif %}
+                                        </td>
                                         <td>
                                             {% if indicators.enabled %}
                                                 {{ 'enabled'|trans }}

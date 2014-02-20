@@ -14,7 +14,7 @@ class ContactsController extends Controller
 {
     public function listAction(Organisation $organisation)
     { 
-        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+        if (!$this->get('security.context')->isGranted('ROLE_SU') || $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
            throw new AccessDeniedHttpException('Accès interdit');
           }

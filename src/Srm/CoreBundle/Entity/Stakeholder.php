@@ -25,7 +25,7 @@ class Stakeholder
     /**
      * @var integer
      */
-    private $identificationNumber;
+    private $siretNumber;
 
     /**
      * @var float
@@ -36,6 +36,16 @@ class Stakeholder
      * @var string
      */
     private $website;
+
+    /**
+     * @var string
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     */
+    private $lastname;
 
     /**
      * @var string
@@ -103,6 +113,10 @@ class Stakeholder
     private $address;
 
     /**
+     * @var \Srm\CoreBundle\Entity\StakeholderGroup
+     */
+    private $stakeholderGroup;
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $groupStakeholders;
@@ -111,6 +125,11 @@ class Stakeholder
      * @var \Doctrine\Common\Collections\Collection
      */
     private $contacts;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $stakeholders;
 
     /**
      * @var \Srm\CoreBundle\Entity\Organisation
@@ -199,26 +218,26 @@ class Stakeholder
     }
 
     /**
-     * Set identificationNumber
+     * Set siretNumber
      *
-     * @param integer $identificationNumber
+     * @param integer $siretNumber
      * @return Stakeholder
      */
-    public function setIdentificationNumber($identificationNumber)
+    public function setSiretNumber($siretNumber)
     {
-        $this->identificationNumber = $identificationNumber;
+        $this->siretNumber = $siretNumber;
 
         return $this;
     }
 
     /**
-     * Get identificationNumber
+     * Get siretNumber
      *
      * @return integer
      */
-    public function getIdentificationNumber()
+    public function getSiretNumber()
     {
-        return $this->identificationNumber;
+        return $this->siretNumber;
     }
 
     /**
@@ -265,6 +284,52 @@ class Stakeholder
     public function getWebsite()
     {
         return $this->website;
+    }
+
+   /**
+     * Set firstname
+     *
+     * @param string $firstname
+     * @return Contact
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     * @return Contact
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
     }
 
     /**
@@ -554,6 +619,29 @@ class Stakeholder
     }
 
     /**
+     * Set stakeholderGroup
+     *
+     * @param \Srm\CoreBundle\Entity\StakeholderGroup $stakeholderGroup
+     * @return Stakeholder
+     */
+    public function setStakeholderGroup(StakeholderGroup $stakeholderGroup = null)
+    {
+        $this->stakeholderGroup = $stakeholderGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get stakeholderGroup
+     *
+     * @return \Srm\CoreBundle\Entity\StakeholderGroup
+     */
+    public function getStakeholderGroup()
+    {
+        return $this->stakeholderGroup;
+    }
+
+    /**
      * Add groupStakeholder
      *
      * @param \Srm\CoreBundle\Entity\GroupStakeholder $groupStakeholder
@@ -643,6 +731,42 @@ class Stakeholder
     {
         return $this->organisation;
     }
+
+
+    /**
+     * Add stakeholder
+     *
+     * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
+     * @return Stakeholder
+     */
+    public function addStakeholdert(Stakeholder $stakeholder)
+    {   
+        $this->stakeholders[] = $stakeholder;
+
+        return $this;
+    }
+
+    /**
+     * Remove stakeholder
+     *
+     * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
+     */
+    public function removeStakeholder(Stakeholder $stakeholder)
+    {
+        $this->stakeholders->removeElement($stakeholder);
+    }
+
+    /**
+     * Get stakeholders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStakeholders()
+    {
+        return $this->stakeholders;
+    }
+
+
     public function __toString()
     {
         return $this->getLabel();

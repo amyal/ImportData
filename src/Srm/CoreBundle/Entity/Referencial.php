@@ -523,10 +523,10 @@ class Referencial
      * @param \Srm\CoreBundle\Entity\Indicator $indicator
      * @return Referencial
      */
-    public function addIndicator(Indicator $indicator)
+    public function addIndicators(Indicator $indicator)
     {
-        $this->indicator->setDeleted(true);
         $this->indicator[] = $indicator;
+        $this->indicator['deleted'] = true;
 
         return $this;
     }
@@ -536,10 +536,10 @@ class Referencial
      *
      * @param \Srm\CoreBundle\Entity\Indicator $indicator
      */
-    public function removeIndicator(Indicator $indicator)
+    /*public function removeIndicator(Indicator $indicator)
     {
         $this->indicator->removeElement($indicator);
-    }
+    }*/
 
     /**
      * Get indicator
