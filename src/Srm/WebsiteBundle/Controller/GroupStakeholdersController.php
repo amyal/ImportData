@@ -102,10 +102,11 @@ class GroupStakeholdersController extends Controller
 
     public function archetypesByTypesAction()
     {
-        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+        /*if (!$this->get('security.context')->isGranted('ROLE_SU') || 
+            $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
            throw new AccessDeniedHttpException('Accès interdit');
-          }
+          }*/
           
         $typeId = $this->getRequest()->query->get('type_id');
 
@@ -121,6 +122,27 @@ class GroupStakeholdersController extends Controller
             if ($archetype->getStakeholderArchetypeId() == '')
                 $html .= '<option value=\"-1\">Aucune réponse</option>';
             $html = $html . sprintf("<option value=\"%d\">%s</option>", $archetype->getStakeholderArchetypeId(), $archetype->getLabel());
+        }
+
+        return new Response($html);
+    }
+
+    public function stakeholdersByArchetypesAction(Organisation $organisation)
+    {
+        $archetypeIds = $this->getRequest()->query->get('archetype_id');
+
+        if ($archetypeIds) {
+            $stakeholders = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Stakeholder')->findNonDeletedByArchetype($organisation, $archetypeIds);
+        }
+        else {
+            $stakeholders = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Stakeholder')->findAll();
+        }
+
+        $html = '';
+        foreach($stakeholders as $stakeholder) {
+            if ($stakeholder->getStakeholderId() == '')
+                $html .= '<option value=\"-1\">Aucune réponse</option>';
+            $html = $html . sprintf("<option value=\"%d\">%s</option>", $stakeholder->getStakeholderId(), $stakeholder->getLabel());
         }
 
         return new Response($html);

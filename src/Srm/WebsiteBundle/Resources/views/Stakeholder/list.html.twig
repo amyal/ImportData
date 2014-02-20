@@ -54,7 +54,6 @@
                         <table class="table table-normal">
                             <thead>
                                 <tr><td>{{ 'stakeholders.list.label'|trans }}</td>
-                                    <td>{{ 'stakeholders.list.groupStakeholders'|trans }}</td>
                                     <td>{{ 'stakeholders.list.connexion'|trans }}</td>
                                     <td>{{ 'list.enabled'|trans }}</td>
                                     <td style="width:115px"></td>
@@ -64,13 +63,7 @@
                                 {% for stakeholder in stakeholders %}
                                     <tr>
                                         <td>{{ stakeholder.label }}</td>
-                                        <td>
-                                            {% if stakeholder.groupStakeholders %}
-                                                {{ stakeholder.groupStakeholders|joinLabels(', ') }}
-                                            {% else %}
-                                                {{ 'list_no_groupStakeholders'|trans }}
-                                            {% endif %}
-                                        </td>
+                                        
                                         <td>
                                             {% if stakeholder.connexion %}
                                                 {{ 'connexion'|trans }}

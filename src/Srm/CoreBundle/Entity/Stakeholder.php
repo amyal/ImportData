@@ -129,7 +129,7 @@ class Stakeholder
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $stakeholders;
+    private $archetypes;
 
     /**
      * @var \Srm\CoreBundle\Entity\Organisation
@@ -734,36 +734,36 @@ class Stakeholder
 
 
     /**
-     * Add stakeholder
+     * Add archetype
      *
-     * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
+     * @param \Srm\CoreBundle\Entity\StakeholderArchetype $archetype
      * @return Stakeholder
      */
-    public function addStakeholdert(Stakeholder $stakeholder)
+    public function addArchetype(StakeholderArchetype $archetype)
     {   
-        $this->stakeholders[] = $stakeholder;
+        $this->archetypes[] = $archetype;
 
         return $this;
     }
 
     /**
-     * Remove stakeholder
+     * Remove archetype
      *
-     * @param \Srm\CoreBundle\Entity\Stakeholder $stakeholder
+     * @param \Srm\CoreBundle\Entity\StakeholderArchetype $archetype
      */
-    public function removeStakeholder(Stakeholder $stakeholder)
+    public function removeStakeholder(StakeholderArchetype $archetype)
     {
-        $this->stakeholders->removeElement($stakeholder);
+        $this->archetypes->removeElement($archetype);
     }
 
     /**
-     * Get stakeholders
+     * Get archetypes
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getStakeholders()
+    public function getArchetypes()
     {
-        return $this->stakeholders;
+        return $this->archetypes;
     }
 
 

@@ -72,7 +72,7 @@
       </join-table>
     </many-to-many>
     
-    <many-to-many field="stakeholders" target-entity="StakeholderArchetype" inversed-by="stakeholderArchetype">
+    <many-to-many field="archetypes" target-entity="StakeholderArchetype" inversed-by="archetypes">
       <join-table name="vj_stakeholder_stakeholder_archetype">
         <join-columns>
           <join-column name="STAKEHOLDER_ID" referenced-column-name="STAKEHOLDER_ID"/>

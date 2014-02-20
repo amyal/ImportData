@@ -32,6 +32,7 @@
                         <table class="table table-normal">
                             <thead>
                                 <tr><td>{{ 'groupStakeholders.list.label'|trans }}</td>
+                                    <td>{{ 'groupStakeholders.list.stakeholders'|trans }}</td>
                                     <td>{{ 'groupStakeholders.list.type'|trans }}</td>
                                     <td>{{ 'groupStakeholders.list.archetype'|trans }}</td>
                                     <td>{{ 'list.enabled'|trans }}</td>
@@ -42,6 +43,13 @@
                                 {% for groupStakeholder in groupStakeholders %}
                                     <tr>
                                         <td>{{ groupStakeholder.label }}</td>
+                                        <td>
+                                            {% if groupStakeholder.stakeholders %}
+                                                {{ groupStakeholder.stakeholders|joinLabels(', ') }}
+                                            {% else %}
+                                                {{ 'list_no_stakeholders'|trans }}
+                                            {% endif %}
+                                        </td>
                                         <td>{% if groupStakeholder.stakeholderGroup %}{{ groupStakeholder.stakeholderGroup.label }}{% endif %}</td>
                                         <td>
                                             {% if groupStakeholder.stakeholderArchetypes %}

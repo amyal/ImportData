@@ -41,3 +41,11 @@ archetypes_by_types:
         _controller:    "SrmWebsiteBundle:GroupStakeholders:archetypesByTypes"
     requirements:
         groupStakeholderId: \d+
+
+stakeholders_by_archetypes:
+    path:       /organisations/{organisationId}/stakeholders/by_archetypes
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmWebsiteBundle:GroupStakeholders:stakeholdersByArchetypes"
+    requirements:
+        stakeholderId: \d+

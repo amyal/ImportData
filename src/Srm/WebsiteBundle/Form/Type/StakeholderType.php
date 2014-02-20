@@ -45,7 +45,9 @@ class StakeholderType extends AbstractType
 
             ->add('address',  'srm_address',  array('required' => true))
 
-            ->add('groupStakeholders', 'srm_organisation_groupStakeholder', array('required' => true))
+            ->add('stakeholderGroup', 'srm_stakeholderGroup', array('required' => true))
+
+            ->add('archetypes', 'srm_stakeholderArchetypes', array('required' => true))
 
         //   ->add('contacts', 'srm_organisation_stackeholders', array('multiple' => true))
             
