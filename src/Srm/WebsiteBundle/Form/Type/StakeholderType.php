@@ -17,11 +17,33 @@ class StakeholderType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
+            ->add('siretNumber', 'text', array(
+                'label'    => 'stakeholders.siretNumber',
+                'required' => true,
+                'attr'     => array('autofocus' => 'autofocus'),
+            ))
+
+            ->add('lastname', 'text', array(
+                'label'    => 'stakeholders.lastname',
+                'required' => 'true',
+            ))
+
+            ->add('firstname', 'text', array(
+                'label'    => 'stakeholders.firstname',
+                'required' => 'true',
+            ))
+
             ->add('email', 'text', array(
                 'label'    => 'stakeholders.email',
                 'required' => true,
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
+
+            ->add('phone', 'text', array('label' => 'phone', 'required' => true))
+
+            ->add('fax',   'text', array('label' => 'fax'))
+
+            ->add('address',  'srm_address',  array('required' => true))
 
             ->add('groupStakeholders', 'srm_organisation_groupStakeholder', array('required' => true))
 
@@ -39,8 +61,6 @@ class StakeholderType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
-            ->add('address',  'srm_address',  array('required' => true))
-
             ->add('subsidiary', 'text', array(
                 'label'    => 'stakeholders.subsidiary',
                 'required' => true,
@@ -49,18 +69,12 @@ class StakeholderType extends AbstractType
 
             ->add('startActivity', 'date', array('label'  => 'stakeholders.startActivity',
             	'widget' => 'single_text',										'format' => 'dd/MM/y',
-		'input'  => 'datetime',
-		'attr'   => array('class' => 'datepicker fill-up'),
-            	))
+		        'input'  => 'datetime',
+		        'attr'   => array('class' => 'datepicker fill-up'),
+            ))
 
             ->add('turnovers', 'text', array(
                 'label'    => 'stakeholders.turnovers',
-                'required' => true,
-                'attr'     => array('autofocus' => 'autofocus'),
-            ))
-
-            ->add('identificationNumber', 'text', array(
-                'label'    => 'stakeholders.identificationNumber',
                 'required' => true,
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
@@ -70,10 +84,6 @@ class StakeholderType extends AbstractType
                 'required' => true,
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
-
-            ->add('phone', 'text', array('label' => 'phone', 'required' => true))
-
-            ->add('fax',   'text', array('label' => 'fax'))
 
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 

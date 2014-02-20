@@ -7,9 +7,11 @@
     <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
     <field name="companySize" type="integer" column="COMPANY_SIZE" nullable="true"/>
     <field name="startActivity" type="datetime" column="START_ACTIVITY" nullable="true"/>
-    <field name="identificationNumber" type="integer" column="IDENTIFICATION_NUMBER" nullable="true"/>
+    <field name="siretNumber" type="integer" column="SIRET_NUMBER" nullable="true"/>
     <field name="turnovers" type="float" column="TURNOVERS" nullable="true"/>
     <field name="website" type="string" column="WEBSITE" length="255" nullable="true"/>
+    <field name="firstname" type="string" column="FIRSTNAME" length="100" nullable="false"/>
+    <field name="lastname" type="string" column="LASTNAME" length="100" nullable="true"/>
     <field name="phone" type="string" column="PHONE" length="20" nullable="true"/>
     <field name="fax" type="string" column="FAX" length="20" nullable="true"/>
     <field name="email" type="string" column="EMAIL" length="255" nullable="true"/>
@@ -21,6 +23,7 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+
     <many-to-one field="address" target-entity="Address">
       <join-columns>
         <join-column name="ADDRESS_ID" referenced-column-name="ADDRESS_ID"/>
@@ -30,7 +33,17 @@
         <cascade-all />
       </cascade>
     </many-to-one>
-    
+
+    <many-to-one field="stakeholderGroup" target-entity="StakeholderGroup">
+      <join-columns>
+        <join-column name="STAKEHOLDER_GROUP_ID" referenced-column-name="STAKEHOLDER_GROUP_ID"/>
+      </join-columns>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
+    </many-to-one>
+
     <many-to-one field="organisation" target-entity="Organisation">
       <join-columns>
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
@@ -55,6 +68,17 @@
         </join-columns>
         <inverse-join-columns>
           <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    
+    <many-to-many field="stakeholders" target-entity="StakeholderArchetype" inversed-by="stakeholderArchetype">
+      <join-table name="vj_stakeholder_stakeholder_archetype">
+        <join-columns>
+          <join-column name="STAKEHOLDER_ID" referenced-column-name="STAKEHOLDER_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="STAKEHOLDER_ARCHETYPE_ID" referenced-column-name="STAKEHOLDER_ARCHETYPE_ID"/>
         </inverse-join-columns>
       </join-table>
     </many-to-many>

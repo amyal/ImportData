@@ -14,4 +14,7 @@
     </many-to-one>
     <many-to-many field="stakeholderArchetypes" target-entity="GroupStakeholder" mapped-by="stakeholderArchetypes"/>
   </entity>
+
+  <many-to-many field="stakeholderArchetype" target-entity="Stakeholder" mapped-by="stakeholders"/>
+
 </doctrine-mapping>

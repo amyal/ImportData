@@ -91,6 +91,9 @@ class ReferencialsController extends Controller
                 }
             }
 
+            $indicator = new Indicator();
+            //$indicator->setDeleted(false);
+            $referencial->addIndicators($indicator);
             /*$indicator = new Indicator();
             $indicator->setDeleted(false);
             
