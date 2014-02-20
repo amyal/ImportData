@@ -12,11 +12,12 @@ class IndicatorRepository extends EntityRepository
     {
         return $this->createQueryBuilder('i')
             //->select('i', 'ind.label as indLabel')
-            ->where('i.deleted = :deleted')->setParameter('deleted', false)
             ->leftJoin('i.referencials', 'ref')
             ->leftJoin('i.indicators', 'ind')
             ->leftJoin('ref.organisation', 'refInd')
+            ->where('i.deleted = :deleted')->setParameter('deleted', false)
             ->andWhere('refInd.organisationId = :organisation')->setParameter('organisation', $organisation)
+            ->andWhere('ref.deleted = :deleted')->setParameter('deleted', false)
             ->getQuery()
             ->getResult()
         ;
