@@ -52,9 +52,9 @@ class StakeholderArchetype
      */
     public function __construct()
     {
-        $this->groupStakeholders = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->stakeholderArchetypes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->archetypes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->groupStakeholders        = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->stakeholderArchetypes    = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->archetypes               = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->deleted = false;
     }

@@ -190,12 +190,12 @@ stakeholder.enabled: "Actif"
 
 advanced.nav: "Avancé"
 
-data.nav: "Données"
-data.nav.alert: "Alertes"
-data.nav.saisie: "Saisie"
-data.nav.doc: "Documents"
-data.nav.import: "Imports"
-data.nav.edit: "Edition"
+items.nav: "Données"
+items.nav.alert: "Alertes"
+items.nav.saisie: "Saisie"
+items.nav.doc: "Documents"
+items.nav.import: "Imports"
+items.nav.edit: "Edition"
 
 users.list.title: "Utilisateurs"
 list.header.username: "Login"
