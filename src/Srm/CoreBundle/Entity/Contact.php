@@ -184,6 +184,7 @@ class Contact
     {
        $this->lastname = $lastname;
        $this->firstname = $firstname;
+       $this->mail = $mail;
      
     }    
 
