@@ -179,6 +179,13 @@ class Contact
         $this->creationDate = new \DateTime();
         $this->deleted = false;
     }
+    
+    public function addContactStakeholder($lastname, $firstname, $mail)
+    {
+       $this->lastname = $lastname;
+       $this->firstname = $firstname;
+     
+    }    
 
     /**
      * Set firstname
