@@ -15,30 +15,31 @@ class OrganisationsController extends Controller
            $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
           {throw new AccessDeniedHttpException('Accès interdit');
           }
-          
+
         return $this->render('SrmWebsiteBundle:Organisation:index.html.twig', array(
             'organisation' => $organisation
         ));
     }
 	
-	public function showAction(Organisation $organisation)
+    public function showAction(Organisation $organisation)
     {  
        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
-          {throw new AccessDeniedHttpException('Accès limité aux administrateurs');
+          {
+          throw new AccessDeniedHttpException('Accès limité aux administrateurs');
           }
-          if ($organisation->getOrganisationStatus()== Null){
-          throw new AccessDeniedHttpException('L\'organisation n\'est pas valide');}
-              else if ($organisation->getOrganisationStatus()->getOrganisationStatusId() !== 1 )
-                  {throw new AccessDeniedHttpException('L\'organisation n\'est pas valide');}
-               
-        if (null === $legalForm = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneByOrganisation($organisation)) {
-            throw new \Exception(sprintf("Aucune information légale pour l'organisation [%s]", $organisation->getIdentificationCode()));
-        }
+       if ($organisation->getOrganisationStatus()== Null || 
+           $organisation->getOrganisationStatus()->getOrganisationStatusId() != 1)
+          {
+          throw new AccessDeniedHttpException('L\'organisation n\'est pas valide');
+          }
+       if (null === $legalForm = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneByOrganisation($organisation)) 
+          {
+          throw new \Exception(sprintf("Aucune information légale pour l'organisation [%s]", $organisation->getIdentificationCode()));
+          }
 
-        return $this->render('SrmWebsiteBundle:Organisation:show.html.twig', array(
-            'organisation' => $organisation,
-            'legalForm'    => $legalForm,
-        ));
+    return $this->render('SrmWebsiteBundle:Organisation:show.html.twig', array(
+           'organisation' => $organisation,
+           'legalForm'    => $legalForm,));       
     }
 
     public function basicFormAction(Organisation $organisation)
