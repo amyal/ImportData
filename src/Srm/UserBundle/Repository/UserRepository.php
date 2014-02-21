@@ -34,4 +34,13 @@ class UserRepository extends EntityRepository
             return $q->getQuery()->getSingleScalarResult();
     
     }
+    public function orgAdminByOrganisation(Organisation $organisation)
+    {      $q= $this->createQueryBuilder('u')
+                ->innerJoin('u.contact', 'c')
+                ->innerJoin('c.organisation', 'o')  
+                ->Where('o.organisationId = :Id')->setParameter('Id', $organisation->getOrganisationId())
+                ->andWhere('u.role = 2'); // OrgAdmin
+           return $q->getQuery()->getResult();
+   
+    }
 }
