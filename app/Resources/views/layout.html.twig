@@ -13,7 +13,7 @@
         {% block stylesheets %}{% endblock %}
 
         <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/application.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/graphs.js') }}"></script>
+        {# <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/graphs.js') }}"></script> #}
         <script type="text/javascript" src="{{ asset('bundles/srmwebsite/js/highcharts.js') }}"></script>
         {% block javascripts %}{% endblock %}
 
@@ -293,7 +293,7 @@
                                     <i class="icon-list-alt"></i> {{ 'data.nav.saisie'|trans }}
                                 </a>
                             </li>
-                            <li class="">
+                            {# <li class="">
                                 <a href="#">
                                     <i class="icon-paper-clip"></i> {{ 'data.nav.doc'|trans }}
                                 </a>
@@ -307,7 +307,7 @@
                                 <a href="#">
                                     <i class="icon-edit"></i> {{ 'data.nav.edit'|trans }}
                                 </a>
-                            </li>
+                            </li> #}
                         </ul>
                     </li> 
                     {% endif %} 
@@ -377,7 +377,7 @@
                                 <i class="icon-link"></i> {{ 'stakeholder.nav.stakeholder'|trans }}
                             </a>
                         </li>
-                        <li class="{% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_contact_show','srm_website_user_edit'] %}active{% endif %}">
+                        {# <li class="{% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_contact_show','srm_website_user_edit'] %}active{% endif %}">
                             <a  {% if organisation is defined %}
                                     href="{{ path('srm_website_contacts_list', { 'organisationId': organisation.organisationId }) }}"
                                 {% elseif organisationId is defined %}
@@ -387,7 +387,7 @@
                                 {% endif %}>
                                 <i class="icon-share icon-2"></i> {{ 'diffusion.nav.general'|trans }}
                             </a>
-                        </li>
+                        </li> #}
                     </ul>
                 </li>
             {% endif %} 
