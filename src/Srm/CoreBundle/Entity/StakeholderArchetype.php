@@ -43,12 +43,18 @@ class StakeholderArchetype
     private $stakeholderArchetypes;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $archetypes;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->groupStakeholders = new \Doctrine\Common\Collections\ArrayCollection();
         $this->stakeholderArchetypes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->archetypes = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->deleted = false;
     }
@@ -223,5 +229,40 @@ class StakeholderArchetype
     public function getStakeholderArchetypes()
     {
         return $this->stakeholderArchetypes;
+    }
+
+    /**
+     * Add archetype
+     *
+     * @param \Srm\CoreBundle\Entity\StakeholderArchetype $archetype
+     * @return StakeholderArchetype
+     */
+    public function addArchetype(StakeholderArchetype $archetype)
+    {
+        $archetype->addArchetype($this);
+        $this->archetypes[] = $archetype;
+
+        return $this;
+    }
+
+    /**
+     * Remove archetype
+     *
+     * @param \Srm\CoreBundle\Entity\StakeholderArchetype $archetype
+     */
+    public function removeArchetype(StakeholderArchetype $archetype)
+    {
+        $archetype->removeArchetype($this);
+        $this->archetypes->removeElement($archetype);
+    }
+
+    /**
+     * Get archetypes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArchetypes()
+    {
+        return $this->archetypes;
     }
 }

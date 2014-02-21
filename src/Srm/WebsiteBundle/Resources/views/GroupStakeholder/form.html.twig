@@ -18,20 +18,32 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-            $(document).ready(function() {
-                $('#srm_groupStakeholder_stakeholderGroup').on('change', function() {
-                    $('#srm_groupStakeholder_stakeholderArchetypes option').remove();
-                    $.ajax({
-                        url: "{{ path('archetypes_by_types', {'organisationId': organisationId}) }}",
-                        type: "GET",
-                        data: "type_id="+$(this).val(),
-                        success: function(data){
-                            $('#srm_groupStakeholder_stakeholderArchetypes').append(data);
-                        }
-                    });
+        $(document).ready(function() {
+            $('#srm_groupStakeholder_stakeholderGroup').on('change', function() {
+                $('#srm_groupStakeholder_stakeholderArchetypes option').remove();
+                $.ajax({
+                    url: "{{ path('archetypes_by_types', {'organisationId': organisationId}) }}",
+                    type: "GET",
+                    data: "type_id="+$(this).val(),
+                    success: function(data){
+                        $('#srm_groupStakeholder_stakeholderArchetypes').append(data);
+                    }
                 });
-            });   
-        </script>
+            });
+
+            $('#srm_groupStakeholder_stakeholderArchetypes').on('change', function() {
+                $('#srm_groupStakeholder_stakeholders option').remove();
+                $.ajax({
+                    url: "{{ path('stakeholders_by_archetypes', {'organisationId': organisationId}) }}",
+                    type: "GET",
+                    data: "archetype_id="+$(this).val(),
+                    success: function(data){
+                        $('#srm_groupStakeholder_stakeholders').append(data);
+                    }
+                });
+            });
+        });   
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -59,6 +71,10 @@
                                 <div class="control-group">
                                     {{ form_label(form.stakeholderArchetypes) }}
                                     <div class="controls">{{ form_widget(form.stakeholderArchetypes, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                </div>
+                                <div class="control-group">
+                                    {{ form_label(form.stakeholders) }}
+                                    <div class="controls">{{ form_widget(form.stakeholders, {'attr': {'class': 'chzn-select select select2'}}) }}</div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>

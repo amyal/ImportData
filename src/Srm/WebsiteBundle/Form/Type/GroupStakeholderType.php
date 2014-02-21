@@ -21,6 +21,8 @@ class GroupStakeholderType extends AbstractType
 
             ->add('stakeholderArchetypes', 'srm_stakeholderArchetypes', array('required' => true))
 
+            ->add('stakeholders', 'srm_organisation_stakeholders', array('required' => true))
+
             ->add('enabled', 'checkbox', array('label' => 'enabled'))
 
             ->add('save', 'submit', array('label' => 'button.save'))
