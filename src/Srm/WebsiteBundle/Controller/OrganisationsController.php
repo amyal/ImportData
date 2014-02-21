@@ -11,7 +11,8 @@ class OrganisationsController extends Controller
 {
     public function indexAction(Organisation $organisation)
     {  
-       if (!$this->get('security.context')->isGranted('ROLE_U')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+       if (!$this->get('security.context')->isGranted('ROLE_U') ||
+           $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
           {throw new AccessDeniedHttpException('Accès interdit');
           }
           
@@ -25,7 +26,11 @@ class OrganisationsController extends Controller
        if (!$this->get('security.context')->isGranted('ROLE_A')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
           {throw new AccessDeniedHttpException('Accès limité aux administrateurs');
           }
-          
+          if ($organisation->getOrganisationStatus()== Null){
+          throw new AccessDeniedHttpException('L\'organisation n\'est pas valide');}
+              else if ($organisation->getOrganisationStatus()->getOrganisationStatusId() !== 1 )
+                  {throw new AccessDeniedHttpException('L\'organisation n\'est pas valide');}
+               
         if (null === $legalForm = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneByOrganisation($organisation)) {
             throw new \Exception(sprintf("Aucune information légale pour l'organisation [%s]", $organisation->getIdentificationCode()));
         }
