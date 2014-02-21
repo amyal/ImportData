@@ -751,7 +751,7 @@ class Stakeholder
      *
      * @param \Srm\CoreBundle\Entity\StakeholderArchetype $archetype
      */
-    public function removeStakeholder(StakeholderArchetype $archetype)
+    public function removeArchetype(StakeholderArchetype $archetype)
     {
         $this->archetypes->removeElement($archetype);
     }
