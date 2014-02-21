@@ -39,10 +39,11 @@ class GroupStakeholdersController extends Controller
 
     public function disableAction(Organisation $organisation, GroupStakeholder $groupStakeholder)
     {
-        if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
-          {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
-           throw new AccessDeniedHttpException('Accès interdit');
-          }
+        if (!$this->get('security.context')->isGranted('ROLE_SU') || 
+            $organisation->getIdentificationCode() !==  $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+        {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
+            throw new AccessDeniedHttpException('Accès interdit');
+        }
           
         $groupStakeholder->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
@@ -107,7 +108,7 @@ class GroupStakeholdersController extends Controller
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
            throw new AccessDeniedHttpException('Accès interdit');
           }*/
-          
+        
         $typeId = $this->getRequest()->query->get('type_id');
 
         if ($typeId) {
