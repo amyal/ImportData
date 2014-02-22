@@ -7,6 +7,7 @@
     <field name="code" type="string" column="CODE" length="20" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
+    
     <many-to-one field="item" target-entity="Item">
       <join-columns>
         <join-column name="ITEM_ID" referenced-column-name="ITEM_ID"/>

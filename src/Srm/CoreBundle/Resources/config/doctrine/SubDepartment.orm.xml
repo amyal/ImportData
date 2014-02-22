@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\SubDepartment" table="vr_sub_department">
+  <entity name="Srm\CoreBundle\Entity\SubDepartment" table="vr_sub_department" repository-class="Srm\CoreBundle\Repository\SubDepartmentRepository">
     <id name="subDepartmentId" type="integer" column="SUB_DEPARTMENT_ID">
       <generator strategy="IDENTITY"/>
     </id>
@@ -9,7 +9,9 @@
     <field name="category" type="string" column="CATEGORY" length="100" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
+
     <many-to-many field="departments" target-entity="Department" mapped-by="subDepartments"/>
+
     <many-to-many field="contacts" target-entity="Contact" mapped-by="subDepartments"/>
 
     <lifecycle-callbacks>

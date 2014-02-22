@@ -50,10 +50,13 @@
                                         <td>
                                             <div class="btn-group">
                                                 <a href="{{ path('srm_indicator_items_show', { 'organisationId': organisation.organisationId, 'itemId': item.itemId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
-                                                {% for indicator in item.indicators %}
-                                                {% if indicator.unitMeasurement %}
-                                                <a href="{{ path('srm_indicator_items_edit', { 'organisationId': organisation.organisationId, 'itemId': item.itemId, 'unitMeasurementId': indicator.unitMeasurement.unitMeasurementId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                                {% endif %}{% endfor %}
+                                                {% for answer in answers %}
+                                                    {% if answer.unitMeasurement %}
+                                                        <a href="{{ path('srm_indicator_items_edit', { 'organisationId': organisation.organisationId, 'itemId': item.itemId, 'unitMeasurementId': answer.unitMeasurement.unitMeasurementId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                                    {% else %}
+                                                        <a href="{{ path('srm_indicator_items_edit', { 'organisationId': organisation.organisationId, 'itemId': item.itemId, 'unitMeasurementId': 0 }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>    
+                                                    {% endif %}
+                                                {% endfor %}
                                             </div>
                                         </td>
                                     </tr>
