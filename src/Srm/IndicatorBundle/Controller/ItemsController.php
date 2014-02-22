@@ -5,36 +5,40 @@ namespace Srm\IndicatorBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Srm\CoreBundle\Entity\Organisation;
-use Srm\CoreBundle\Entity\Indicator;
+use Srm\CoreBundle\Entity\Item;
 use Srm\CoreBundle\Entity\Referencial;
 
 
 use Symfony\Component\HttpFoundation\Response;
 
-class DataController extends Controller
+class ItemsController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
-        return $this->render('SrmIndicatorBundle:Indicator:list.html.twig', array(
+        $items = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Item')->findNonDeletedByUser($organisation, $this->getUser());
+        $answers = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Answers')->findNonDeletedByItem($items);
+
+        return $this->render('SrmIndicatorBundle:Item:list.html.twig', array(
             'organisation'  => $organisation,
-            'indicator'     => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByOrganisation($organisation),
+            'items'         => $items,
+            'unitId'        => $answers->getUnitMeasurementId()
         ));
     }
 
-    public function showAction(Organisation $organisation, Indicator $indicator)
+    public function showAction(Organisation $organisation, Item $item)
     {
-        return $this->render('SrmIndicatorBundle:Indicator:show.html.twig', array(
+        return $this->render('SrmIndicatorBundle:Item:show.html.twig', array(
             'organisationId'    => $organisation->getOrganisationId(),
-            'indicatorId'       => $indicator->getIndicatorId(),
-            'indicator'         => $indicator,
+            'indicatorId'       => $item->getIndicatorId(),
+            'item'         => $item,
         ));
     }
 
-    public function disableAction(Referencial $referencial, Indicator $indicator)
+    public function disableAction(Referencial $referencial, Item $item)
     {
-        $indicator->setDeleted(true);
+        $item->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
-        $em->persist($indicator);
+        $em->persist($item);
         $em->flush();
 
         return $this->redirect($this->generateUrl('srm_indicator_indicator_list', array(
@@ -42,17 +46,17 @@ class DataController extends Controller
         )));
     }
 
-    public function formAction(Organisation $organisation, Indicator $indicator)
+    public function formAction(Organisation $organisation, Item $item)
     {
         $formActionRoute = 'srm_indicator_indicator_add';
-        $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(), 'indicatorId' => $indicator->getIndicatorId());
+        $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(), 'indicatorId' => $item->getIndicatorId());
 
-        if (null !== $indicatorId = $indicator->getIndicatorId()) {
+        if (null !== $indicatorId = $item->getIndicatorId()) {
             $formActionRoute = 'srm_indicator_indicator_edit';
             $formActionRouteParams['indicatorId'] = $indicatorId;
         }
 
-        $form = $this->createForm('srm_indicator', $indicator, array(
+        $form = $this->createForm('srm_indicator', $item, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
             'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
@@ -61,21 +65,21 @@ class DataController extends Controller
         $request = $this->getRequest();
 
         if ('GET' === $request->getMethod()) {
-            return $this->render('SrmIndicatorBundle:Indicator:form.html.twig', array(
+            return $this->render('SrmIndicatorBundle:Item:form.html.twig', array(
                 'organisationId' => $organisation->getOrganisationId(),
                 'form'           => $form->createView(),
             ));
         }
 
         if (false === $form->handleRequest($request)->isValid()) {
-            return $this->render('SrmIndicatorBundle:Indicator:form.html.twig', array(
+            return $this->render('SrmIndicatorBundle:Item:form.html.twig', array(
                 'organisationId' => $organisation->getOrganisationId(),
                 'form'           => $form->createView(),
             ));
         }
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($indicator);
+        $em->persist($item);
         $em->flush();
 
         return $this->redirect($this->generateUrl('srm_indicator_indicator_list', array(

@@ -141,8 +141,8 @@ class Stakeholder
      */
     public function __construct()
     {
-        $this->groupStakeholders = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->groupStakeholders    = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contacts             = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->creationDate = new \DateTime();
         $this->deleted = false;
@@ -732,7 +732,6 @@ class Stakeholder
         return $this->organisation;
     }
 
-
     /**
      * Add archetype
      *
@@ -766,11 +765,11 @@ class Stakeholder
         return $this->archetypes;
     }
 
-
     public function __toString()
     {
         return $this->getLabel();
     }
+
     public function updateModificationDate()
     {
         $this->modificationDate = new \DateTime();

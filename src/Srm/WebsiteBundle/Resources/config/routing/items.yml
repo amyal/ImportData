@@ -1,0 +1,36 @@
+srm_indicator_items_list:
+    path:       /organisations/{organisationId}/items
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Items:list"
+
+srm_indicator_items_add:
+    path:       /organisations/{organisationId}/items/add
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Items:form"
+
+srm_indicator_items_show:
+    path:       /organisations/{organisationId}/items/{itemId}/show
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Items:show"
+    requirements:
+        itemId: \d+
+
+srm_indicator_items_disable:
+    path:       /organisations/{organisationId}/items/{itemId}/disable
+    methods:    [GET]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Items:disable"
+    requirements:
+        itemId: \d+
+
+srm_indicator_items_edit:
+    path:       /organisations/{organisationId}/items/{itemId}/units/{unitMeasurementId}
+    methods:    [GET,POST]
+    defaults:
+        _controller:    "SrmIndicatorBundle:Items:form"
+    requirements:
+        itemId: \d+
+        unitMeasurementId: \d+

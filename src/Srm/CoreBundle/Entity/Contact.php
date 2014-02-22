@@ -1,8 +1,12 @@
 <?php
 
 namespace Srm\CoreBundle\Entity;
+
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+use Srm\UserBundle\Entity\Role;
+
 /**
  * Contact
  */
@@ -122,6 +126,11 @@ class Contact
      * @var \Srm\CoreBundle\Entity\Gender
      */
     private $gender;
+
+    /**
+     * @var \Srm\UserBundle\Entity\Role
+     */
+    private $role;
 
     /**
      * @var \Srm\CoreBundle\Entity\Address
@@ -702,6 +711,29 @@ class Contact
     public function getGender()
     {
         return $this->gender;
+    }
+
+    /**
+     * Set role
+     *
+     * @param \Srm\UserBundle\Entity\Role $role
+     * @return Contact
+     */
+    public function setRole(Role $role = null)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Srm\UserBundle\Entity\Role
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 
     /**

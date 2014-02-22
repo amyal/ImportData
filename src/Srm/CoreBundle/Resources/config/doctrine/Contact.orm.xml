@@ -25,11 +25,13 @@
     <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
+
     <many-to-one field="gender" target-entity="Gender">
       <join-columns>
         <join-column name="GENDER_ID" referenced-column-name="GENDER_ID"/>
       </join-columns>
     </many-to-one>
+
     <many-to-one field="address" target-entity="Address">
       <join-columns>
         <join-column name="ADDRESS_ID" referenced-column-name="ADDRESS_ID"/>
@@ -39,9 +41,16 @@
         <cascade-all />
       </cascade>
     </many-to-one>
+
     <many-to-one field="organisation" target-entity="Organisation">
       <join-columns>
         <join-column name="ORGANISATION_ID" referenced-column-name="ORGANISATION_ID"/>
+      </join-columns>
+    </many-to-one>
+
+    <many-to-one field="role" target-entity="Srm\UserBundle\Entity\Role">
+      <join-columns>
+        <join-column name="ROLE_ID" referenced-column-name="ROLE_ID"/>
       </join-columns>
     </many-to-one>
     
