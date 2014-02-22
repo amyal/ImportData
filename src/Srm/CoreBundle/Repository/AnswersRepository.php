@@ -21,13 +21,14 @@ class AnswersRepository extends EntityRepository
         return $answers;
     }
 
-    public function findNonDeletedByItem(Organisation $organisation)
+    public function findNonDeletedByItem($items)
     {
-        return $this->createQueryBuilder('i')
-            ->select('i', 'q', 'ind', 'r')
-            ->leftJoin('i.subDepartment', 'sd')
-            ->where('i.deleted = :deleted')->setParameter('deleted', false)
-            ->andWhere('r.organisation = :organisation')->setParameter('organisation', $organisation)
+        return $this->createQueryBuilder('a')
+            //->select('i', 'q', 'ind', 'r')
+            ->leftJoin('a.item', 'i')
+            //->where('a.deleted = :deleted')->setParameter('deleted', false)
+            ->where('a.item = :item')->setParameter('item', $items)
+            //->andWhere('a.organisation = :organisation')->setParameter('organisation', $organisation)
             ->getQuery()
             ->getResult()
         ;

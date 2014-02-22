@@ -27,6 +27,7 @@ contact.is_user: "Utilisateur logiciel"
 contact.enabled: "Actif"
 contacts.nav.general: "Général"
 contact.label: "Nom du contact"
+contact.list.subDepartments: "Service(s)"
 
 currency: "Devise"
 currency.choice: "Choix d'une devise"

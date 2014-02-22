@@ -64,10 +64,19 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
+      
+    <many-to-many field="departments" target-entity="Department" inversed-by="contacts">
+      <join-table name="vj_contact_department">
+        <join-columns>
+          <join-column name="CONTACT_ID" referenced-column-name="CONTACT_ID"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="DEPARTMENT_ID" referenced-column-name="DEPARTMENT_ID"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
     
     <many-to-many field="sites" target-entity="Site" mapped-by="contacts"/>
-    
-    <many-to-many field="departments" target-entity="Department" mapped-by="contacts"/>
     
     <many-to-many field="stakeholders" target-entity="Stakeholder" mapped-by="contacts"/>
      

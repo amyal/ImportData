@@ -856,7 +856,6 @@ class Contact
      */
     public function addSubDepartment(SubDepartment $subDepartment)
     {
-        $subDepartment->addContact($this);
         $this->subDepartments[] = $subDepartment;
 
         return $this;
@@ -869,7 +868,6 @@ class Contact
      */
     public function removeSubDepartment(SubDepartment $subDepartment)
     {
-        $subDepartment->removeContact($this);
         $this->subDepartments->removeElement($subDepartment);
     }
 
