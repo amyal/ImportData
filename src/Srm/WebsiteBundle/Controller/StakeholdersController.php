@@ -112,7 +112,7 @@ class StakeholdersController extends Controller
             ->setBody('La partie prenante "'.$stakeholders->getLabel().'" a été enregistré avec succès ');
             $this->get('mailer')->send($message); // then we send the message.
 
-            $org_stakeholder = $em->getRepository('Srm\CoreBundle\Entity\Organisation')->findOneBy(array('identificationCode' => $stakeholders->getSiretNumber()));
+            $org_stakeholder = $em->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneBy(array('siretNumber' => $stakeholders->getSiretNumber()));
 
             // if the stakeholder doesn't exit as an organsiation  
           if($org_stakeholder == NULL)
@@ -167,12 +167,13 @@ class StakeholdersController extends Controller
             } 
           else
             {
-            // if the stakeholder exist as an organisation
+            // if the stakeholder exists as an organisation
             if (true === $stakeholders->getConnexion())
                 {
                 //send mail to user
-                $org_stakeholder = $em->getRepository('Srm\CoreBundle\Entity\Organisation')->findOneBy(array('identificationCode' => $stakeholders->getSiretNumber()));
-                $user_orgs = $em->getRepository('Srm\UserBundle\Entity\User')->orgAdminByOrganisation($org_stakeholder);
+                $LegalForm_stakeholder = $em->getRepository('Srm\CoreBundle\Entity\LegalForm')->findOneBy(array('siretNumber' => $stakeholders->getSiretNumber()));
+                $org_LegalForm = $em->getRepository('Srm\CoreBundle\Entity\Organisation')->findOneBy(array('identificationCode' => $LegalForm_stakeholder->getOrganisation()->getOrganisationId()));
+                $user_orgs = $em->getRepository('Srm\UserBundle\Entity\User')->orgAdminByOrganisation($org_LegalForm);
                
                 $message = \Swift_Message::newInstance() 
                 ->setSubject('Verseo SRM') 
