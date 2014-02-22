@@ -50,17 +50,8 @@
       </join-columns>
     </many-to-one>
     
-    <many-to-many field="groupStakeholders" target-entity="GroupStakeholder" inversed-by="stakeholders">
-      <join-table name="vj_stakeholder_stakeholder_group">
-        <join-columns>
-          <join-column name="STAKEHOLDER_ID" referenced-column-name="STAKEHOLDER_ID"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="GROUP_STAKEHOLDER_ID" referenced-column-name="GROUP_STAKEHOLDER_ID"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
-
+    <many-to-many field="groupStakeholders" target-entity="GroupStakeholder" mapped-by="stakeholders"/>
+ 
     <many-to-many field="contacts" target-entity="Contact" inversed-by="stakeholders">
       <join-table name="vj_stakeholder_contact">
         <join-columns>

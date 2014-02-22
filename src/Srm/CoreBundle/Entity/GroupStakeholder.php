@@ -227,7 +227,14 @@ class GroupStakeholder
     {
         return $this->stakeholders;
     }
+    
+    /*public function setStakeholders($stakeholders)
+    {
+        $this->stakeholders = $stakeholders;
 
+        return $this;
+    }
+    */
     /**
      * Add stakeholderArchetype
      *

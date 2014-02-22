@@ -4,7 +4,7 @@
     <id name="indicatorsId" type="integer" column="INDICATORS_ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="code" type="string" column="CODE" length="10" nullable="false"/>
+    <field name="code" type="string" column="CODE" length="20" nullable="false"/>
     <field name="label" type="string" column="LABEL" length="255" nullable="true"/>
     <field name="enabled" type="boolean" column="ENABLED" nullable="true"/>
     <field name="deleted" type="boolean" column="DELETED" nullable="true"/>
