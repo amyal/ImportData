@@ -92,7 +92,7 @@
       </cascade>
     </many-to-many> -->
 
-    <many-to-many field="indicators" target-entity="Indicators" inversed-by="referencials">
+    <!-- <many-to-many field="indicators" target-entity="Indicators" inversed-by="referencials">
       <join-table name="v_indicator">
         <join-columns>
           <join-column name="REFERENCIAL_ID" referenced-column-name="REFERENCIAL_ID"/>
@@ -105,7 +105,7 @@
       <cascade>
         <cascade-all />
       </cascade>
-    </many-to-many>
+    </many-to-many> -->
 
   </entity>
 </doctrine-mapping>

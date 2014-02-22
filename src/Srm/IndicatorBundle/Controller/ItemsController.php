@@ -21,7 +21,7 @@ class ItemsController extends Controller
         return $this->render('SrmIndicatorBundle:Item:list.html.twig', array(
             'organisation'  => $organisation,
             'items'         => $items,
-            'unitId'        => $answers->getUnitMeasurementId()
+            'answers'        => $answers,
         ));
     }
 
