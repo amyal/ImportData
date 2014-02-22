@@ -45,10 +45,32 @@
 	                                    <div class="controls">{{ form_widget(form.firstname) }}</div>
 	                                </div>
 	                                <div class="control-group">
+	                                    {{ form_label(form.mail) }}
+	                                    <div class="controls">{{ form_widget(form.mail) }}</div>
+	                                </div>
+	                                <div class="control-group">
 	                                    {{ form_label(form.contactFunction) }}
 	                                    <div class="controls">{{ form_widget(form.contactFunction) }}</div>
 	                                </div>
-	                                <div class="control-group">
+	                                <div class="control-group">         
+	                                    {{ form_label(form.role) }} 
+	                                    <div class="controls">{{ form_widget(form.role) }}</div>
+	                                </div>
+                                  	<div class="control-group">
+                                    	{{ form_label(form.departments) }}
+                                    	<div class="controls">{{ form_widget(form.departments, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                	</div>
+                                	<div class="control-group">
+                                    	{{ form_label(form.subDepartments) }}
+                                    	<div class="controls">{{ form_widget(form.subDepartments, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+                                	</div> 
+	                                {# <div class="control-group">
+	                                    {{ form_label(form.sites) }}
+	                                    <div class="controls">{{ form_widget(form.sites, {'attr': {'class': 'chzn-select select2'}}) }}</div>
+	                                </div>  #}
+                            	</div>
+                                <div class="span6">
+                                	<div class="control-group">
 	                                    {{ form_label(form.officePhone) }}
 	                                    <div class="controls">{{ form_widget(form.officePhone) }}</div>
 	                                </div>
@@ -60,21 +82,6 @@
 	                                    {{ form_label(form.fax) }}
 	                                    <div class="controls">{{ form_widget(form.fax) }}</div>
 	                                </div>
-	                                <div class="control-group">
-	                                    {{ form_label(form.mail) }}
-	                                    <div class="controls">{{ form_widget(form.mail) }}</div>
-	                                </div>
-                                
-                                  <div class="control-group">
-                                    {{ form_label(form.departments) }}
-                                    <div class="controls">{{ form_widget(form.departments, {'attr': {'class': 'chzn-select select2'}}) }}</div>
-                                </div> 
-                                <div class="control-group">
-                                    {{ form_label(form.sites) }}
-                                    <div class="controls">{{ form_widget(form.sites, {'attr': {'class': 'chzn-select select2'}}) }}</div>
-                                </div> 
-                                        </div>
-                                        <div class="span6">
 	                                <div class="control-group">
 	                                    {{ form_label(form.address.label) }}
 	                                    <div class="controls">{{ form_widget(form.address.label) }}</div>
@@ -96,7 +103,7 @@
 	                                    <div class="controls">{{ form_widget(form.image) }}</div>
 	                                </div> 
 					
-					{{ form_row(form.comments) }}
+									{{ form_row(form.comments) }}
 						
 						            <div class="control-group">
 						                <label class="control-label" for="srm_contact_isUser">{{ form.isUser.vars.label|trans }}</label>
@@ -105,12 +112,12 @@
 						                </div>
 						            </div>
 						
-						            <div class="control-group">
+						            {# <div class="control-group">
 						                <label class="control-label" for="srm_contact_enabled">{{ form.enabled.vars.label|trans }}</label>
 						                <div class="controls">
 						                    {{ form_widget(form.enabled) }}
                                         </div> 
-                                    </div>
+                                    </div> #}
                                     <div id="interne" >
                                                                 
                                 </div>

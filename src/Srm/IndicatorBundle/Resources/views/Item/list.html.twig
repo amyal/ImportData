@@ -1,16 +1,16 @@
 {% extends '::layout.html.twig' %}
 
 {% block main_container_header %}
-    <i class="icon-building"></i> {{ 'datas.list.title'|trans }}
+    <i class="icon-building"></i> {{ 'items.list.title'|trans }}
 {% endblock %}
 
 {% block breadcrumb %}
     <div class="breadcrumb-button">
-        <span class="breadcrumb-label">{{ 'indicator.nav'|trans }}</span>
+        <span class="breadcrumb-label">{{ 'items.nav'|trans }}</span>
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
     <div class="breadcrumb-button">
-        <span class="breadcrumb-label">{{ 'indicator.nav.activate'|trans }}</span>
+        <span class="breadcrumb-label">{{ 'items.nav.saisie'|trans }}</span>
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
 {% endblock %}
@@ -21,47 +21,44 @@
             <div class="span12">
                 <div class="box">
                     <div class="box-header">
-                        <span class="title"> {{ 'datas.list.title'|trans }} </span>
-                        <ul class="box-toolbar">
-                            <li><a class="btn btn-green btn-mini spacer" href="{{ path('srm_indicator_data_add', { 'organisationId': organisation.organisationId }) }}">{{ 'button.add'|trans }}</a>
-                                <!--<a class="btn btn-green btn-mini">Exporter</a>-->
-                            </li>
-                        </ul>
+                        <span class="title"> {{ 'items.list.title'|trans }} </span>
                     </div>
                     <div class="box-content">
                         <table class="table table-normal">
                             <thead>
                                 <tr>
-                                    <td>{{ 'datas.list.data'|trans }}</td>
-                                    <td>{{ 'datas.list.name'|trans }}</td>
-                                    <td>{{ 'datas.list.description'|trans }}</td>
-                                    <td>{{ 'list.enabled'|trans }}</td>
+                                    <td>{{ 'items.list.label'|trans }}</td>
+                                    <td>{{ 'items.list.question'|trans }}</td>
+                                    {# <td>{{ 'items.list.code'|trans }}</td> #}
                                     <td style="width:115px"></td>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for data in datas %}
+                                {% for item in items %}
                                     <tr>
-                                        <td>{{ data.dataType.label }}</td>
-                                        <td>{{ data.label }}</td>
-                                        <td>{{ data.description }}</td>
-                                        <td>
-                                            {% if data.enabled %}
+                                        <td>{{ item.label }}</td>
+                                        <td>{{ item.itemQuestions.description }}</td>
+                                        {# <td>{{ item.referencials.code }}</td> #}
+                                        {# <td>{{ item.code }}</td> #}
+                                        {# <td>
+                                            {% if item.enabled %}
                                                 {{ 'enabled'|trans }}
                                             {% else %}
                                                 {{ 'disabled'|trans }}
                                             {% endif %}
-                                        </td>
+                                        </td> #}
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ path('srm_indicator_data_show', { 'organisationId': organisation.organisationId, 'dataId': data.dataId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
-                                                <a href="{{ path('srm_indicator_data_edit', { 'organisationId': organisation.organisationId, 'dataId': data.dataId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                                <a href="{{ path('srm_indicator_data_disable', { 'organisationId': organisation.organisationId, 'dataId': data.dataId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                                <a href="{{ path('srm_indicator_items_show', { 'organisationId': organisation.organisationId, 'itemId': item.itemId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
+                                                {% for indicator in item.indicators %}
+                                                {% if indicator.unitMeasurement %}
+                                                <a href="{{ path('srm_indicator_items_edit', { 'organisationId': organisation.organisationId, 'itemId': item.itemId, 'unitMeasurementId': indicator.unitMeasurement.unitMeasurementId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                                {% endif %}{% endfor %}
                                             </div>
                                         </td>
                                     </tr>
                                 {% else %}
-                                    <tr class="info"><td colspan="9">{{ 'datas.list.empty'|trans }}</td></tr>
+                                    <tr class="info"><td colspan="9">{{ 'items.list.empty'|trans }}</td></tr>
                                 {% endfor %}
                             </tbody>
                         </table>
