@@ -1,0 +1,55 @@
+{% extends '::layout.html.twig' %}
+
+
+{% block main_container_header %}
+    <i class="icon-sitemap"></i> {{ 'contacts.list.title'|trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'contacts.list.title'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+    <div class="breadcrumb-button">
+        <span class="breadcrumb-label">{{ 'contacts.nav.general'|trans }}</span>
+        <span class="breadcrumb-arrow"><span></span></span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="span6 offset3">
+            <div class="padded">
+                <div class="login box" style="margin-top: 80px;">
+                    <div class="box-header">
+                        <span class="title">L'administrateur de la partie prenante</span>
+                    </div>
+                    <div class="box-content padded">
+                        <form action="#" method="post">
+                            <span class="add-on">
+                                <i class="icon-user"></i>
+                                Seriez-vous l'administrateur de l'application ?
+                            </span>
+                            <div class="radio">
+                                <label>
+                                    <input id="oui" name="Oui" type="radio" value="Oui">
+                                    Oui
+                                </label>
+                                <label>
+                                    <input id="non" name="Non" type="radio" value="Non">
+                                    Non
+                                </label>
+                            </div>
+                            <span class="add-on">
+                                <i class="icon-sitemap"></i>
+                                Merci de renseigner le mail du contact administrateur de l'application 
+                            </span>
+                            <input type="text" id="mail" name="mail" required="required" />
+                            <input class="btn btn-blue btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
