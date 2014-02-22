@@ -190,12 +190,19 @@ stakeholder.enabled: "Actif"
 
 advanced.nav: "Avancé"
 
-data.nav: "Données"
-data.nav.alert: "Alertes"
-data.nav.saisie: "Saisie"
-data.nav.doc: "Documents"
-data.nav.import: "Imports"
-data.nav.edit: "Edition"
+items.nav: "Données"
+items.nav.alert: "Alertes"
+items.nav.saisie: "Saisie"
+items.nav.doc: "Documents"
+items.nav.import: "Imports"
+items.nav.edit: "Edition"
+
+items.list.title: "Saisie des données"
+items.list.empty: "Aucune donnée à saisir"
+
+items.list.label: "Item"
+items.list.code: "Code"
+items.list.question: "Question"
 
 users.list.title: "Utilisateurs"
 list.header.username: "Login"

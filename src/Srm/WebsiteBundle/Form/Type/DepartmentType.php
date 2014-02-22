@@ -27,10 +27,10 @@ class DepartmentType extends AbstractType
 
             ->add('sites', 'srm_organisation_sites', array('required' => true))
 
-            ->add('contacts', 'srm_organisation_contacts', array(
+            /*->add('contacts', 'srm_organisation_contacts', array(
                 'required' => true,
                 'multiple' => true,
-            ))
+            ))*/
 
             ->add('enabled', 'checkbox', array('label' => 'department.enabled'))
 

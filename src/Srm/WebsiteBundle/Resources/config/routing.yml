@@ -20,5 +20,5 @@ _referencials:
     resource: "routing/referencials.yml"
 _indicator:
     resource: "routing/indicator.yml"
-_data:
-    resource: "routing/data.yml"
+_item:
+    resource: "routing/items.yml"

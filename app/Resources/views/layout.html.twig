@@ -276,36 +276,36 @@
                         <span class="glow"></span>
                         <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown4">
                             <i class="icon-table icon-2x"></i>
-                            <span>{{ 'data.nav'|trans }} <i class="icon-caret-down"></i></span>
+                            <span>{{ 'items.nav'|trans }} <i class="icon-caret-down"></i></span>
                         </a>
                         <ul id="dropdown4" class="collapse ">
                             <li class="">
                                 <a href="#">
-                                    <i class="icon-bell-alt"></i> {{ 'data.nav.alert'|trans }}
+                                    <i class="icon-bell-alt"></i> {{ 'items.nav.alert'|trans }}
                                 </a>
                             </li>
                             <li class="">
                                 <a  {% if organisation is defined %}
-                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisation.organisationId, 'referencialTypeId': 1 }) }}"
+                                        href="{{ path('srm_indicator_items_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
-                                        href="{{ path('srm_indicator_indicator_list', { 'organisationId': organisationId, 'referencialTypeId': 1 }) }}"
+                                        href="{{ path('srm_indicator_items_list', { 'organisationId': organisationId }) }}"
                                     {% endif %}>
-                                    <i class="icon-list-alt"></i> {{ 'data.nav.saisie'|trans }}
+                                    <i class="icon-list-alt"></i> {{ 'items.nav.saisie'|trans }}
                                 </a>
                             </li>
                             {# <li class="">
                                 <a href="#">
-                                    <i class="icon-paper-clip"></i> {{ 'data.nav.doc'|trans }}
+                                    <i class="icon-paper-clip"></i> {{ 'items.nav.doc'|trans }}
                                 </a>
                             </li>
                             <li class="">
                                 <a href="#">
-                                    <i class="icon-download-alt"></i> {{ 'data.nav.import'|trans }}
+                                    <i class="icon-download-alt"></i> {{ 'items.nav.import'|trans }}
                                 </a>
                             </li>
                             <li class="">
                                 <a href="#">
-                                    <i class="icon-edit"></i> {{ 'data.nav.edit'|trans }}
+                                    <i class="icon-edit"></i> {{ 'items.nav.edit'|trans }}
                                 </a>
                             </li> #}
                         </ul>
@@ -392,7 +392,7 @@
                 </li>
             {% endif %} 
                 
-                    <li class="dark-nav ">
+                    {# <li class="dark-nav ">
                         <span class="glow"></span>
                         <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown8">
                             <i class="icon-certificate icon-2x"></i>
@@ -405,7 +405,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> #}
                 </ul>
             </div>
 
