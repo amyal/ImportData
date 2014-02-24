@@ -51,7 +51,7 @@ class ContactType extends AbstractType
                 }
             ))
 
-            ->add('departments',    'srm_organisation_departments', array('attr'=>array('multiple'=>true,'class'=>'chzn-select', 'name'=>'colors')))
+            ->add('departments', 'srm_organisation_departments', array('attr'=>array('multiple'=>true,'class'=>'chzn-select', 'name'=>'colors')))
 
             ->add('subDepartments', 'srm_organisation_sub_departments', array('attr'=>array('multiple'=>true,'class'=>'chzn-select', 'name'=>'colors')))
 

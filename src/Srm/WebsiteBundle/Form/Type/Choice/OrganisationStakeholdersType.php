@@ -33,6 +33,7 @@ class OrganisationStakeholdersType extends AbstractType
                     ->orderBy('s.label', 'ASC')
                 ;
             },
+            'multiple' => true,
         ));
     }
 

@@ -30,7 +30,7 @@ class ItemsController extends Controller
         return $this->render('SrmIndicatorBundle:Item:show.html.twig', array(
             'organisationId'    => $organisation->getOrganisationId(),
             'indicatorId'       => $item->getIndicatorId(),
-            'item'         => $item,
+            'item'              => $item,
         ));
     }
 
@@ -41,22 +41,22 @@ class ItemsController extends Controller
         $em->persist($item);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('srm_indicator_indicator_list', array(
+        return $this->redirect($this->generateUrl('srm_indicator_items_list', array(
             'referencialId' => $referencial->getReferencialId(),
         )));
     }
 
     public function formAction(Organisation $organisation, Item $item)
     {
-        $formActionRoute = 'srm_indicator_indicator_add';
-        $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(), 'indicatorId' => $item->getIndicatorId());
+        $formActionRoute = 'srm_indicator_items_add';
+        $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(), 'itemId' => $item->getItemId());
 
-        if (null !== $indicatorId = $item->getIndicatorId()) {
-            $formActionRoute = 'srm_indicator_indicator_edit';
-            $formActionRouteParams['indicatorId'] = $indicatorId;
+        if (null !== $itemId = $item->getItemId()) {
+            $formActionRoute = 'srm_indicator_items_edit';
+            $formActionRouteParams['itemId'] = $itemId;
         }
 
-        $form = $this->createForm('srm_indicator', $item, array(
+        $form = $this->createForm('srm_indicator_item', $item, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
             'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
@@ -82,7 +82,7 @@ class ItemsController extends Controller
         $em->persist($item);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('srm_indicator_indicator_list', array(
+        return $this->redirect($this->generateUrl('srm_indicator_items_list', array(
             'organisationId' => $organisation->getOrganisationId(),
         )));
     }

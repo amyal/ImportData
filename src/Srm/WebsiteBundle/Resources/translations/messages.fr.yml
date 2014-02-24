@@ -215,6 +215,7 @@ groupStakeholders.list.type: "Type"
 groupStakeholders.list.archetype: "Archétype(s)"
 groupStakeholders.label: "Libellé"
 groupStakeholders.archetypes: "Archétype(s)"
+groupStakeholders.list.stakeholders: "Partie(s) prenante(s)"
 
 list.no_stakeholdersGroup: "Aucun type"
 list_no_stakeholderArchetypes: "Aucun achétype"

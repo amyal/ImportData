@@ -27,10 +27,10 @@ srm_indicator_items_disable:
         itemId: \d+
 
 srm_indicator_items_edit:
-    path:       /organisations/{organisationId}/items/{itemId}/units/{unitMeasurementId}
+    path:       /organisations/{organisationId}/items/{itemId}
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmIndicatorBundle:Items:form"
     requirements:
         itemId: \d+
-        unitMeasurementId: \d+
+        # unitMeasurementId: \d+
