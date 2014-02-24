@@ -184,7 +184,7 @@ class Contact
 
         $this->isUser = false;
         $this->shareholder = false;
-
+        $this->enabled = true;
         $this->creationDate = new \DateTime();
         $this->deleted = false;
     }
