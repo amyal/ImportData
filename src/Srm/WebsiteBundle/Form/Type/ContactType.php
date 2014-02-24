@@ -46,8 +46,13 @@ class ContactType extends AbstractType
                 'label'    => 'role',
                 'empty_value' => 'Sélectionnez un rôle',
                 'required' => true,
-                'query_builder' => function(EntityRepository $er) {
-                    return $er->createQueryBuilder('r')->where('r.roleId IN (3, 4)')->orderBy('r.label', 'ASC');
+                'query_builder' => function(EntityRepository $er) use($builder) {
+                    if ($builder->getData()->getRole()->getRoleId() == 1)
+                        return $er->createQueryBuilder('r')->where('r.roleId IN (2, 3, 4)')->orderBy('r.label', 'ASC');
+                    elseif ($builder->getData()->getRole()->getRoleId() == 2)
+                        return $er->createQueryBuilder('r')->where('r.roleId IN (3, 4)')->orderBy('r.label', 'ASC');
+                    else
+                        return $er->createQueryBuilder('r')->where('r.roleId IN (4)')->orderBy('r.label', 'ASC');
                 }
             ))
 
