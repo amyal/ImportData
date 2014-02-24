@@ -143,7 +143,9 @@ a [class*=" icon-"] {
 }
 .pull-right {
   float: right;
+  padding-top:15px;
 }
+.pull-right .icon-search:before{display:none;}
 .pull-left {
   float: left;
 }

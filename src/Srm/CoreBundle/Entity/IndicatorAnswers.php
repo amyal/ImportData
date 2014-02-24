@@ -18,6 +18,11 @@ class IndicatorAnswers
     private $answerStatus;
 
     /**
+     * @var \Date
+     */
+    private $indicatorDate;
+
+    /**
      * @var \DateTime
      */
     private $updatedDate;
@@ -148,6 +153,29 @@ class IndicatorAnswers
     public function getUpdatedDate()
     {
         return $this->updatedDate;
+    }
+        
+    /**
+     * Set indicatorDate
+     *
+     * @param \Date $indicatorDate
+     * @return IndicatorAnswers
+     */
+    public function setIndicatorDate($indicatorDate)
+    {
+        $this->indicatorDate = $indicatorDate;
+
+        return $this;
+    }
+
+    /**
+     * Get indicatorDate
+     *
+     * @return \Date
+     */
+    public function getIndicatorDate()
+    {
+        return $this->indicatorDate;
     }
 
     /**

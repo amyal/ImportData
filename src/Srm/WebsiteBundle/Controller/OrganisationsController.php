@@ -13,7 +13,8 @@ class OrganisationsController extends Controller
     {  
        if (!$this->get('security.context')->isGranted('ROLE_U') ||
            $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
-          {throw new AccessDeniedHttpException('Accès interdit');
+          {
+              throw new AccessDeniedHttpException('Accès interdit');
           }
 
         return $this->render('SrmWebsiteBundle:Organisation:index.html.twig', array(

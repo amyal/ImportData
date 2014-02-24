@@ -6,9 +6,10 @@
     </id>
     <field name="answer" type="string" column="ANSWER" length="255" nullable="true"/>
     <field name="answerStatus" type="string" column="ANSWER_STATUS" length="25" nullable="true"/>
-    <field name="updatedDate" type="string" column="UPDATED_DATE" length="25" nullable="true"/>
-    <field name="creationDate" type="string" column="CREATION_DATE" length="25" nullable="true"/>
-    <field name="modificationDate" type="boolean" column="MODIFICATION_DATE" nullable="true"/>
+    <field name="indicatorDate" type="date" column="INDICATOR_DATE" nullable="true"/>
+    <field name="updatedDate" type="datetime" column="UPDATED_DATE" nullable="true"/>
+    <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
+    <field name="modificationDate" type="datetime" column="MODIFICATION_DATE" nullable="true"/>
 
     <many-to-one field="indicators" target-entity="Indicators">
       <join-columns>

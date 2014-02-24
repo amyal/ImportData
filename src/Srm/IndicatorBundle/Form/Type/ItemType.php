@@ -11,6 +11,9 @@ class ItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {        
 
+echo "<pre>"; 
+\Doctrine\Common\Util\Debug::dump($options, 2); 
+exit;
         if ($options['data']->getItemQuestions()) {
             $builder->add('label', 'text', array(
                 'label'    => $options['data']->getItemQuestions()->getDescription(),

@@ -144,13 +144,13 @@
                     </li>     
                     {% if is_granted('ROLE_A') %}
  <!-- app.request.attributes.get il ya une liaison entre les routes et le flash dans le rubrique Contacts dans le menu -->
-                    <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal','srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit','srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit','srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}active{% endif %}">
+                    <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal','srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit','srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit','srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit','srm_website_shareholders_list','srm_website_shareholders_add','srm_website_shareholders_show','srm_website_shareholders_edit'] %}active{% endif %}">
                         <span class="glow"></span>
                         <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown1">
                             <i class="icon-cogs icon-2x"></i>
                             <span>{{ 'configuration.nav'|trans }}  <i class="icon-caret-down"></i></span>
                         </a>                   
-                        <ul id="dropdown1" class="collapse {% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal','srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit','srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit','srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}in{% endif %}">
+                        <ul id="dropdown1" class="collapse {% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal','srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit','srm_website_departments_list','srm_website_departments_add','srm_website_department_show','srm_website_department_edit','srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit','srm_website_shareholders_list','srm_website_shareholders_add','srm_website_shareholders_show','srm_website_shareholders_edit'] %}in{% endif %}">
 
                             <li class="{% if app.request.attributes.get('_route') in ['srm_website_organisation_show','srm_website_organisation_basicsrm_website_organisation_legal','srm_website_organisation_legal'] %}active{% endif %}">
                                 <a  {% if identificationCode is defined %}
@@ -163,7 +163,7 @@
                                     <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }} 
                                 </a>
                             </li>
-                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_shareholders_list','srm_website_shareholders_add'] %}active{% endif %}">
+                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_shareholders_list','srm_website_shareholders_add','srm_website_shareholders_show','srm_website_shareholders_edit'] %}active{% endif %}">
                                 <a  {% if organisation is defined %}
                                         href="{{ path('srm_website_shareholders_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
@@ -292,7 +292,9 @@
                                     {% endif %}>
                                     <i class="icon-list-alt"></i> {{ 'items.nav.saisie'|trans }}
                                 </a>
+                            
                             </li>
+
                             {# <li class="">
                                 <a href="#">
                                     <i class="icon-paper-clip"></i> {{ 'items.nav.doc'|trans }}
@@ -310,7 +312,7 @@
                             </li> #}
                         </ul>
                     </li> 
-                    {% endif %} 
+{% endif %} 
                 {% if is_granted('ROLE_A') %}  
                 <!-- <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_contacts_list','srm_website_contacts_add','srm_website_user_show','srm_website_user_edit'] %}active{% endif %}">
                     <span class="glow"></span>
@@ -348,14 +350,14 @@
                 </li>
              {% endif %} 
         {% if is_granted('ROLE_SU') %}     
-                <li class="dark-nav ">
+                <li class="dark-nav {% if app.request.attributes.get('_route') in ['srm_website_groupStakeholders_list','srm_website_groupStakeholders_add','srm_website_groupStakeholders_show','srm_website_groupStakeholders_edit','srm_website_stakeholders_list','srm_website_stakeholders_add','srm_website_stakeholders_show','srm_website_stakeholders_edit'] %}active{% endif %}">
                     <span class="glow"></span>
                     <a class="accordion-toggle collapsed " data-toggle="collapse" href="#dropdown7">
                         <i class="icon-exchange icon-2x"></i>
                         <span>{{ 'stakeholder.nav'|trans }} <i class="icon-caret-down"></i></span>
                     </a>
-                    <ul id="dropdown7" class="collapse ">
-                        <li class="">
+                    <ul id="dropdown7" class="collapse {% if app.request.attributes.get('_route') in ['srm_website_groupStakeholders_list','srm_website_groupStakeholders_add','srm_website_groupStakeholders_show','srm_website_groupStakeholders_edit','srm_website_stakeholders_list','srm_website_stakeholders_add','srm_website_stakeholders_show','srm_website_stakeholders_edit'] %}in{% endif %}">
+                        <li class="{% if app.request.attributes.get('_route') in ['srm_website_groupStakeholders_list','srm_website_groupStakeholders_add','srm_website_groupStakeholders_show','srm_website_groupStakeholders_edit'] %}active{% endif %}">
                             <a {% if organisation is defined %}
                                     href="{{ path('srm_website_groupStakeholders_list', { 'organisationId': organisation.organisationId }) }}"
                                 {% elseif organisationId is defined %}
@@ -366,7 +368,7 @@
                                 <i class="icon-briefcase"></i> {{ 'stakeholder.nav.group'|trans }}
                             </a>
                         </li>
-                        <li class="">
+                        <li class="{% if app.request.attributes.get('_route') in ['srm_website_stakeholders_list','srm_website_stakeholders_add','srm_website_stakeholders_show','srm_website_stakeholders_edit'] %}active{% endif %}">
                             <a {% if organisation is defined %}
                                     href="{{ path('srm_website_stakeholders_list', { 'organisationId': organisation.organisationId }) }}"
                                 {% elseif organisationId is defined %}
