@@ -27,7 +27,7 @@ class OrganisationsController extends Controller
           {
           throw new AccessDeniedHttpException('Accès limité aux administrateurs');
           }
-       if ($organisation->getOrganisationStatus()== Null || 
+       if (!is_null($organisation->getOrganisationStatus()) && 
            $organisation->getOrganisationStatus()->getOrganisationStatusId() != 1)
           {
           throw new AccessDeniedHttpException('L\'organisation n\'est pas valide');

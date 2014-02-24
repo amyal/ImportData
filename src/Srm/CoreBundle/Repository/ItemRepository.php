@@ -9,7 +9,7 @@ use Srm\CoreBundle\Entity\User;
 
 class ItemRepository extends EntityRepository
 {
-    public function findNonDeletedByUser(Organisation $organisation)
+    public function findNonDeletedByUser(Organisation $organisation, $user)
     {
         return $this->createQueryBuilder('i')
             ->select('i', 'q', 'ind', 'r')
@@ -27,6 +27,7 @@ class ItemRepository extends EntityRepository
             ->andWhere('q.hide = :hide')->setParameter('hide', false)
             ->andWhere('c.organisation = :organisation')->setParameter('organisation', $organisation)
             ->andWhere('r.organisation = :organisation')->setParameter('organisation', $organisation)
+            ->andWhere('c.contactId = :contactId')->setParameter('contactId', $user->getContact()->getContactId())
             ->getQuery()
             ->getResult()
         ;

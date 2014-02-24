@@ -31,6 +31,10 @@
           <join-column name="STAKEHOLDER_ID" referenced-column-name="STAKEHOLDER_ID"/>
         </inverse-join-columns>
       </join-table>
+
+      <cascade>
+        <cascade-all />
+      </cascade>
     </many-to-many>
         
     <many-to-many field="stakeholderArchetypes" target-entity="StakeholderArchetype" inversed-by="stakeholderArchetypes">

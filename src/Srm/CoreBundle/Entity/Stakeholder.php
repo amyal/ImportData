@@ -649,7 +649,7 @@ class Stakeholder
      */
     public function addGroupStakeholder(GroupStakeholder $groupStakeholder)
     {
-        $groupStakeholder->addStakeholder($this);
+        //$groupStakeholder->addStakeholder($this);
         $this->groupStakeholders[] = $groupStakeholder;
 
         return $this;
@@ -662,7 +662,7 @@ class Stakeholder
      */
     public function removeGroupStakeholder(GroupStakeholder $groupStakeholder)
     {
-        $groupStakeholder->removeStakeholder($this);
+        //$groupStakeholder->removeStakeholder($this);
         $this->groupStakeholders->removeElement($groupStakeholder);
     }
 

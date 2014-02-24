@@ -1,16 +1,16 @@
 {% extends '::layout.html.twig' %} 
 
 {% block main_container_header %}
-    <i class="icon-circle-blank"></i> {{ 'datas.list.title'|trans }}
+    <i class="icon-circle-blank"></i> {{ 'items.list.title'|trans }}
 {% endblock %}
 
 {% block breadcrumb %}
     <div class="breadcrumb-button">
-        <span class="breadcrumb-label">{{ 'configuration.nav'|trans }}</span>
+        <span class="breadcrumb-label">{{ 'items.nav'|trans }}</span>
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
     <div class="breadcrumb-button">
-        <span class="breadcrumb-label">{{ 'datas.list.title'|trans }}</span>
+        <span class="breadcrumb-label">{{ 'items.nav.saisie'|trans }}</span>
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
 {% endblock %}
@@ -21,7 +21,7 @@
             <div class="span10 offset1">
                 <div class="box">
                     <div class="box-header">
-                        <span class="title"> {{ 'datas.list.title'|trans }} </span>
+                        <span class="title"> {{ 'items.list.title'|trans }} </span>
                     </div>
 
                     {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
@@ -34,18 +34,18 @@
                                     <div class="controls">{{ form_widget(form.label) }}</div>
                                 </div>
 
-                                <div class="control-group">
+                                {# <div class="control-group">
                                     <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>
                                     <div class="controls">
                                         {{ form_widget(form.enabled, {'attr': {'class': 'icheck'}}) }}
                                     </div>
-                                </div>
+                                </div> #}
                             </div>
                         </div>
 
                         {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
                             save_form: form.save,
-                            url_cancel: path('srm_indicator_data_list', {'organisationId': organisationId})
+                            url_cancel: path('srm_indicator_items_list', {'organisationId': organisationId})
                         }, with_context = false) }}
 
                         <div class="hide">
