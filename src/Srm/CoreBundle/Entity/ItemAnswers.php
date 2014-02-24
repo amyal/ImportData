@@ -13,6 +13,11 @@ class ItemAnswers
     private $answer;
 
     /**
+     * @var \Date
+     */
+    private $itemDate;
+
+    /**
      * @var \DateTime
      */
     private $validUntil;
@@ -148,6 +153,29 @@ class ItemAnswers
     public function getValidUntil()
     {
         return $this->validUntil;
+    }
+
+    /**
+     * Set itemDate
+     *
+     * @param \Date $itemDate
+     * @return ItemAnswers
+     */
+    public function setItemDate($itemDate)
+    {
+        $this->itemDate = $itemDate;
+
+        return $this;
+    }
+
+    /**
+     * Get itemDate
+     *
+     * @return \Date
+     */
+    public function getItemDate()
+    {
+        return $this->itemDate;
     }
 
     /**
