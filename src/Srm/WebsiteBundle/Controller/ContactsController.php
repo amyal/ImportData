@@ -106,10 +106,11 @@ class ContactsController extends Controller
             if (null === $this->getDoctrine()->getRepository('Srm\UserBundle\Entity\User')->findOneById($contact->getContactId())) {
                 $contactName = $contact->getFirstname().' '.$contact->getLastname();
                 $user = new User($contact->getContactId(), $contactName, $contact->getMail());
-                $user->setRole($this->getDoctrine()->getRepository('Srm\UserBundle\Entity\Role')->findOneByRoleType('ROLE_U'));
+                $user->setRole($contact->getRole());
                 $user->setContact($contact);
                 $encoder = $this->get('security.encoder_factory')->getEncoder($user);
-                $password = $encoder->encodePassword('toto', $user->getSalt());
+                $passwordNonCrypte =  uniqid($contact->getLastname());
+                $password = $encoder->encodePassword($passwordNonCrypte, $user->getSalt());
                 $user->setPassword($password);
 
                 $this->get('fos_user.user_manager')->updateUser($user);
@@ -120,7 +121,7 @@ class ContactsController extends Controller
                     ->setTo($contact->getMail()) // we configure the recipient
                     ->setBody($contact->getGender()->getLabel().' '.$contact->getFirstname().
                             ' '.$contact->getLastname() . ', votre Login est : ' .
-                            $user->getUserName().' et votre Mot de passe est : toto');
+                            $user->getEmail().' et votre Mot de passe est '.$passwordNonCrypte);
                     // and we pass the $name variable to the text template which serves as a body of the message
                     $this->get('mailer')->send($message); // then we send the message.
 
