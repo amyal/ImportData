@@ -28,7 +28,10 @@
                         {{ form_errors(form) }}
 
                         <div class="box-content padded">
-                            <div class="padded-box">
+                            <div class="row-fluid">
+								
+								<div class="span6">
+								
                                 <div class="control-group">
                                     {{ form_label(form.label) }}
                                     <div class="controls">{{ form_widget(form.label) }}</div>
@@ -81,12 +84,15 @@
                                 <div class="control-group">
                                     <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>
                                     <div class="controls">
-                                        {{ form_widget(form.enabled, {'attr': {'class': 'icheck'}}) }}
+                                        {{ form_widget(form.enabled, {'attr': {'class': 'iButton-icons'}}) }}
                                     </div>
                                 </div>
                             </div>
+							<!--</div>-->
 
-                            <div class="padded-box space-box2">
+                          	<!--  <div class="row-fluid">-->
+								
+								<div class="span6">
                                 <div class="control-group">
                                     {{ form_label(form.contacts) }}
                                     <div class="controls">{{ form_widget(form.contacts, {'attr': {'class': 'chzn-select select2'}}) }}</div>
@@ -95,7 +101,9 @@
                                     {{ form_label(form.dangerousSubstances) }}
                                     <div class="controls">{{ form_widget(form.dangerousSubstances, {'attr': {'class': 'icheck'}}) }}</div>
                                 </div>
+								</div>
                             </div>
+							
 
                             <div class="padded-box space-box">
                                 <div class="subtitle-box">{{ 'sites.list.activities'|trans }}</div>
@@ -120,6 +128,9 @@
                             </div>
                         </div>
 
+						</div>
+						
+						
                         {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
                             save_form: form.save,
                             url_cancel: path('srm_website_sites_list', {'organisationId': organisationId})

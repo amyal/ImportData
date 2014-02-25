@@ -55,7 +55,7 @@ departments.list.sub_departments: "Sous-département(s)"
 departments.list.sites: "Site(s)"
 departments.list.users: "Contact(s)"
 department.label: "Nom du département"
-department.enabled: "Ouvert"
+department.enabled: "Actif"
 
 list.enabled: "Actif"
 list.no_activities: "Aucune activité"
@@ -92,7 +92,7 @@ poles.list.label: "Nom"
 poles.list.sites: "Site(s)"
 poles.list.departments: "Département(s)"
 pole.label: "Nom"
-pole.enabled: "Ouvert"
+pole.enabled: "Actif"
 
 role: "Rôle"
 
@@ -112,7 +112,7 @@ site.type_site.choice: "Choix du type de site"
 site.dangerous_substances: "Substances dangereuses"
 site.importance: "Importance"
 site.product: "Produit(s)/service(s)"
-site.enabled: "Ouvert"
+site.enabled: "Actif"
 
 
 referencials.list.title: "Référentiels"

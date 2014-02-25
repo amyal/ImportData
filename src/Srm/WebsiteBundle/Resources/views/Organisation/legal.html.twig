@@ -20,8 +20,9 @@
 {% endblock %}
 
 {% block content %}
+	<div class="container-fluid padded">
     <div class="row-fluid">
-        <div class="span8 offset2">
+        <div class="span12">
             <div class="box">
                 <div class="box-header">
                     <span class="title"> Informations juridiques </span>
@@ -31,7 +32,9 @@
                     {{ form_errors(form) }}
 
                     <div class="box-content padded">
-                        <div class="padded-box">
+                        <div class="row-fluid">
+								
+							<div class="span6">
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.label'|trans }} :</label>
                                 <div class="controls">{{ form_widget(form.legalStatus) }}</div>
@@ -48,6 +51,8 @@
                                 <label class="control-label">{{ 'organisation.form.legal.activity'|trans }} :</label>
                                 <div class="controls">{{ form_widget(form.activity) }}</div>
                             </div>
+							</div>
+							<div class="span6">
                             <div class="control-group">
                                 <label class="control-label">{{ 'organisation.form.legal.activity_code'|trans }} :</label>
                                 <div class="controls">{{ form_widget(form.apeCode) }}</div>
@@ -66,6 +71,7 @@
                                 <label class="control-label">{{ 'organisation.form.legal.nationality'|trans }} :</label>
                                 <div class="controls">{{ form_widget(form.nationality) }}</div>
                             </div>
+							</div>
                         </div>
                     </div>
 
@@ -77,5 +83,5 @@
             </div>
         </div>
     </div>
-
+</div>
 {% endblock %}
