@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
 class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -46,10 +47,10 @@ class ContactType extends AbstractType
                 'label'    => 'role',
                 'empty_value' => 'Sélectionnez un rôle',
                 'required' => true,
-                'query_builder' => function(EntityRepository $er) use($builder) {
-                    if ($builder->getData()->getRole()->getRoleId() == 1)
+                'query_builder' => function(EntityRepository $er) use ($options) {
+                    if ($options['attr']['roleUserId'] == 1)
                         return $er->createQueryBuilder('r')->where('r.roleId IN (2, 3, 4)')->orderBy('r.label', 'ASC');
-                    elseif ($builder->getData()->getRole()->getRoleId() == 2)
+                    elseif ($options['attr']['roleUserId'] == 2)
                         return $er->createQueryBuilder('r')->where('r.roleId IN (3, 4)')->orderBy('r.label', 'ASC');
                     else
                         return $er->createQueryBuilder('r')->where('r.roleId IN (4)')->orderBy('r.label', 'ASC');

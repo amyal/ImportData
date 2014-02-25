@@ -52,7 +52,7 @@ class ContactsController extends Controller
         )));
     }
 
-    public function formAction(Organisation $organisation, Contact $contact, $type = "")
+    public function formAction(Organisation $organisation, Contact $contact)
     {  
         if (!$this->get('security.context')->isGranted('ROLE_SU')||$organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
@@ -64,7 +64,7 @@ class ContactsController extends Controller
         $org_clt = $request->query->get('org_clt');
 
         $formActionRoute = 'srm_website_contacts_add';
-        $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(),'type'=>$type,'stakeholderid'=>$stakeholderid, 'org_clt'=>$org_clt);
+        $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(), 'stakeholderid'=>$stakeholderid, 'org_clt'=>$org_clt);
         $FormEdit=$contact->getContactId() ; //  if the variable equal Null -> add else edition 
 
         if (null !== $contactId = $contact->getContactId()) 
@@ -76,7 +76,7 @@ class ContactsController extends Controller
         $form = $this->createForm('srm_contact', $contact, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
-            'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
+            'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate', 'roleUserId' => $this->getUser()->getRole()->getRoleId()),
         ));
 
         if ('GET' === $request->getMethod()) {
@@ -93,10 +93,10 @@ class ContactsController extends Controller
             ));
         }
 
-        if ($type == "externe"){ // liéer le contact à la nouvelle organisation et la partie prenante
+        /*if ($type == "externe"){ // liéer le contact à la nouvelle organisation et la partie prenante
             $contact->addStakeholder($this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Stakeholder')->find($stakeholderid)); //mapping with stakeholder table
             $contact->setOrganisation($this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Organisation')->find($org_clt));
-        }   
+        } */  
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($contact);
@@ -123,18 +123,18 @@ class ContactsController extends Controller
                             ' '.$contact->getLastname() . ', votre Login est : ' .
                             $user->getEmail().' et votre Mot de passe est '.$passwordNonCrypte);
                     // and we pass the $name variable to the text template which serves as a body of the message
-                    $this->get('mailer')->send($message); // then we send the message.
+                    //$this->get('mailer')->send($message); // then we send the message.
 
                     //     return new Response('Email bien envoyé');
            // }
         }
         }
 
-        if ($type == "externe"){  
+        /*if ($type == "externe"){  
             return $this->redirect($this->generateUrl('srm_website_stakeholders_list', array(
                         'organisationId' => $organisation->getOrganisationId(),
                     )));
-        } else 
+        } else */
             return $this->redirect($this->generateUrl('srm_website_contacts_list', array(
                         'organisationId' => $organisation->getOrganisationId(), 
                     )));

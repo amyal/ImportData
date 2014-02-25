@@ -5,7 +5,7 @@ srm_website_contacts_list:
         _controller:    "SrmWebsiteBundle:Contacts:list"
 
 srm_website_contacts_add:
-    path:       /organisations/{organisationId}/contacts/{type}/add
+    path:       /organisations/{organisationId}/contacts/add
     methods:    [GET,POST]
     defaults:
         _controller:    "SrmWebsiteBundle:Contacts:form"

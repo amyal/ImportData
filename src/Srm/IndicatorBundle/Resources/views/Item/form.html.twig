@@ -30,16 +30,12 @@
                         <div class="box-content padded">
                             <div class="padded-box">
                                 <div class="control-group">
-                                    {{ form_label(form.label) }}
-                                    <div class="controls">{{ form_widget(form.label) }}</div>
+                                    {{ form_label(form.answers) }}
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">{{ form_widget(form.answers) }}</div>
                                 </div>
 
-                                {# <div class="control-group">
-                                    <label class="control-label" for="srm_site_enabled">{{ form.enabled.vars.label|trans }}</label>
-                                    <div class="controls">
-                                        {{ form_widget(form.enabled, {'attr': {'class': 'icheck'}}) }}
-                                    </div>
-                                </div> #}
                             </div>
                         </div>
 

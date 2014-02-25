@@ -57,6 +57,8 @@ class Item
      */
     private $indicators;
 
+    public $answers;
+
     /**
      * Constructor
      */
