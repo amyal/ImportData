@@ -163,7 +163,7 @@
                                     <i class="icon-question-sign"></i> {{ 'configuration.nav.info'|trans }} 
                                 </a>
                             </li>
-                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_shareholders_list','srm_website_shareholders_add','srm_website_shareholders_show','srm_website_shareholders_edit'] %}active{% endif %}">
+                            {# <li class="{% if app.request.attributes.get('_route') in ['srm_website_shareholders_list','srm_website_shareholders_add','srm_website_shareholders_show','srm_website_shareholders_edit'] %}active{% endif %}">
                                 <a  {% if organisation is defined %}
                                         href="{{ path('srm_website_shareholders_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
@@ -173,7 +173,7 @@
                                     {% endif %}>
                                     <i class="icon-resize-vertical"></i> {{ 'configuration.nav.shareholder'|trans }} 
                                 </a>
-                            </li>
+                            </li> #}
                             <li class="{% if app.request.attributes.get('_route') in ['srm_website_sites_list','srm_website_sites_add','srm_website_site_show','srm_website_site_edit'] %}active{% endif %}">
                                 <a  {% if organisation is defined %}
                                         href="{{ path('srm_website_sites_list', { 'organisationId': organisation.organisationId }) }}"
@@ -227,6 +227,11 @@
                                         href="{{ path('srm_website_contacts_list', { 'organisationId': identificationCode }) }}"
                                     {% endif %}>
                                     <i class="icon-group"></i> {{ 'contacts.nav.general'|trans }}
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-user-md"></i> {{ 'contacts.ldap.label'|trans }}
                                 </a>
                             </li>
                           <!--  <li class="">
