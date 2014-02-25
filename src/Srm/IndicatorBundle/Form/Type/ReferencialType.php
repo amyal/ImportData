@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ReferencialType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {   
         $builder
             
             ->add('referencialType', 'entity', array(
@@ -33,9 +33,7 @@ class ReferencialType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
-            ->add('toGroupStakeholder', 'entity', array(
-                'class'    => 'Srm\CoreBundle\Entity\GroupStakeholder',
-                'property' => 'label',
+            ->add('toGroupStakeholder', 'srm_organisation_groupStakeholder', array(
                 'label'    => 'referencials.list.toGroupStakeholder',
                 'empty_value' => 'Interne',
                 'required' => true,
@@ -70,11 +68,8 @@ class ReferencialType extends AbstractType
 
             ->add('indicators', 'srm_organisation_referencialIndicators', array('required' => true))
 
-            ->add('fromGroupStakeholder', 'entity', array(
-                'class'    => 'Srm\CoreBundle\Entity\GroupStakeholder',
-                'property' => 'label',
-                'label'    => 'referencials.list.fromGroupStakeholder',
-                'required' => true
+            ->add('fromGroupStakeholder', 'srm_organisation_groupStakeholder', array(
+                  'label'    => 'referencials.list.fromGroupStakeholder'
             ))
             
             ->add('enabled', 'checkbox', array('label' => 'referencials.enabled'))
