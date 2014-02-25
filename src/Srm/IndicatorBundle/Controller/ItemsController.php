@@ -75,9 +75,7 @@ class ItemsController extends Controller
                 'form'           => $form->createView(),
             ));
         }
-/*echo "<pre>"; 
-\Doctrine\Common\Util\Debug::dump($this->getUser()->getRoles(), 3); 
-exit;*/
+
         if (false === $form->handleRequest($request)->isValid()) {
             return $this->render('SrmIndicatorBundle:Item:form.html.twig', array(
                 'organisationId' => $organisation->getOrganisationId(),
@@ -85,7 +83,7 @@ exit;*/
             ));
         } else {
             $itemAnswers = new ItemAnswers();
-            $itemAnswers->setAnswer($request->get('srm_indicator_item')['answers']);
+            //$itemAnswers->setAnswer($request->get('srm_indicator_item')['answers']);
 
             // Utilisateur ayant saisit la donnée
             $itemAnswers->setContact($this->getUser()->getContact());

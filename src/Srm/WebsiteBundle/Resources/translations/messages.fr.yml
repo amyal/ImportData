@@ -28,6 +28,7 @@ contact.enabled: "Actif"
 contacts.nav.general: "Général"
 contact.label: "Nom du contact"
 contact.list.subDepartments: "Service(s)"
+contacts.ldap.label: "Configuration LDAP"
 
 currency: "Devise"
 currency.choice: "Choix d'une devise"
@@ -93,8 +94,6 @@ poles.list.sites: "Site(s)"
 poles.list.departments: "Département(s)"
 pole.label: "Nom"
 pole.enabled: "Actif"
-
-role: "Rôle"
 
 shareholder: "Actionnaire"
 shareholder.parts: "Parts"
