@@ -22,15 +22,19 @@ class GroupStakeholderType extends AbstractType
         if (null === $this->request) {
             throw new \Exception('Organisation cannot be retrieved to build categories list if the request is not accessible.');
         }
-
+$organisation = $this->request->get('organisation');
+    
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\GroupStakeholder',
             'property'      => 'label',
-            'label'         => 'groupStakeholders.list.title',
-            'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
-            },
-            'multiple' => true,
+            //'label'         => 'groupStakeholders.list.title',
+            'query_builder' => function(EntityRepository $er) use ($organisation) {
+                return $er->createQueryBuilder('s')
+                        ->where('s.organisation = :organisation')->setParameter('organisation', $organisation)
+                        ->andWhere('s.deleted = 0')
+                        ->orderBy('s.label', 'ASC');},
+                
+            //'multiple' => true,
         ));
     }
 
