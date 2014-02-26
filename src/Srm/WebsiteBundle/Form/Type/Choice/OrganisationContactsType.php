@@ -30,8 +30,8 @@ class OrganisationContactsType extends AbstractType
             'query_builder' => function(EntityRepository $er) use ($organisation) {
                 return $er->createQueryBuilder('c')
                     ->where('c.organisation = :organisation')->setParameter('organisation', $organisation)
-                    ->andWhere('c.deleted = 0')
-                    ->andWhere('c.shareholder = 0')
+                    ->andWhere('c.deleted = :deleted')->setParameter('deleted', 0)
+                    ->andWhere('c.shareholder = :shareholder')->setParameter('shareholder', 0)
                     ->orderBy('c.lastname', 'ASC')
                 ;
             },
