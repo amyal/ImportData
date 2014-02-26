@@ -29,23 +29,25 @@
                         </ul>
                     </div>
                     <div class="box-content">
-						<table class="table table-normal">
+						<table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
 			            	<thead>
-				                <tr>
-				                    <td>{{ 'contact.lastname'|trans }}</td>
-				                    <td>{{ 'contact.firstname'|trans }}</td>
-				                    <td>{{ 'contact.function'|trans }}</td>
-				                    <td>{{ 'address'|trans }}</td>
-				                    <td>{{ 'phone.office'|trans }}</td>
-				                    <td>{{ 'email'|trans }}</td>
-				                    <td>{{ 'contact.enabled'|trans }}</td>
-				                    <td></td>
+				                <tr role="row">
+								
+				                    <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending">
+									{{ 'contact.lastname'|trans }}</th>
+				                    <th class="sorting_dsc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"><div>{{ 'contact.firstname'|trans }}</div></th>
+				                    <th  class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"><div>{{ 'contact.function'|trans }}</div></th>
+				                    <th  class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"><div>{{ 'address'|trans }}</div></th>
+				                    <th  class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"><div>{{ 'phone.office'|trans }}</div></th>
+				                    <th  class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"><div>{{ 'email'|trans }}</div></th>
+				                    <th  class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"><div>{{ 'contact.enabled'|trans }}</div></th>
+				                    <th></th>
 				                </tr>
 				            </thead>
-    			            <tbody>
+    			            <tbody  role="alert" aria-live="polite" aria-relevant="all">
                                 {% for contact in contacts %}
-                                    <tr>
-                                        <td>{{ contact.lastname }}</td>
+                                    <tr class="odd">
+                                        <td class=" sorting_1">{{ contact.lastname }}</td>
                                         <td>{{ contact.firstname }}</td>
                                         <td>{{ contact.contactFunction }}</td>
                                       <td>{% if contact.address %}{{ contact.address.label }}{% endif %}</td>

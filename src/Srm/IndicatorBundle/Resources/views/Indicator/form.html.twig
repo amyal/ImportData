@@ -28,15 +28,19 @@
                         {{ form_errors(form) }}
 
                         <div class="box-content padded">
-                            <div class="padded-box">
+						
+                            <div class="row-fluid">
+								
+								<div class="span6">
+								
                                 <div class="control-group">
                                     {{ form_label(form.label) }}
                                     <div class="controls">{{ form_widget(form.label) }}</div>
                                 </div>
-                                <div class="control-group">
+                                {# <div class="control-group">
                                     {{ form_label(form.code) }}
                                     <div class="controls">{{ form_widget(form.code) }}</div>
-                                </div>
+                                </div> #}
                                 <div class="control-group">
                                     {{ form_label(form.indicatorZone) }}
                                     <div class="controls">{{ form_widget(form.indicatorZone) }}</div>
@@ -45,10 +49,13 @@
                                     {{ form_label(form.indicatorGraph) }}
                                     <div class="controls">{{ form_widget(form.indicatorGraph) }}</div>
                                 </div>
-                                <div class="control-group">
+								<div class="control-group">
                                     {{ form_label(form.unitMeasurement) }}
                                     <div class="controls">{{ form_widget(form.unitMeasurement) }}</div>
                                 </div>
+								</div>
+                                
+								<div class="span6">
                                 <div class="control-group">
                                     {{ form_label(form.screenPeriod) }}
                                     <div class="controls">{{ form_widget(form.screenPeriod) }}</div>
@@ -68,7 +75,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div></div>
 
                         {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
                             save_form: form.save,
