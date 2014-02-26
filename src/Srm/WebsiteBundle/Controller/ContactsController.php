@@ -88,9 +88,9 @@ class ContactsController extends Controller
 
         if (false === $form->handleRequest($request)->isValid()) {
             return $this->render('SrmWebsiteBundle:Contact:form.html.twig', array(
-                'organisationId' => $organisation->getOrganisationId(),
-                'form'           => $form->createView(),
-            ));
+                        'organisationId' => $organisation->getOrganisationId(),
+                        'form'           => $form->createView(),
+                    ));
         }
 
         /*if ($type == "externe"){ // liéer le contact à la nouvelle organisation et la partie prenante

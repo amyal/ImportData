@@ -5,6 +5,22 @@
     <i class="icon-sitemap"></i> {{ 'contacts.list.title'|trans }}
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#srm_contact_role').on('change', function() {
+                document.getElementById('1').style.display = "none";
+                document.getElementById('2').style.display ="none";
+                if ($('#srm_contact_role').val() == '3')
+                    document.getElementById('1').style.display = "block";
+                else if($('#srm_contact_role').val() == '4')
+                    document.getElementById('2').style.display = "block";
+                }).trigger('change');
+            });   
+    </script>
+{% endblock %}
+
 {% block breadcrumb %}
     <div class="breadcrumb-button">
         <span class="breadcrumb-label">{{ 'contacts.list.title'|trans }}</span>
@@ -26,7 +42,7 @@
                 </div>
 
                 {{ form_start(form, {'attr': {'class': 'form-horizontal fill-up'}}) }}
-                {{ form_errors(form) }}
+                
 
                 <div class="box-content padded">
                     <div class="row-fluid">
@@ -52,12 +68,16 @@
                                 <div class="controls">{{ form_widget(form.contactFunction) }}</div>
                             </div>
                             <div class="control-group">
+                                {{ form_label(form.mobilePhone) }}
+                                <div class="controls">{{ form_widget(form.mobilePhone) }}</div>
+                            </div>
+                            <div class="control-group">
                                     {{ form_label(form.officePhone) }}
                                     <div class="controls">{{ form_widget(form.officePhone) }}</div>
                             </div>
                             <div class="control-group">
-                                {{ form_label(form.mobilePhone) }}
-                                <div class="controls">{{ form_widget(form.mobilePhone) }}</div>
+                                {{ form_label(form.fax) }}
+                                <div class="controls">{{ form_widget(form.fax) }}</div>
                             </div>
                             <div class="control-group">         
                                 {{ form_label(form.role) }} 
@@ -81,82 +101,63 @@
                             </div>  #}
                         </div>
                         <div class="span6">
-                                <div class="control-group">
-                                    {{ form_label(form.fax) }}
-                                    <div class="controls">{{ form_widget(form.fax) }}</div>
-                                </div>
-                                <div class="control-group">
-                                    {{ form_label(form.address.label) }}
-                                    <div class="controls">{{ form_widget(form.address.label) }}</div>
-                                </div>
-                                <div class="control-group">
-                                    {{ form_label(form.address.zip) }}
-                                    <div class="controls">{{ form_widget(form.address.zip) }}</div>
-                                </div>
-                                <div class="control-group">
-                                    {{ form_label(form.address.city) }}
-                                    <div class="controls">{{ form_widget(form.address.city) }}</div>
-                                </div>
-                                <div class="control-group">
-                                    {{ form_label(form.address.country) }}
-                                    <div class="controls">{{ form_widget(form.address.country, {'attr': {'class': 'chzn-select'}}) }}</div>
-                                </div>
-                                 <div class="control-group">
-                                    {{ form_label(form.image) }}
-                                    <div class="controls">{{ form_widget(form.image) }}</div>
-                                </div> 
+                            <div class="control-group">
+                                {{ form_label(form.address.label) }}
+                                <div class="controls">{{ form_widget(form.address.label) }}</div>
+                            </div>
+                            <div class="control-group">
+                                {{ form_label(form.address.additional1) }}
+                                <div class="controls">{{ form_widget(form.address.additional1) }}</div>
+                            </div>
+                            <div class="control-group">
+                                {{ form_label(form.address.additional2) }}
+                                <div class="controls">{{ form_widget(form.address.additional2) }}</div>
+                            </div>
+                            <div class="control-group">
+                                {{ form_label(form.address.zip) }}
+                                <div class="controls">{{ form_widget(form.address.zip) }}</div>
+                            </div>
+                            <div class="control-group">
+                                {{ form_label(form.address.city) }}
+                                <div class="controls">{{ form_widget(form.address.city) }}</div>
+                            </div>
+                            <div class="control-group">
+                                {{ form_label(form.address.country) }}
+                                <div class="controls">{{ form_widget(form.address.country, {'attr': {'class': 'chzn-select'}}) }}</div>
+                            </div>
+                             <div class="control-group">
+                                {{ form_label(form.image) }}
+                                <div class="controls">{{ form_widget(form.image) }}</div>
+                            </div> 
 
-                                {{ form_row(form.comments) }}
+                            {{ form_row(form.comments) }}
 
-                                <div class="control-group">
-                                    <label class="control-label" for="srm_contact_isUser">{{ form.isUser.vars.label|trans }}</label>
-                                    <div class="controls">
-                                        {{ form_widget(form.isUser) }}
-                                    </div>
+                            <div class="control-group">
+                                <label class="control-label" for="srm_contact_isUser">{{ form.isUser.vars.label|trans }}</label>
+                                <div class="controls">
+                                    {{ form_widget(form.isUser) }}
                                 </div>
-
-                                                    {# <div class="control-group">
-                                                        <label class="control-label" for="srm_contact_enabled">{{ form.enabled.vars.label|trans }}</label>
-                                                        <div class="controls">
-                                                            {{ form_widget(form.enabled) }}
-                                </div> 
-                            </div> #}
-                            <div id="interne" >
-
+                            </div>
                         </div>
 
                     </div>
-                    </div>	
+                </div>	
 
-                    {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
-                        save_form: form.save,
-                        url_cancel: path('srm_website_contacts_list', {'organisationId': organisationId})
-                    }, with_context = false) }}
+                {{ include('SrmWebsiteBundle:Partials:_save_cancel.html.twig', {
+                    save_form: form.save,
+                    url_cancel: path('srm_website_contacts_list', {'organisationId': organisationId})
+                }, with_context = false) }}
 
-                    <div class="hide">
-                        {{ form_widget(form._token) }}
-                        {{ form_rest(form) }}
-                    </div>
+                <div class="hide">
+                    {{ form_widget(form._token) }}
+                    {{ form_rest(form) }}
+                </div>
+                <div>
+                    {{ form_errors(form) }}
                     {{ form_end(form) }}
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript">
-            $(document).ready(function() {
-                $('#srm_contact_role').on('change', function() {
-                document.getElementById('1').style.display = "none";
-                document.getElementById('2').style.display ="none";
-                if ($('#srm_contact_role').val() == '3')
-                    document.getElementById('1').style.display = "block";
-                else if($('#srm_contact_role').val() == '4')
-                    document.getElementById('2').style.display = "block";
-                }).trigger('change');
-            });   
-    </script>
 {% endblock %}

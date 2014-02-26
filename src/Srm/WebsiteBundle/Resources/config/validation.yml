@@ -1,0 +1,71 @@
+Srm\CoreBundle\Entity\Contact:
+  properties:
+    gender:
+        - Valid: ~
+    firstname:
+        - NotBlank: ~
+    lastname:
+        - NotBlank: ~
+    mail:
+        - NotBlank: ~
+        - Email: { message: "L'adresse {{ value }} n'est pas valide", checkMX: true }
+    contactFunction:
+        - NotBlank: ~
+    mobilePhone:
+        - NotBlank: ~
+    role:
+        - Valid: ~
+    address:
+        - Valid: ~
+    departments:
+        - Collection:
+            fields:
+                label:
+                  - NotBlank: ~
+            allowExtraFields: false
+
+Srm\CoreBundle\Entity\Gender:
+  properties:
+    label:
+        - NotBlank: ~
+    shortLabel:
+        - NotBlank: ~
+    genderId:
+        - NotBlank: ~
+
+Srm\CoreBundle\Entity\Address:
+  properties:
+    label:
+        - NotBlank: ~
+    city:
+        - NotBlank: ~
+    zip:
+        - NotBlank: ~
+        - Length:
+            max: 5
+    country:
+        - Valid: ~
+
+Srm\CoreBundle\Entity\Country:
+  properties:
+    country:
+        - Country:
+
+Srm\UserBundle\Entity\Role:
+  properties:
+    label:
+        - NotBlank: ~
+
+Srm\CoreBundle\Entity\Stakeholder:
+  properties:
+    label:
+        - NotBlank: ~
+    siretNumber:
+        - NotBlank: ~
+    firstname:
+        - NotBlank: ~
+    lastname:
+        - NotBlank: ~
+    email:
+        - NotBlank: ~
+        - Email: { message: "L'adresse {{ value }} n'est pas valide", checkMX: true }
