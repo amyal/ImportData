@@ -36,8 +36,10 @@ class SiteType extends AbstractType
             //->add('products', 'srm_products', array('mapped' => false))
             ->add('importance', 'text', array('label' => 'site.importance'))
 
-            ->add('currency', 'srm_currencies', array('required' => true))
-            ->add('language', 'srm_languages',  array('required' => true))
+            ->add('currency', 'currency', array('label' => 'currency'))
+            ->add('language', 'language', array('label' => 'language'))
+            //->add('currency', 'srm_currencies', array('required' => true))
+            //->add('language', 'srm_languages',  array('required' => true))
 
             ->add('address',  'srm_address',  array('required' => true))
 
