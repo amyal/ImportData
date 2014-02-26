@@ -30,7 +30,7 @@ class OrganisationStakeholdersType extends AbstractType
             'query_builder' => function(EntityRepository $er) use ($organisation) {
                 return $er->createQueryBuilder('s')
                     ->where('s.organisation = :organisation')->setParameter('organisation', $organisation)
-                    ->andWhere('s.deleted = 0')
+                    ->andWhere('s.deleted = :deleted')->setParameter('deleted', 0)
                     ->orderBy('s.label', 'ASC')
                 ;
             },
