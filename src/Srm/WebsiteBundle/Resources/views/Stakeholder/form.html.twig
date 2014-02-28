@@ -47,7 +47,8 @@
                         {{ form_errors(form) }}
 
                         <div class="box-content padded">
-                            <div class="padded-box">
+                            <div class="row-fluid">
+                                    <div class="span6">
                                 <div class="control-group">
                                     {{ form_label(form.label) }}
                                     <div class="controls">{{ form_widget(form.label) }}</div>
@@ -67,7 +68,7 @@
                                 <div class="control-group">
                                     {{ form_label(form.email) }}
                                     <div class="controls">{{ form_widget(form.email) }}</div>
-                                </div>
+                                </div>								
                                 <div class="control-group">
                                     {{ form_label(form.phone) }}
                                     <div class="controls">{{ form_widget(form.phone) }}</div>
@@ -79,7 +80,7 @@
                                 <div class="control-group">
                                     {{ form_label(form.address.label) }}
                                     <div class="controls">{{ form_widget(form.address.label) }}</div>
-                                </div>
+                                </div>								
                                 <div class="control-group">
                                     {{ form_label(form.address.zip) }}
                                     <div class="controls">{{ form_widget(form.address.zip) }}</div>
@@ -92,6 +93,10 @@
                                     {{ form_label(form.address.country) }}
                                     <div class="controls">{{ form_widget(form.address.country, {'attr': {'class': 'chzn-select'}}) }}</div>
                                 </div>
+								
+								</div>
+								<div class="span6">	
+								
                                 <div class="control-group">
                                     {{ form_label(form.stakeholderGroup) }}
                                     <div class="controls">{{ form_widget(form.stakeholderGroup, {'attr': {'class': 'chzn-select select2'}}) }}</div>
@@ -127,7 +132,7 @@
                                     <label class="control-label" for="srm_stakeholder_enabled">{{ form.enabled.vars.label|trans }}</label>
                                     <div class="controls">
                                         {{ form_widget(form.enabled, {'attr': {'class': 'iButton-icons'}}) }}
-                                    </div>
+                                    </div></div>
                                 </div>
                             </div>
                         </div>

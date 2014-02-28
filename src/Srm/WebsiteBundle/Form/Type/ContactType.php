@@ -44,7 +44,7 @@ class ContactType extends AbstractType
             ->add('role', 'entity', array(
                 'class'    => 'Srm\UserBundle\Entity\Role',
                 'property' => 'label',
-                'label'    => 'role',
+                'label'    => 'contact.role',
                 'empty_value' => 'Sélectionnez un rôle',
                 'required' => true,
                 'query_builder' => function(EntityRepository $er) use ($options) {

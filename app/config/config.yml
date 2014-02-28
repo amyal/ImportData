@@ -11,7 +11,7 @@ framework:
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
-    validation:      { enable_annotations: true }
+    validation:      { enabled: true, enable_annotations: false }
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
@@ -60,7 +60,7 @@ fos_user:
                 sender_name:    Changement de mot de passe Verseo SRM
                 #template: SrmUserBundle:User:resetting.email.html.twig
 
-       
+
 swiftmailer:
     transport:  smtp
     encryption: ssl
@@ -69,7 +69,7 @@ swiftmailer:
     username:   'rachid.amyal@verseo-consulting.com'
     password:   verseo
 
- 
+
 services:
     userrepository:
         class: Srm\UserBundle\Repository
@@ -77,10 +77,9 @@ services:
         factory_method: getRepository
         arguments:
             - Srm\UserBundle\Entity\User
-            
+
     srm_login_success_handler:
         class:  Srm\UserBundle\Component\Authentication\Handler\LoginSuccessHandler
         arguments:  ["@router","@security.context","@userrepository"]
         tags:
-            - { name: 'monolog.logger', channel: 'security' } 
-    
+            - { name: 'monolog.logger', channel: 'security' }

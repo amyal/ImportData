@@ -12,7 +12,9 @@ class AddressType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('label', 'text', array('label' => 'address.label'))
+            ->add('label', 'textarea', array('label' => 'address.label'))
+            ->add('additional1', 'text', array('label' => 'address.additional1'))
+            ->add('additional2', 'text', array('label' => 'address.additional2'))
             ->add('zip', 'text', array('label' => 'address.zip'))
             ->add('city', 'text', array('label' => 'address.city'))
             ->add('country', 'srm_countries')
