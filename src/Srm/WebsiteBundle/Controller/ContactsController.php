@@ -76,7 +76,7 @@ class ContactsController extends Controller
         $form = $this->createForm('srm_contact', $contact, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
-            'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate', 'roleUserId' => $this->getUser()->getRole()->getRoleId()),
+            'attr'   => array('class' => 'form-horizontal'/*, 'novalidate' => 'novalidate'*/, 'roleUserId' => $this->getUser()->getRole()->getRoleId()),
         ));
 
         if ('GET' === $request->getMethod()) {

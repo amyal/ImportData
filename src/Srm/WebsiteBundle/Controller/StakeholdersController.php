@@ -75,7 +75,7 @@ class StakeholdersController extends Controller
        $form = $this->createForm('srm_stakeholder', $stakeholders, array(
            'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
            'method' => 'POST',
-           'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
+           'attr'   => array('class' => 'form-horizontal'/*, 'novalidate' => 'novalidate'*/),
        ));
 
        $request = $this->getRequest();
