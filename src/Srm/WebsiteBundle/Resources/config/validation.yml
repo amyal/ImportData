@@ -24,6 +24,12 @@ Srm\CoreBundle\Entity\Contact:
                   - NotBlank: ~
             allowExtraFields: false
 
+Srm\CoreBundle\Entity\Site:
+  properties:
+    language:
+        - NotBlank: ~
+        - Language: { message: "La langue {{ value }} n'est pas valide", checkMX: true }
+
 Srm\CoreBundle\Entity\Gender:
   properties:
     label:
@@ -33,23 +39,6 @@ Srm\CoreBundle\Entity\Gender:
     genderId:
         - NotBlank: ~
 
-Srm\CoreBundle\Entity\Address:
-  properties:
-    label:
-        - NotBlank: ~
-    city:
-        - NotBlank: ~
-    zip:
-        - NotBlank: ~
-        - Length:
-            max: 5
-    country:
-        - Valid: ~
-
-Srm\CoreBundle\Entity\Country:
-  properties:
-    country:
-        - Country:
 
 Srm\UserBundle\Entity\Role:
   properties:
