@@ -34,7 +34,7 @@ class SiteType extends AbstractType
                 'multiple' => true,
             ))
             //->add('products', 'srm_products', array('mapped' => false))
-            ->add('importance', 'text', array('label' => 'site.importance'))
+            ->add('importance', 'text', array('label' => 'site.importance','required' => false))
 
             ->add('currency', 'currency', array('label' => 'currency'))
             ->add('language', 'language', array('label' => 'language'))
@@ -44,10 +44,10 @@ class SiteType extends AbstractType
             ->add('address',  'srm_address',  array('required' => true))
 
             ->add('phone', 'number', array('label' => 'phone', 'required' => true))
-            ->add('fax',   'number', array('label' => 'fax'))
+            ->add('fax',   'number', array('label' => 'fax','required' => false))
             ->add('mail', 'email', array('label' => 'email', 'required' => true))
 
-            ->add('enabled', 'checkbox', array('label' => 'site.enabled'))
+            ->add('enabled', 'checkbox', array('label' => 'site.enabled', 'required' => false))
 
             ->add('save', 'submit', array('label' => 'button.save')
             )

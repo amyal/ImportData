@@ -57,9 +57,9 @@ class ContactType extends AbstractType
                 }
             ))
 
-            ->add('departments', 'srm_organisation_departments', array('attr'=>array('multiple'=>true,'class'=>'chzn-select', 'name'=>'colors')))
+            ->add('departments', 'srm_organisation_departments', array('attr'=>array('multiple'=>true,'class'=>'chzn-select', 'name'=>'colors'),'required' => false))
 
-            ->add('subDepartments', 'srm_organisation_sub_departments', array('attr'=>array('multiple'=>true,'class'=>'chzn-select', 'name'=>'colors')))
+            ->add('subDepartments', 'srm_organisation_sub_departments', array('attr'=>array('multiple'=>true,'class'=>'chzn-select', 'name'=>'colors'),'required' => false))
 
             ->add('officePhone', 'text', array(
                 'label'    => 'phone.office',
@@ -80,7 +80,7 @@ class ContactType extends AbstractType
            
            //->add('sites',    'srm_organisation_sites',array('attr'=>array('class'=>'chzn-select', 'name'=>'colors')))
            
-            ->add('isUser',  'checkbox', array('attr'=>array('class'=>'iButton-icons'),'label' => 'contact.is_user'))
+            ->add('isUser',  'checkbox', array('attr'=>array('class'=>'iButton-icons'),'label' => 'contact.is_user','required' => false))
 
             //->add('enabled', 'checkbox', array('attr'=>array('class'=>'iButton-icons'),'label' => 'contact.enabled'))
             

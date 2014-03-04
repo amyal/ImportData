@@ -53,13 +53,13 @@ class StakeholderType extends AbstractType
             
             ->add('importance', 'text', array(
                 'label'    => 'stakeholders.importance',
-                'required' => true,
+                'required' => false,
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
             ->add('connexion', 'checkbox', array(
                 'label'    => 'stakeholders.connexion',
-                'required' => true,
+                'required' => false,
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
@@ -83,11 +83,11 @@ class StakeholderType extends AbstractType
 
             ->add('website', 'text', array(
                 'label'    => 'stakeholders.website',
-                'required' => true,
+                'required' => false,
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
-            ->add('enabled', 'checkbox', array('label' => 'enabled'))
+            ->add('enabled', 'checkbox', array('label' => 'enabled','required' => false))
 
             ->add('save', 'submit', array('label' => 'button.save'))
         ;
