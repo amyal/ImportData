@@ -113,7 +113,8 @@ class OrganisationsController extends Controller
         }
 
         if (false === $form->handleRequest($request)->isValid()) {
-            return $this->render('SrmWebsiteBundle:Organisation:basic.html.twig', array(
+            return $this->render('SrmWebsiteBundle:Organisation:legal.html.twig', array(
+                'identificationCode' => $organisation->getIdentificationCode(),
                 'form' => $form->createView(),
             ));
         }
