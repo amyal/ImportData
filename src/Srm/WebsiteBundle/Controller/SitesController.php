@@ -41,7 +41,7 @@ class SitesController extends Controller
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
            throw new AccessDeniedHttpException('Accès interdit');
           }
-          
+        $this->get('session')->getFlashBag()->set('success_site', 'Le site "'.$site->getLabel().'" a été supprimé'); 
         $site->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($site);
