@@ -246,3 +246,6 @@ list.no_groupStakeholders: "Aucun groupe"
 
 list.no_groupStakeholders: "Aucun groupe"
 list_no_contacts: "Aucun contact"
+
+
+popup.disable: "merci de confirmer la suppression"

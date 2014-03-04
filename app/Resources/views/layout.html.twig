@@ -73,7 +73,7 @@
                                             <li class="with-image">
                                                 <div class="avatar">
                                                    {% if app.user.contact.picture %}
-                                                        <img class="menu-avatar" src="{{ asset('uploads/documents/contact' ~ app.user.contact.lastname ~ '/' ~ app.user.contact.picture)}}"/> 
+                                                        <img class="menu-avatar" src="{{ asset('uploads/documents/' ~ app.user.contact.lastname ~ '/' ~ app.user.contact.picture)}}"/> 
                                                    {% else %}
                                                         <img class="menu-avatar" src="{{ asset('bundles/srmwebsite/images/avatars/avatar-default.png') }}" /> 
                                                    {% endif %}
