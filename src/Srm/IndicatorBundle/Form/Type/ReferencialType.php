@@ -36,7 +36,7 @@ class ReferencialType extends AbstractType
             ->add('toGroupStakeholder', 'srm_organisation_groupStakeholder', array(
                 'label'    => 'referencials.list.toGroupStakeholder',
                 'empty_value' => 'Interne',
-                'required' => true,
+                'required' => false,
                 'attr'=>array('class'=>'chzn-select')
             ))
             
@@ -46,7 +46,7 @@ class ReferencialType extends AbstractType
                 'class'    => 'Srm\CoreBundle\Entity\Category1',
                 'property' => 'label',
                 'label'    => 'referencials.list.category1',
-                'required' => true,
+                'required' => false,
                 'multiple' => true
             ))
                 
@@ -54,7 +54,7 @@ class ReferencialType extends AbstractType
                 'class'    => 'Srm\CoreBundle\Entity\Category2',
                 'property' => 'label',
                 'label'    => 'referencials.list.category2',
-                'required' => true,
+                'required' => false,
                 'multiple' => true
             ))
 
@@ -62,7 +62,7 @@ class ReferencialType extends AbstractType
                 'class'    => 'Srm\CoreBundle\Entity\Category3',
                 'property' => 'label',
                 'label'    => 'referencials.list.category3',
-                'required' => true,
+                'required' => false,
                 'multiple' => true
             ))
 
@@ -72,7 +72,7 @@ class ReferencialType extends AbstractType
                   'label'    => 'referencials.list.fromGroupStakeholder'
             ))
             
-            ->add('enabled', 'checkbox', array('label' => 'referencials.enabled'))
+            ->add('enabled', 'checkbox', array('label' => 'referencials.enabled','required' => false))
 
             ->add('save', 'submit', array('label' => 'button.save'))
         ;
