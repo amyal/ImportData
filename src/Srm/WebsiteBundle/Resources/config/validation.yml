@@ -39,13 +39,10 @@ Srm\CoreBundle\Entity\Gender:
     genderId:
         - NotBlank: ~
 
-<<<<<<< HEAD
-=======
 Srm\CoreBundle\Entity\Country:
   properties:
     label:
         - NotBlank: ~
->>>>>>> upstream/master
 
 Srm\UserBundle\Entity\Role:
   properties:
@@ -65,7 +62,7 @@ Srm\CoreBundle\Entity\Stakeholder:
     email:
         - NotBlank: ~
         - Email: { message: "L'adresse {{ value }} n'est pas valide", checkMX: true }
-        
+
 Srm\CoreBundle\Entity\GroupStakeholder:
   properties:
     label:
@@ -86,7 +83,7 @@ Srm\CoreBundle\Entity\Employees:
   properties:
     label:
         - NotBlank: ~
-        
+
 Srm\CoreBundle\Entity\Turnover:
   properties:
     label:
@@ -149,7 +146,7 @@ Srm\CoreBundle\Entity\Site:
                   - NotBlank: ~
             allowExtraFields: false
             allowMissingFields: true
-            
+
 Srm\CoreBundle\Entity\TypeSite:
   properties:
     label:
@@ -159,22 +156,22 @@ Srm\CoreBundle\Entity\Language:
   properties:
     label:
         - NotBlank: ~  
- 
+
 Srm\CoreBundle\Entity\Currency:
   properties:
     label:
         - NotBlank: ~  
-        
+
 Srm\CoreBundle\Entity\Department:
   properties:
     label:
         - NotBlank: ~
-        
+
 Srm\CoreBundle\Entity\Pole:
   properties:
     label:
         - NotBlank: ~
-        
+
 Srm\CoreBundle\Entity\Referencial:
   properties:
     label:
