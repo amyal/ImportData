@@ -440,7 +440,7 @@ class Indicators
      *
      * @return \Srm\CoreBundle\Entity\PublicationDelay
      */
-    public function getPublicationDelayy()
+    public function getPublicationDelay()
     {
         return $this->publicationDelay;
     }

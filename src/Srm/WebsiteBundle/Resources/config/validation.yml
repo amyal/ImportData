@@ -17,12 +17,12 @@ Srm\CoreBundle\Entity\Contact:
         - Valid: ~
     address:
         - Valid: ~
-    departments:
-        - Collection:
-            fields:
-                label:
-                  - NotBlank: ~
-            allowExtraFields: false
+   # departments:
+   #     - Collection:
+   #         fields:
+   #             label:
+   #               - NotBlank: ~
+   #         allowExtraFields: false
 
 Srm\CoreBundle\Entity\Site:
   properties:
@@ -39,6 +39,13 @@ Srm\CoreBundle\Entity\Gender:
     genderId:
         - NotBlank: ~
 
+<<<<<<< HEAD
+=======
+Srm\CoreBundle\Entity\Country:
+  properties:
+    label:
+        - NotBlank: ~
+>>>>>>> upstream/master
 
 Srm\UserBundle\Entity\Role:
   properties:
@@ -58,3 +65,119 @@ Srm\CoreBundle\Entity\Stakeholder:
     email:
         - NotBlank: ~
         - Email: { message: "L'adresse {{ value }} n'est pas valide", checkMX: true }
+        
+Srm\CoreBundle\Entity\GroupStakeholder:
+  properties:
+    label:
+        - NotBlank: ~
+
+Srm\CoreBundle\Entity\Organisation:
+  properties:
+    label:
+        - NotBlank: ~
+    address:
+        - Valid: ~
+    employees: 
+        - Valid: ~
+    turnover:
+        - Valid: ~
+
+Srm\CoreBundle\Entity\Employees:
+  properties:
+    label:
+        - NotBlank: ~
+        
+Srm\CoreBundle\Entity\Turnover:
+  properties:
+    label:
+        - NotBlank: ~
+
+Srm\CoreBundle\Entity\LegalForm:
+  properties:
+    label:
+        - NotBlank: ~
+    natureCapital   :
+        - NotBlank: ~
+    siretNumber: 
+        - NotBlank: ~
+    activity:
+        - NotBlank: ~
+    apeCode: 
+        - NotBlank: ~
+    registrationDate:
+        - NotBlank: ~
+        - DateTime: ~
+    nationality: 
+        - NotBlank: ~
+        - Country: ~
+    legalStatus:
+        - Valid: ~
+
+Srm\CoreBundle\Entity\LegalStatus:
+  properties:
+    label:
+        - NotBlank: ~
+
+Srm\CoreBundle\Entity\Site:
+  properties:
+    label:
+        - NotBlank: ~
+    phone:
+        - NotBlank: ~
+    mail:
+        - NotBlank: ~
+        - Email: { message: "L'adresse {{ value }} n'est pas valide", checkMX: true }
+    address:
+        - Valid: ~
+    typeSite:
+        - Valid: ~
+    language:
+        - Valid: ~
+    currency:
+        - Valid: ~    
+    dangerousSubstances:
+        - Collection:
+            fields:
+                label:
+                  - NotBlank: ~
+            allowExtraFields: false
+            allowMissingFields: true
+    siteActivities:
+        - Collection:
+            fields:
+                label:
+                  - NotBlank: ~
+            allowExtraFields: false
+            allowMissingFields: true
+            
+Srm\CoreBundle\Entity\TypeSite:
+  properties:
+    label:
+        - NotBlank: ~  
+
+Srm\CoreBundle\Entity\Language:
+  properties:
+    label:
+        - NotBlank: ~  
+ 
+Srm\CoreBundle\Entity\Currency:
+  properties:
+    label:
+        - NotBlank: ~  
+        
+Srm\CoreBundle\Entity\Department:
+  properties:
+    label:
+        - NotBlank: ~
+        
+Srm\CoreBundle\Entity\Pole:
+  properties:
+    label:
+        - NotBlank: ~
+        
+Srm\CoreBundle\Entity\Referencial:
+  properties:
+    label:
+        - NotBlank: ~
+    description:
+        - NotBlank: ~

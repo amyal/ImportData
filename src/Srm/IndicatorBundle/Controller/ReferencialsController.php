@@ -54,7 +54,7 @@ class ReferencialsController extends Controller
         $form = $this->createForm('srm_referencial', $referencial, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
-            'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
+            'attr'   => array('class' => 'form-horizontal'/*, 'novalidate' => 'novalidate'*/),
         ));
 
         $request = $this->getRequest();
@@ -108,6 +108,30 @@ class ReferencialsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($referencial);
         $em->flush();
+        
+        foreach ($referencial->getIndicators() as $indicator) {
+             $v_indicator = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->indicatorByReferencial($organisation,$referencial,$indicator);
+              
+             foreach ($v_indicator as $vindicator) {
+                 
+                 $vindicator->setLabel($indicator->getLabel());
+                 $vindicator->setCode($indicator->getCode());
+                 $vindicator->setDeleted(false);
+                 $vindicator->setEnabled(true);
+                 $vindicator->setIndicatorZone($indicator->getIndicatorZone());
+                 $vindicator->setUnitMeasurement($indicator->getUnitMeasurement());
+                 $vindicator->setIndicatorGraph($indicator->getIndicatorGraph());
+                 $vindicator->setScreenPeriod($indicator->getScreenPeriod());
+                 $vindicator->setPublicationFrequency($indicator->getPublicationFrequency());
+                 $vindicator->setPublicationDelay($indicator->getPublicationDelay());
+                 $vindicator->setCreatedBy($this->getUser()->getUserId());
+                 $vindicator->setCreationDate(new \DateTime());
+             }
+             
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($vindicator);
+        $em->flush(); 
 
         return $this->redirect($this->generateUrl('srm_indicator_referencial_list', array(
             'organisationId' => $organisation->getOrganisationId(),

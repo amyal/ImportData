@@ -18,7 +18,7 @@ class LegalType extends AbstractType
                 'required' => true,
                 'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
             ))
-            ->add('natureCapital',    'text', array('label' => 'organisation.form.legal.nature_capital'))
+            ->add('natureCapital',    'text', array('label' => 'organisation.form.legal.nature_capital','required' => true))
             ->add('activity',         'text' ,array('label' => 'organisation.form.legal.activity'))
             ->add('apeCode',          'text' ,array('label' => 'organisation.form.legal.activity_code'))
             ->add('category',         'text', array('label' => 'organisation.form.legal.category'))
@@ -27,7 +27,7 @@ class LegalType extends AbstractType
 						    'format' => 'dd/MM/y',
 						    'input'  => 'datetime',
 						    'attr'   => array('class' => 'datepicker fill-up'),	))
-            ->add('siretNumber',      'text' ,array('label' => 'organisation.form.legal.siretNumber'))
+            ->add('siretNumber',      'text' ,array('label' => 'organisation.form.legal.siretNumber','required' => true))
             ->add('nationality',      'text' ,array('label' => 'organisation.form.legal.nationality'))
 
             ->add('save', 'submit', array('label' => 'button.save')

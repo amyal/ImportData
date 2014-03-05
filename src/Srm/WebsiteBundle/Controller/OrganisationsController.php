@@ -100,7 +100,7 @@ class OrganisationsController extends Controller
         $form = $this->createForm('srm_organisation_legal', $legalForm, array(
             'action' => $this->generateUrl('srm_website_organisation_legal', array('organisationId' => $organisation->getOrganisationId())),
             'method' => 'POST',
-            'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
+            'attr'   => array('class' => 'form-horizontal'/*, 'novalidate' => 'novalidate'*/),
         ));
 
         $request = $this->getRequest();
@@ -113,7 +113,8 @@ class OrganisationsController extends Controller
         }
 
         if (false === $form->handleRequest($request)->isValid()) {
-            return $this->render('SrmWebsiteBundle:Organisation:basic.html.twig', array(
+            return $this->render('SrmWebsiteBundle:Organisation:legal.html.twig', array(
+                'identificationCode' => $organisation->getIdentificationCode(),
                 'form' => $form->createView(),
             ));
         }

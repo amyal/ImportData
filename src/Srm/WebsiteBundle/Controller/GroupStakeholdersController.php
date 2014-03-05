@@ -73,7 +73,7 @@ class GroupStakeholdersController extends Controller
         $form = $this->createForm('srm_groupStakeholder', $groupStakeholder, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
-            'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
+            'attr'   => array('class' => 'form-horizontal'/*, 'novalidate' => 'novalidate'*/),
         ));
 
         $request = $this->getRequest();
