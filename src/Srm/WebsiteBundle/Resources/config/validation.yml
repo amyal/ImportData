@@ -24,6 +24,12 @@ Srm\CoreBundle\Entity\Contact:
    #               - NotBlank: ~
    #         allowExtraFields: false
 
+Srm\CoreBundle\Entity\Site:
+  properties:
+    language:
+        - NotBlank: ~
+        - Language: { message: "La langue {{ value }} n'est pas valide", checkMX: true }
+
 Srm\CoreBundle\Entity\Gender:
   properties:
     label:
@@ -32,19 +38,6 @@ Srm\CoreBundle\Entity\Gender:
         - NotBlank: ~
     genderId:
         - NotBlank: ~
-
-Srm\CoreBundle\Entity\Address:
-  properties:
-    label:
-        - NotBlank: ~
-    city:
-        - NotBlank: ~
-    zip:
-        - NotBlank: ~
-        - Length:
-            max: 5
-    country:
-        - Valid: ~
 
 Srm\CoreBundle\Entity\Country:
   properties:
@@ -69,7 +62,7 @@ Srm\CoreBundle\Entity\Stakeholder:
     email:
         - NotBlank: ~
         - Email: { message: "L'adresse {{ value }} n'est pas valide", checkMX: true }
-        
+
 Srm\CoreBundle\Entity\GroupStakeholder:
   properties:
     label:
@@ -90,7 +83,7 @@ Srm\CoreBundle\Entity\Employees:
   properties:
     label:
         - NotBlank: ~
-        
+
 Srm\CoreBundle\Entity\Turnover:
   properties:
     label:
@@ -153,7 +146,7 @@ Srm\CoreBundle\Entity\Site:
                   - NotBlank: ~
             allowExtraFields: false
             allowMissingFields: true
-            
+
 Srm\CoreBundle\Entity\TypeSite:
   properties:
     label:
@@ -163,22 +156,22 @@ Srm\CoreBundle\Entity\Language:
   properties:
     label:
         - NotBlank: ~  
- 
+
 Srm\CoreBundle\Entity\Currency:
   properties:
     label:
         - NotBlank: ~  
-        
+
 Srm\CoreBundle\Entity\Department:
   properties:
     label:
         - NotBlank: ~
-        
+
 Srm\CoreBundle\Entity\Pole:
   properties:
     label:
         - NotBlank: ~
-        
+
 Srm\CoreBundle\Entity\Referencial:
   properties:
     label:
