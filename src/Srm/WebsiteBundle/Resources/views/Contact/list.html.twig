@@ -16,6 +16,28 @@
 {% endblock %}
 
 {% block content %}
+    <div id="flash-messages">
+        {% for flashMessage in app.session.flashbag.get('success_contact') %}
+            <div class="alert alert-success">
+                <button class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage|trans|raw|nl2br }}
+            </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('error_contact') %}
+            <div class="alert alert-error">
+                <button class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage|trans|raw|nl2br }}
+            </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('info_contact') %}
+            <div class="alert alert-info">
+                <button class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage|trans|raw|nl2br }}
+            </div>
+        {% endfor %}
+    </div>
     <div class="container-fluid padded">
         <div class="row-fluid">
             <div class="span12">
@@ -65,7 +87,7 @@
                                                 <div class="btn-group">
                                                     <a href="{{ path('srm_website_contact_show', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
                                                     <a href="{{ path('srm_website_contact_edit', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                                    <a href="{{ path('srm_website_contact_disable', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                                    <a href="{{ path('srm_website_contact_disable', { 'organisationId': organisation.organisationId, 'contactId': contact.contactId }) }}" onclick="return confirm('{{ 'popup.disable'|trans}}')" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
                                                   <!--  {% if contact.isUser == true %}
                                                         <a href="{{ path('srm_website_user_edit', { 'organisationId': organisation.organisationId, 'userId': contact.contactId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-user"></i></a>
                                                     {% endif %} -->
