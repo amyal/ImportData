@@ -44,7 +44,7 @@ class PolesController extends Controller
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
            throw new AccessDeniedHttpException('Accès interdit');
           }
-          
+        $this->get('session')->getFlashBag()->set('success_pole', 'Le pole "'.$pole->getLabel().'" a été supprimé');  
         $pole->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($pole);

@@ -42,6 +42,7 @@ class ContactsController extends Controller
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
            throw new AccessDeniedHttpException('Accès interdit');
           }
+        $this->get('session')->getFlashBag()->set('success_contact', 'L\'utilisateur "'.$contact->getLastname()." ". $contact->getFirstname() .'" a été supprimé');  
         $contact->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($contact);

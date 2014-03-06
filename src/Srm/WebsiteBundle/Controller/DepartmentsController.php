@@ -45,7 +45,7 @@ class DepartmentsController extends Controller
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
            throw new AccessDeniedHttpException('Accès interdit');
           }
-          
+        $this->get('session')->getFlashBag()->set('success_dept', 'Le département "'.$department->getLabel().'" a été supprimé');  
         $department->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($department);
