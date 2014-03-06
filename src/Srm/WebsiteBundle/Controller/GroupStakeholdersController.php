@@ -44,7 +44,7 @@ class GroupStakeholdersController extends Controller
         {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
             throw new AccessDeniedHttpException('Accès interdit');
         }
-          
+        $this->get('session')->getFlashBag()->set('success_group_stk', 'Le groupe de la partie prenante "'.$groupStakeholder->getLabel().'" a été supprimé');  
         $groupStakeholder->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($groupStakeholder);

@@ -46,7 +46,7 @@ class StakeholdersController extends Controller
           {      // si l'utilisateur est user OU il veut accéder à une autre organisation par url, alors on déclenche une exception « Accès interdit »
            throw new AccessDeniedHttpException('Accès interdit');
           }
-       
+        $this->get('session')->getFlashBag()->set('success_stk', 'La partie prenante "'.$stakeholders->getLabel().'" a été supprimé'); 
         $stakeholders->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($stakeholders);
@@ -101,7 +101,7 @@ class StakeholdersController extends Controller
        if ($formActionRoute=='srm_website_stakeholders_add')
           { 
             //if add a new stakeholder 
-            $this->get('session')->getFlashBag()->set('success', 'La partie prenante "'.$stakeholders->getLabel().'" a été enregistré avec succés');
+            $this->get('session')->getFlashBag()->set('success_stk', 'La partie prenante "'.$stakeholders->getLabel().'" a été enregistré avec succés');
 
             $current_user = $this->getUser();
 
