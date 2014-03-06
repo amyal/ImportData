@@ -43,6 +43,7 @@ class IndicatorController extends Controller
           {      
            throw new AccessDeniedHttpException('Accès interdit');
           }
+        $this->get('session')->getFlashBag()->set('success_indicator', 'L\'indicator "'.$indicator->getLabel().'" a été supprimé');
         $indicator->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($indicator);

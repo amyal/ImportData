@@ -43,6 +43,7 @@ class ReferencialsController extends Controller
           {      
            throw new AccessDeniedHttpException('Accès interdit');
           }
+        $this->get('session')->getFlashBag()->set('success_referencial', 'Le référentiel "'.$referencial->getLabel().'" a été supprimé');
         $referencial->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($referencial);
