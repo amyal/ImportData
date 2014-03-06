@@ -16,6 +16,28 @@
 {% endblock %}
 
 {% block content %}
+    <div id="flash-messages">
+        {% for flashMessage in app.session.flashbag.get('success_referencial') %}
+            <div class="alert alert-success">
+                <button class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage|trans|raw|nl2br }}
+            </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('error_referencial') %}
+            <div class="alert alert-error">
+                <button class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage|trans|raw|nl2br }}
+            </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('info_referencial') %}
+            <div class="alert alert-info">
+                <button class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage|trans|raw|nl2br }}
+            </div>
+        {% endfor %}
+    </div>
     <div class="container-fluid padded">
         <div class="row-fluid">
             <div class="span12">
@@ -56,7 +78,7 @@
                                             <div class="btn-group">
                                                 <a href="{{ path('srm_indicator_referencial_show', { 'organisationId': organisation.organisationId, 'referencialId': referencial.referencialId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
                                                 <a href="{{ path('srm_indicator_referencial_edit', { 'organisationId': organisation.organisationId, 'referencialId': referencial.referencialId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                                <a href="{{ path('srm_indicator_referencial_disable', { 'organisationId': organisation.organisationId, 'referencialId': referencial.referencialId }) }}" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                                <a href="{{ path('srm_indicator_referencial_disable', { 'organisationId': organisation.organisationId, 'referencialId': referencial.referencialId }) }}" onclick="return confirm('{{ 'popup.disable'|trans}}')" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>
