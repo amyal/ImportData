@@ -3,7 +3,7 @@
 namespace Srm\IndicatorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Indicator;
 use Srm\CoreBundle\Entity\Referencial;
@@ -13,7 +13,11 @@ use Symfony\Component\HttpFoundation\Response;
 class IndicatorController extends Controller
 {
     public function listAction(Organisation $organisation)
-    {
+    {   if (!$this->get('security.context')->isGranted('ROLE_A') ||
+           $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         return $this->render('SrmIndicatorBundle:Indicator:list.html.twig', array(
             'organisation'  => $organisation,
             'indicator'     => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByOrganisation($organisation),
@@ -21,7 +25,11 @@ class IndicatorController extends Controller
     }
 
     public function showAction(Organisation $organisation, Indicator $indicator)
-    {
+    {   if (!$this->get('security.context')->isGranted('ROLE_A') ||
+           $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         return $this->render('SrmIndicatorBundle:Indicator:show.html.twig', array(
             'organisationId'    => $organisation->getOrganisationId(),
             'indicatorId'       => $indicator->getIndicatorId(),
@@ -29,20 +37,28 @@ class IndicatorController extends Controller
         ));
     }
 
-    public function disableAction(Referencial $referencial, Indicator $indicator)
-    {
+    public function disableAction(Organisation $organisation,  Indicator $indicator)
+    {   if (!$this->get('security.context')->isGranted('ROLE_A') ||
+           $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         $indicator->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($indicator);
         $em->flush();
 
         return $this->redirect($this->generateUrl('srm_indicator_indicator_list', array(
-            'referencialId' => $referencial->getReferencialId(),
-        )));
+            'organisationId' => $organisation->getOrganisationId(),
+        )));    
     }
 
     public function formAction(Organisation $organisation, Indicator $indicator)
-    {
+    {   if (!$this->get('security.context')->isGranted('ROLE_A') ||
+           $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         $formActionRoute = 'srm_indicator_indicator_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(), 'indicatorId' => $indicator->getIndicatorId());
 
