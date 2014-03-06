@@ -3,7 +3,7 @@
 namespace Srm\IndicatorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Srm\CoreBundle\Entity\Organisation;
 use Srm\CoreBundle\Entity\Referencial;
 use Srm\CoreBundle\Entity\Indicator;
@@ -14,6 +14,11 @@ class ReferencialsController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_A') ||
+           $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         return $this->render('SrmIndicatorBundle:Referencial:list.html.twig', array(
             'organisation' => $organisation,
             'referencials' => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Referencial')->findNonDeletedByOrganisation($organisation),
@@ -21,7 +26,11 @@ class ReferencialsController extends Controller
     }
 
     public function showAction(Organisation $organisation, Referencial $referencial)
-    {
+    {   if (!$this->get('security.context')->isGranted('ROLE_A') ||
+           $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         return $this->render('SrmIndicatorBundle:Referencial:show.html.twig', array(
             'organisationId' => $organisation->getOrganisationId(),
             'referencial'     => $referencial,
@@ -29,7 +38,11 @@ class ReferencialsController extends Controller
     }
 
     public function disableAction(Organisation $organisation, Referencial $referencial)
-    {
+    {   if (!$this->get('security.context')->isGranted('ROLE_A') ||
+           $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         $referencial->setDeleted(true);
         $em = $this->getDoctrine()->getManager();
         $em->persist($referencial);
@@ -41,7 +54,11 @@ class ReferencialsController extends Controller
     }
 
     public function formAction(Organisation $organisation, Referencial $referencial)
-    {
+    {   if (!$this->get('security.context')->isGranted('ROLE_A') ||
+           $organisation->getIdentificationCode() !==  $this->container->get('doctrine')->getManager()->getRepository('Srm\UserBundle\Entity\User')->OrganisationByUser($this->getUser()))
+          {      
+           throw new AccessDeniedHttpException('Accès interdit');
+          }
         
         $formActionRoute = 'srm_indicator_referencial_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId());
