@@ -76,7 +76,7 @@ class ContactType extends AbstractType
             
             ->add('image', 'file', array('label' => 'contact.picture', 'required' => false))
 
-            ->add('comments', 'textarea', array('label' => 'contact.comments'))
+            ->add('comments', 'textarea', array('label' => 'contact.comments', 'required' => false))
            
            //->add('sites',    'srm_organisation_sites',array('attr'=>array('class'=>'chzn-select', 'name'=>'colors')))
            
