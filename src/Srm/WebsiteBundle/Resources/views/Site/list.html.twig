@@ -51,22 +51,24 @@
                         </ul>
                     </div>
                     <div class="box-content">
-                        <table class="table table-normal">
+                        <table class="dTable responsive dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
                             <thead>
-                                <tr><td>{{ 'sites.list.name'|trans }}</td>
-                                    <td>{{ 'sites.list.organisation'|trans }}</td>
-                                    <td>{{ 'sites.list.type'|trans }}</td>
-                                    <td>{{ 'address.label'|trans }}</td>
-                                    <td>{{ 'address.zip'|trans }}</td>
-                                    <td>{{ 'address.city'|trans }}</td>
-                                    <td>{{ 'address.country'|trans }}</td>
-                                    <td>{{ 'site.enabled'|trans }}</td>
-                                    <td style="width:115px"></td>
+                                <tr role="row">
+								
+									<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'sites.list.name'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'sites.list.organisation'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'sites.list.type'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'address.label'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'address.zip'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'address.city'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'address.country'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'site.enabled'|trans }}</div></th>
+                                    <th style="width:115px"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                                 {% for site in sites %}
-                                    <tr>
+                                    <tr class="odd">
                                         <td>{{ site.label }}</td>
                                         <td>{{ site.organisation.label }}</td>
                                         <td>{{ site.typeSite.label }}</td>

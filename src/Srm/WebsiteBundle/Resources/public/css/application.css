@@ -1617,7 +1617,7 @@ height:100%;top:0;left:0;position:absolute}
 .primary-sidebar .nav > li.active > a{
 	text-shadow:0 1px 0 rgba(255,255,255,0.9);
 	color:#09820c;
-	text-transform:uppercase;
+
 	font-weight:bolder !important;
 	background: url(../images/menu_hover.jpg) 0px center;}
 .primary-sidebar .nav > li.active > a:hover{color:#09820c;}
