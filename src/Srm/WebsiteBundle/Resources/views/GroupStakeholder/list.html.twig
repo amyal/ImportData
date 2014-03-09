@@ -51,19 +51,20 @@
                     </div>
                     <div class="box-content">
 
-                        <table class="table table-normal">
-                            <thead>
-                                <tr><td>{{ 'groupStakeholders.list.label'|trans }}</td>
-                                    <td>{{ 'groupStakeholders.list.type'|trans }}</td>
-                                    <td>{{ 'groupStakeholders.list.archetype'|trans }}</td>
-                                    <td>{{ 'groupStakeholders.list.stakeholders'|trans }}</td>
-                                    <td>{{ 'list.enabled'|trans }}</td>
-                                    <td style="width:115px"></td>
+                        <table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+			            	<thead>
+				                <tr role="row">
+									<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'groupStakeholders.list.label'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'groupStakeholders.list.type'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'groupStakeholders.list.archetype'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'groupStakeholders.list.stakeholders'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'list.enabled'|trans }}</div></th>
+                                    <th style="width:115px"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody  role="alert" aria-live="polite" aria-relevant="all">
                                 {% for groupStakeholder in groupStakeholders %}
-                                    <tr>
+                                    <tr class="odd">
                                         <td>{{ groupStakeholder.label }}</td>
                                         <td>{% if groupStakeholder.stakeholderGroup %}{{ groupStakeholder.stakeholderGroup.label }}{% endif %}</td>
                                         <td>

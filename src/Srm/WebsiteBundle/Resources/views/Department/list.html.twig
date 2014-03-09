@@ -51,18 +51,19 @@
                     </div>
                     <div class="box-content">
 
-                        <table class="table table-normal">
-                            <thead>
-                                <tr><td>{{ 'departments.list.name'|trans }}</td>
-                                    <td>{{ 'departments.list.sites'|trans }}</td>
-                                    <td>{{ 'contacts'|trans }}</td>
-                                    <td>{{ 'department.enabled'|trans }}</td>
-                                    <td style="width:115px"></td>
+                        <table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+			            	<thead>
+				                <tr role="row">
+									<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'departments.list.name'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'departments.list.sites'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'contacts'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'department.enabled'|trans }}</div></th>
+                                    <th style="width:115px"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody  role="alert" aria-live="polite" aria-relevant="all">
                                 {% for department in departments %}
-                                    <tr>
+                                    <tr class="odd">
                                         <td>{{ department.label }}</td>
                                         <td>
                                             {% if department.sites %}

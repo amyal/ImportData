@@ -51,18 +51,19 @@
                     </div>
                     <div class="box-content">
 
-                        <table class="table table-normal">
-                            <thead>
-                                <tr><td>{{ 'poles.list.label'|trans }}</td>
-                                    <td>{{ 'poles.list.sites'|trans }}</td>
-                                    <td>{{ 'poles.list.departments'|trans }}</td>
-                                    <td>{{ 'pole.enabled'|trans }}</td>
-                                    <td style="width:115px"></td>
+                        <table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+			            	<thead>
+				                <tr role="row">
+									<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'poles.list.label'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'poles.list.sites'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'poles.list.departments'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'pole.enabled'|trans }}</div></th>
+                                    <th style="width:115px"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody  role="alert" aria-live="polite" aria-relevant="all">
                                 {% for pole in poles %}
-                                    <tr>
+                                    <tr class="odd">
                                         <td>{{ pole.label }}</td>
                                         <td>
                                             {% if pole.sites %}

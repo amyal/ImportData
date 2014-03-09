@@ -51,17 +51,18 @@
                     </div>
                     <div class="box-content">
 
-                        <table class="table table-normal">
-                            <thead>
-                                <tr><td>{{ 'stakeholders.list.label'|trans }}</td>
-                                    <td>{{ 'stakeholders.list.connexion'|trans }}</td>
-                                    <td>{{ 'list.enabled'|trans }}</td>
-                                    <td style="width:115px"></td>
+                        <table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+			            	<thead>
+				                <tr role="row">
+									<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'stakeholders.list.label'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'stakeholders.list.connexion'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'list.enabled'|trans }}</div></th>
+                                    <th style="width:115px"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody  role="alert" aria-live="polite" aria-relevant="all">
                                 {% for stakeholder in stakeholders %}
-                                    <tr>
+                                    <tr class="odd">
                                         <td>{{ stakeholder.label }}</td>
                                         
                                         <td>

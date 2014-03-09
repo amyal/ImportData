@@ -51,19 +51,19 @@
                         </ul>
                     </div>
                     <div class="box-content">
-                        <table class="table table-normal">
+                        <table class="dTable responsive dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
                             <thead>
-                                <tr>
-                                    <td>{{ 'referencials.list.referencial'|trans }}</td>
-                                    <td>{{ 'referencials.list.name'|trans }}</td>
-                                    <td>{{ 'referencials.list.description'|trans }}</td>
-                                    <td>{{ 'list.enabled'|trans }}</td>
-                                    <td style="width:115px"></td>
+                                <tr role="row">
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'referencials.list.referencial'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'referencials.list.name'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'referencials.list.description'|trans }}</div></th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'list.enabled'|trans }}</div></th>
+                                    <th style="width:115px"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody  role="alert" aria-live="polite" aria-relevant="all">
                                 {% for referencial in referencials %}
-                                    <tr>
+                                    <tr class="odd">
                                         <td>{{ referencial.referencialType.label }}</td>
                                         <td>{{ referencial.label }}</td>
                                         <td>{{ referencial.description }}</td>
