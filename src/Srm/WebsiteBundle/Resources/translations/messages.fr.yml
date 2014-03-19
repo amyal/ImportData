@@ -206,6 +206,8 @@ items.list.empty: "Aucune donnée à saisir"
 items.list.label: "Item"
 items.list.code: "Code"
 items.list.question: "Question"
+items.list.response: "Réponse"
+items.list.unit: "Unité"
 
 users.list.title: "Utilisateurs"
 list.header.username: "Login"
