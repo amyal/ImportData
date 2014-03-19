@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Srm\CoreBundle\Entity\ItemAnswers" table="v_item_answers">
+  <entity name="Srm\CoreBundle\Entity\ItemAnswers" table="v_item_answers" repository-class="Srm\CoreBundle\Repository\ItemAnswersRepository">
     <id name="itemAnswersId" type="integer" column="ITEM_ANSWERS_ID">
       <generator strategy="IDENTITY"/>
     </id>

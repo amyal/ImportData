@@ -1,5 +1,24 @@
 {% extends '::layout.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#items a').editable({
+                    type: 'text',
+                    name: 'items',
+                    url: $('#data-url').val(),
+                    title: 'Saisissez la réponse',
+                    success: function(response, newValue) {
+                        if($.trim(newValue) == '') {
+                            return 'Merci de saisir une valeur';
+                        }
+                    }
+                });
+            });   
+        </script>
+{% endblock %}
+
 {% block main_container_header %}
     <i class="icon-building"></i> {{ 'items.list.title'|trans }}
 {% endblock %}
@@ -24,32 +43,35 @@
                         <span class="title"> {{ 'items.list.title'|trans }} </span>
                     </div>
                     <div class="box-content">
-                       <table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
-			            	<thead>
-				                <tr role="row">
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"><div>{{ 'items.list.label'|trans }}</div></th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"><div>{{ 'items.list.question'|trans }}</div></th>
-                                    <th style="width:115px"></th>
+                        <table id="items" class="table table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <td>{{ 'items.list.question'|trans }}</td>
+                                    <td>{{ 'items.list.response'|trans }}</td>
+                                    <td>{{ 'items.list.unit'|trans }}</td>
                                 </tr>
                             </thead>
-                            <tbody  role="alert" aria-live="polite" aria-relevant="all">
+                            <tbody>
                                 {% for item in items %}
-                                    <tr class="odd">
-                                        <td>{{ item.label }}</td>
+                                    <tr>
                                         <td>{{ item.itemQuestions.description }}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="{{ path('srm_indicator_items_show', { 'organisationId': organisation.organisationId, 'itemId': item.itemId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
-                                                {% for answer in answers %}
-                                                    {% if answer.unitMeasurement and answer.item.itemId == item.itemId %}
-                                                        <a href="{{ path('srm_indicator_items_edit', { 'organisationId': organisation.organisationId, 'itemId': item.itemId, 'unitMeasurementId': answer.unitMeasurement.unitMeasurementId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </div>
-                                        </td>
+                                            {% for answer in answers %}
+                                                {% if answer.unitMeasurement and answer.item.itemId == item.itemId %}
+                                                    <td>
+                                                        <a href="#" data-url="{{ path('srm_indicator_items_edit', { 'organisationId': organisation.organisationId, 'itemId': item.itemId }) }}" data-pk="1">
+                                                            {% for itemAnswer in itemAnswers %}
+                                                                {% if itemAnswer.answers.answersId == answer.answersId %}
+                                                                    {{ itemAnswer.answer }}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </a>
+                                                    </td>
+                                                <td>{{ answer.unitMeasurement.label }}</td>
+                                            {% endif %}
+                                        {% endfor %}
                                     </tr>
                                 {% else %}
-                                    <tr class="info"><td colspan="9">{{ 'items.list.empty'|trans }}</td></tr>
+                                    <tr class="info"><td colspan="9">{{ 'items.liIdst.empty'|trans }}</td></tr>
                                 {% endfor %}
                             </tbody>
                         </table>

@@ -20,11 +20,13 @@ class ItemsController extends Controller
     {
         $items = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Item')->findNonDeletedByUser($organisation, $this->getUser());
         $answers = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Answers')->findNonDeletedByItem($items);
+        $itemAnswers = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\ItemAnswers')->findNonDeletedByAnswers($answers);
 
         return $this->render('SrmIndicatorBundle:Item:list.html.twig', array(
             'organisation'  => $organisation,
             'items'         => $items,
-            'answers'        => $answers,
+            'answers'       => $answers,
+            'itemAnswers'   => $itemAnswers,
         ));
     }
 
@@ -51,6 +53,7 @@ class ItemsController extends Controller
 
     public function formAction(Organisation $organisation, Item $item, Answers $answers)
     {
+
         $formActionRoute = 'srm_indicator_items_add';
         $formActionRouteParams = array('organisationId' => $organisation->getOrganisationId(), 'itemId' => $item->getItemId());
 
@@ -64,7 +67,7 @@ class ItemsController extends Controller
         $form = $this->createForm('srm_indicator_item', $item, array(
             'action' => $this->generateUrl($formActionRoute, $formActionRouteParams),
             'method' => 'POST',
-            'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate'),
+            'attr'   => array('class' => 'form-horizontal', 'novalidate' => 'novalidate', 'id' => 'itemform'),
         ));
 
         $request = $this->getRequest();
@@ -76,43 +79,66 @@ class ItemsController extends Controller
             ));
         }
 
-        if (false === $form->handleRequest($request)->isValid()) {
+        if (true === $form->handleRequest($request)->isValid()) {
             return $this->render('SrmIndicatorBundle:Item:form.html.twig', array(
                 'organisationId' => $organisation->getOrganisationId(),
                 'form'           => $form->createView(),
             ));
         } else {
-            $itemAnswers = new ItemAnswers();
-            //$itemAnswers->setAnswer($request->get('srm_indicator_item')['answers']);
 
-            // Utilisateur ayant saisit la donnée
-            $itemAnswers->setContact($this->getUser()->getContact());
+            if ($_POST['name'] == 'items' and $_POST['value'] != NULL) {
 
-            // Date de la saisie de la valeur
-            $itemAnswers->setItemDate(new \DateTime());
+                $itemAnswersTab = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\ItemAnswers')->findNonDeletedByAnswers($answers);
 
-            /*if ($this->getUser()->getRole()->getRoleId() == 4) {
-                $answersStatus = new AnswersStatus();
-                $itemAnswers->setAnswersStatus($answersStatus->getAnswersStatusId());
-            } else {
-                $answersStatus = new AnswersStatus(1);
-                $itemAnswers->setAnswersStatus($answersStatus->getAnswersStatusId());
-            }*/
+                if (is_array($itemAnswersTab) && count($itemAnswersTab) > 0) {
 
-            // Id réponse de la valeur saisie
-            $itemAnswers->setAnswers($answers);
+                    $itemAnswers = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\ItemAnswers')->find($itemAnswersTab[0]->getItemAnswersId());
 
-            // date de fin de vaildation de la valeur pour le mois
-            $endOfMonth = date('Y-m-t', strtotime("this month"));
-            //$itemAnswers->setValidUntil(date_format($endOfMonth, 'Y-m-t'));
+                    // la réponse à la question
+                    $itemAnswers->setAnswer($_POST['value']);
 
-            // Id questin de la réponse
-            $itemAnswers->setItemQuestions($request->get('item')->getItemQuestions());
+                    // Date de modification de la valeur
+                    $itemAnswers->setItemDate(new \DateTime());
+
+                } else {
+
+                    $itemAnswers = new ItemAnswers();
+                    //$itemAnswers->setAnswer($request->get('srm_indicator_item')['answers']);
+
+                    // Utilisateur ayant saisit la donnée
+                    $itemAnswers->setContact($this->getUser()->getContact());
+
+                    // Date de la saisie de la valeur
+                    $itemAnswers->setItemDate(new \DateTime());
+
+                    /*if ($this->getUser()->getRole()->getRoleId() == 4) {
+                        $answersStatus = new AnswersStatus();
+                        $itemAnswers->setAnswersStatus($answersStatus->getAnswersStatusId());
+                    } else {
+                        $answersStatus = new AnswersStatus(1);
+                        $itemAnswers->setAnswersStatus($answersStatus->getAnswersStatusId());
+                    }*/
+
+                    // Id réponse de la valeur saisie
+                    $itemAnswers->setAnswers($answers);
+                    
+                    // la réponse à la question
+                    $itemAnswers->setAnswer($_POST['value']);
+
+                    // date de fin de vaildation de la valeur pour le mois
+                    $endOfMonth = date('Y-m-t', strtotime("this month"));
+                    //$itemAnswers->setValidUntil(date_format($endOfMonth, 'Y-m-t'));
+
+                    // Id question de la réponse
+                    $itemAnswers->setItemQuestions($request->get('item')->getItemQuestions());
+                }
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($itemAnswers);
+                $em->flush();
+
+            }
         }
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($itemAnswers);
-        $em->flush();
 
         return $this->redirect($this->generateUrl('srm_indicator_items_list', array(
             'organisationId' => $organisation->getOrganisationId(),
