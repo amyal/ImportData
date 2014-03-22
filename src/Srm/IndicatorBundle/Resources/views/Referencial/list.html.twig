@@ -51,7 +51,11 @@
                         </ul>
                     </div>
                     <div class="box-content">
-                        <table class="dTable responsive dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
+                        {% if referencial is defined %}
+                            <table class="dTable responsive dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
+                        {% else %}
+                            <table class="responsive dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
+                        {% endif %}
                             <thead>
                                 <tr role="row">
                                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" ><div>{{ 'referencials.list.referencial'|trans }}</div></th>

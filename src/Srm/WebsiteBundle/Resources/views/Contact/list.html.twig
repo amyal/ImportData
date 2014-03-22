@@ -51,7 +51,11 @@
                         </ul>
                     </div>
                     <div class="box-content">
-						<table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+						{% if contact is defined %}
+                            <table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                        {% else %}
+                            <table class="responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                        {% endif %}
 			            	<thead>
 				                <tr role="row">
 								

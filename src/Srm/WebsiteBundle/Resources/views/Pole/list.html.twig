@@ -50,8 +50,11 @@
                         </ul>
                     </div>
                     <div class="box-content">
-
-                        <table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                        {% if pole is defined %}
+                            <table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                        {% else %}
+                            <table class="responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                        {% endif %}
 			            	<thead>
 				                <tr role="row">
 									<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ><div>{{ 'poles.list.label'|trans }}</div></th>
