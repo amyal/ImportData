@@ -37,15 +37,15 @@ class SiteType extends AbstractType
             //->add('products', 'srm_products', array('mapped' => false))
             ->add('importance', 'text', array('label' => 'site.importance','required' => false))
 
-            ->add('currency', 'currency', array('label' => 'currency'))
-            ->add('language', 'language', array('label' => 'language'))
-            //->add('currency', 'srm_currencies', array('required' => true))
-            //->add('language', 'srm_languages',  array('required' => true))
+            /*->add('currency', 'currency', array('label' => 'currency'))
+            ->add('language', 'language', array('label' => 'language'))*/
+            ->add('currency', 'srm_currencies', array('required' => true))
+            ->add('language', 'srm_languages', array('required' => true))
 
-            ->add('address',  'srm_address',  array('required' => true))
+            ->add('address', 'srm_address', array('required' => true))
 
             ->add('phone', 'number', array('label' => 'phone', 'required' => true))
-            ->add('fax',   'number', array('label' => 'fax','required' => false))
+            ->add('fax', 'number', array('label' => 'fax','required' => false))
             ->add('mail', 'email', array('label' => 'email', 'required' => true))
 
             ->add('enabled', 'checkbox', array('label' => 'site.enabled', 'required' => false))

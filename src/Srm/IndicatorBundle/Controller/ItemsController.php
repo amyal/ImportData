@@ -88,50 +88,49 @@ class ItemsController extends Controller
 
             if ($_POST['name'] == 'items' and $_POST['value'] != NULL) {
 
+                // getting the value of an existing answer
                 $itemAnswersTab = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\ItemAnswers')->findNonDeletedByAnswers($answers);
 
+                // if the value exist 
                 if (is_array($itemAnswersTab) && count($itemAnswersTab) > 0) {
 
                     $itemAnswers = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\ItemAnswers')->find($itemAnswersTab[0]->getItemAnswersId());
 
-                    // la réponse à la question
-                    $itemAnswers->setAnswer($_POST['value']);
-
-                    // Date de modification de la valeur
-                    $itemAnswers->setItemDate(new \DateTime());
-
                 } else {
 
                     $itemAnswers = new ItemAnswers();
-                    //$itemAnswers->setAnswer($request->get('srm_indicator_item')['answers']);
 
-                    // Utilisateur ayant saisit la donnée
-                    $itemAnswers->setContact($this->getUser()->getContact());
-
-                    // Date de la saisie de la valeur
+                    // creation date
                     $itemAnswers->setItemDate(new \DateTime());
-
-                    /*if ($this->getUser()->getRole()->getRoleId() == 4) {
-                        $answersStatus = new AnswersStatus();
-                        $itemAnswers->setAnswersStatus($answersStatus->getAnswersStatusId());
-                    } else {
-                        $answersStatus = new AnswersStatus(1);
-                        $itemAnswers->setAnswersStatus($answersStatus->getAnswersStatusId());
-                    }*/
-
-                    // Id réponse de la valeur saisie
-                    $itemAnswers->setAnswers($answers);
-                    
-                    // la réponse à la question
-                    $itemAnswers->setAnswer($_POST['value']);
-
-                    // date de fin de vaildation de la valeur pour le mois
-                    $endOfMonth = date('Y-m-t', strtotime("this month"));
-                    //$itemAnswers->setValidUntil(date_format($endOfMonth, 'Y-m-t'));
-
-                    // Id question de la réponse
-                    $itemAnswers->setItemQuestions($request->get('item')->getItemQuestions());
                 }
+
+                // the contact setting the value
+                $itemAnswers->setContact($this->getUser()->getContact());
+
+                if ($this->getUser()->getRole()->getRoleId() == 4) {
+                    $answersStatus = new AnswersStatus(1);
+                    echo "<pre>"; 
+                    \Doctrine\Common\Util\Debug::dump($answersStatus, 2); 
+                    exit;
+
+                    $itemAnswers->setAnswersStatus($answersStatus->getAnswersStatusId());
+                } else {
+                    $answersStatus = new AnswersStatus(2);
+                    $itemAnswers->setAnswersStatus($answersStatus->getAnswersStatusId());
+                }
+
+                // Id of the answer Type (vr_answers)
+                $itemAnswers->setAnswers($answers);
+                
+                // posted value of the answer
+                $itemAnswers->setAnswer($_POST['value']);
+
+                // date de fin de vaildation de la valeur pour le mois
+                $endOfMonth = date('Y-m-t', strtotime("this month"));
+                //$itemAnswers->setValidUntil(date_format($endOfMonth, 'Y-m-t'));
+
+                // Id of the question
+                $itemAnswers->setItemQuestions($request->get('item')->getItemQuestions());
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($itemAnswers);
