@@ -44,7 +44,7 @@
                 <div class="box">
                     
                     <div class="box-content">
-                        {% if indicators is defined %}
+                        {% if indicators|length > 0 %}
                             <table class="dTable responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
                         {% else %}
                             <table class="responsive dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
@@ -59,19 +59,19 @@
                                 </tr>
                             </thead>
                             <tbody  role="alert" aria-live="polite" aria-relevant="all">
-                                {% for indicators in indicator %}
+                                {% for indicator in indicators %}
                                     <tr class="odd">
-                                        <td>{{ indicators.label }}</td>
-                                        <td>{{ indicators.referencials.label }}</td>
+                                        <td>{{ indicator.label }}</td>
+                                        <td>{{ indicator.referencials.label }}</td>
                                         <td>
-                                            {% if indicators.referencials.toGroupStakeholder %}
-                                                {{ indicators.referencials.toGroupStakeholder.label }}
+                                            {% if indicator.referencials.toGroupStakeholder %}
+                                                {{ indicator.referencials.toGroupStakeholder.label }}
                                             {% else %}
-                                                {{ indicators.referencials.fromGroupStakeholder.label }}
+                                                {{ indicator.referencials.fromGroupStakeholder.label }}
                                             {% endif %}
                                         </td>
                                         <td>
-                                            {% if indicators.enabled %}
+                                            {% if indicator.enabled %}
                                                 {{ 'enabled'|trans }}
                                             {% else %}
                                                 {{ 'disabled'|trans }}
@@ -79,9 +79,9 @@
                                         </td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ path('srm_indicator_indicator_show', { 'organisationId': organisation.organisationId, 'indicatorId': indicators.indicatorId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
-                                                <a href="{{ path('srm_indicator_indicator_edit', { 'organisationId': organisation.organisationId, 'indicatorId': indicators.indicatorId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
-                                                <a href="{{ path('srm_indicator_indicator_disable', { 'organisationId': organisation.organisationId, 'indicatorId': indicators.indicatorId }) }}" onclick="return confirm('{{ 'popup.disable'|trans}}')" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
+                                                <a href="{{ path('srm_indicator_indicator_show', { 'organisationId': organisation.organisationId, 'indicatorId': indicator.indicatorId }) }}" class="btn btn-default" title="{{ 'button.show'|trans }}"><i class="icon-eye-open"></i></a>
+                                                <a href="{{ path('srm_indicator_indicator_edit', { 'organisationId': organisation.organisationId, 'indicatorId': indicator.indicatorId }) }}" class="btn btn-default" title="{{ 'button.edit'|trans }}"><i class="icon-pencil"></i></a>
+                                                <a href="{{ path('srm_indicator_indicator_disable', { 'organisationId': organisation.organisationId, 'indicatorId': indicator.indicatorId }) }}" onclick="return confirm('{{ 'popup.disable'|trans}}')" class="btn btn-danger" title="{{ 'button.delete'|trans }}"><i class="icon-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

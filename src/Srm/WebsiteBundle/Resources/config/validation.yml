@@ -124,28 +124,28 @@ Srm\CoreBundle\Entity\Site:
     mail:
         - NotBlank: ~
         - Email: { message: "L'adresse {{ value }} n'est pas valide", checkMX: true }
-    address:
-        - Valid: ~
-    typeSite:
-        - Valid: ~
-    language:
-        - Valid: ~
-    currency:
-        - Valid: ~    
-    dangerousSubstances:
-        - Collection:
-            fields:
-                label:
-                  - NotBlank: ~
-            allowExtraFields: false
-            allowMissingFields: true
-    siteActivities:
-        - Collection:
-            fields:
-                label:
-                  - NotBlank: ~
-            allowExtraFields: false
-            allowMissingFields: true
+    # address:
+    #     - Valid: ~
+    # typeSite:
+    #     - Valid: ~
+    # language:
+    #     - Valid: ~
+    # currency:
+    #     - Valid: ~    
+    # dangerousSubstances:
+    #     - Collection:
+    #         fields:
+    #             label:
+    #               - NotBlank: ~
+    #         allowExtraFields: false
+    #         allowMissingFields: true
+    # siteActivities:
+    #     - Collection:
+    #         fields:
+    #             label:
+    #               - NotBlank: ~
+    #         allowExtraFields: false
+    #         allowMissingFields: true
 
 Srm\CoreBundle\Entity\TypeSite:
   properties:
