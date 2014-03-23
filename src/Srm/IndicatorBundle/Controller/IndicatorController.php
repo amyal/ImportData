@@ -20,7 +20,7 @@ class IndicatorController extends Controller
           }
         return $this->render('SrmIndicatorBundle:Indicator:list.html.twig', array(
             'organisation'  => $organisation,
-            'indicator'     => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByOrganisation($organisation),
+            'indicators'     => $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Indicator')->findNonDeletedByOrganisation($organisation),
         ));
     }
 
