@@ -26,7 +26,7 @@
                     <div class="box-content padded">
                         <div class="padded-box">
                             <div class="control-group">
-                                <label class="control-label">{{ 'referencial.referencialType'|trans }} :</label>
+                                <label class="control-label">{{ 'referencials.list.referencial'|trans }} :</label>
                                 <div class="controls">{{ referencial.referencialType.label }}</div>
                             </div>
                         </div>
@@ -40,15 +40,15 @@
                                 <div class="controls">{{ referencial.description }}</div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">{{ 'referencials.list.categories'|trans }}  : </label>
+                                <label class="control-label">{{ 'referencials.list.category1'|trans }}  : </label>
                                 <div class="controls">
-                                    {#% if referencial.referencialCategories %}{{ referencial.referencialCategories|joinLabels(', ') }}{% else %}{{ 'list.no_referencialCategories'|trans }}{% endif %#}
+                                    {% if referencial.categories1 %}{{ referencial.categories1|joinLabels(', ') }}{% else %}{{ 'list.no_referencialCategory1'|trans }}{% endif %}
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">{{ 'referencials.list.organisationReferencials'|trans }}  : </label>
+                                <label class="control-label">{{ 'referencials.list.ReferencialIndicators'|trans }}  : </label>
                                 <div class="controls">
-                                    {% if referencial.organisationReferencials %}{{ referencial.organisationReferencials|joinLabels(', ') }}{% else %}{{ 'list.no_organisationReferencials'|trans }}{% endif %}
+                                    {% if referencial.indicators %}{{ referencial.indicators|joinLabels(', ') }}{% else %}{{ 'list.no_organisationReferencials'|trans }}{% endif %}
                                 </div>
                             </div>
                         </div>
