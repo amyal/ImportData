@@ -18,7 +18,10 @@ class ItemsController extends Controller
 {
     public function listAction(Organisation $organisation)
     {
-        $items = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Item')->findNonDeletedByUser($organisation, $this->getUser());
+        if ($this->getUser() == $this->get('security.context')->isGranted('ROLE_A') || $this->getUser() == $this->get('security.context')->isGranted('ROLE_SA'))
+            $items = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Item')->findNonDeletedByUser($organisation);
+        else
+            $items = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Item')->findNonDeletedByUser($organisation, $this->getUser());
         $answers = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\Answers')->findNonDeletedByItem($items);
         $itemAnswers = $this->getDoctrine()->getRepository('Srm\CoreBundle\Entity\ItemAnswers')->findNonDeletedByAnswers($answers);
 
@@ -109,10 +112,6 @@ class ItemsController extends Controller
 
                 if ($this->getUser()->getRole()->getRoleId() == 4) {
                     $answersStatus = new AnswersStatus(1);
-                    echo "<pre>"; 
-                    \Doctrine\Common\Util\Debug::dump($answersStatus, 2); 
-                    exit;
-
                     $itemAnswers->setAnswersStatus($answersStatus->getAnswersStatusId());
                 } else {
                     $answersStatus = new AnswersStatus(2);

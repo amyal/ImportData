@@ -63,22 +63,25 @@ class StakeholderType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
-            ->add('subsidiary', 'text', array(
-                'label'    => 'stakeholders.subsidiary',
-                'required' => true,
-                'attr'     => array('autofocus' => 'autofocus'),
-            ))
-
             ->add('startActivity', 'date', array('label'  => 'stakeholders.startActivity',
             	'widget' => 'single_text',										'format' => 'dd/MM/y',
 		        'input'  => 'datetime',
 		        'attr'   => array('class' => 'datepicker fill-up'),
             ))
 
-            ->add('turnovers', 'text', array(
-                'label'    => 'stakeholders.turnovers',
+            ->add('subsidiary', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\Employees',
+                'property' => 'label',
+                'label'    => 'organisation.form.basic.employees',
                 'required' => true,
-                'attr'     => array('autofocus' => 'autofocus'),
+                'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
+            ))
+            ->add('turnovers', 'entity', array(
+                'class'    => 'Srm\CoreBundle\Entity\Turnover',
+                'property' => 'label',
+                'label'    => 'organisation.form.basic.turnover',
+                'required' => true,
+                'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
             ))
 
             ->add('website', 'text', array(
