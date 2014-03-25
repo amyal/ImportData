@@ -197,7 +197,7 @@
                                     <i class="icon-sitemap"></i> {{ 'departments.list.title'|trans }} 
                                 </a>
                             </li>  
-                            <li class="{% if app.request.attributes.get('_route') in ['srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}active{% endif %}">
+                         <!--   <li class="{% if app.request.attributes.get('_route') in ['srm_website_poles_list','srm_website_poles_add','srm_website_pole_show','srm_website_pole_edit'] %}active{% endif %}">
                                 <a  {% if organisation is defined %}
                                         href="{{ path('srm_website_poles_list', { 'organisationId': organisation.organisationId }) }}"
                                     {% elseif organisationId is defined %}
@@ -207,7 +207,7 @@
                                     {% endif %}>
                                     <i class="icon-circle-blank"></i> {{ 'poles.list.title'|trans }} 
                                 </a>
-                            </li>  
+                            </li>  -->
                         </ul>
                     </li>
 {% endif %} 

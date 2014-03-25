@@ -27,7 +27,7 @@ class ReferencialType extends AbstractType
                 'attr'     => array('autofocus' => 'autofocus'),
             ))
 
-            ->add('description', 'text', array(
+            ->add('description', 'textarea', array(
                 'label'    => 'referencial.description',
                 'required' => true,
                 'attr'     => array('autofocus' => 'autofocus'),
@@ -69,7 +69,9 @@ class ReferencialType extends AbstractType
             ->add('indicators', 'srm_organisation_referencialIndicators', array('required' => true))
 
             ->add('fromGroupStakeholder', 'srm_organisation_groupStakeholder', array(
-                  'label'    => 'referencials.list.fromGroupStakeholder'
+                'empty_value' => 'Aucun',
+                'required' => false,
+                'label'    => 'referencials.list.fromGroupStakeholder'
             ))
             
             ->add('enabled', 'checkbox', array('label' => 'referencials.enabled','required' => false))
