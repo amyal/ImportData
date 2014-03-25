@@ -24,6 +24,7 @@
                 $('#srm_referencial_categories1').on('change', function() {
                     
                     $('#srm_referencial_categories2 option').remove();
+                    $('#srm_referencial_categories3 option').remove();
                     $.ajax({
                         url: "{{ path('category2_by_category1', {'organisationId': organisationId}) }}",
                         type: "GET",
@@ -33,6 +34,12 @@
                                 $('#srm_referencial_categories2').show();
                                 $('[for=srm_referencial_categories2]').show();
                                 $('#srm_referencial_categories2').append(data);
+                            }
+                            else {
+                                $('#srm_referencial_categories2').hide();
+                                $('[for=srm_referencial_categories2]').hide();
+                                $('#srm_referencial_categories3').hide();
+                                $('[for=srm_referencial_categories3]').hide();      
                             }
                         }
                     });
@@ -51,15 +58,19 @@
                                 $('#srm_referencial_categories3').show();
                                 $('[for=srm_referencial_categories3]').show();
                                 $('#srm_referencial_categories3').append(data);
-                            }  
+                            }
+                            else {
+                                $('#srm_referencial_categories3').hide();
+                                $('[for=srm_referencial_categories3]').hide();      
+                            }
                         }
                     });
                     getIndicators($(this), 'category2', $('#srm_referencial_referencialType').val());
-                }).trigger('change');
+                });
 
                 $('#srm_referencial_categories3').on('change', function() {
                     getIndicators($(this), 'category3', $('#srm_referencial_referencialType').val());
-                }).trigger('change');
+                });
 
                 function getIndicators(element, elementType, referencialTypeId){
                     $('#srm_referencial_indicators option').remove();
