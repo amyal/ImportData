@@ -134,6 +134,7 @@ class StakeholdersController extends Controller
             // create a new contact
             $contact_stakeholder = new Contact() ; 
             $contact_stakeholder->addContactStakeholder($stakeholders->getLastname(),$stakeholders->getFirstname(),$stakeholders->getEmail());
+            $stakeholders->addContact($contact_stakeholder);
             // link the new contact with the new organisation
             $contact_stakeholder->setOrganisation($org_stakeholder);
             $contact_stakeholder->setEnabled(true);
