@@ -8,7 +8,6 @@
     <field name="companySize" type="integer" column="COMPANY_SIZE" nullable="true"/>
     <field name="startActivity" type="datetime" column="START_ACTIVITY" nullable="true"/>
     <field name="siretNumber" type="integer" column="SIRET_NUMBER" nullable="true"/>
-    <field name="turnovers" type="float" column="TURNOVERS" nullable="true"/>
     <field name="website" type="string" column="WEBSITE" length="255" nullable="true"/>
     <field name="firstname" type="string" column="FIRSTNAME" length="100" nullable="false"/>
     <field name="lastname" type="string" column="LASTNAME" length="100" nullable="true"/>
@@ -16,7 +15,6 @@
     <field name="fax" type="string" column="FAX" length="20" nullable="true"/>
     <field name="email" type="string" column="EMAIL" length="255" nullable="true"/>
     <field name="parent" type="string" column="PARENT" length="255" nullable="true"/>
-    <field name="subsidiary" type="string" column="SUBSIDIARY" length="255" nullable="true"/>
     <field name="importance" type="string" column="IMPORTANCE" length="10" nullable="true"/>
     <field name="connexion" type="boolean" column="CONNEXION" nullable="true"/>
     <field name="creationDate" type="datetime" column="CREATION_DATE" nullable="true"/>
@@ -33,7 +31,19 @@
         <cascade-all />
       </cascade>
     </many-to-one>
-
+    
+    <many-to-one field="turnover" target-entity="Turnover">
+      <join-columns>
+        <join-column name="TURNOVER_ID" referenced-column-name="TURNOVER_ID"/>
+      </join-columns>
+    </many-to-one>
+    
+    <many-to-one field="subsidiary" target-entity="Employees">
+      <join-columns>
+        <join-column name="EMPLOYEES_ID" referenced-column-name="EMPLOYEES_ID"/>
+      </join-columns>
+    </many-to-one>
+    
     <many-to-one field="stakeholderGroup" target-entity="StakeholderGroup">
       <join-columns>
         <join-column name="STAKEHOLDER_GROUP_ID" referenced-column-name="STAKEHOLDER_GROUP_ID"/>

@@ -27,11 +27,7 @@ class Stakeholder
      */
     private $siretNumber;
 
-    /**
-     * @var float
-     */
-    private $turnovers;
-
+    
     /**
      * @var string
      */
@@ -51,7 +47,7 @@ class Stakeholder
      * @var string
      */
     private $phone;
-
+    
     /**
      * @var string
      */
@@ -66,11 +62,6 @@ class Stakeholder
      * @var string
      */
     private $parent;
-
-    /**
-     * @var string
-     */
-    private $subsidiary;
 
     /**
      * @var string
@@ -106,6 +97,16 @@ class Stakeholder
      * @var integer
      */
     private $stakeholderId;
+    
+     /**
+     * @var \Srm\CoreBundle\Entity\Employees
+     */
+    private $subsidiary;
+    
+     /**
+     * @var \Srm\CoreBundle\Entity\Turnover
+     */
+    private $turnover;
 
     /**
      * @var \Srm\CoreBundle\Entity\Address
@@ -241,26 +242,26 @@ class Stakeholder
     }
 
     /**
-     * Set turnovers
+     * Set turnover
      *
-     * @param float $turnovers
+     * @param \Srm\CoreBundle\Entity\Turnover $turnover
      * @return Stakeholder
      */
-    public function setTurnovers($turnovers)
+    public function setTurnover(Turnover $turnover = null)
     {
-        $this->turnovers = $turnovers;
+        $this->turnover = $turnover;
 
         return $this;
     }
 
     /**
-     * Get turnovers
+     * Get turnover
      *
-     * @return float
+     * @return \Srm\CoreBundle\Entity\Turnover
      */
-    public function getTurnovers()
+    public function getTurnover()
     {
-        return $this->turnovers;
+        return $this->turnover;
     }
 
     /**
@@ -427,10 +428,10 @@ class Stakeholder
     /**
      * Set subsidiary
      *
-     * @param string $subsidiary
+     * @param \Srm\CoreBundle\Entity\Employees $subsidiary
      * @return Stakeholder
      */
-    public function setSubsidiary($subsidiary)
+    public function setSubsidiary(Employees $subsidiary = null)
     {
         $this->subsidiary = $subsidiary;
 
@@ -440,7 +441,7 @@ class Stakeholder
     /**
      * Get subsidiary
      *
-     * @return string
+     * @return \Srm\CoreBundle\Entity\Employees
      */
     public function getSubsidiary()
     {
