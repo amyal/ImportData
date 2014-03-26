@@ -105,8 +105,7 @@ Srm\CoreBundle\Entity\LegalForm:
         - NotBlank: ~
         - DateTime: ~
     nationality: 
-        - NotBlank: ~
-        - Country: ~
+        - Valid: ~
     legalStatus:
         - Valid: ~
 
