@@ -76,7 +76,7 @@ class StakeholderType extends AbstractType
                 'required' => true,
                 'attr'=>array('class'=>'chzn-select', 'name'=>'colors')
             ))
-            ->add('turnovers', 'entity', array(
+            ->add('turnover', 'entity', array(
                 'class'    => 'Srm\CoreBundle\Entity\Turnover',
                 'property' => 'label',
                 'label'    => 'organisation.form.basic.turnover',

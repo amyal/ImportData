@@ -1,7 +1,7 @@
 {% extends '::layout.html.twig' %}
 
 {% block main_container_header %}
-    <i class="icon-circle-blank"></i> {{ 'poles.list.title'|trans }}
+    <i class="icon-circle-blank"></i> {{ 'stakeholders.list.title'|trans }}
 {% endblock %}
 
 {% block breadcrumb %}
@@ -10,7 +10,7 @@
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
     <div class="breadcrumb-button">
-        <span class="breadcrumb-label">{{ 'poles.list.title'|trans }}</span>
+        <span class="breadcrumb-label">{{ 'stakeholders.list.title'|trans }}</span>
         <span class="breadcrumb-arrow"><span></span></span>
     </div>
 {% endblock %}
@@ -21,32 +21,32 @@
             <div class="span10 offset1">
                 <div class="box">
                     <div class="box-header">
-                        <span class="title">  {{ pole.label }} </span>
+                        <span class="title">  {{ stakeholders.label }} </span>
                     </div>
                     <div class="box-content padded">
                         <div class="padded-box">
                             <div class="control-group">
-                                <label class="control-label">{{ 'pole.label'|trans }} :</label>
-                                <div class="controls">{{ pole.label }}</div>
+                                <label class="control-label">{{ 'stakeholders.label'|trans }} :</label>
+                                <div class="controls">{{ stakeholders.label }}</div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">{{ 'poles.list.sites'|trans }}  : </label>
+                                <label class="control-label">{{ 'stakeholders.list.groupStakeholders'|trans }}  : </label>
                                 <div class="controls">
-                                    {% if pole.sites %}{{ pole.sites|joinLabels(', ') }}{% else %}{{ 'list.no_sites'|trans }}{% endif %}
+                                    {% if stakeholders.stakeholderGroup %}{{ stakeholders.stakeholderGroup .label }}{% endif %}
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">{{ 'poles.list.departments'|trans }} :</label>
+                                <label class="control-label">{{ 'stakeholders.list.contacts'|trans }} :</label>
                                 <div class="controls">
-                                    {% if pole.departments %}{{ pole.departments|joinLabels(', ') }}{% else %}{{ 'list.no_departments'|trans }}{% endif %}
+                                    {% if stakeholders.contacts %}{{ stakeholders.contacts|joinLabels(', ') }}{% else %}{{ 'list.no_departments'|trans }}{% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {{ include('SrmWebsiteBundle:Partials:_edit_cancel.html.twig', {
-                        url_edit:   path('srm_website_pole_edit',  {'organisationId': organisationId, 'poleId': pole.poleId}),
-                        url_cancel: path('srm_website_poles_list', {'organisationId': organisationId})
+                        url_edit:   path('srm_website_stakeholders_edit',  {'organisationId': organisationId, 'stakeholderId': stakeholders.stakeholderId}),
+                        url_cancel: path('srm_website_stakeholders_list', {'organisationId': organisationId})
                     }, with_context = false) }}
                 </div>
             </div>
