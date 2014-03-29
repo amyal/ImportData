@@ -48,7 +48,7 @@ class LegalForm
     private $tvaNumber;
 
     /**
-     * @var string
+     * @var \Srm\CoreBundle\Entity\Country
      */
     private $nationality;
 
@@ -283,10 +283,10 @@ class LegalForm
     /**
      * Set nationality
      *
-     * @param string $nationality
+     * @param \Srm\CoreBundle\Entity\Country $nationality
      * @return LegalForm
      */
-    public function setNationality($nationality)
+    public function setNationality(Country $nationality = null)
     {
         $this->nationality = $nationality;
 
@@ -296,7 +296,7 @@ class LegalForm
     /**
      * Get nationality
      *
-     * @return string
+     * @return \Srm\CoreBundle\Entity\Country
      */
     public function getNationality()
     {

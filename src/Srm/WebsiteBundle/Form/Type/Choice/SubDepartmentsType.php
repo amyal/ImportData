@@ -14,8 +14,10 @@ class SubDepartmentsType extends AbstractType
         $resolver->setDefaults(array(
             'class'         => 'Srm\CoreBundle\Entity\SubDepartment',
             'property'      => 'label',
+//            'query_builder' => function(EntityRepository $er) use ($organisation){
+//            return $er->getSDepartmentNotBind($organisation);
             'query_builder' => function(EntityRepository $er) {
-                return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
+            return $er->createQueryBuilder('s')->orderBy('s.label', 'ASC');
             },
         ));
     }

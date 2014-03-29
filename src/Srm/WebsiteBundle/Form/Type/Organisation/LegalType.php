@@ -28,8 +28,8 @@ class LegalType extends AbstractType
 						    'input'  => 'datetime',
 						    'attr'   => array('class' => 'datepicker fill-up'),	))
             ->add('siretNumber',      'text' ,array('label' => 'organisation.form.legal.siretNumber','required' => true))
-            ->add('nationality',      'text' ,array('label' => 'organisation.form.legal.nationality'))
-
+            ->add('nationality',      'srm_countries' ,array('attr'=>array('class'=>'chzn-select', 'name'=>'colors')))
+            //->add('country', 'srm_countries',array('required' => true))   
             ->add('save', 'submit', array('label' => 'button.save')
             )
         ;
